@@ -572,116 +572,40 @@
        =================================== -->
 
   <header class="site-header">
-<!DOCTYPE html>
-<html lang="tl">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <a class="brand" href="index.html" aria-label="jhElmEr homepage">
+    <img src="header-logo.png" alt="jhElmEr Simpleng Tao">
+  </a>
 
-  <meta
-    name="description"
-    content="Official website of jhElmEr — civic explainers, text slogans, music, and moral reflections."
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="main-navigation"
   >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
-  <title>jhElmEr | Mulat na Pag-iisip</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
+  <nav
+    class="main-nav"
+    id="main-navigation"
+    aria-label="Main navigation"
   >
+    <a href="index.html">Home</a>
 
-  <link rel="stylesheet" href="style.css?v=26">
-</head>
+    <a class="active" href="civic-explainers.html">
+      Civic Explainers
+    </a>
 
-<body>
-
-  <header class="site-header">
-
-<a class="brand" href="index.html" aria-label="jhElmEr homepage">
-  <img src="header-logo.png" alt="jhElmEr Simpleng Tao">
-</a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="main-navigation"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav
-      class="main-nav"
-      id="main-navigation"
-      aria-label="Main navigation"
-    >
-      <a class="active" href="index.html">Home</a>
-      <a href="civic-explainers.html">Civic Explainers</a>
-      <a href="#">Text Slogans</a>
-      <a href="#">Music</a>
-      <a href="#">About</a>
-    </nav>
+    <a href="#">Text Slogans</a>
+    <a href="#">Music</a>
+    <a href="#">About</a>
+  </nav>
 
   </header>
-
-  <main>
-    <section class="hero">
-
-      <div class="hero-content">
-
-        <p class="eyebrow">
-          Independent Civic &amp; Creative Platform
-        </p>
-
-        <h1>
-          <span class="headline-first">MULAT NA PAG-IISIP.</span>
-          <span class="headline-second">MALINAW NA</span>
-          <span class="headline-third">PANININDIGAN.</span>
-        </h1>
-
-        <p class="hero-description">
-          Mga civic explainer, text slogan, musika, at mga nilalamang
-          ginawa hindi lang para makita—kundi para pag-isipan.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href="#">
-            Civic Explainers
-          </a>
-
-          <a class="button button-secondary" href="#">
-            Text Slogans
-          </a>
-        </div>
-
-      </div>
-
-    </section>
-  </main>
-
-  <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
-
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
-
-      menuToggle.classList.toggle("is-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
-  </script>
-
-</body>
-
-</html>
-
   <main>
 
     <!-- ===================================
