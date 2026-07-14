@@ -20,7 +20,97 @@
     rel="stylesheet"
   >
 
-<link rel="stylesheet" href="style.css?v=5">
+<link rel="stylesheet" href="style.css?v=6">
+  /* CLEAN MOBILE NAVIGATION */
+
+.menu-toggle {
+  display: none !important;
+}
+
+@media (max-width: 850px) {
+  .site-header {
+    padding: 20px 20px 16px;
+    display: block;
+    position: sticky;
+    top: 0;
+  }
+
+  .brand {
+    display: block;
+    margin: 0 0 18px;
+  }
+
+  .main-nav {
+    width: 100%;
+    max-height: none;
+    padding: 0 0 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    white-space: nowrap;
+    position: static;
+    background: transparent;
+    border: 0;
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-nav a {
+    width: auto;
+    padding: 6px 0 9px;
+    flex: 0 0 auto;
+    border: 0;
+  }
+}
+
+/* LANDSCAPE PHONE FIX */
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-header {
+    padding: 12px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .brand {
+    margin: 0;
+    font-size: 1.65rem;
+  }
+
+  .main-nav {
+    width: auto;
+    padding: 0;
+    gap: 22px;
+  }
+
+  .main-nav a {
+    font-size: 0.75rem;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 55px 7% 70px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 8vw, 4.6rem);
+    line-height: 0.9;
+  }
+
+  .hero-description {
+    margin-bottom: 24px;
+  }
+}
 </head>
 
 <body>
@@ -29,19 +119,6 @@
   <a class="brand" href="index.html" aria-label="jhElmEr homepage">
     jhElmEr
   </a>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Open navigation menu"
-    aria-expanded="false"
-    aria-controls="main-navigation"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
-
   <nav
     class="main-nav"
     id="main-navigation"
@@ -89,17 +166,6 @@
 
     </section>
   </main>
-<script>
-  const menuToggle = document.querySelector(".menu-toggle");
-  const mainNav = document.querySelector(".main-nav");
-
-  menuToggle.addEventListener("click", () => {
-    const isOpen = mainNav.classList.toggle("is-open");
-
-    menuToggle.classList.toggle("is-open", isOpen);
-    menuToggle.setAttribute("aria-expanded", isOpen);
-  });
-</script>
 </body>
 
 </html>
