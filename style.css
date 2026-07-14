@@ -1,4 +1,6 @@
-/* jhElmEr Website Styles */
+/* =========================
+   jhElmEr Premium Website
+   ========================= */
 
 * {
   margin: 0;
@@ -6,19 +8,200 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: #111111;
-  color: #f5f5f5;
+  background:
+    radial-gradient(circle at top right, rgba(196, 154, 73, 0.08), transparent 34%),
+    #0d0e10;
+  color: #f4f0e8;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.6;
 }
 
-a {
-  color: #d4af37;
-  text-decoration: none;
+/* Premium Header */
+
+header {
+  width: 100%;
+  min-height: 78px;
+  padding: 18px 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: rgba(13, 14, 16, 0.94);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.22);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(14px);
 }
 
-img {
-  max-width: 100%;
-  display: block;
+header h2 {
+  color: #d4af37;
+  font-size: 1.7rem;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #e7e1d8;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: color 0.25s ease;
+}
+
+nav a:hover {
+  color: #d4af37;
+}
+
+/* Hero Section */
+
+section {
+  min-height: calc(100vh - 78px);
+  padding: 90px 8%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: 8%;
+  right: -120px;
+  border: 1px solid rgba(212, 175, 55, 0.16);
+  border-radius: 50%;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: 7%;
+  bottom: 6%;
+  background: rgba(126, 25, 29, 0.1);
+  filter: blur(70px);
+  border-radius: 50%;
+}
+
+section h1 {
+  max-width: 900px;
+  margin-bottom: 24px;
+  font-size: clamp(2.6rem, 7vw, 5.8rem);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  color: #fffaf1;
+  position: relative;
+  z-index: 1;
+}
+
+section p {
+  max-width: 680px;
+  margin-bottom: 34px;
+  color: #bbb5ac;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 1;
+}
+
+section > a {
+  display: inline-block;
+  margin: 0 12px 12px 0;
+  padding: 14px 22px;
+  border: 1px solid #d4af37;
+  color: #111214;
+  background: #d4af37;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+section > a:hover {
+  transform: translateY(-3px);
+  background: transparent;
+  color: #d4af37;
+}
+
+section > a:last-child {
+  background: transparent;
+  color: #f4f0e8;
+  border-color: rgba(244, 240, 232, 0.35);
+}
+
+section > a:last-child:hover {
+  color: #d4af37;
+  border-color: #d4af37;
+}
+
+/* Mobile */
+
+@media (max-width: 760px) {
+  header {
+    padding: 16px 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 14px 18px;
+  }
+
+  nav a {
+    font-size: 0.82rem;
+  }
+
+  section {
+    min-height: auto;
+    padding: 74px 22px 90px;
+  }
+
+  section h1 {
+    font-size: clamp(2.45rem, 13vw, 4rem);
+  }
+
+  section p {
+    font-size: 1rem;
+  }
+
+  section > a {
+    width: 100%;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  section::before {
+    width: 280px;
+    height: 280px;
+    right: -150px;
+  }
 }
