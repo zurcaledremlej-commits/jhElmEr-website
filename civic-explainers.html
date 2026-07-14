@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Mga civic explainer ng jhElmEr—malinaw, fact-based, at nakasentro sa mga isyung mahalagang maunawaan ng mamamayan."
+  >
+
+  <title>Civic Explainers | jhElmEr</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Existing homepage stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Civic Explainers page styling -->
+  <style>
+    /* ===================================
+       CIVIC EXPLAINERS PAGE
+       =================================== */
+
+    .inner-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(
+          circle at 92% 18%,
+          rgba(213, 173, 54, 0.08),
+          transparent 28%
+        ),
+        #090a0c;
+    }
+
+    /* ===================================
+       PAGE INTRODUCTION
+       =================================== */
+
+    .page-intro {
+      padding: 92px 7% 68px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .page-intro::after {
+      content: "";
+      width: 390px;
+      height: 390px;
+
+      position: absolute;
+      top: -185px;
+      right: -150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.16);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .page-intro-content {
+      width: 100%;
+      max-width: 940px;
+
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-label {
+      margin-bottom: 19px;
+
+      color: #d5ad36;
+
+      font-size: 0.74rem;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .page-intro h1 {
+      max-width: 900px;
+      margin-bottom: 25px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.4rem, 7vw, 6.6rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+    }
+
+    .page-description {
+      max-width: 710px;
+
+      color: #aaa69f;
+
+      font-size: 1.03rem;
+      line-height: 1.85;
+    }
+
+    /* ===================================
+       PAGE TOOLBAR
+       =================================== */
+
+    .explainer-toolbar {
+      padding: 27px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .result-label {
+      color: rgba(245, 241, 232, 0.58);
+
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .category-filters {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .filter-button {
+      min-height: 39px;
+      padding: 9px 15px;
+
+      border: 1px solid rgba(245, 241, 232, 0.16);
+      background: transparent;
+      color: #aaa69f;
+
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      color: #111214;
+      border-color: #d5ad36;
+      background: #d5ad36;
+    }
+
+    /* ===================================
+       EXPLAINER LIST
+       =================================== */
+
+    .explainer-section {
+      padding: 66px 7% 100px;
+    }
+
+    .explainer-grid {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .explainer-card {
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 241, 232, 0.13);
+      background: rgba(245, 241, 232, 0.025);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .explainer-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(213, 173, 54, 0.58);
+      background: rgba(245, 241, 232, 0.04);
+    }
+
+    .card-image-link {
+      display: block;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.12),
+          rgba(9, 10, 12, 0.92)
+        );
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+
+      display: block;
+      object-fit: cover;
+
+      transition: transform 0.42s ease;
+    }
+
+    .explainer-card:hover .card-image {
+      transform: scale(1.025);
+    }
+
+    .card-content {
+      min-height: 285px;
+      padding: 25px 24px 27px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-category {
+      margin-bottom: 13px;
+
+      color: #d5ad36;
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      margin-bottom: 15px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .card-title a {
+      transition: color 0.22s ease;
+    }
+
+    .card-title a:hover {
+      color: #d5ad36;
+    }
+
+    .card-excerpt {
+      margin-bottom: 24px;
+
+      color: #aaa69f;
+
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .card-date {
+      color: rgba(245, 241, 232, 0.46);
+
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #f5f1e8;
+
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+
+      transition: color 0.22s ease;
+    }
+
+    .read-link::after {
+      content: "→";
+
+      color: #d5ad36;
+      font-size: 1rem;
+
+      transition: transform 0.22s ease;
+    }
+
+    .read-link:hover {
+      color: #d5ad36;
+    }
+
+    .read-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ===================================
+       EMPTY / COMING-SOON CARD
+       =================================== */
+
+    .coming-soon-card {
+      min-height: 420px;
+      padding: 46px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px dashed rgba(245, 241, 232, 0.17);
+      background: rgba(245, 241, 232, 0.015);
+      text-align: center;
+    }
+
+    .coming-soon-content {
+      max-width: 310px;
+    }
+
+    .coming-soon-number {
+      margin-bottom: 20px;
+
+      color: rgba(213, 173, 54, 0.42);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .coming-soon-card h2 {
+      margin-bottom: 14px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.9rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .coming-soon-card p {
+      color: #aaa69f;
+
+      font-size: 0.86rem;
+      line-height: 1.75;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+
+    .inner-footer {
+      padding: 34px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .footer-brand {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-line {
+      color: rgba(245, 241, 232, 0.45);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1050px) {
+      .explainer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .page-intro {
+        padding: 67px 22px 53px;
+      }
+
+      .page-intro::after {
+        width: 270px;
+        height: 270px;
+
+        top: -130px;
+        right: -135px;
+      }
+
+      .page-label {
+        margin-bottom: 16px;
+
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+      }
+
+      .page-intro h1 {
+        margin-bottom: 21px;
+
+        font-size: clamp(3.15rem, 16vw, 4.65rem);
+        line-height: 0.87;
+      }
+
+      .page-description {
+        max-width: 570px;
+
+        font-size: 0.91rem;
+        line-height: 1.78;
+      }
+
+      .explainer-toolbar {
+        padding: 22px;
+
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .category-filters {
+        width: 100%;
+        justify-content: flex-start;
+
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+      }
+
+      .filter-button {
+        flex: 0 0 auto;
+      }
+
+      .explainer-section {
+        padding: 47px 22px 78px;
+      }
+
+      .explainer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .card-content {
+        min-height: auto;
+        padding: 23px 21px 25px;
+      }
+
+      .card-title {
+        font-size: 1.75rem;
+      }
+
+      .inner-footer {
+        padding: 29px 22px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .page-intro h1 {
+        font-size: clamp(2.9rem, 15.2vw, 4rem);
+      }
+
+      .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* ===================================
+       LANDSCAPE MOBILE
+       =================================== */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .page-intro {
+        padding-top: 52px;
+        padding-bottom: 45px;
+      }
+
+      .page-intro h1 {
+        font-size: clamp(3.3rem, 8vw, 4.8rem);
+      }
+
+      .explainer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Pumunta sa homepage ng jhElmEr"
+    >
+      <img
+        src="images/jhelmer-header-logo.png"
+        alt="jhElmEr"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Buksan ang navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="index.html">Home</a>
+
+      <a
+        href="civic-explainers.html"
+        class="active"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogans.html">
+        Text Slogans
+      </a>
+
+      <a href="music.html">
+        Music
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================
+         PAGE INTRODUCTION
+         =================================== -->
+
+    <section class="page-intro">
+
+      <div class="page-intro-content">
+
+        <p class="page-label">
+          Katotohanan • Konteksto • Pananagutan
+        </p>
+
+        <h1>
+          Civic<br>
+          Explainers
+        </h1>
+
+        <p class="page-description">
+          Mga paliwanag sa mahahalagang usaping panlipunan, legal,
+          at pampamahalaan—sinusuri batay sa katotohanan, malinaw
+          na konteksto, at mga mapapatunayang batayan.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         FILTERS
+         =================================== -->
+
+    <section
+      class="explainer-toolbar"
+      aria-label="Civic Explainer filters"
+    >
+
+      <p class="result-label">
+        Lahat ng Civic Explainers
+      </p>
+
+      <div class="category-filters">
+
+        <button
+          class="filter-button active"
+          type="button"
+          data-filter="all"
+        >
+          Lahat
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="governance"
+        >
+          Pamahalaan
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="law"
+        >
+          Batas
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="society"
+        >
+          Lipunan
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="accountability"
+        >
+          Pananagutan
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CIVIC EXPLAINER CARDS
+         =================================== -->
+
+    <section class="explainer-section">
+
+      <div class="explainer-grid">
+
+        <!-- CARD 1 -->
+
+        <article
+          class="explainer-card"
+          data-category="accountability governance law"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Ano ang Mas Mahal?"
+          >
+            <img
+              src="images/civic/impeachment-gastos.jpg"
+              alt="Visual para sa civic explainer na Ano ang Mas Mahal?"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Pananagutan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Ano ang Mas Mahal?
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Ang gastos sa impeachment ay madaling bilangin.
+              Ngunit paano sinusukat ang halaga ng pananagutang
+              pinangangalagaan nito?
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-12"
+              >
+                Hulyo 12, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 2 -->
+
+        <article
+          class="explainer-card"
+          data-category="governance accountability society"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Ebidensiya o Meme?"
+          >
+            <img
+              src="images/civic/ebidensiya-o-meme.jpg"
+              alt="Visual para sa civic explainer na Ebidensiya o Meme?"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Pamahalaan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Ebidensiya o Meme?
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Kapag ang pinakanaaalala sa isang paglilitis ay ang
+              naging meme, ano ang mahahalagang detalye na hindi
+              na natin napansin?
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-07"
+              >
+                Hulyo 7, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 3 -->
+
+        <article
+          class="explainer-card"
+          data-category="society"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Insulto ang Sagot?"
+          >
+            <img
+              src="images/civic/insulto-ang-sagot.jpg"
+              alt="Visual para sa civic explainer na Insulto ang Sagot?"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Lipunan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Insulto ang Sagot?
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Kapag ang tao ang unang inaatake kaysa sagutin
+              ang argumento, mas nalilihis ang usapan mula sa
+              isyu papunta sa personalidad.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-10"
+              >
+                Hulyo 10, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 4 -->
+
+        <article
+          class="explainer-card"
+          data-category="law accountability"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Donation o Suhol?"
+          >
+            <img
+              src="images/civic/donasyon-o-suhol.jpg"
+              alt="Visual para sa civic explainer na Donasyon o Suhol?"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Batas
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Donasyon o Suhol?
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Hindi sapat na tawaging donasyon ang isang ibinigay
+              na halaga. Kailangang suriin ang pinagmulan,
+              layunin, at buong konteksto nito.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-02"
+              >
+                Hulyo 2, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 5 -->
+
+        <article
+          class="explainer-card"
+          data-category="law society"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Bakit Marami ang Nalito?"
+          >
+            <img
+              src="images/civic/bakit-marami-ang-nalito.jpg"
+              alt="Visual para sa civic explainer na Bakit Marami ang Nalito?"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Batas
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Bakit Marami ang Nalito?
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Ang isang legal na pahayag ay kailangang suriin
+              ayon sa sariling saklaw, proseso, at rules on
+              evidence na gumagabay rito.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-06-30"
+              >
+                Hunyo 30, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- PLACEHOLDER FOR NEXT ARTICLE -->
+
+        <div class="coming-soon-card">
+
+          <div class="coming-soon-content">
+
+            <p class="coming-soon-number">
+              +
+            </p>
+
+            <h2>
+              Susunod na Explainer
+            </h2>
+
+            <p>
+              Dito awtomatikong maidaragdag ang susunod na civic
+              explainer habang lumalawak ang permanenteng archive.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+
+  <footer class="inner-footer">
+
+    <p class="footer-brand">
+      © 2026 jhElmEr
+    </p>
+
+    <p class="footer-line">
+      Truth Over Noise
+    </p>
+
+  </footer>
+
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
+
+  <script>
+    const menuButton = document.querySelector(".menu-toggle");
+    const navigation = document.querySelector(".main-nav");
+
+    if (menuButton && navigation) {
+      menuButton.addEventListener("click", () => {
+        const menuIsOpen =
+          navigation.classList.toggle("is-open");
+
+        menuButton.classList.toggle(
+          "is-open",
+          menuIsOpen
+        );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(menuIsOpen)
+        );
+      });
+
+      navigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navigation.classList.remove("is-open");
+          menuButton.classList.remove("is-open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+        });
+      });
+    }
+
+    const filterButtons =
+      document.querySelectorAll(".filter-button");
+
+    const explainerCards =
+      document.querySelectorAll(".explainer-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedFilter =
+          button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        explainerCards.forEach((card) => {
+          const cardCategories =
+            card.dataset.category || "";
+
+          const shouldDisplay =
+            selectedFilter === "all" ||
+            cardCategories.includes(selectedFilter);
+
+          card.style.display =
+            shouldDisplay ? "flex" : "none";
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
