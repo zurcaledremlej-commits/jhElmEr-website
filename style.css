@@ -1503,90 +1503,76 @@ body {
    =================================== */
 
 /* Desktop */
-
 .brand:not(.brand-text) {
-  width: 320px !important;
-  height: 74px !important;
-  max-width: 320px !important;
-  min-width: 320px !important;
-  flex: 0 0 320px !important;
-  margin: 0 !important;
-  overflow: visible !important;
-
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: flex-start;
+  width: 390px !important;
+  height: 82px !important;
+  max-width: 390px !important;
+  min-width: 390px !important;
+  flex: 0 0 390px !important;
 }
 
 .brand:not(.brand-text) img {
-  width: 320px !important;
+  width: 390px !important;
   height: auto !important;
-  max-width: 320px !important;
-  max-height: 74px !important;
-  display: block !important;
-  object-fit: contain !important;
-  object-position: left center;
+  max-width: 390px !important;
+  max-height: 82px !important;
 }
 
 /* Mobile portrait */
-
 @media (max-width: 850px) {
   .site-header {
-    min-height: 92px;
+    min-height: 98px;
     padding: 10px 18px;
   }
 
   .brand:not(.brand-text) {
-    width: 235px !important;
-    height: 68px !important;
-    max-width: 235px !important;
-    min-width: 235px !important;
-    flex: 0 0 235px !important;
+    width: 285px !important;
+    height: 74px !important;
+    max-width: 285px !important;
+    min-width: 285px !important;
+    flex: 0 0 285px !important;
   }
 
   .brand:not(.brand-text) img {
-    width: 235px !important;
+    width: 285px !important;
     height: auto !important;
-    max-width: 235px !important;
-    max-height: 68px !important;
+    max-width: 285px !important;
+    max-height: 74px !important;
   }
 }
 
 /* Very small phones */
-
 @media (max-width: 390px) {
   .brand:not(.brand-text) {
-    width: 210px !important;
-    min-width: 210px !important;
-    flex-basis: 210px !important;
+    width: 245px !important;
+    min-width: 245px !important;
+    flex-basis: 245px !important;
   }
 
   .brand:not(.brand-text) img {
-    width: 210px !important;
-    max-width: 210px !important;
+    width: 245px !important;
+    max-width: 245px !important;
   }
 }
 
 /* Phone landscape */
-
 @media (max-height: 520px) and (orientation: landscape) {
   .site-header {
-    min-height: 72px;
-    padding: 6px 5%;
+    min-height: 76px;
   }
 
   .brand:not(.brand-text) {
-    width: 225px !important;
-    height: 58px !important;
-    max-width: 225px !important;
-    min-width: 225px !important;
-    flex: 0 0 225px !important;
+    width: 270px !important;
+    height: 62px !important;
+    max-width: 270px !important;
+    min-width: 270px !important;
+    flex: 0 0 270px !important;
   }
 
   .brand:not(.brand-text) img {
-    width: 225px !important;
+    width: 270px !important;
     height: auto !important;
-    max-width: 225px !important;
-    max-height: 58px !important;
+    max-width: 270px !important;
+    max-height: 62px !important;
   }
 }
