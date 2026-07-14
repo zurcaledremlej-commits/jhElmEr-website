@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Mga awit ng jhElmEr—musikang may mensahe, paninindigan, at pagmulat sa mga realidad ng lipunan."
+  >
+
+  <title>Music | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css?v=26">
+
+  <style>
+    /* ===================================
+       MUSIC PAGE
+       =================================== */
+
+    .inner-page {
+      min-height: 100vh;
+      background: #090a0c;
+    }
+
+    /* ===================================
+       MUSIC HERO
+       SAME STRUCTURE AS HOMEPAGE
+       =================================== */
+
+    .music-hero .hero-content {
+      max-width: 900px;
+    }
+
+    .music-hero h1 {
+      max-width: 900px;
+    }
+
+    .music-hero .headline-first {
+      display: block;
+    }
+
+    /* ===================================
+       MUSIC TOOLBAR
+       =================================== */
+
+    .music-toolbar {
+      padding: 27px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .result-label {
+      color: rgba(245, 241, 232, 0.58);
+
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .category-filters {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .filter-button {
+      min-height: 39px;
+      padding: 9px 15px;
+
+      border: 1px solid rgba(245, 241, 232, 0.16);
+      background: transparent;
+      color: #aaa69f;
+
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      color: #111214;
+      border-color: #d5ad36;
+      background: #d5ad36;
+    }
+
+    /* ===================================
+       FEATURED MUSIC
+       =================================== */
+
+    .featured-music {
+      padding: 70px 7% 25px;
+    }
+
+    .featured-card {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.34);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.08),
+          rgba(245, 241, 232, 0.018)
+        );
+    }
+
+    .featured-cover {
+      min-height: 520px;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.16),
+          rgba(9, 10, 12, 0.95)
+        );
+    }
+
+    .featured-cover img {
+      width: 100%;
+      height: 100%;
+
+      display: block;
+      object-fit: cover;
+
+      transition: transform 0.45s ease;
+    }
+
+    .featured-card:hover .featured-cover img {
+      transform: scale(1.025);
+    }
+
+    .featured-content {
+      padding: 56px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-label {
+      margin-bottom: 18px;
+
+      color: #d5ad36;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .featured-title {
+      margin-bottom: 20px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.1rem, 5vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.025em;
+      text-transform: uppercase;
+    }
+
+    .featured-quote {
+      max-width: 650px;
+      margin-bottom: 23px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.65rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .featured-description {
+      max-width: 650px;
+      margin-bottom: 32px;
+
+      color: #aaa69f;
+
+      font-size: 0.93rem;
+      line-height: 1.8;
+    }
+
+    .featured-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .music-button {
+      min-height: 47px;
+      padding: 13px 21px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      border: 1px solid #d5ad36;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease;
+    }
+
+    .music-button-primary {
+      background: #d5ad36;
+      color: #111214;
+    }
+
+    .music-button-primary:hover {
+      background: #f5f1e8;
+      border-color: #f5f1e8;
+    }
+
+    .music-button-secondary {
+      background: transparent;
+      color: #f5f1e8;
+    }
+
+    .music-button-secondary:hover {
+      background: #d5ad36;
+      color: #111214;
+    }
+
+    /* ===================================
+       MUSIC ARCHIVE
+       =================================== */
+
+    .music-section {
+      padding: 45px 7% 100px;
+    }
+
+    .section-heading {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto 27px;
+
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .section-heading h2 {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 2.35rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .section-heading p {
+      color: rgba(245, 241, 232, 0.48);
+
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .music-grid {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .music-card {
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 241, 232, 0.13);
+      background: rgba(245, 241, 232, 0.025);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .music-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(213, 173, 54, 0.58);
+      background: rgba(245, 241, 232, 0.04);
+    }
+
+    .music-cover-link {
+      position: relative;
+
+      display: block;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.12),
+          rgba(9, 10, 12, 0.92)
+        );
+    }
+
+    .music-cover {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+
+      display: block;
+      object-fit: cover;
+
+      transition: transform 0.42s ease;
+    }
+
+    .music-card:hover .music-cover {
+      transform: scale(1.025);
+    }
+
+    .play-mark {
+      width: 54px;
+      height: 54px;
+
+      position: absolute;
+      right: 19px;
+      bottom: 19px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(245, 241, 232, 0.52);
+      border-radius: 50%;
+
+      background: rgba(9, 10, 12, 0.74);
+      color: #d5ad36;
+
+      font-size: 1rem;
+
+      backdrop-filter: blur(8px);
+
+      transition:
+        background 0.22s ease,
+        color 0.22s ease,
+        border-color 0.22s ease;
+    }
+
+    .music-card:hover .play-mark {
+      border-color: #d5ad36;
+      background: #d5ad36;
+      color: #111214;
+    }
+
+    .music-content {
+      min-height: 260px;
+      padding: 25px 24px 27px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .music-category {
+      margin-bottom: 13px;
+
+      color: #d5ad36;
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .music-title {
+      margin-bottom: 14px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .music-title a {
+      color: inherit;
+      text-decoration: none;
+
+      transition: color 0.22s ease;
+    }
+
+    .music-title a:hover {
+      color: #d5ad36;
+    }
+
+    .music-description {
+      margin-bottom: 23px;
+
+      color: #aaa69f;
+
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .music-footer {
+      margin-top: auto;
+      padding-top: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .music-type {
+      color: rgba(245, 241, 232, 0.46);
+
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .listen-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #f5f1e8;
+      text-decoration: none;
+
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+
+      transition: color 0.22s ease;
+    }
+
+    .listen-link::after {
+      content: "→";
+
+      color: #d5ad36;
+      font-size: 1rem;
+
+      transition: transform 0.22s ease;
+    }
+
+    .listen-link:hover {
+      color: #d5ad36;
+    }
+
+    .listen-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ===================================
+       COMING SOON CARD
+       =================================== */
+
+    .coming-soon-card {
+      min-height: 420px;
+      padding: 46px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px dashed rgba(245, 241, 232, 0.17);
+      background: rgba(245, 241, 232, 0.015);
+      text-align: center;
+    }
+
+    .coming-soon-content {
+      max-width: 310px;
+    }
+
+    .coming-soon-number {
+      margin-bottom: 20px;
+
+      color: rgba(213, 173, 54, 0.42);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .coming-soon-card h2 {
+      margin-bottom: 14px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.9rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .coming-soon-card p {
+      color: #aaa69f;
+
+      font-size: 0.86rem;
+      line-height: 1.75;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+
+    .inner-footer {
+      padding: 34px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .footer-brand {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-line {
+      color: rgba(245, 241, 232, 0.45);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1050px) {
+      .featured-card {
+        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+      }
+
+      .featured-content {
+        padding: 42px;
+      }
+
+      .music-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .music-toolbar {
+        padding: 22px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .category-filters {
+        width: 100%;
+        justify-content: flex-start;
+
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+      }
+
+      .filter-button {
+        flex: 0 0 auto;
+      }
+
+      .featured-music {
+        padding: 47px 34px 20px;
+      }
+
+      .featured-card {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-cover {
+        min-height: auto;
+      }
+
+      .featured-cover img {
+        aspect-ratio: 1 / 1;
+      }
+
+      .featured-content {
+        padding: 35px 25px 38px;
+      }
+
+      .featured-title {
+        font-size: clamp(3rem, 14vw, 4.6rem);
+      }
+
+      .featured-quote {
+        font-size: 1.45rem;
+      }
+
+      .music-section {
+        padding: 37px 34px 78px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .music-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .music-content {
+        min-height: auto;
+        padding: 23px 21px 25px;
+      }
+
+      .inner-footer {
+        padding: 29px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .featured-actions {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .music-button {
+        width: 100%;
+      }
+
+      .music-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* ===================================
+       LANDSCAPE MOBILE
+       =================================== */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .featured-card {
+        grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+      }
+
+      .featured-cover {
+        min-height: 430px;
+      }
+
+      .featured-cover img {
+        height: 100%;
+        aspect-ratio: auto;
+      }
+
+      .featured-content {
+        padding: 35px;
+      }
+
+      .music-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a
+        class="active"
+        href="music.html"
+        aria-current="page"
+      >
+        Music
+      </a>
+
+      <a href="#">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================
+         MUSIC HERO
+         SAME AS HOMEPAGE STRUCTURE
+         =================================== -->
+
+    <section class="hero music-hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          Mensahe • Musika • Paninindigan
+        </p>
+
+        <h1>
+          <span class="headline-first">
+            MUSIC
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          Mga awit na hindi lamang ginawa para pakinggan—kundi
+          para pag-isipan, damhin, at magsilbing tinig ng mga
+          paninindigang hindi dapat manahimik.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         FILTERS
+         =================================== -->
+
+    <section
+      class="music-toolbar"
+      aria-label="Music filters"
+    >
+
+      <p class="result-label">
+        Lahat ng Musika
+      </p>
+
+      <div class="category-filters">
+
+        <button
+          class="filter-button active"
+          type="button"
+          data-filter="all"
+        >
+          Lahat
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="anthem"
+        >
+          Anthem
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="civic"
+        >
+          Civic
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="reflection"
+        >
+          Repleksiyon
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         FEATURED MUSIC
+         =================================== -->
+
+    <section class="featured-music">
+
+      <article class="featured-card">
+
+        <div class="featured-cover">
+
+          <img
+            src="images/music/hindi-tahimik.jpg"
+            alt="Cover art ng awiting Hindi Tahimik"
+          >
+
+        </div>
+
+        <div class="featured-content">
+
+          <p class="featured-label">
+            Featured Track
+          </p>
+
+          <h2 class="featured-title">
+            Hindi Tahimik
+          </h2>
+
+          <p class="featured-quote">
+            “Hindi ako maingay—pero hindi ako tatahimik.”
+          </p>
+
+          <p class="featured-description">
+            Isang awit tungkol sa tahimik ngunit matatag na
+            paninindigan—para sa mga taong hindi kailangang
+            sumigaw upang tumindig laban sa mali.
+          </p>
+
+          <div class="featured-actions">
+
+            <!-- Palitan ang # kapag mayroon nang official YouTube link -->
+
+            <a
+              class="music-button music-button-primary"
+              href="#"
+            >
+              Pakinggan
+            </a>
+
+            <!-- Palitan ang # kapag mayroon nang individual song page -->
+
+            <a
+              class="music-button music-button-secondary"
+              href="#"
+            >
+              Tingnan ang Lyrics
+            </a>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </section>
+
+    <!-- ===================================
+         MUSIC ARCHIVE
+         =================================== -->
+
+    <section class="music-section">
+
+      <div class="section-heading">
+
+        <h2>
+          Mga Awit ng Paninindigan
+        </h2>
+
+        <p>
+          jhElmEr Music Archive
+        </p>
+
+      </div>
+
+      <div class="music-grid">
+
+        <!-- TRACK 1 -->
+
+        <article
+          class="music-card"
+          data-category="anthem civic"
+        >
+
+          <a
+            href="#"
+            class="music-cover-link"
+            aria-label="Pakinggan ang Hindi Tahimik"
+          >
+            <img
+              src="images/music/hindi-tahimik.jpg"
+              alt="Cover art ng Hindi Tahimik"
+              class="music-cover"
+              loading="lazy"
+            >
+
+            <span
+              class="play-mark"
+              aria-hidden="true"
+            >
+              ▶
+            </span>
+          </a>
+
+          <div class="music-content">
+
+            <p class="music-category">
+              Civic Anthem
+            </p>
+
+            <h2 class="music-title">
+              <a href="#">
+                Hindi Tahimik
+              </a>
+            </h2>
+
+            <p class="music-description">
+              Isang awit para sa mga tahimik ngunit hindi
+              pumapayag na manatiling walang tinig sa harap
+              ng mali.
+            </p>
+
+            <div class="music-footer">
+
+              <span class="music-type">
+                Official Track
+              </span>
+
+              <a
+                href="#"
+                class="listen-link"
+              >
+                Pakinggan
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- TRACK 2 -->
+
+        <article
+          class="music-card"
+          data-category="civic reflection"
+        >
+
+          <a
+            href="#"
+            class="music-cover-link"
+            aria-label="Pakinggan ang Hindi Maliit"
+          >
+            <img
+              src="images/music/hindi-maliit.jpg"
+              alt="Cover art ng Hindi Maliit"
+              class="music-cover"
+              loading="lazy"
+            >
+
+            <span
+              class="play-mark"
+              aria-hidden="true"
+            >
+              ▶
+            </span>
+          </a>
+
+          <div class="music-content">
+
+            <p class="music-category">
+              Civic Hip-Hop
+            </p>
+
+            <h2 class="music-title">
+              <a href="#">
+                Hindi Maliit
+              </a>
+            </h2>
+
+            <p class="music-description">
+              Isang pagharap sa kurap mentality at sa mga
+              maliliit na maling unti-unting nagpapalakas sa
+              sistemang ating kinokondena.
+            </p>
+
+            <div class="music-footer">
+
+              <span class="music-type">
+                Official Track
+              </span>
+
+              <a
+                href="#"
+                class="listen-link"
+              >
+                Pakinggan
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- TRACK 3 -->
+
+        <article
+          class="music-card"
+          data-category="anthem reflection"
+        >
+
+          <a
+            href="#"
+            class="music-cover-link"
+            aria-label="Pakinggan ang Simpleng Tao"
+          >
+            <img
+              src="images/music/simpleng-tao.jpg"
+              alt="Cover art ng Simpleng Tao"
+              class="music-cover"
+              loading="lazy"
+            >
+
+            <span
+              class="play-mark"
+              aria-hidden="true"
+            >
+              ▶
+            </span>
+          </a>
+
+          <div class="music-content">
+
+            <p class="music-category">
+              Personal Anthem
+            </p>
+
+            <h2 class="music-title">
+              <a href="#">
+                Simpleng Tao
+              </a>
+            </h2>
+
+            <p class="music-description">
+              Ang personal na anthem ng jhElmEr—isang simpleng
+              tao ngunit mulat ang mata at malinaw ang
+              paninindigan.
+            </p>
+
+            <div class="music-footer">
+
+              <span class="music-type">
+                Upcoming Track
+              </span>
+
+              <a
+                href="#"
+                class="listen-link"
+              >
+                Alamin Pa
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- COMING SOON -->
+
+        <div class="coming-soon-card">
+
+          <div class="coming-soon-content">
+
+            <p class="coming-soon-number">
+              +
+            </p>
+
+            <h2>
+              Susunod na Awit
+            </h2>
+
+            <p>
+              Dito idaragdag ang mga susunod na awit habang
+              lumalawak ang jhElmEr music archive.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+
+  <footer class="inner-footer">
+
+    <p class="footer-brand">
+      © 2026 jhElmEr
+    </p>
+
+    <p class="footer-line">
+      Truth Over Noise
+    </p>
+
+  </footer>
+
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector(".main-nav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuToggle.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const filterButtons =
+      document.querySelectorAll(".filter-button");
+
+    const musicCards =
+      document.querySelectorAll(".music-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        musicCards.forEach((card) => {
+          const cardCategories =
+            card.dataset.category || "";
+
+          const shouldDisplay =
+            selectedFilter === "all" ||
+            cardCategories.includes(selectedFilter);
+
+          card.style.display =
+            shouldDisplay ? "flex" : "none";
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
