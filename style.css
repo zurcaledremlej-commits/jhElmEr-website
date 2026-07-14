@@ -1428,3 +1428,28 @@ body {
     max-width: 720px;
   }
 }
+/* HEADER BRAND TEXT */
+
+.brand-text {
+  display: inline-flex;
+  align-items: center;
+  color: var(--gold);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 850px) {
+  .brand-text {
+    font-size: 1.85rem;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .brand-text {
+    font-size: 1.65rem;
+  }
+}
