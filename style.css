@@ -421,3 +421,58 @@ section > a:last-child:hover {
     font-size: 0.97rem;
   }
 }
+/* FINAL MOBILE FIXES */
+
+.main-nav {
+  flex-wrap: nowrap;
+}
+
+.hero-actions .button {
+  width: 100%;
+  min-height: 56px;
+  padding: 15px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hero-actions .button-primary {
+  color: #111214;
+  background: #d5ad36;
+  border-color: #d5ad36;
+}
+
+.hero-actions .button-secondary {
+  color: #f5f1e8;
+  background: transparent;
+  border-color: rgba(245, 241, 232, 0.35);
+}
+
+@media (max-width: 850px) {
+  .main-nav {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 4px;
+  }
+
+  .main-nav a {
+    flex: 0 0 auto;
+  }
+
+  .hero-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
