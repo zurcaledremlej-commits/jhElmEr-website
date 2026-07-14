@@ -1502,7 +1502,8 @@ body {
    FINAL HORIZONTAL HEADER LOGO SIZE
    =================================== */
 
-/* Desktop */
+/* DESKTOP */
+
 .brand:not(.brand-text) {
   width: 270px !important;
   height: 92px !important;
@@ -1511,8 +1512,8 @@ body {
   flex: 0 0 270px !important;
 
   display: inline-flex !important;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: center !important;
+  justify-content: flex-start !important;
 
   margin: 0 !important;
   padding: 0 !important;
@@ -1524,9 +1525,12 @@ body {
   height: 230px !important;
   max-width: none !important;
   max-height: none !important;
+
   display: block !important;
   object-fit: contain !important;
   object-position: left center !important;
+
+  transform: translateY(5px);
 }
 
 /* =========================
@@ -1534,10 +1538,10 @@ body {
    ========================= */
 
 @media (max-width: 850px) {
-
   .site-header {
     min-height: 104px;
     padding: 8px 18px;
+    align-items: center !important;
   }
 
   .brand:not(.brand-text) {
@@ -1546,6 +1550,9 @@ body {
     min-width: 260px !important;
     max-width: 260px !important;
     flex: 0 0 260px !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
   }
 
   .brand:not(.brand-text) img {
@@ -1553,21 +1560,24 @@ body {
     height: 215px !important;
     max-width: none !important;
     max-height: none !important;
+
+    transform: translate(-12px, 5px);
   }
 }
 
-/* Small phones */
+/* SMALL PHONES */
 
 @media (max-width: 390px) {
-
   .brand:not(.brand-text) {
     width: 245px !important;
     min-width: 245px !important;
+    max-width: 245px !important;
     flex-basis: 245px !important;
   }
 
   .brand:not(.brand-text) img {
     height: 200px !important;
+    transform: translate(-10px, 5px);
   }
 }
 
@@ -1576,10 +1586,10 @@ body {
    ========================= */
 
 @media (max-height: 520px) and (orientation: landscape) {
-
   .site-header {
     min-height: 78px;
     padding: 6px 5%;
+    align-items: center !important;
   }
 
   .brand:not(.brand-text) {
@@ -1588,6 +1598,9 @@ body {
     min-width: 255px !important;
     max-width: 255px !important;
     flex: 0 0 255px !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
   }
 
   .brand:not(.brand-text) img {
@@ -1595,5 +1608,7 @@ body {
     height: 195px !important;
     max-width: none !important;
     max-height: none !important;
+
+    transform: translateY(8px);
   }
 }
