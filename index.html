@@ -19,17 +19,30 @@
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
     rel="stylesheet"
   >
-
-<link rel="stylesheet" href="style.css?v=7">
-
+<link rel="stylesheet" href="style.css?v=10">
 </head>
 
 <body>
 
   <header class="site-header">
+<header class="site-header">
+
   <a class="brand" href="index.html" aria-label="jhElmEr homepage">
-    jhElmEr
+    <img src="logo.png" alt="jhElmEr Simpleng Tao logo">
   </a>
+
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="main-navigation"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
   <nav
     class="main-nav"
     id="main-navigation"
@@ -41,7 +54,8 @@
     <a href="#">Music</a>
     <a href="#">About</a>
   </nav>
-  </header>
+
+</header>
 
   <main>
     <section class="hero">
@@ -77,6 +91,17 @@ MALINAW NA PANININDIGAN.
 
     </section>
   </main>
+    <script>
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.querySelector(".main-nav");
+
+  menuToggle.addEventListener("click", () => {
+    const isOpen = mainNav.classList.toggle("is-open");
+
+    menuToggle.classList.toggle("is-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", isOpen);
+  });
+</script>
 </body>
 
 </html>
