@@ -1269,3 +1269,162 @@ section > a:last-child:hover {
     white-space: nowrap;
   }
 }
+/* ===================================
+   STABLE HOMEPAGE LAYOUT FIX
+   =================================== */
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.site-header {
+  width: 100%;
+  left: 0;
+}
+
+/* Keep logo compact but readable */
+
+.brand img {
+  width: auto;
+  height: 64px;
+  max-width: 210px;
+}
+
+/* Remove the problematic hero grid */
+
+.hero {
+  width: 100%;
+  min-height: calc(100vh - 86px);
+  padding: 82px 7% 100px;
+  display: block;
+  overflow: hidden;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0;
+}
+
+.hero-signature {
+  display: none;
+}
+
+/* Controlled headline */
+
+.hero h1 {
+  width: 100%;
+  max-width: 1050px;
+}
+
+.hero h1 .headline-first,
+.hero h1 .headline-second,
+.hero h1 .headline-third {
+  display: block;
+  white-space: normal;
+}
+
+/* Desktop: two lines */
+
+@media (min-width: 851px) {
+  .hero h1 .headline-first {
+    white-space: nowrap;
+  }
+
+  .hero h1 .headline-second,
+  .hero h1 .headline-third {
+    display: inline;
+  }
+
+  .hero h1 .headline-second {
+    margin-right: 0.14em;
+  }
+}
+
+/* Portrait mobile */
+
+@media (max-width: 850px) {
+  .site-header {
+    min-height: 76px;
+    padding: 8px 18px;
+  }
+
+  .brand img {
+    height: 56px;
+    max-width: 180px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 58px 20px 82px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(2.05rem, 8.25vw, 3rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 .headline-first {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero h1 .headline-second,
+  .hero h1 .headline-third {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .hero-description {
+    width: 100%;
+    max-width: 620px;
+  }
+}
+
+/* Landscape phone */
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-header {
+    min-height: 64px;
+    padding: 6px 5%;
+  }
+
+  .brand img {
+    height: 48px;
+    max-width: 160px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 42px 7% 60px;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 1000px;
+  }
+
+  .hero h1 {
+    max-width: 1000px;
+    font-size: clamp(2.55rem, 6.7vw, 4.25rem);
+    line-height: 0.92;
+  }
+
+  .hero-description {
+    max-width: 720px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    max-width: 720px;
+  }
+}
