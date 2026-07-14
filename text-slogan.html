@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Mga text slogan ng jhElmEr—maiikli, malinaw, at may matibay na moral na paninindigan."
+  >
+
+  <title>Text Slogans | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css?v=26">
+
+  <style>
+    /* ===================================
+       TEXT SLOGAN PAGE
+       =================================== */
+
+    .inner-page {
+      min-height: 100vh;
+      background: #090a0c;
+    }
+
+    /* ===================================
+       PAGE HERO
+       SAME STRUCTURE AS HOMEPAGE
+       =================================== */
+
+    .slogan-hero .hero-content {
+      max-width: 900px;
+    }
+
+    .slogan-hero h1 {
+      max-width: 900px;
+    }
+
+    .slogan-hero .headline-first,
+    .slogan-hero .headline-second {
+      display: block;
+    }
+
+    /* ===================================
+       PAGE TOOLBAR
+       =================================== */
+
+    .slogan-toolbar {
+      padding: 27px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .result-label {
+      color: rgba(245, 241, 232, 0.58);
+
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .category-filters {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .filter-button {
+      min-height: 39px;
+      padding: 9px 15px;
+
+      border: 1px solid rgba(245, 241, 232, 0.16);
+      background: transparent;
+      color: #aaa69f;
+
+      font-family: "Inter", Arial, sans-serif;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      cursor: pointer;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .filter-button:hover,
+    .filter-button.active {
+      color: #111214;
+      border-color: #d5ad36;
+      background: #d5ad36;
+    }
+
+    /* ===================================
+       SLOGAN ARCHIVE
+       =================================== */
+
+    .slogan-section {
+      padding: 66px 7% 100px;
+    }
+
+    .slogan-grid {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .slogan-card {
+      min-width: 0;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 241, 232, 0.13);
+      background: rgba(245, 241, 232, 0.025);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .slogan-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(213, 173, 54, 0.58);
+      background: rgba(245, 241, 232, 0.04);
+    }
+
+    .card-image-link {
+      display: block;
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.12),
+          rgba(9, 10, 12, 0.92)
+        );
+    }
+
+    .card-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+
+      display: block;
+      object-fit: cover;
+
+      transition: transform 0.42s ease;
+    }
+
+    .slogan-card:hover .card-image {
+      transform: scale(1.025);
+    }
+
+    .card-content {
+      min-height: 270px;
+      padding: 25px 24px 27px;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-category {
+      margin-bottom: 13px;
+
+      color: #d5ad36;
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .card-title {
+      margin-bottom: 15px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.9rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+
+    .card-title a {
+      color: inherit;
+      text-decoration: none;
+
+      transition: color 0.22s ease;
+    }
+
+    .card-title a:hover {
+      color: #d5ad36;
+    }
+
+    .card-excerpt {
+      margin-bottom: 24px;
+
+      color: #aaa69f;
+
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    .card-footer {
+      margin-top: auto;
+      padding-top: 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .card-date {
+      color: rgba(245, 241, 232, 0.46);
+
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      color: #f5f1e8;
+      text-decoration: none;
+
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+
+      transition: color 0.22s ease;
+    }
+
+    .read-link::after {
+      content: "→";
+
+      color: #d5ad36;
+      font-size: 1rem;
+
+      transition: transform 0.22s ease;
+    }
+
+    .read-link:hover {
+      color: #d5ad36;
+    }
+
+    .read-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ===================================
+       COMING SOON CARD
+       =================================== */
+
+    .coming-soon-card {
+      min-height: 420px;
+      padding: 46px 30px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px dashed rgba(245, 241, 232, 0.17);
+      background: rgba(245, 241, 232, 0.015);
+      text-align: center;
+    }
+
+    .coming-soon-content {
+      max-width: 310px;
+    }
+
+    .coming-soon-number {
+      margin-bottom: 20px;
+
+      color: rgba(213, 173, 54, 0.42);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 3.8rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .coming-soon-card h2 {
+      margin-bottom: 14px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.9rem;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .coming-soon-card p {
+      color: #aaa69f;
+
+      font-size: 0.86rem;
+      line-height: 1.75;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+
+    .inner-footer {
+      padding: 34px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .footer-brand {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-line {
+      color: rgba(245, 241, 232, 0.45);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1050px) {
+      .slogan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .slogan-toolbar {
+        padding: 22px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .category-filters {
+        width: 100%;
+        justify-content: flex-start;
+
+        overflow-x: auto;
+        flex-wrap: nowrap;
+
+        padding-bottom: 5px;
+
+        scrollbar-width: thin;
+      }
+
+      .filter-button {
+        flex: 0 0 auto;
+      }
+
+      .slogan-section {
+        padding: 47px 34px 78px;
+      }
+
+      .slogan-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .card-content {
+        min-height: auto;
+        padding: 23px 21px 25px;
+      }
+
+      .card-title {
+        font-size: 1.75rem;
+      }
+
+      .inner-footer {
+        padding: 29px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    /* ===================================
+       LANDSCAPE MOBILE
+       =================================== */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .slogan-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a
+        class="active"
+        href="text-slogan.html"
+        aria-current="page"
+      >
+        Text Slogans
+      </a>
+
+      <a href="#">
+        Music
+      </a>
+
+      <a href="#">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================
+         TEXT SLOGAN HERO
+         SAME AS HOMEPAGE STRUCTURE
+         =================================== -->
+
+    <section class="hero slogan-hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          Prinsipyo • Repleksiyon • Paninindigan
+        </p>
+
+        <h1>
+          <span class="headline-first">
+            TEXT
+          </span>
+
+          <span class="headline-second">
+            SLOGANS
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          Maiikli ngunit mabibigat na mensahe tungkol sa prinsipyo,
+          pananagutan, lipunan, at mga katotohanang hindi dapat
+          palampasin.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         FILTERS
+         =================================== -->
+
+    <section
+      class="slogan-toolbar"
+      aria-label="Text Slogan filters"
+    >
+
+      <p class="result-label">
+        Lahat ng Text Slogans
+      </p>
+
+      <div class="category-filters">
+
+        <button
+          class="filter-button active"
+          type="button"
+          data-filter="all"
+        >
+          Lahat
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="principle"
+        >
+          Prinsipyo
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="society"
+        >
+          Lipunan
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="accountability"
+        >
+          Pananagutan
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="reflection"
+        >
+          Repleksiyon
+        </button>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         TEXT SLOGAN CARDS
+         =================================== -->
+
+    <section class="slogan-section">
+
+      <div class="slogan-grid">
+
+        <!-- CARD 1 -->
+
+        <article
+          class="slogan-card"
+          data-category="principle accountability"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Kompromiso"
+          >
+            <img
+              src="images/slogans/kompromiso.jpg"
+              alt="Text slogan visual na Kompromiso"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Prinsipyo
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Kompromiso
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Ang sarili, sistema, at prinsipyo ang magsasabi kung
+              mananatili kang matatag o unti-unting lilihis.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-14"
+              >
+                Hulyo 14, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 2 -->
+
+        <article
+          class="slogan-card"
+          data-category="society accountability"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Insulto"
+          >
+            <img
+              src="images/slogans/insulto.jpg"
+              alt="Text slogan visual tungkol sa pang-iinsulto"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Lipunan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Insulto
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Kapag tao ang binabanatan at totoong isyu ang
+              iniiwasan, argumento ang nananatiling hindi nasasagot.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-10"
+              >
+                Hulyo 10, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 3 -->
+
+        <article
+          class="slogan-card"
+          data-category="accountability principle"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Constitutional Accountability"
+          >
+            <img
+              src="images/slogans/constitutional-accountability.jpg"
+              alt="Text slogan visual tungkol sa constitutional accountability"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Pananagutan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Pananagutan
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Kapag ang pagpapanagot sa pinakamataas na opisyal ay
+              itinuring na gastos lang, pang-aabuso sa kapangyarihan
+              ang maaaring maipon.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-07-12"
+              >
+                Hulyo 12, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 4 -->
+
+        <article
+          class="slogan-card"
+          data-category="society reflection"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Henerasyon"
+          >
+            <img
+              src="images/slogans/henerasyon.jpg"
+              alt="Text slogan visual tungkol sa kabataan at henerasyon"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Lipunan
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Henerasyon
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Kapag paulit-ulit ang problema sa bawat henerasyon,
+              hindi lang ang kabataan ang dapat sisihin at panagutin.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-06-24"
+              >
+                Hunyo 24, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- CARD 5 -->
+
+        <article
+          class="slogan-card"
+          data-category="principle reflection"
+        >
+
+          <a
+            href="article.html"
+            class="card-image-link"
+            aria-label="Basahin ang Maturity"
+          >
+            <img
+              src="images/slogans/maturity.jpg"
+              alt="Text slogan visual tungkol sa maturity"
+              class="card-image"
+              loading="lazy"
+            >
+          </a>
+
+          <div class="card-content">
+
+            <p class="card-category">
+              Repleksiyon
+            </p>
+
+            <h2 class="card-title">
+              <a href="article.html">
+                Maturity
+              </a>
+            </h2>
+
+            <p class="card-excerpt">
+              Ang pagiging mas matanda ay hindi awtomatikong
+              nangangahulugang mas mature. Ang maturity ay
+              isinasabuhay, hindi inaangkin.
+            </p>
+
+            <div class="card-footer">
+
+              <time
+                class="card-date"
+                datetime="2026-06-20"
+              >
+                Hunyo 20, 2026
+              </time>
+
+              <a
+                href="article.html"
+                class="read-link"
+              >
+                Basahin
+              </a>
+
+            </div>
+
+          </div>
+
+        </article>
+
+        <!-- COMING SOON -->
+
+        <div class="coming-soon-card">
+
+          <div class="coming-soon-content">
+
+            <p class="coming-soon-number">
+              +
+            </p>
+
+            <h2>
+              Susunod na Slogan
+            </h2>
+
+            <p>
+              Dito idaragdag ang mga susunod na text slogan habang
+              lumalawak ang permanenteng archive ng jhElmEr.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+
+  <footer class="inner-footer">
+
+    <p class="footer-brand">
+      © 2026 jhElmEr
+    </p>
+
+    <p class="footer-line">
+      Truth Over Noise
+    </p>
+
+  </footer>
+
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector(".main-nav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuToggle.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const filterButtons =
+      document.querySelectorAll(".filter-button");
+
+    const sloganCards =
+      document.querySelectorAll(".slogan-card");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedFilter = button.dataset.filter;
+
+        filterButtons.forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        button.classList.add("active");
+
+        sloganCards.forEach((card) => {
+          const cardCategories =
+            card.dataset.category || "";
+
+          const shouldDisplay =
+            selectedFilter === "all" ||
+            cardCategories.includes(selectedFilter);
+
+          card.style.display =
+            shouldDisplay ? "flex" : "none";
+        });
+      });
+    });
+  </script>
+
+</body>
+
+  </html>
