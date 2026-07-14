@@ -1521,7 +1521,7 @@ body {
 
 .brand:not(.brand-text) img {
   width: auto !important;
-  height: 260px !important;
+  height: 230px !important;
   max-width: none !important;
   max-height: none !important;
   display: block !important;
@@ -1550,7 +1550,7 @@ body {
 
   .brand:not(.brand-text) img {
     width: auto !important;
-    height: 240px !important;
+    height: 215px !important;
     max-width: none !important;
     max-height: none !important;
   }
@@ -1567,7 +1567,7 @@ body {
   }
 
   .brand:not(.brand-text) img {
-    height: 225px !important;
+    height: 200px !important;
   }
 }
 
@@ -1592,7 +1592,7 @@ body {
 
   .brand:not(.brand-text) img {
     width: auto !important;
-    height: 220px !important;
+    height: 195px !important;
     max-width: none !important;
     max-height: none !important;
   }
