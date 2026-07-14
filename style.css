@@ -1453,3 +1453,48 @@ body {
     font-size: 1.65rem;
   }
 }
+/* FINAL HEADER TEXT LOGO FIX */
+
+.brand.brand-text {
+  width: auto !important;
+  height: auto !important;
+  max-width: none !important;
+  min-width: max-content !important;
+  flex: 0 0 auto !important;
+  overflow: visible !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: flex-start;
+
+  margin: 0 !important;
+  padding: 0;
+
+  color: var(--gold);
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+@media (max-width: 850px) {
+  .brand.brand-text {
+    width: auto !important;
+    height: auto !important;
+    min-width: max-content !important;
+    flex-basis: auto !important;
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-height: 520px) and (orientation: landscape) {
+  .brand.brand-text {
+    width: auto !important;
+    height: auto !important;
+    min-width: max-content !important;
+    flex-basis: auto !important;
+    font-size: 1.7rem;
+  }
+}
