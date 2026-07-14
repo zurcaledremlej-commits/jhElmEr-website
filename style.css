@@ -1603,12 +1603,13 @@ body {
     justify-content: flex-start !important;
   }
 
-  .brand:not(.brand-text) img {
+.brand:not(.brand-text) img {
     width: auto !important;
     height: 195px !important;
     max-width: none !important;
     max-height: none !important;
 
-    transform: translateY(8px);
+    transform: translateY(2px);
+}
   }
 }
