@@ -5,40 +5,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>jhElmEr</title>
+  <meta
+    name="description"
+    content="Official website of jhElmEr — civic explainers, text slogans, music, videos, and moral reflections."
+  >
+
+  <title>jhElmEr | Mulat na Pag-iisip</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <h2>jhElmEr</h2>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="jhElmEr homepage">
+      jhElmEr
+    </a>
 
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Civic Explainers</a>
-      <a href="#">Text Slogans</a>
-      <a href="#">Music</a>
-      <a href="#">Videos</a>
-      <a href="#">About</a>
+    <nav class="main-nav" aria-label="Main navigation">
+  <a class="active" href="index.html">Home</a>
+  <a href="#">Civic Explainers</a>
+  <a href="#">Text Slogans</a>
+  <a href="#">Music</a>
+ <a href="#">About</a>
     </nav>
   </header>
 
-  <section>
-    <h1>
-      MULAT NA PAG-IISIP.<br>
-      MALINAW NA PANININDIGAN.
-    </h1>
+  <main>
+    <section class="hero">
 
-    <p>
-      Mga civic explainer, text slogan, musika, at mga nilalamang
-      ginawa hindi lang para makita—kundi para pag-isipan.
-    </p>
+      <div class="hero-content">
+        <p class="eyebrow">Independent Civic & Creative Platform</p>
 
-    <a href="#">Civic Explainers</a>
-    <a href="#">Text Slogans</a>
-  </section>
+        <h1>
+          MULAT NA PAG-IISIP.
+          <span>MALINAW NA PANININDIGAN.</span>
+        </h1>
+
+        <p class="hero-description">
+          Mga civic explainer, text slogan, musika, at mga nilalamang
+          ginawa hindi lang para makita—kundi para pag-isipan.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#">
+            Civic Explainers
+          </a>
+
+          <a class="button button-secondary" href="#">
+            Text Slogans
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-signature" aria-hidden="true">
+        <span>KATOTOHANAN</span>
+        <span>PANININDIGAN</span>
+        <span>PANANAGUTAN</span>
+      </div>
+
+    </section>
+  </main>
 
 </body>
 
