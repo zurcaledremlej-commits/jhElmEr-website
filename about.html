@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Kilalanin ang layunin, nilalaman, at mga prinsipyong gumagabay sa jhElmEr—isang independent civic at creative platform."
+  >
+
+  <title>About | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css?v=26">
+
+  <style>
+    /* ===================================
+       ABOUT PAGE
+       =================================== */
+
+    .inner-page {
+      min-height: 100vh;
+      background: #090a0c;
+    }
+
+    /* ===================================
+       ABOUT HERO
+       SAME STRUCTURE AS HOMEPAGE
+       =================================== */
+
+    .about-hero .hero-content {
+      max-width: 940px;
+    }
+
+    .about-hero h1 {
+      max-width: 900px;
+    }
+
+    .about-hero .headline-first {
+      display: block;
+    }
+
+    .about-hero .hero-description {
+      max-width: 750px;
+    }
+
+    /* ===================================
+       SHARED SECTION LAYOUT
+       =================================== */
+
+    .about-section {
+      padding: 90px 7%;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .about-section-inner {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      margin-bottom: 18px;
+
+      color: #d5ad36;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 880px;
+      margin-bottom: 28px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5.3rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 760px;
+
+      color: #aaa69f;
+
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .section-copy p + p {
+      margin-top: 19px;
+    }
+
+    /* ===================================
+       PURPOSE SECTION
+       =================================== */
+
+    .purpose-section {
+      background:
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(213, 173, 54, 0.07),
+          transparent 30%
+        ),
+        rgba(245, 241, 232, 0.012);
+    }
+
+    .purpose-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.6fr);
+      gap: 70px;
+      align-items: start;
+    }
+
+    .purpose-statement {
+      padding: 38px 0 0 35px;
+
+      position: relative;
+
+      border-left: 1px solid rgba(213, 173, 54, 0.55);
+    }
+
+    .purpose-statement::before {
+      content: "";
+
+      width: 9px;
+      height: 9px;
+
+      position: absolute;
+      top: 0;
+      left: -5px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .purpose-statement p {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(2rem, 3.6vw, 3.7rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+
+    /* ===================================
+       CONTENT PILLARS
+       =================================== */
+
+    .pillars-section {
+      background: #090a0c;
+    }
+
+    .pillars-heading {
+      margin-bottom: 42px;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .pillar-card {
+      min-height: 390px;
+      padding: 34px 30px 31px;
+
+      display: flex;
+      flex-direction: column;
+
+      position: relative;
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 241, 232, 0.13);
+      background: rgba(245, 241, 232, 0.025);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .pillar-card::after {
+      content: "";
+
+      width: 160px;
+      height: 160px;
+
+      position: absolute;
+      right: -95px;
+      bottom: -95px;
+
+      border: 1px solid rgba(213, 173, 54, 0.17);
+      border-radius: 50%;
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-6px);
+
+      border-color: rgba(213, 173, 54, 0.58);
+      background: rgba(245, 241, 232, 0.04);
+    }
+
+    .pillar-card:hover::after {
+      transform: scale(1.18);
+      border-color: rgba(213, 173, 54, 0.36);
+    }
+
+    .pillar-number {
+      margin-bottom: 52px;
+
+      color: rgba(213, 173, 54, 0.46);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .pillar-title {
+      margin-bottom: 18px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .pillar-description {
+      margin-bottom: 28px;
+
+      color: #aaa69f;
+
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .pillar-link {
+      margin-top: auto;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: #f5f1e8;
+      text-decoration: none;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+
+      transition: color 0.22s ease;
+    }
+
+    .pillar-link::after {
+      content: "→";
+
+      color: #d5ad36;
+      font-size: 1rem;
+
+      transition: transform 0.22s ease;
+    }
+
+    .pillar-link:hover {
+      color: #d5ad36;
+    }
+
+    .pillar-link:hover::after {
+      transform: translateX(4px);
+    }
+
+    /* ===================================
+       PRINCIPLES
+       =================================== */
+
+    .principles-section {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(245, 241, 232, 0.012),
+          rgba(213, 173, 54, 0.025)
+        );
+    }
+
+    .principles-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+      gap: 78px;
+      align-items: start;
+    }
+
+    .principles-intro {
+      position: sticky;
+      top: 140px;
+    }
+
+    .principles-list {
+      border-top: 1px solid rgba(245, 241, 232, 0.13);
+    }
+
+    .principle-item {
+      padding: 30px 0;
+
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr);
+      gap: 23px;
+      align-items: start;
+
+      border-bottom: 1px solid rgba(245, 241, 232, 0.13);
+    }
+
+    .principle-number {
+      color: rgba(213, 173, 54, 0.55);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .principle-content h3 {
+      margin-bottom: 9px;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .principle-content p {
+      max-width: 650px;
+
+      color: #aaa69f;
+
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    /* ===================================
+       INDEPENDENT PLATFORM
+       =================================== */
+
+    .independent-section {
+      background: #090a0c;
+    }
+
+    .independent-card {
+      padding: 58px;
+
+      display: grid;
+      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+      gap: 64px;
+      align-items: center;
+
+      border: 1px solid rgba(213, 173, 54, 0.32);
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.07),
+          rgba(245, 241, 232, 0.018)
+        );
+    }
+
+    .independent-title {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(2.7rem, 4.5vw, 4.7rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .independent-copy {
+      color: #aaa69f;
+
+      font-size: 0.96rem;
+      line-height: 1.85;
+    }
+
+    .independent-copy strong {
+      color: #f5f1e8;
+      font-weight: 700;
+    }
+
+    /* ===================================
+       CLOSING STATEMENT
+       =================================== */
+
+    .closing-section {
+      padding-top: 110px;
+      padding-bottom: 110px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(213, 173, 54, 0.08),
+          transparent 38%
+        );
+    }
+
+    .closing-content {
+      max-width: 990px;
+      margin: 0 auto;
+    }
+
+    .closing-mark {
+      margin-bottom: 27px;
+
+      color: #d5ad36;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 0.7;
+    }
+
+    .closing-statement {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(2.25rem, 4.8vw, 5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.018em;
+    }
+
+    .closing-line {
+      width: 75px;
+      height: 1px;
+      margin: 38px auto 0;
+
+      background: #d5ad36;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+
+    .inner-footer {
+      padding: 34px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .footer-brand {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-line {
+      color: rgba(245, 241, 232, 0.45);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1050px) {
+      .purpose-layout {
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
+        gap: 48px;
+      }
+
+      .pillar-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principles-layout {
+        grid-template-columns: minmax(240px, 0.48fr) minmax(0, 1fr);
+        gap: 50px;
+      }
+
+      .independent-card {
+        gap: 42px;
+        padding: 45px;
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .about-section {
+        padding: 72px 34px;
+      }
+
+      .purpose-layout,
+      .principles-layout,
+      .independent-card {
+        grid-template-columns: 1fr;
+      }
+
+      .purpose-layout {
+        gap: 45px;
+      }
+
+      .purpose-statement {
+        padding-top: 30px;
+        padding-left: 25px;
+      }
+
+      .pillars-heading {
+        margin-bottom: 32px;
+      }
+
+      .pillar-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .pillar-card {
+        min-height: 345px;
+      }
+
+      .pillar-number {
+        margin-bottom: 42px;
+      }
+
+      .principles-layout {
+        gap: 36px;
+      }
+
+      .principles-intro {
+        position: static;
+      }
+
+      .principle-item {
+        grid-template-columns: 52px minmax(0, 1fr);
+        gap: 17px;
+      }
+
+      .independent-card {
+        padding: 39px 27px;
+        gap: 30px;
+      }
+
+      .closing-section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      .closing-mark {
+        font-size: 2.8rem;
+      }
+
+      .inner-footer {
+        padding: 29px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .about-section {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+
+      .pillar-card {
+        padding: 30px 24px 27px;
+      }
+
+      .principle-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .independent-card {
+        padding: 34px 23px;
+      }
+
+      .inner-footer {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="music.html">
+        Music
+      </a>
+
+      <a
+        class="active"
+        href="about.html"
+        aria-current="page"
+      >
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <main>
+
+    <!-- ===================================
+         ABOUT HERO
+         SAME AS HOMEPAGE STRUCTURE
+         =================================== -->
+
+    <section class="hero about-hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          Layunin • Nilalaman • Prinsipyo
+        </p>
+
+        <h1>
+          <span class="headline-first">
+            ABOUT
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          Hindi ito website para lamang magsabi kung sino ang nasa
+          likod nito. Ginawa ito upang magbigay ng mga nilalamang
+          maaaring makatulong sa mas malinaw na pag-unawa, mas
+          malalim na pag-iisip, at mas responsableng pakikilahok
+          sa lipunan.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         PURPOSE
+         =================================== -->
+
+    <section class="about-section purpose-section">
+
+      <div class="about-section-inner purpose-layout">
+
+        <div>
+
+          <p class="section-label">
+            Ang Layunin
+          </p>
+
+          <h2 class="section-title">
+            Nilalamang Hindi Lang Para Makita
+          </h2>
+
+          <div class="section-copy">
+
+            <p>
+              Ang jhElmEr ay isang independent civic at creative
+              platform na binuo upang magkaroon ng permanenteng
+              tahanan ang mga paliwanag, mensahe, at likhang may
+              malinaw na layunin.
+            </p>
+
+            <p>
+              Hindi sapat na makita lamang ang isang isyu, slogan,
+              o awit. Mahalaga ring maunawaan ang konteksto nito,
+              suriin ang batayan, at pag-isipan kung ano ang
+              ipinahihiwatig nito sa ating mga desisyon bilang
+              mamamayan at bilang tao.
+            </p>
+
+            <p>
+              Kaya ang bawat nilalaman dito ay nilalayong maging
+              simula ng pag-iisip—hindi kapalit ng sariling
+              pagsusuri at paghatol.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="purpose-statement">
+
+          <p>
+            Ginawa hindi lang para makita—kundi para pag-isipan.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CONTENT PILLARS
+         =================================== -->
+
+    <section class="about-section pillars-section">
+
+      <div class="about-section-inner">
+
+        <div class="pillars-heading">
+
+          <p class="section-label">
+            Ano ang Makikita Dito
+          </p>
+
+          <h2 class="section-title">
+            Tatlong Paraan ng Pagpapahayag
+          </h2>
+
+          <p class="section-copy">
+            Magkakaiba man ang anyo, iisa ang sentro: malinaw na
+            pag-iisip, matibay na paninindigan, at responsableng
+            pagharap sa mga usaping mahalaga.
+          </p>
+
+        </div>
+
+        <div class="pillar-grid">
+
+          <!-- CIVIC EXPLAINERS -->
+
+          <article class="pillar-card">
+
+            <p class="pillar-number">
+              01
+            </p>
+
+            <h3 class="pillar-title">
+              Civic Explainers
+            </h3>
+
+            <p class="pillar-description">
+              Mga fact-based na paliwanag tungkol sa batas,
+              pamahalaan, lipunan, pananagutan, at iba pang usaping
+              kailangang maunawaan sa tamang konteksto.
+            </p>
+
+            <a
+              class="pillar-link"
+              href="civic-explainers.html"
+            >
+              Tingnan ang Explainers
+            </a>
+
+          </article>
+
+          <!-- TEXT SLOGANS -->
+
+          <article class="pillar-card">
+
+            <p class="pillar-number">
+              02
+            </p>
+
+            <h3 class="pillar-title">
+              Text Slogans
+            </h3>
+
+            <p class="pillar-description">
+              Maiikli ngunit mabibigat na mensaheng nagpapahayag ng
+              moral na prinsipyo, pagninilay, pananagutan, at
+              paninindigang hindi kailangang palabuin.
+            </p>
+
+            <a
+              class="pillar-link"
+              href="text-slogan.html"
+            >
+              Tingnan ang Slogans
+            </a>
+
+          </article>
+
+          <!-- MUSIC -->
+
+          <article class="pillar-card">
+
+            <p class="pillar-number">
+              03
+            </p>
+
+            <h3 class="pillar-title">
+              Music
+            </h3>
+
+            <p class="pillar-description">
+              Mga awit na gumagamit ng musika bilang daluyan ng
+              mensahe—mula sa personal na pagninilay hanggang sa
+              mga paninindigang may kaugnayan sa lipunan.
+            </p>
+
+            <a
+              class="pillar-link"
+              href="music.html"
+            >
+              Pakinggan ang Musika
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CORE PRINCIPLES
+         =================================== -->
+
+    <section class="about-section principles-section">
+
+      <div class="about-section-inner principles-layout">
+
+        <div class="principles-intro">
+
+          <p class="section-label">
+            Core Principles
+          </p>
+
+          <h2 class="section-title">
+            Mga Prinsipyong Gumagabay
+          </h2>
+
+          <p class="section-copy">
+            Ito ang pamantayang sinusubukang panatilihin sa paraan
+            ng pagbuo, pagsusuri, at paglalahad ng bawat nilalaman.
+          </p>
+
+        </div>
+
+        <div class="principles-list">
+
+          <article class="principle-item">
+
+            <p class="principle-number">
+              01
+            </p>
+
+            <div class="principle-content">
+
+              <h3>
+                Katotohanan Bago Ingay
+              </h3>
+
+              <p>
+                Hindi awtomatikong nagiging tama ang isang pahayag
+                dahil ito ang pinakamaingay, pinakasikat, o
+                pinakamadalas ulitin.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="principle-item">
+
+            <p class="principle-number">
+              02
+            </p>
+
+            <div class="principle-content">
+
+              <h3>
+                Konteksto Bago Paghuhusga
+              </h3>
+
+              <p>
+                Ang isang pahayag, pangyayari, o legal na usapin ay
+                kailangang unawain ayon sa buong konteksto at hindi
+                lamang sa isang putol na bahagi.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="principle-item">
+
+            <p class="principle-number">
+              03
+            </p>
+
+            <div class="principle-content">
+
+              <h3>
+                Prinsipyo Bago Personalidad
+              </h3>
+
+              <p>
+                Ang ideya at argumento ang dapat suriin. Hindi dapat
+                maging kapalit ng ebidensiya ang pagsamba o pagkapoot
+                sa isang personalidad.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="principle-item">
+
+            <p class="principle-number">
+              04
+            </p>
+
+            <div class="principle-content">
+
+              <h3>
+                Pananagutan Bago Popularidad
+              </h3>
+
+              <p>
+                Ang pagiging popular, makapangyarihan, o mataas ang
+                posisyon ay hindi dapat maging dahilan upang
+                mawala ang pamantayan ng pananagutan.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="principle-item">
+
+            <p class="principle-number">
+              05
+            </p>
+
+            <div class="principle-content">
+
+              <h3>
+                Pag-iisip Bago Reaksiyon
+              </h3>
+
+              <p>
+                Bago magbahagi, humusga, o makisabay sa ingay,
+                mahalagang huminto, magsuri, at tiyaking nauunawaan
+                ang mismong isyu.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         INDEPENDENT PLATFORM
+         =================================== -->
+
+    <section class="about-section independent-section">
+
+      <div class="about-section-inner">
+
+        <article class="independent-card">
+
+          <h2 class="independent-title">
+            Independent Civic &amp; Creative Platform
+          </h2>
+
+          <p class="independent-copy">
+            Ang jhElmEr ay hindi opisyal na kinatawan ng anumang
+            ahensiya, organisasyon, partido, o institusyon.
+            Ang mga civic explainer ay binubuo upang maging
+            <strong>fact-based at maingat sa konteksto</strong>,
+            samantalang ang mga text slogan, reflection, at musika
+            ay mga malikhaing pagpapahayag ng prinsipyo at
+            paninindigan. Kapag may factual o legal na pahayag,
+            layunin nitong gumamit ng malinaw at mapapatunayang
+            batayan.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CLOSING
+         =================================== -->
+
+    <section class="about-section closing-section">
+
+      <div class="about-section-inner closing-content">
+
+        <p
+          class="closing-mark"
+          aria-hidden="true"
+        >
+          “
+        </p>
+
+        <p class="closing-statement">
+          Ang bawat nilalaman sa website na ito ay paanyaya upang
+          mag-isip, magsuri, at bumuo ng sariling paninindigan
+          batay sa katotohanan at mga mapapatunayang batayan.
+        </p>
+
+        <div
+          class="closing-line"
+          aria-hidden="true"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+
+  <footer class="inner-footer">
+
+    <p class="footer-brand">
+      © 2026 jhElmEr
+    </p>
+
+    <p class="footer-line">
+      Truth Over Noise
+    </p>
+
+  </footer>
+
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector(".main-nav");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("is-open");
+
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("is-open");
+        menuToggle.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  </script>
+
+</body>
+
+  </html>
