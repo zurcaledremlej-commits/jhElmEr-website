@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="tl">
-
+<html lang="fil">
 <head>
   <meta charset="UTF-8">
 
@@ -9,1456 +8,796 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <!--
-    PALITAN SA BAWAT BAGONG ARTICLE
-  -->
   <meta
     name="description"
-    content="Maikling paglalarawan ng article na ito para sa search engines at social sharing."
+    content="Mga civic explainer, text slogan, at personal na pagninilay mula kay jhElmEr—isang simpleng tao."
   >
 
-  <meta name="author" content="jhElmEr">
-
-  <!--
-    PALITAN SA BAWAT BAGONG ARTICLE
-  -->
-  <title>Pamagat ng Article | jhElmEr</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <!--
-    Dahil nasa articles folder ang file,
-    ../ ang ginagamit upang bumalik sa root.
-  -->
-  <link rel="stylesheet" href="../style.css?v=26">
+  <title>Article | jhElmEr</title>
 
   <style>
-    /* ===================================
-       MASTER ARTICLE TEMPLATE
-       =================================== */
+    /* =====================================================
+       BASIC RESET
+    ===================================================== */
 
-    .article-page {
-      min-height: 100vh;
-      background: #090a0c;
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
     }
 
-    /* ===================================
-       ARTICLE HERO
-       SAME VISUAL SYSTEM AS HOMEPAGE
-       =================================== */
-
-    .article-hero {
-      min-height: auto;
-      padding-bottom: 78px;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .article-hero .hero-content {
-      max-width: 1100px;
+    body {
+      margin: 0;
+      background: #0d0d0e;
+      color: #ededed;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      line-height: 1.7;
     }
 
-    .article-breadcrumb {
-      margin-bottom: 29px;
+    img {
+      display: block;
+      max-width: 100%;
+    }
 
+    a {
+      color: inherit;
+    }
+
+
+    /* =====================================================
+       WEBSITE HEADER
+    ===================================================== */
+
+    .site-header {
+      position: relative;
+      z-index: 10;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(13, 13, 14, 0.96);
+    }
+
+    .header-inner {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 9px;
-
-      color: rgba(245, 241, 232, 0.48);
-
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      justify-content: space-between;
+      width: min(1180px, calc(100% - 40px));
+      min-height: 82px;
+      margin: 0 auto;
+      gap: 28px;
     }
 
-    .article-breadcrumb a {
-      color: rgba(245, 241, 232, 0.58);
+    .site-logo-link {
+      display: inline-flex;
+      align-items: center;
+      flex-shrink: 0;
       text-decoration: none;
-
-      transition: color 0.22s ease;
     }
 
-    .article-breadcrumb a:hover {
-      color: #d5ad36;
+    .site-logo {
+      width: auto;
+      height: 52px;
+      object-fit: contain;
     }
 
-    .breadcrumb-separator {
-      color: rgba(213, 173, 54, 0.72);
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
     }
 
-    .article-type {
-      margin-bottom: 18px;
+    .site-nav a {
+      color: #bdbdbf;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition:
+        color 0.2s ease;
+    }
 
-      color: #d5ad36;
+    .site-nav a:hover {
+      color: #ffffff;
+    }
 
-      font-size: 0.72rem;
+
+    /* =====================================================
+       ARTICLE PAGE
+    ===================================================== */
+
+    .article-page {
+      padding: clamp(46px, 7vw, 90px) 20px 90px;
+    }
+
+    .article-container {
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+
+
+    /* ARTICLE HEADER */
+
+    .article-header {
+      margin-bottom: 34px;
+    }
+
+    .article-category {
+      display: inline-block;
+      margin-bottom: 15px;
+      color: #d8b45a;
+      font-size: 0.75rem;
       font-weight: 800;
-      line-height: 1.5;
       letter-spacing: 0.17em;
+      line-height: 1.4;
       text-transform: uppercase;
     }
 
     .article-title {
-      max-width: 1050px;
-      margin-bottom: 27px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(3.7rem, 7.8vw, 7.5rem);
-      font-weight: 800;
-      line-height: 0.87;
-      letter-spacing: -0.03em;
-      text-transform: uppercase;
-    }
-
-    .article-intro {
-      max-width: 800px;
-      margin-bottom: 32px;
-
-      color: #aaa69f;
-
-      font-size: 1.04rem;
-      line-height: 1.85;
+      margin: 0;
+      color: #ffffff;
+      font-size: clamp(2.15rem, 7vw, 4.35rem);
+      font-weight: 850;
+      letter-spacing: -0.045em;
+      line-height: 1.04;
+      text-wrap: balance;
     }
 
     .article-meta {
       display: flex;
-      align-items: center;
       flex-wrap: wrap;
-      gap: 10px 18px;
-    }
-
-    .article-meta-item {
-      display: inline-flex;
       align-items: center;
-      gap: 8px;
-
-      color: rgba(245, 241, 232, 0.5);
-
-      font-size: 0.69rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      gap: 9px;
+      margin-top: 20px;
+      color: #88888c;
+      font-size: 0.79rem;
+      font-weight: 600;
     }
 
-    .article-meta-item + .article-meta-item::before {
-      content: "";
-
-      width: 3px;
-      height: 3px;
-
-      margin-right: 8px;
-
+    .meta-dot {
+      width: 4px;
+      height: 4px;
       border-radius: 50%;
-      background: #d5ad36;
+      background: #69696d;
     }
 
-    /* ===================================
-       COVER IMAGE
-       =================================== */
 
-    .article-cover-section {
-      padding: 0 7% 78px;
-    }
+    /* FEATURED IMAGE */
 
-    .article-cover {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-
-      position: relative;
-    }
-
-    .article-cover-frame {
+    .article-image-wrap {
+      margin: 0 0 clamp(34px, 6vw, 54px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      background: #171719;
       overflow: hidden;
-
-      border: 1px solid rgba(245, 241, 232, 0.14);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.1),
-          rgba(9, 10, 12, 0.94)
-        );
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.3);
     }
 
-    .article-cover-image {
+    .article-image {
       width: 100%;
       height: auto;
-      max-height: 1450px;
-
-      display: block;
+      max-height: 920px;
       object-fit: contain;
-
-      background: #090a0c;
+      background: #141416;
     }
 
-    .article-image-caption {
-      padding-top: 13px;
 
-      color: rgba(245, 241, 232, 0.42);
+    /* ARTICLE CONTENT */
 
-      font-size: 0.7rem;
-      line-height: 1.6;
+    .article-content {
+      color: #dedee0;
+      font-size: clamp(1rem, 2.1vw, 1.09rem);
+      line-height: 1.84;
     }
 
-    /* ===================================
-       ARTICLE BODY
-       =================================== */
-
-    .article-main {
-      padding: 0 7% 105px;
+    .article-content p {
+      margin: 0 0 1.55em;
     }
 
-    .article-layout {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-
-      display: grid;
-      grid-template-columns: minmax(0, 760px) minmax(220px, 280px);
-      justify-content: space-between;
-      gap: 80px;
-      align-items: start;
+    .article-content p:last-child {
+      margin-bottom: 0;
     }
 
-    .article-body {
-      min-width: 0;
+    .article-content .single-line-emphasis {
+      margin-top: 2em;
+      margin-bottom: 2em;
+      color: #ffffff;
+      font-weight: 750;
     }
 
-    .article-body p {
-      margin-bottom: 25px;
-
-      color: #c6c1b8;
-
-      font-size: 1.02rem;
-      line-height: 1.95;
+    .article-content .quoted-line {
+      margin: 0.35em 0;
+      padding-left: 17px;
+      border-left: 2px solid rgba(216, 180, 90, 0.75);
+      color: #f1f1f2;
+      font-weight: 650;
     }
 
-    .article-body h2 {
-      margin-top: 57px;
-      margin-bottom: 23px;
 
-      color: #f5f1e8;
+    /* SOURCES */
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(2.3rem, 4vw, 3.65rem);
+    .article-sources {
+      display: none;
+      margin-top: clamp(50px, 8vw, 76px);
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .article-sources.is-visible {
+      display: block;
+    }
+
+    .sources-title {
+      margin: 0 0 18px;
+      color: #d8b45a;
+      font-size: 0.75rem;
       font-weight: 800;
-      line-height: 0.98;
-      letter-spacing: -0.015em;
-      text-transform: uppercase;
-    }
-
-    .article-body h3 {
-      margin-top: 43px;
-      margin-bottom: 17px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.9rem;
-      font-weight: 800;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .article-body strong {
-      color: #f5f1e8;
-      font-weight: 700;
-    }
-
-    .article-body em {
-      color: #d8d2c8;
-    }
-
-    .article-body a {
-      color: #d5ad36;
-      text-underline-offset: 4px;
-    }
-
-    .article-body ul,
-    .article-body ol {
-      margin: 0 0 27px;
-      padding-left: 23px;
-    }
-
-    .article-body li {
-      margin-bottom: 12px;
-
-      color: #c6c1b8;
-
-      font-size: 1rem;
-      line-height: 1.85;
-    }
-
-    /* ===================================
-       LEAD PARAGRAPH
-       =================================== */
-
-    .article-lead {
-      margin-bottom: 35px;
-
-      color: #f5f1e8 !important;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(1.75rem, 3.2vw, 2.55rem) !important;
-      font-weight: 700;
-      line-height: 1.2 !important;
-      letter-spacing: -0.01em;
-    }
-
-    /* ===================================
-       EMPHASIS / KEY STATEMENT
-       =================================== */
-
-    .article-statement {
-      margin: 48px 0;
-      padding: 37px 38px;
-
-      position: relative;
-
-      border-left: 3px solid #d5ad36;
-      background:
-        linear-gradient(
-          100deg,
-          rgba(213, 173, 54, 0.1),
-          rgba(245, 241, 232, 0.018)
-        );
-    }
-
-    .article-statement::after {
-      content: "";
-
-      width: 120px;
-      height: 120px;
-
-      position: absolute;
-      right: -62px;
-      bottom: -67px;
-
-      border: 1px solid rgba(213, 173, 54, 0.15);
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .statement-label {
-      margin-bottom: 14px !important;
-
-      color: #d5ad36 !important;
-
-      font-family: "Inter", Arial, sans-serif !important;
-      font-size: 0.67rem !important;
-      font-weight: 800;
-      line-height: 1.5 !important;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .statement-text {
-      margin-bottom: 0 !important;
-
-      color: #f5f1e8 !important;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(1.65rem, 3vw, 2.55rem) !important;
-      font-weight: 800;
-      line-height: 1.12 !important;
-      text-transform: uppercase;
-    }
-
-    /* ===================================
-       TEXT SLOGAN BLOCK
-       OPTIONAL
-       =================================== */
-
-    .slogan-block {
-      margin: 50px 0;
-      padding: 46px 40px;
-
-      border: 1px solid rgba(213, 173, 54, 0.34);
-      background:
-        radial-gradient(
-          circle at 93% 12%,
-          rgba(213, 173, 54, 0.1),
-          transparent 30%
-        ),
-        rgba(245, 241, 232, 0.018);
-    }
-
-    .slogan-label {
-      margin-bottom: 22px !important;
-
-      color: #d5ad36 !important;
-
-      font-family: "Inter", Arial, sans-serif !important;
-      font-size: 0.67rem !important;
-      font-weight: 800;
-      line-height: 1.5 !important;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .slogan-text {
-      margin-bottom: 0 !important;
-
-      color: #f5f1e8 !important;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(2rem, 4.5vw, 4rem) !important;
-      font-weight: 800;
-      line-height: 1.02 !important;
-      letter-spacing: -0.015em;
-      text-transform: uppercase;
-    }
-
-    /* ===================================
-       ARTICLE SIDEBAR
-       =================================== */
-
-    .article-sidebar {
-      position: sticky;
-      top: 125px;
-    }
-
-    .sidebar-block {
-      padding: 25px 0;
-
-      border-top: 1px solid rgba(245, 241, 232, 0.14);
-    }
-
-    .sidebar-block:last-child {
-      border-bottom: 1px solid rgba(245, 241, 232, 0.14);
-    }
-
-    .sidebar-label {
-      margin-bottom: 12px;
-
-      color: #d5ad36;
-
-      font-size: 0.66rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .sidebar-value {
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.28rem;
-      font-weight: 700;
-      line-height: 1.15;
-      text-transform: uppercase;
-    }
-
-    .sidebar-description {
-      margin-top: 9px;
-
-      color: rgba(245, 241, 232, 0.48);
-
-      font-size: 0.76rem;
-      line-height: 1.65;
-    }
-
-    .sidebar-back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      color: #f5f1e8;
-      text-decoration: none;
-
-      font-size: 0.69rem;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-
-      transition: color 0.22s ease;
-    }
-
-    .sidebar-back-link::before {
-      content: "←";
-
-      color: #d5ad36;
-      font-size: 1rem;
-
-      transition: transform 0.22s ease;
-    }
-
-    .sidebar-back-link:hover {
-      color: #d5ad36;
-    }
-
-    .sidebar-back-link:hover::before {
-      transform: translateX(-4px);
-    }
-
-    /* ===================================
-       SOURCES
-       =================================== */
-
-    .article-sources {
-      margin-top: 70px;
-      padding-top: 42px;
-
-      border-top: 1px solid rgba(245, 241, 232, 0.15);
-    }
-
-    .sources-label {
-      margin-bottom: 13px;
-
-      color: #d5ad36;
-
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-    }
-
-    .sources-title {
-      margin: 0 0 23px !important;
-
-      font-size: clamp(2.1rem, 3.5vw, 3rem) !important;
-    }
-
-    .source-list {
-      margin: 0 !important;
-      padding: 0 !important;
-
-      list-style: none;
-      counter-reset: source-counter;
-    }
-
-    .source-list li {
-      margin: 0 !important;
-      padding: 18px 0 18px 42px;
-
-      position: relative;
-
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
-
-      counter-increment: source-counter;
-    }
-
-    .source-list li:last-child {
-      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
-    }
-
-    .source-list li::before {
-      content: counter(source-counter, decimal-leading-zero);
-
-      position: absolute;
-      top: 20px;
-      left: 0;
-
-      color: rgba(213, 173, 54, 0.64);
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1rem;
-      font-weight: 800;
-    }
-
-    .source-list a {
-      color: #d4cfc6;
-      text-decoration-color: rgba(213, 173, 54, 0.5);
-    }
-
-    .source-note {
-      margin-top: 20px;
-
-      color: rgba(245, 241, 232, 0.42) !important;
-
-      font-size: 0.77rem !important;
-      line-height: 1.7 !important;
-    }
-
-    /* ===================================
-       ARTICLE END NOTE
-       =================================== */
-
-    .article-end-note {
-      margin-top: 70px;
-      padding: 31px 34px;
-
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      background: rgba(245, 241, 232, 0.018);
-    }
-
-    .article-end-note p {
+    .sources-list {
       margin: 0;
-
-      color: #aaa69f;
-
-      font-size: 0.86rem;
-      line-height: 1.8;
+      padding-left: 20px;
+      color: #a7a7aa;
+      font-size: 0.88rem;
+      line-height: 1.7;
     }
 
-    .article-end-note strong {
-      color: #d5ad36;
+    .sources-list li {
+      margin-bottom: 12px;
+      padding-left: 4px;
     }
 
-    /* ===================================
-       PREVIOUS / NEXT NAVIGATION
-       =================================== */
 
-    .article-navigation {
-      padding: 0 7% 105px;
+    /* SIMPLE BRAND SIGNATURE */
+
+    .article-signature {
+      margin-top: clamp(54px, 8vw, 80px);
+      padding: 26px 0 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
     }
 
-    .article-navigation-inner {
-      width: 100%;
-      max-width: 1180px;
-      margin: 0 auto;
-
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .article-nav-card {
-      min-height: 205px;
-      padding: 31px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      background: rgba(245, 241, 232, 0.018);
-      text-decoration: none;
-
-      transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        background 0.25s ease;
-    }
-
-    .article-nav-card:hover {
-      transform: translateY(-4px);
-
-      border-color: rgba(213, 173, 54, 0.52);
-      background: rgba(245, 241, 232, 0.035);
-    }
-
-    .nav-direction {
-      color: #d5ad36;
-
-      font-size: 0.66rem;
+    .signature-name {
+      margin: 0 0 5px;
+      color: #ffffff;
+      font-size: 1rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
     }
 
-    .nav-article-title {
-      max-width: 430px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-      text-transform: uppercase;
+    .signature-line {
+      margin: 0;
+      color: #858589;
+      font-size: 0.87rem;
+      line-height: 1.6;
     }
 
-    .article-nav-card-next {
-      text-align: right;
-    }
 
-    .article-nav-card-next .nav-article-title {
-      margin-left: auto;
-    }
-
-    /* ===================================
+    /* =====================================================
        FOOTER
-       =================================== */
+    ===================================================== */
 
-    .inner-footer {
-      padding: 34px 7%;
-
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-
-      border-top: 1px solid rgba(245, 241, 232, 0.12);
+    .site-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #09090a;
     }
 
-    .footer-brand {
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.15rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+    .footer-inner {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 34px 0;
+      color: #77777b;
+      font-size: 0.8rem;
+      text-align: center;
     }
 
-    .footer-line {
-      color: rgba(245, 241, 232, 0.45);
-
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .footer-inner strong {
+      color: #bdbdbf;
     }
 
-    /* ===================================
+
+    /* =====================================================
        TABLET
-       =================================== */
+    ===================================================== */
 
-    @media (max-width: 1050px) {
-      .article-layout {
-        grid-template-columns: minmax(0, 1fr) 230px;
-        gap: 50px;
+    @media (max-width: 800px) {
+      .header-inner {
+        min-height: 74px;
+      }
+
+      .site-logo {
+        height: 46px;
+      }
+
+      .site-nav {
+        gap: 17px;
+      }
+
+      .site-nav a {
+        font-size: 0.78rem;
       }
     }
 
-    /* ===================================
+
+    /* =====================================================
        MOBILE
-       =================================== */
+    ===================================================== */
 
-    @media (max-width: 850px) {
-      .article-hero {
-        padding-bottom: 57px;
+    @media (max-width: 620px) {
+      .header-inner {
+        width: min(100% - 28px, 1180px);
+        min-height: 68px;
       }
 
-      .article-title {
-        font-size: clamp(3.3rem, 15vw, 5.35rem);
+      .site-logo {
+        height: 42px;
       }
 
-      .article-intro {
-        font-size: 0.94rem;
-        line-height: 1.8;
+      .site-nav {
+        gap: 12px;
       }
 
-      .article-cover-section {
-        padding: 0 34px 59px;
-      }
-
-      .article-main {
-        padding: 0 34px 80px;
-      }
-
-      .article-layout {
-        grid-template-columns: 1fr;
-        gap: 55px;
-      }
-
-      .article-body p {
-        font-size: 0.97rem;
-        line-height: 1.9;
-      }
-
-      .article-sidebar {
-        position: static;
-
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0 24px;
-      }
-
-      .sidebar-block:last-child {
-        border-bottom: none;
-      }
-
-      .article-statement {
-        padding: 31px 27px;
-      }
-
-      .slogan-block {
-        padding: 37px 28px;
-      }
-
-      .article-navigation {
-        padding: 0 34px 80px;
-      }
-
-      .article-navigation-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .article-nav-card-next {
-        text-align: left;
-      }
-
-      .article-nav-card-next .nav-article-title {
-        margin-left: 0;
-      }
-
-      .inner-footer {
-        padding: 29px 34px;
-
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-      }
-    }
-
-    /* ===================================
-       SMALL MOBILE
-       =================================== */
-
-    @media (max-width: 430px) {
-      .article-cover-section,
-      .article-main,
-      .article-navigation {
-        padding-right: 24px;
-        padding-left: 24px;
-      }
-
-      .article-title {
-        font-size: clamp(3rem, 14.2vw, 4.5rem);
-      }
-
-      .article-meta {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .article-meta-item + .article-meta-item::before {
+      .site-nav a:not(:first-child) {
         display: none;
       }
 
-      .article-sidebar {
-        grid-template-columns: 1fr;
+      .site-nav a {
+        font-size: 0.76rem;
       }
 
-      .article-statement {
-        padding: 29px 23px;
+      .article-page {
+        padding:
+          38px
+          16px
+          70px;
       }
 
-      .slogan-block {
-        padding: 33px 23px;
+      .article-title {
+        font-size: clamp(2rem, 11vw, 3.1rem);
+        line-height: 1.06;
       }
 
-      .article-end-note {
-        padding: 27px 23px;
+      .article-meta {
+        margin-top: 16px;
       }
 
-      .article-nav-card {
-        min-height: 185px;
-        padding: 26px 23px;
+      .article-image-wrap {
+        margin-top: 28px;
+        border-radius: 16px;
       }
 
-      .inner-footer {
-        padding-right: 24px;
-        padding-left: 24px;
+      .article-content {
+        font-size: 1rem;
+        line-height: 1.78;
+      }
+
+      .article-content p {
+        margin-bottom: 1.45em;
+      }
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
       }
     }
   </style>
 </head>
 
-<body class="article-page">
 
-  <!-- ===================================
+<body>
+
+  <!-- ===================================================
        HEADER
-       SAME HEADER ON EVERY PAGE
-       =================================== -->
+  ==================================================== -->
 
   <header class="site-header">
+    <div class="header-inner">
 
-    <a
-      class="brand"
-      href="../index.html"
-      aria-label="jhElmEr homepage"
-    >
-      <img
-        src="../header-logo.png"
-        alt="jhElmEr Simpleng Tao"
+      <a
+        class="site-logo-link"
+        id="home-logo-link"
+        href="index.html"
+        aria-label="Bumalik sa homepage ng jhElmEr"
       >
-    </a>
-
-    <button
-      class="menu-toggle"
-      type="button"
-      aria-label="Open navigation menu"
-      aria-expanded="false"
-      aria-controls="main-navigation"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav
-      class="main-nav"
-      id="main-navigation"
-      aria-label="Main navigation"
-    >
-      <a href="../index.html">
-        Home
+        <img
+          class="site-logo"
+          id="header-logo"
+          src="images/header-logo.png"
+          alt="jhElmEr"
+        >
       </a>
 
-      <a href="../civic-explainers.html">
-        Civic Explainers
-      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a id="home-nav-link" href="index.html">Home</a>
+        <a id="about-nav-link" href="about.html">About</a>
+      </nav>
 
-      <a href="../text-slogan.html">
-        Text Slogans
-      </a>
-
-      <a href="../music.html">
-        Music
-      </a>
-
-      <a href="../about.html">
-        About
-      </a>
-    </nav>
-
+    </div>
   </header>
 
-  <main>
 
-    <!-- ===================================
-         ARTICLE HERO
+  <!-- ===================================================
+       ARTICLE
+  ==================================================== -->
 
-         PALITAN:
-         - Breadcrumb archive
-         - Article type
-         - Title
-         - Intro
-         - Date
-         - Reading time
-         =================================== -->
+  <main class="article-page">
+    <article class="article-container">
 
-    <section class="hero article-hero">
+      <header class="article-header">
 
-      <div class="hero-content">
-
-        <nav
-          class="article-breadcrumb"
-          aria-label="Breadcrumb"
+        <span
+          class="article-category"
+          id="article-category"
         >
-          <a href="../index.html">
-            Home
-          </a>
+          CIVIC EXPLAINER
+        </span>
 
-          <span class="breadcrumb-separator">
-            /
-          </span>
-
-          <!--
-            Para sa Text Slogan:
-            href="../text-slogan.html"
-            at palitan ang text.
-          -->
-          <a href="../civic-explainers.html">
-            Civic Explainers
-          </a>
-
-          <span class="breadcrumb-separator">
-            /
-          </span>
-
-          <span aria-current="page">
-            Article
-          </span>
-        </nav>
-
-        <!--
-          Halimbawa:
-          Civic Explainer
-          Text Slogan
-          Reflection
-        -->
-        <p class="article-type">
-          Civic Explainer
-        </p>
-
-        <!-- PALITAN ANG PAMAGAT -->
-        <h1 class="article-title">
+        <h1
+          class="article-title"
+          id="article-title"
+        >
           Pamagat ng Article
         </h1>
 
-        <!-- PALITAN ANG MAIKLING INTRO -->
-        <p class="article-intro">
-          Isulat dito ang maikling paglalarawan o pangunahing
-          tanong ng article. Ito ang unang paliwanag na makikita
-          ng reader bago ang cover image at buong nilalaman.
-        </p>
-
         <div class="article-meta">
 
-          <!-- PALITAN ANG DATE -->
-          <time
-            class="article-meta-item"
-            datetime="2026-07-14"
-          >
-            Hulyo 14, 2026
-          </time>
-
-          <!-- PALITAN KUNG KAILANGAN -->
-          <span class="article-meta-item">
-            6 Minutong Pagbasa
+          <span id="article-date">
+            Hulyo 15, 2026
           </span>
 
-          <span class="article-meta-item">
-            Isinulat ni jhElmEr
-          </span>
+          <span
+            class="meta-dot"
+            aria-hidden="true"
+          ></span>
+
+          <span>jhElmEr</span>
 
         </div>
 
-      </div>
+      </header>
 
-    </section>
 
-    <!-- ===================================
-         ARTICLE COVER
+      <figure class="article-image-wrap">
 
-         Recommended:
-         articles/images/filename.jpg
-
-         Dahil ang image folder ay nasa loob
-         din ng articles folder, gagana ang
-         parehong path sa lahat ng article copies.
-         =================================== -->
-
-    <section class="article-cover-section">
-
-      <figure class="article-cover">
-
-        <div class="article-cover-frame">
-
-          <!-- PALITAN ANG IMAGE AT ALT TEXT -->
-          <img
-            class="article-cover-image"
-            src="images/article-placeholder.jpg"
-            alt="Ilarawan dito ang pangunahing visual ng article"
-          >
-
-        </div>
-
-        <!--
-          Optional caption.
-          Burahin ang figcaption kung hindi kailangan.
-        -->
-        <figcaption class="article-image-caption">
-          Pangunahing visual ng article.
-        </figcaption>
+        <img
+          class="article-image"
+          id="article-image"
+          src="images/articles/article-image.jpg"
+          alt="Featured image ng article"
+        >
 
       </figure>
 
-    </section>
 
-    <!-- ===================================
-         ARTICLE CONTENT
-         =================================== -->
+      <!--
+        HUWAG LAGYAN NG <p> TAGS.
 
-    <section class="article-main">
+        I-PASTE LANG ANG BUONG ARTICLE BILANG NORMAL NA TEXT.
+        BLANK LINE LANG SA PAGITAN NG BAWAT PARAGRAPH.
+      -->
 
-      <div class="article-layout">
+      <script
+        type="text/plain"
+        id="article-raw-content"
+      >
+Ilagay dito ang unang paragraph ng article.
 
-        <!-- =================================
-             MAIN BODY
-             ================================= -->
+Ilagay dito ang ikalawang paragraph. Mag-iwan lamang ng isang blank line sa pagitan ng bawat paragraph, katulad ng normal na Facebook post.
 
-        <article class="article-body">
+Hindi mo kailangang lagyan ng HTML code ang bawat paragraph.
 
-          <!--
-            Unang paragraph.
-            Mas malaki ito bilang opening lead.
-          -->
-          <p class="article-lead">
-            Isulat dito ang pinakamalinaw na pagbubukas ng article.
-            Dapat nitong ipakilala ang sentrong isyu nang hindi
-            agad sinisiksik ang lahat ng detalye.
-          </p>
+Ipe-paste mo lamang dito ang buong article.
+      </script>
 
-          <p>
-            Dito magsisimula ang buong paliwanag. Para sa Civic
-            Explainer, ilahad muna ang konteksto ng usapin bago
-            pumunta sa mas teknikal, legal, o masalimuot na bahagi.
-            Gumamit ng malinaw at natural na mga talata upang madaling
-            masundan ng karaniwang mambabasa.
-          </p>
 
-          <p>
-            Hindi kailangang maging mahaba ang bawat talata.
-            Mas madaling basahin sa mobile kapag ang bawat paragraph
-            ay nakatuon lamang sa isang pangunahing ideya.
-          </p>
+      <!--
+        DITO AWTOMATIKONG LALABAS ANG ARTICLE.
+        HUWAG GALAWIN ANG DIV NA ITO.
+      -->
 
-          <h2>
-            Unang Pangunahing Bahagi
-          </h2>
+      <div
+        class="article-content"
+        id="article-content"
+      ></div>
 
-          <p>
-            Isulat dito ang unang malaking bahagi ng paliwanag.
-            Maaari itong tumalakay sa kahulugan ng isyu, legal na
-            batayan, pinagmulan ng problema, o mahalagang kontekstong
-            kailangang malaman ng mambabasa.
-          </p>
 
-          <p>
-            Kapag may factual o legal na pahayag, tiyaking malinaw
-            kung ano ang pinagmulan at kung hanggang saan lamang
-            naaangkop ang naturang impormasyon.
-          </p>
+      <!--
+        SOURCES:
 
-          <!--
-            OPTIONAL EMPHASIS BLOCK
+        Para sa Civic Explainer:
+        I-paste ang sources sa loob ng block sa ibaba.
 
-            Gamitin para sa mahalagang punto,
-            legal distinction, o central realization.
-          -->
-          <aside class="article-statement">
+        Para sa Text Slogan:
+        Iwanang blanko ang block.
+        Awtomatikong mawawala ang Sources section.
+      -->
 
-            <p class="statement-label">
-              Mahalagang Punto
-            </p>
+      <script
+        type="text/plain"
+        id="article-raw-sources"
+      >
+American Psychological Association (APA) – Resources on respectful communication, conflict resolution, at constructive dialogue.
 
-            <p class="statement-text">
-              Ilagay dito ang sentrong prinsipyong kailangang
-              malinaw na maalala ng mambabasa.
-            </p>
+UNESCO – Media and Information Literacy (MIL) – Critical thinking, evaluation of information, at responsableng online discourse.
+      </script>
 
-          </aside>
 
-          <h2>
-            Ikalawang Pangunahing Bahagi
-          </h2>
+      <section
+        class="article-sources"
+        id="article-sources"
+        aria-labelledby="sources-title"
+      >
 
-          <p>
-            Dito maaaring ipaliwanag ang karaniwang maling akala,
-            problemang nakikita sa diskusyon, o dahilan kung bakit
-            mahalagang suriin ang buong konteksto.
-          </p>
-
-          <h3>
-            Isang Mahalagang Pagkakaiba
-          </h3>
-
-          <p>
-            Maaari ring gumamit ng mas maliit na subheading upang
-            hatiin ang mahahabang bahagi. Nakakatulong ito upang
-            hindi maging isang tuloy-tuloy at nakakapagod na bloke
-            ang buong article.
-          </p>
-
-          <ul>
-            <li>
-              Unang mahalagang punto o pamantayan.
-            </li>
-
-            <li>
-              Ikalawang mahalagang punto o pagkakaiba.
-            </li>
-
-            <li>
-              Ikatlong mahalagang detalye na dapat tandaan.
-            </li>
-          </ul>
-
-          <!--
-            OPTIONAL TEXT SLOGAN BLOCK
-
-            Para sa Civic Explainer:
-            puwedeng ilagay ang final slogan.
-
-            Para sa Text Slogan article:
-            dito maaaring ilagay ang buong slogan
-            bago ang caption explainer.
-
-            Burahin ang buong block kung hindi kailangan.
-          -->
-          <section class="slogan-block">
-
-            <p class="slogan-label">
-              Pangunahing Mensahe
-            </p>
-
-            <p class="slogan-text">
-              Ilagay dito ang buong final text slogan o ang
-              pinakamahalagang mensahe ng article.
-            </p>
-
-          </section>
-
-          <h2>
-            Ano ang Dapat Maunawaan?
-          </h2>
-
-          <p>
-            Sa bahaging ito maaaring pagtibayin ang pangunahing
-            punto nang hindi inuulit lamang ang lahat ng naunang
-            sinabi. Ipaliwanag kung bakit mahalaga ang usapin at
-            ano ang nawawala kapag mas pinipili ang ingay, meme,
-            personalidad, o simpleng reaksiyon kaysa sa katotohanan
-            at buong konteksto.
-          </p>
-
-          <p>
-            Ang ending ay dapat malinaw at mabigat ngunit hindi
-            sermonic. Mas epektibo kung ibinabalik nito ang reader
-            sa pangunahing tanong o prinsipyo ng article.
-          </p>
-
-          <!-- =================================
-               SOURCES
-
-               Para sa Civic Explainers:
-               panatilihin at lagyan ng tunay,
-               specific, at final sources.
-
-               Para sa purely moral Text Slogan:
-               maaaring alisin kung walang factual
-               claim na nangangailangan ng source.
-               ================================= -->
-
-          <section class="article-sources">
-
-            <p class="sources-label">
-              Mga Sanggunian
-            </p>
-
-            <h2 class="sources-title">
-              Maaaring Basahin
-            </h2>
-
-            <ol class="source-list">
-
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Pangalan ng opisyal na batas, dokumento,
-                  institusyon, o primary source
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ikalawang specific at direktang sanggunian
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ikatlong source na direktang sumusuporta
-                  sa article
-                </a>
-              </li>
-
-            </ol>
-
-            <p class="source-note">
-              Ang mga sanggunian ay inilalagay upang makita ang
-              factual, legal, o research basis ng article. Hindi
-              sapat ang generic na pangalan lamang ng institusyon;
-              kailangang tukoy ang dokumento, batas, pag-aaral,
-              ruling, o publikasyong ginamit.
-            </p>
-
-          </section>
-
-          <!-- =================================
-               PLATFORM NOTE
-               ================================= -->
-
-          <aside class="article-end-note">
-
-            <p>
-              Ang article na ito ay bahagi ng
-              <strong>jhElmEr independent civic at creative platform</strong>.
-              Ang mga factual at legal na pahayag ay nilalayong
-              mailahad nang maingat sa konteksto at batay sa mga
-              mapapatunayang sanggunian.
-            </p>
-
-          </aside>
-
-        </article>
-
-        <!-- =================================
-             SIDEBAR
-
-             PALITAN ANG MGA VALUE SA BAWAT POST
-             ================================= -->
-
-        <aside
-          class="article-sidebar"
-          aria-label="Article information"
+        <h2
+          class="sources-title"
+          id="sources-title"
         >
+          Mga Sanggunian
+        </h2>
 
-          <div class="sidebar-block">
+        <ul
+          class="sources-list"
+          id="sources-list"
+        ></ul>
 
-            <p class="sidebar-label">
-              Uri
-            </p>
+      </section>
 
-            <p class="sidebar-value">
-              Civic Explainer
-            </p>
 
-            <p class="sidebar-description">
-              Fact-based at context-driven na paliwanag.
-            </p>
+      <footer class="article-signature">
 
-          </div>
+        <p class="signature-name">
+          jhElmEr
+        </p>
 
-          <div class="sidebar-block">
+        <p class="signature-line">
+          Isang simpleng tao na may malinaw na paninindigan.
+        </p>
 
-            <p class="sidebar-label">
-              Paksa
-            </p>
+      </footer>
 
-            <p class="sidebar-value">
-              Lipunan
-            </p>
-
-          </div>
-
-          <div class="sidebar-block">
-
-            <p class="sidebar-label">
-              Inilathala
-            </p>
-
-            <p class="sidebar-value">
-              Hulyo 14, 2026
-            </p>
-
-          </div>
-
-          <div class="sidebar-block">
-
-            <!--
-              Para sa Text Slogan article:
-              href="../text-slogan.html"
-              text: Bumalik sa Text Slogans
-            -->
-            <a
-              class="sidebar-back-link"
-              href="../civic-explainers.html"
-            >
-              Bumalik sa Explainers
-            </a>
-
-          </div>
-
-        </aside>
-
-      </div>
-
-    </section>
-
-    <!-- ===================================
-         PREVIOUS / NEXT ARTICLE
-
-         Optional.
-         Palitan ang href at titles.
-         Burahin ang card na walang katabing article.
-         =================================== -->
-
-    <nav
-      class="article-navigation"
-      aria-label="Article navigation"
-    >
-
-      <div class="article-navigation-inner">
-
-        <a
-          class="article-nav-card"
-          href="#"
-        >
-          <span class="nav-direction">
-            ← Naunang Article
-          </span>
-
-          <span class="nav-article-title">
-            Pamagat ng Naunang Article
-          </span>
-        </a>
-
-        <a
-          class="article-nav-card article-nav-card-next"
-          href="#"
-        >
-          <span class="nav-direction">
-            Susunod na Article →
-          </span>
-
-          <span class="nav-article-title">
-            Pamagat ng Susunod na Article
-          </span>
-        </a>
-
-      </div>
-
-    </nav>
-
+    </article>
   </main>
 
-  <!-- ===================================
+
+  <!-- ===================================================
        FOOTER
-       =================================== -->
+  ==================================================== -->
 
-  <footer class="inner-footer">
-
-    <p class="footer-brand">
-      © 2026 jhElmEr
-    </p>
-
-    <p class="footer-line">
-      Truth Over Noise
-    </p>
-
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <strong>jhElmEr</strong> — Civic at creative platform ng isang simpleng tao.
+    </div>
   </footer>
 
-  <!-- ===================================
-       HEADER MENU SCRIPT
-       =================================== -->
+
+  <!-- ===================================================
+       ARTICLE SETTINGS
+       
+       ITO LANG ANG PALITAN SA BAWAT BAGONG ARTICLE:
+       
+       1. type
+       2. title
+       3. date
+       4. image
+       5. imageAlt
+       6. article content sa taas
+       7. sources kung mayroon
+  ==================================================== -->
 
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
+    const ARTICLE = {
+      type: "CIVIC EXPLAINER",
 
-    if (menuToggle && mainNav) {
-      menuToggle.addEventListener("click", () => {
-        const isOpen = mainNav.classList.toggle("is-open");
+      title: "Pamagat ng Article",
 
-        menuToggle.classList.toggle("is-open", isOpen);
+      date: "Hulyo 15, 2026",
 
-        menuToggle.setAttribute(
-          "aria-expanded",
-          String(isOpen)
-        );
-      });
+      image: "images/articles/article-image.jpg",
 
-      mainNav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mainNav.classList.remove("is-open");
-          menuToggle.classList.remove("is-open");
+      imageAlt: "Featured image ng article"
+    };
 
-          menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
+
+    /* ===================================================
+       HUWAG NANG GALAWIN ANG CODE MULA RITO PABABA
+    ==================================================== */
+
+    const currentPath = window.location.pathname;
+
+    const isInsideArticlesFolder =
+      currentPath.includes("/articles/");
+
+
+    function resolveSitePath(path) {
+      return isInsideArticlesFolder
+        ? "../" + path
+        : path;
+    }
+
+
+    function cleanRawText(text) {
+      return text
+        .replace(/^\s+|\s+$/g, "")
+        .replace(/\r\n/g, "\n");
+    }
+
+
+    function buildArticleContent() {
+      const rawElement =
+        document.getElementById("article-raw-content");
+
+      const outputElement =
+        document.getElementById("article-content");
+
+      const rawText =
+        cleanRawText(rawElement.textContent);
+
+      if (!rawText) {
+        return;
+      }
+
+      const paragraphs =
+        rawText.split(/\n\s*\n/);
+
+      paragraphs.forEach((paragraphText) => {
+        const cleanParagraph =
+          paragraphText.trim();
+
+        if (!cleanParagraph) {
+          return;
+        }
+
+        const paragraph =
+          document.createElement("p");
+
+        paragraph.textContent =
+          cleanParagraph.replace(/\n+/g, " ");
+
+        const isQuotedLine =
+          /^["“].+["”]$/.test(cleanParagraph);
+
+        const isShortStandaloneLine =
+          cleanParagraph.length <= 90 &&
+          !/[.!?]$/.test(cleanParagraph);
+
+        if (isQuotedLine) {
+          paragraph.classList.add("quoted-line");
+        }
+
+        if (isShortStandaloneLine) {
+          paragraph.classList.add(
+            "single-line-emphasis"
           );
-        });
+        }
+
+        outputElement.appendChild(paragraph);
       });
     }
+
+
+    function buildSources() {
+      const rawSourcesElement =
+        document.getElementById("article-raw-sources");
+
+      const sourcesSection =
+        document.getElementById("article-sources");
+
+      const sourcesList =
+        document.getElementById("sources-list");
+
+      const rawSources =
+        cleanRawText(rawSourcesElement.textContent);
+
+      if (!rawSources) {
+        sourcesSection.classList.remove(
+          "is-visible"
+        );
+
+        return;
+      }
+
+      const sources =
+        rawSources.split(/\n\s*\n/);
+
+      sources.forEach((sourceText) => {
+        const cleanSource =
+          sourceText
+            .replace(/^[•\-]\s*/, "")
+            .trim();
+
+        if (!cleanSource) {
+          return;
+        }
+
+        const listItem =
+          document.createElement("li");
+
+        listItem.textContent =
+          cleanSource.replace(/\n+/g, " ");
+
+        sourcesList.appendChild(listItem);
+      });
+
+      sourcesSection.classList.add(
+        "is-visible"
+      );
+    }
+
+
+    function applyArticleSettings() {
+      document.title =
+        ARTICLE.title + " | jhElmEr";
+
+      document
+        .getElementById("article-category")
+        .textContent = ARTICLE.type;
+
+      document
+        .getElementById("article-title")
+        .textContent = ARTICLE.title;
+
+      document
+        .getElementById("article-date")
+        .textContent = ARTICLE.date;
+
+      const articleImage =
+        document.getElementById("article-image");
+
+      articleImage.src =
+        resolveSitePath(ARTICLE.image);
+
+      articleImage.alt =
+        ARTICLE.imageAlt;
+
+      document
+        .querySelector('meta[name="description"]')
+        .setAttribute(
+          "content",
+          ARTICLE.title +
+          " — civic at creative content mula kay jhElmEr."
+        );
+    }
+
+
+    function applyWebsitePaths() {
+      document
+        .getElementById("header-logo")
+        .src =
+          resolveSitePath(
+            "images/header-logo.png"
+          );
+
+      document
+        .getElementById("home-logo-link")
+        .href =
+          resolveSitePath("index.html");
+
+      document
+        .getElementById("home-nav-link")
+        .href =
+          resolveSitePath("index.html");
+
+      document
+        .getElementById("about-nav-link")
+        .href =
+          resolveSitePath("about.html");
+    }
+
+
+    applyArticleSettings();
+    applyWebsitePaths();
+    buildArticleContent();
+    buildSources();
   </script>
 
 </body>
-
-  </html>
+</html>
