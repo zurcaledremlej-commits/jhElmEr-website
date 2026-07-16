@@ -17,7 +17,12 @@
   <title>Civic Explainers | jhElmEr</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
@@ -121,7 +126,7 @@
        =================================== */
 
     .explainer-section {
-      padding: 66px 7% 100px;
+      padding: 66px 7% 72px;
     }
 
     .explainer-grid {
@@ -223,8 +228,10 @@
       transition: color 0.22s ease;
     }
 
-    .card-title a:hover {
+    .card-title a:hover,
+    .card-title a:focus-visible {
       color: #d5ad36;
+      outline: none;
     }
 
     .card-excerpt {
@@ -282,11 +289,14 @@
       transition: transform 0.22s ease;
     }
 
-    .read-link:hover {
+    .read-link:hover,
+    .read-link:focus-visible {
       color: #d5ad36;
+      outline: none;
     }
 
-    .read-link:hover::after {
+    .read-link:hover::after,
+    .read-link:focus-visible::after {
       transform: translateX(4px);
     }
 
@@ -338,6 +348,125 @@
 
       font-size: 0.86rem;
       line-height: 1.75;
+    }
+
+    /* ===================================
+       ARCHIVE NAVIGATION GATEWAY
+       =================================== */
+
+    .archive-gateway {
+      padding: 18px 7% 92px;
+    }
+
+    .archive-gateway-inner {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .archive-gateway-link {
+      position: relative;
+
+      width: 100%;
+      min-height: 170px;
+      padding: 38px 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.34);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.34);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(213, 173, 54, 0.045),
+          transparent
+        );
+
+      color: #f5f1e8;
+      text-align: center;
+      text-decoration: none;
+
+      transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .archive-gateway-label {
+      color: #d5ad36;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+
+      transition:
+        color 0.25s ease,
+        letter-spacing 0.25s ease;
+    }
+
+    .archive-gateway-description {
+      color: rgba(245, 241, 232, 0.54);
+
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      line-height: 1.6;
+      text-transform: uppercase;
+
+      transition: color 0.25s ease;
+    }
+
+    .archive-gateway-link::after {
+      content: "→";
+
+      margin-top: 3px;
+
+      color: #d5ad36;
+      font-size: 1.35rem;
+      line-height: 1;
+
+      transition: transform 0.25s ease;
+    }
+
+    .archive-gateway-link:hover,
+    .archive-gateway-link:focus-visible {
+      border-color: rgba(213, 173, 54, 0.78);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(213, 173, 54, 0.1),
+          transparent
+        );
+
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .archive-gateway-link:hover .archive-gateway-label,
+    .archive-gateway-link:focus-visible .archive-gateway-label {
+      color: #e2bd4d;
+      letter-spacing: 0.1em;
+    }
+
+    .archive-gateway-link:hover .archive-gateway-description,
+    .archive-gateway-link:focus-visible .archive-gateway-description {
+      color: rgba(245, 241, 232, 0.72);
+    }
+
+    .archive-gateway-link:hover::after,
+    .archive-gateway-link:focus-visible::after {
+      transform: translateX(5px);
     }
 
     /* ===================================
@@ -412,7 +541,7 @@
       }
 
       .explainer-section {
-        padding: 47px 34px 78px;
+        padding: 47px 34px 60px;
       }
 
       .explainer-grid {
@@ -427,6 +556,19 @@
 
       .card-title {
         font-size: 1.75rem;
+      }
+
+      .archive-gateway {
+        padding: 4px 34px 72px;
+      }
+
+      .archive-gateway-link {
+        min-height: 155px;
+        padding: 34px 20px;
+      }
+
+      .archive-gateway-description {
+        font-size: 0.66rem;
       }
 
       .inner-footer {
@@ -447,6 +589,15 @@
         align-items: flex-start;
         flex-direction: column;
       }
+
+      .archive-gateway-link {
+        min-height: 148px;
+        padding: 31px 18px;
+      }
+
+      .archive-gateway-label {
+        font-size: 1.55rem;
+      }
     }
 
     /* ===================================
@@ -460,6 +611,15 @@
     ) {
       .explainer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
@@ -513,8 +673,8 @@
         Civic Explainers
       </a>
 
-      <a href="text-slogan.html">
-  Text Slogans
+      <a href="text-slogans.html">
+        Text Slogans
       </a>
 
       <a href="music.html">
@@ -522,7 +682,7 @@
       </a>
 
       <a href="about.html">
-  About
+        About
       </a>
     </nav>
 
@@ -532,7 +692,6 @@
 
     <!-- ===================================
          CIVIC HERO
-         SAME AS HOMEPAGE STRUCTURE
          =================================== -->
 
     <section class="hero civic-hero">
@@ -952,6 +1111,37 @@
           </div>
 
         </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         COMPLETE CIVIC ARCHIVE
+         =================================== -->
+
+    <section
+      class="archive-gateway"
+      aria-label="Complete Civic Explainers archive"
+    >
+
+      <div class="archive-gateway-inner">
+
+        <a
+          class="archive-gateway-link"
+          href="all-civic-explainers.html"
+          aria-label="Tingnan ang lahat ng Civic Explainers"
+        >
+
+          <span class="archive-gateway-label">
+            Lahat ng Civic Explainers
+          </span>
+
+          <span class="archive-gateway-description">
+            Tingnan ang kumpletong archive
+          </span>
+
+        </a>
 
       </div>
 
