@@ -17,18 +17,24 @@
   <title>Music | jhElmEr</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 
   <style>
     /* ===================================
-       MUSIC PAGE
+       MUSIC LANDING PAGE
+       INTRO → LATEST → ARCHIVE
        =================================== */
 
     .inner-page {
@@ -38,7 +44,6 @@
 
     /* ===================================
        MUSIC HERO
-       SAME STRUCTURE AS HOMEPAGE
        =================================== */
 
     .music-hero .hero-content {
@@ -54,130 +59,136 @@
     }
 
     /* ===================================
-       MUSIC TOOLBAR
+       LATEST MUSIC
        =================================== */
 
-    .music-toolbar {
-      padding: 27px 7%;
+    .latest-section {
+      position: relative;
+      padding: 78px 7% 88px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
+      overflow: hidden;
 
       border-top: 1px solid rgba(245, 241, 232, 0.1);
-      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
     }
 
-    .result-label {
+    .latest-section::after {
+      content: "";
+
+      position: absolute;
+      right: -260px;
+      bottom: -280px;
+
+      width: 570px;
+      height: 570px;
+
+      border: 1px solid rgba(213, 173, 54, 0.15);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .latest-inner {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      margin-bottom: 30px;
+
       color: rgba(245, 241, 232, 0.58);
 
       font-size: 0.73rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
+      font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .category-filters {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
+    .latest-card {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 0.86fr)
+        minmax(0, 1.14fr);
+      align-items: stretch;
 
-    .filter-button {
-      min-height: 39px;
-      padding: 9px 15px;
+      overflow: hidden;
 
-      border: 1px solid rgba(245, 241, 232, 0.16);
-      background: transparent;
-      color: #aaa69f;
+      border: 1px solid rgba(245, 241, 232, 0.13);
 
-      font-family: "Inter", Arial, sans-serif;
-      font-size: 0.69rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-
-      cursor: pointer;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.045),
+          rgba(245, 241, 232, 0.02)
+        );
 
       transition:
-        color 0.22s ease,
-        border-color 0.22s ease,
-        background 0.22s ease;
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
     }
 
-    .filter-button:hover,
-    .filter-button.active {
-      color: #111214;
-      border-color: #d5ad36;
-      background: #d5ad36;
-    }
+    .latest-card:hover {
+      transform: translateY(-5px);
 
-    /* ===================================
-       FEATURED MUSIC
-       =================================== */
-
-    .featured-music {
-      padding: 70px 7% 25px;
-    }
-
-    .featured-card {
-      width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-
-      display: grid;
-      grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
-
-      overflow: hidden;
-
-      border: 1px solid rgba(213, 173, 54, 0.34);
-      background:
-        linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.08),
-          rgba(245, 241, 232, 0.018)
-        );
-    }
-
-    .featured-cover {
-      min-height: 520px;
-      overflow: hidden;
+      border-color: rgba(213, 173, 54, 0.52);
 
       background:
         linear-gradient(
           135deg,
-          rgba(213, 173, 54, 0.16),
-          rgba(9, 10, 12, 0.95)
+          rgba(213, 173, 54, 0.075),
+          rgba(245, 241, 232, 0.035)
         );
     }
 
-    .featured-cover img {
+    .latest-image-link {
+      position: relative;
+
+      min-height: 610px;
+
+      display: block;
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 70% 75%,
+          rgba(213, 173, 54, 0.11),
+          transparent 42%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(213, 173, 54, 0.1),
+          rgba(9, 10, 12, 0.96)
+        );
+    }
+
+    .latest-image {
       width: 100%;
       height: 100%;
 
       display: block;
       object-fit: cover;
 
-      transition: transform 0.45s ease;
+      transition: transform 0.42s ease;
     }
 
-    .featured-card:hover .featured-cover img {
-      transform: scale(1.025);
+    .latest-card:hover .latest-image {
+      transform: scale(1.02);
     }
 
-    .featured-content {
-      padding: 56px;
+    .latest-content {
+      padding: 54px 52px;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    .featured-label {
-      margin-bottom: 18px;
+    .latest-kicker {
+      margin-bottom: 20px;
 
       color: #d5ad36;
 
@@ -187,314 +198,136 @@
       text-transform: uppercase;
     }
 
-    .featured-title {
-      margin-bottom: 20px;
+    .latest-title {
+      max-width: 620px;
+      margin-bottom: 24px;
 
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(3.1rem, 5vw, 5.5rem);
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(2.9rem, 5vw, 5rem);
       font-weight: 800;
-      line-height: 0.9;
+      line-height: 0.92;
       letter-spacing: -0.025em;
       text-transform: uppercase;
     }
 
-    .featured-quote {
-      max-width: 650px;
-      margin-bottom: 23px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.65rem;
-      font-weight: 700;
-      line-height: 1.15;
-    }
-
-    .featured-description {
-      max-width: 650px;
-      margin-bottom: 32px;
-
-      color: #aaa69f;
-
-      font-size: 0.93rem;
-      line-height: 1.8;
-    }
-
-    .featured-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .music-button {
-      min-height: 47px;
-      padding: 13px 21px;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-
-      border: 1px solid #d5ad36;
-
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-decoration: none;
-      text-transform: uppercase;
-
-      transition:
-        background 0.22s ease,
-        color 0.22s ease,
-        border-color 0.22s ease;
-    }
-
-    .music-button-primary {
-      background: #d5ad36;
-      color: #111214;
-    }
-
-    .music-button-primary:hover {
-      background: #f5f1e8;
-      border-color: #f5f1e8;
-    }
-
-    .music-button-secondary {
-      background: transparent;
-      color: #f5f1e8;
-    }
-
-    .music-button-secondary:hover {
-      background: #d5ad36;
-      color: #111214;
-    }
-
-    /* ===================================
-       MUSIC ARCHIVE
-       =================================== */
-
-    .music-section {
-      padding: 45px 7% 100px;
-    }
-
-    .section-heading {
-      width: 100%;
-      max-width: 1380px;
-      margin: 0 auto 27px;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .section-heading h2 {
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 2.35rem;
-      font-weight: 800;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .section-heading p {
-      color: rgba(245, 241, 232, 0.48);
-
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .music-grid {
-      width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    .music-card {
-      min-width: 0;
-
-      display: flex;
-      flex-direction: column;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      background: rgba(245, 241, 232, 0.025);
-
-      transition:
-        transform 0.28s ease,
-        border-color 0.28s ease,
-        background 0.28s ease;
-    }
-
-    .music-card:hover {
-      transform: translateY(-6px);
-
-      border-color: rgba(213, 173, 54, 0.58);
-      background: rgba(245, 241, 232, 0.04);
-    }
-
-    .music-cover-link {
-      position: relative;
-
-      display: block;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.12),
-          rgba(9, 10, 12, 0.92)
-        );
-    }
-
-    .music-cover {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-
-      display: block;
-      object-fit: cover;
-
-      transition: transform 0.42s ease;
-    }
-
-    .music-card:hover .music-cover {
-      transform: scale(1.025);
-    }
-
-    .play-mark {
-      width: 54px;
-      height: 54px;
-
-      position: absolute;
-      right: 19px;
-      bottom: 19px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px solid rgba(245, 241, 232, 0.52);
-      border-radius: 50%;
-
-      background: rgba(9, 10, 12, 0.74);
-      color: #d5ad36;
-
-      font-size: 1rem;
-
-      backdrop-filter: blur(8px);
-
-      transition:
-        background 0.22s ease,
-        color 0.22s ease,
-        border-color 0.22s ease;
-    }
-
-    .music-card:hover .play-mark {
-      border-color: #d5ad36;
-      background: #d5ad36;
-      color: #111214;
-    }
-
-    .music-content {
-      min-height: 260px;
-      padding: 25px 24px 27px;
-
-      display: flex;
-      flex-direction: column;
-    }
-
-    .music-category {
-      margin-bottom: 13px;
-
-      color: #d5ad36;
-
-      font-size: 0.67rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
-
-    .music-title {
-      margin-bottom: 14px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 2rem;
-      font-weight: 800;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .music-title a {
+    .latest-title a {
       color: inherit;
       text-decoration: none;
 
       transition: color 0.22s ease;
     }
 
-    .music-title a:hover {
+    .latest-title a:hover,
+    .latest-title a:focus-visible {
       color: #d5ad36;
+      outline: none;
     }
 
-    .music-description {
-      margin-bottom: 23px;
+    .latest-quote {
+      max-width: 590px;
+      margin-bottom: 22px;
+
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .latest-description {
+      max-width: 590px;
+      margin-bottom: 34px;
 
       color: #aaa69f;
 
-      font-size: 0.88rem;
-      line-height: 1.75;
+      font-size: 1rem;
+      line-height: 1.85;
     }
 
-    .music-footer {
-      margin-top: auto;
-      padding-top: 18px;
+    .latest-meta {
+      margin-bottom: 30px;
+      padding-top: 22px;
 
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+      flex-wrap: wrap;
+      gap: 12px 20px;
 
       border-top: 1px solid rgba(245, 241, 232, 0.1);
     }
 
-    .music-type {
-      color: rgba(245, 241, 232, 0.46);
-
+    .latest-category,
+    .latest-status {
       font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .listen-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      color: #f5f1e8;
-      text-decoration: none;
-
-      font-size: 0.68rem;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-
-      transition: color 0.22s ease;
     }
 
-    .listen-link::after {
+    .latest-category {
+      color: #d5ad36;
+    }
+
+    .latest-status {
+      color: rgba(245, 241, 232, 0.46);
+    }
+
+    .latest-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .latest-action-link {
+      min-height: 48px;
+      padding: 13px 20px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      border: 1px solid rgba(213, 173, 54, 0.46);
+
+      color: #f5f1e8;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .latest-action-primary {
+      border-color: #d5ad36;
+      background: #d5ad36;
+      color: #111214;
+    }
+
+    .latest-action-primary::after {
+      content: "▶";
+
+      font-size: 0.72rem;
+    }
+
+    .latest-action-secondary::after {
       content: "→";
 
       color: #d5ad36;
@@ -503,62 +336,164 @@
       transition: transform 0.22s ease;
     }
 
-    .listen-link:hover {
-      color: #d5ad36;
+    .latest-action-primary:hover,
+    .latest-action-primary:focus-visible {
+      border-color: #f5f1e8;
+      background: #f5f1e8;
+      color: #111214;
+      outline: none;
     }
 
-    .listen-link:hover::after {
+    .latest-action-secondary:hover,
+    .latest-action-secondary:focus-visible {
+      border-color: #d5ad36;
+      background: #d5ad36;
+      color: #111214;
+      outline: none;
+    }
+
+    .latest-action-secondary:hover::after,
+    .latest-action-secondary:focus-visible::after {
+      color: #111214;
       transform: translateX(4px);
     }
 
     /* ===================================
-       COMING SOON CARD
+       ARCHIVE NAVIGATION
        =================================== */
 
-    .coming-soon-card {
-      min-height: 420px;
-      padding: 46px 30px;
+    .archive-navigation {
+      position: relative;
+      z-index: 20;
+
+      padding: 0 7% 94px;
+    }
+
+    .archive-navigation-inner {
+      position: relative;
+      z-index: 21;
+
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .archive-navigation-link {
+      position: relative;
+      z-index: 22;
+
+      width: 100%;
+      min-height: 165px;
+      padding: 38px 26px;
 
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      gap: 10px;
 
-      border: 1px dashed rgba(245, 241, 232, 0.17);
-      background: rgba(245, 241, 232, 0.015);
+      border-top:
+        1px solid rgba(213, 173, 54, 0.38);
+
+      border-bottom:
+        1px solid rgba(213, 173, 54, 0.38);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(213, 173, 54, 0.05),
+          transparent
+        );
+
       text-align: center;
+      text-decoration: none;
+
+      cursor: pointer;
+      pointer-events: auto;
+
+      transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
     }
 
-    .coming-soon-content {
-      max-width: 310px;
-    }
+    .archive-navigation-title {
+      color: #d5ad36;
 
-    .coming-soon-number {
-      margin-bottom: 20px;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
 
-      color: rgba(213, 173, 54, 0.42);
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 3.8rem;
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 800;
       line-height: 1;
-    }
-
-    .coming-soon-card h2 {
-      margin-bottom: 14px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.9rem;
-      line-height: 1;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+
+      transition:
+        color 0.25s ease,
+        letter-spacing 0.25s ease;
     }
 
-    .coming-soon-card p {
-      color: #aaa69f;
+    .archive-navigation-description {
+      color: rgba(245, 241, 232, 0.55);
 
-      font-size: 0.86rem;
-      line-height: 1.75;
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1.6;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      transition: color 0.25s ease;
+    }
+
+    .archive-navigation-arrow {
+      color: #d5ad36;
+
+      font-size: 1.35rem;
+      line-height: 1;
+
+      transition: transform 0.25s ease;
+    }
+
+    .archive-navigation-link:hover,
+    .archive-navigation-link:focus-visible {
+      border-color: rgba(213, 173, 54, 0.82);
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(213, 173, 54, 0.11),
+          transparent
+        );
+
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .archive-navigation-link:hover
+      .archive-navigation-title,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-title {
+      color: #e2bd4d;
+      letter-spacing: 0.1em;
+    }
+
+    .archive-navigation-link:hover
+      .archive-navigation-description,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-description {
+      color: rgba(245, 241, 232, 0.75);
+    }
+
+    .archive-navigation-link:hover
+      .archive-navigation-arrow,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-arrow {
+      transform: translateX(5px);
     }
 
     /* ===================================
@@ -579,7 +514,11 @@
     .footer-brand {
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: 0.04em;
@@ -598,17 +537,18 @@
        TABLET
        =================================== */
 
-    @media (max-width: 1050px) {
-      .featured-card {
-        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+    @media (max-width: 1000px) {
+      .latest-card {
+        grid-template-columns: 1fr;
       }
 
-      .featured-content {
-        padding: 42px;
+      .latest-image-link {
+        min-height: auto;
+        aspect-ratio: 1 / 1;
       }
 
-      .music-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .latest-content {
+        padding: 44px 40px 48px;
       }
     }
 
@@ -617,75 +557,42 @@
        =================================== */
 
     @media (max-width: 850px) {
-      .music-toolbar {
-        padding: 22px 34px;
-
-        align-items: flex-start;
-        flex-direction: column;
+      .latest-section {
+        padding: 58px 34px 60px;
       }
 
-      .category-filters {
-        width: 100%;
-        justify-content: flex-start;
-
-        overflow-x: auto;
-        flex-wrap: nowrap;
-
-        padding-bottom: 5px;
-
-        scrollbar-width: thin;
+      .section-label {
+        margin-bottom: 24px;
       }
 
-      .filter-button {
-        flex: 0 0 auto;
+      .latest-content {
+        padding: 35px 27px 38px;
       }
 
-      .featured-music {
-        padding: 47px 34px 20px;
+      .latest-title {
+        font-size: clamp(2.8rem, 12vw, 4rem);
       }
 
-      .featured-card {
-        grid-template-columns: 1fr;
+      .latest-quote {
+        font-size: 1.4rem;
       }
 
-      .featured-cover {
-        min-height: auto;
+      .latest-description {
+        font-size: 0.94rem;
+        line-height: 1.8;
       }
 
-      .featured-cover img {
-        aspect-ratio: 1 / 1;
+      .archive-navigation {
+        padding: 0 34px 74px;
       }
 
-      .featured-content {
-        padding: 35px 25px 38px;
+      .archive-navigation-link {
+        min-height: 155px;
+        padding: 34px 20px;
       }
 
-      .featured-title {
-        font-size: clamp(3rem, 14vw, 4.6rem);
-      }
-
-      .featured-quote {
-        font-size: 1.45rem;
-      }
-
-      .music-section {
-        padding: 37px 34px 78px;
-      }
-
-      .section-heading {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .music-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .music-content {
-        min-height: auto;
-        padding: 23px 21px 25px;
+      .archive-navigation-description {
+        font-size: 0.65rem;
       }
 
       .inner-footer {
@@ -702,18 +609,42 @@
        =================================== */
 
     @media (max-width: 430px) {
-      .featured-actions {
+      .latest-section {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .latest-content {
+        padding: 31px 22px 34px;
+      }
+
+      .latest-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .latest-actions {
         align-items: stretch;
         flex-direction: column;
       }
 
-      .music-button {
+      .latest-action-link {
         width: 100%;
       }
 
-      .music-footer {
-        align-items: flex-start;
-        flex-direction: column;
+      .archive-navigation {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .archive-navigation-link {
+        min-height: 148px;
+        padding: 31px 17px;
+      }
+
+      .archive-navigation-title {
+        font-size: 1.55rem;
       }
     }
 
@@ -726,25 +657,32 @@
     ) and (
       orientation: landscape
     ) {
-      .featured-card {
-        grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+      .latest-card {
+        grid-template-columns:
+          minmax(0, 0.8fr)
+          minmax(0, 1.2fr);
       }
 
-      .featured-cover {
-        min-height: 430px;
-      }
-
-      .featured-cover img {
-        height: 100%;
+      .latest-image-link {
+        min-height: 490px;
         aspect-ratio: auto;
       }
 
-      .featured-content {
-        padding: 35px;
+      .latest-content {
+        padding: 36px 34px;
       }
 
-      .music-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .latest-title {
+        font-size: 3rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
       }
     }
   </style>
@@ -794,7 +732,7 @@
         Civic Explainers
       </a>
 
-      <a href="text-slogan.html">
+      <a href="text-slogans.html">
         Text Slogans
       </a>
 
@@ -807,7 +745,7 @@
       </a>
 
       <a href="about.html">
-  About
+        About
       </a>
     </nav>
 
@@ -816,8 +754,7 @@
   <main>
 
     <!-- ===================================
-         MUSIC HERO
-         SAME AS HOMEPAGE STRUCTURE
+         MUSIC INTRO
          =================================== -->
 
     <section class="hero music-hero">
@@ -845,261 +782,89 @@
     </section>
 
     <!-- ===================================
-         FILTERS
+         LATEST MUSIC
          =================================== -->
 
-    <section
-      class="music-toolbar"
-      aria-label="Music filters"
-    >
+    <section class="latest-section">
 
-      <p class="result-label">
-        Lahat ng Musika
-      </p>
+      <div class="latest-inner">
 
-      <div class="category-filters">
-
-        <button
-          class="filter-button active"
-          type="button"
-          data-filter="all"
-        >
-          Lahat
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="anthem"
-        >
-          Anthem
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="civic"
-        >
-          Civic
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="reflection"
-        >
-          Repleksiyon
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- ===================================
-         FEATURED MUSIC
-         =================================== -->
-
-    <section class="featured-music">
-
-      <article class="featured-card">
-
-        <div class="featured-cover">
-
-          <img
-            src="images/music/hindi-tahimik.jpg"
-            alt="Cover art ng awiting Hindi Tahimik"
-          >
-
-        </div>
-
-        <div class="featured-content">
-
-          <p class="featured-label">
-            Featured Track
-          </p>
-
-          <h2 class="featured-title">
-            Hindi Tahimik
-          </h2>
-
-          <p class="featured-quote">
-            “Hindi ako maingay—pero hindi ako tatahimik.”
-          </p>
-
-          <p class="featured-description">
-            Isang awit tungkol sa tahimik ngunit matatag na
-            paninindigan—para sa mga taong hindi kailangang
-            sumigaw upang tumindig laban sa mali.
-          </p>
-
-          <div class="featured-actions">
-
-            <!-- Palitan ang # kapag mayroon nang official YouTube link -->
-
-            <a
-              class="music-button music-button-primary"
-              href="#"
-            >
-              Pakinggan
-            </a>
-
-            <!-- Palitan ang # kapag mayroon nang individual song page -->
-
-            <a
-              class="music-button music-button-secondary"
-              href="#"
-            >
-              Tingnan ang Lyrics
-            </a>
-
-          </div>
-
-        </div>
-
-      </article>
-
-    </section>
-
-    <!-- ===================================
-         MUSIC ARCHIVE
-         =================================== -->
-
-    <section class="music-section">
-
-      <div class="section-heading">
-
-        <h2>
-          Mga Awit ng Paninindigan
-        </h2>
-
-        <p>
-          jhElmEr Music Archive
+        <p class="section-label">
+          Pinakabagong Musika
         </p>
 
-      </div>
-
-      <div class="music-grid">
-
-        <!-- TRACK 1 -->
-
-        <article
-          class="music-card"
-          data-category="anthem civic"
-        >
+        <article class="latest-card">
 
           <a
+            class="latest-image-link"
             href="#"
-            class="music-cover-link"
             aria-label="Pakinggan ang Hindi Tahimik"
           >
             <img
+              class="latest-image"
               src="images/music/hindi-tahimik.jpg"
-              alt="Cover art ng Hindi Tahimik"
-              class="music-cover"
-              loading="lazy"
+              alt="Cover art ng awiting Hindi Tahimik"
             >
-
-            <span
-              class="play-mark"
-              aria-hidden="true"
-            >
-              ▶
-            </span>
           </a>
 
-          <div class="music-content">
+          <div class="latest-content">
 
-            <p class="music-category">
-              Civic Anthem
+            <p class="latest-kicker">
+              Featured Track
             </p>
 
-            <h2 class="music-title">
+            <h2 class="latest-title">
               <a href="#">
                 Hindi Tahimik
               </a>
             </h2>
 
-            <p class="music-description">
-              Isang awit para sa mga tahimik ngunit hindi
-              pumapayag na manatiling walang tinig sa harap
-              ng mali.
+            <p class="latest-quote">
+              “Hindi ako maingay—pero hindi ako tatahimik.”
             </p>
 
-            <div class="music-footer">
+            <p class="latest-description">
+              Isang awit tungkol sa tahimik ngunit matatag na
+              paninindigan—para sa mga taong hindi kailangang
+              sumigaw upang tumindig laban sa mali.
+            </p>
 
-              <span class="music-type">
+            <div class="latest-meta">
+
+              <span class="latest-category">
+                Civic Anthem
+              </span>
+
+              <span class="latest-status">
                 Official Track
               </span>
 
+            </div>
+
+            <div class="latest-actions">
+
+              <!--
+                Palitan ang # ng official YouTube o music link
+                kapag handa na ang track.
+              -->
+
               <a
+                class="latest-action-link latest-action-primary"
                 href="#"
-                class="listen-link"
               >
                 Pakinggan
               </a>
 
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- TRACK 2 -->
-
-        <article
-          class="music-card"
-          data-category="civic reflection"
-        >
-
-          <a
-            href="#"
-            class="music-cover-link"
-            aria-label="Pakinggan ang Hindi Maliit"
-          >
-            <img
-              src="images/music/hindi-maliit.jpg"
-              alt="Cover art ng Hindi Maliit"
-              class="music-cover"
-              loading="lazy"
-            >
-
-            <span
-              class="play-mark"
-              aria-hidden="true"
-            >
-              ▶
-            </span>
-          </a>
-
-          <div class="music-content">
-
-            <p class="music-category">
-              Civic Hip-Hop
-            </p>
-
-            <h2 class="music-title">
-              <a href="#">
-                Hindi Maliit
-              </a>
-            </h2>
-
-            <p class="music-description">
-              Isang pagharap sa kurap mentality at sa mga
-              maliliit na maling unti-unting nagpapalakas sa
-              sistemang ating kinokondena.
-            </p>
-
-            <div class="music-footer">
-
-              <span class="music-type">
-                Official Track
-              </span>
+              <!--
+                Palitan ang # ng individual music page
+                kapag handa na ang lyrics o track page.
+              -->
 
               <a
+                class="latest-action-link latest-action-secondary"
                 href="#"
-                class="listen-link"
               >
-                Pakinggan
+                Tingnan ang Lyrics
               </a>
 
             </div>
@@ -1108,92 +873,43 @@
 
         </article>
 
-        <!-- TRACK 3 -->
+      </div>
 
-        <article
-          class="music-card"
-          data-category="anthem reflection"
+    </section>
+
+    <!-- ===================================
+         COMPLETE MUSIC ARCHIVE
+         =================================== -->
+
+    <section
+      class="archive-navigation"
+      aria-label="Navigation papunta sa kumpletong music archive"
+    >
+
+      <div class="archive-navigation-inner">
+
+        <a
+          class="archive-navigation-link"
+          href="all-music.html"
+          aria-label="Tingnan ang lahat ng musika"
         >
 
-          <a
-            href="#"
-            class="music-cover-link"
-            aria-label="Pakinggan ang Simpleng Tao"
+          <span class="archive-navigation-title">
+            Lahat ng Musika
+          </span>
+
+          <span class="archive-navigation-description">
+            Tingnan ang kumpletong archive
+          </span>
+
+          <span
+            class="archive-navigation-arrow"
+            aria-hidden="true"
           >
-            <img
-              src="images/music/simpleng-tao.jpg"
-              alt="Cover art ng Simpleng Tao"
-              class="music-cover"
-              loading="lazy"
-            >
+            →
+          </span>
 
-            <span
-              class="play-mark"
-              aria-hidden="true"
-            >
-              ▶
-            </span>
-          </a>
-
-          <div class="music-content">
-
-            <p class="music-category">
-              Personal Anthem
-            </p>
-
-            <h2 class="music-title">
-              <a href="#">
-                Simpleng Tao
-              </a>
-            </h2>
-
-            <p class="music-description">
-              Ang personal na anthem ng jhElmEr—isang simpleng
-              tao ngunit mulat ang mata at malinaw ang
-              paninindigan.
-            </p>
-
-            <div class="music-footer">
-
-              <span class="music-type">
-                Upcoming Track
-              </span>
-
-              <a
-                href="#"
-                class="listen-link"
-              >
-                Alamin Pa
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- COMING SOON -->
-
-        <div class="coming-soon-card">
-
-          <div class="coming-soon-content">
-
-            <p class="coming-soon-number">
-              +
-            </p>
-
-            <h2>
-              Susunod na Awit
-            </h2>
-
-            <p>
-              Dito idaragdag ang mga susunod na awit habang
-              lumalawak ang jhElmEr music archive.
-            </p>
-
-          </div>
-
-        </div>
+        </a>
 
       </div>
 
@@ -1222,51 +938,48 @@
        =================================== -->
 
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
 
     menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
+      const isOpen =
+        mainNav.classList.toggle("is-open");
 
-      menuToggle.classList.toggle("is-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.classList.toggle(
+        "is-open",
+        isOpen
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
     });
 
     mainNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("is-open");
         menuToggle.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
 
-    const filterButtons =
-      document.querySelectorAll(".filter-button");
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-    const musicCards =
-      document.querySelectorAll(".music-card");
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selectedFilter = button.dataset.filter;
-
-        filterButtons.forEach((item) => {
-          item.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        musicCards.forEach((card) => {
-          const cardCategories =
-            card.dataset.category || "";
-
-          const shouldDisplay =
-            selectedFilter === "all" ||
-            cardCategories.includes(selectedFilter);
-
-          card.style.display =
-            shouldDisplay ? "flex" : "none";
-        });
+        menuToggle.setAttribute(
+          "aria-label",
+          "Open navigation menu"
+        );
       });
     });
   </script>
