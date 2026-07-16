@@ -29,11 +29,12 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=26">
+  <link rel="stylesheet" href="style.css?v=27">
 
   <style>
     /* ===================================
-       CIVIC EXPLAINERS PAGE
+       CIVIC EXPLAINERS LANDING PAGE
+       INTRO → LATEST → ARCHIVE
        =================================== */
 
     .inner-page {
@@ -43,7 +44,6 @@
 
     /* ===================================
        CIVIC HERO
-       SAME STRUCTURE AS HOMEPAGE
        =================================== */
 
     .civic-hero .hero-content {
@@ -60,90 +60,58 @@
     }
 
     /* ===================================
-       PAGE TOOLBAR
+       LATEST CIVIC EXPLAINER
        =================================== */
 
-    .explainer-toolbar {
-      padding: 27px 7%;
+    .latest-section {
+      position: relative;
+      padding: 78px 7% 88px;
 
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
+      overflow: hidden;
 
       border-top: 1px solid rgba(245, 241, 232, 0.1);
-      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
     }
 
-    .result-label {
+    .latest-section::after {
+      content: "";
+
+      position: absolute;
+      right: -260px;
+      bottom: -280px;
+
+      width: 570px;
+      height: 570px;
+
+      border: 1px solid rgba(213, 173, 54, 0.15);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .latest-inner {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      margin-bottom: 30px;
+
       color: rgba(245, 241, 232, 0.58);
 
       font-size: 0.73rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
+      font-weight: 800;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
-    .category-filters {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
-
-    .filter-button {
-      min-height: 39px;
-      padding: 9px 15px;
-
-      border: 1px solid rgba(245, 241, 232, 0.16);
-      background: transparent;
-      color: #aaa69f;
-
-      font-family: "Inter", Arial, sans-serif;
-      font-size: 0.69rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-
-      cursor: pointer;
-
-      transition:
-        color 0.22s ease,
-        border-color 0.22s ease,
-        background 0.22s ease;
-    }
-
-    .filter-button:hover,
-    .filter-button.active {
-      color: #111214;
-      border-color: #d5ad36;
-      background: #d5ad36;
-    }
-
-    /* ===================================
-       EXPLAINER LIST
-       =================================== */
-
-    .explainer-section {
-      padding: 66px 7% 72px;
-    }
-
-    .explainer-grid {
-      width: 100%;
-      max-width: 1380px;
-      margin: 0 auto;
-
+    .latest-card {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    .explainer-card {
-      min-width: 0;
-
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+      align-items: stretch;
 
       overflow: hidden;
 
@@ -156,28 +124,37 @@
         background 0.28s ease;
     }
 
-    .explainer-card:hover {
-      transform: translateY(-6px);
+    .latest-card:hover {
+      transform: translateY(-5px);
 
-      border-color: rgba(213, 173, 54, 0.58);
+      border-color: rgba(213, 173, 54, 0.52);
       background: rgba(245, 241, 232, 0.04);
     }
 
-    .card-image-link {
+    .latest-image-link {
+      position: relative;
+
+      min-height: 610px;
+
       display: block;
       overflow: hidden;
 
       background:
+        radial-gradient(
+          circle at 70% 75%,
+          rgba(213, 173, 54, 0.11),
+          transparent 42%
+        ),
         linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.12),
-          rgba(9, 10, 12, 0.92)
+          145deg,
+          rgba(213, 173, 54, 0.1),
+          rgba(9, 10, 12, 0.96)
         );
     }
 
-    .card-image {
+    .latest-image {
       width: 100%;
-      aspect-ratio: 4 / 5;
+      height: 100%;
 
       display: block;
       object-fit: cover;
@@ -185,102 +162,120 @@
       transition: transform 0.42s ease;
     }
 
-    .explainer-card:hover .card-image {
-      transform: scale(1.025);
+    .latest-card:hover .latest-image {
+      transform: scale(1.02);
     }
 
-    .card-content {
-      min-height: 285px;
-      padding: 25px 24px 27px;
+    .latest-content {
+      padding: 54px 52px;
 
       display: flex;
       flex-direction: column;
+      justify-content: center;
     }
 
-    .card-category {
-      margin-bottom: 13px;
+    .latest-kicker {
+      margin-bottom: 20px;
 
       color: #d5ad36;
 
-      font-size: 0.67rem;
+      font-size: 0.7rem;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
-    .card-title {
-      margin-bottom: 15px;
+    .latest-title {
+      max-width: 620px;
+      margin-bottom: 25px;
 
       color: #f5f1e8;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.9rem;
+      font-size: clamp(2.65rem, 5vw, 4.7rem);
       font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.01em;
+      line-height: 0.94;
+      letter-spacing: -0.025em;
       text-transform: uppercase;
     }
 
-    .card-title a {
+    .latest-title a {
       color: inherit;
       text-decoration: none;
 
       transition: color 0.22s ease;
     }
 
-    .card-title a:hover,
-    .card-title a:focus-visible {
+    .latest-title a:hover,
+    .latest-title a:focus-visible {
       color: #d5ad36;
       outline: none;
     }
 
-    .card-excerpt {
-      margin-bottom: 24px;
+    .latest-excerpt {
+      max-width: 590px;
+      margin-bottom: 34px;
 
       color: #aaa69f;
 
-      font-size: 0.88rem;
-      line-height: 1.75;
+      font-size: 1rem;
+      line-height: 1.85;
     }
 
-    .card-footer {
-      margin-top: auto;
-      padding-top: 18px;
+    .latest-meta {
+      margin-bottom: 30px;
+      padding-top: 22px;
 
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+      flex-wrap: wrap;
+      gap: 12px 20px;
 
       border-top: 1px solid rgba(245, 241, 232, 0.1);
     }
 
-    .card-date {
-      color: rgba(245, 241, 232, 0.46);
-
+    .latest-category,
+    .latest-date {
       font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .read-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-
-      color: #f5f1e8;
-      text-decoration: none;
-
-      font-size: 0.68rem;
-      font-weight: 800;
+      font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
-
-      transition: color 0.22s ease;
     }
 
-    .read-link::after {
+    .latest-category {
+      color: #d5ad36;
+    }
+
+    .latest-date {
+      color: rgba(245, 241, 232, 0.46);
+    }
+
+    .latest-read-link {
+      width: fit-content;
+      min-height: 48px;
+      padding: 13px 20px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 11px;
+
+      border: 1px solid rgba(213, 173, 54, 0.46);
+      color: #f5f1e8;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease;
+    }
+
+    .latest-read-link::after {
       content: "→";
 
       color: #d5ad36;
@@ -289,87 +284,38 @@
       transition: transform 0.22s ease;
     }
 
-    .read-link:hover,
-    .read-link:focus-visible {
-      color: #d5ad36;
+    .latest-read-link:hover,
+    .latest-read-link:focus-visible {
+      color: #111214;
+      border-color: #d5ad36;
+      background: #d5ad36;
       outline: none;
     }
 
-    .read-link:hover::after,
-    .read-link:focus-visible::after {
+    .latest-read-link:hover::after,
+    .latest-read-link:focus-visible::after {
+      color: #111214;
       transform: translateX(4px);
     }
 
     /* ===================================
-       COMING SOON CARD
+       ARCHIVE NAVIGATION
        =================================== */
 
-    .coming-soon-card {
-      min-height: 420px;
-      padding: 46px 30px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border: 1px dashed rgba(245, 241, 232, 0.17);
-      background: rgba(245, 241, 232, 0.015);
-      text-align: center;
+    .archive-navigation {
+      padding: 0 7% 94px;
     }
 
-    .coming-soon-content {
-      max-width: 310px;
-    }
-
-    .coming-soon-number {
-      margin-bottom: 20px;
-
-      color: rgba(213, 173, 54, 0.42);
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 3.8rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .coming-soon-card h2 {
-      margin-bottom: 14px;
-
-      color: #f5f1e8;
-
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: 1.9rem;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .coming-soon-card p {
-      color: #aaa69f;
-
-      font-size: 0.86rem;
-      line-height: 1.75;
-    }
-
-    /* ===================================
-       ARCHIVE NAVIGATION GATEWAY
-       =================================== */
-
-    .archive-gateway {
-      padding: 18px 7% 92px;
-    }
-
-    .archive-gateway-inner {
+    .archive-navigation-inner {
       width: 100%;
-      max-width: 1380px;
+      max-width: 1180px;
       margin: 0 auto;
     }
 
-    .archive-gateway-link {
-      position: relative;
-
+    .archive-navigation-link {
       width: 100%;
-      min-height: 170px;
-      padding: 38px 28px;
+      min-height: 165px;
+      padding: 38px 26px;
 
       display: flex;
       align-items: center;
@@ -377,18 +323,17 @@
       flex-direction: column;
       gap: 10px;
 
-      border-top: 1px solid rgba(213, 173, 54, 0.34);
-      border-bottom: 1px solid rgba(213, 173, 54, 0.34);
+      border-top: 1px solid rgba(213, 173, 54, 0.38);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.38);
 
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(213, 173, 54, 0.045),
+          rgba(213, 173, 54, 0.05),
           transparent
         );
 
-      color: #f5f1e8;
       text-align: center;
       text-decoration: none;
 
@@ -398,11 +343,11 @@
         transform 0.25s ease;
     }
 
-    .archive-gateway-label {
+    .archive-navigation-title {
       color: #d5ad36;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
       font-weight: 800;
       line-height: 1;
       letter-spacing: 0.08em;
@@ -413,59 +358,62 @@
         letter-spacing 0.25s ease;
     }
 
-    .archive-gateway-description {
-      color: rgba(245, 241, 232, 0.54);
+    .archive-navigation-description {
+      color: rgba(245, 241, 232, 0.55);
 
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
       line-height: 1.6;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
 
       transition: color 0.25s ease;
     }
 
-    .archive-gateway-link::after {
-      content: "→";
-
-      margin-top: 3px;
-
+    .archive-navigation-arrow {
       color: #d5ad36;
+
       font-size: 1.35rem;
       line-height: 1;
 
       transition: transform 0.25s ease;
     }
 
-    .archive-gateway-link:hover,
-    .archive-gateway-link:focus-visible {
-      border-color: rgba(213, 173, 54, 0.78);
+    .archive-navigation-link:hover,
+    .archive-navigation-link:focus-visible {
+      border-color: rgba(213, 173, 54, 0.82);
 
       background:
         linear-gradient(
           90deg,
           transparent,
-          rgba(213, 173, 54, 0.1),
+          rgba(213, 173, 54, 0.11),
           transparent
         );
 
-      outline: none;
       transform: translateY(-2px);
+      outline: none;
     }
 
-    .archive-gateway-link:hover .archive-gateway-label,
-    .archive-gateway-link:focus-visible .archive-gateway-label {
+    .archive-navigation-link:hover
+      .archive-navigation-title,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-title {
       color: #e2bd4d;
       letter-spacing: 0.1em;
     }
 
-    .archive-gateway-link:hover .archive-gateway-description,
-    .archive-gateway-link:focus-visible .archive-gateway-description {
-      color: rgba(245, 241, 232, 0.72);
+    .archive-navigation-link:hover
+      .archive-navigation-description,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-description {
+      color: rgba(245, 241, 232, 0.75);
     }
 
-    .archive-gateway-link:hover::after,
-    .archive-gateway-link:focus-visible::after {
+    .archive-navigation-link:hover
+      .archive-navigation-arrow,
+    .archive-navigation-link:focus-visible
+      .archive-navigation-arrow {
       transform: translateX(5px);
     }
 
@@ -506,9 +454,18 @@
        TABLET
        =================================== */
 
-    @media (max-width: 1050px) {
-      .explainer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (max-width: 1000px) {
+      .latest-card {
+        grid-template-columns: 1fr;
+      }
+
+      .latest-image-link {
+        min-height: auto;
+        aspect-ratio: 4 / 5;
+      }
+
+      .latest-content {
+        padding: 44px 40px 48px;
       }
     }
 
@@ -517,58 +474,38 @@
        =================================== */
 
     @media (max-width: 850px) {
-      .explainer-toolbar {
-        padding: 22px 34px;
-
-        align-items: flex-start;
-        flex-direction: column;
+      .latest-section {
+        padding: 58px 34px 60px;
       }
 
-      .category-filters {
-        width: 100%;
-        justify-content: flex-start;
-
-        overflow-x: auto;
-        flex-wrap: nowrap;
-
-        padding-bottom: 5px;
-
-        scrollbar-width: thin;
+      .section-label {
+        margin-bottom: 24px;
       }
 
-      .filter-button {
-        flex: 0 0 auto;
+      .latest-content {
+        padding: 35px 27px 38px;
       }
 
-      .explainer-section {
-        padding: 47px 34px 60px;
+      .latest-title {
+        font-size: clamp(2.45rem, 11vw, 3.65rem);
       }
 
-      .explainer-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
+      .latest-excerpt {
+        font-size: 0.94rem;
+        line-height: 1.8;
       }
 
-      .card-content {
-        min-height: auto;
-        padding: 23px 21px 25px;
+      .archive-navigation {
+        padding: 0 34px 74px;
       }
 
-      .card-title {
-        font-size: 1.75rem;
-      }
-
-      .archive-gateway {
-        padding: 4px 34px 72px;
-      }
-
-      .archive-gateway-link {
+      .archive-navigation-link {
         min-height: 155px;
         padding: 34px 20px;
       }
 
-      .archive-gateway-description {
-        font-size: 0.66rem;
+      .archive-navigation-description {
+        font-size: 0.65rem;
       }
 
       .inner-footer {
@@ -585,17 +522,36 @@
        =================================== */
 
     @media (max-width: 430px) {
-      .card-footer {
+      .latest-section {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .latest-content {
+        padding: 31px 22px 34px;
+      }
+
+      .latest-meta {
         align-items: flex-start;
         flex-direction: column;
+        gap: 8px;
       }
 
-      .archive-gateway-link {
+      .latest-read-link {
+        width: 100%;
+      }
+
+      .archive-navigation {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .archive-navigation-link {
         min-height: 148px;
-        padding: 31px 18px;
+        padding: 31px 17px;
       }
 
-      .archive-gateway-label {
+      .archive-navigation-title {
         font-size: 1.55rem;
       }
     }
@@ -609,8 +565,21 @@
     ) and (
       orientation: landscape
     ) {
-      .explainer-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .latest-card {
+        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      }
+
+      .latest-image-link {
+        min-height: 490px;
+        aspect-ratio: auto;
+      }
+
+      .latest-content {
+        padding: 36px 34px;
+      }
+
+      .latest-title {
+        font-size: 2.8rem;
       }
     }
 
@@ -691,7 +660,7 @@
   <main>
 
     <!-- ===================================
-         CIVIC HERO
+         CIVIC INTRO
          =================================== -->
 
     <section class="hero civic-hero">
@@ -723,394 +692,74 @@
     </section>
 
     <!-- ===================================
-         FILTERS
+         LATEST CIVIC EXPLAINER
          =================================== -->
 
-    <section
-      class="explainer-toolbar"
-      aria-label="Civic Explainer filters"
-    >
+    <section class="latest-section">
 
-      <p class="result-label">
-        Lahat ng Civic Explainers
-      </p>
+      <div class="latest-inner">
 
-      <div class="category-filters">
+        <p class="section-label">
+          Pinakabagong Civic Explainer
+        </p>
 
-        <button
-          class="filter-button active"
-          type="button"
-          data-filter="all"
-        >
-          Lahat
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="governance"
-        >
-          Pamahalaan
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="law"
-        >
-          Batas
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="society"
-        >
-          Lipunan
-        </button>
-
-        <button
-          class="filter-button"
-          type="button"
-          data-filter="accountability"
-        >
-          Pananagutan
-        </button>
-
-      </div>
-
-    </section>
-
-    <!-- ===================================
-         CIVIC EXPLAINER CARDS
-         =================================== -->
-
-    <section class="explainer-section">
-
-      <div class="explainer-grid">
-
-        <!-- CARD 1 -->
-
-        <article
-          class="explainer-card"
-          data-category="accountability governance law"
-        >
+        <article class="latest-card">
 
           <a
+            class="latest-image-link"
             href="article.html"
-            class="card-image-link"
             aria-label="Basahin ang Ano ang Mas Mahal?"
           >
             <img
+              class="latest-image"
               src="images/civic/impeachment-gastos.jpg"
               alt="Visual para sa civic explainer na Ano ang Mas Mahal?"
-              class="card-image"
-              loading="lazy"
             >
           </a>
 
-          <div class="card-content">
+          <div class="latest-content">
 
-            <p class="card-category">
-              Pananagutan
+            <p class="latest-kicker">
+              Civic Explainer
             </p>
 
-            <h2 class="card-title">
+            <h2 class="latest-title">
               <a href="article.html">
                 Ano ang Mas Mahal?
               </a>
             </h2>
 
-            <p class="card-excerpt">
+            <p class="latest-excerpt">
               Ang gastos sa impeachment ay madaling bilangin.
               Ngunit paano sinusukat ang halaga ng pananagutang
               pinangangalagaan nito?
             </p>
 
-            <div class="card-footer">
+            <div class="latest-meta">
+
+              <span class="latest-category">
+                Pananagutan
+              </span>
 
               <time
-                class="card-date"
+                class="latest-date"
                 datetime="2026-07-12"
               >
                 Hulyo 12, 2026
               </time>
 
-              <a
-                href="article.html"
-                class="read-link"
-              >
-                Basahin
-              </a>
-
             </div>
 
-          </div>
-
-        </article>
-
-        <!-- CARD 2 -->
-
-        <article
-          class="explainer-card"
-          data-category="governance accountability society"
-        >
-
-          <a
-            href="article.html"
-            class="card-image-link"
-            aria-label="Basahin ang Ebidensiya o Meme?"
-          >
-            <img
-              src="images/civic/ebidensiya-o-meme.jpg"
-              alt="Visual para sa civic explainer na Ebidensiya o Meme?"
-              class="card-image"
-              loading="lazy"
+            <a
+              class="latest-read-link"
+              href="article.html"
             >
-          </a>
-
-          <div class="card-content">
-
-            <p class="card-category">
-              Pamahalaan
-            </p>
-
-            <h2 class="card-title">
-              <a href="article.html">
-                Ebidensiya o Meme?
-              </a>
-            </h2>
-
-            <p class="card-excerpt">
-              Kapag ang pinakanaaalala sa isang paglilitis ay ang
-              naging meme, ano ang mahahalagang detalye na hindi
-              na natin napansin?
-            </p>
-
-            <div class="card-footer">
-
-              <time
-                class="card-date"
-                datetime="2026-07-07"
-              >
-                Hulyo 7, 2026
-              </time>
-
-              <a
-                href="article.html"
-                class="read-link"
-              >
-                Basahin
-              </a>
-
-            </div>
+              Basahin ang Explainer
+            </a>
 
           </div>
 
         </article>
-
-        <!-- CARD 3 -->
-
-        <article
-          class="explainer-card"
-          data-category="society"
-        >
-
-          <a
-            href="article.html"
-            class="card-image-link"
-            aria-label="Basahin ang Insulto ang Sagot?"
-          >
-            <img
-              src="images/civic/insulto-ang-sagot.jpg"
-              alt="Visual para sa civic explainer na Insulto ang Sagot?"
-              class="card-image"
-              loading="lazy"
-            >
-          </a>
-
-          <div class="card-content">
-
-            <p class="card-category">
-              Lipunan
-            </p>
-
-            <h2 class="card-title">
-              <a href="article.html">
-                Insulto ang Sagot?
-              </a>
-            </h2>
-
-            <p class="card-excerpt">
-              Kapag ang tao ang unang inaatake kaysa sagutin
-              ang argumento, mas nalilihis ang usapan mula sa
-              isyu papunta sa personalidad.
-            </p>
-
-            <div class="card-footer">
-
-              <time
-                class="card-date"
-                datetime="2026-07-10"
-              >
-                Hulyo 10, 2026
-              </time>
-
-              <a
-                href="article.html"
-                class="read-link"
-              >
-                Basahin
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- CARD 4 -->
-
-        <article
-          class="explainer-card"
-          data-category="law accountability"
-        >
-
-          <a
-            href="article.html"
-            class="card-image-link"
-            aria-label="Basahin ang Donasyon o Suhol?"
-          >
-            <img
-              src="images/civic/donasyon-o-suhol.jpg"
-              alt="Visual para sa civic explainer na Donasyon o Suhol?"
-              class="card-image"
-              loading="lazy"
-            >
-          </a>
-
-          <div class="card-content">
-
-            <p class="card-category">
-              Batas
-            </p>
-
-            <h2 class="card-title">
-              <a href="article.html">
-                Donasyon o Suhol?
-              </a>
-            </h2>
-
-            <p class="card-excerpt">
-              Hindi sapat na tawaging donasyon ang isang ibinigay
-              na halaga. Kailangang suriin ang pinagmulan,
-              layunin, at buong konteksto nito.
-            </p>
-
-            <div class="card-footer">
-
-              <time
-                class="card-date"
-                datetime="2026-07-02"
-              >
-                Hulyo 2, 2026
-              </time>
-
-              <a
-                href="article.html"
-                class="read-link"
-              >
-                Basahin
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- CARD 5 -->
-
-        <article
-          class="explainer-card"
-          data-category="law society"
-        >
-
-          <a
-            href="article.html"
-            class="card-image-link"
-            aria-label="Basahin ang Bakit Marami ang Nalito?"
-          >
-            <img
-              src="images/civic/bakit-marami-ang-nalito.jpg"
-              alt="Visual para sa civic explainer na Bakit Marami ang Nalito?"
-              class="card-image"
-              loading="lazy"
-            >
-          </a>
-
-          <div class="card-content">
-
-            <p class="card-category">
-              Batas
-            </p>
-
-            <h2 class="card-title">
-              <a href="article.html">
-                Bakit Marami ang Nalito?
-              </a>
-            </h2>
-
-            <p class="card-excerpt">
-              Ang isang legal na pahayag ay kailangang suriin
-              ayon sa sariling saklaw, proseso, at rules on
-              evidence na gumagabay rito.
-            </p>
-
-            <div class="card-footer">
-
-              <time
-                class="card-date"
-                datetime="2026-06-30"
-              >
-                Hunyo 30, 2026
-              </time>
-
-              <a
-                href="article.html"
-                class="read-link"
-              >
-                Basahin
-              </a>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- COMING SOON -->
-
-        <div class="coming-soon-card">
-
-          <div class="coming-soon-content">
-
-            <p class="coming-soon-number">
-              +
-            </p>
-
-            <h2>
-              Susunod na Explainer
-            </h2>
-
-            <p>
-              Dito idaragdag ang susunod na civic explainer
-              habang lumalawak ang permanenteng archive.
-            </p>
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -1121,24 +770,31 @@
          =================================== -->
 
     <section
-      class="archive-gateway"
-      aria-label="Complete Civic Explainers archive"
+      class="archive-navigation"
+      aria-label="Navigation papunta sa kumpletong Civic Explainers archive"
     >
 
-      <div class="archive-gateway-inner">
+      <div class="archive-navigation-inner">
 
         <a
-          class="archive-gateway-link"
+          class="archive-navigation-link"
           href="all-civic-explainers.html"
           aria-label="Tingnan ang lahat ng Civic Explainers"
         >
 
-          <span class="archive-gateway-label">
+          <span class="archive-navigation-title">
             Lahat ng Civic Explainers
           </span>
 
-          <span class="archive-gateway-description">
+          <span class="archive-navigation-description">
             Tingnan ang kumpletong archive
+          </span>
+
+          <span
+            class="archive-navigation-arrow"
+            aria-hidden="true"
+          >
+            →
           </span>
 
         </a>
@@ -1170,51 +826,48 @@
        =================================== -->
 
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
 
     menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
+      const isOpen =
+        mainNav.classList.toggle("is-open");
 
-      menuToggle.classList.toggle("is-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.classList.toggle(
+        "is-open",
+        isOpen
+      );
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
     });
 
     mainNav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         mainNav.classList.remove("is-open");
         menuToggle.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
 
-    const filterButtons =
-      document.querySelectorAll(".filter-button");
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-    const explainerCards =
-      document.querySelectorAll(".explainer-card");
-
-    filterButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const selectedFilter = button.dataset.filter;
-
-        filterButtons.forEach((item) => {
-          item.classList.remove("active");
-        });
-
-        button.classList.add("active");
-
-        explainerCards.forEach((card) => {
-          const cardCategories =
-            card.dataset.category || "";
-
-          const shouldDisplay =
-            selectedFilter === "all" ||
-            cardCategories.includes(selectedFilter);
-
-          card.style.display =
-            shouldDisplay ? "flex" : "none";
-        });
+        menuToggle.setAttribute(
+          "aria-label",
+          "Open navigation menu"
+        );
       });
     });
   </script>
