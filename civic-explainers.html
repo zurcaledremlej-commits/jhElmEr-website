@@ -29,8 +29,10 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=29">
-/* ===================================
+  <link rel="stylesheet" href="style.css?v=30">
+
+  <style>
+    /* ===================================
        CIVIC EXPLAINERS LANDING PAGE
        INTRO → LATEST → ARCHIVE
        =================================== */
@@ -39,7 +41,7 @@
       min-height: 100vh;
       background: #090a0c;
     }
-  <style>
+
     /* ===================================
        CIVIC HERO
        =================================== */
@@ -63,6 +65,7 @@
 
     .latest-section {
       position: relative;
+
       padding: 78px 7% 88px;
 
       overflow: hidden;
@@ -108,9 +111,11 @@
 
     .latest-card {
       display: grid;
-      grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
-      align-items: stretch;
+      grid-template-columns:
+        minmax(0, 0.86fr)
+        minmax(0, 1.14fr);
 
+      align-items: stretch;
       overflow: hidden;
 
       border: 1px solid rgba(245, 241, 232, 0.13);
@@ -301,56 +306,57 @@
        =================================== */
 
     .archive-navigation {
-    position: relative;
-    z-index: 20;
+      position: relative;
+      z-index: 20;
 
-    padding: 0 7% 94px;
-}
+      padding: 0 7% 94px;
+    }
 
-.archive-navigation-inner {
-    position: relative;
-    z-index: 21;
+    .archive-navigation-inner {
+      position: relative;
+      z-index: 21;
 
-    width: 100%;
-    max-width: 1180px;
-    margin: 0 auto;
-}
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-.archive-navigation-link {
-    position: relative;
-    z-index: 22;
+    .archive-navigation-link {
+      position: relative;
+      z-index: 22;
 
-    width: 100%;
-    min-height: 165px;
-    padding: 38px 26px;
+      width: 100%;
+      min-height: 165px;
+      padding: 38px 26px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
 
-    border-top: 1px solid rgba(213,173,54,.38);
-    border-bottom: 1px solid rgba(213,173,54,.38);
+      border-top: 1px solid rgba(213, 173, 54, 0.38);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.38);
 
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(213,173,54,.05),
-        transparent
-    );
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(213, 173, 54, 0.05),
+          transparent
+        );
 
-    text-align: center;
-    text-decoration: none;
+      text-align: center;
+      text-decoration: none;
 
-    cursor: pointer;
-    pointer-events: auto;
+      cursor: pointer;
+      pointer-events: auto;
 
-    transition:
-        border-color .25s ease,
-        background .25s ease,
-        transform .25s ease;
-}
+      transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease;
+    }
 
     .archive-navigation-title {
       color: #d5ad36;
@@ -575,7 +581,9 @@
       orientation: landscape
     ) {
       .latest-card {
-        grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+        grid-template-columns:
+          minmax(0, 0.8fr)
+          minmax(0, 1.2fr);
       }
 
       .latest-image-link {
@@ -601,15 +609,6 @@
       }
     }
   </style>
-  /* ===================================
-   CIVIC HERO SPACING CORRECTION
-   =================================== */
-
-@media (max-width: 850px) {
-  .civic-hero {
-    padding-top: 28px !important;
-  }
-}
 </head>
 
 <body class="inner-page">
@@ -674,38 +673,40 @@
     </nav>
 
   </header>
-<!-- ==========================
-     BACK TO HOME
-========================== -->
 
-<section class="back-navigation">
-<nav
-  class="back-navigation"
-  aria-label="Back navigation"
->
+  <!-- ===================================
+       BACK TO HOME
+       =================================== -->
 
-  <div class="back-navigation-inner">
+  <div
+    class="back-navigation"
+    role="navigation"
+    aria-label="Back navigation"
+  >
 
-    <a
-      href="index.html"
-      class="back-navigation-link"
-      aria-label="Bumalik sa Home"
-    >
-      <span
-        class="back-arrow"
-        aria-hidden="true"
+    <div class="back-navigation-inner">
+
+      <a
+        href="index.html"
+        class="back-navigation-link"
+        aria-label="Bumalik sa Home"
       >
-        ←
-      </span>
+        <span
+          class="back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
 
-      <span class="back-text">
-        Home
-      </span>
-    </a>
+        <span class="back-text">
+          Home
+        </span>
+      </a>
+
+    </div>
 
   </div>
 
-</nav>
   <main>
 
     <!-- ===================================
@@ -881,44 +882,46 @@
     const mainNav =
       document.querySelector(".main-nav");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen =
-        mainNav.classList.toggle("is-open");
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
 
-      menuToggle.classList.toggle(
-        "is-open",
-        isOpen
-      );
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Close navigation menu"
-          : "Open navigation menu"
-      );
-    });
-
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        menuToggle.classList.remove("is-open");
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
 
         menuToggle.setAttribute(
           "aria-expanded",
-          "false"
+          String(isOpen)
         );
 
         menuToggle.setAttribute(
           "aria-label",
-          "Open navigation menu"
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
         );
       });
-    });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("is-open");
+          menuToggle.classList.remove("is-open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+        });
+      });
+    }
   </script>
 
 </body>
