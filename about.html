@@ -17,23 +17,20 @@
   <title>About | jhElmEr</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css?v=29">
-/* ===================================
-   ABOUT HERO SPACING CORRECTION
-   =================================== */
+  <link rel="stylesheet" href="style.css?v=30">
 
-@media (max-width: 850px) {
-  .about-hero {
-    padding-top: 28px !important;
-  }
-}
   <style>
     /* ===================================
        ABOUT PAGE
@@ -46,7 +43,6 @@
 
     /* ===================================
        ABOUT HERO
-       SAME STRUCTURE AS HOMEPAGE
        =================================== */
 
     .about-hero .hero-content {
@@ -72,7 +68,8 @@
     .about-section {
       padding: 90px 7%;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      border-top:
+        1px solid rgba(245, 241, 232, 0.1);
     }
 
     .about-section-inner {
@@ -99,7 +96,11 @@
 
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: clamp(2.8rem, 5vw, 5.3rem);
       font-weight: 800;
       line-height: 0.94;
@@ -136,28 +137,32 @@
 
     .purpose-layout {
       display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 0.6fr);
+      grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(320px, 0.6fr);
+
       gap: 70px;
       align-items: start;
     }
 
     .purpose-statement {
-      padding: 38px 0 0 35px;
-
       position: relative;
 
-      border-left: 1px solid rgba(213, 173, 54, 0.55);
+      padding: 38px 0 0 35px;
+
+      border-left:
+        1px solid rgba(213, 173, 54, 0.55);
     }
 
     .purpose-statement::before {
       content: "";
 
-      width: 9px;
-      height: 9px;
-
       position: absolute;
       top: 0;
       left: -5px;
+
+      width: 9px;
+      height: 9px;
 
       border-radius: 50%;
       background: #d5ad36;
@@ -166,7 +171,11 @@
     .purpose-statement p {
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: clamp(2rem, 3.6vw, 3.7rem);
       font-weight: 700;
       line-height: 1.08;
@@ -187,22 +196,28 @@
 
     .pillar-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
       gap: 26px;
     }
 
     .pillar-card {
+      position: relative;
+
       min-height: 390px;
       padding: 34px 30px 31px;
 
       display: flex;
       flex-direction: column;
 
-      position: relative;
       overflow: hidden;
 
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      background: rgba(245, 241, 232, 0.025);
+      border:
+        1px solid rgba(245, 241, 232, 0.13);
+
+      background:
+        rgba(245, 241, 232, 0.025);
 
       transition:
         transform 0.28s ease,
@@ -213,15 +228,19 @@
     .pillar-card::after {
       content: "";
 
-      width: 160px;
-      height: 160px;
-
       position: absolute;
       right: -95px;
       bottom: -95px;
 
-      border: 1px solid rgba(213, 173, 54, 0.17);
+      width: 160px;
+      height: 160px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.17);
+
       border-radius: 50%;
+
+      pointer-events: none;
 
       transition:
         transform 0.3s ease,
@@ -231,13 +250,18 @@
     .pillar-card:hover {
       transform: translateY(-6px);
 
-      border-color: rgba(213, 173, 54, 0.58);
-      background: rgba(245, 241, 232, 0.04);
+      border-color:
+        rgba(213, 173, 54, 0.58);
+
+      background:
+        rgba(245, 241, 232, 0.04);
     }
 
     .pillar-card:hover::after {
       transform: scale(1.18);
-      border-color: rgba(213, 173, 54, 0.36);
+
+      border-color:
+        rgba(213, 173, 54, 0.36);
     }
 
     .pillar-number {
@@ -245,7 +269,11 @@
 
       color: rgba(213, 173, 54, 0.46);
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 3.4rem;
       font-weight: 800;
       line-height: 1;
@@ -256,7 +284,11 @@
 
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 2rem;
       font-weight: 800;
       line-height: 1;
@@ -273,6 +305,9 @@
     }
 
     .pillar-link {
+      position: relative;
+      z-index: 2;
+
       margin-top: auto;
 
       display: inline-flex;
@@ -299,11 +334,14 @@
       transition: transform 0.22s ease;
     }
 
-    .pillar-link:hover {
+    .pillar-link:hover,
+    .pillar-link:focus-visible {
       color: #d5ad36;
+      outline: none;
     }
 
-    .pillar-link:hover::after {
+    .pillar-link:hover::after,
+    .pillar-link:focus-visible::after {
       transform: translateX(4px);
     }
 
@@ -322,7 +360,10 @@
 
     .principles-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 0.55fr) minmax(0, 1fr);
+      grid-template-columns:
+        minmax(280px, 0.55fr)
+        minmax(0, 1fr);
+
       gap: 78px;
       align-items: start;
     }
@@ -333,24 +374,32 @@
     }
 
     .principles-list {
-      border-top: 1px solid rgba(245, 241, 232, 0.13);
+      border-top:
+        1px solid rgba(245, 241, 232, 0.13);
     }
 
     .principle-item {
       padding: 30px 0;
 
       display: grid;
-      grid-template-columns: 70px minmax(0, 1fr);
+      grid-template-columns:
+        70px minmax(0, 1fr);
+
       gap: 23px;
       align-items: start;
 
-      border-bottom: 1px solid rgba(245, 241, 232, 0.13);
+      border-bottom:
+        1px solid rgba(245, 241, 232, 0.13);
     }
 
     .principle-number {
       color: rgba(213, 173, 54, 0.55);
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 1.35rem;
       font-weight: 800;
       line-height: 1;
@@ -361,7 +410,11 @@
 
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 1.75rem;
       font-weight: 800;
       line-height: 1;
@@ -389,11 +442,16 @@
       padding: 58px;
 
       display: grid;
-      grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr);
+      grid-template-columns:
+        minmax(0, 0.7fr)
+        minmax(0, 1fr);
+
       gap: 64px;
       align-items: center;
 
-      border: 1px solid rgba(213, 173, 54, 0.32);
+      border:
+        1px solid rgba(213, 173, 54, 0.32);
+
       background:
         linear-gradient(
           135deg,
@@ -405,7 +463,11 @@
     .independent-title {
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: clamp(2.7rem, 4.5vw, 4.7rem);
       font-weight: 800;
       line-height: 0.94;
@@ -453,7 +515,11 @@
 
       color: #d5ad36;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 3.4rem;
       font-weight: 800;
       line-height: 0.7;
@@ -462,7 +528,11 @@
     .closing-statement {
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: clamp(2.25rem, 4.8vw, 5rem);
       font-weight: 700;
       line-height: 1.05;
@@ -489,13 +559,18 @@
       justify-content: space-between;
       gap: 24px;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.12);
+      border-top:
+        1px solid rgba(245, 241, 232, 0.12);
     }
 
     .footer-brand {
       color: #f5f1e8;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: 0.04em;
@@ -516,16 +591,23 @@
 
     @media (max-width: 1050px) {
       .purpose-layout {
-        grid-template-columns: minmax(0, 1fr) minmax(280px, 0.58fr);
+        grid-template-columns:
+          minmax(0, 1fr)
+          minmax(280px, 0.58fr);
+
         gap: 48px;
       }
 
       .pillar-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
       }
 
       .principles-layout {
-        grid-template-columns: minmax(240px, 0.48fr) minmax(0, 1fr);
+        grid-template-columns:
+          minmax(240px, 0.48fr)
+          minmax(0, 1fr);
+
         gap: 50px;
       }
 
@@ -585,7 +667,9 @@
       }
 
       .principle-item {
-        grid-template-columns: 52px minmax(0, 1fr);
+        grid-template-columns:
+          52px minmax(0, 1fr);
+
         gap: 17px;
       }
 
@@ -640,6 +724,19 @@
         padding-left: 24px;
       }
     }
+
+    /* ===================================
+       REDUCED MOTION
+       =================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -687,7 +784,7 @@
         Civic Explainers
       </a>
 
-      <a href="text-slogan.html">
+      <a href="text-slogans.html">
         Text Slogans
       </a>
 
@@ -705,43 +802,44 @@
     </nav>
 
   </header>
-<!-- ==========================
-     BACK TO HOME
-========================== -->
 
-<section class="back-navigation">
-<nav
-  class="back-navigation"
-  aria-label="Back navigation"
->
+  <!-- ===================================
+       BACK TO HOME
+       =================================== -->
 
-  <div class="back-navigation-inner">
+  <div
+    class="back-navigation"
+    role="navigation"
+    aria-label="Back navigation"
+  >
 
-    <a
-      href="index.html"
-      class="back-navigation-link"
-      aria-label="Bumalik sa Home"
-    >
-      <span
-        class="back-arrow"
-        aria-hidden="true"
+    <div class="back-navigation-inner">
+
+      <a
+        href="index.html"
+        class="back-navigation-link"
+        aria-label="Bumalik sa Home"
       >
-        ←
-      </span>
+        <span
+          class="back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
 
-      <span class="back-text">
-        Home
-      </span>
-    </a>
+        <span class="back-text">
+          Home
+        </span>
+      </a>
+
+    </div>
 
   </div>
 
-</nav>
   <main>
 
     <!-- ===================================
          ABOUT HERO
-         SAME AS HOMEPAGE STRUCTURE
          =================================== -->
 
     <section class="hero about-hero">
@@ -791,7 +889,10 @@
           <div class="section-copy">
 
             <p>
-              Ako si jhElmEr, isang simpleng tao na bumuo ng independent civic at creative platform na ito upang magkaroon ng permanenteng tahanan ang mga paliwanag, mensahe, at likhang may malinaw na layunin.
+              Ako si jhElmEr, isang simpleng tao na bumuo ng
+              independent civic at creative platform na ito upang
+              magkaroon ng permanenteng tahanan ang mga paliwanag,
+              mensahe, at likhang may malinaw na layunin.
             </p>
 
             <p>
@@ -899,7 +1000,7 @@
 
             <a
               class="pillar-link"
-              href="text-slogan.html"
+              href="text-slogans.html"
             >
               Tingnan ang Slogans
             </a>
@@ -1046,8 +1147,8 @@
 
               <p>
                 Ang pagiging popular, makapangyarihan, o mataas ang
-                posisyon ay hindi dapat maging dahilan upang
-                mawala ang pamantayan ng pananagutan.
+                posisyon ay hindi dapat maging dahilan upang mawala
+                ang pamantayan ng pananagutan.
               </p>
 
             </div>
@@ -1167,25 +1268,54 @@
        =================================== -->
 
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
+    const menuToggle =
+      document.querySelector(".menu-toggle");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
+    const mainNav =
+      document.querySelector(".main-nav");
 
-      menuToggle.classList.toggle("is-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
 
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        menuToggle.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
       });
-    });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("is-open");
+          menuToggle.classList.remove("is-open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+        });
+      });
+    }
   </script>
 
 </body>
 
-  </html>
+</html>
