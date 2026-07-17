@@ -1617,17 +1617,22 @@ body {
    BACK NAVIGATION
    =================================== */
 
-.back-navigation {
+section.back-navigation {
   position: relative;
   z-index: 30;
 
-  width: 100%;
-  min-height: 0;
-  height: auto;
+  width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
 
-  padding: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  display: block;
+  display: block !important;
+  align-items: initial !important;
+  justify-content: initial !important;
+
+  overflow: visible;
 
   border-top: 0;
   border-bottom: 1px solid rgba(245, 241, 232, 0.08);
@@ -1635,18 +1640,25 @@ body {
   background: #090a0c;
 }
 
-.back-navigation-inner {
+section.back-navigation .back-navigation-inner {
   width: 100%;
   max-width: 1380px;
-  margin: 0 auto;
+  min-height: 0 !important;
+  height: auto !important;
 
+  margin: 0 auto;
   padding: 15px 7%;
+
+  display: block;
 }
 
-.back-navigation-link {
+section.back-navigation .back-navigation-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+
+  min-height: 0;
+  height: auto;
 
   color: rgba(245, 241, 232, 0.58);
   text-decoration: none;
@@ -1662,27 +1674,27 @@ body {
     transform 0.22s ease;
 }
 
-.back-arrow {
+section.back-navigation .back-arrow {
   color: #d5ad36;
   font-size: 1rem;
   line-height: 1;
 }
 
-.back-navigation-link:hover,
-.back-navigation-link:focus-visible {
+section.back-navigation .back-navigation-link:hover,
+section.back-navigation .back-navigation-link:focus-visible {
   color: #d5ad36;
   transform: translateX(-3px);
   outline: none;
 }
 
 @media (max-width: 850px) {
-  .back-navigation-inner {
+  section.back-navigation .back-navigation-inner {
     padding: 14px 34px;
   }
 }
 
 @media (max-width: 430px) {
-  .back-navigation-inner {
+  section.back-navigation .back-navigation-inner {
     padding: 13px 27px;
   }
 }
