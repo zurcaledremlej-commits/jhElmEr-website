@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fil">
+
 <head>
   <meta charset="UTF-8">
 
@@ -39,6 +40,7 @@
 
     body {
       min-height: 100vh;
+
       background:
         radial-gradient(
           circle at 82% 42%,
@@ -46,8 +48,14 @@
           transparent 34%
         ),
         var(--background);
+
       color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
       line-height: 1.6;
     }
 
@@ -56,21 +64,35 @@
       text-decoration: none;
     }
 
-    /* HEADER */
+    /* ===================================
+       HEADER
+       =================================== */
 
     .site-header {
       position: relative;
       z-index: 1000;
+
       min-height: var(--header-height);
+
       display: flex;
       align-items: center;
-      border-bottom: 1px solid var(--gold-soft);
-      background: rgba(7, 8, 9, 0.98);
+
+      border-bottom:
+        1px solid var(--gold-soft);
+
+      background:
+        rgba(7, 8, 9, 0.98);
     }
 
     .header-inner {
-      width: min(1180px, calc(100% - 48px));
+      width:
+        min(
+          1180px,
+          calc(100% - 48px)
+        );
+
       margin: 0 auto;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -80,13 +102,16 @@
     .brand {
       display: inline-flex;
       align-items: center;
+
       min-width: 0;
     }
 
     .brand img {
       display: block;
+
       width: min(470px, 58vw);
       height: auto;
+
       object-fit: contain;
     }
 
@@ -98,10 +123,12 @@
 
     .desktop-nav a {
       color: #b5b5b5;
+
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+
       transition:
         color 0.22s ease,
         opacity 0.22s ease;
@@ -111,31 +138,43 @@
     .desktop-nav a:focus-visible,
     .desktop-nav a[aria-current="page"] {
       color: var(--gold);
+      outline: none;
     }
 
     .menu-button {
       display: none;
+
       width: 54px;
       height: 54px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.18);
+
       background: transparent;
       color: var(--text);
+
       cursor: pointer;
     }
 
     .menu-button span {
       display: block;
+
       width: 25px;
       height: 3px;
+
       margin: 5px auto;
+
       background: currentColor;
+
       transition:
         transform 0.22s ease,
         opacity 0.22s ease;
     }
 
     .menu-button.is-open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
+      transform:
+        translateY(8px)
+        rotate(45deg);
     }
 
     .menu-button.is-open span:nth-child(2) {
@@ -143,14 +182,92 @@
     }
 
     .menu-button.is-open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+      transform:
+        translateY(-8px)
+        rotate(-45deg);
     }
 
     .mobile-nav {
       display: none;
     }
 
-    /* ARCHIVE HERO */
+    /* ===================================
+       ARCHIVE RETURN NAVIGATION
+       =================================== */
+
+    .back-navigation {
+      position: relative;
+      z-index: 50;
+
+      width: 100%;
+
+      border-bottom:
+        1px solid rgba(255, 255, 255, 0.08);
+
+      background: #08090a;
+    }
+
+    .back-navigation-inner {
+      width:
+        min(
+          1180px,
+          calc(100% - 48px)
+        );
+
+      min-height: 54px;
+      margin: 0 auto;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+    }
+
+    .back-navigation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(241, 237, 229, 0.55);
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .back-navigation-arrow {
+      color: var(--gold);
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .back-navigation-divider {
+      color: rgba(241, 237, 229, 0.18);
+
+      font-size: 0.72rem;
+      line-height: 1;
+    }
+
+    .back-navigation-link:hover,
+    .back-navigation-link:focus-visible {
+      color: var(--gold);
+
+      transform:
+        translateX(-3px);
+
+      outline: none;
+    }
+
+    /* ===================================
+       ARCHIVE HERO
+       =================================== */
 
     .archive-main {
       overflow: hidden;
@@ -158,34 +275,52 @@
 
     .archive-hero {
       position: relative;
+
       min-height: 430px;
+
       display: flex;
       align-items: center;
-      border-bottom: 1px solid var(--border);
+
+      border-bottom:
+        1px solid var(--border);
     }
 
     .archive-hero::after {
       content: "";
+
       position: absolute;
       top: 64px;
       right: -210px;
+
       width: 430px;
       height: 430px;
-      border: 1px solid rgba(211, 173, 85, 0.22);
+
+      border:
+        1px solid rgba(211, 173, 85, 0.22);
+
       border-radius: 50%;
+
       pointer-events: none;
     }
 
     .archive-container {
       position: relative;
       z-index: 2;
-      width: min(900px, calc(100% - 48px));
+
+      width:
+        min(
+          900px,
+          calc(100% - 48px)
+        );
+
       margin: 0 auto;
     }
 
     .eyebrow {
       margin-bottom: 28px;
+
       color: var(--gold);
+
       font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 0.18em;
@@ -194,8 +329,16 @@
 
     .archive-title {
       max-width: 680px;
+
       color: var(--text);
-      font-size: clamp(3rem, 7vw, 5.6rem);
+
+      font-size:
+        clamp(
+          3rem,
+          7vw,
+          5.6rem
+        );
+
       font-weight: 900;
       line-height: 0.92;
       letter-spacing: -0.055em;
@@ -205,33 +348,52 @@
     .archive-intro {
       max-width: 660px;
       margin-top: 34px;
+
       color: #aaa7a2;
-      font-size: clamp(1rem, 2vw, 1.25rem);
+
+      font-size:
+        clamp(
+          1rem,
+          2vw,
+          1.25rem
+        );
+
       line-height: 1.85;
     }
 
-    /* ARCHIVE LIST */
+    /* ===================================
+       ARCHIVE LIST
+       =================================== */
 
     .archive-section {
       position: relative;
+
       padding: 78px 0 110px;
     }
 
     .archive-section::after {
       content: "";
+
       position: absolute;
       right: -285px;
       bottom: -240px;
+
       width: 600px;
       height: 600px;
-      border: 1px solid rgba(211, 173, 85, 0.15);
+
+      border:
+        1px solid rgba(211, 173, 85, 0.15);
+
       border-radius: 50%;
+
       pointer-events: none;
     }
 
     .archive-heading {
       margin-bottom: 34px;
+
       color: var(--muted);
+
       font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.2em;
@@ -241,26 +403,41 @@
     .archive-list {
       position: relative;
       z-index: 2;
+
       list-style: none;
-      border-top: 1px solid var(--border);
+
+      border-top:
+        1px solid var(--border);
     }
 
     .archive-item {
-      border-bottom: 1px solid var(--border);
+      border-bottom:
+        1px solid var(--border);
     }
 
     .archive-link {
       position: relative;
-      display: flex;
-      align-items: center;
+
       min-height: 92px;
       padding: 26px 44px 26px 0;
+
+      display: flex;
+      align-items: center;
+
       color: #d6d2cb;
-      font-size: clamp(1rem, 2vw, 1.25rem);
+
+      font-size:
+        clamp(
+          1rem,
+          2vw,
+          1.25rem
+        );
+
       font-weight: 750;
       line-height: 1.35;
       letter-spacing: 0.015em;
       text-transform: uppercase;
+
       transition:
         color 0.22s ease,
         padding-left 0.22s ease,
@@ -269,12 +446,19 @@
 
     .archive-link::after {
       content: "→";
+
       position: absolute;
       right: 8px;
+
       color: var(--gold);
+
       font-size: 1.15rem;
+
       opacity: 0;
-      transform: translateX(-8px);
+
+      transform:
+        translateX(-8px);
+
       transition:
         opacity 0.22s ease,
         transform 0.22s ease;
@@ -283,38 +467,53 @@
     .archive-link:hover,
     .archive-link:focus-visible {
       padding-left: 14px;
+
       color: var(--gold);
+
       outline: none;
     }
 
     .archive-link:hover::after,
     .archive-link:focus-visible::after {
       opacity: 1;
-      transform: translateX(0);
+
+      transform:
+        translateX(0);
     }
 
     .empty-message {
       padding: 28px 0;
+
       color: var(--muted);
+
       font-size: 1rem;
     }
 
-    /* FOOTER */
+    /* ===================================
+       FOOTER
+       =================================== */
 
     .site-footer {
-      border-top: 1px solid var(--border);
       padding: 38px 24px;
-      text-align: center;
+
+      border-top:
+        1px solid var(--border);
+
       background: #070809;
+
+      text-align: center;
     }
 
     .site-footer p {
       color: #777;
+
       font-size: 0.78rem;
       letter-spacing: 0.08em;
     }
 
-    /* MOBILE */
+    /* ===================================
+       MOBILE
+       =================================== */
 
     @media (max-width: 850px) {
       :root {
@@ -322,11 +521,16 @@
       }
 
       .header-inner {
-        width: calc(100% - 58px);
+        width:
+          calc(100% - 58px);
       }
 
       .brand img {
-        width: min(455px, 72vw);
+        width:
+          min(
+            455px,
+            72vw
+          );
       }
 
       .desktop-nav {
@@ -343,12 +547,20 @@
         top: 100%;
         left: 0;
         right: 0;
+
         display: grid;
+
         max-height: 0;
+
         overflow: hidden;
+
+        border-bottom:
+          1px solid transparent;
+
         background: #090a0b;
-        border-bottom: 1px solid transparent;
+
         opacity: 0;
+
         transition:
           max-height 0.28s ease,
           opacity 0.22s ease,
@@ -357,14 +569,21 @@
 
       .mobile-nav.is-open {
         max-height: 420px;
-        border-bottom-color: var(--gold-soft);
+
+        border-bottom-color:
+          var(--gold-soft);
+
         opacity: 1;
       }
 
       .mobile-nav a {
         padding: 18px 32px;
-        border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+        border-top:
+          1px solid rgba(255, 255, 255, 0.07);
+
         color: #b9b9b9;
+
         font-size: 0.78rem;
         font-weight: 800;
         letter-spacing: 0.15em;
@@ -375,12 +594,20 @@
         color: var(--gold);
       }
 
+      .back-navigation-inner {
+        width:
+          calc(100% - 68px);
+
+        min-height: 52px;
+      }
+
       .archive-hero {
         min-height: 450px;
       }
 
       .archive-container {
-        width: calc(100% - 68px);
+        width:
+          calc(100% - 68px);
       }
 
       .archive-hero::after {
@@ -394,6 +621,7 @@
 
       .archive-intro {
         margin-top: 30px;
+
         line-height: 1.75;
       }
 
@@ -403,13 +631,15 @@
 
       .archive-link {
         min-height: 84px;
+
         padding-top: 23px;
-        padding-bottom: 23px;
         padding-right: 34px;
+        padding-bottom: 23px;
       }
 
       .archive-link::after {
         opacity: 0.75;
+
         transform: none;
       }
 
@@ -425,12 +655,18 @@
       }
 
       .header-inner {
-        width: calc(100% - 46px);
+        width:
+          calc(100% - 46px);
+
         gap: 16px;
       }
 
       .brand img {
-        width: min(440px, 72vw);
+        width:
+          min(
+            440px,
+            72vw
+          );
       }
 
       .menu-button {
@@ -438,8 +674,26 @@
         height: 50px;
       }
 
+      .back-navigation-inner {
+        width:
+          calc(100% - 54px);
+
+        min-height: 62px;
+        gap: 9px 12px;
+      }
+
+      .back-navigation-link {
+        font-size: 0.64rem;
+        letter-spacing: 0.11em;
+      }
+
+      .back-navigation-divider {
+        display: none;
+      }
+
       .archive-container {
-        width: calc(100% - 54px);
+        width:
+          calc(100% - 54px);
       }
 
       .archive-hero {
@@ -448,11 +702,17 @@
 
       .eyebrow {
         max-width: 310px;
+
         line-height: 1.8;
       }
 
       .archive-title {
-        font-size: clamp(2.7rem, 13vw, 4.1rem);
+        font-size:
+          clamp(
+            2.7rem,
+            13vw,
+            4.1rem
+          );
       }
 
       .archive-intro {
@@ -482,7 +742,12 @@
 
 <body>
 
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
   <header class="site-header">
+
     <div class="header-inner">
 
       <a
@@ -496,8 +761,13 @@
         >
       </a>
 
-      <nav class="desktop-nav" aria-label="Pangunahing navigation">
-        <a href="index.html">Home</a>
+      <nav
+        class="desktop-nav"
+        aria-label="Pangunahing navigation"
+      >
+        <a href="index.html">
+          Home
+        </a>
 
         <a
           href="civic-explainers.html"
@@ -506,11 +776,17 @@
           Civic Explainers
         </a>
 
-        <a href="text-slogans.html">Text Slogans</a>
+        <a href="text-slogans.html">
+          Text Slogans
+        </a>
 
-        <a href="music.html">Music</a>
+        <a href="music.html">
+          Music
+        </a>
 
-        <a href="about.html">About</a>
+        <a href="about.html">
+          About
+        </a>
       </nav>
 
       <button
@@ -532,7 +808,9 @@
       id="mobile-navigation"
       aria-label="Mobile navigation"
     >
-      <a href="index.html">Home</a>
+      <a href="index.html">
+        Home
+      </a>
 
       <a
         href="civic-explainers.html"
@@ -541,18 +819,86 @@
         Civic Explainers
       </a>
 
-      <a href="text-slogans.html">Text Slogans</a>
+      <a href="text-slogans.html">
+        Text Slogans
+      </a>
 
-      <a href="music.html">Music</a>
+      <a href="music.html">
+        Music
+      </a>
 
-      <a href="about.html">About</a>
+      <a href="about.html">
+        About
+      </a>
     </nav>
+
   </header>
 
+  <!-- ===================================
+       RETURN NAVIGATION
+       =================================== -->
+
+  <div
+    class="back-navigation"
+    role="navigation"
+    aria-label="Archive return navigation"
+  >
+
+    <div class="back-navigation-inner">
+
+      <a
+        class="back-navigation-link"
+        href="index.html"
+        aria-label="Bumalik sa Home"
+      >
+        <span
+          class="back-navigation-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Home
+        </span>
+      </a>
+
+      <span
+        class="back-navigation-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="back-navigation-link"
+        href="civic-explainers.html"
+        aria-label="Bumalik sa Civic Explainers"
+      >
+        <span
+          class="back-navigation-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
 
   <main class="archive-main">
 
+    <!-- ===================================
+         ARCHIVE HERO
+         =================================== -->
+
     <section class="archive-hero">
+
       <div class="archive-container">
 
         <p class="eyebrow">
@@ -570,10 +916,15 @@
         </p>
 
       </div>
+
     </section>
 
+    <!-- ===================================
+         ARCHIVE LIST
+         =================================== -->
 
     <section class="archive-section">
+
       <div class="archive-container">
 
         <h2 class="archive-heading">
@@ -595,90 +946,125 @@
             </li>
           -->
 
-
-          <!-- SAMPLE TITLES — palitan ang links kapag may actual articles -->
-
           <li class="archive-item">
+
             <a
               class="archive-link"
               href="articles/red-tagging.html"
             >
               Red-Tagging
             </a>
+
           </li>
 
           <li class="archive-item">
+
             <a
               class="archive-link"
               href="articles/ancestral-domain.html"
             >
               Ancestral Domain
             </a>
+
           </li>
 
           <li class="archive-item">
+
             <a
               class="archive-link"
               href="articles/school-safety-act.html"
             >
               Ligtas Ba Talaga ang mga Paaralan?
             </a>
+
           </li>
 
           <li class="archive-item">
+
             <a
               class="archive-link"
               href="articles/ebidensiya-o-meme.html"
             >
               Ebidensiya o Meme?
             </a>
+
           </li>
 
         </ul>
 
       </div>
+
     </section>
 
   </main>
 
+  <!-- ===================================
+       FOOTER
+       =================================== -->
 
   <footer class="site-footer">
+
     <p>
       © 2026 jhElmEr · Independent Civic &amp; Creative Platform
     </p>
+
   </footer>
 
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
 
   <script>
-    const menuButton = document.querySelector(".menu-button");
-    const mobileNavigation = document.querySelector(".mobile-nav");
+    const menuButton =
+      document.querySelector(".menu-button");
 
-    menuButton.addEventListener("click", function () {
-      const isOpen = menuButton.classList.toggle("is-open");
+    const mobileNavigation =
+      document.querySelector(".mobile-nav");
 
-      mobileNavigation.classList.toggle("is-open", isOpen);
-      menuButton.setAttribute("aria-expanded", String(isOpen));
+    if (menuButton && mobileNavigation) {
+      menuButton.addEventListener("click", function () {
+        const isOpen =
+          menuButton.classList.toggle("is-open");
 
-      menuButton.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Isara ang navigation menu"
-          : "Buksan ang navigation menu"
-      );
-    });
+        mobileNavigation.classList.toggle(
+          "is-open",
+          isOpen
+        );
 
-    mobileNavigation.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menuButton.classList.remove("is-open");
-        mobileNavigation.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
         menuButton.setAttribute(
           "aria-label",
-          "Buksan ang navigation menu"
+          isOpen
+            ? "Isara ang navigation menu"
+            : "Buksan ang navigation menu"
         );
       });
-    });
+
+      mobileNavigation
+        .querySelectorAll("a")
+        .forEach(function (link) {
+          link.addEventListener("click", function () {
+            menuButton.classList.remove("is-open");
+            mobileNavigation.classList.remove("is-open");
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuButton.setAttribute(
+              "aria-label",
+              "Buksan ang navigation menu"
+            );
+          });
+        });
+    }
   </script>
 
 </body>
+
 </html>
