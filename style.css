@@ -1613,3 +1613,47 @@ body {
 }
   }
 }
+/* ===================================
+   BACK NAVIGATION
+=================================== */
+
+.back-navigation{
+    border-top:1px solid rgba(245,241,232,.08);
+    border-bottom:1px solid rgba(245,241,232,.08);
+}
+
+.back-navigation-inner{
+    width:100%;
+    max-width:1380px;
+    margin:0 auto;
+    padding:16px 7%;
+}
+
+.back-navigation-link{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    color:rgba(245,241,232,.58);
+
+    text-decoration:none;
+
+    font-size:.78rem;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+
+    transition:color .22s ease;
+}
+
+.back-arrow{
+    color:#d5ad36;
+    font-size:1rem;
+}
+
+.back-navigation-link:hover{
+
+    color:#d5ad36;
+
+}
