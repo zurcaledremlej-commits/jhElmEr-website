@@ -1,0 +1,986 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE
+======================================================
+
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   red-tagging.html
+   human-rights-due-process.html
+   school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Siguraduhing pareho ang article link sa:
+
+   • Latest Civic Explainer
+   • Complete Civic Explainers Archive
+
+7. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.jpg
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Basahin ang Civic Explainer ng jhElmEr—isang malinaw, fact-based, at kontekstuwal na paliwanag sa isang mahalagang usaping panlipunan, legal, o pampamahalaan."
+  >
+
+  <title>Article Title | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../style.css?v=30">
+
+  <style>
+    /* ===================================
+       CIVIC EXPLAINER ARTICLE PAGE
+       TITLE → IMAGE → BODY → SOURCES
+       =================================== */
+
+    .civic-article-page {
+      min-height: 100vh;
+
+      color: #f5f1e8;
+      background: #090a0c;
+    }
+
+    /* ===================================
+       ARTICLE BACK NAVIGATION
+       =================================== */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
+      background: rgba(9, 10, 12, 0.98);
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 22px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 15px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.65);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* ===================================
+       ARTICLE MAIN AREA
+       =================================== */
+
+    .civic-article-main {
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 95px;
+      right: -340px;
+
+      width: 680px;
+      height: 680px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 265px;
+      right: -215px;
+
+      width: 410px;
+      height: 410px;
+
+      border: 1px solid rgba(213, 173, 54, 0.07);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 82px 7% 112px;
+    }
+
+    /* ===================================
+       ARTICLE HEADER
+       =================================== */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 45px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       MAIN ARTICLE IMAGE
+       =================================== */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 60px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(245, 241, 232, 0.13);
+      border-radius: 3px;
+
+      background:
+        radial-gradient(
+          circle at 72% 78%,
+          rgba(213, 173, 54, 0.11),
+          transparent 42%
+        ),
+        linear-gradient(
+          145deg,
+          rgba(213, 173, 54, 0.09),
+          rgba(9, 10, 12, 0.96)
+        );
+
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.26);
+    }
+
+    .article-image {
+      width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: cover;
+    }
+
+    /* ===================================
+       ARTICLE READING AREA
+       =================================== */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #c8c4bc;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #f5f1e8;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #ddd8cf;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #f5f1e8;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      margin: 2.3em 0;
+      padding: 5px 0 5px 25px;
+
+      border-left: 2px solid #d5ad36;
+
+      color: #e0dcd3;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+    }
+
+    .article-body a {
+      color: #d5ad36;
+
+      text-decoration-color: rgba(213, 173, 54, 0.62);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #e2bd4d;
+      text-decoration-color: #e2bd4d;
+      outline: none;
+    }
+
+    /* ===================================
+       SOURCES / REFERENCES
+       =================================== */
+
+    .article-sources {
+      margin-top: 66px;
+      padding-top: 32px;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.32);
+    }
+
+    .sources-title {
+      margin: 0 0 23px;
+
+      color: #d5ad36;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 15px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 21px;
+
+      color: rgba(245, 241, 232, 0.59);
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: rgba(245, 241, 232, 0.75);
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(213, 173, 54, 0.54);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #d5ad36;
+      text-decoration-color: #d5ad36;
+      outline: none;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 18px 34px;
+      }
+
+      .article-container {
+        padding: 60px 34px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 34px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        box-shadow:
+          0 18px 48px rgba(0, 0, 0, 0.24);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-sources {
+        margin-top: 54px;
+        padding-top: 28px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding-right: 27px;
+        padding-left: 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 50px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding-left: 19px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ===================================
+       LANDSCAPE MOBILE
+       =================================== */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 54px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* ===================================
+       REDUCED MOTION
+       =================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+       =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+       =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+           =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          Article Title
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+           =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/article-image.jpg"
+            alt="Main visual para sa Civic Explainer"
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+             =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Ilagay dito ang unang talata ng Civic Explainer.
+            Magsimula nang direkta sa mismong paksa upang
+            natural at malinaw agad ang daloy ng pagbabasa.
+          </p>
+
+          <p>
+            Ilagay dito ang susunod na bahagi ng paliwanag.
+            Panatilihing malinaw, fact-based, at nakasentro
+            sa tamang konteksto ng usapin.
+          </p>
+
+          <p>
+            Maaaring magdagdag ng maraming paragraph depende
+            sa haba ng article. Hindi kailangang lagyan ng
+            cards, boxes, o magkakahiwalay na content panels
+            ang bawat bahagi.
+          </p>
+
+          <p>
+            Ang layunin ng template ay magkaroon ng natural
+            na Facebook-style reading experience ngunit mas
+            malinis, premium, at permanenteng naka-archive.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+             =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Pangalan ng opisyal na dokumento, batas,
+              desisyon, ulat, o pangunahing sanggunian.
+            </li>
+
+            <li>
+              Pangalan ng opisyal na ahensiya, institusyon,
+              hukuman, o organisasyong pinagmulan.
+            </li>
+
+            <li>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ilagay rito ang opisyal na source link.
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+       =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
