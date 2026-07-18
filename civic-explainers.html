@@ -35,17 +35,12 @@
     /*
     ============================================================
     CIVIC EXPLAINERS LANDING PAGE
-    Version 3.0
+    Version 3.1
 
-    STRUCTURE
-    Intro → Latest Civic Explainer → Archive → Footer
-
-    RULES
-    - Isang latest-card system lamang.
-    - Walang duplicate selectors.
-    - Desktop: image + content columns.
-    - Mobile: image above content.
-    - Full image visibility; walang destructive crop.
+    VISUAL FLOW
+    Black Intro
+    Cream Latest Civic Explainer
+    Black Archive
     ============================================================
     */
 
@@ -79,25 +74,55 @@
     .latest-section {
       position: relative;
 
-      padding: 78px 7% 88px;
+      padding: 76px 7% 92px;
 
       overflow: hidden;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
-      background: #090a0c;
+      color: #242321;
+      background:
+        radial-gradient(
+          circle at 90% 14%,
+          rgba(213, 173, 54, 0.1),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 8% 88%,
+          rgba(123, 30, 30, 0.045),
+          transparent 25%
+        ),
+        #f4f0e8;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.22);
+      border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+    }
+
+    .latest-section::before {
+      content: "";
+
+      position: absolute;
+      top: 66px;
+      right: -275px;
+
+      width: 570px;
+      height: 570px;
+
+      border: 1px solid rgba(213, 173, 54, 0.16);
+      border-radius: 50%;
+
+      pointer-events: none;
     }
 
     .latest-section::after {
       content: "";
 
       position: absolute;
-      right: -260px;
-      bottom: -280px;
+      right: -125px;
+      bottom: -145px;
 
-      width: 570px;
-      height: 570px;
+      width: 310px;
+      height: 310px;
 
-      border: 1px solid rgba(213, 173, 54, 0.15);
+      border: 1px solid rgba(213, 173, 54, 0.1);
       border-radius: 50%;
 
       pointer-events: none;
@@ -115,12 +140,13 @@
     .section-label {
       margin: 0 0 30px;
 
-      color: rgba(245, 241, 232, 0.58);
+      color: #7b1e1e;
 
-      font-size: 0.73rem;
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 0.92rem;
       font-weight: 800;
-      line-height: 1.5;
-      letter-spacing: 0.18em;
+      line-height: 1.4;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
@@ -139,13 +165,13 @@
       align-items: stretch;
       overflow: hidden;
 
-      border: 1px solid rgba(245, 241, 232, 0.16);
+      border: 1px solid rgba(23, 23, 23, 0.11);
       border-radius: 18px;
 
-      background: #f4f0e8;
+      background: #f8f5ee;
 
       box-shadow:
-        0 24px 58px rgba(0, 0, 0, 0.25);
+        0 22px 54px rgba(30, 27, 21, 0.15);
 
       transition:
         transform 0.28s ease,
@@ -156,10 +182,10 @@
     .latest-card:hover {
       transform: translateY(-5px);
 
-      border-color: rgba(213, 173, 54, 0.62);
+      border-color: rgba(139, 104, 16, 0.45);
 
       box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.34);
+        0 30px 66px rgba(30, 27, 21, 0.2);
     }
 
     /* =========================================================
@@ -211,16 +237,16 @@
       background:
         radial-gradient(
           circle at 94% 8%,
-          rgba(213, 173, 54, 0.13),
+          rgba(213, 173, 54, 0.12),
           transparent 29%
         ),
-        #f4f0e8;
+        #f8f5ee;
     }
 
     .latest-kicker {
       margin: 0 0 20px;
 
-      color: #916b0f;
+      color: #8b6810;
 
       font-size: 0.7rem;
       font-weight: 800;
@@ -364,7 +390,15 @@
       position: relative;
       z-index: 20;
 
-      padding: 0 7% 94px;
+      padding: 84px 7% 94px;
+
+      background:
+        radial-gradient(
+          circle at 85% 95%,
+          rgba(213, 173, 54, 0.06),
+          transparent 25%
+        ),
+        #090a0c;
     }
 
     .archive-navigation-inner {
@@ -491,6 +525,7 @@
       gap: 24px;
 
       border-top: 1px solid rgba(245, 241, 232, 0.12);
+      background: #090a0c;
     }
 
     .inner-footer p {
@@ -531,6 +566,7 @@
       .latest-image {
         width: 100%;
         height: auto;
+
         object-fit: contain;
       }
 
@@ -541,11 +577,13 @@
 
     @media (max-width: 850px) {
       .latest-section {
-        padding: 58px 34px 64px;
+        padding: 58px 34px 68px;
       }
 
       .section-label {
         margin-bottom: 24px;
+
+        font-size: 0.82rem;
       }
 
       .latest-card {
@@ -570,7 +608,7 @@
       }
 
       .archive-navigation {
-        padding: 0 34px 74px;
+        padding: 68px 34px 74px;
       }
 
       .archive-navigation-link {
@@ -640,10 +678,6 @@
         grid-template-columns:
           minmax(300px, 0.9fr)
           minmax(0, 1.1fr);
-      }
-
-      .latest-image-link {
-        align-items: center;
       }
 
       .latest-content {
