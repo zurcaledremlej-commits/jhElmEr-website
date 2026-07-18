@@ -1,7 +1,7 @@
 <!--
 ======================================================
 jhElmEr WEBSITE
-MOTHER CIVIC EXPLAINER TEMPLATE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
 ======================================================
 
 FILE:
@@ -24,9 +24,9 @@ PUBLISHING WORKFLOW
 2. Palitan ang filename ng duplicate.
 
    Halimbawa:
-   red-tagging.html
-   human-rights-due-process.html
-   school-safety-act.html
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
 
 3. Palitan lamang ang sumusunod:
 
@@ -46,12 +46,17 @@ PUBLISHING WORKFLOW
 
    ../civic-explainers.html
 
-6. Siguraduhing pareho ang article link sa:
+6. Gawin itong Latest Civic Explainer sa:
 
-   • Latest Civic Explainer
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
    • Complete Civic Explainers Archive
 
-7. Test bago mag-commit:
+8. Test bago mag-commit:
 
    • Header navigation
    • Back navigation
@@ -92,7 +97,10 @@ articles/images/
 
 Kaya ang image path sa article ay:
 
+images/filename.png
 images/filename.jpg
+
+Panatilihin ang original image extension.
 
 ======================================================
 END OF DEVELOPER NOTES
@@ -133,40 +141,54 @@ END OF DEVELOPER NOTES
   <link rel="stylesheet" href="../style.css?v=30">
 
   <style>
-    /* ===================================
-       CIVIC EXPLAINER ARTICLE PAGE
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
        TITLE → IMAGE → BODY → SOURCES
-       =================================== */
+    ========================================================= */
 
     .civic-article-page {
       min-height: 100vh;
+      margin: 0;
 
-      color: #f5f1e8;
-      background: #090a0c;
+      color: #242321;
+      background: #f4f0e8;
     }
 
-    /* ===================================
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
        ARTICLE BACK NAVIGATION
-       =================================== */
+    ========================================================= */
 
     .article-back-navigation {
       position: relative;
       z-index: 25;
 
-      border-bottom: 1px solid rgba(245, 241, 232, 0.1);
-      background: rgba(9, 10, 12, 0.98);
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
     }
 
     .article-back-inner {
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
-      padding: 22px 7%;
+      padding: 20px 7%;
 
       display: flex;
       align-items: center;
       flex-wrap: wrap;
-      gap: 10px 15px;
+      gap: 8px 16px;
     }
 
     .article-back-link {
@@ -176,7 +198,7 @@ END OF DEVELOPER NOTES
       align-items: center;
       gap: 9px;
 
-      color: rgba(245, 241, 232, 0.65);
+      color: rgba(245, 241, 232, 0.68);
 
       font-size: 0.67rem;
       font-weight: 800;
@@ -211,27 +233,43 @@ END OF DEVELOPER NOTES
       line-height: 1;
     }
 
-    /* ===================================
+    /* =========================================================
        ARTICLE MAIN AREA
-       =================================== */
+    ========================================================= */
 
     .civic-article-main {
       position: relative;
 
+      width: 100%;
+      min-height: 100vh;
+
       overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
     }
 
     .civic-article-main::before {
       content: "";
 
       position: absolute;
-      top: 95px;
-      right: -340px;
+      top: 72px;
+      right: -315px;
 
-      width: 680px;
-      height: 680px;
+      width: 650px;
+      height: 650px;
 
-      border: 1px solid rgba(213, 173, 54, 0.1);
+      border: 1px solid rgba(213, 173, 54, 0.14);
       border-radius: 50%;
 
       pointer-events: none;
@@ -241,13 +279,13 @@ END OF DEVELOPER NOTES
       content: "";
 
       position: absolute;
-      top: 265px;
-      right: -215px;
+      top: 245px;
+      right: -190px;
 
-      width: 410px;
-      height: 410px;
+      width: 390px;
+      height: 390px;
 
-      border: 1px solid rgba(213, 173, 54, 0.07);
+      border: 1px solid rgba(213, 173, 54, 0.1);
       border-radius: 50%;
 
       pointer-events: none;
@@ -258,25 +296,25 @@ END OF DEVELOPER NOTES
       z-index: 2;
 
       width: 100%;
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 82px 7% 112px;
+      padding: 78px 7% 112px;
     }
 
-    /* ===================================
+    /* =========================================================
        ARTICLE HEADER
-       =================================== */
+    ========================================================= */
 
     .article-header {
       width: 100%;
       max-width: 960px;
-      margin: 0 0 45px;
+      margin: 0 0 40px;
     }
 
     .article-title {
       margin: 0;
 
-      color: #f5f1e8;
+      color: #171717;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
       font-size: clamp(3.6rem, 8vw, 7rem);
@@ -287,13 +325,13 @@ END OF DEVELOPER NOTES
       text-transform: uppercase;
     }
 
-    /* ===================================
+    /* =========================================================
        MAIN ARTICLE IMAGE
-       =================================== */
+    ========================================================= */
 
     .article-image-figure {
       width: 100%;
-      margin: 0 0 60px;
+      margin: 0 0 62px;
     }
 
     .article-image-frame {
@@ -303,37 +341,28 @@ END OF DEVELOPER NOTES
 
       overflow: hidden;
 
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      border-radius: 3px;
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
 
-      background:
-        radial-gradient(
-          circle at 72% 78%,
-          rgba(213, 173, 54, 0.11),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          rgba(213, 173, 54, 0.09),
-          rgba(9, 10, 12, 0.96)
-        );
+      background: #111214;
 
       box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.26);
+        0 22px 55px rgba(22, 20, 16, 0.16);
     }
 
     .article-image {
       width: 100%;
+      max-width: 100%;
       height: auto;
 
       display: block;
 
-      object-fit: cover;
+      object-fit: contain;
     }
 
-    /* ===================================
+    /* =========================================================
        ARTICLE READING AREA
-       =================================== */
+    ========================================================= */
 
     .article-reading-area {
       width: 100%;
@@ -342,7 +371,7 @@ END OF DEVELOPER NOTES
     }
 
     .article-body {
-      color: #c8c4bc;
+      color: #47443f;
 
       font-size: 1.04rem;
       font-weight: 400;
@@ -358,17 +387,17 @@ END OF DEVELOPER NOTES
     }
 
     .article-body strong {
-      color: #f5f1e8;
+      color: #1d1c1a;
       font-weight: 700;
     }
 
     .article-body em {
-      color: #ddd8cf;
+      color: #35322e;
     }
 
     .article-body h2,
     .article-body h3 {
-      color: #f5f1e8;
+      color: #171717;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
       font-weight: 800;
@@ -401,23 +430,53 @@ END OF DEVELOPER NOTES
     }
 
     .article-body blockquote {
-      margin: 2.3em 0;
-      padding: 5px 0 5px 25px;
+      position: relative;
 
-      border-left: 2px solid #d5ad36;
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
 
-      color: #e0dcd3;
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
 
       font-family: "Barlow Condensed", Arial, sans-serif;
       font-size: clamp(1.45rem, 3vw, 1.95rem);
       font-weight: 600;
       line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
     }
 
     .article-body a {
-      color: #d5ad36;
+      color: #8b6810;
 
-      text-decoration-color: rgba(213, 173, 54, 0.62);
+      text-decoration-color: rgba(139, 104, 16, 0.5);
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
 
@@ -428,29 +487,29 @@ END OF DEVELOPER NOTES
 
     .article-body a:hover,
     .article-body a:focus-visible {
-      color: #e2bd4d;
-      text-decoration-color: #e2bd4d;
+      color: #6f5010;
+      text-decoration-color: #6f5010;
       outline: none;
     }
 
-    /* ===================================
+    /* =========================================================
        SOURCES / REFERENCES
-       =================================== */
+    ========================================================= */
 
     .article-sources {
-      margin-top: 66px;
-      padding-top: 32px;
+      margin-top: 70px;
+      padding: 34px 0 0;
 
-      border-top: 1px solid rgba(213, 173, 54, 0.32);
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
     }
 
     .sources-title {
-      margin: 0 0 23px;
+      margin: 0 0 24px;
 
-      color: #d5ad36;
+      color: #7b1e1e;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(1.55rem, 3vw, 2rem);
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
       font-weight: 800;
       line-height: 1;
       letter-spacing: 0.055em;
@@ -462,7 +521,7 @@ END OF DEVELOPER NOTES
       padding: 0;
 
       display: grid;
-      gap: 15px;
+      gap: 16px;
 
       list-style: none;
     }
@@ -470,9 +529,9 @@ END OF DEVELOPER NOTES
     .sources-list li {
       position: relative;
 
-      padding-left: 21px;
+      padding-left: 23px;
 
-      color: rgba(245, 241, 232, 0.59);
+      color: #66615a;
 
       font-size: 0.84rem;
       line-height: 1.72;
@@ -485,19 +544,19 @@ END OF DEVELOPER NOTES
       top: 0.69em;
       left: 0;
 
-      width: 6px;
-      height: 6px;
+      width: 7px;
+      height: 7px;
 
       border-radius: 50%;
       background: #d5ad36;
     }
 
     .sources-list a {
-      color: rgba(245, 241, 232, 0.75);
+      color: #5b4930;
 
       overflow-wrap: anywhere;
 
-      text-decoration-color: rgba(213, 173, 54, 0.54);
+      text-decoration-color: rgba(139, 104, 16, 0.44);
       text-decoration-thickness: 1px;
       text-underline-offset: 4px;
 
@@ -508,14 +567,14 @@ END OF DEVELOPER NOTES
 
     .sources-list a:hover,
     .sources-list a:focus-visible {
-      color: #d5ad36;
-      text-decoration-color: #d5ad36;
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
       outline: none;
     }
 
-    /* ===================================
+    /* =========================================================
        TABLET
-       =================================== */
+    ========================================================= */
 
     @media (max-width: 1000px) {
       .article-container {
@@ -527,21 +586,21 @@ END OF DEVELOPER NOTES
       }
     }
 
-    /* ===================================
+    /* =========================================================
        MOBILE
-       =================================== */
+    ========================================================= */
 
     @media (max-width: 850px) {
       .article-back-inner {
-        padding: 18px 34px;
+        padding: 17px 30px;
       }
 
       .article-container {
-        padding: 60px 34px 84px;
+        padding: 55px 30px 84px;
       }
 
       .article-header {
-        margin-bottom: 34px;
+        margin-bottom: 31px;
       }
 
       .article-title {
@@ -554,8 +613,10 @@ END OF DEVELOPER NOTES
       }
 
       .article-image-frame {
+        border-radius: 14px;
+
         box-shadow:
-          0 18px 48px rgba(0, 0, 0, 0.24);
+          0 17px 42px rgba(22, 20, 16, 0.14);
       }
 
       .article-body {
@@ -567,24 +628,29 @@ END OF DEVELOPER NOTES
         margin-bottom: 1.52em;
       }
 
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
       .article-sources {
-        margin-top: 54px;
-        padding-top: 28px;
+        margin-top: 56px;
+        padding-top: 29px;
       }
     }
 
-    /* ===================================
+    /* =========================================================
        SMALL MOBILE
-       =================================== */
+    ========================================================= */
 
     @media (max-width: 430px) {
       .article-back-inner {
-        padding-right: 27px;
-        padding-left: 27px;
+        padding: 14px 27px;
 
         align-items: flex-start;
         flex-direction: column;
-        gap: 2px;
+        gap: 1px;
       }
 
       .article-back-divider {
@@ -599,7 +665,7 @@ END OF DEVELOPER NOTES
       }
 
       .article-container {
-        padding: 50px 27px 72px;
+        padding: 48px 27px 72px;
       }
 
       .article-title {
@@ -610,13 +676,17 @@ END OF DEVELOPER NOTES
         margin-bottom: 36px;
       }
 
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
       .article-body {
         font-size: 0.95rem;
         line-height: 1.84;
       }
 
       .article-body blockquote {
-        padding-left: 19px;
+        padding: 21px 19px 21px 21px;
       }
 
       .sources-list li {
@@ -624,9 +694,9 @@ END OF DEVELOPER NOTES
       }
     }
 
-    /* ===================================
+    /* =========================================================
        LANDSCAPE MOBILE
-       =================================== */
+    ========================================================= */
 
     @media (
       max-width: 950px
@@ -634,13 +704,13 @@ END OF DEVELOPER NOTES
       orientation: landscape
     ) {
       .article-back-inner {
-        padding-top: 15px;
-        padding-bottom: 15px;
+        padding-top: 13px;
+        padding-bottom: 13px;
       }
 
       .article-container {
         max-width: 850px;
-        padding-top: 54px;
+        padding-top: 50px;
       }
 
       .article-header {
@@ -651,14 +721,25 @@ END OF DEVELOPER NOTES
         font-size: clamp(3.45rem, 8vw, 5.3rem);
       }
 
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
       .article-reading-area {
         max-width: 720px;
       }
     }
 
-    /* ===================================
+    /* =========================================================
        REDUCED MOTION
-       =================================== */
+    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
       *,
@@ -675,7 +756,7 @@ END OF DEVELOPER NOTES
 
   <!-- ===================================
        HEADER
-       =================================== -->
+  =================================== -->
 
   <header class="site-header">
 
@@ -736,7 +817,7 @@ END OF DEVELOPER NOTES
 
   <!-- ===================================
        ARTICLE BACK NAVIGATION
-       =================================== -->
+  =================================== -->
 
   <div
     class="article-back-navigation"
@@ -791,7 +872,7 @@ END OF DEVELOPER NOTES
 
   <!-- ===================================
        CIVIC EXPLAINER ARTICLE
-       =================================== -->
+  =================================== -->
 
   <main class="civic-article-main">
 
@@ -801,7 +882,7 @@ END OF DEVELOPER NOTES
            ARTICLE TITLE
 
            PALITAN SA BAWAT BAGONG ARTICLE
-           =================================== -->
+      =================================== -->
 
       <header class="article-header">
 
@@ -820,7 +901,7 @@ END OF DEVELOPER NOTES
            PALITAN ANG:
            • filename
            • alt text
-           =================================== -->
+      =================================== -->
 
       <figure class="article-image-figure">
 
@@ -842,7 +923,7 @@ END OF DEVELOPER NOTES
              FULL ARTICLE BODY
 
              PALITAN ANG MGA PARAGRAPH
-             =================================== -->
+        =================================== -->
 
         <div class="article-body">
 
@@ -877,7 +958,7 @@ END OF DEVELOPER NOTES
              SOURCES / REFERENCES
 
              PALITAN SA BAWAT BAGONG ARTICLE
-             =================================== -->
+        =================================== -->
 
         <section
           class="article-sources"
@@ -925,7 +1006,7 @@ END OF DEVELOPER NOTES
 
   <!-- ===================================
        MOBILE NAVIGATION SCRIPT
-       =================================== -->
+  =================================== -->
 
   <script>
     const menuToggle =
