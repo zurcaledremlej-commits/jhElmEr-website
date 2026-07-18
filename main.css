@@ -1,7 +1,7 @@
 /*
 ============================================================
 jhElmEr WEBSITE — MAIN STYLESHEET
-Version 1.0 — Homepage Foundation
+Version 1.1 — Homepage Foundation
 
 MAINTENANCE RULES
 1. Isang source of truth lamang para sa bawat component.
@@ -78,6 +78,7 @@ a {
   width: 100%;
   min-height: var(--header-height);
   padding: 8px 5%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -484,14 +485,15 @@ cannot cover navigation or content below the header.
   .site-header {
     min-height: var(--header-height);
     padding: 8px 18px;
+    gap: 12px;
   }
 
   .brand {
-    width: 260px;
+    width: 280px;
     height: 88px;
     min-width: 0;
-    max-width: calc(100% - 62px);
-    flex: 0 1 260px;
+    max-width: calc(100% - 56px);
+    flex: 0 1 280px;
   }
 
   .brand img {
@@ -665,7 +667,7 @@ cannot cover navigation or content below the header.
   }
 
   .brand {
-    max-width: calc(100% - 58px);
+    max-width: calc(100% - 56px);
   }
 
   .brand img {
@@ -698,6 +700,7 @@ cannot cover navigation or content below the header.
   .site-header {
     min-height: var(--header-height);
     padding: 5px 5%;
+    gap: 24px;
   }
 
   .brand {
@@ -778,4 +781,4 @@ cannot cover navigation or content below the header.
     margin-bottom: 25px;
     line-height: 1.65;
   }
-  }
+     }
