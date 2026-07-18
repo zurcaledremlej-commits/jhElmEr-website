@@ -32,24 +32,37 @@
   <link rel="stylesheet" href="main.css?v=3">
 
   <style>
-    /* ===================================
-       CIVIC EXPLAINERS LANDING PAGE
-       INTRO → LATEST → ARCHIVE
-       =================================== */
+    /*
+    ============================================================
+    CIVIC EXPLAINERS LANDING PAGE
+    Version 3.0
+
+    STRUCTURE
+    Intro → Latest Civic Explainer → Archive → Footer
+
+    RULES
+    - Isang latest-card system lamang.
+    - Walang duplicate selectors.
+    - Desktop: image + content columns.
+    - Mobile: image above content.
+    - Full image visibility; walang destructive crop.
+    ============================================================
+    */
+
+    /* =========================================================
+       PAGE BASE
+    ========================================================= */
 
     .inner-page {
       min-height: 100vh;
       background: #090a0c;
     }
 
-    /* ===================================
+    /* =========================================================
        CIVIC HERO
-       =================================== */
+    ========================================================= */
 
-    .civic-hero .hero-content {
-      max-width: 900px;
-    }
-
+    .civic-hero .hero-content,
     .civic-hero h1 {
       max-width: 900px;
     }
@@ -59,9 +72,9 @@
       display: block;
     }
 
-    /* ===================================
-       LATEST CIVIC EXPLAINER
-       =================================== */
+    /* =========================================================
+       LATEST CIVIC EXPLAINER SECTION
+    ========================================================= */
 
     .latest-section {
       position: relative;
@@ -71,6 +84,7 @@
       overflow: hidden;
 
       border-top: 1px solid rgba(245, 241, 232, 0.1);
+      background: #090a0c;
     }
 
     .latest-section::after {
@@ -99,106 +113,134 @@
     }
 
     .section-label {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
 
       color: rgba(245, 241, 232, 0.58);
 
       font-size: 0.73rem;
       font-weight: 800;
+      line-height: 1.5;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
 
+    /* =========================================================
+       MASTER LATEST CONTENT CARD
+    ========================================================= */
+
     .latest-card {
+      width: 100%;
+
       display: grid;
       grid-template-columns:
-        minmax(0, 0.86fr)
-        minmax(0, 1.14fr);
+        minmax(360px, 0.92fr)
+        minmax(0, 1.08fr);
 
       align-items: stretch;
       overflow: hidden;
 
-      border: 1px solid rgba(245, 241, 232, 0.13);
-      background: rgba(245, 241, 232, 0.025);
+      border: 1px solid rgba(245, 241, 232, 0.16);
+      border-radius: 18px;
+
+      background: #f4f0e8;
+
+      box-shadow:
+        0 24px 58px rgba(0, 0, 0, 0.25);
 
       transition:
         transform 0.28s ease,
         border-color 0.28s ease,
-        background 0.28s ease;
+        box-shadow 0.28s ease;
     }
 
     .latest-card:hover {
       transform: translateY(-5px);
 
-      border-color: rgba(213, 173, 54, 0.52);
-      background: rgba(245, 241, 232, 0.04);
+      border-color: rgba(213, 173, 54, 0.62);
+
+      box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.34);
     }
 
+    /* =========================================================
+       LATEST CARD IMAGE
+    ========================================================= */
+
     .latest-image-link {
-      position: relative;
+      width: 100%;
+      min-width: 0;
 
-      min-height: 610px;
-
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
 
-      background:
-        radial-gradient(
-          circle at 70% 75%,
-          rgba(213, 173, 54, 0.11),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          rgba(213, 173, 54, 0.1),
-          rgba(9, 10, 12, 0.96)
-        );
+      background: #111214;
     }
 
     .latest-image {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-width: 100%;
 
       display: block;
-      object-fit: cover;
+
+      object-fit: contain;
 
       transition: transform 0.42s ease;
     }
 
     .latest-card:hover .latest-image {
-      transform: scale(1.02);
+      transform: scale(1.012);
     }
 
+    /* =========================================================
+       LATEST CARD CONTENT
+    ========================================================= */
+
     .latest-content {
+      min-width: 0;
       padding: 54px 52px;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      color: #242321;
+
+      background:
+        radial-gradient(
+          circle at 94% 8%,
+          rgba(213, 173, 54, 0.13),
+          transparent 29%
+        ),
+        #f4f0e8;
     }
 
     .latest-kicker {
-      margin-bottom: 20px;
+      margin: 0 0 20px;
 
-      color: #d5ad36;
+      color: #916b0f;
 
       font-size: 0.7rem;
       font-weight: 800;
+      line-height: 1.5;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .latest-title {
       max-width: 620px;
-      margin-bottom: 25px;
+      margin: 0 0 25px;
 
-      color: #f5f1e8;
+      color: #171717;
 
       font-family: "Barlow Condensed", Arial, sans-serif;
       font-size: clamp(2.65rem, 5vw, 4.7rem);
       font-weight: 800;
       line-height: 0.94;
       letter-spacing: -0.025em;
+      text-wrap: balance;
       text-transform: uppercase;
     }
 
@@ -211,22 +253,22 @@
 
     .latest-title a:hover,
     .latest-title a:focus-visible {
-      color: #d5ad36;
+      color: #7b1e1e;
       outline: none;
     }
 
     .latest-excerpt {
       max-width: 590px;
-      margin-bottom: 34px;
+      margin: 0 0 34px;
 
-      color: #aaa69f;
+      color: #57534d;
 
       font-size: 1rem;
       line-height: 1.85;
     }
 
     .latest-meta {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
       padding-top: 22px;
 
       display: flex;
@@ -234,291 +276,89 @@
       flex-wrap: wrap;
       gap: 12px 20px;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      border-top: 1px solid rgba(23, 23, 23, 0.13);
     }
 
     .latest-category,
     .latest-date {
       font-size: 0.68rem;
       font-weight: 700;
+      line-height: 1.5;
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .latest-category {
-      color: #d5ad36;
+      color: #8b6810;
     }
 
     .latest-date {
-      color: rgba(245, 241, 232, 0.46);
+      color: #77716a;
     }
 
     .latest-read-link {
       width: fit-content;
-      min-height: 48px;
-      padding: 13px 20px;
+      min-height: 50px;
+      padding: 13px 21px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 11px;
 
-/* ===================================
-   LATEST CIVIC EXPLAINER
-   MASTER LATEST CONTENT CARD
-   =================================== */
-
-.latest-section {
-  position: relative;
-  padding: 78px 7% 88px;
-  overflow: hidden;
-  border-top: 1px solid rgba(245, 241, 232, 0.1);
-}
-
-.latest-section::after {
-  content: "";
-
-  position: absolute;
-  right: -260px;
-  bottom: -280px;
-
-  width: 570px;
-  height: 570px;
-
-  border: 1px solid rgba(213, 173, 54, 0.15);
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-.latest-inner {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-  max-width: 1180px;
-  margin: 0 auto;
-}
-
-.section-label {
-  margin: 0 0 30px;
-
-  color: rgba(245, 241, 232, 0.58);
-
-  font-size: 0.73rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
-
-.latest-card {
-  display: grid;
-  grid-template-columns:
-    minmax(0, 0.86fr)
-    minmax(0, 1.14fr);
-
-  align-items: stretch;
-  overflow: hidden;
-
-  border: 1px solid rgba(245, 241, 232, 0.15);
-  border-radius: 18px;
-
-  background: #f4f0e8;
-
-  box-shadow:
-    0 24px 58px rgba(0, 0, 0, 0.24);
-
-  transition:
-    transform 0.28s ease,
-    border-color 0.28s ease,
-    box-shadow 0.28s ease;
-}
-
-.latest-card:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(213, 173, 54, 0.6);
-
-  box-shadow:
-    0 30px 70px rgba(0, 0, 0, 0.32);
-}
-
-.latest-image-link {
-  position: relative;
-
-  min-height: 610px;
-
-  display: block;
-  overflow: hidden;
-
-  background: #111214;
-}
-
-.latest-image {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  object-fit: cover;
-
-  transition: transform 0.42s ease;
-}
-
-.latest-card:hover .latest-image {
-  transform: scale(1.02);
-}
-
-.latest-content {
-  padding: 54px 52px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  color: #242321;
-  background:
-    radial-gradient(
-      circle at 92% 8%,
-      rgba(213, 173, 54, 0.12),
-      transparent 28%
-    ),
-    #f4f0e8;
-}
-
-.latest-kicker {
-  margin: 0 0 20px;
-
-  color: #9b7415;
-
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-}
-
-.latest-title {
-  max-width: 620px;
-  margin: 0 0 25px;
-
-  color: #171717;
-
-  font-family: "Barlow Condensed", Arial, sans-serif;
-  font-size: clamp(2.65rem, 5vw, 4.7rem);
-  font-weight: 800;
-  line-height: 0.94;
-  letter-spacing: -0.025em;
-  text-transform: uppercase;
-}
-
-.latest-title a {
-  color: inherit;
-  text-decoration: none;
-
-  transition: color 0.22s ease;
-}
-
-.latest-title a:hover,
-.latest-title a:focus-visible {
-  color: #7b1e1e;
-  outline: none;
-}
-
-.latest-excerpt {
-  max-width: 590px;
-  margin: 0 0 34px;
-
-  color: #57534d;
-
-  font-size: 1rem;
-  line-height: 1.85;
-}
-
-.latest-meta {
-  margin: 0 0 30px;
-  padding-top: 22px;
-
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-
-  border-top: 1px solid rgba(23, 23, 23, 0.13);
-}
-
-.latest-category,
-.latest-date {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-
-.latest-category {
-  color: #8b6810;
-}
-
-.latest-date {
-  color: #77716a;
-}
-
-.latest-read-link {
-  width: fit-content;
-  min-height: 50px;
-  padding: 13px 21px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 11px;
-
-  border: 1px solid #d5ad36;
-
-  color: #111214;
-  background: #d5ad36;
-
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.11em;
-  text-decoration: none;
-  text-transform: uppercase;
-
-  transition:
-    color 0.22s ease,
-    border-color 0.22s ease,
-    background 0.22s ease,
-    transform 0.22s ease;
-}
-
-.latest-read-link::after {
-  content: "→";
-
-  color: #111214;
-  font-size: 1rem;
-
-  transition: transform 0.22s ease;
-}
-
-.latest-read-link:hover,
-.latest-read-link:focus-visible {
-  color: #f5f1e8;
-
-  border-color: #7b1e1e;
-  background: #7b1e1e;
-
-  outline: none;
-  transform: translateY(-2px);
-}
-
-.latest-read-link:hover::after,
-.latest-read-link:focus-visible::after {
-  color: #f5f1e8;
-  transform: translateX(4px);
-}
-
-    /* ===================================
+      border: 1px solid #d5ad36;
+
+      color: #111214;
+      background: #d5ad36;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        border-color 0.22s ease,
+        background 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .latest-read-link::after {
+      content: "→";
+
+      color: #111214;
+
+      font-size: 1rem;
+      line-height: 1;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .latest-read-link:hover,
+    .latest-read-link:focus-visible {
+      color: #f5f1e8;
+
+      border-color: #7b1e1e;
+      background: #7b1e1e;
+
+      outline: none;
+      transform: translateY(-2px);
+    }
+
+    .latest-read-link:hover::after,
+    .latest-read-link:focus-visible::after {
+      color: #f5f1e8;
+      transform: translateX(4px);
+    }
+
+    /* =========================================================
        ARCHIVE NAVIGATION
-       =================================== */
+    ========================================================= */
 
     .archive-navigation {
       position: relative;
@@ -528,18 +368,12 @@
     }
 
     .archive-navigation-inner {
-      position: relative;
-      z-index: 21;
-
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
     }
 
     .archive-navigation-link {
-      position: relative;
-      z-index: 22;
-
       width: 100%;
       min-height: 165px;
       padding: 38px 26px;
@@ -563,9 +397,6 @@
 
       text-align: center;
       text-decoration: none;
-
-      cursor: pointer;
-      pointer-events: auto;
 
       transition:
         border-color 0.25s ease,
@@ -647,9 +478,9 @@
       transform: translateX(5px);
     }
 
-    /* ===================================
+    /* =========================================================
        FOOTER
-       =================================== */
+    ========================================================= */
 
     .inner-footer {
       padding: 34px 7%;
@@ -660,6 +491,10 @@
       gap: 24px;
 
       border-top: 1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .inner-footer p {
+      margin: 0;
     }
 
     .footer-brand {
@@ -680,152 +515,154 @@
       text-transform: uppercase;
     }
 
-    /* ===================================
-       TABLET
-       =================================== */
+    /* =========================================================
+       TABLET AND MOBILE
+    ========================================================= */
 
     @media (max-width: 1000px) {
-  .latest-card {
-    grid-template-columns: 1fr;
-  }
-
-  .latest-image-link {
-    min-height: auto;
-    aspect-ratio: 4 / 5;
-  }
-
-  .latest-content {
-    padding: 44px 40px 48px;
-  }
-    }
-
-    /* ===================================
-       MOBILE
-       =================================== */
-
-    @media (max-width: 850px) {
-  .latest-section {
-    padding: 58px 34px 60px;
-  }
-
-  .section-label {
-    margin-bottom: 24px;
-  }
-
-  .latest-card {
-    border-radius: 14px;
-  }
-
-  .latest-content {
-    padding: 35px 27px 38px;
-  }
-
-  .latest-title {
-    font-size: clamp(2.45rem, 11vw, 3.65rem);
-  }
-
-  .latest-excerpt {
-    font-size: 0.94rem;
-    line-height: 1.8;
-  }
-
-  .latest-read-link {
-    width: 100%;
-  }
-
-  .archive-navigation {
-    padding: 0 34px 74px;
-  }
-
-  .archive-navigation-link {
-    min-height: 155px;
-    padding: 34px 20px;
-  }
-
-  .archive-navigation-description {
-    font-size: 0.65rem;
-  }
-
-  .inner-footer {
-    padding: 29px 34px;
-
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-  }
-}
-
-    /* ===================================
-       SMALL MOBILE
-       =================================== */
-
-    @media (max-width: 430px) {
-  .latest-section {
-    padding-right: 27px;
-    padding-left: 27px;
-  }
-
-  .latest-card {
-    border-radius: 12px;
-  }
-
-  .latest-content {
-    padding: 31px 22px 34px;
-  }
-
-  .latest-meta {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .latest-read-link {
-    width: 100%;
-  }
-
-  .archive-navigation {
-    padding-right: 27px;
-    padding-left: 27px;
-  }
-
-  .archive-navigation-link {
-    min-height: 148px;
-    padding: 31px 17px;
-  }
-
-  .archive-navigation-title {
-    font-size: 1.55rem;
-  }
-}
-
-    /* ===================================
-       LANDSCAPE MOBILE
-       =================================== */
-
-    @media (
-      max-width: 950px
-    ) and (
-      orientation: landscape
-    ) {
       .latest-card {
-        grid-template-columns:
-          minmax(0, 0.8fr)
-          minmax(0, 1.2fr);
+        grid-template-columns: 1fr;
       }
 
       .latest-image-link {
-        min-height: 490px;
-        aspect-ratio: auto;
+        width: 100%;
+      }
+
+      .latest-image {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
       }
 
       .latest-content {
-        padding: 36px 34px;
+        padding: 44px 40px 48px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .latest-section {
+        padding: 58px 34px 64px;
+      }
+
+      .section-label {
+        margin-bottom: 24px;
+      }
+
+      .latest-card {
+        border-radius: 14px;
+      }
+
+      .latest-content {
+        padding: 35px 27px 39px;
       }
 
       .latest-title {
-        font-size: 2.8rem;
+        font-size: clamp(2.45rem, 11vw, 3.65rem);
+      }
+
+      .latest-excerpt {
+        font-size: 0.94rem;
+        line-height: 1.8;
+      }
+
+      .latest-read-link {
+        width: 100%;
+      }
+
+      .archive-navigation {
+        padding: 0 34px 74px;
+      }
+
+      .archive-navigation-link {
+        min-height: 155px;
+        padding: 34px 20px;
+      }
+
+      .archive-navigation-description {
+        font-size: 0.65rem;
+      }
+
+      .inner-footer {
+        padding: 29px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
       }
     }
+
+    @media (max-width: 430px) {
+      .latest-section {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .latest-card {
+        border-radius: 12px;
+      }
+
+      .latest-content {
+        padding: 31px 22px 35px;
+      }
+
+      .latest-meta {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .archive-navigation {
+        padding-right: 27px;
+        padding-left: 27px;
+      }
+
+      .archive-navigation-link {
+        min-height: 148px;
+        padding: 31px 17px;
+      }
+
+      .archive-navigation-title {
+        font-size: 1.55rem;
+      }
+    }
+
+    /* =========================================================
+       PHONE LANDSCAPE
+    ========================================================= */
+
+    @media
+      (min-width: 700px)
+      and (max-width: 950px)
+      and (max-height: 520px)
+      and (orientation: landscape) {
+
+      .latest-card {
+        grid-template-columns:
+          minmax(300px, 0.9fr)
+          minmax(0, 1.1fr);
+      }
+
+      .latest-image-link {
+        align-items: center;
+      }
+
+      .latest-content {
+        padding: 34px 32px;
+      }
+
+      .latest-title {
+        font-size: 2.7rem;
+      }
+
+      .latest-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
       *,
@@ -840,9 +677,9 @@
 
 <body class="inner-page">
 
-  <!-- ===================================
+  <!-- ======================================================
        HEADER
-       =================================== -->
+  ======================================================= -->
 
   <header class="site-header">
 
@@ -901,9 +738,9 @@
 
   </header>
 
-  <!-- ===================================
+  <!-- ======================================================
        BACK TO HOME
-       =================================== -->
+  ======================================================= -->
 
   <div
     class="back-navigation"
@@ -936,9 +773,9 @@
 
   <main>
 
-    <!-- ===================================
+    <!-- ====================================================
          CIVIC INTRO
-         =================================== -->
+    ===================================================== -->
 
     <section class="hero civic-hero">
 
@@ -968,9 +805,9 @@
 
     </section>
 
-    <!-- ===================================
+    <!-- ====================================================
          LATEST CIVIC EXPLAINER
-         =================================== -->
+    ===================================================== -->
 
     <section class="latest-section">
 
@@ -982,57 +819,61 @@
 
         <article class="latest-card">
 
-  <a
-    class="latest-image-link"
-    href="articles/civic-school-safety-act.html"
-    aria-label="Basahin ang School Safety Act: Handa Ba Talaga ang mga Paaralan Natin?"
-  >
-    <img
-      class="latest-image"
-      src="articles/images/civic-school-safety-act.png"
-      alt="School Safety Act: Handa Ba Talaga ang mga Paaralan Natin?"
-    >
-  </a>
+          <a
+            class="latest-image-link"
+            href="articles/civic-school-safety-act.html"
+            aria-label="Basahin ang School Safety Act: Handa Ba Talaga ang mga Paaralan Natin?"
+          >
+            <img
+              class="latest-image"
+              src="articles/images/civic-school-safety-act.png"
+              alt="School Safety Act: Handa Ba Talaga ang mga Paaralan Natin?"
+            >
+          </a>
 
-  <div class="latest-content">
+          <div class="latest-content">
 
-    <p class="latest-kicker">
-      Civic Explainer
-    </p>
+            <p class="latest-kicker">
+              Civic Explainer
+            </p>
 
-    <h2 class="latest-title">
-      <a href="articles/civic-school-safety-act.html">
-        School Safety Act
-      </a>
-    </h2>
+            <h2 class="latest-title">
+              <a href="articles/civic-school-safety-act.html">
+                School Safety Act
+              </a>
+            </h2>
 
-    <p class="latest-excerpt">
-      Handa ba talaga ang mga paaralan natin? Isang malinaw na paliwanag kung paano layuning palakasin ng isinusulong na School Safety Act ang prevention, preparedness, at coordinated response upang mas mapangalagaan ang kaligtasan ng mga mag-aaral.
-    </p>
+            <p class="latest-excerpt">
+              Handa ba talaga ang mga paaralan natin? Isang malinaw
+              na paliwanag kung paano layuning palakasin ng
+              isinusulong na School Safety Act ang pag-iwas,
+              paghahanda, at koordinadong pagtugon upang mas
+              mapangalagaan ang kaligtasan ng mga mag-aaral.
+            </p>
 
-    <div class="latest-meta">
+            <div class="latest-meta">
 
-      <span class="latest-category">
-        School Safety
-      </span>
+              <span class="latest-category">
+                School Safety
+              </span>
 
-      <time
-        class="latest-date"
-        datetime="2026-07-15"
-      >
-        Hulyo 15, 2026
-      </time>
+              <time
+                class="latest-date"
+                datetime="2026-07-15"
+              >
+                Hulyo 15, 2026
+              </time>
 
-    </div>
+            </div>
 
-    <a
-      class="latest-read-link"
-      href="articles/civic-school-safety-act.html"
-    >
-      Basahin ang Buong Paliwanag
-    </a>
+            <a
+              class="latest-read-link"
+              href="articles/civic-school-safety-act.html"
+            >
+              Basahin ang Buong Paliwanag
+            </a>
 
-  </div>
+          </div>
 
         </article>
 
@@ -1040,9 +881,9 @@
 
     </section>
 
-    <!-- ===================================
+    <!-- ====================================================
          COMPLETE CIVIC ARCHIVE
-         =================================== -->
+    ===================================================== -->
 
     <section
       class="archive-navigation"
@@ -1080,9 +921,9 @@
 
   </main>
 
-  <!-- ===================================
+  <!-- ======================================================
        FOOTER
-       =================================== -->
+  ======================================================= -->
 
   <footer class="inner-footer">
 
@@ -1096,9 +937,9 @@
 
   </footer>
 
-  <!-- ===================================
+  <!-- ======================================================
        PAGE SCRIPT
-       =================================== -->
+  ======================================================= -->
 
   <script>
     const menuToggle =
@@ -1130,22 +971,27 @@
         );
       });
 
-      mainNav.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => {
-          mainNav.classList.remove("is-open");
-          menuToggle.classList.remove("is-open");
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
 
-          menuToggle.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+            menuToggle.classList.remove(
+              "is-open"
+            );
 
-          menuToggle.setAttribute(
-            "aria-label",
-            "Open navigation menu"
-          );
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
         });
-      });
     }
   </script>
 
