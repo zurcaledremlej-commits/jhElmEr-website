@@ -1914,3 +1914,23 @@ body {
     max-width: 100%;
   }
 }
+/* =========================================================
+   HOMEPAGE LATEST — CLICKABLE LINKS FIX
+========================================================= */
+
+.homepage-latest {
+  position: relative;
+  z-index: 5;
+}
+
+.homepage-latest a,
+.homepage-latest .button {
+  position: relative;
+  z-index: 6;
+  pointer-events: auto;
+}
+
+.hero::before,
+.hero::after {
+  pointer-events: none;
+}
