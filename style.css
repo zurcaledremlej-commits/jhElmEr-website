@@ -1684,3 +1684,117 @@ body {
     padding: 13px 27px;
   }
 }
+/* =========================================================
+   HOMEPAGE — LATEST CIVIC EXPLAINER
+========================================================= */
+
+.homepage-latest {
+  padding: 72px 24px 88px;
+  background: #f4f1eb;
+}
+
+.homepage-latest-inner {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+}
+
+.homepage-section-label {
+  margin: 0 0 22px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7b1e1e;
+}
+
+.homepage-featured-image {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  margin: 0 auto 34px;
+  border-radius: 18px;
+  box-shadow: 0 18px 45px rgba(20, 20, 20, 0.14);
+}
+
+.homepage-latest h2 {
+  max-width: 760px;
+  margin: 0 auto 12px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: clamp(2.2rem, 6vw, 4.1rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.homepage-latest h2 a {
+  color: #171717;
+  text-decoration: none;
+}
+
+.homepage-latest h2 a:hover {
+  color: #7b1e1e;
+}
+
+.homepage-latest-inner > p:not(.homepage-section-label) {
+  max-width: 760px;
+  margin: 0 auto 18px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #3f3f3f;
+}
+
+.homepage-latest-inner > p:nth-of-type(2) {
+  margin-bottom: 12px;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #1f1f1f;
+}
+
+.homepage-latest .button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.homepage-latest-inner > .button {
+  margin-left: calc((100% - min(760px, 100%)) / 2);
+}
+
+@media (max-width: 768px) {
+  .homepage-latest {
+    padding: 52px 18px 64px;
+  }
+
+  .homepage-section-label {
+    margin-bottom: 18px;
+    font-size: 0.82rem;
+  }
+
+  .homepage-featured-image {
+    margin-bottom: 26px;
+    border-radius: 14px;
+  }
+
+  .homepage-latest h2 {
+    font-size: clamp(2rem, 11vw, 3.2rem);
+    line-height: 0.98;
+  }
+
+  .homepage-latest-inner > p:not(.homepage-section-label) {
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+
+  .homepage-latest-inner > p:nth-of-type(2) {
+    font-size: 1.05rem;
+  }
+
+  .homepage-latest-inner > .button {
+    width: 100%;
+    margin-left: 0;
+  }
+}
