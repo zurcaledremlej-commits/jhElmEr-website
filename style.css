@@ -1934,38 +1934,3 @@ body {
 .hero::after {
   pointer-events: none;
 }
-/* ===================================
-   HEADER LOGO CLICK AREA FIX
-   =================================== */
-
-.site-header .brand {
-  position: relative;
-  z-index: 30;
-
-  width: auto;
-  height: auto;
-  max-width: max-content;
-
-  display: inline-flex;
-  align-items: center;
-  flex: 0 0 auto;
-
-  overflow: visible;
-}
-
-.site-header .brand img {
-  width: auto;
-  max-width: 100%;
-  height: auto;
-
-  display: block;
-}
-
-.article-back-navigation {
-  position: relative;
-  z-index: 40;
-}
-.site-header .brand::before,
-.site-header .brand::after {
-  pointer-events: none;
-}
