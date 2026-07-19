@@ -9,16 +9,17 @@
     content="width=device-width, initial-scale=1.0"
   >
 
-  <title>Lahat ng Text Slogans | jhElmEr</title>
+  <title>All Text Slogans | jhElmEr</title>
 
   <meta
     name="description"
-    content="Lahat ng Text Slogans ni jhElmEr na naka-archive sa iisang lugar."
+    content="Permanenteng archive ng lahat ng Text Slogans ni jhElmEr."
   >
 
   <style>
     :root {
       --background: #08090a;
+      --surface: #0c0d0f;
       --text: #f1ede5;
       --muted: #989898;
       --gold: #d3ad55;
@@ -43,7 +44,7 @@
       background:
         radial-gradient(
           circle at 82% 42%,
-          rgba(88, 47, 26, 0.11),
+          rgba(88, 47, 26, 0.08),
           transparent 34%
         ),
         var(--background);
@@ -108,12 +109,7 @@
     .brand img {
       display: block;
 
-      width:
-        min(
-          470px,
-          58vw
-        );
-
+      width: min(470px, 58vw);
       height: auto;
 
       object-fit: contain;
@@ -196,7 +192,7 @@
     }
 
     /* ===================================
-       ARCHIVE RETURN NAVIGATION
+       RETURN NAVIGATION
        =================================== */
 
     .back-navigation {
@@ -232,8 +228,7 @@
       align-items: center;
       gap: 9px;
 
-      color:
-        rgba(241, 237, 229, 0.55);
+      color: rgba(241, 237, 229, 0.55);
 
       font-size: 0.7rem;
       font-weight: 800;
@@ -254,8 +249,7 @@
     }
 
     .back-navigation-divider {
-      color:
-        rgba(241, 237, 229, 0.18);
+      color: rgba(241, 237, 229, 0.18);
 
       font-size: 0.72rem;
       line-height: 1;
@@ -272,47 +266,43 @@
     }
 
     /* ===================================
-       ARCHIVE HERO
+       ARCHIVE
        =================================== */
 
     .archive-main {
+      position: relative;
+
+      min-height: 62vh;
+
       overflow: hidden;
     }
 
-    .archive-hero {
-      position: relative;
-
-      min-height: 430px;
-
-      display: flex;
-      align-items: center;
-
-      border-bottom:
-        1px solid var(--border);
-    }
-
-    .archive-hero::after {
+    .archive-main::after {
       content: "";
 
       position: absolute;
-      top: 64px;
-      right: -210px;
+      right: -300px;
+      bottom: -330px;
 
-      width: 430px;
-      height: 430px;
+      width: 620px;
+      height: 620px;
 
       border:
-        1px solid rgba(211, 173, 85, 0.22);
+        1px solid rgba(211, 173, 85, 0.11);
 
       border-radius: 50%;
 
       pointer-events: none;
     }
 
-    .archive-container {
+    .archive-section {
       position: relative;
       z-index: 2;
 
+      padding: 82px 0 110px;
+    }
+
+    .archive-container {
       width:
         min(
           900px,
@@ -322,94 +312,25 @@
       margin: 0 auto;
     }
 
-    .eyebrow {
-      margin-bottom: 28px;
-
-      color: var(--gold);
-
-      font-size: 0.8rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .archive-title {
-      max-width: 680px;
+    .archive-heading {
+      margin-bottom: 34px;
 
       color: var(--text);
 
       font-size:
         clamp(
-          3rem,
-          7vw,
-          5.6rem
+          1.45rem,
+          3vw,
+          2rem
         );
 
       font-weight: 900;
-      line-height: 0.92;
-      letter-spacing: -0.055em;
-      text-transform: uppercase;
-    }
-
-    .archive-intro {
-      max-width: 660px;
-      margin-top: 34px;
-
-      color: #aaa7a2;
-
-      font-size:
-        clamp(
-          1rem,
-          2vw,
-          1.25rem
-        );
-
-      line-height: 1.85;
-    }
-
-    /* ===================================
-       ARCHIVE LIST
-       =================================== */
-
-    .archive-section {
-      position: relative;
-
-      padding: 78px 0 110px;
-    }
-
-    .archive-section::after {
-      content: "";
-
-      position: absolute;
-      right: -285px;
-      bottom: -240px;
-
-      width: 600px;
-      height: 600px;
-
-      border:
-        1px solid rgba(211, 173, 85, 0.15);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .archive-heading {
-      margin-bottom: 34px;
-
-      color: var(--muted);
-
-      font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.2em;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
       text-transform: uppercase;
     }
 
     .archive-list {
-      position: relative;
-      z-index: 2;
-
       list-style: none;
 
       border-top:
@@ -424,8 +345,9 @@
     .archive-link {
       position: relative;
 
-      min-height: 92px;
-      padding: 26px 44px 26px 0;
+      width: 100%;
+      min-height: 62px;
+      padding: 18px 48px 18px 0;
 
       display: flex;
       align-items: center;
@@ -436,34 +358,32 @@
         clamp(
           1rem,
           2vw,
-          1.25rem
+          1.16rem
         );
 
-      font-weight: 750;
-      line-height: 1.35;
-      letter-spacing: 0.015em;
-      text-transform: uppercase;
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.005em;
 
       transition:
-        color 0.22s ease,
-        padding-left 0.22s ease,
-        background-color 0.22s ease;
+        color 0.22s ease;
     }
 
     .archive-link::after {
       content: "→";
 
       position: absolute;
-      right: 8px;
+      right: 6px;
 
       color: var(--gold);
 
       font-size: 1.15rem;
+      line-height: 1;
 
-      opacity: 0;
+      opacity: 0.62;
 
       transform:
-        translateX(-8px);
+        translateX(0);
 
       transition:
         opacity 0.22s ease,
@@ -472,10 +392,7 @@
 
     .archive-link:hover,
     .archive-link:focus-visible {
-      padding-left: 14px;
-
       color: var(--gold);
-
       outline: none;
     }
 
@@ -484,7 +401,7 @@
       opacity: 1;
 
       transform:
-        translateX(0);
+        translateX(4px);
     }
 
     /* ===================================
@@ -514,6 +431,10 @@
        =================================== */
 
     @media (max-width: 850px) {
+      :root {
+        --header-height: 180px;
+      }
+
       .header-inner {
         width:
           calc(100% - 58px);
@@ -595,8 +516,10 @@
         min-height: 52px;
       }
 
-      .archive-hero {
-        min-height: 450px;
+      .archive-section {
+        padding:
+          66px 0
+          90px;
       }
 
       .archive-container {
@@ -604,36 +527,35 @@
           calc(100% - 68px);
       }
 
-      .archive-hero::after {
-        top: 84px;
-        right: -260px;
-      }
-
-      .archive-section {
-        padding-top: 58px;
+      .archive-heading {
+        margin-bottom: 28px;
       }
 
       .archive-link {
-        min-height: 84px;
+        min-height: 60px;
 
-        padding-top: 23px;
-        padding-right: 34px;
-        padding-bottom: 23px;
+        padding:
+          17px 42px
+          17px 0;
       }
 
       .archive-link::after {
-        opacity: 0.75;
+        right: 4px;
 
-        transform: none;
+        opacity: 0.72;
       }
 
-      .archive-link:hover,
-      .archive-link:focus-visible {
-        padding-left: 0;
+      .archive-link:hover::after,
+      .archive-link:focus-visible::after {
+        transform: none;
       }
     }
 
     @media (max-width: 520px) {
+      :root {
+        --header-height: 180px;
+      }
+
       .header-inner {
         width:
           calc(100% - 46px);
@@ -671,41 +593,38 @@
         display: none;
       }
 
+      .archive-section {
+        padding:
+          54px 0
+          76px;
+      }
+
       .archive-container {
         width:
           calc(100% - 54px);
       }
 
-      .archive-hero {
-        min-height: 480px;
-      }
-
-      .eyebrow {
-        max-width: 310px;
-
-        line-height: 1.8;
-      }
-
-      .archive-title {
-        font-size:
-          clamp(
-            2.7rem,
-            13vw,
-            4.1rem
-          );
-      }
-
-      .archive-intro {
-        font-size: 1rem;
-      }
-
       .archive-heading {
-        margin-bottom: 28px;
+        margin-bottom: 24px;
+
+        font-size: 1.38rem;
       }
 
       .archive-link {
-        font-size: 0.96rem;
-        line-height: 1.45;
+        min-height: 58px;
+
+        padding:
+          16px 38px
+          16px 0;
+
+        font-size: 0.98rem;
+        line-height: 1.4;
+      }
+
+      .archive-link::after {
+        right: 2px;
+
+        font-size: 1.08rem;
       }
     }
 
@@ -871,45 +790,19 @@
 
   </div>
 
+  <!-- ===================================
+       ARCHIVE
+       =================================== -->
+
   <main class="archive-main">
-
-    <!-- ===================================
-         ARCHIVE HERO
-         =================================== -->
-
-    <section class="archive-hero">
-
-      <div class="archive-container">
-
-        <p class="eyebrow">
-          Tahimik • Direktang Mensahe • Malinaw na Paninindigan
-        </p>
-
-        <h1 class="archive-title">
-          Text<br>Slogans
-        </h1>
-
-        <p class="archive-intro">
-          Lahat ng Text Slogans na naka-archive sa iisang
-          lugar—mga maikli ngunit malinaw na mensahe at
-          paninindigan.
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- ===================================
-         ARCHIVE LIST
-         =================================== -->
 
     <section class="archive-section">
 
       <div class="archive-container">
 
-        <h2 class="archive-heading">
-          Lahat ng Text Slogans
-        </h2>
+        <h1 class="archive-heading">
+          All Text Slogans
+        </h1>
 
         <ul class="archive-list">
 
@@ -919,11 +812,14 @@
             <li class="archive-item">
               <a
                 class="archive-link"
-                href="articles/pangalan-ng-text-slogan.html"
+                href="articles/slogan-pangalan-ng-article.html"
               >
-                TITLE NG TEXT SLOGAN
+                Title ng Text Slogan
               </a>
             </li>
+
+            Ilagay palagi ang pinakabagong Text Slogan
+            sa pinakataas ng archive list.
           -->
 
           <li class="archive-item">
@@ -933,39 +829,6 @@
               href="articles/slogan-school-safety-act.html"
             >
               Naghihintay
-            </a>
-
-          </li>
-
-          <li class="archive-item">
-
-            <a
-              class="archive-link"
-              href="articles/kompromiso.html"
-            >
-              Kompromiso
-            </a>
-
-          </li>
-
-          <li class="archive-item">
-
-            <a
-              class="archive-link"
-              href="articles/insulto-ang-sagot.html"
-            >
-              Insulto ang Sagot?
-            </a>
-
-          </li>
-
-          <li class="archive-item">
-
-            <a
-              class="archive-link"
-              href="articles/prinsipyo.html"
-            >
-              Prinsipyo
             </a>
 
           </li>
