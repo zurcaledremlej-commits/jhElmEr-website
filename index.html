@@ -3,7 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <meta
     name="description"
@@ -13,7 +17,12 @@
   <title>jhElmEr | Mulat na Pag-iisip</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
 
   <link
     href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
@@ -21,15 +30,50 @@
   >
 
   <link rel="stylesheet" href="main.css?v=3">
+
+  <style>
+    /* =========================================================
+       HOMEPAGE LATEST ARTICLE TYPE
+    ========================================================= */
+
+    .homepage-article-type {
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 7px 11px;
+
+      border: 1px solid rgba(213, 173, 54, 0.38);
+      border-radius: 999px;
+
+      color: #d5ad36;
+      background: rgba(213, 173, 54, 0.08);
+
+      font-size: 0.68rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
   <header class="site-header">
 
-<a class="brand" href="index.html" aria-label="jhElmEr homepage">
-  <img src="header-logo.png" alt="jhElmEr Simpleng Tao">
-</a>
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
 
     <button
       class="menu-toggle"
@@ -48,16 +92,39 @@
       id="main-navigation"
       aria-label="Main navigation"
     >
-      <a class="active" href="index.html">Home</a>
-      <a href="civic-explainers.html">Civic Explainers</a>
-      <a href="text-slogan.html">Text Slogans</a>
-      <a href="music.html">Music</a>
-      <a href="about.html">About</a>
+      <a
+        class="active"
+        href="index.html"
+        aria-current="page"
+      >
+        Home
+      </a>
+
+      <a href="civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="music.html">
+        Music
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
     </nav>
 
   </header>
 
   <main>
+
+    <!-- ===================================
+         HERO
+    =================================== -->
+
     <section class="hero">
 
       <div class="hero-content">
@@ -67,81 +134,161 @@
         </p>
 
         <h1>
-          <span class="headline-first">MULAT NA PAG-IISIP.</span>
-          <span class="headline-second">MALINAW NA</span>
-          <span class="headline-third">PANININDIGAN.</span>
+          <span class="headline-first">
+            MULAT NA PAG-IISIP.
+          </span>
+
+          <span class="headline-second">
+            MALINAW NA
+          </span>
+
+          <span class="headline-third">
+            PANININDIGAN.
+          </span>
         </h1>
 
         <p class="hero-description">
-          Mga civic explainer, text slogan, musika, at mga nilalamang
-          ginawa hindi lang para makita—kundi para pag-isipan.
+          Mga civic explainer, text slogan, musika, at mga
+          nilalamang ginawa hindi lang para makita—kundi
+          para pag-isipan.
         </p>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="civic-explainers.html">
-  Civic Explainers
+
+          <a
+            class="button button-primary"
+            href="civic-explainers.html"
+          >
+            Civic Explainers
           </a>
 
-          <a class="button button-secondary" href="text-slogan.html">
-  Text Slogans
+          <a
+            class="button button-secondary"
+            href="text-slogan.html"
+          >
+            Text Slogans
           </a>
+
         </div>
 
       </div>
 
     </section>
-        <!-- Latest Civic Explainer -->
+
+    <!-- ===================================
+         LATEST ARTICLE
+
+         Iisang featured article lamang.
+         Palitan ang image, title, category,
+         description, at links kapag may
+         bagong Civic Explainer o Text Slogan.
+    =================================== -->
 
     <section class="homepage-latest">
 
       <div class="homepage-latest-inner">
 
         <p class="homepage-section-label">
-          PINAKABAGONG CIVIC EXPLAINER
+          LATEST ARTICLE
         </p>
 
-        <a href="articles/civic-school-safety-act.html">
+        <a
+          href="articles/slogan-school-safety-act.html"
+          aria-label="Basahin ang Text Slogan na Naghihintay"
+        >
           <img
-            src="articles/images/civic-school-safety-act.png"
-            alt="School Safety Act: Handa ba talaga ang mga paaralan natin?"
-            class="homepage-featured-image">
+            class="homepage-featured-image"
+            src="articles/images/slogan-school-safety-act.png"
+            alt="Naghihintay — Text Slogan tungkol sa maagap na paghahanda at pag-iwas sa mga banta sa mga paaralan"
+          >
         </a>
 
         <h2>
-          <a href="articles/civic-school-safety-act.html">
-            SCHOOL SAFETY ACT
+          <a href="articles/slogan-school-safety-act.html">
+            NAGHIHINTAY
           </a>
         </h2>
 
-        <p>
-          Handa ba talaga ang mga paaralan natin?
+        <p class="homepage-article-type">
+          Text Slogan
         </p>
 
         <p>
-          Ang school safety ay hindi lang tungkol sa pagtugon kapag may nangyari na. Mas mahalaga ang paghahanda at pag-iwas bago pa may mapahamak.
+          Kapag school safety ang pinag-uusapan, hindi sapat
+          na maging handa lang kapag may nangyari na. Mas
+          mahalaga ang tuloy-tuloy na paghahanda at maagang
+          pagkilos bago pa may mapahamak.
         </p>
 
         <a
           class="button button-primary"
-          href="articles/civic-school-safety-act.html">
-          Basahin ang Buong Paliwanag
+          href="articles/slogan-school-safety-act.html"
+        >
+          Basahin ang Buong Article
         </a>
 
       </div>
 
     </section>
+
   </main>
 
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
   <script>
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainNav = document.querySelector(".main-nav");
+    const menuToggle =
+      document.querySelector(".menu-toggle");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen = mainNav.classList.toggle("is-open");
+    const mainNav =
+      document.querySelector(".main-nav");
 
-      menuToggle.classList.toggle("is-open", isOpen);
-      menuToggle.setAttribute("aria-expanded", String(isOpen));
-    });
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
   </script>
 
 </body>
