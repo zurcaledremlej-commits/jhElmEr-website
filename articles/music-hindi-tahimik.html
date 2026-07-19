@@ -1,15 +1,15 @@
-      <!--
+<!--
 ======================================================
 jhElmEr WEBSITE
 MUSIC ARTICLE — HINDI TAHIMIK
-VERSION 3
+VERSION 3.1
 ======================================================
 
 FILE:
 articles/music-hindi-tahimik.html
 
 BASED ON:
-articles/article-music.html — Version 3
+articles/article-music.html — Version 3.1
 
 PURPOSE:
 Ito ang permanenteng Music article page para sa
@@ -78,6 +78,10 @@ at audio player upang manatiling konektado ang
 visual flow nang hindi sila nagmumukhang isang
 malaking container.
 
+Gumagamit ang audio card ng sarili nitong unique
+class names upang hindi magkaroon ng conflict sa
+global stylesheet.
+
 Ang title ay inilagay bago ang lyrics upang hindi ito
 agad maulit sa ibabaw ng poster.
 
@@ -125,7 +129,7 @@ END OF DEVELOPER NOTES
 
   <style>
     /* =========================================================
-       MUSIC ARTICLE PAGE — VERSION 3
+       MUSIC ARTICLE PAGE — VERSION 3.1
 
        BLACK BRAND AREA
        CREAM CONTENT AREA
@@ -392,107 +396,82 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-   COMPACT AUDIO PLAYER CARD
-========================================================= */
+       COMPACT AUDIO PLAYER CARD
 
-.song-player-section {
-  width: 100%;
-  margin: 0 0 50px;
+       Gumagamit ng unique class names upang hindi tamaan
+       ng global audio o section rules mula sa style.css.
+    ========================================================= */
 
-  overflow: hidden;
+    .music-article-audio-card {
+      width: 100%;
+      margin: 0 0 42px;
+      padding: 0;
 
-  border:
-    1px solid rgba(23, 23, 23, 0.11);
+      display: block;
+      overflow: hidden;
 
-  border-radius: 15px;
+      border:
+        1px solid rgba(23, 23, 23, 0.11);
 
-  background: #111214;
+      border-radius: 15px;
 
-  box-shadow:
-    0 14px 35px rgba(22, 20, 16, 0.13);
-}
+      background: #111214;
 
-.song-player-shell {
-  position: relative;
+      box-shadow:
+        0 14px 35px rgba(22, 20, 16, 0.13);
+    }
 
-  width: 100%;
-  min-height: 0;
-  height: auto;
+    .music-article-audio-inner {
+      width: 100%;
+      margin: 0;
+      padding: 18px 22px 20px;
 
-  padding: 20px 26px 22px;
+      display: block;
 
-  overflow: hidden;
+      background:
+        radial-gradient(
+          circle at 96% 8%,
+          rgba(213, 173, 54, 0.08),
+          transparent 32%
+        ),
+        #111214;
+    }
 
-  background:
-    radial-gradient(
-      circle at 94% 18%,
-      rgba(213, 173, 54, 0.1),
-      transparent 32%
-    ),
-    #111214;
-}
+    .music-article-audio-label {
+      margin: 0 0 9px;
 
-.song-player-shell::after {
-  content: "";
+      color: #d5ad36;
 
-  position: absolute;
-  top: -88px;
-  right: -72px;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
 
-  width: 170px;
-  height: 170px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
 
-  border:
-    1px solid rgba(213, 173, 54, 0.13);
+    .music-article-audio-control {
+      width: 100%;
+      height: 46px;
+      margin: 0;
 
-  border-radius: 50%;
+      display: block;
+    }
 
-  pointer-events: none;
-}
+    .music-article-audio-note {
+      margin: 9px 0 0;
 
-.song-player-label {
-  position: relative;
-  z-index: 2;
+      color:
+        rgba(245, 241, 232, 0.62);
 
-  margin: 0 0 10px;
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
 
-  color: #d5ad36;
-
-  font-family:
-    "Barlow Condensed",
-    Arial,
-    sans-serif;
-
-  font-size: 0.76rem;
-  font-weight: 800;
-  line-height: 1.3;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.song-audio {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-  height: 46px;
-
-  display: block;
-}
-
-.audio-fallback {
-  position: relative;
-  z-index: 2;
-
-  margin: 10px 0 0;
-
-  color:
-    rgba(245, 241, 232, 0.62);
-
-  font-size: 0.74rem;
-  line-height: 1.55;
-}
-        
     /* =========================================================
        ARTICLE READING AREA
     ========================================================= */
@@ -655,25 +634,18 @@ END OF DEVELOPER NOTES
           0 17px 42px rgba(22, 20, 16, 0.14);
       }
 
-      .song-player-section {
-  margin-bottom: 42px;
+      .music-article-audio-card {
+        margin-bottom: 38px;
 
-  border-radius: 13px;
+        border-radius: 13px;
 
-  box-shadow:
-    0 12px 30px rgba(22, 20, 16, 0.12);
-}
+        box-shadow:
+          0 12px 30px rgba(22, 20, 16, 0.12);
+      }
 
-.song-player-shell {
-  min-height: 0;
-  height: auto;
-
-  padding: 18px 22px 20px;
-}
-
-.song-player-label {
-  margin-bottom: 9px;
-}
+      .music-article-audio-inner {
+        padding: 17px 20px 19px;
+      }
 
       .article-body {
         font-size: 0.98rem;
@@ -748,35 +720,34 @@ END OF DEVELOPER NOTES
         border-radius: 12px;
       }
 
-      .song-player-section {
-  margin-bottom: 36px;
+      .music-article-audio-card {
+        margin-bottom: 34px;
 
-  border-radius: 12px;
-}
+        border-radius: 12px;
+      }
 
-.song-player-shell {
-  min-height: 0;
-  height: auto;
+      .music-article-audio-inner {
+        padding: 16px 16px 18px;
+      }
 
-  padding: 17px 17px 19px;
-}
+      .music-article-audio-label {
+        margin-bottom: 8px;
 
-.song-player-label {
-  margin-bottom: 8px;
+        font-size: 0.71rem;
+        letter-spacing: 0.11em;
+      }
 
-  font-size: 0.71rem;
-  letter-spacing: 0.11em;
-}
+      .music-article-audio-control {
+        height: 44px;
+      }
 
-.song-audio {
-  height: 44px;
-}
+      .music-article-audio-note {
+        margin-top: 8px;
 
-.audio-fallback {
-  margin-top: 9px;
+        font-size: 0.7rem;
+        line-height: 1.45;
+      }
 
-  font-size: 0.72rem;
-}
       .article-body {
         font-size: 0.95rem;
         line-height: 1.84;
@@ -839,7 +810,7 @@ END OF DEVELOPER NOTES
       }
 
       .article-image-card,
-      .song-player-section {
+      .music-article-audio-card {
         width: 100%;
       }
 
@@ -849,8 +820,8 @@ END OF DEVELOPER NOTES
         height: auto;
       }
 
-      .song-player-shell {
-        padding: 19px 23px 21px;
+      .music-article-audio-inner {
+        padding: 17px 21px 19px;
       }
 
       .article-reading-area {
@@ -1035,18 +1006,18 @@ END OF DEVELOPER NOTES
       =================================================== -->
 
       <section
-        class="song-player-section"
+        class="music-article-audio-card"
         aria-label="Hindi Tahimik audio player"
       >
 
-        <div class="song-player-shell">
+        <div class="music-article-audio-inner">
 
-          <p class="song-player-label">
+          <p class="music-article-audio-label">
             Original Song
           </p>
 
           <audio
-            class="song-audio"
+            class="music-article-audio-control"
             controls
             preload="metadata"
             aria-label="Pakinggan ang Hindi Tahimik"
@@ -1060,7 +1031,7 @@ END OF DEVELOPER NOTES
             HTML audio player.
           </audio>
 
-          <p class="audio-fallback">
+          <p class="music-article-audio-note">
             Kapag hindi gumana ang audio player, tiyaking
             eksaktong tugma ang MP3 filename, extension,
             capitalization, at file path.
