@@ -392,104 +392,107 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-       COMPACT AUDIO PLAYER CARD
-    ========================================================= */
+   COMPACT AUDIO PLAYER CARD
+========================================================= */
 
-    .song-player-section {
-      width: 100%;
-      margin: 0 0 50px;
+.song-player-section {
+  width: 100%;
+  margin: 0 0 50px;
 
-      overflow: hidden;
+  overflow: hidden;
 
-      border:
-        1px solid rgba(23, 23, 23, 0.11);
+  border:
+    1px solid rgba(23, 23, 23, 0.11);
 
-      border-radius: 15px;
+  border-radius: 15px;
 
-      background: #111214;
+  background: #111214;
 
-      box-shadow:
-        0 14px 35px rgba(22, 20, 16, 0.13);
-    }
+  box-shadow:
+    0 14px 35px rgba(22, 20, 16, 0.13);
+}
 
-    .song-player-shell {
-      position: relative;
+.song-player-shell {
+  position: relative;
 
-      width: 100%;
-      padding: 22px 26px 24px;
+  width: 100%;
+  min-height: 0;
+  height: auto;
 
-      overflow: hidden;
+  padding: 20px 26px 22px;
 
-      background:
-        radial-gradient(
-          circle at 94% 18%,
-          rgba(213, 173, 54, 0.1),
-          transparent 32%
-        ),
-        #111214;
-    }
+  overflow: hidden;
 
-    .song-player-shell::after {
-      content: "";
+  background:
+    radial-gradient(
+      circle at 94% 18%,
+      rgba(213, 173, 54, 0.1),
+      transparent 32%
+    ),
+    #111214;
+}
 
-      position: absolute;
-      top: -88px;
-      right: -72px;
+.song-player-shell::after {
+  content: "";
 
-      width: 170px;
-      height: 170px;
+  position: absolute;
+  top: -88px;
+  right: -72px;
 
-      border:
-        1px solid rgba(213, 173, 54, 0.13);
+  width: 170px;
+  height: 170px;
 
-      border-radius: 50%;
+  border:
+    1px solid rgba(213, 173, 54, 0.13);
 
-      pointer-events: none;
-    }
+  border-radius: 50%;
 
-    .song-player-label {
-      position: relative;
-      z-index: 2;
+  pointer-events: none;
+}
 
-      margin: 0 0 11px;
+.song-player-label {
+  position: relative;
+  z-index: 2;
 
-      color: #d5ad36;
+  margin: 0 0 10px;
 
-      font-family:
-        "Barlow Condensed",
-        Arial,
-        sans-serif;
+  color: #d5ad36;
 
-      font-size: 0.76rem;
-      font-weight: 800;
-      line-height: 1.3;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-    }
+  font-family:
+    "Barlow Condensed",
+    Arial,
+    sans-serif;
 
-    .song-audio {
-      position: relative;
-      z-index: 2;
+  font-size: 0.76rem;
+  font-weight: 800;
+  line-height: 1.3;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
 
-      width: 100%;
-      height: 46px;
+.song-audio {
+  position: relative;
+  z-index: 2;
 
-      display: block;
-    }
+  width: 100%;
+  height: 46px;
 
-    .audio-fallback {
-      position: relative;
-      z-index: 2;
+  display: block;
+}
 
-      margin: 11px 0 0;
+.audio-fallback {
+  position: relative;
+  z-index: 2;
 
-      color:
-        rgba(245, 241, 232, 0.62);
+  margin: 10px 0 0;
 
-      font-size: 0.74rem;
-      line-height: 1.55;
-    }
+  color:
+    rgba(245, 241, 232, 0.62);
 
+  font-size: 0.74rem;
+  line-height: 1.55;
+}
+        
     /* =========================================================
        ARTICLE READING AREA
     ========================================================= */
@@ -653,21 +656,24 @@ END OF DEVELOPER NOTES
       }
 
       .song-player-section {
-        margin-bottom: 42px;
+  margin-bottom: 42px;
 
-        border-radius: 13px;
+  border-radius: 13px;
 
-        box-shadow:
-          0 12px 30px rgba(22, 20, 16, 0.12);
-      }
+  box-shadow:
+    0 12px 30px rgba(22, 20, 16, 0.12);
+}
 
-      .song-player-shell {
-        padding: 20px 22px 22px;
-      }
+.song-player-shell {
+  min-height: 0;
+  height: auto;
 
-      .song-player-label {
-        margin-bottom: 10px;
-      }
+  padding: 18px 22px 20px;
+}
+
+.song-player-label {
+  margin-bottom: 9px;
+}
 
       .article-body {
         font-size: 0.98rem;
@@ -743,32 +749,34 @@ END OF DEVELOPER NOTES
       }
 
       .song-player-section {
-        margin-bottom: 36px;
+  margin-bottom: 36px;
 
-        border-radius: 12px;
-      }
+  border-radius: 12px;
+}
 
-      .song-player-shell {
-        padding: 18px 17px 20px;
-      }
+.song-player-shell {
+  min-height: 0;
+  height: auto;
 
-      .song-player-label {
-        margin-bottom: 9px;
+  padding: 17px 17px 19px;
+}
 
-        font-size: 0.71rem;
-        letter-spacing: 0.11em;
-      }
+.song-player-label {
+  margin-bottom: 8px;
 
-      .song-audio {
-        height: 44px;
-      }
+  font-size: 0.71rem;
+  letter-spacing: 0.11em;
+}
 
-      .audio-fallback {
-        margin-top: 10px;
+.song-audio {
+  height: 44px;
+}
 
-        font-size: 0.72rem;
-      }
+.audio-fallback {
+  margin-top: 9px;
 
+  font-size: 0.72rem;
+}
       .article-body {
         font-size: 0.95rem;
         line-height: 1.84;
