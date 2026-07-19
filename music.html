@@ -32,24 +32,42 @@
   <link rel="stylesheet" href="main.css?v=3">
 
   <style>
-    /* ===================================
-       MUSIC LANDING PAGE
-       INTRO → LATEST → ARCHIVE
-       =================================== */
+    /*
+    ============================================================
+    MUSIC LANDING PAGE
+    Version 3.1
+
+    VISUAL FLOW
+    Black Intro
+    Cream Featured Song
+    Black Archive
+
+    CURRENT FEATURED SONG
+    Hindi Tahimik
+
+    FEATURED SONG WORKFLOW
+    Habang hindi pa kumpleto ang 10 songs:
+    Featured Song = pinakabagong kanta.
+
+    Kapag kumpleto na ang 10 songs:
+    Featured Song = permanenteng official Theme Song.
+    ============================================================
+    */
+
+    /* =========================================================
+       PAGE BASE
+    ========================================================= */
 
     .inner-page {
       min-height: 100vh;
       background: #090a0c;
     }
 
-    /* ===================================
+    /* =========================================================
        MUSIC HERO
-       =================================== */
+    ========================================================= */
 
-    .music-hero .hero-content {
-      max-width: 900px;
-    }
-
+    .music-hero .hero-content,
     .music-hero h1 {
       max-width: 900px;
     }
@@ -58,30 +76,70 @@
       display: block;
     }
 
-    /* ===================================
-       LATEST MUSIC
-       =================================== */
+    /* =========================================================
+       FEATURED SONG SECTION
+    ========================================================= */
 
     .latest-section {
       position: relative;
-      padding: 78px 7% 88px;
+
+      padding: 76px 7% 92px;
 
       overflow: hidden;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      color: #242321;
+
+      background:
+        radial-gradient(
+          circle at 90% 14%,
+          rgba(213, 173, 54, 0.1),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 8% 88%,
+          rgba(123, 30, 30, 0.045),
+          transparent 25%
+        ),
+        #f4f0e8;
+
+      border-top:
+        1px solid rgba(213, 173, 54, 0.22);
+
+      border-bottom:
+        1px solid rgba(23, 23, 23, 0.1);
+    }
+
+    .latest-section::before {
+      content: "";
+
+      position: absolute;
+      top: 66px;
+      right: -275px;
+
+      width: 570px;
+      height: 570px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.16);
+
+      border-radius: 50%;
+
+      pointer-events: none;
     }
 
     .latest-section::after {
       content: "";
 
       position: absolute;
-      right: -260px;
-      bottom: -280px;
+      right: -125px;
+      bottom: -145px;
 
-      width: 570px;
-      height: 570px;
+      width: 310px;
+      height: 310px;
 
-      border: 1px solid rgba(213, 173, 54, 0.15);
+      border:
+        1px solid rgba(213, 173, 54, 0.1);
+
       border-radius: 50%;
 
       pointer-events: none;
@@ -97,122 +155,156 @@
     }
 
     .section-label {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
 
-      color: rgba(245, 241, 232, 0.58);
-
-      font-size: 0.73rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .latest-card {
-      display: grid;
-      grid-template-columns:
-        minmax(0, 0.86fr)
-        minmax(0, 1.14fr);
-      align-items: stretch;
-
-      overflow: hidden;
-
-      border: 1px solid rgba(245, 241, 232, 0.13);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.045),
-          rgba(245, 241, 232, 0.02)
-        );
-
-      transition:
-        transform 0.28s ease,
-        border-color 0.28s ease,
-        background 0.28s ease;
-    }
-
-    .latest-card:hover {
-      transform: translateY(-5px);
-
-      border-color: rgba(213, 173, 54, 0.52);
-
-      background:
-        linear-gradient(
-          135deg,
-          rgba(213, 173, 54, 0.075),
-          rgba(245, 241, 232, 0.035)
-        );
-    }
-
-    .latest-image-link {
-      position: relative;
-
-      min-height: 610px;
-
-      display: block;
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 70% 75%,
-          rgba(213, 173, 54, 0.11),
-          transparent 42%
-        ),
-        linear-gradient(
-          145deg,
-          rgba(213, 173, 54, 0.1),
-          rgba(9, 10, 12, 0.96)
-        );
-    }
-
-    .latest-image {
-      width: 100%;
-      height: 100%;
-
-      display: block;
-      object-fit: cover;
-
-      transition: transform 0.42s ease;
-    }
-
-    .latest-card:hover .latest-image {
-      transform: scale(1.02);
-    }
-
-    .latest-content {
-      padding: 54px 52px;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .latest-kicker {
-      margin-bottom: 20px;
-
-      color: #d5ad36;
-
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    .latest-title {
-      max-width: 620px;
-      margin-bottom: 24px;
-
-      color: #f5f1e8;
+      color: #8b6810;
 
       font-family:
         "Barlow Condensed",
         Arial,
         sans-serif;
 
-      font-size: clamp(2.9rem, 5vw, 5rem);
+      font-size: 0.92rem;
       font-weight: 800;
-      line-height: 0.92;
+      line-height: 1.4;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       FEATURED SONG CARD
+    ========================================================= */
+
+    .latest-card {
+      width: 100%;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(360px, 0.92fr)
+        minmax(0, 1.08fr);
+
+      align-items: stretch;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(23, 23, 23, 0.11);
+
+      border-radius: 18px;
+
+      background: #f8f5ee;
+
+      box-shadow:
+        0 22px 54px rgba(30, 27, 21, 0.15);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease;
+    }
+
+    .latest-card:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(139, 104, 16, 0.45);
+
+      box-shadow:
+        0 30px 66px rgba(30, 27, 21, 0.2);
+    }
+
+    /* =========================================================
+       FEATURED SONG COVER
+    ========================================================= */
+
+    .latest-image-link {
+      width: 100%;
+      min-width: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      overflow: hidden;
+
+      background: #111214;
+    }
+
+    .latest-image {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+
+      display: block;
+
+      object-fit: contain;
+
+      transition:
+        transform 0.42s ease;
+    }
+
+    .latest-card:hover .latest-image {
+      transform: scale(1.012);
+    }
+
+    /* =========================================================
+       FEATURED SONG CONTENT
+    ========================================================= */
+
+    .latest-content {
+      min-width: 0;
+      padding: 54px 52px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      color: #242321;
+
+      background:
+        radial-gradient(
+          circle at 94% 8%,
+          rgba(213, 173, 54, 0.12),
+          transparent 29%
+        ),
+        #f8f5ee;
+    }
+
+    .latest-kicker {
+      margin: 0 0 20px;
+
+      color: #8b6810;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .latest-title {
+      max-width: 620px;
+      margin: 0 0 25px;
+
+      color: #171717;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.65rem,
+          5vw,
+          4.7rem
+        );
+
+      font-weight: 800;
+      line-height: 0.94;
       letter-spacing: -0.025em;
+      text-wrap: balance;
       text-transform: uppercase;
     }
 
@@ -220,43 +312,28 @@
       color: inherit;
       text-decoration: none;
 
-      transition: color 0.22s ease;
+      transition:
+        color 0.22s ease;
     }
 
     .latest-title a:hover,
     .latest-title a:focus-visible {
-      color: #d5ad36;
+      color: #8b6810;
       outline: none;
     }
 
-    .latest-quote {
+    .latest-excerpt {
       max-width: 590px;
-      margin-bottom: 22px;
+      margin: 0 0 34px;
 
-      color: #f5f1e8;
-
-      font-family:
-        "Barlow Condensed",
-        Arial,
-        sans-serif;
-
-      font-size: clamp(1.35rem, 2.4vw, 1.8rem);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .latest-description {
-      max-width: 590px;
-      margin-bottom: 34px;
-
-      color: #aaa69f;
+      color: #57534d;
 
       font-size: 1rem;
       line-height: 1.85;
     }
 
     .latest-meta {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
       padding-top: 22px;
 
       display: flex;
@@ -264,124 +341,117 @@
       flex-wrap: wrap;
       gap: 12px 20px;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.1);
+      border-top:
+        1px solid rgba(23, 23, 23, 0.13);
     }
 
     .latest-category,
-    .latest-status {
+    .latest-date {
       font-size: 0.68rem;
       font-weight: 700;
+      line-height: 1.5;
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .latest-category {
-      color: #d5ad36;
+      color: #8b6810;
     }
 
-    .latest-status {
-      color: rgba(245, 241, 232, 0.46);
+    .latest-date {
+      color: #77716a;
     }
 
-    .latest-actions {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .latest-action-link {
-      min-height: 48px;
-      padding: 13px 20px;
+    .latest-read-link {
+      width: fit-content;
+      min-height: 50px;
+      padding: 13px 21px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 11px;
 
-      border: 1px solid rgba(213, 173, 54, 0.46);
+      border: 1px solid #d5ad36;
 
-      color: #f5f1e8;
+      color: #111214;
+      background: #d5ad36;
 
       font-size: 0.7rem;
       font-weight: 800;
+      line-height: 1.4;
       letter-spacing: 0.11em;
+      text-align: center;
       text-decoration: none;
       text-transform: uppercase;
 
       transition:
         color 0.22s ease,
         border-color 0.22s ease,
-        background 0.22s ease;
+        background 0.22s ease,
+        transform 0.22s ease;
     }
 
-    .latest-action-primary {
-      border-color: #d5ad36;
-      background: #d5ad36;
-      color: #111214;
-    }
-
-    .latest-action-primary::after {
-      content: "▶";
-
-      font-size: 0.72rem;
-    }
-
-    .latest-action-secondary::after {
+    .latest-read-link::after {
       content: "→";
 
-      color: #d5ad36;
+      color: #111214;
+
       font-size: 1rem;
+      line-height: 1;
 
-      transition: transform 0.22s ease;
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
     }
 
-    .latest-action-primary:hover,
-    .latest-action-primary:focus-visible {
-      border-color: #f5f1e8;
-      background: #f5f1e8;
-      color: #111214;
+    .latest-read-link:hover,
+    .latest-read-link:focus-visible {
+      color: #f5f1e8;
+
+      border-color: #7b1e1e;
+      background: #7b1e1e;
+
       outline: none;
+
+      transform:
+        translateY(-2px);
     }
 
-    .latest-action-secondary:hover,
-    .latest-action-secondary:focus-visible {
-      border-color: #d5ad36;
-      background: #d5ad36;
-      color: #111214;
-      outline: none;
+    .latest-read-link:hover::after,
+    .latest-read-link:focus-visible::after {
+      color: #f5f1e8;
+
+      transform:
+        translateX(4px);
     }
 
-    .latest-action-secondary:hover::after,
-    .latest-action-secondary:focus-visible::after {
-      color: #111214;
-      transform: translateX(4px);
-    }
-
-    /* ===================================
+    /* =========================================================
        ARCHIVE NAVIGATION
-       =================================== */
+    ========================================================= */
 
     .archive-navigation {
       position: relative;
       z-index: 20;
 
-      padding: 0 7% 94px;
+      padding: 84px 7% 94px;
+
+      background:
+        radial-gradient(
+          circle at 85% 95%,
+          rgba(213, 173, 54, 0.06),
+          transparent 25%
+        ),
+        #090a0c;
     }
 
     .archive-navigation-inner {
-      position: relative;
-      z-index: 21;
-
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
     }
 
     .archive-navigation-link {
-      position: relative;
-      z-index: 22;
-
       width: 100%;
       min-height: 165px;
       padding: 38px 26px;
@@ -409,9 +479,6 @@
       text-align: center;
       text-decoration: none;
 
-      cursor: pointer;
-      pointer-events: auto;
-
       transition:
         border-color 0.25s ease,
         background 0.25s ease,
@@ -426,7 +493,13 @@
         Arial,
         sans-serif;
 
-      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-size:
+        clamp(
+          1.7rem,
+          3vw,
+          2.3rem
+        );
+
       font-weight: 800;
       line-height: 1;
       letter-spacing: 0.08em;
@@ -438,7 +511,8 @@
     }
 
     .archive-navigation-description {
-      color: rgba(245, 241, 232, 0.55);
+      color:
+        rgba(245, 241, 232, 0.55);
 
       font-size: 0.7rem;
       font-weight: 700;
@@ -446,7 +520,8 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
 
-      transition: color 0.25s ease;
+      transition:
+        color 0.25s ease;
     }
 
     .archive-navigation-arrow {
@@ -455,12 +530,14 @@
       font-size: 1.35rem;
       line-height: 1;
 
-      transition: transform 0.25s ease;
+      transition:
+        transform 0.25s ease;
     }
 
     .archive-navigation-link:hover,
     .archive-navigation-link:focus-visible {
-      border-color: rgba(213, 173, 54, 0.82);
+      border-color:
+        rgba(213, 173, 54, 0.82);
 
       background:
         linear-gradient(
@@ -470,7 +547,9 @@
           transparent
         );
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
+
       outline: none;
     }
 
@@ -479,6 +558,7 @@
     .archive-navigation-link:focus-visible
       .archive-navigation-title {
       color: #e2bd4d;
+
       letter-spacing: 0.1em;
     }
 
@@ -486,19 +566,21 @@
       .archive-navigation-description,
     .archive-navigation-link:focus-visible
       .archive-navigation-description {
-      color: rgba(245, 241, 232, 0.75);
+      color:
+        rgba(245, 241, 232, 0.75);
     }
 
     .archive-navigation-link:hover
       .archive-navigation-arrow,
     .archive-navigation-link:focus-visible
       .archive-navigation-arrow {
-      transform: translateX(5px);
+      transform:
+        translateX(5px);
     }
 
-    /* ===================================
+    /* =========================================================
        FOOTER
-       =================================== */
+    ========================================================= */
 
     .inner-footer {
       padding: 34px 7%;
@@ -508,7 +590,14 @@
       justify-content: space-between;
       gap: 24px;
 
-      border-top: 1px solid rgba(245, 241, 232, 0.12);
+      border-top:
+        1px solid rgba(245, 241, 232, 0.12);
+
+      background: #090a0c;
+    }
+
+    .inner-footer p {
+      margin: 0;
     }
 
     .footer-brand {
@@ -525,7 +614,8 @@
     }
 
     .footer-line {
-      color: rgba(245, 241, 232, 0.45);
+      color:
+        rgba(245, 241, 232, 0.45);
 
       font-size: 0.7rem;
       font-weight: 600;
@@ -533,9 +623,9 @@
       text-transform: uppercase;
     }
 
-    /* ===================================
-       TABLET
-       =================================== */
+    /* =========================================================
+       TABLET AND MOBILE
+    ========================================================= */
 
     @media (max-width: 1000px) {
       .latest-card {
@@ -543,8 +633,14 @@
       }
 
       .latest-image-link {
-        min-height: auto;
-        aspect-ratio: 1 / 1;
+        width: 100%;
+      }
+
+      .latest-image {
+        width: 100%;
+        height: auto;
+
+        object-fit: contain;
       }
 
       .latest-content {
@@ -552,38 +648,45 @@
       }
     }
 
-    /* ===================================
-       MOBILE
-       =================================== */
-
     @media (max-width: 850px) {
       .latest-section {
-        padding: 58px 34px 60px;
+        padding: 58px 34px 68px;
       }
 
       .section-label {
         margin-bottom: 24px;
+
+        font-size: 0.82rem;
+      }
+
+      .latest-card {
+        border-radius: 14px;
       }
 
       .latest-content {
-        padding: 35px 27px 38px;
+        padding: 35px 27px 39px;
       }
 
       .latest-title {
-        font-size: clamp(2.8rem, 12vw, 4rem);
+        font-size:
+          clamp(
+            2.45rem,
+            11vw,
+            3.65rem
+          );
       }
 
-      .latest-quote {
-        font-size: 1.4rem;
-      }
-
-      .latest-description {
+      .latest-excerpt {
         font-size: 0.94rem;
         line-height: 1.8;
       }
 
+      .latest-read-link {
+        width: 100%;
+      }
+
       .archive-navigation {
-        padding: 0 34px 74px;
+        padding: 68px 34px 74px;
       }
 
       .archive-navigation-link {
@@ -604,33 +707,24 @@
       }
     }
 
-    /* ===================================
-       SMALL MOBILE
-       =================================== */
-
     @media (max-width: 430px) {
       .latest-section {
         padding-right: 27px;
         padding-left: 27px;
       }
 
+      .latest-card {
+        border-radius: 12px;
+      }
+
       .latest-content {
-        padding: 31px 22px 34px;
+        padding: 31px 22px 35px;
       }
 
       .latest-meta {
         align-items: flex-start;
         flex-direction: column;
         gap: 8px;
-      }
-
-      .latest-actions {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .latest-action-link {
-        width: 100%;
       }
 
       .archive-navigation {
@@ -648,34 +742,39 @@
       }
     }
 
-    /* ===================================
-       LANDSCAPE MOBILE
-       =================================== */
+    /* =========================================================
+       PHONE LANDSCAPE
+    ========================================================= */
 
-    @media (
-      max-width: 950px
-    ) and (
-      orientation: landscape
-    ) {
+    @media
+      (min-width: 700px)
+      and (max-width: 950px)
+      and (max-height: 520px)
+      and (orientation: landscape) {
+
       .latest-card {
         grid-template-columns:
-          minmax(0, 0.8fr)
-          minmax(0, 1.2fr);
-      }
-
-      .latest-image-link {
-        min-height: 490px;
-        aspect-ratio: auto;
+          minmax(300px, 0.9fr)
+          minmax(0, 1.1fr);
       }
 
       .latest-content {
-        padding: 36px 34px;
+        padding: 34px 32px;
       }
 
       .latest-title {
-        font-size: 3rem;
+        font-size: 2.7rem;
+      }
+
+      .latest-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.65;
       }
     }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
       *,
@@ -690,9 +789,9 @@
 
 <body class="inner-page">
 
-  <!-- ===================================
+  <!-- ======================================================
        HEADER
-       =================================== -->
+  ======================================================= -->
 
   <header class="site-header">
 
@@ -750,42 +849,45 @@
     </nav>
 
   </header>
-<!-- ==========================
-     BACK TO HOME
-========================== -->
 
-<nav
-  class="back-navigation"
-  aria-label="Back navigation"
->
+  <!-- ======================================================
+       BACK TO HOME
+  ======================================================= -->
 
-  <div class="back-navigation-inner">
+  <div
+    class="back-navigation"
+    role="navigation"
+    aria-label="Back navigation"
+  >
 
-    <a
-      href="index.html"
-      class="back-navigation-link"
-      aria-label="Bumalik sa Home"
-    >
-      <span
-        class="back-arrow"
-        aria-hidden="true"
+    <div class="back-navigation-inner">
+
+      <a
+        href="index.html"
+        class="back-navigation-link"
+        aria-label="Bumalik sa Home"
       >
-        ←
-      </span>
+        <span
+          class="back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
 
-      <span class="back-text">
-        Home
-      </span>
-    </a>
+        <span class="back-text">
+          Home
+        </span>
+      </a>
+
+    </div>
 
   </div>
 
-</nav>
   <main>
 
-    <!-- ===================================
+    <!-- ====================================================
          MUSIC INTRO
-         =================================== -->
+    ===================================================== -->
 
     <section class="hero music-hero">
 
@@ -811,93 +913,73 @@
 
     </section>
 
-    <!-- ===================================
-         LATEST MUSIC
-         =================================== -->
+    <!-- ====================================================
+         FEATURED SONG
+    ===================================================== -->
 
     <section class="latest-section">
 
       <div class="latest-inner">
 
         <p class="section-label">
-          Pinakabagong Musika
+          Featured Song
         </p>
 
         <article class="latest-card">
 
           <a
             class="latest-image-link"
-            href="#"
-            aria-label="Pakinggan ang Hindi Tahimik"
+            href="articles/music-hindi-tahimik.html"
+            aria-label="Pakinggan at basahin ang Hindi Tahimik"
           >
             <img
               class="latest-image"
-              src="images/music/hindi-tahimik.jpg"
-              alt="Cover art ng awiting Hindi Tahimik"
+              src="articles/images/music-hindi-tahimik.png"
+              alt="Cover art ng original song na Hindi Tahimik"
             >
           </a>
 
           <div class="latest-content">
 
             <p class="latest-kicker">
-              Featured Track
+              Original Song
             </p>
 
             <h2 class="latest-title">
-              <a href="#">
+              <a href="articles/music-hindi-tahimik.html">
                 Hindi Tahimik
               </a>
             </h2>
 
-            <p class="latest-quote">
-              “Hindi ako maingay—pero hindi ako tatahimik.”
-            </p>
-
-            <p class="latest-description">
-              Isang awit tungkol sa tahimik ngunit matatag na
-              paninindigan—para sa mga taong hindi kailangang
-              sumigaw upang tumindig laban sa mali.
+            <p class="latest-excerpt">
+              Hindi lahat ng tahimik, walang pakialam. May mga
+              taong hindi maingay, pero malinaw ang paninindigan.
+              Ang kantang ito ay tungkol sa pagpiling tumindig
+              para sa tama kahit hindi ikaw ang pinakamalakas
+              na boses sa silid.
             </p>
 
             <div class="latest-meta">
 
               <span class="latest-category">
-                Civic Anthem
+                Original Song
               </span>
 
-              <span class="latest-status">
-                Official Track
-              </span>
+              <time
+                class="latest-date"
+                datetime="2026-07-19"
+              >
+                Hulyo 19, 2026
+              </time>
 
             </div>
 
-            <div class="latest-actions">
-
-              <!--
-                Palitan ang # ng official YouTube o music link
-                kapag handa na ang track.
-              -->
-
-              <a
-                class="latest-action-link latest-action-primary"
-                href="#"
-              >
-                Pakinggan
-              </a>
-
-              <!--
-                Palitan ang # ng individual music page
-                kapag handa na ang lyrics o track page.
-              -->
-
-              <a
-                class="latest-action-link latest-action-secondary"
-                href="#"
-              >
-                Tingnan ang Lyrics
-              </a>
-
-            </div>
+            <a
+              class="latest-read-link"
+              href="articles/music-hindi-tahimik.html"
+            >
+              Pakinggan at Basahin
+            </a>
 
           </div>
 
@@ -907,9 +989,9 @@
 
     </section>
 
-    <!-- ===================================
+    <!-- ====================================================
          COMPLETE MUSIC ARCHIVE
-         =================================== -->
+    ===================================================== -->
 
     <section
       class="archive-navigation"
@@ -921,11 +1003,11 @@
         <a
           class="archive-navigation-link"
           href="all-music.html"
-          aria-label="Tingnan ang lahat ng musika"
+          aria-label="Tingnan ang lahat ng kanta"
         >
 
           <span class="archive-navigation-title">
-            Lahat ng Musika
+            Lahat ng Kanta
           </span>
 
           <span class="archive-navigation-description">
@@ -947,9 +1029,9 @@
 
   </main>
 
-  <!-- ===================================
+  <!-- ======================================================
        FOOTER
-       =================================== -->
+  ======================================================= -->
 
   <footer class="inner-footer">
 
@@ -963,9 +1045,9 @@
 
   </footer>
 
-  <!-- ===================================
+  <!-- ======================================================
        PAGE SCRIPT
-       =================================== -->
+  ======================================================= -->
 
   <script>
     const menuToggle =
@@ -974,44 +1056,51 @@
     const mainNav =
       document.querySelector(".main-nav");
 
-    menuToggle.addEventListener("click", () => {
-      const isOpen =
-        mainNav.classList.toggle("is-open");
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
 
-      menuToggle.classList.toggle(
-        "is-open",
-        isOpen
-      );
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-
-      menuToggle.setAttribute(
-        "aria-label",
-        isOpen
-          ? "Close navigation menu"
-          : "Open navigation menu"
-      );
-    });
-
-    mainNav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        menuToggle.classList.remove("is-open");
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
 
         menuToggle.setAttribute(
           "aria-expanded",
-          "false"
+          String(isOpen)
         );
 
         menuToggle.setAttribute(
           "aria-label",
-          "Open navigation menu"
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
         );
       });
-    });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
   </script>
 
 </body>
