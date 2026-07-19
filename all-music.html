@@ -19,6 +19,7 @@
   <style>
     :root {
       --background: #08090a;
+      --surface: #0c0d0f;
       --text: #f1ede5;
       --muted: #989898;
       --gold: #d3ad55;
@@ -368,7 +369,7 @@
     }
 
     /* ===================================
-       ARCHIVE LIST
+       MUSIC ARCHIVE
        =================================== */
 
     .archive-section {
@@ -406,85 +407,197 @@
       text-transform: uppercase;
     }
 
-    .archive-list {
+    .music-grid {
       position: relative;
       z-index: 2;
 
-      list-style: none;
+      display: grid;
+      grid-template-columns:
+        repeat(
+          2,
+          minmax(0, 1fr)
+        );
 
-      border-top:
-        1px solid var(--border);
+      gap: 30px;
     }
 
-    .archive-item {
-      border-bottom:
-        1px solid var(--border);
+    .music-card {
+      min-width: 0;
     }
 
-    .archive-link {
+    .music-card-link {
       position: relative;
 
-      min-height: 92px;
-      padding: 26px 44px 26px 0;
+      height: 100%;
 
       display: flex;
-      align-items: center;
+      flex-direction: column;
 
-      color: #d6d2cb;
+      overflow: hidden;
+
+      border:
+        1px solid var(--border);
+
+      background:
+        linear-gradient(
+          145deg,
+          rgba(255, 255, 255, 0.035),
+          rgba(255, 255, 255, 0.008)
+        ),
+        var(--surface);
+
+      transition:
+        transform 0.24s ease,
+        border-color 0.24s ease,
+        box-shadow 0.24s ease;
+    }
+
+    .music-card-image-wrap {
+      position: relative;
+
+      width: 100%;
+      aspect-ratio: 16 / 9;
+
+      overflow: hidden;
+
+      border-bottom:
+        1px solid var(--border);
+
+      background: #050607;
+    }
+
+    .music-card-image-wrap::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.2),
+          transparent 45%
+        );
+
+      pointer-events: none;
+    }
+
+    .music-card-image {
+      display: block;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      transition:
+        transform 0.35s ease,
+        opacity 0.35s ease;
+    }
+
+    .music-card-content {
+      min-height: 150px;
+      padding: 25px 26px 24px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .music-card-label {
+      margin-bottom: 10px;
+
+      color: var(--gold);
+
+      font-size: 0.66rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    .music-card-title {
+      color: var(--text);
 
       font-size:
         clamp(
-          1rem,
-          2vw,
-          1.25rem
+          1.25rem,
+          2.5vw,
+          1.62rem
         );
 
-      font-weight: 750;
-      line-height: 1.35;
-      letter-spacing: 0.015em;
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
       text-transform: uppercase;
 
       transition:
-        color 0.22s ease,
-        padding-left 0.22s ease,
-        background-color 0.22s ease;
+        color 0.22s ease;
     }
 
-    .archive-link::after {
-      content: "→";
+    .music-card-action {
+      margin-top: auto;
+      padding-top: 22px;
 
-      position: absolute;
-      right: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
 
-      color: var(--gold);
+      color: rgba(241, 237, 229, 0.6);
 
-      font-size: 1.15rem;
-
-      opacity: 0;
-
-      transform:
-        translateX(-8px);
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
 
       transition:
-        opacity 0.22s ease,
+        color 0.22s ease;
+    }
+
+    .music-card-arrow {
+      color: var(--gold);
+
+      font-size: 1rem;
+      line-height: 1;
+
+      transition:
         transform 0.22s ease;
     }
 
-    .archive-link:hover,
-    .archive-link:focus-visible {
-      padding-left: 14px;
+    .music-card-link:hover,
+    .music-card-link:focus-visible {
+      border-color:
+        rgba(211, 173, 85, 0.55);
 
-      color: var(--gold);
+      box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.28);
+
+      transform:
+        translateY(-5px);
 
       outline: none;
     }
 
-    .archive-link:hover::after,
-    .archive-link:focus-visible::after {
-      opacity: 1;
-
+    .music-card-link:hover .music-card-image,
+    .music-card-link:focus-visible .music-card-image {
       transform:
-        translateX(0);
+        scale(1.025);
+
+      opacity: 0.94;
+    }
+
+    .music-card-link:hover .music-card-title,
+    .music-card-link:focus-visible .music-card-title,
+    .music-card-link:hover .music-card-action,
+    .music-card-link:focus-visible .music-card-action {
+      color: var(--gold);
+    }
+
+    .music-card-link:hover .music-card-arrow,
+    .music-card-link:focus-visible .music-card-arrow {
+      transform:
+        translateX(4px);
     }
 
     /* ===================================
@@ -613,29 +726,35 @@
         padding-top: 58px;
       }
 
-      .archive-link {
-        min-height: 84px;
-
-        padding-top: 23px;
-        padding-right: 34px;
-        padding-bottom: 23px;
+      .music-grid {
+        gap: 24px;
       }
 
-      .archive-link::after {
-        opacity: 0.75;
+      .music-card-content {
+        min-height: 145px;
+        padding: 22px;
+      }
 
+      .music-card-link:hover,
+      .music-card-link:focus-visible {
         transform: none;
       }
 
-      .archive-link:hover,
-      .archive-link:focus-visible {
-        padding-left: 0;
+      .music-card-link:hover .music-card-arrow,
+      .music-card-link:focus-visible .music-card-arrow {
+        transform: none;
       }
     }
 
     /* ===================================
        SMALL MOBILE
        =================================== */
+
+    @media (max-width: 620px) {
+      .music-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     @media (max-width: 520px) {
       .header-inner {
@@ -707,9 +826,17 @@
         margin-bottom: 28px;
       }
 
-      .archive-link {
-        font-size: 0.96rem;
-        line-height: 1.45;
+      .music-card-content {
+        min-height: 142px;
+        padding: 21px 20px 20px;
+      }
+
+      .music-card-title {
+        font-size: 1.22rem;
+      }
+
+      .music-card-action {
+        padding-top: 20px;
       }
     }
 
@@ -804,7 +931,7 @@
         Civic Explainers
       </a>
 
-      <a href="text-slogans.html">
+      <a href="text-slogan.html">
         Text Slogans
       </a>
 
@@ -912,7 +1039,7 @@
     </section>
 
     <!-- ===================================
-         ARCHIVE LIST
+         MUSIC ARCHIVE
          =================================== -->
 
     <section class="archive-section">
@@ -923,55 +1050,116 @@
           Lahat ng Musika
         </h2>
 
-        <ul class="archive-list">
+        <div class="music-grid">
 
           <!--
-            TEMPLATE NG BAWAT BAGONG MUSIC PAGE:
+            TEMPLATE NG BAWAT BAGONG MUSIC CARD:
 
-            <li class="archive-item">
+            <article class="music-card">
+
               <a
-                class="archive-link"
+                class="music-card-link"
                 href="articles/pangalan-ng-musika.html"
+                aria-label="Pakinggan ang Title ng Musika"
               >
-                TITLE NG MUSIKA
+
+                <div class="music-card-image-wrap">
+
+                  <img
+                    class="music-card-image"
+                    src="articles/images/pangalan-ng-cover.png"
+                    alt="Cover image ng Title ng Musika"
+                    loading="lazy"
+                  >
+
+                </div>
+
+                <div class="music-card-content">
+
+                  <p class="music-card-label">
+                    Original Music
+                  </p>
+
+                  <h3 class="music-card-title">
+                    Title ng Musika
+                  </h3>
+
+                  <span class="music-card-action">
+
+                    <span>
+                      Pakinggan
+                    </span>
+
+                    <span
+                      class="music-card-arrow"
+                      aria-hidden="true"
+                    >
+                      →
+                    </span>
+
+                  </span>
+
+                </div>
+
               </a>
-            </li>
+
+            </article>
+
+            Ilagay palagi ang pinakabagong musika
+            sa pinakataas o pinakaunang bahagi ng grid.
           -->
 
-          <li class="archive-item">
+          <article class="music-card">
 
             <a
-              class="archive-link"
-              href="articles/title-ng-musika-1.html"
+              class="music-card-link"
+              href="articles/music-hindi-tahimik.html"
+              aria-label="Pakinggan ang Hindi Tahimik"
             >
-              Title ng Musika 1
+
+              <div class="music-card-image-wrap">
+
+                <img
+                  class="music-card-image"
+                  src="articles/images/music-hindi-tahimik.png"
+                  alt="Cover image ng Hindi Tahimik"
+                  loading="lazy"
+                >
+
+              </div>
+
+              <div class="music-card-content">
+
+                <p class="music-card-label">
+                  Original Music
+                </p>
+
+                <h3 class="music-card-title">
+                  Hindi Tahimik
+                </h3>
+
+                <span class="music-card-action">
+
+                  <span>
+                    Pakinggan
+                  </span>
+
+                  <span
+                    class="music-card-arrow"
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+
+                </span>
+
+              </div>
+
             </a>
 
-          </li>
+          </article>
 
-          <li class="archive-item">
-
-            <a
-              class="archive-link"
-              href="articles/title-ng-musika-2.html"
-            >
-              Title ng Musika 2
-            </a>
-
-          </li>
-
-          <li class="archive-item">
-
-            <a
-              class="archive-link"
-              href="articles/title-ng-musika-3.html"
-            >
-              Title ng Musika 3
-            </a>
-
-          </li>
-
-        </ul>
+        </div>
 
       </div>
 
