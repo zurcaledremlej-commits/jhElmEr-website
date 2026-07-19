@@ -32,25 +32,32 @@
   <link rel="stylesheet" href="main.css?v=3">
 
   <style>
-    /* ===================================
-       TEXT SLOGANS LANDING PAGE
+    /*
+    ============================================================
+    TEXT SLOGANS LANDING PAGE
+    Version 3.1
 
-       INTRO → LATEST → ARCHIVE
-       =================================== */
+    VISUAL FLOW
+    Black Intro
+    Cream Latest Text Slogan
+    Black Archive
+    ============================================================
+    */
+
+    /* =========================================================
+       PAGE BASE
+    ========================================================= */
 
     .inner-page {
       min-height: 100vh;
       background: #090a0c;
     }
 
-    /* ===================================
+    /* =========================================================
        TEXT SLOGAN HERO
-       =================================== */
+    ========================================================= */
 
-    .slogan-hero .hero-content {
-      max-width: 900px;
-    }
-
+    .slogan-hero .hero-content,
     .slogan-hero h1 {
       max-width: 900px;
     }
@@ -60,33 +67,69 @@
       display: block;
     }
 
-    /* ===================================
-       LATEST TEXT SLOGAN
-       =================================== */
+    /* =========================================================
+       LATEST TEXT SLOGAN SECTION
+    ========================================================= */
 
     .latest-section {
       position: relative;
 
-      padding: 78px 7% 88px;
+      padding: 76px 7% 92px;
 
       overflow: hidden;
 
+      color: #242321;
+
+      background:
+        radial-gradient(
+          circle at 90% 14%,
+          rgba(213, 173, 54, 0.1),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 8% 88%,
+          rgba(123, 30, 30, 0.045),
+          transparent 25%
+        ),
+        #f4f0e8;
+
       border-top:
-        1px solid rgba(245, 241, 232, 0.1);
+        1px solid rgba(213, 173, 54, 0.22);
+
+      border-bottom:
+        1px solid rgba(23, 23, 23, 0.1);
+    }
+
+    .latest-section::before {
+      content: "";
+
+      position: absolute;
+      top: 66px;
+      right: -275px;
+
+      width: 570px;
+      height: 570px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.16);
+
+      border-radius: 50%;
+
+      pointer-events: none;
     }
 
     .latest-section::after {
       content: "";
 
       position: absolute;
-      right: -260px;
-      bottom: -280px;
+      right: -125px;
+      bottom: -145px;
 
-      width: 570px;
-      height: 570px;
+      width: 310px;
+      height: 310px;
 
       border:
-        1px solid rgba(213, 173, 54, 0.15);
+        1px solid rgba(213, 173, 54, 0.1);
 
       border-radius: 50%;
 
@@ -105,35 +148,46 @@
     .section-label {
       margin: 0 0 30px;
 
-      color: rgba(245, 241, 232, 0.58);
+      color: #8b6810;
 
-      font-size: 0.73rem;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 0.92rem;
       font-weight: 800;
       line-height: 1.4;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
+    /* =========================================================
+       MASTER LATEST CONTENT CARD
+    ========================================================= */
+
     .latest-card {
+      width: 100%;
+
       display: grid;
 
       grid-template-columns:
-        minmax(0, 0.86fr)
-        minmax(0, 1.14fr);
+        minmax(360px, 0.92fr)
+        minmax(0, 1.08fr);
 
       align-items: stretch;
 
       overflow: hidden;
 
       border:
-        1px solid rgba(213, 173, 54, 0.24);
+        1px solid rgba(23, 23, 23, 0.11);
 
-      border-radius: 20px;
+      border-radius: 18px;
 
-      background: #f4f0e8;
+      background: #f8f5ee;
 
       box-shadow:
-        0 25px 65px rgba(0, 0, 0, 0.3);
+        0 22px 54px rgba(30, 27, 21, 0.15);
 
       transition:
         transform 0.28s ease,
@@ -145,111 +199,77 @@
       transform: translateY(-5px);
 
       border-color:
-        rgba(213, 173, 54, 0.62);
+        rgba(139, 104, 16, 0.45);
 
       box-shadow:
-        0 30px 75px rgba(0, 0, 0, 0.38);
+        0 30px 66px rgba(30, 27, 21, 0.2);
     }
 
-    /* ===================================
-       LATEST POSTER
-       =================================== */
+    /* =========================================================
+       LATEST CARD IMAGE
+    ========================================================= */
 
     .latest-image-link {
-      position: relative;
+      width: 100%;
+      min-width: 0;
 
-      min-height: 610px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      display: block;
       overflow: hidden;
 
-      border-radius: 19px 0 0 19px;
-
-      background:
-        radial-gradient(
-          circle at 70% 75%,
-          rgba(213, 173, 54, 0.11),
-          transparent 42%
-        ),
-        #111214;
+      background: #111214;
     }
 
     .latest-image {
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-width: 100%;
 
       display: block;
 
-      object-fit: cover;
+      object-fit: contain;
 
       transition:
         transform 0.42s ease;
     }
 
     .latest-card:hover .latest-image {
-      transform: scale(1.018);
+      transform: scale(1.012);
     }
 
-    /* ===================================
-       LATEST CONTENT
-       =================================== */
+    /* =========================================================
+       LATEST CARD CONTENT
+    ========================================================= */
 
     .latest-content {
-      position: relative;
-
-      padding: 58px 54px;
+      min-width: 0;
+      padding: 54px 52px;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      overflow: hidden;
-
       color: #242321;
+
       background:
         radial-gradient(
-          circle at 94% 10%,
+          circle at 94% 8%,
           rgba(213, 173, 54, 0.12),
-          transparent 28%
+          transparent 29%
         ),
-        #f4f0e8;
-    }
-
-    .latest-content::after {
-      content: "";
-
-      position: absolute;
-      right: -115px;
-      bottom: -135px;
-
-      width: 270px;
-      height: 270px;
-
-      border:
-        1px solid rgba(213, 173, 54, 0.17);
-
-      border-radius: 50%;
-
-      pointer-events: none;
-    }
-
-    .latest-kicker,
-    .latest-title,
-    .latest-excerpt,
-    .latest-meta,
-    .latest-read-link {
-      position: relative;
-      z-index: 2;
+        #f8f5ee;
     }
 
     .latest-kicker {
       margin: 0 0 20px;
 
-      color: #a77908;
+      color: #8b6810;
 
       font-size: 0.7rem;
       font-weight: 800;
-      line-height: 1.4;
+      line-height: 1.5;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
@@ -275,6 +295,7 @@
       font-weight: 800;
       line-height: 0.94;
       letter-spacing: -0.025em;
+      text-wrap: balance;
       text-transform: uppercase;
     }
 
@@ -288,7 +309,7 @@
 
     .latest-title a:hover,
     .latest-title a:focus-visible {
-      color: #9b7009;
+      color: #8b6810;
       outline: none;
     }
 
@@ -299,7 +320,6 @@
       color: #57534d;
 
       font-size: 1rem;
-      font-weight: 400;
       line-height: 1.85;
     }
 
@@ -313,61 +333,63 @@
       gap: 12px 20px;
 
       border-top:
-        1px solid rgba(23, 23, 23, 0.12);
+        1px solid rgba(23, 23, 23, 0.13);
     }
 
     .latest-category,
     .latest-date {
       font-size: 0.68rem;
-      font-weight: 800;
-      line-height: 1.4;
+      font-weight: 700;
+      line-height: 1.5;
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .latest-category {
-      color: #9b7009;
+      color: #8b6810;
     }
 
     .latest-date {
-      color: rgba(36, 35, 33, 0.56);
+      color: #77716a;
     }
 
     .latest-read-link {
       width: fit-content;
-      min-height: 48px;
-      padding: 13px 20px;
+      min-height: 50px;
+      padding: 13px 21px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 11px;
 
-      border:
-        1px solid rgba(167, 121, 8, 0.54);
+      border: 1px solid #d5ad36;
 
-      color: #242321;
-      background: transparent;
+      color: #111214;
+      background: #d5ad36;
 
       font-size: 0.7rem;
       font-weight: 800;
       line-height: 1.4;
       letter-spacing: 0.11em;
+      text-align: center;
       text-decoration: none;
       text-transform: uppercase;
 
       transition:
         color 0.22s ease,
         border-color 0.22s ease,
-        background 0.22s ease;
+        background 0.22s ease,
+        transform 0.22s ease;
     }
 
     .latest-read-link::after {
       content: "→";
 
-      color: #9b7009;
+      color: #111214;
 
       font-size: 1rem;
+      line-height: 1;
 
       transition:
         color 0.22s ease,
@@ -376,45 +398,51 @@
 
     .latest-read-link:hover,
     .latest-read-link:focus-visible {
-      color: #111214;
+      color: #f5f1e8;
 
-      border-color: #d5ad36;
-      background: #d5ad36;
+      border-color: #7b1e1e;
+      background: #7b1e1e;
 
       outline: none;
+
+      transform:
+        translateY(-2px);
     }
 
     .latest-read-link:hover::after,
     .latest-read-link:focus-visible::after {
-      color: #111214;
+      color: #f5f1e8;
 
-      transform: translateX(4px);
+      transform:
+        translateX(4px);
     }
 
-    /* ===================================
+    /* =========================================================
        ARCHIVE NAVIGATION
-       =================================== */
+    ========================================================= */
 
     .archive-navigation {
       position: relative;
       z-index: 20;
 
-      padding: 0 7% 94px;
+      padding: 84px 7% 94px;
+
+      background:
+        radial-gradient(
+          circle at 85% 95%,
+          rgba(213, 173, 54, 0.06),
+          transparent 25%
+        ),
+        #090a0c;
     }
 
     .archive-navigation-inner {
-      position: relative;
-      z-index: 21;
-
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
     }
 
     .archive-navigation-link {
-      position: relative;
-      z-index: 22;
-
       width: 100%;
       min-height: 165px;
       padding: 38px 26px;
@@ -441,8 +469,6 @@
 
       text-align: center;
       text-decoration: none;
-
-      cursor: pointer;
 
       transition:
         border-color 0.25s ease,
@@ -512,7 +538,8 @@
           transparent
         );
 
-      transform: translateY(-2px);
+      transform:
+        translateY(-2px);
 
       outline: none;
     }
@@ -538,12 +565,13 @@
       .archive-navigation-arrow,
     .archive-navigation-link:focus-visible
       .archive-navigation-arrow {
-      transform: translateX(5px);
+      transform:
+        translateX(5px);
     }
 
-    /* ===================================
+    /* =========================================================
        FOOTER
-       =================================== */
+    ========================================================= */
 
     .inner-footer {
       padding: 34px 7%;
@@ -555,11 +583,15 @@
 
       border-top:
         1px solid rgba(245, 241, 232, 0.12);
+
+      background: #090a0c;
+    }
+
+    .inner-footer p {
+      margin: 0;
     }
 
     .footer-brand {
-      margin: 0;
-
       color: #f5f1e8;
 
       font-family:
@@ -573,8 +605,6 @@
     }
 
     .footer-line {
-      margin: 0;
-
       color:
         rgba(245, 241, 232, 0.45);
 
@@ -584,9 +614,9 @@
       text-transform: uppercase;
     }
 
-    /* ===================================
-       TABLET
-       =================================== */
+    /* =========================================================
+       TABLET AND MOBILE
+    ========================================================= */
 
     @media (max-width: 1000px) {
       .latest-card {
@@ -594,49 +624,38 @@
       }
 
       .latest-image-link {
-        min-height: auto;
+        width: 100%;
+      }
 
-        aspect-ratio: 4 / 5;
+      .latest-image {
+        width: 100%;
+        height: auto;
 
-        border-radius:
-          19px 19px 0 0;
+        object-fit: contain;
       }
 
       .latest-content {
-        padding:
-          47px 42px
-          50px;
+        padding: 44px 40px 48px;
       }
     }
 
-    /* ===================================
-       MOBILE
-       =================================== */
-
     @media (max-width: 850px) {
       .latest-section {
-        padding:
-          58px 34px
-          60px;
+        padding: 58px 34px 68px;
       }
 
       .section-label {
         margin-bottom: 24px;
+
+        font-size: 0.82rem;
       }
 
       .latest-card {
-        border-radius: 16px;
-      }
-
-      .latest-image-link {
-        border-radius:
-          15px 15px 0 0;
+        border-radius: 14px;
       }
 
       .latest-content {
-        padding:
-          38px 29px
-          41px;
+        padding: 35px 27px 39px;
       }
 
       .latest-title {
@@ -653,10 +672,12 @@
         line-height: 1.8;
       }
 
+      .latest-read-link {
+        width: 100%;
+      }
+
       .archive-navigation {
-        padding:
-          0 34px
-          74px;
+        padding: 68px 34px 74px;
       }
 
       .archive-navigation-link {
@@ -677,10 +698,6 @@
       }
     }
 
-    /* ===================================
-       SMALL MOBILE
-       =================================== */
-
     @media (max-width: 430px) {
       .latest-section {
         padding-right: 27px;
@@ -688,28 +705,17 @@
       }
 
       .latest-card {
-        border-radius: 14px;
-      }
-
-      .latest-image-link {
-        border-radius:
-          13px 13px 0 0;
+        border-radius: 12px;
       }
 
       .latest-content {
-        padding:
-          34px 23px
-          37px;
+        padding: 31px 22px 35px;
       }
 
       .latest-meta {
         align-items: flex-start;
         flex-direction: column;
         gap: 8px;
-      }
-
-      .latest-read-link {
-        width: 100%;
       }
 
       .archive-navigation {
@@ -727,41 +733,39 @@
       }
     }
 
-    /* ===================================
-       LANDSCAPE MOBILE
-       =================================== */
+    /* =========================================================
+       PHONE LANDSCAPE
+    ========================================================= */
 
-    @media (
-      max-width: 950px
-    ) and (
-      orientation: landscape
-    ) {
+    @media
+      (min-width: 700px)
+      and (max-width: 950px)
+      and (max-height: 520px)
+      and (orientation: landscape) {
+
       .latest-card {
         grid-template-columns:
-          minmax(0, 0.8fr)
-          minmax(0, 1.2fr);
-      }
-
-      .latest-image-link {
-        min-height: 490px;
-        aspect-ratio: auto;
-
-        border-radius:
-          15px 0 0 15px;
+          minmax(300px, 0.9fr)
+          minmax(0, 1.1fr);
       }
 
       .latest-content {
-        padding: 38px 35px;
+        padding: 34px 32px;
       }
 
       .latest-title {
-        font-size: 2.8rem;
+        font-size: 2.7rem;
+      }
+
+      .latest-excerpt {
+        font-size: 0.9rem;
+        line-height: 1.65;
       }
     }
 
-    /* ===================================
+    /* =========================================================
        REDUCED MOTION
-       =================================== */
+    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
       *,
@@ -776,9 +780,9 @@
 
 <body class="inner-page">
 
-  <!-- ===================================
+  <!-- ======================================================
        HEADER
-       =================================== -->
+  ======================================================= -->
 
   <header class="site-header">
 
@@ -837,20 +841,21 @@
 
   </header>
 
-  <!-- ===================================
+  <!-- ======================================================
        BACK TO HOME
-       =================================== -->
+  ======================================================= -->
 
-  <nav
+  <div
     class="back-navigation"
+    role="navigation"
     aria-label="Back navigation"
   >
 
     <div class="back-navigation-inner">
 
       <a
-        class="back-navigation-link"
         href="index.html"
+        class="back-navigation-link"
         aria-label="Bumalik sa Home"
       >
         <span
@@ -867,13 +872,13 @@
 
     </div>
 
-  </nav>
+  </div>
 
   <main>
 
-    <!-- ===================================
+    <!-- ====================================================
          TEXT SLOGAN INTRO
-         =================================== -->
+    ===================================================== -->
 
     <section class="hero slogan-hero">
 
@@ -903,9 +908,9 @@
 
     </section>
 
-    <!-- ===================================
+    <!-- ====================================================
          LATEST TEXT SLOGAN
-         =================================== -->
+    ===================================================== -->
 
     <section class="latest-section">
 
@@ -925,7 +930,7 @@
             <img
               class="latest-image"
               src="articles/images/slogan-school-safety-act.png"
-              alt="Text Slogan poster na Naghihintay tungkol sa paghahanda at pag-iwas sa mga banta sa paaralan"
+              alt="Naghihintay—Text Slogan tungkol sa paghahanda at pag-iwas sa mga banta sa paaralan"
             >
           </a>
 
@@ -936,19 +941,15 @@
             </p>
 
             <h2 class="latest-title">
-
-              <a
-                href="articles/slogan-school-safety-act.html"
-              >
+              <a href="articles/slogan-school-safety-act.html">
                 Naghihintay
               </a>
-
             </h2>
 
             <p class="latest-excerpt">
-              Kapag school safety ang pinag-uusapan, hindi
-              sapat na maging handa lang kapag may nangyari na.
-              Mas mahalaga ang tuloy-tuloy na paghahanda ng mga
+              Kapag school safety ang pinag-uusapan, hindi sapat
+              na maging handa lang kapag may nangyari na. Mas
+              mahalaga ang tuloy-tuloy na paghahanda ng mga
               paaralan upang mapangalagaan ang kaligtasan ng
               mga mag-aaral.
             </p>
@@ -983,9 +984,9 @@
 
     </section>
 
-    <!-- ===================================
+    <!-- ====================================================
          COMPLETE TEXT SLOGAN ARCHIVE
-         =================================== -->
+    ===================================================== -->
 
     <section
       class="archive-navigation"
@@ -1023,9 +1024,9 @@
 
   </main>
 
-  <!-- ===================================
+  <!-- ======================================================
        FOOTER
-       =================================== -->
+  ======================================================= -->
 
   <footer class="inner-footer">
 
@@ -1039,9 +1040,9 @@
 
   </footer>
 
-  <!-- ===================================
+  <!-- ======================================================
        PAGE SCRIPT
-       =================================== -->
+  ======================================================= -->
 
   <script>
     const menuToggle =
