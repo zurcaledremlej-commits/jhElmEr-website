@@ -2,14 +2,14 @@
 ======================================================
 jhElmEr WEBSITE
 MUSIC ARTICLE — HINDI TAHIMIK
-VERSION 3.1
+VERSION 3.2
 ======================================================
 
 FILE:
 articles/music-hindi-tahimik.html
 
 BASED ON:
-articles/article-music.html — Version 3.1
+articles/article-music.html — Version 3.2
 
 PURPOSE:
 Ito ang permanenteng Music article page para sa
@@ -73,17 +73,20 @@ LYRICS
 Magkahiwalay na premium cards ang cover image at
 audio player.
 
-May maliit na pagitan lamang sa pagitan ng poster
-at audio player upang manatiling konektado ang
-visual flow nang hindi sila nagmumukhang isang
-malaking container.
+May maliit na pagitan lamang sa pagitan ng cover image
+at audio player upang manatiling konektado ang visual
+flow nang hindi sila nagmumukhang isang malaking
+container.
 
-Gumagamit ang audio card ng sarili nitong unique
-class names upang hindi magkaroon ng conflict sa
-global stylesheet.
+Ang audio player card ay content-driven. Wala itong
+fixed height o minimum height.
 
-Ang title ay inilagay bago ang lyrics upang hindi ito
-agad maulit sa ibabaw ng poster.
+Gumagamit ang Music article ng sariling unique class
+names upang hindi magkaroon ng conflict sa global
+stylesheet at sa future article styles.
+
+Ang global header at navigation styles ay direktang
+kinukuha mula sa main.css.
 
 Walang Call to Action.
 
@@ -112,7 +115,10 @@ END OF DEVELOPER NOTES
 
   <title>Hindi Tahimik | jhElmEr</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
 
   <link
     rel="preconnect"
@@ -125,15 +131,19 @@ END OF DEVELOPER NOTES
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="../style.css?v=30">
+  <link
+    rel="stylesheet"
+    href="../main.css?v=3"
+  >
 
   <style>
     /* =========================================================
-       MUSIC ARTICLE PAGE — VERSION 3.1
+       MUSIC ARTICLE PAGE — VERSION 3.2
 
-       BLACK BRAND AREA
-       CREAM CONTENT AREA
-
+       GLOBAL HEADER
+       ↓
+       ARTICLE BACK NAVIGATION
+       ↓
        COVER IMAGE CARD
        ↓
        COMPACT AUDIO PLAYER CARD
@@ -161,60 +171,25 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-       HEADER LOGO CLICKABLE SCOPE FIX
-    ========================================================= */
-
-    .music-article-page .site-header .brand {
-      position: relative !important;
-      inset: auto !important;
-      z-index: 2;
-
-      width: fit-content !important;
-      height: fit-content !important;
-      max-width: none;
-
-      padding: 0;
-      margin-right: auto;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 0 0 auto;
-
-      line-height: 0;
-    }
-
-    .music-article-page .site-header .brand img {
-      position: relative;
-
-      width: auto;
-      height: auto;
-
-      display: block;
-
-      pointer-events: none;
-    }
-
-    /* =========================================================
        ARTICLE BACK NAVIGATION
     ========================================================= */
 
-    .article-back-navigation {
+    .music-article-back {
       position: relative;
       z-index: 100;
 
-      isolation: isolate;
+      width: 100%;
+
+      background: #090a0c;
 
       border-top:
         1px solid rgba(213, 173, 54, 0.12);
 
       border-bottom:
         1px solid rgba(213, 173, 54, 0.18);
-
-      background: #090a0c;
     }
 
-    .article-back-inner {
+    .music-article-back-inner {
       width: 100%;
       max-width: 1180px;
       margin: 0 auto;
@@ -226,10 +201,7 @@ END OF DEVELOPER NOTES
       gap: 8px 16px;
     }
 
-    .article-back-link {
-      position: relative;
-      z-index: 2;
-
+    .music-article-back-link {
       width: fit-content;
       min-height: 38px;
 
@@ -252,8 +224,8 @@ END OF DEVELOPER NOTES
         transform 0.22s ease;
     }
 
-    .article-back-link:hover,
-    .article-back-link:focus-visible {
+    .music-article-back-link:hover,
+    .music-article-back-link:focus-visible {
       color: #d5ad36;
 
       outline: none;
@@ -262,14 +234,14 @@ END OF DEVELOPER NOTES
         translateX(-3px);
     }
 
-    .article-back-arrow {
+    .music-article-back-arrow {
       color: #d5ad36;
 
       font-size: 1rem;
       line-height: 1;
     }
 
-    .article-back-divider {
+    .music-article-back-divider {
       color:
         rgba(245, 241, 232, 0.22);
 
@@ -278,7 +250,7 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-       ARTICLE MAIN AREA
+       MUSIC ARTICLE MAIN AREA
     ========================================================= */
 
     .music-article-main {
@@ -339,7 +311,7 @@ END OF DEVELOPER NOTES
       pointer-events: none;
     }
 
-    .article-container {
+    .music-article-container {
       position: relative;
       z-index: 2;
 
@@ -350,10 +322,10 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-       SONG COVER CARD
+       COVER IMAGE CARD
     ========================================================= */
 
-    .article-image-card {
+    .music-cover-card {
       width: 100%;
       margin: 0 0 14px;
 
@@ -370,14 +342,12 @@ END OF DEVELOPER NOTES
         0 22px 55px rgba(22, 20, 16, 0.16);
     }
 
-    .article-image-figure {
+    .music-cover-figure {
       width: 100%;
       margin: 0;
     }
 
-    .article-image-frame {
-      position: relative;
-
+    .music-cover-frame {
       width: 100%;
 
       overflow: hidden;
@@ -385,48 +355,42 @@ END OF DEVELOPER NOTES
       background: #111214;
     }
 
-    .article-image {
+    .music-cover-image {
       width: 100%;
       max-width: 100%;
       height: auto;
 
       display: block;
-
-      object-fit: contain;
     }
 
     /* =========================================================
        COMPACT AUDIO PLAYER CARD
 
-       Gumagamit ng unique class names upang hindi tamaan
-       ng global audio o section rules mula sa style.css.
+       Isang container lamang.
+
+       Walang nested visual wrapper.
+       Walang fixed height.
+       Walang minimum height.
+
+       Ang tunay na taas nito ay padding + aktuwal na content.
     ========================================================= */
 
-    .music-article-audio-card {
+    .music-audio-card {
       width: 100%;
+      height: auto;
+      min-height: 0;
+
       margin: 0 0 42px;
-      padding: 0;
+      padding: 18px 22px 20px;
 
       display: block;
+
       overflow: hidden;
 
       border:
         1px solid rgba(23, 23, 23, 0.11);
 
       border-radius: 15px;
-
-      background: #111214;
-
-      box-shadow:
-        0 14px 35px rgba(22, 20, 16, 0.13);
-    }
-
-    .music-article-audio-inner {
-      width: 100%;
-      margin: 0;
-      padding: 18px 22px 20px;
-
-      display: block;
 
       background:
         radial-gradient(
@@ -435,9 +399,12 @@ END OF DEVELOPER NOTES
           transparent 32%
         ),
         #111214;
+
+      box-shadow:
+        0 14px 35px rgba(22, 20, 16, 0.13);
     }
 
-    .music-article-audio-label {
+    .music-audio-label {
       margin: 0 0 9px;
 
       color: #d5ad36;
@@ -454,15 +421,16 @@ END OF DEVELOPER NOTES
       text-transform: uppercase;
     }
 
-    .music-article-audio-control {
+    .music-audio-control {
       width: 100%;
       height: 46px;
+      min-height: 0;
       margin: 0;
 
       display: block;
     }
 
-    .music-article-audio-note {
+    .music-audio-note {
       margin: 9px 0 0;
 
       color:
@@ -476,7 +444,7 @@ END OF DEVELOPER NOTES
        ARTICLE READING AREA
     ========================================================= */
 
-    .article-reading-area {
+    .music-reading-area {
       width: 100%;
       max-width: 790px;
       margin: 0 auto;
@@ -486,7 +454,7 @@ END OF DEVELOPER NOTES
        STORY / CONTEXT
     ========================================================= */
 
-    .article-body {
+    .music-story {
       color: #47443f;
 
       font-size: 1.04rem;
@@ -494,28 +462,28 @@ END OF DEVELOPER NOTES
       line-height: 1.94;
     }
 
-    .article-body p {
+    .music-story p {
       margin: 0 0 1.65em;
     }
 
-    .article-body p:last-child {
+    .music-story p:last-child {
       margin-bottom: 0;
     }
 
-    .article-body strong {
+    .music-story strong {
       color: #1d1c1a;
       font-weight: 700;
     }
 
-    .article-body em {
+    .music-story em {
       color: #35322e;
     }
 
     /* =========================================================
-       SONG TITLE + LYRICS
+       SONG TITLE AND LYRICS
     ========================================================= */
 
-    .lyrics-section {
+    .music-lyrics {
       width: 100%;
       margin-top: 54px;
       padding-top: 42px;
@@ -524,7 +492,7 @@ END OF DEVELOPER NOTES
         1px solid rgba(23, 23, 23, 0.14);
     }
 
-    .lyrics-song-title {
+    .music-song-title {
       margin: 0 0 13px;
 
       color: #171717;
@@ -548,7 +516,7 @@ END OF DEVELOPER NOTES
       text-transform: uppercase;
     }
 
-    .lyrics-heading {
+    .music-lyrics-heading {
       margin: 0 0 34px;
 
       color: #9a7624;
@@ -565,7 +533,7 @@ END OF DEVELOPER NOTES
       text-transform: uppercase;
     }
 
-    .lyrics-content {
+    .music-lyrics-content {
       color: #393733;
 
       font-size: 1.03rem;
@@ -573,19 +541,19 @@ END OF DEVELOPER NOTES
       line-height: 1.9;
     }
 
-    .lyrics-stanza {
+    .music-lyrics-stanza {
       margin: 0 0 2.25em;
     }
 
-    .lyrics-stanza:last-child {
+    .music-lyrics-stanza:last-child {
       margin-bottom: 0;
     }
 
-    .lyrics-stanza p {
+    .music-lyrics-stanza p {
       margin: 0;
     }
 
-    .lyrics-section-label {
+    .music-lyrics-label {
       margin: 0 0 0.72em;
 
       color: #9a7624;
@@ -607,7 +575,7 @@ END OF DEVELOPER NOTES
     ========================================================= */
 
     @media (max-width: 1000px) {
-      .article-container {
+      .music-article-container {
         max-width: 940px;
       }
     }
@@ -617,15 +585,15 @@ END OF DEVELOPER NOTES
     ========================================================= */
 
     @media (max-width: 850px) {
-      .article-back-inner {
+      .music-article-back-inner {
         padding: 17px 30px;
       }
 
-      .article-container {
+      .music-article-container {
         padding: 48px 30px 84px;
       }
 
-      .article-image-card {
+      .music-cover-card {
         margin-bottom: 14px;
 
         border-radius: 14px;
@@ -634,8 +602,9 @@ END OF DEVELOPER NOTES
           0 17px 42px rgba(22, 20, 16, 0.14);
       }
 
-      .music-article-audio-card {
+      .music-audio-card {
         margin-bottom: 38px;
+        padding: 17px 20px 19px;
 
         border-radius: 13px;
 
@@ -643,25 +612,21 @@ END OF DEVELOPER NOTES
           0 12px 30px rgba(22, 20, 16, 0.12);
       }
 
-      .music-article-audio-inner {
-        padding: 17px 20px 19px;
-      }
-
-      .article-body {
+      .music-story {
         font-size: 0.98rem;
         line-height: 1.88;
       }
 
-      .article-body p {
+      .music-story p {
         margin-bottom: 1.52em;
       }
 
-      .lyrics-section {
+      .music-lyrics {
         margin-top: 46px;
         padding-top: 35px;
       }
 
-      .lyrics-song-title {
+      .music-song-title {
         margin-bottom: 11px;
 
         font-size:
@@ -672,16 +637,16 @@ END OF DEVELOPER NOTES
           );
       }
 
-      .lyrics-heading {
+      .music-lyrics-heading {
         margin-bottom: 28px;
       }
 
-      .lyrics-content {
+      .music-lyrics-content {
         font-size: 0.98rem;
         line-height: 1.86;
       }
 
-      .lyrics-stanza {
+      .music-lyrics-stanza {
         margin-bottom: 2em;
       }
     }
@@ -691,7 +656,7 @@ END OF DEVELOPER NOTES
     ========================================================= */
 
     @media (max-width: 430px) {
-      .article-back-inner {
+      .music-article-back-inner {
         padding: 14px 27px;
 
         align-items: flex-start;
@@ -699,66 +664,63 @@ END OF DEVELOPER NOTES
         gap: 1px;
       }
 
-      .article-back-divider {
+      .music-article-back-divider {
         display: none;
       }
 
-      .article-back-link {
+      .music-article-back-link {
         min-height: 34px;
 
         font-size: 0.62rem;
         letter-spacing: 0.08em;
       }
 
-      .article-container {
+      .music-article-container {
         padding: 40px 27px 72px;
       }
 
-      .article-image-card {
+      .music-cover-card {
         margin-bottom: 13px;
 
         border-radius: 12px;
       }
 
-      .music-article-audio-card {
+      .music-audio-card {
         margin-bottom: 34px;
+        padding: 16px 16px 18px;
 
         border-radius: 12px;
       }
 
-      .music-article-audio-inner {
-        padding: 16px 16px 18px;
-      }
-
-      .music-article-audio-label {
+      .music-audio-label {
         margin-bottom: 8px;
 
         font-size: 0.71rem;
         letter-spacing: 0.11em;
       }
 
-      .music-article-audio-control {
+      .music-audio-control {
         height: 44px;
       }
 
-      .music-article-audio-note {
+      .music-audio-note {
         margin-top: 8px;
 
         font-size: 0.7rem;
         line-height: 1.45;
       }
 
-      .article-body {
+      .music-story {
         font-size: 0.95rem;
         line-height: 1.84;
       }
 
-      .lyrics-section {
+      .music-lyrics {
         margin-top: 40px;
         padding-top: 31px;
       }
 
-      .lyrics-song-title {
+      .music-song-title {
         margin-bottom: 10px;
 
         font-size:
@@ -769,22 +731,22 @@ END OF DEVELOPER NOTES
           );
       }
 
-      .lyrics-heading {
+      .music-lyrics-heading {
         margin-bottom: 25px;
 
         font-size: 0.75rem;
       }
 
-      .lyrics-content {
+      .music-lyrics-content {
         font-size: 0.95rem;
         line-height: 1.83;
       }
 
-      .lyrics-section-label {
+      .music-lyrics-label {
         font-size: 0.72rem;
       }
 
-      .lyrics-stanza {
+      .music-lyrics-stanza {
         margin-bottom: 1.85em;
       }
     }
@@ -799,36 +761,25 @@ END OF DEVELOPER NOTES
       and (max-height: 520px)
       and (orientation: landscape) {
 
-      .article-back-inner {
+      .music-article-back-inner {
         padding-top: 13px;
         padding-bottom: 13px;
       }
 
-      .article-container {
+      .music-article-container {
         max-width: 850px;
         padding-top: 42px;
       }
 
-      .article-image-card,
-      .music-article-audio-card {
-        width: 100%;
-      }
-
-      .article-image {
-        width: 100%;
-        max-width: 100%;
-        height: auto;
-      }
-
-      .music-article-audio-inner {
-        padding: 17px 21px 19px;
-      }
-
-      .article-reading-area {
+      .music-reading-area {
         max-width: 720px;
       }
 
-      .lyrics-song-title {
+      .music-audio-card {
+        padding: 17px 21px 19px;
+      }
+
+      .music-song-title {
         font-size:
           clamp(
             3rem,
@@ -843,11 +794,11 @@ END OF DEVELOPER NOTES
     ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        scroll-behavior: auto !important;
-        transition: none !important;
+      .music-article-page *,
+      .music-article-page *::before,
+      .music-article-page *::after {
+        scroll-behavior: auto;
+        transition: none;
       }
     }
   </style>
@@ -921,19 +872,19 @@ END OF DEVELOPER NOTES
   ======================================================= -->
 
   <div
-    class="article-back-navigation"
+    class="music-article-back"
     role="navigation"
     aria-label="Music article return navigation"
   >
 
-    <div class="article-back-inner">
+    <div class="music-article-back-inner">
 
       <a
-        class="article-back-link"
+        class="music-article-back-link"
         href="../music.html"
       >
         <span
-          class="article-back-arrow"
+          class="music-article-back-arrow"
           aria-hidden="true"
         >
           ←
@@ -945,18 +896,18 @@ END OF DEVELOPER NOTES
       </a>
 
       <span
-        class="article-back-divider"
+        class="music-article-back-divider"
         aria-hidden="true"
       >
         /
       </span>
 
       <a
-        class="article-back-link"
+        class="music-article-back-link"
         href="../music-list.html"
       >
         <span
-          class="article-back-arrow"
+          class="music-article-back-arrow"
           aria-hidden="true"
         >
           ←
@@ -977,20 +928,20 @@ END OF DEVELOPER NOTES
 
   <main class="music-article-main">
 
-    <article class="article-container">
+    <article class="music-article-container">
 
       <!-- ==================================================
            COVER IMAGE CARD
       =================================================== -->
 
-      <div class="article-image-card">
+      <div class="music-cover-card">
 
-        <figure class="article-image-figure">
+        <figure class="music-cover-figure">
 
-          <div class="article-image-frame">
+          <div class="music-cover-frame">
 
             <img
-              class="article-image"
+              class="music-cover-image"
               src="images/music-hindi-tahimik.png"
               alt="Cover image ng original song na Hindi Tahimik"
             >
@@ -1005,53 +956,50 @@ END OF DEVELOPER NOTES
            COMPACT AUDIO PLAYER CARD
       =================================================== -->
 
-      <section
-        class="music-article-audio-card"
+      <div
+        class="music-audio-card"
+        role="group"
         aria-label="Hindi Tahimik audio player"
       >
 
-        <div class="music-article-audio-inner">
+        <p class="music-audio-label">
+          Original Song
+        </p>
 
-          <p class="music-article-audio-label">
-            Original Song
-          </p>
-
-          <audio
-            class="music-article-audio-control"
-            controls
-            preload="metadata"
-            aria-label="Pakinggan ang Hindi Tahimik"
+        <audio
+          class="music-audio-control"
+          controls
+          preload="metadata"
+          aria-label="Pakinggan ang Hindi Tahimik"
+        >
+          <source
+            src="audio/hindi-tahimik.mp3"
+            type="audio/mpeg"
           >
-            <source
-              src="audio/hindi-tahimik.mp3"
-              type="audio/mpeg"
-            >
 
-            Hindi sinusuportahan ng browser mo ang
-            HTML audio player.
-          </audio>
+          Hindi sinusuportahan ng browser mo ang
+          HTML audio player.
+        </audio>
 
-          <p class="music-article-audio-note">
-            Kapag hindi gumana ang audio player, tiyaking
-            eksaktong tugma ang MP3 filename, extension,
-            capitalization, at file path.
-          </p>
+        <p class="music-audio-note">
+          Kapag hindi gumana ang audio player, tiyaking
+          eksaktong tugma ang MP3 filename, extension,
+          capitalization, at file path.
+        </p>
 
-        </div>
-
-      </section>
+      </div>
 
       <!-- ==================================================
            ARTICLE READING AREA
       =================================================== -->
 
-      <div class="article-reading-area">
+      <div class="music-reading-area">
 
         <!-- ===============================================
              STORY / CONTEXT
         ================================================ -->
 
-        <div class="article-body">
+        <div class="music-story">
 
           <p>
             Hindi lahat ng tahimik, walang pakialam.
@@ -1074,30 +1022,30 @@ END OF DEVELOPER NOTES
         </div>
 
         <!-- ===============================================
-             SONG TITLE + LYRICS
+             SONG TITLE AND LYRICS
         ================================================ -->
 
         <section
-          class="lyrics-section"
+          class="music-lyrics"
           aria-labelledby="song-lyrics-title"
         >
 
           <h1
-            class="lyrics-song-title"
+            class="music-song-title"
             id="song-lyrics-title"
           >
             Hindi Tahimik
           </h1>
 
-          <p class="lyrics-heading">
+          <p class="music-lyrics-heading">
             Lyrics
           </p>
 
-          <div class="lyrics-content">
+          <div class="music-lyrics-content">
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Intro
               </p>
 
@@ -1123,9 +1071,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Verse 1 – Rap
               </p>
 
@@ -1165,9 +1113,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Pre-Chorus
               </p>
 
@@ -1181,9 +1129,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Chorus
               </p>
 
@@ -1223,9 +1171,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Verse 2 – Rap
               </p>
 
@@ -1265,9 +1213,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Bridge
               </p>
 
@@ -1307,9 +1255,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Final Chorus
               </p>
 
@@ -1349,9 +1297,9 @@ END OF DEVELOPER NOTES
 
             </div>
 
-            <div class="lyrics-stanza">
+            <div class="music-lyrics-stanza">
 
-              <p class="lyrics-section-label">
+              <p class="music-lyrics-label">
                 Outro
               </p>
 
