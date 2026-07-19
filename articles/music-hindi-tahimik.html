@@ -1,0 +1,1322 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MUSIC ARTICLE — HINDI TAHIMIK
+======================================================
+
+FILE:
+articles/music-hindi-tahimik.html
+
+BASED ON:
+articles/article-music.html
+
+PURPOSE:
+Ito ang permanenteng Music article page para sa
+original song na “Hindi Tahimik.”
+
+Ang page na ito ay nagsisilbing public archive ng kanta,
+kasama ang cover image, audio, konteksto, at buong lyrics.
+
+------------------------------------------------------
+CONTENT FILES
+------------------------------------------------------
+
+Cover image:
+
+articles/images/music-hindi-tahimik.png
+
+Audio file:
+
+articles/audio/hindi-tahimik.mp3
+
+------------------------------------------------------
+MUSIC ARTICLE STRUCTURE
+------------------------------------------------------
+
+TITLE
+↓
+COVER IMAGE
+↓
+AUDIO PLAYER
+↓
+STORY / CONTEXT
+↓
+LYRICS
+
+Walang Call to Action.
+
+Walang Like, Comment, Subscribe, o Share section.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Pakinggan ang Hindi Tahimik, isang original song ng jhElmEr tungkol sa tahimik ngunit matatag na paninindigan, mulat na pag-iisip, at pagtindig para sa tama."
+  >
+
+  <title>Hindi Tahimik | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../style.css?v=30">
+
+  <style>
+    /* =========================================================
+       MUSIC ARTICLE PAGE — VERSION 1
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → COVER → AUDIO → STORY → LYRICS
+    ========================================================= */
+
+    .music-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .music-article-page,
+    .music-article-page *,
+    .music-article-page *::before,
+    .music-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .music-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .music-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .music-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       SONG COVER
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 38px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       AUDIO PLAYER
+    ========================================================= */
+
+    .song-player-section {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .song-player-shell {
+      position: relative;
+
+      width: 100%;
+      padding: 24px 27px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.26);
+      border-radius: 15px;
+
+      background:
+        radial-gradient(
+          circle at 94% 18%,
+          rgba(213, 173, 54, 0.1),
+          transparent 32%
+        ),
+        #111214;
+
+      box-shadow:
+        0 16px 38px rgba(22, 20, 16, 0.14);
+    }
+
+    .song-player-shell::after {
+      content: "";
+
+      position: absolute;
+      top: -80px;
+      right: -68px;
+
+      width: 170px;
+      height: 170px;
+
+      border: 1px solid rgba(213, 173, 54, 0.13);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .song-player-label {
+      position: relative;
+      z-index: 2;
+
+      margin: 0 0 13px;
+
+      color: #d5ad36;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 0.79rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .song-audio {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      height: 48px;
+
+      display: block;
+    }
+
+    .audio-fallback {
+      position: relative;
+      z-index: 2;
+
+      margin: 13px 0 0;
+
+      color: rgba(245, 241, 232, 0.66);
+
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    /* =========================================================
+       LYRICS
+    ========================================================= */
+
+    .lyrics-section {
+      width: 100%;
+      margin-top: 62px;
+      padding-top: 43px;
+
+      border-top: 1px solid rgba(23, 23, 23, 0.14);
+    }
+
+    .lyrics-heading {
+      margin: 0 0 34px;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(2.25rem, 5vw, 3.45rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.018em;
+      text-transform: uppercase;
+    }
+
+    .lyrics-content {
+      color: #393733;
+
+      font-size: 1.03rem;
+      font-weight: 500;
+      line-height: 1.9;
+    }
+
+    .lyrics-stanza {
+      margin: 0 0 2.25em;
+    }
+
+    .lyrics-stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    .lyrics-stanza p {
+      margin: 0;
+    }
+
+    .lyrics-section-label {
+      margin: 0 0 0.72em;
+
+      color: #9a7624;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: 0.79rem;
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 30px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .song-player-section {
+        margin-bottom: 45px;
+      }
+
+      .song-player-shell {
+        padding: 21px 22px;
+
+        border-radius: 13px;
+      }
+
+      .song-player-label {
+        margin-bottom: 11px;
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .lyrics-section {
+        margin-top: 48px;
+        padding-top: 35px;
+      }
+
+      .lyrics-heading {
+        margin-bottom: 28px;
+
+        font-size: clamp(2.1rem, 8vw, 3rem);
+      }
+
+      .lyrics-content {
+        font-size: 0.98rem;
+        line-height: 1.86;
+      }
+
+      .lyrics-stanza {
+        margin-bottom: 2em;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 25px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .song-player-section {
+        margin-bottom: 39px;
+      }
+
+      .song-player-shell {
+        padding: 18px 17px;
+
+        border-radius: 11px;
+      }
+
+      .song-player-label {
+        font-size: 0.71rem;
+        letter-spacing: 0.11em;
+      }
+
+      .song-audio {
+        height: 44px;
+      }
+
+      .audio-fallback {
+        font-size: 0.72rem;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .lyrics-section {
+        margin-top: 42px;
+        padding-top: 31px;
+      }
+
+      .lyrics-heading {
+        margin-bottom: 25px;
+
+        font-size: 2.05rem;
+      }
+
+      .lyrics-content {
+        font-size: 0.95rem;
+        line-height: 1.83;
+      }
+
+      .lyrics-section-label {
+        font-size: 0.72rem;
+      }
+
+      .lyrics-stanza {
+        margin-bottom: 1.85em;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="music-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a href="../civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a
+        class="active"
+        href="../music.html"
+        aria-current="page"
+      >
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Music article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../music.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Music
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../music-list.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Kanta
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       MUSIC ARTICLE
+  =================================== -->
+
+  <main class="music-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           SONG TITLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          Hindi Tahimik
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           COVER IMAGE
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/music-hindi-tahimik.png"
+            alt="Cover image ng original song na Hindi Tahimik"
+          >
+
+        </div>
+
+      </figure>
+
+      <!-- ===================================
+           AUDIO PLAYER
+      =================================== -->
+
+      <section
+        class="song-player-section"
+        aria-label="Hindi Tahimik audio player"
+      >
+
+        <div class="song-player-shell">
+
+          <p class="song-player-label">
+            Original Song
+          </p>
+
+          <audio
+            class="song-audio"
+            controls
+            preload="metadata"
+            aria-label="Pakinggan ang Hindi Tahimik"
+          >
+            <source
+              src="audio/hindi-tahimik.mp3"
+              type="audio/mpeg"
+            >
+
+            Hindi sinusuportahan ng browser mo ang
+            HTML audio player.
+          </audio>
+
+          <p class="audio-fallback">
+            Kapag hindi gumana ang audio player, tiyaking
+            tama ang MP3 filename at file path.
+          </p>
+
+        </div>
+
+      </section>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             STORY / CONTEXT
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Hindi lahat ng tahimik, walang pakialam.
+          </p>
+
+          <p>
+            May mga taong hindi maingay, pero malinaw ang
+            paninindigan. Ang kantang ito ay tungkol sa
+            pagpiling tumindig para sa tama kahit hindi ka
+            pinakamalakas ang boses sa silid.
+          </p>
+
+          <p>
+            Hindi ito tungkol sa pagiging perpekto o pagiging
+            sikat. Isa itong paalala na ang paninindigan ay
+            hindi nasusukat sa lakas ng sigaw, kundi sa
+            katatagan ng paninindigan.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             LYRICS
+        =================================== -->
+
+        <section
+          class="lyrics-section"
+          aria-labelledby="lyrics-heading"
+        >
+
+          <h2
+            class="lyrics-heading"
+            id="lyrics-heading"
+          >
+            Lyrics
+          </h2>
+
+          <div class="lyrics-content">
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Intro
+              </p>
+
+              <p>
+                Hindi lahat ng tahimik
+              </p>
+
+              <p>
+                walang pakialam
+              </p>
+
+              <p>
+                Minsan malinaw lang
+              </p>
+
+              <p>
+                bago tumindig
+              </p>
+
+              <p>
+                jhElmEr
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Verse 1 – Rap
+              </p>
+
+              <p>
+                Hindi ako artista, hindi rin politiko
+              </p>
+
+              <p>
+                Pero bawat linya diretso hindi paliko
+              </p>
+
+              <p>
+                Araw-araw na verse hindi lang pang kumpleto
+              </p>
+
+              <p>
+                Kapag sinabuhay mo doon nagiging totoo
+              </p>
+
+              <br>
+
+              <p>
+                Text slogan hindi lang pang viral na patama
+              </p>
+
+              <p>
+                May moral na bigat hindi basta drama
+              </p>
+
+              <p>
+                Kung mali ang sistema hindi ko tinatakpan
+              </p>
+
+              <p>
+                Hindi ako nananahimik para lang tanggapin ng karamihan
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Pre-Chorus
+              </p>
+
+              <p>
+                Hindi lahat ng maingay may laman
+              </p>
+
+              <p>
+                Hindi lahat ng tahimik walang pakialam
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Chorus
+              </p>
+
+              <p>
+                Ako si jhElmEr hindi tahimik kung mali ang galaw
+              </p>
+
+              <p>
+                Hindi kailangan sumigaw para marinig ang tama
+              </p>
+
+              <p>
+                Hindi ako perpekto pero hindi nagpapanggap
+              </p>
+
+              <p>
+                Sa bawat salitang bitaw may paninindigan hindi paatras
+              </p>
+
+              <br>
+
+              <p>
+                Ako si jhElmEr simpleng tao pero mulat ang mata
+              </p>
+
+              <p>
+                Hindi basta sasabay kung mali ang direksyon ng masa
+              </p>
+
+              <p>
+                Kung ang sistema ang bulok hindi ko sasabayan
+              </p>
+
+              <p>
+                Sa maliit na boses may lakas para tumindigan
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Verse 2 – Rap
+              </p>
+
+              <p>
+                Hindi lahat ng trending dapat paniwalaan
+              </p>
+
+              <p>
+                Hindi lahat ng viral dapat sinasakyan
+              </p>
+
+              <p>
+                Kaya may civic explainer para malinawan
+              </p>
+
+              <p>
+                Hindi puro emosyon may datos na pinanghahawakan
+              </p>
+
+              <br>
+
+              <p>
+                Hindi ito rant ito’y paghimay ng katotohanan
+              </p>
+
+              <p>
+                Para ang masa hindi lang umaasa sa haka-haka
+              </p>
+
+              <p>
+                Kung lahat tahimik lalo lang lalala
+              </p>
+
+              <p>
+                Kung may mali kailangan may tatayo at magsasalita
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Bridge
+              </p>
+
+              <p>
+                Hindi ito laban ng lakas
+              </p>
+
+              <p>
+                kundi linaw ng isip
+              </p>
+
+              <p>
+                Hindi ito paramihan
+              </p>
+
+              <p>
+                kundi tibay ng prinsipyo
+              </p>
+
+              <br>
+
+              <p>
+                Kung may paninindigan
+              </p>
+
+              <p>
+                kahit mag-isa may bigat
+              </p>
+
+              <p>
+                Dahil ang tama
+              </p>
+
+              <p>
+                hindi sinusukat sa dami
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Final Chorus
+              </p>
+
+              <p>
+                Ako si jhElmEr hindi tahimik kung mali ang galaw
+              </p>
+
+              <p>
+                Hindi kailangan ng titulo para maging totoo ang laban
+              </p>
+
+              <p>
+                Hindi ako perpekto pero hindi ko ibebenta ang tama
+              </p>
+
+              <p>
+                Sa bawat salitang bitaw may paninindigan sa masa
+              </p>
+
+              <br>
+
+              <p>
+                Ako si jhElmEr hindi bulag sa nangyayari
+              </p>
+
+              <p>
+                Hindi basta susunod kung mali lalaban lagi
+              </p>
+
+              <p>
+                Sa simpleng tinig may lakas na hindi mabibili
+              </p>
+
+              <p>
+                Kapag tama ang tindig kahit tahimik maririnig
+              </p>
+
+            </div>
+
+            <div class="lyrics-stanza">
+
+              <p class="lyrics-section-label">
+                Outro
+              </p>
+
+              <p>
+                Hindi kailangang maging malakas
+              </p>
+
+              <p>
+                para maging totoo
+              </p>
+
+              <p>
+                Minsan sapat na ang malinaw
+              </p>
+
+              <p>
+                at handang tumindig
+              </p>
+
+              <p>
+                jhElmEr
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
