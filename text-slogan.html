@@ -103,12 +103,13 @@
     }
 
     .section-label {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
 
       color: rgba(245, 241, 232, 0.58);
 
       font-size: 0.73rem;
       font-weight: 800;
+      line-height: 1.4;
       letter-spacing: 0.18em;
       text-transform: uppercase;
     }
@@ -125,26 +126,34 @@
       overflow: hidden;
 
       border:
-        1px solid rgba(245, 241, 232, 0.13);
+        1px solid rgba(213, 173, 54, 0.24);
 
-      background:
-        rgba(245, 241, 232, 0.025);
+      border-radius: 20px;
+
+      background: #f4f0e8;
+
+      box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.3);
 
       transition:
         transform 0.28s ease,
         border-color 0.28s ease,
-        background 0.28s ease;
+        box-shadow 0.28s ease;
     }
 
     .latest-card:hover {
       transform: translateY(-5px);
 
       border-color:
-        rgba(213, 173, 54, 0.52);
+        rgba(213, 173, 54, 0.62);
 
-      background:
-        rgba(245, 241, 232, 0.04);
+      box-shadow:
+        0 30px 75px rgba(0, 0, 0, 0.38);
     }
+
+    /* ===================================
+       LATEST POSTER
+       =================================== */
 
     .latest-image-link {
       position: relative;
@@ -154,17 +163,15 @@
       display: block;
       overflow: hidden;
 
+      border-radius: 19px 0 0 19px;
+
       background:
         radial-gradient(
           circle at 70% 75%,
           rgba(213, 173, 54, 0.11),
           transparent 42%
         ),
-        linear-gradient(
-          145deg,
-          rgba(213, 173, 54, 0.1),
-          rgba(9, 10, 12, 0.96)
-        );
+        #111214;
     }
 
     .latest-image {
@@ -180,33 +187,78 @@
     }
 
     .latest-card:hover .latest-image {
-      transform: scale(1.02);
+      transform: scale(1.018);
     }
 
+    /* ===================================
+       LATEST CONTENT
+       =================================== */
+
     .latest-content {
-      padding: 54px 52px;
+      position: relative;
+
+      padding: 58px 54px;
 
       display: flex;
       flex-direction: column;
       justify-content: center;
+
+      overflow: hidden;
+
+      color: #242321;
+      background:
+        radial-gradient(
+          circle at 94% 10%,
+          rgba(213, 173, 54, 0.12),
+          transparent 28%
+        ),
+        #f4f0e8;
+    }
+
+    .latest-content::after {
+      content: "";
+
+      position: absolute;
+      right: -115px;
+      bottom: -135px;
+
+      width: 270px;
+      height: 270px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.17);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .latest-kicker,
+    .latest-title,
+    .latest-excerpt,
+    .latest-meta,
+    .latest-read-link {
+      position: relative;
+      z-index: 2;
     }
 
     .latest-kicker {
-      margin-bottom: 20px;
+      margin: 0 0 20px;
 
-      color: #d5ad36;
+      color: #a77908;
 
       font-size: 0.7rem;
       font-weight: 800;
+      line-height: 1.4;
       letter-spacing: 0.16em;
       text-transform: uppercase;
     }
 
     .latest-title {
       max-width: 620px;
-      margin-bottom: 25px;
+      margin: 0 0 25px;
 
-      color: #f5f1e8;
+      color: #171717;
 
       font-family:
         "Barlow Condensed",
@@ -236,22 +288,23 @@
 
     .latest-title a:hover,
     .latest-title a:focus-visible {
-      color: #d5ad36;
+      color: #9b7009;
       outline: none;
     }
 
     .latest-excerpt {
       max-width: 590px;
-      margin-bottom: 34px;
+      margin: 0 0 34px;
 
-      color: #aaa69f;
+      color: #57534d;
 
       font-size: 1rem;
+      font-weight: 400;
       line-height: 1.85;
     }
 
     .latest-meta {
-      margin-bottom: 30px;
+      margin: 0 0 30px;
       padding-top: 22px;
 
       display: flex;
@@ -260,24 +313,24 @@
       gap: 12px 20px;
 
       border-top:
-        1px solid rgba(245, 241, 232, 0.1);
+        1px solid rgba(23, 23, 23, 0.12);
     }
 
     .latest-category,
     .latest-date {
       font-size: 0.68rem;
-      font-weight: 700;
+      font-weight: 800;
+      line-height: 1.4;
       letter-spacing: 0.09em;
       text-transform: uppercase;
     }
 
     .latest-category {
-      color: #d5ad36;
+      color: #9b7009;
     }
 
     .latest-date {
-      color:
-        rgba(245, 241, 232, 0.46);
+      color: rgba(36, 35, 33, 0.56);
     }
 
     .latest-read-link {
@@ -291,12 +344,14 @@
       gap: 11px;
 
       border:
-        1px solid rgba(213, 173, 54, 0.46);
+        1px solid rgba(167, 121, 8, 0.54);
 
-      color: #f5f1e8;
+      color: #242321;
+      background: transparent;
 
       font-size: 0.7rem;
       font-weight: 800;
+      line-height: 1.4;
       letter-spacing: 0.11em;
       text-decoration: none;
       text-transform: uppercase;
@@ -310,11 +365,12 @@
     .latest-read-link::after {
       content: "→";
 
-      color: #d5ad36;
+      color: #9b7009;
 
       font-size: 1rem;
 
       transition:
+        color 0.22s ease,
         transform 0.22s ease;
     }
 
@@ -332,8 +388,7 @@
     .latest-read-link:focus-visible::after {
       color: #111214;
 
-      transform:
-        translateX(4px);
+      transform: translateX(4px);
     }
 
     /* ===================================
@@ -457,8 +512,7 @@
           transparent
         );
 
-      transform:
-        translateY(-2px);
+      transform: translateY(-2px);
 
       outline: none;
     }
@@ -484,8 +538,7 @@
       .archive-navigation-arrow,
     .archive-navigation-link:focus-visible
       .archive-navigation-arrow {
-      transform:
-        translateX(5px);
+      transform: translateX(5px);
     }
 
     /* ===================================
@@ -505,6 +558,8 @@
     }
 
     .footer-brand {
+      margin: 0;
+
       color: #f5f1e8;
 
       font-family:
@@ -518,6 +573,8 @@
     }
 
     .footer-line {
+      margin: 0;
+
       color:
         rgba(245, 241, 232, 0.45);
 
@@ -540,12 +597,15 @@
         min-height: auto;
 
         aspect-ratio: 4 / 5;
+
+        border-radius:
+          19px 19px 0 0;
       }
 
       .latest-content {
         padding:
-          44px 40px
-          48px;
+          47px 42px
+          50px;
       }
     }
 
@@ -564,10 +624,19 @@
         margin-bottom: 24px;
       }
 
+      .latest-card {
+        border-radius: 16px;
+      }
+
+      .latest-image-link {
+        border-radius:
+          15px 15px 0 0;
+      }
+
       .latest-content {
         padding:
-          35px 27px
-          38px;
+          38px 29px
+          41px;
       }
 
       .latest-title {
@@ -618,10 +687,19 @@
         padding-left: 27px;
       }
 
+      .latest-card {
+        border-radius: 14px;
+      }
+
+      .latest-image-link {
+        border-radius:
+          13px 13px 0 0;
+      }
+
       .latest-content {
         padding:
-          31px 22px
-          34px;
+          34px 23px
+          37px;
       }
 
       .latest-meta {
@@ -667,10 +745,13 @@
       .latest-image-link {
         min-height: 490px;
         aspect-ratio: auto;
+
+        border-radius:
+          15px 0 0 15px;
       }
 
       .latest-content {
-        padding: 36px 34px;
+        padding: 38px 35px;
       }
 
       .latest-title {
@@ -844,7 +925,7 @@
             <img
               class="latest-image"
               src="articles/images/slogan-school-safety-act.png"
-              alt="Text Slogan poster na Naghihintay tungkol sa kahalagahan ng maagap na paghahanda at pag-iwas sa mga banta sa mga paaralan"
+              alt="Text Slogan poster na Naghihintay tungkol sa paghahanda at pag-iwas sa mga banta sa paaralan"
             >
           </a>
 
