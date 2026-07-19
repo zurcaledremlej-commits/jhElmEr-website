@@ -1,7 +1,7 @@
 <!--
 ======================================================
 jhElmEr WEBSITE
-MOTHER MUSIC ARTICLE TEMPLATE — VERSION 1
+MOTHER MUSIC ARTICLE TEMPLATE — VERSION 2
 ======================================================
 
 FILE:
@@ -28,6 +28,7 @@ PUBLISHING WORKFLOW
 2. Palitan ang filename ng duplicate.
 
    Halimbawa:
+
    music-hindi-tahimik.html
    music-song-title.html
 
@@ -35,12 +36,12 @@ PUBLISHING WORKFLOW
 
    • Browser page title
    • Meta description
-   • Song title
    • Cover image filename
    • Cover image alt text
    • MP3 filename
    • Audio accessibility label
    • Story / context paragraphs
+   • Song title bago ang Lyrics
    • Lyrics
 
 4. Ilagay ang cover image sa:
@@ -82,10 +83,12 @@ PUBLISHING WORKFLOW
 10. Test bago mag-commit:
 
    • Header navigation
+   • Header logo clickable scope
    • Back navigation
    • Cover image
    • Audio playback
    • Story / context
+   • Song title bago ang Lyrics
    • Lyrics
    • Mobile portrait
    • Mobile landscape
@@ -133,23 +136,40 @@ Kaya ang audio path sa Music article ay:
 
 audio/filename.mp3
 
-Panatilihin ang original file extension.
+HUWAG GAMITIN ANG:
+
+articles/audio/filename.mp3
+
+Dahil nasa loob na ng /articles/ folder ang Music
+article. Kapag ginamit ang articles/audio/, hahanapin
+ng browser ang maling path na:
+
+articles/articles/audio/filename.mp3
+
+Panatilihin ang eksaktong filename, capitalization,
+spacing, at original file extension.
 
 ------------------------------------------------------
 MUSIC ARTICLE STRUCTURE
 ------------------------------------------------------
 
-TITLE
-↓
 COVER IMAGE
 ↓
 AUDIO PLAYER
 ↓
 STORY / CONTEXT
 ↓
+SONG TITLE
+↓
 LYRICS
 
+Magkasama sa iisang media card ang Cover Image at
+Audio Player upang maging tuloy-tuloy ang visual flow.
+
 Walang heading ang Story / Context section.
+
+Ang Song Title ay inilalagay bago ang Lyrics upang
+hindi maulit agad ang pamagat na makikita na sa cover.
 
 Walang Call to Action.
 
@@ -198,12 +218,18 @@ END OF DEVELOPER NOTES
 
   <style>
     /* =========================================================
-       MUSIC ARTICLE PAGE — VERSION 1
+       MUSIC ARTICLE PAGE — VERSION 2
 
        BLACK BRAND AREA
        CREAM CONTENT AREA
 
-       TITLE → COVER → AUDIO → STORY → LYRICS
+       COVER + AUDIO
+       ↓
+       STORY / CONTEXT
+       ↓
+       SONG TITLE
+       ↓
+       LYRICS
     ========================================================= */
 
     .music-article-page {
@@ -222,15 +248,58 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
+       HEADER LOGO CLICKABLE SCOPE FIX
+
+       Nililimitahan nito ang clickable area ng brand link
+       sa aktuwal na sukat lamang ng header logo.
+    ========================================================= */
+
+    .music-article-page .site-header .brand {
+      position: relative !important;
+      inset: auto !important;
+      z-index: 2;
+
+      width: fit-content !important;
+      height: fit-content !important;
+      max-width: none;
+
+      padding: 0;
+      margin-right: auto;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex: 0 0 auto;
+
+      line-height: 0;
+    }
+
+    .music-article-page .site-header .brand img {
+      position: relative;
+
+      width: auto;
+      height: auto;
+
+      display: block;
+
+      pointer-events: none;
+    }
+
+    /* =========================================================
        ARTICLE BACK NAVIGATION
     ========================================================= */
 
     .article-back-navigation {
       position: relative;
-      z-index: 25;
+      z-index: 100;
 
-      border-top: 1px solid rgba(213, 173, 54, 0.12);
-      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+      isolation: isolate;
+
+      border-top:
+        1px solid rgba(213, 173, 54, 0.12);
+
+      border-bottom:
+        1px solid rgba(213, 173, 54, 0.18);
 
       background: #090a0c;
     }
@@ -248,13 +317,18 @@ END OF DEVELOPER NOTES
     }
 
     .article-back-link {
+      position: relative;
+      z-index: 2;
+
+      width: fit-content;
       min-height: 38px;
 
       display: inline-flex;
       align-items: center;
       gap: 9px;
 
-      color: rgba(245, 241, 232, 0.68);
+      color:
+        rgba(245, 241, 232, 0.68);
 
       font-size: 0.67rem;
       font-weight: 800;
@@ -271,8 +345,11 @@ END OF DEVELOPER NOTES
     .article-back-link:hover,
     .article-back-link:focus-visible {
       color: #d5ad36;
+
       outline: none;
-      transform: translateX(-3px);
+
+      transform:
+        translateX(-3px);
     }
 
     .article-back-arrow {
@@ -283,7 +360,8 @@ END OF DEVELOPER NOTES
     }
 
     .article-back-divider {
-      color: rgba(245, 241, 232, 0.22);
+      color:
+        rgba(245, 241, 232, 0.22);
 
       font-size: 0.75rem;
       line-height: 1;
@@ -325,7 +403,9 @@ END OF DEVELOPER NOTES
       width: 650px;
       height: 650px;
 
-      border: 1px solid rgba(213, 173, 54, 0.14);
+      border:
+        1px solid rgba(213, 173, 54, 0.14);
+
       border-radius: 50%;
 
       pointer-events: none;
@@ -341,7 +421,9 @@ END OF DEVELOPER NOTES
       width: 390px;
       height: 390px;
 
-      border: 1px solid rgba(213, 173, 54, 0.1);
+      border:
+        1px solid rgba(213, 173, 54, 0.1);
+
       border-radius: 50%;
 
       pointer-events: none;
@@ -354,31 +436,28 @@ END OF DEVELOPER NOTES
       width: 100%;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 78px 7% 112px;
+      padding: 70px 7% 112px;
     }
 
     /* =========================================================
-       ARTICLE HEADER
+       COVER + AUDIO MEDIA CARD
     ========================================================= */
 
-    .article-header {
+    .article-media-card {
       width: 100%;
-      max-width: 960px;
-      margin: 0 0 40px;
-    }
+      margin: 0 0 50px;
 
-    .article-title {
-      margin: 0;
+      overflow: hidden;
 
-      color: #171717;
+      border:
+        1px solid rgba(23, 23, 23, 0.11);
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(3.6rem, 8vw, 7rem);
-      font-weight: 800;
-      line-height: 0.91;
-      letter-spacing: -0.027em;
-      text-wrap: balance;
-      text-transform: uppercase;
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
     }
 
     /* =========================================================
@@ -387,7 +466,7 @@ END OF DEVELOPER NOTES
 
     .article-image-figure {
       width: 100%;
-      margin: 0 0 38px;
+      margin: 0;
     }
 
     .article-image-frame {
@@ -397,13 +476,7 @@ END OF DEVELOPER NOTES
 
       overflow: hidden;
 
-      border: 1px solid rgba(23, 23, 23, 0.1);
-      border-radius: 18px;
-
       background: #111214;
-
-      box-shadow:
-        0 22px 55px rgba(22, 20, 16, 0.16);
     }
 
     .article-image {
@@ -422,19 +495,19 @@ END OF DEVELOPER NOTES
 
     .song-player-section {
       width: 100%;
-      margin: 0 0 62px;
+      margin: 0;
+
+      border-top:
+        1px solid rgba(213, 173, 54, 0.22);
     }
 
     .song-player-shell {
       position: relative;
 
       width: 100%;
-      padding: 24px 27px;
+      padding: 27px 30px 29px;
 
       overflow: hidden;
-
-      border: 1px solid rgba(213, 173, 54, 0.26);
-      border-radius: 15px;
 
       background:
         radial-gradient(
@@ -443,9 +516,6 @@ END OF DEVELOPER NOTES
           transparent 32%
         ),
         #111214;
-
-      box-shadow:
-        0 16px 38px rgba(22, 20, 16, 0.14);
     }
 
     .song-player-shell::after {
@@ -458,7 +528,9 @@ END OF DEVELOPER NOTES
       width: 170px;
       height: 170px;
 
-      border: 1px solid rgba(213, 173, 54, 0.13);
+      border:
+        1px solid rgba(213, 173, 54, 0.13);
+
       border-radius: 50%;
 
       pointer-events: none;
@@ -472,7 +544,11 @@ END OF DEVELOPER NOTES
 
       color: #d5ad36;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 0.79rem;
       font-weight: 800;
       line-height: 1.3;
@@ -496,7 +572,8 @@ END OF DEVELOPER NOTES
 
       margin: 13px 0 0;
 
-      color: rgba(245, 241, 232, 0.66);
+      color:
+        rgba(245, 241, 232, 0.66);
 
       font-size: 0.78rem;
       line-height: 1.6;
@@ -511,6 +588,10 @@ END OF DEVELOPER NOTES
       max-width: 790px;
       margin: 0 auto;
     }
+
+    /* =========================================================
+       STORY / CONTEXT
+    ========================================================= */
 
     .article-body {
       color: #47443f;
@@ -538,27 +619,56 @@ END OF DEVELOPER NOTES
     }
 
     /* =========================================================
-       LYRICS
+       LYRICS SECTION
     ========================================================= */
 
     .lyrics-section {
       width: 100%;
-      margin-top: 62px;
-      padding-top: 43px;
+      margin-top: 54px;
+      padding-top: 42px;
 
-      border-top: 1px solid rgba(23, 23, 23, 0.14);
+      border-top:
+        1px solid rgba(23, 23, 23, 0.14);
+    }
+
+    .lyrics-song-title {
+      margin: 0 0 13px;
+
+      color: #171717;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.8rem,
+          6vw,
+          4.5rem
+        );
+
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.024em;
+      text-wrap: balance;
+      text-transform: uppercase;
     }
 
     .lyrics-heading {
       margin: 0 0 34px;
 
-      color: #171717;
+      color: #9a7624;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
-      font-size: clamp(2.25rem, 5vw, 3.45rem);
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 0.84rem;
       font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.018em;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
     }
 
@@ -587,7 +697,11 @@ END OF DEVELOPER NOTES
 
       color: #9a7624;
 
-      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
       font-size: 0.79rem;
       font-weight: 800;
       line-height: 1.35;
@@ -603,10 +717,6 @@ END OF DEVELOPER NOTES
       .article-container {
         max-width: 940px;
       }
-
-      .article-header {
-        max-width: 860px;
-      }
     }
 
     /* =========================================================
@@ -619,37 +729,20 @@ END OF DEVELOPER NOTES
       }
 
       .article-container {
-        padding: 55px 30px 84px;
+        padding: 48px 30px 84px;
       }
 
-      .article-header {
-        margin-bottom: 31px;
-      }
+      .article-media-card {
+        margin-bottom: 42px;
 
-      .article-title {
-        font-size: clamp(3rem, 14vw, 5.15rem);
-        line-height: 0.92;
-      }
-
-      .article-image-figure {
-        margin-bottom: 30px;
-      }
-
-      .article-image-frame {
         border-radius: 14px;
 
         box-shadow:
           0 17px 42px rgba(22, 20, 16, 0.14);
       }
 
-      .song-player-section {
-        margin-bottom: 45px;
-      }
-
       .song-player-shell {
-        padding: 21px 22px;
-
-        border-radius: 13px;
+        padding: 22px 23px 24px;
       }
 
       .song-player-label {
@@ -666,14 +759,23 @@ END OF DEVELOPER NOTES
       }
 
       .lyrics-section {
-        margin-top: 48px;
+        margin-top: 46px;
         padding-top: 35px;
+      }
+
+      .lyrics-song-title {
+        margin-bottom: 11px;
+
+        font-size:
+          clamp(
+            2.55rem,
+            11vw,
+            3.75rem
+          );
       }
 
       .lyrics-heading {
         margin-bottom: 28px;
-
-        font-size: clamp(2.1rem, 8vw, 3rem);
       }
 
       .lyrics-content {
@@ -711,29 +813,17 @@ END OF DEVELOPER NOTES
       }
 
       .article-container {
-        padding: 48px 27px 72px;
+        padding: 40px 27px 72px;
       }
 
-      .article-title {
-        font-size: clamp(2.8rem, 15vw, 4.2rem);
-      }
+      .article-media-card {
+        margin-bottom: 36px;
 
-      .article-image-figure {
-        margin-bottom: 25px;
-      }
-
-      .article-image-frame {
         border-radius: 12px;
       }
 
-      .song-player-section {
-        margin-bottom: 39px;
-      }
-
       .song-player-shell {
-        padding: 18px 17px;
-
-        border-radius: 11px;
+        padding: 19px 17px 21px;
       }
 
       .song-player-label {
@@ -755,14 +845,25 @@ END OF DEVELOPER NOTES
       }
 
       .lyrics-section {
-        margin-top: 42px;
+        margin-top: 40px;
         padding-top: 31px;
+      }
+
+      .lyrics-song-title {
+        margin-bottom: 10px;
+
+        font-size:
+          clamp(
+            2.35rem,
+            12vw,
+            3.25rem
+          );
       }
 
       .lyrics-heading {
         margin-bottom: 25px;
 
-        font-size: 2.05rem;
+        font-size: 0.75rem;
       }
 
       .lyrics-content {
@@ -783,11 +884,12 @@ END OF DEVELOPER NOTES
        LANDSCAPE MOBILE
     ========================================================= */
 
-    @media (
-      max-width: 950px
-    ) and (
-      orientation: landscape
-    ) {
+    @media
+      (min-width: 700px)
+      and (max-width: 950px)
+      and (max-height: 520px)
+      and (orientation: landscape) {
+
       .article-back-inner {
         padding-top: 13px;
         padding-bottom: 13px;
@@ -795,20 +897,11 @@ END OF DEVELOPER NOTES
 
       .article-container {
         max-width: 850px;
-        padding-top: 50px;
+        padding-top: 42px;
       }
 
-      .article-header {
-        max-width: 780px;
-      }
-
-      .article-title {
-        font-size: clamp(3.45rem, 8vw, 5.3rem);
-      }
-
-      .article-image-frame {
+      .article-media-card {
         width: 100%;
-        max-width: 100%;
       }
 
       .article-image {
@@ -817,8 +910,21 @@ END OF DEVELOPER NOTES
         height: auto;
       }
 
+      .song-player-shell {
+        padding: 21px 24px 23px;
+      }
+
       .article-reading-area {
         max-width: 720px;
+      }
+
+      .lyrics-song-title {
+        font-size:
+          clamp(
+            3rem,
+            7vw,
+            4.15rem
+          );
       }
     }
 
@@ -839,9 +945,9 @@ END OF DEVELOPER NOTES
 
 <body class="music-article-page">
 
-  <!-- ===================================
+  <!-- ======================================================
        HEADER
-  =================================== -->
+  ======================================================= -->
 
   <header class="site-header">
 
@@ -900,9 +1006,9 @@ END OF DEVELOPER NOTES
 
   </header>
 
-  <!-- ===================================
+  <!-- ======================================================
        ARTICLE BACK NAVIGATION
-  =================================== -->
+  ======================================================= -->
 
   <div
     class="article-back-navigation"
@@ -955,108 +1061,111 @@ END OF DEVELOPER NOTES
 
   </div>
 
-  <!-- ===================================
+  <!-- ======================================================
        MUSIC ARTICLE
-  =================================== -->
+  ======================================================= -->
 
   <main class="music-article-main">
 
     <article class="article-container">
 
-      <!-- ===================================
-           SONG TITLE
+      <!-- ==================================================
+           COVER IMAGE + AUDIO PLAYER
 
-           PALITAN SA BAWAT BAGONG MUSIC ARTICLE
-      =================================== -->
-
-      <header class="article-header">
-
-        <h1 class="article-title">
-          Song Title
-        </h1>
-
-      </header>
-
-      <!-- ===================================
-           COVER IMAGE
-
-           ILAGAY ANG IMAGE SA:
+           COVER IMAGE:
            articles/images/
 
-           PALITAN ANG:
-           • filename
-           • alt text
-      =================================== -->
-
-      <figure class="article-image-figure">
-
-        <div class="article-image-frame">
-
-          <img
-            class="article-image"
-            src="images/music-cover-image.png"
-            alt="Cover image para sa Song Title"
-          >
-
-        </div>
-
-      </figure>
-
-      <!-- ===================================
-           AUDIO PLAYER
-
-           ILAGAY ANG MP3 SA:
+           AUDIO FILE:
            articles/audio/
 
            PALITAN ANG:
+           • Image filename
+           • Image alt text
            • MP3 filename
-           • aria-label
-      =================================== -->
+           • Audio aria-label
+      =================================================== -->
 
-      <section
-        class="song-player-section"
-        aria-label="Song audio player"
-      >
+      <div class="article-media-card">
 
-        <div class="song-player-shell">
+        <!-- ===============================================
+             COVER IMAGE
+        ================================================ -->
 
-          <p class="song-player-label">
-            Original Song
-          </p>
+        <figure class="article-image-figure">
 
-          <audio
-            class="song-audio"
-            controls
-            preload="metadata"
-            aria-label="Pakinggan ang Song Title"
-          >
-            <source
-              src="audio/song-title.mp3"
-              type="audio/mpeg"
+          <div class="article-image-frame">
+
+            <img
+              class="article-image"
+              src="images/music-cover-image.png"
+              alt="Cover image para sa Song Title"
             >
 
-            Hindi sinusuportahan ng browser mo ang
-            HTML audio player.
-          </audio>
+          </div>
 
-          <p class="audio-fallback">
-            Kapag hindi gumana ang audio player, tiyaking
-            tama ang MP3 filename at file path.
-          </p>
+        </figure>
 
-        </div>
+        <!-- ===============================================
+             AUDIO PLAYER
 
-      </section>
+             TAMANG PATH:
+             audio/song-title.mp3
+
+             HUWAG GAMITIN:
+             articles/audio/song-title.mp3
+        ================================================ -->
+
+        <section
+          class="song-player-section"
+          aria-label="Song audio player"
+        >
+
+          <div class="song-player-shell">
+
+            <p class="song-player-label">
+              Original Song
+            </p>
+
+            <audio
+              class="song-audio"
+              controls
+              preload="metadata"
+              aria-label="Pakinggan ang Song Title"
+            >
+              <source
+                src="audio/song-title.mp3"
+                type="audio/mpeg"
+              >
+
+              Hindi sinusuportahan ng browser mo ang
+              HTML audio player.
+            </audio>
+
+            <p class="audio-fallback">
+              Kapag hindi gumana ang audio player, tiyaking
+              eksaktong tugma ang MP3 filename, extension,
+              capitalization, at file path.
+            </p>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- ==================================================
+           ARTICLE READING AREA
+      =================================================== -->
 
       <div class="article-reading-area">
 
-        <!-- ===================================
+        <!-- ===============================================
              STORY / CONTEXT
 
              WALANG SECTION HEADING
 
              PALITAN ANG MGA PARAGRAPH
-        =================================== -->
+        ================================================ -->
 
         <div class="article-body">
 
@@ -1082,36 +1191,43 @@ END OF DEVELOPER NOTES
 
         </div>
 
-        <!-- ===================================
-             LYRICS
+        <!-- ===============================================
+             SONG TITLE + LYRICS
 
-             PALITAN ANG LAHAT NG SAMPLE LYRICS
+             PALITAN ANG:
+             • Song Title
+             • Lahat ng sample lyrics
 
-             GUMAMIT NG ISANG .lyrics-stanza
-             PARA SA BAWAT VERSE, CHORUS,
-             BRIDGE, O MAGKAKAHIWALAY NA BAHAGI.
+             Ang Song Title ay nasa bahaging ito upang hindi
+             ito agad maulit sa ibabaw ng cover image.
 
-             OPTIONAL ANG SECTION LABELS GAYA NG:
-             VERSE 1
-             CHORUS
-             VERSE 2
-             BRIDGE
+             Gumamit ng isang .lyrics-stanza para sa bawat:
 
-             MAAARING ALISIN ANG LABEL KUNG HINDI
-             ITO BAHAGI NG ORIGINAL PRESENTATION.
-        =================================== -->
+             • Intro
+             • Verse
+             • Pre-Chorus
+             • Chorus
+             • Bridge
+             • Outro
+
+             Optional ang section labels.
+        ================================================ -->
 
         <section
           class="lyrics-section"
-          aria-labelledby="lyrics-heading"
+          aria-labelledby="song-lyrics-title"
         >
 
-          <h2
-            class="lyrics-heading"
-            id="lyrics-heading"
+          <h1
+            class="lyrics-song-title"
+            id="song-lyrics-title"
           >
+            Song Title
+          </h1>
+
+          <p class="lyrics-heading">
             Lyrics
-          </h2>
+          </p>
 
           <div class="lyrics-content">
 
@@ -1241,9 +1357,9 @@ END OF DEVELOPER NOTES
 
   </main>
 
-  <!-- ===================================
+  <!-- ======================================================
        MOBILE NAVIGATION SCRIPT
-  =================================== -->
+  ======================================================= -->
 
   <script>
     const menuToggle =
