@@ -1,1 +1,1185 @@
 
+<!--  
+======================================================  
+jhElmEr WEBSITE  
+PUBLISHED CIVIC EXPLAINER  
+======================================================  
+  
+FILE:  
+articles/civic-diskusyon-boses.html  
+  
+ARTICLE TITLE:  
+BAKIT HINDI SAPAT ANG MALAKAS NA BOSES  
+SA ISANG ARGUMENTO?  
+  
+======================================================  
+-->  
+  
+<!DOCTYPE html>  
+<html lang="tl">  
+  
+<head>  
+  <meta charset="UTF-8">  
+  
+  <meta  
+    name="viewport"  
+    content="width=device-width, initial-scale=1.0"  
+  >  
+  
+  <meta  
+    name="description"  
+    content="Hindi nasusukat sa lakas ng boses ang tibay ng isang argumento. Alamin kung paano inililihis ng ad hominem, red herring, at pananakot ang isang diskusyon mula sa ebidensiya at lohika."  
+  >  
+  
+  <title>Bakit Hindi Sapat ang Malakas na Boses sa Isang Argumento? | jhElmEr</title>  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">  
+  
+  <link  
+    rel="preconnect"  
+    href="https://fonts.gstatic.com"  
+    crossorigin  
+  >  
+  
+  <link  
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"  
+    rel="stylesheet"  
+  >  
+  
+  <link rel="stylesheet" href="../main.css?v=2">  
+  
+  <style>  
+    /* =========================================================  
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2  
+  
+       BLACK BRAND AREA  
+       CREAM CONTENT AREA  
+  
+       TITLE → IMAGE → BODY → SOURCES  
+    ========================================================= */  
+  
+    .civic-article-page {  
+      min-height: 100vh;  
+      margin: 0;  
+  
+      color: #242321;  
+      background: #f4f0e8;  
+    }  
+  
+    .civic-article-page,  
+    .civic-article-page *,  
+    .civic-article-page *::before,  
+    .civic-article-page *::after {  
+      box-sizing: border-box;  
+    }  
+  
+    /* =========================================================  
+       ARTICLE BACK NAVIGATION  
+    ========================================================= */  
+  
+    .article-back-navigation {  
+      position: relative;  
+      z-index: 25;  
+  
+      border-top: 1px solid rgba(213, 173, 54, 0.12);  
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);  
+  
+      background: #090a0c;  
+    }  
+  
+    .article-back-inner {  
+      width: 100%;  
+      max-width: 1180px;  
+      margin: 0 auto;  
+      padding: 20px 7%;  
+  
+      display: flex;  
+      align-items: center;  
+      flex-wrap: wrap;  
+      gap: 8px 16px;  
+    }  
+  
+    .article-back-link {  
+      min-height: 38px;  
+  
+      display: inline-flex;  
+      align-items: center;  
+      gap: 9px;  
+  
+      color: rgba(245, 241, 232, 0.68);  
+  
+      font-size: 0.67rem;  
+      font-weight: 800;  
+      line-height: 1.4;  
+      letter-spacing: 0.11em;  
+      text-decoration: none;  
+      text-transform: uppercase;  
+  
+      transition:  
+        color 0.22s ease,  
+        transform 0.22s ease;  
+    }  
+  
+    .article-back-link:hover,  
+    .article-back-link:focus-visible {  
+      color: #d5ad36;  
+      outline: none;  
+      transform: translateX(-3px);  
+    }  
+  
+    .article-back-arrow {  
+      color: #d5ad36;  
+  
+      font-size: 1rem;  
+      line-height: 1;  
+    }  
+  
+    .article-back-divider {  
+      color: rgba(245, 241, 232, 0.22);  
+  
+      font-size: 0.75rem;  
+      line-height: 1;  
+    }  
+  
+    /* =========================================================  
+       ARTICLE MAIN AREA  
+    ========================================================= */  
+  
+    .civic-article-main {  
+      position: relative;  
+  
+      width: 100%;  
+      min-height: 100vh;  
+  
+      overflow: hidden;  
+  
+      background:  
+        radial-gradient(  
+          circle at 88% 17%,  
+          rgba(213, 173, 54, 0.08),  
+          transparent 26%  
+        ),  
+        radial-gradient(  
+          circle at 12% 72%,  
+          rgba(123, 30, 30, 0.045),  
+          transparent 24%  
+        ),  
+        #f4f0e8;  
+    }  
+  
+    .civic-article-main::before {  
+      content: "";  
+  
+      position: absolute;  
+      top: 72px;  
+      right: -315px;  
+  
+      width: 650px;  
+      height: 650px;  
+  
+      border: 1px solid rgba(213, 173, 54, 0.14);  
+      border-radius: 50%;  
+  
+      pointer-events: none;  
+    }  
+  
+    .civic-article-main::after {  
+      content: "";  
+  
+      position: absolute;  
+      top: 245px;  
+      right: -190px;  
+  
+      width: 390px;  
+      height: 390px;  
+  
+      border: 1px solid rgba(213, 173, 54, 0.1);  
+      border-radius: 50%;  
+  
+      pointer-events: none;  
+    }  
+  
+    .article-container {  
+      position: relative;  
+      z-index: 2;  
+  
+      width: 100%;  
+      max-width: 1120px;  
+      margin: 0 auto;  
+      padding: 78px 7% 112px;  
+    }  
+  
+    /* =========================================================  
+       ARTICLE HEADER  
+    ========================================================= */  
+  
+    .article-header {  
+      width: 100%;  
+      max-width: 960px;  
+      margin: 0 0 40px;  
+    }  
+  
+    .article-title {  
+      margin: 0;  
+  
+      color: #171717;  
+  
+      font-family: "Barlow Condensed", Arial, sans-serif;  
+      font-size: clamp(3.6rem, 8vw, 7rem);  
+      font-weight: 800;  
+      line-height: 0.91;  
+      letter-spacing: -0.027em;  
+      text-wrap: balance;  
+      text-transform: uppercase;  
+    }  
+  
+    /* =========================================================  
+       MAIN ARTICLE IMAGE  
+    ========================================================= */  
+  
+    .article-image-figure {  
+      width: 100%;  
+      margin: 0 0 62px;  
+    }  
+  
+    .article-image-frame {  
+      position: relative;  
+  
+      width: 100%;  
+  
+      overflow: hidden;  
+  
+      border: 1px solid rgba(23, 23, 23, 0.1);  
+      border-radius: 18px;  
+  
+      background: #111214;  
+  
+      box-shadow:  
+        0 22px 55px rgba(22, 20, 16, 0.16);  
+    }  
+  
+    .article-image {  
+      width: 100%;  
+      max-width: 100%;  
+      height: auto;  
+  
+      display: block;  
+  
+      object-fit: contain;  
+    }  
+  
+    /* =========================================================  
+       ARTICLE READING AREA  
+    ========================================================= */  
+  
+    .article-reading-area {  
+      width: 100%;  
+      max-width: 790px;  
+      margin: 0 auto;  
+    }  
+  
+    .article-body {  
+      color: #47443f;  
+  
+      font-size: 1.04rem;  
+      font-weight: 400;  
+      line-height: 1.94;  
+    }  
+  
+    .article-body p {  
+      margin: 0 0 1.65em;  
+    }  
+  
+    .article-body p:last-child {  
+      margin-bottom: 0;  
+    }  
+  
+    .article-body strong {  
+      color: #1d1c1a;  
+      font-weight: 700;  
+    }  
+  
+    .article-body em {  
+      color: #35322e;  
+    }  
+  
+    .article-body h2,  
+    .article-body h3 {  
+      color: #171717;  
+  
+      font-family: "Barlow Condensed", Arial, sans-serif;  
+      font-weight: 800;  
+      line-height: 1;  
+      letter-spacing: -0.015em;  
+      text-transform: uppercase;  
+    }  
+  
+    .article-body h2 {  
+      margin: 2.25em 0 0.72em;  
+  
+      font-size: clamp(2rem, 4vw, 2.85rem);  
+    }  
+  
+    .article-body h3 {  
+      margin: 2em 0 0.7em;  
+  
+      font-size: clamp(1.55rem, 3vw, 2.05rem);  
+    }  
+  
+    .article-body ul,  
+    .article-body ol {  
+      margin: 0 0 1.75em;  
+      padding-left: 1.35em;  
+    }  
+  
+    .article-body li {  
+      margin-bottom: 0.62em;  
+      padding-left: 0.25em;  
+    }  
+  
+    .article-body blockquote {  
+      position: relative;  
+  
+      margin: 2.35em 0;  
+      padding: 27px 30px 27px 34px;  
+  
+      overflow: hidden;  
+  
+      border: 1px solid rgba(213, 173, 54, 0.28);  
+      border-left: 4px solid #d5ad36;  
+      border-radius: 0 14px 14px 0;  
+  
+      color: #25231f;  
+      background: rgba(255, 252, 245, 0.72);  
+  
+      font-family: "Barlow Condensed", Arial, sans-serif;  
+      font-size: clamp(1.45rem, 3vw, 1.95rem);  
+      font-weight: 600;  
+      line-height: 1.32;  
+  
+      box-shadow:  
+        0 12px 32px rgba(33, 29, 21, 0.06);  
+    }  
+  
+    .article-body blockquote::after {  
+      content: "";  
+  
+      position: absolute;  
+      top: -70px;  
+      right: -70px;  
+  
+      width: 150px;  
+      height: 150px;  
+  
+      border: 1px solid rgba(213, 173, 54, 0.14);  
+      border-radius: 50%;  
+  
+      pointer-events: none;  
+    }  
+  
+    .article-body blockquote p:last-child {  
+      margin-bottom: 0;  
+    }  
+  
+    .article-body a {  
+      color: #8b6810;  
+  
+      text-decoration-color: rgba(139, 104, 16, 0.5);  
+      text-decoration-thickness: 1px;  
+      text-underline-offset: 4px;  
+  
+      transition:  
+        color 0.22s ease,  
+        text-decoration-color 0.22s ease;  
+    }  
+  
+    .article-body a:hover,  
+    .article-body a:focus-visible {  
+      color: #6f5010;  
+      text-decoration-color: #6f5010;  
+      outline: none;  
+    }  
+  
+    /* =========================================================  
+       SOURCES / REFERENCES  
+    ========================================================= */  
+  
+    .article-sources {  
+      margin-top: 70px;  
+      padding: 34px 0 0;  
+  
+      border-top: 1px solid rgba(139, 104, 16, 0.3);  
+    }  
+  
+    .sources-title {  
+      margin: 0 0 24px;  
+  
+      color: #7b1e1e;  
+  
+      font-family: "Barlow Condensed", Arial, sans-serif;  
+      font-size: clamp(1.6rem, 3vw, 2.05rem);  
+      font-weight: 800;  
+      line-height: 1;  
+      letter-spacing: 0.055em;  
+      text-transform: uppercase;  
+    }  
+  
+    .sources-list {  
+      margin: 0;  
+      padding: 0;  
+  
+      display: grid;  
+      gap: 16px;  
+  
+      list-style: none;  
+    }  
+  
+    .sources-list li {  
+      position: relative;  
+  
+      padding-left: 23px;  
+  
+      color: #66615a;  
+  
+      font-size: 0.84rem;  
+      line-height: 1.72;  
+    }  
+  
+    .sources-list li::before {  
+      content: "";  
+  
+      position: absolute;  
+      top: 0.69em;  
+      left: 0;  
+  
+      width: 7px;  
+      height: 7px;  
+  
+      border-radius: 50%;  
+      background: #d5ad36;  
+    }  
+  
+    .sources-list a {  
+      color: #5b4930;  
+  
+      overflow-wrap: anywhere;  
+  
+      text-decoration-color: rgba(139, 104, 16, 0.44);  
+      text-decoration-thickness: 1px;  
+      text-underline-offset: 4px;  
+  
+      transition:  
+        color 0.22s ease,  
+        text-decoration-color 0.22s ease;  
+    }  
+  
+    .sources-list a:hover,  
+    .sources-list a:focus-visible {  
+      color: #7b1e1e;  
+      text-decoration-color: #7b1e1e;  
+      outline: none;  
+    }  
+  
+    /* =========================================================  
+       TABLET  
+    ========================================================= */  
+  
+    @media (max-width: 1000px) {  
+      .article-container {  
+        max-width: 940px;  
+      }  
+  
+      .article-header {  
+        max-width: 860px;  
+      }  
+    }  
+  
+    /* =========================================================  
+       MOBILE  
+    ========================================================= */  
+  
+    @media (max-width: 850px) {  
+      .article-back-inner {  
+        padding: 17px 30px;  
+      }  
+  
+      .article-container {  
+        padding: 55px 30px 84px;  
+      }  
+  
+      .article-header {  
+        margin-bottom: 31px;  
+      }  
+  
+      .article-title {  
+        font-size: clamp(3rem, 14vw, 5.15rem);  
+        line-height: 0.92;  
+      }  
+  
+      .article-image-figure {  
+        margin-bottom: 43px;  
+      }  
+  
+      .article-image-frame {  
+        border-radius: 14px;  
+  
+        box-shadow:  
+          0 17px 42px rgba(22, 20, 16, 0.14);  
+      }  
+  
+      .article-body {  
+        font-size: 0.98rem;  
+        line-height: 1.88;  
+      }  
+  
+      .article-body p {  
+        margin-bottom: 1.52em;  
+      }  
+  
+      .article-body blockquote {  
+        padding: 24px 24px 24px 27px;  
+  
+        border-radius: 0 12px 12px 0;  
+      }  
+  
+      .article-sources {  
+        margin-top: 56px;  
+        padding-top: 29px;  
+      }  
+    }  
+  
+    /* =========================================================  
+       SMALL MOBILE  
+    ========================================================= */  
+  
+    @media (max-width: 430px) {  
+      .article-back-inner {  
+        padding: 14px 27px;  
+  
+        align-items: flex-start;  
+        flex-direction: column;  
+        gap: 1px;  
+      }  
+  
+      .article-back-divider {  
+        display: none;  
+      }  
+  
+      .article-back-link {  
+        min-height: 34px;  
+  
+        font-size: 0.62rem;  
+        letter-spacing: 0.08em;  
+      }  
+  
+      .article-container {  
+        padding: 48px 27px 72px;  
+      }  
+  
+      .article-title {  
+        font-size: clamp(2.8rem, 15vw, 4.2rem);  
+      }  
+  
+      .article-image-figure {  
+        margin-bottom: 36px;  
+      }  
+  
+      .article-image-frame {  
+        border-radius: 12px;  
+      }  
+  
+      .article-body {  
+        font-size: 0.95rem;  
+        line-height: 1.84;  
+      }  
+  
+      .article-body blockquote {  
+        padding: 21px 19px 21px 21px;  
+      }  
+  
+      .sources-list li {  
+        font-size: 0.8rem;  
+      }  
+    }  
+  
+    /* =========================================================  
+       LANDSCAPE MOBILE  
+    ========================================================= */  
+  
+    @media (  
+      max-width: 950px  
+    ) and (  
+      orientation: landscape  
+    ) {  
+      .article-back-inner {  
+        padding-top: 13px;  
+        padding-bottom: 13px;  
+      }  
+  
+      .article-container {  
+        max-width: 850px;  
+        padding-top: 50px;  
+      }  
+  
+      .article-header {  
+        max-width: 780px;  
+      }  
+  
+      .article-title {  
+        font-size: clamp(3.45rem, 8vw, 5.3rem);  
+      }  
+  
+      .article-image-frame {  
+        width: 100%;  
+        max-width: 100%;  
+      }  
+  
+      .article-image {  
+        width: 100%;  
+        max-width: 100%;  
+        height: auto;  
+      }  
+  
+      .article-reading-area {  
+        max-width: 720px;  
+      }  
+    }  
+  
+    /* =========================================================  
+       REDUCED MOTION  
+    ========================================================= */  
+  
+    @media (prefers-reduced-motion: reduce) {  
+      *,  
+      *::before,  
+      *::after {  
+        scroll-behavior: auto !important;  
+        transition: none !important;  
+      }  
+    }  
+  </style>  
+</head>  
+  
+<body class="civic-article-page">  
+  
+  <!-- ===================================  
+       HEADER  
+  =================================== -->  
+  
+  <header class="site-header">  
+  
+    <a  
+      class="brand"  
+      href="../index.html"  
+      aria-label="jhElmEr homepage"  
+    >  
+      <img  
+        src="../header-logo.png"  
+        alt="jhElmEr Simpleng Tao"  
+      >  
+    </a>  
+  
+    <button  
+      class="menu-toggle"  
+      type="button"  
+      aria-label="Open navigation menu"  
+      aria-expanded="false"  
+      aria-controls="main-navigation"  
+    >  
+      <span></span>  
+      <span></span>  
+      <span></span>  
+    </button>  
+  
+    <nav  
+      class="main-nav"  
+      id="main-navigation"  
+      aria-label="Main navigation"  
+    >  
+      <a href="../index.html">  
+        Home  
+      </a>  
+  
+      <a  
+        class="active"  
+        href="../civic-explainers.html"  
+        aria-current="page"  
+      >  
+        Civic Explainers  
+      </a>  
+  
+      <a href="text-slogan.html">  
+        Text Slogans  
+      </a>  
+  
+      <a href="../music.html">  
+        Music  
+      </a>  
+  
+      <a href="../about.html">  
+        About  
+      </a>  
+    </nav>  
+  
+  </header>  
+  
+  <!-- ===================================  
+       ARTICLE BACK NAVIGATION  
+  =================================== -->  
+  
+  <div  
+    class="article-back-navigation"  
+    role="navigation"  
+    aria-label="Article return navigation"  
+  >  
+  
+    <div class="article-back-inner">  
+  
+      <a  
+        class="article-back-link"  
+        href="../civic-explainers.html"  
+      >  
+        <span  
+          class="article-back-arrow"  
+          aria-hidden="true"  
+        >  
+          ←  
+        </span>  
+  
+        <span>  
+          Civic Explainers  
+        </span>  
+      </a>  
+  
+      <span  
+        class="article-back-divider"  
+        aria-hidden="true"  
+      >  
+        /  
+      </span>  
+  
+      <a  
+        class="article-back-link"  
+        href="../all-civic-explainers.html"  
+      >  
+        <span  
+          class="article-back-arrow"  
+          aria-hidden="true"  
+        >  
+          ←  
+        </span>  
+  
+        <span>  
+          Lahat ng Civic Explainers  
+        </span>  
+      </a>  
+  
+    </div>  
+  
+  </div>  
+  
+  <!-- ===================================  
+       CIVIC EXPLAINER ARTICLE  
+  =================================== -->  
+  
+  <main class="civic-article-main">  
+  
+    <article class="article-container">  
+  
+      <header class="article-header">  
+  
+        <h1 class="article-title">  
+          Bakit Hindi Sapat ang Malakas na Boses sa Isang Argumento?  
+        </h1>  
+  
+      </header>  
+  
+      <figure class="article-image-figure">  
+  
+        <div class="article-image-frame">  
+  
+          <img  
+            class="article-image"  
+            src="images/civic-diskusyon-boses.png"  
+            alt="Simbolikong larawan ng isang taong gumagamit ng malakas na boses upang mangibabaw sa isang argumento habang natatabunan ang ebidensiya at lohika"  
+          >  
+  
+        </div>  
+  
+      </figure>  
+  
+      <div class="article-reading-area">  
+  
+        <div class="article-body">  
+  
+          <p>  
+            Sa anumang diskusyon o argumento, ang pinakamalakas  
+            o pinakamaingay na boses ay hindi awtomatikong  
+            nangangahulugang siya ang may pinakamalalim na  
+            pag-unawa sa paksang pinag-uusapan.  
+          </p>  
+  
+          <p>  
+            Ang tunay na lakas ng isang argumento ay hindi  
+            nasusukat sa lakas ng boses, dami ng salita, o  
+            kakayahang mangibabaw sa usapan. Nasusukat ito sa  
+            katumpakan ng impormasyon, tibay ng ebidensiya,  
+            lohikal na pangangatwiran, at kakayahang sagutin  
+            ang mismong isyu.  
+          </p>  
+  
+          <p>  
+            Ngunit sa maraming diskusyon, may mga pagkakataong  
+            nalilihis ang usapan sa mga paraang tila malakas  
+            pakinggan, ngunit mahina naman ang paraan ng  
+            pangangatwiran.  
+          </p>  
+  
+          <h2>  
+            Kapag Tao ang Inatake, Hindi ang Argumento  
+          </h2>  
+  
+          <p>  
+            Kapag ang tao ang inaatake sa halip na ang argumento  
+            niya, ito ay tinatawag na <strong>ad hominem</strong>.  
+            Sa halip na sagutin ang punto, ang personalidad,  
+            propesyon, pinagmulan, pagkakamali, o motibo ng tao  
+            ang ginagawang sentro ng usapan.  
+          </p>  
+  
+          <p>  
+            Halimbawa, sa halip na ipakita kung bakit mali ang  
+            isang pahayag, maaaring sabihing walang karapatan  
+            ang nagsasalita dahil hindi siya eksperto, wala  
+            siyang posisyon, o may pagkakamali siya sa ibang  
+            usapin.  
+          </p>  
+  
+          <p>  
+            Maaaring mahalaga sa ilang pagkakataon ang  
+            kredibilidad o posibleng interes ng isang tao.  
+            Ngunit hindi nito awtomatikong nasasagot kung tama  
+            o mali ang mismong argumento. Kailangan pa ring  
+            suriin ang ebidensiya at pangangatwiran na kanyang  
+            inilatag.  
+          </p>  
+  
+          <h2>  
+            Kapag Inilihis ang Usapan  
+          </h2>  
+  
+          <p>  
+            Ang <strong>red herring</strong> ay nangyayari kapag  
+            inililihis ang diskusyon sa ibang paksa na maaaring  
+            mukhang kaugnay, ngunit hindi naman direktang  
+            sumasagot sa pangunahing isyu.  
+          </p>  
+  
+          <p>  
+            Sa halip na harapin ang tanong, maaaring magbanggit  
+            ng ibang tao, ibang pangyayari, o ibang problemang  
+            hindi naman nakapagpapatunay o nakapagpapabulaan sa  
+            argumentong pinag-uusapan.  
+          </p>  
+  
+          <p>  
+            Dahil dito, nagmumukhang maraming nasabi at maraming  
+            nasagot kahit ang pangunahing punto ay nananatiling  
+            hindi nahaharap.  
+          </p>  
+  
+          <h2>  
+            Kapag Pananakot ang Ginawang Pangangatwiran  
+          </h2>  
+  
+          <p>  
+            May mga pagkakataon ding ang kapangyarihan, galit,  
+            banta, o posibilidad ng kaparusahan ang ginagamit  
+            upang pilitin ang ibang tao na sumang-ayon. Ito ay  
+            tinatawag na <strong>appeal to intimidation</strong>  
+            o <strong>appeal to force</strong>.  
+          </p>  
+  
+          <p>  
+            Sa ganitong paraan, hindi ebidensiya ang ginagamit  
+            upang patunayan ang isang posisyon. Ang mensahe ay  
+            nagiging: sumang-ayon ka, manahimik ka, o harapin  
+            mo ang maaaring mangyari sa iyo.  
+          </p>  
+  
+          <p>  
+            Maaaring makapagpatahimik ang pananakot, ngunit hindi  
+            nito napapatunayang tama ang nananakot. Ang pagsunod  
+            dahil sa takot ay hindi katumbas ng pagkumbinsi  
+            sa pamamagitan ng matibay na argumento.  
+          </p>  
+  
+          <h2>  
+            Bakit Epektibo ang Ganito sa Maraming Tao?  
+          </h2>  
+  
+          <p>  
+            Hindi palaging mabagal at masusing pagsusuri ang  
+            ginagamit natin sa pagproseso ng impormasyon.  
+            Madalas, mas mabilis nating napapansin ang kumpiyansa,  
+            emosyon, pamilyar na paniniwala, at paraan ng  
+            pagsasalita ng isang tao.  
+          </p>  
+  
+          <p>  
+            Dahil dito, ang isang taong matapang magsalita,  
+            mabilis sumagot, o kayang patahimikin ang kalaban  
+            ay maaaring magmukhang mas kapani-paniwala kahit  
+            kulang ang kanyang ebidensiya.  
+          </p>  
+  
+          <p>  
+            Kapag mataas ang emosyon ng diskusyon, mas madaling  
+            manaig ang insulto, pananakot, at paglilihis ng usapan  
+            kaysa sa mas mabagal na pagsusuri ng datos at lohika.  
+          </p>  
+  
+          <p>  
+            Ito ang dahilan kung bakit mahalagang matutong  
+            paghiwalayin ang paraan ng pagsasalita mula sa  
+            kalidad ng ipinapahayag. Ang pagiging kumpiyansa  
+            ay hindi awtomatikong patunay ng pagiging tama.  
+            Ang pagiging tahimik ay hindi rin awtomatikong  
+            tanda ng kawalan ng alam.  
+          </p>  
+  
+          <h2>  
+            Hindi Awtomatikong Mali ang Konklusyon  
+          </h2>  
+  
+          <p>  
+            Mahalagang linawin na kapag gumamit ang isang tao  
+            ng ad hominem, red herring, o pananakot, hindi nito  
+            awtomatikong pinatutunayang mali ang kanyang  
+            konklusyon.  
+          </p>  
+  
+          <p>  
+            Ang ipinapakita nito ay may problema o kakulangan  
+            sa paraan ng pangangatwirang ginamit upang suportahan  
+            ang konklusyon. Posible pa ring tama ang kanyang  
+            posisyon, ngunit kailangan itong patunayan sa  
+            pamamagitan ng hiwalay at wastong ebidensiya.  
+          </p>  
+  
+          <p>  
+            Ang isang maling paraan ng pangangatwiran ay hindi  
+            sapat upang husgahan agad ang katotohanan ng lahat  
+            ng sinasabi ng isang tao. Ngunit sapat itong dahilan  
+            upang hingin ang mas malinaw na paliwanag at mas  
+            matibay na batayan.  
+          </p>  
+  
+          <h2>  
+            Ano ang Dapat Suriin sa Isang Argumento?  
+          </h2>  
+  
+          <p>  
+            Sa halip na tumingin lamang sa lakas ng boses o  
+            kumpiyansa ng nagsasalita, mas mahalagang itanong:  
+          </p>  
+  
+          <ul>  
+            <li>  
+              Ano ang mismong pahayag o konklusyon?  
+            </li>  
+  
+            <li>  
+              Ano ang ebidensiyang sumusuporta rito?  
+            </li>  
+  
+            <li>  
+              Mapagkakatiwalaan ba ang pinagmulan ng impormasyon?  
+            </li>  
+  
+            <li>  
+              Lohikal bang konektado ang ebidensiya sa konklusyon?  
+            </li>  
+  
+            <li>  
+              Sinagot ba ang pangunahing isyu o inilihis lamang  
+              ang usapan?  
+            </li>  
+  
+            <li>  
+              May mahalagang konteksto bang hindi isinama?  
+            </li>  
+          </ul>  
+  
+          <p>  
+            Ang ganitong pagsusuri ang tumutulong upang hindi  
+            madaling malinlang ng emosyon, kumpiyansa, katanyagan,  
+            posisyon, o lakas ng personalidad ng nagsasalita.  
+          </p>  
+  
+          <h2>  
+            Ang Diskusyon ay Hindi Paligsahan sa Pag-iingay  
+          </h2>  
+  
+          <p>  
+            Ang layunin ng isang makabuluhang diskusyon ay hindi  
+            dapat ang patahimikin, ipahiya, o talunin lamang ang  
+            kabilang panig. Ang mas mahalagang layunin ay linawin  
+            ang isyu, suriin ang ebidensiya, tukuyin ang maling  
+            pangangatwiran, at mapalapit sa mas makatotohanang  
+            konklusyon.  
+          </p>  
+  
+          <p>  
+            Maaaring makuha ng isang tao ang atensiyon sa  
+            pamamagitan ng malakas na boses. Maaari rin niyang  
+            mapatahimik ang kausap sa pamamagitan ng insulto  
+            o pananakot. Ngunit hindi nito napapalitan ang  
+            kailangang ebidensiya at lohika.  
+          </p>  
+  
+          <blockquote>  
+            <p>  
+              Ang katotohanan ay hindi nagiging mas totoo dahil  
+              lamang mas malakas itong sinabi.  
+            </p>  
+          </blockquote>  
+  
+          <p>  
+            Sa huli, ang tibay ng isang argumento ay hindi  
+            nasusukat sa lakas ng boses ng nagsasalita.  
+            Nasusukat ito sa kalidad ng ebidensiya, linaw ng  
+            lohika, at kakayahang harapin ang mismong isyu nang  
+            hindi umaasa sa insulto, paglilihis, o pananakot.  
+          </p>  
+  
+        </div>  
+  
+        <section  
+          class="article-sources"  
+          aria-labelledby="sources-heading"  
+        >  
+  
+          <h2  
+            class="sources-title"  
+            id="sources-heading"  
+          >  
+            Sources / References  
+          </h2>  
+  
+          <ul class="sources-list">  
+  
+            <li>  
+              Douglas Walton —  
+              <em>Informal Logic: A Pragmatic Approach</em>.  
+            </li>  
+  
+            <li>  
+              Douglas Walton —  
+              <em>Ad Hominem Arguments</em>.  
+            </li>  
+  
+            <li>  
+              Irving M. Copi, Carl Cohen, at Kenneth McMahon —  
+              <em>Introduction to Logic</em>.  
+            </li>  
+  
+            <li>  
+              Anthony Weston —  
+              <em>A Rulebook for Arguments</em>.  
+            </li>  
+  
+            <li>  
+              Daniel Kahneman —  
+              <em>Thinking, Fast and Slow</em>.  
+            </li>  
+  
+            <li>  
+              Richard E. Nisbett at Lee Ross —  
+              <em>Human Inference: Strategies and Shortcomings  
+              of Social Judgment</em>.  
+            </li>  
+  
+            <li>  
+              UNESCO — Media and Information Literacy resources  
+              tungkol sa kritikal na pagsusuri ng impormasyon  
+              at media content.  
+            </li>  
+  
+            <li>  
+              American Psychological Association — Resources  
+              tungkol sa critical thinking, cognitive biases,  
+              at pagproseso ng impormasyon.  
+            </li>  
+  
+          </ul>  
+  
+        </section>  
+  
+      </div>  
+  
+    </article>  
+  
+  </main>  
+  
+  <!-- ===================================  
+       MOBILE NAVIGATION SCRIPT  
+  =================================== -->  
+  
+  <script>  
+    const menuToggle =  
+      document.querySelector(".menu-toggle");  
+  
+    const mainNav =  
+      document.querySelector(".main-nav");  
+  
+    if (menuToggle && mainNav) {  
+      menuToggle.addEventListener("click", () => {  
+        const isOpen =  
+          mainNav.classList.toggle("is-open");  
+  
+        menuToggle.classList.toggle(  
+          "is-open",  
+          isOpen  
+        );  
+  
+        menuToggle.setAttribute(  
+          "aria-expanded",  
+          String(isOpen)  
+        );  
+  
+        menuToggle.setAttribute(  
+          "aria-label",  
+          isOpen  
+            ? "Close navigation menu"  
+            : "Open navigation menu"  
+        );  
+      });  
+  
+      mainNav  
+        .querySelectorAll("a")  
+        .forEach((link) => {  
+          link.addEventListener("click", () => {  
+            mainNav.classList.remove("is-open");  
+  
+            menuToggle.classList.remove(  
+              "is-open"  
+            );  
+  
+            menuToggle.setAttribute(  
+              "aria-expanded",  
+              "false"  
+            );  
+  
+            menuToggle.setAttribute(  
+              "aria-label",  
+              "Open navigation menu"  
+            );  
+          });  
+        });  
+    }  
+  </script>  
+  
+</body>  
+  
+</html>
