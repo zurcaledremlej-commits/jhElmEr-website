@@ -1,7 +1,7 @@
 <!--
 ======================================================
 jhElmEr WEBSITE
-MOTHER MUSIC ARTICLE TEMPLATE — VERSION 2
+MOTHER MUSIC ARTICLE TEMPLATE — VERSION 2.1
 ======================================================
 
 FILE:
@@ -54,7 +54,7 @@ PUBLISHING WORKFLOW
 
 6. Idagdag ang bagong kanta sa Music Archive:
 
-   ../music-list.html
+   ../all-music.html
 
 7. Gawin itong Featured Song sa:
 
@@ -214,11 +214,14 @@ END OF DEVELOPER NOTES
     rel="stylesheet"
   >
 
- <link rel="stylesheet" href="../main.css?v=2">
+   <link
+    rel="stylesheet"
+    href="../main.css?v=3"
+  >
 
   <style>
     /* =========================================================
-       MUSIC ARTICLE PAGE — VERSION 2
+       MUSIC ARTICLE PAGE — VERSION 2.1
 
        BLACK BRAND AREA
        CREAM CONTENT AREA
@@ -245,44 +248,6 @@ END OF DEVELOPER NOTES
     .music-article-page *::before,
     .music-article-page *::after {
       box-sizing: border-box;
-    }
-
-    /* =========================================================
-       HEADER LOGO CLICKABLE SCOPE FIX
-
-       Nililimitahan nito ang clickable area ng brand link
-       sa aktuwal na sukat lamang ng header logo.
-    ========================================================= */
-
-    .music-article-page .site-header .brand {
-      position: relative !important;
-      inset: auto !important;
-      z-index: 2;
-
-      width: fit-content !important;
-      height: fit-content !important;
-      max-width: none;
-
-      padding: 0;
-      margin-right: auto;
-
-      display: inline-flex;
-      align-items: center;
-      justify-content: flex-start;
-      flex: 0 0 auto;
-
-      line-height: 0;
-    }
-
-    .music-article-page .site-header .brand img {
-      position: relative;
-
-      width: auto;
-      height: auto;
-
-      display: block;
-
-      pointer-events: none;
     }
 
     /* =========================================================
@@ -1041,9 +1006,9 @@ END OF DEVELOPER NOTES
         /
       </span>
 
-      <a
+            <a
         class="article-back-link"
-        href="../music-list.html"
+        href="../all-music.html"
       >
         <span
           class="article-back-arrow"
