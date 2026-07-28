@@ -1,1 +1,1653 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+PUBLISHED CIVIC EXPLAINER
+======================================================
 
+FILE:
+articles/civic-sona.html
+
+ARTICLE:
+KAPAG KALABAN—LILIBAN?
+
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Mandatory ba para sa bawat senador at kongresista ang pagdalo sa SONA? Isang fact-based na paliwanag tungkol sa legal na obligasyon, public ethics, political dissent, at pananagutan ng mga mambabatas."
+  >
+
+  <title>Kapag Kalaban—Liliban? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          Kapag Kalaban—Liliban?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-sona.png"
+            alt="Simbolikong bulwagan ng Kongreso na may mga bakanteng upuan, naputol na tanikala, wasak na sahig, timbangan ng hustisya, at watawat ng Pilipinas na kumakatawan sa pagliban sa SONA, political division, at pananagutan sa bayan"
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Hindi masama ang hindi pagsang-ayon sa Pangulo.
+            Bahagi iyon ng demokrasya. Pero sapat ba ang
+            political disagreement upang hindi dumalo sa SONA?
+          </p>
+
+          <p>
+            Noong Hulyo 27, 2026, labintatlo sa dalawampu’t
+            apat na senador—mahigit kalahati ng buong
+            Senado—ang hindi dumalo sa ikalimang State of
+            the Nation Address ni Pangulong Ferdinand
+            Marcos Jr.
+          </p>
+
+          <p>
+            Magkakaiba ang kanilang mga dahilan. Hindi lahat
+            ay lumiban dahil lamang sa politika, kaya hindi
+            rin makatarungang pare-pareho agad ang maging
+            hatol sa bawat absent.
+          </p>
+
+          <p>
+            Pero nagbukas ito ng mas malalim at mas timeless
+            na tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              Kapag salungat sa Pangulo ang paniniwala o
+              partidong kinabibilangan ng isang senador o
+              kongresista, sapat na bang dahilan iyon upang
+              hindi siya personal na dumalo sa SONA?
+            </p>
+          </blockquote>
+
+          <p>
+            Maaaring sabihin ng ilan:
+          </p>
+
+          <p>
+            “Hindi naman sila obligado.”<br>
+            “Wala namang batas na nagsasabing kailangang
+            present ang lahat.”<br>
+            “Legal naman ang hindi pagdalo.”
+          </p>
+
+          <p>
+            May katotohanan ang mga ito.
+          </p>
+
+          <p>
+            Pero hindi dapat doon matapos ang usapan.
+          </p>
+
+          <p>
+            Dahil ang pagiging lider ng bansa ay hindi lamang
+            nasusukat sa pinakamababang hinihingi ng batas.
+            Nasusukat din ito sa pananagutang kaakibat ng
+            posisyon, sa paggalang sa mga institusyon, at sa
+            halimbawang maaaring gawing normal ng mga susunod
+            na lider.
+          </p>
+
+          <h2>
+            Ang Malinaw na Sinasabi ng Konstitusyon
+          </h2>
+
+          <p>
+            Ayon sa 1987 Constitution, ang Kongreso ay
+            nagtitipon para sa regular session tuwing
+            ikaapat na Lunes ng Hulyo, maliban kung magtakda
+            ng ibang petsa ang batas.
+          </p>
+
+          <p>
+            Tahasang sinasabi rin ng Konstitusyon na ang
+            Pangulo ang kailangang magbigay ng address sa
+            Kongreso sa pagbubukas ng regular session.
+          </p>
+
+          <p>
+            Wala namang katumbas na probisyon na nagsasabing
+            personal na obligadong dumalo sa SONA ang bawat
+            senador at kongresista.
+          </p>
+
+          <p>
+            Nakasaad din na kailangan ang mayorya ng bawat
+            kapulungan upang magkaroon ng quorum at
+            makapagsagawa ng opisyal na negosyo. Kung kulang
+            ang bilang, maaaring pilitin ng mga present na
+            miyembro ang pagdalo ng mga absent ayon sa mga
+            tuntunin at parusang itinakda ng kapulungan.
+          </p>
+
+          <p>
+            Pero mahalagang huwag itong palabisin.
+          </p>
+
+          <p>
+            Ang kapangyarihang pilitin ang pagdalo ay
+            nakaugnay sa quorum at sa kakayahan ng Senado o
+            Kamara na gumana bilang lehislatura. Hindi ito
+            awtomatikong nangangahulugang constitutional
+            violation ang bawat indibidwal na pagliban sa
+            SONA.
+          </p>
+
+          <p>
+            Kaya sa mahigpit na usaping legal:
+          </p>
+
+          <p>
+            Hindi tahasang mandatory para sa bawat
+            mambabatas ang personal na pagdalo.<br>
+            Hindi awtomatikong lumalabag sa Konstitusyon
+            ang sinumang absent.
+          </p>
+
+          <p>
+            Pero ang kawalan ng tahasang attendance
+            requirement ay hindi rin nangangahulugang wala
+            nang institutional at moral responsibility ang
+            mga mambabatas.
+          </p>
+
+          <h2>
+            Bakit Mas Mabigat Para sa mga Miyembro ng Kongreso?
+          </h2>
+
+          <p>
+            Ang SONA ay hindi ordinaryong programa ng
+            Malacañang. Hindi rin ito simpleng pagtitipon
+            ng mga tagasuporta ng Pangulo.
+          </p>
+
+          <p>
+            Sa Kongreso mismo inihaharap ang ulat dahil ang
+            Ehekutibo at Lehislatura ay may magkahiwalay
+            ngunit magkakaugnay na tungkulin sa pamamahala
+            ng bansa.
+          </p>
+
+          <p>
+            Ang Pangulo at mga ahensiya ng Ehekutibo ang
+            nagpapatupad ng mga batas at programa.
+          </p>
+
+          <p>
+            Ang Kongreso naman ang gumagawa at nag-aamyenda
+            ng mga batas, naglalaan at sumusuri ng pambansang
+            badyet, nagsasagawa ng mga imbestigasyon para sa
+            paggawa ng batas, at nagbabantay kung paano
+            ginagamit ng pamahalaan ang kapangyarihan at
+            pondo ng bayan.
+          </p>
+
+          <p>
+            Kaya kapag naglahad ang Pangulo ng kalagayan ng
+            bansa, mga nagawa, pagkukulang, problema,
+            prayoridad, at mga batas na nais niyang maipasa,
+            hindi lamang karaniwang audience ang mga senador
+            at kongresista.
+          </p>
+
+          <p>
+            Sila ang bahagi ng institusyong inaasahang
+            makinig, magsuri, kumuwestiyon, at umaksiyon.
+          </p>
+
+          <p>
+            Binibigyang-diin din ng Global Parliamentary
+            Report ng United Nations Development Programme
+            at Inter-Parliamentary Union na pangunahing
+            tungkulin ng lehislatura ang bantayan at
+            panagutin ang pamahalaan. Ang kanilang
+            pag-aaral, na binuo mula sa ambag ng 150
+            national parliaments, ay nagsasabing mahalaga
+            ang legislative oversight sa transparency,
+            accountability, paggamit ng pondo, at kalidad
+            ng mga serbisyong natatanggap ng mamamayan.
+          </p>
+
+          <p>
+            Hindi nito sinasabing mandatory ang pagdalo sa
+            SONA. Pero pinatitibay nito kung bakit mas
+            mabigat ang expectation sa mga mambabatas kaysa
+            sa ibang inimbitahang opisyal.
+          </p>
+
+          <p>
+            Hindi lamang sila naroon para manood. Bahagi ng
+            kanilang trabaho ang suriin ang pamahalaang
+            nag-uulat sa kanila.
+          </p>
+
+          <p>
+            Ang SONA mismo ay hindi oversight hearing kung
+            saan maaaring tanungin agad ang Pangulo. Pero ang
+            mga pahayag, programa, at prayoridad na
+            inilalahad dito ay maaaring busisiin pagkatapos
+            sa deliberasyon ng badyet, paggawa ng batas,
+            committee hearings, at mga imbestigasyon ng
+            Kongreso.
+          </p>
+
+          <h2>
+            Ang Pagdalo ay Hindi Endorsement
+          </h2>
+
+          <p>
+            Hindi nangangahulugang kapag dumalo ang isang
+            senador o kongresista ay sinusuportahan na niya
+            ang Pangulo. Hindi rin ibig sabihin na dapat
+            niyang paniwalaan o palakpakan ang lahat ng
+            sasabihin sa SONA.
+          </p>
+
+          <p>
+            Ang ulat ng Pangulo ay natural na maglalahad ng
+            pananaw ng kanyang administrasyon. Maaaring may
+            mga tagumpay na binibigyang-diin, mga problemang
+            hindi gaanong nababanggit, mga datos na
+            kailangang suriin, at mga pangakong kailangang
+            bantayan.
+          </p>
+
+          <p>
+            Iyan mismo ang dahilan kung bakit mahalaga ang
+            presensya ng mga hindi kakampi.
+          </p>
+
+          <p>
+            Maaari silang makinig nang hindi sumasang-ayon.<br>
+            Maaari silang dumalo nang hindi pumapalakpak.<br>
+            Maaari nilang igalang ang proseso habang mariing
+            tinututulan ang polisiya.<br>
+            Maaari nilang pakinggan ang buong ulat at
+            pagkatapos ay ilantad ang mga kulang, mali, o
+            mapanlinlang gamit ang datos at ebidensiya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang presensya ay hindi awtomatikong suporta.
+              Ang pakikinig ay hindi pagsuko.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagiging oposisyon ay hindi
+            nangangahulugang kailangang iwasan ang bawat
+            pambansang pagkakataong naroon ang kalabang
+            lider.
+          </p>
+
+          <p>
+            Sa katunayan, mas kapaki-pakinabang sa bayan ang
+            oposisyong nakinig at may matibay na sagot kaysa
+            oposisyong tumangging humarap ngunit wala namang
+            malinaw na pagsusuri o alternatibong inilatag
+            pagkatapos.
+          </p>
+
+          <h2>
+            May Ethical Responsibility Kahit Walang Attendance Law
+          </h2>
+
+          <p>
+            Malinaw sa Article XI ng Konstitusyon na ang
+            public office ay isang public trust.
+          </p>
+
+          <p>
+            Ang mga opisyal ay kailangang managot sa
+            mamamayan at maglingkod nang may responsibilidad,
+            integridad, katapatan, kahusayan, pagkamakabayan,
+            at katarungan.
+          </p>
+
+          <p>
+            Mas nililinaw ito ng Republic Act No. 6713 o
+            Code of Conduct and Ethical Standards for Public
+            Officials and Employees.
+          </p>
+
+          <p>
+            Sakop ng batas ang elective at appointive
+            officials. Kabilang sa mga pamantayan nito ang
+            pag-una sa public interest, professionalism,
+            nationalism and patriotism, commitment to
+            democracy, at paglalagay ng loyalty to country
+            above loyalty to persons or party.
+          </p>
+
+          <p>
+            Pero kailangan ding maging legal na tapat:
+          </p>
+
+          <p>
+            Hindi sinasabi ng RA 6713 na obligadong dumalo
+            sa SONA ang bawat senador at kongresista.<br>
+            Hindi ito attendance law.<br>
+            Hindi rin sapat ang simpleng pagliban upang
+            awtomatikong sabihing nilabag na ng isang
+            mambabatas ang batas.
+          </p>
+
+          <p>
+            Ang RA 6713 ay mas wastong gamitin bilang
+            ethical standard—isang panukat upang suriin kung
+            ano ang inuuna ng isang public official sa
+            kanyang mga desisyon.
+          </p>
+
+          <p>
+            Kung may sakit, emergency, seryosong security
+            concern, o mahalagang opisyal na tungkulin,
+            malinaw na maaaring makatwiran ang pagliban.
+            Kung principled political protest naman ang
+            dahilan, bahagi rin ng demokrasya ang dissent
+            at boycott.
+          </p>
+
+          <p>
+            Pero kung ang tanging dahilan ay ayaw lamang
+            humarap o makitang nakikinig sa isang Pangulong
+            kalaban sa politika, makatwirang itanong:
+          </p>
+
+          <blockquote>
+            <p>
+              Bansa ba ang inuuna?<br>
+              O ang sariling partido, alyansa, at political image?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lahat ng legal na desisyon ay awtomatikong
+            magandang halimbawa ng public service.
+          </p>
+
+          <h2>
+            Respeto sa Proseso, Hindi Pagsamba sa Pangulo
+          </h2>
+
+          <p>
+            Ang pagdalo sa SONA ay hindi pagsamba sa taong
+            nakaupo sa Malacañang.
+          </p>
+
+          <p>
+            Ang Pangulo ay hindi ang Konstitusyon. Hindi rin
+            siya ang buong bansa.
+          </p>
+
+          <p>
+            Maaari at dapat siyang punahin kapag may mali,
+            kulang, o mapanlinlang sa kanyang pamamahala.
+          </p>
+
+          <p>
+            Pero ang respeto sa constitutional process ay
+            iba sa personal na pagsuporta sa Pangulo.
+          </p>
+
+          <p>
+            Ang pagdalo ay maaaring maging respeto sa
+            mamamayang kinakatawan ng mga mambabatas.
+          </p>
+
+          <p>
+            Respeto ito sa Kongreso bilang institusyon.<br>
+            Respeto ito sa prosesong nagbibigay ng
+            pagkakataon sa Ehekutibo na mag-ulat at sa
+            Lehislatura na makinig, magsuri, at maningil
+            ng pananagutan.
+          </p>
+
+          <p>
+            At basic institutional courtesy din ito sa
+            opisina ng Pangulo—hindi dahil palaging tama ang
+            taong nakaupo rito, kundi dahil ang institusyon
+            ay mas malaki at mas matagal kaysa sa sinumang
+            pansamantalang humahawak nito.
+          </p>
+
+          <p>
+            Maaaring magpalit ang Pangulo.<br>
+            Maaaring magpalit ang mayorya at oposisyon.
+          </p>
+
+          <p>
+            Pero ang mga demokratikong institusyon ang
+            kailangang manatiling gumagana kahit sino pa
+            ang nasa kapangyarihan.
+          </p>
+
+          <h2>
+            Ang Unity ay Hindi Pagkakapareho
+          </h2>
+
+          <p>
+            Hindi rin dapat gamitin ang “unity” upang
+            patahimikin ang oposisyon.
+          </p>
+
+          <p>
+            Ang tunay na unity ay hindi bulag na pagsunod.
+          </p>
+
+          <p>
+            Hindi ito pagsang-ayon sa lahat ng polisiya.<br>
+            Hindi ito pagbabawal sa protesta o matinding
+            pagpuna.
+          </p>
+
+          <p>
+            Kailangan ng demokrasya ang mga lider na handang
+            kontrahin ang Pangulo kapag kinakailangan.
+          </p>
+
+          <p>
+            Pero may malaking pagkakaiba ang dissent sa
+            pag-iwas.
+          </p>
+
+          <p>
+            Ang mas makabuluhang unity ay ang kakayahang
+            humarap sa parehong pambansang usapin kahit
+            magkaiba ang partido, makinig kahit hindi
+            magkasundo, at pagkatapos ay magdebate at
+            magtrabaho sa loob ng mga demokratikong
+            institusyon.
+          </p>
+
+          <p>
+            Hindi kailangang magkaisa sa lahat ng sagot.
+            Pero dapat kayang harapin ang parehong mga
+            problema ng bayan.
+          </p>
+
+          <p>
+            Dahil ang kahirapan, kakulangan sa edukasyon at
+            kalusugan, trabaho, katiwalian, kalamidad,
+            seguridad, at pambansang utang ay hindi naman
+            namimili kung anong partido ang kanilang
+            tatamaan.
+          </p>
+
+          <h2>
+            Ang Panganib ng Pagnormalisa
+          </h2>
+
+          <p>
+            Ang isang pagliban sa SONA ay hindi agad
+            nagiging legal precedent.
+          </p>
+
+          <p>
+            Hindi ito magiging batas na obligadong sundin ng
+            susunod na Kongreso. Pero maaari itong maging
+            political example—isang asal na maaaring ulitin,
+            ipagtanggol, at kalaunan ay ituring na normal.
+          </p>
+
+          <p>
+            Ipinapakita ng political research tungkol sa
+            informal institutions na hindi lamang nakasulat
+            na batas ang humuhubog sa kilos ng mga lider.
+            Malaki rin ang epekto ng mga nakasanayang gawain,
+            unwritten rules, at institutional norms sa
+            political behavior at sa kinalalabasan ng mga
+            institusyon.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang ang isang SONA boycott
+            ay siguradong gagayahin ng lahat ng susunod na
+            lider. Pero ipinapakita nito kung bakit hindi
+            dapat maliitin ang mga halimbawang ginagawa ng
+            mga opisyal habang nasa kapangyarihan.
+          </p>
+
+          <p>
+            Kapag paulit-ulit na tinanggap ang prinsipyong:
+          </p>
+
+          <blockquote>
+            <p>
+              “Kapag kakampi ang Pangulo, dadalo.<br>
+              Kapag kalaban, liliban.”
+            </p>
+          </blockquote>
+
+          <p>
+            Unti-unti itong maaaring maging bahagi ng
+            kulturang pampolitika.
+          </p>
+
+          <p>
+            Ang partidong nagtatanggol sa pagliban ngayon ay
+            maaaring magreklamo bukas kapag sila naman ang
+            nasa administrasyon at ang kabilang kampo ang
+            tumangging dumalo.
+          </p>
+
+          <p>
+            Ang pamantayang pinapayagan natin laban sa lider
+            na ayaw natin ay maaari ring gamitin laban sa
+            lider na gusto natin.
+          </p>
+
+          <p>
+            At kapag naging normal ang ganitong asal,
+            maaaring dumating ang panahong ang mga pambansang
+            pagkakataon ay dinadaluhan lamang ng mga kakampi,
+            ang bawat kampo ay nakikinig lamang sa sarili
+            nitong bersiyon ng katotohanan, at ang
+            pakikipag-usap ay nangyayari lamang kapag pareho
+            ang kulay ng politika.
+          </p>
+
+          <p>
+            Hindi agad guguho ang demokrasya dahil may isang
+            upuang bakante sa SONA. Pero humihina ang mga
+            institusyon kapag ang partisan division ay
+            unti-unting nagiging katanggap-tanggap na dahilan
+            upang talikuran ang mga pagkakataong dapat sana
+            ay nagtatagpo ang magkakaibang sangay at panig
+            ng pamahalaan.
+          </p>
+
+          <h2>
+            Hindi Lahat ng Pagliban ay Pare-pareho
+          </h2>
+
+          <p>
+            Hindi dapat basta sabihing lahat ng absent ay
+            walang respeto o inuuna agad ang politika.
+          </p>
+
+          <p>
+            Kailangang tingnan ang dahilan at konteksto.
+          </p>
+
+          <p>
+            May karamdaman ba o emergency?<br>
+            May hindi maiiwang opisyal na tungkulin ba?<br>
+            May seryosong security concern ba?<br>
+            Kung protesta, malinaw ba kung ano ang
+            ipinoprotesta at bakit personal na pagliban ang
+            piniling paraan?<br>
+            Pinag-aralan pa rin ba ang nilalaman ng SONA?<br>
+            Nagbigay ba ng matibay na sagot, datos,
+            alternatibong programa, o konkretong aksiyon
+            pagkatapos?<br>
+            O ang pagliban mismo ang ginawang buong mensahe
+            dahil mas madaling gumawa ng political spectacle
+            kaysa magharap ng masusing pagsusuri?
+          </p>
+
+          <p>
+            Ang boycott ay maaaring maging lehitimong
+            political expression. Pero hindi sapat na tawagin
+            lamang itong “protesta” upang hindi na ito
+            masuri.
+          </p>
+
+          <p>
+            Tulad ng anumang paggamit ng kapangyarihan ng
+            isang public official, kailangan pa ring
+            maipaliwanag kung paano ito nakatutulong sa
+            mamamayang kanyang kinakatawan.
+          </p>
+
+          <h2>
+            Ang Mas Mahalagang Tanong
+          </h2>
+
+          <p>
+            Kaya ang tunay na usapin ay hindi lamang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Legal bang hindi dumalo?”
+            </p>
+          </blockquote>
+
+          <p>
+            Oo, walang tahasang constitutional requirement
+            na kailangang personal na present ang bawat
+            senador at kongresista sa SONA.
+          </p>
+
+          <p>
+            Pero bilang bahagi ng mismong institusyong
+            pinaghaharapan ng ulat, ginawa ba nila ang mas
+            malawak na tungkulin nilang makinig, magsuri,
+            kumuwestiyon, at kumilos?
+          </p>
+
+          <p>
+            Ang pagliban ba ay bunga ng isang malinaw at
+            seryosong prinsipyo? O dahil lamang ayaw nilang
+            humarap sa isang kalabang politikal?
+          </p>
+
+          <p>
+            At magiging katanggap-tanggap pa rin ba sa
+            kanila ang pamantayang ito kapag ang kabilang
+            partido naman ang gumamit nito laban sa kanilang
+            kampo?
+          </p>
+
+          <p>
+            Maaaring legal ang pagliban. Pero hindi lahat ng
+            legal ay magandang halimbawa ng pamumuno.
+          </p>
+
+          <p>
+            Ang batas ang nagtatakda kung ano ang tahasang
+            ipinag-uutos o ipinagbabawal. Ang public ethics
+            ang nagtatanong kung paano dapat kumilos ang
+            isang taong binigyan ng kapangyarihan at tiwala
+            ng bayan. At ang kulturang pampolitikang binubuo
+            ngayon ang maaaring manahin ng mga susunod na
+            lider.
+          </p>
+
+          <p>
+            Ang SONA ay hindi loyalty ceremony para sa
+            Pangulo. Hindi ito sapilitang endorsement sa
+            administrasyon.
+          </p>
+
+          <p>
+            Isa itong constitutional occasion kung saan ang
+            Pangulo ay humaharap sa Kongreso at kung saan
+            inaasahang gagampanan ng mga mambabatas ang
+            tungulin nilang makinig, magsuri, kumontra kung
+            kinakailangan, at maningil ng pananagutan.
+          </p>
+
+          <p>
+            Ang tunay na oposisyon ay hindi natatakot
+            makinig. Ang tunay na respeto ay hindi
+            nangangailangan ng bulag na pagsang-ayon. At ang
+            tunay na unity ay hindi pagbura sa
+            pagkakaiba—kundi ang kakayahang unahin ang bansa
+            kahit magkalaban sa politika.
+          </p>
+
+          <p>
+            Kapag ang simpleng political disagreement ang
+            ginawang sapat na dahilan upang talikuran ang
+            ganitong pambansang pagkakataon, hindi lamang
+            isang upuan sa SONA ang naiiwang bakante.
+          </p>
+
+          <p>
+            May panganib ding maiwang normal na halimbawa sa
+            mga susunod na lider:
+          </p>
+
+          <blockquote>
+            <p>
+              Na kapag kalaban ang Pangulo, maaari nang
+              iwasan pati ang institusyong dapat sana ay
+              humaharap, nakikinig, at nananagot para sa
+              bayan.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+        =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <a
+                href="https://lawphil.net/consti/cons1987.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                1987 Constitution of the Republic of the
+                Philippines — Article VI, Sections 15, 16,
+                at 21; Article VII, Sections 22 at 23; at
+                Article XI, Section 1.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra1989/ra_6713_1989.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Republic Act No. 6713 — Code of Conduct and
+                Ethical Standards for Public Officials and
+                Employees.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.ipu.org/resources/publications/reports/2017-10/global-parliamentary-report-2017-parliamentary-oversight-parliaments-power-hold-government-account"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                United Nations Development Programme at
+                Inter-Parliamentary Union — Global
+                Parliamentary Report 2017: Parliamentary
+                Oversight.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://doi.org/10.1017/S1537592704040472"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gretchen Helmke at Steven Levitsky —
+                “Informal Institutions and Comparative
+                Politics: A Research Agenda,” Perspectives
+                on Politics, Volume 2, Issue 4.
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://newsinfo.inquirer.net/2271879/more-than-half-of-senators-absent-from-marcos-sona-heres-why"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Philippine Daily Inquirer — “More than half
+                of 24 senators absent from Marcos’ SONA:
+                Here’s why,” Hulyo 27, 2026.
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
