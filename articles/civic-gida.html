@@ -1,1 +1,1221 @@
 
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
+
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Bakit may mga paaralang naiiwan? Alamin kung ano ang Republic Act No. 12321 o Last Mile and Geographically Isolated and Disadvantaged Areas (GIDA) Schools Act, ang layunin nito, at kung paano nito sinusubukang mailapit ang de-kalidad na edukasyon sa mga komunidad na pinakamahirap maabot."
+>
+
+<title>Bakit May Mga Paaralang Naiiwan? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    Bakit May Mga Paaralang Naiiwan?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+     <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-gida.png"
+      alt="Mga batang tumatawid sa ilog at naglalakad sa kabundukan patungo sa isang paaralang nasa Geographically Isolated and Disadvantaged Area (GIDA), na sumisimbolo sa mga hamon sa pag-access sa de-kalidad na edukasyon at sa layunin ng Republic Act No. 12321 na mailapit ang suporta sa Last Mile Schools."
+    >
+
+  </div>
+
+     </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Hindi lahat ng paaralang naiiwan ay kulang sa pagsisikap. Minsan, ang mismong lokasyon at mga hadlang sa paligid nito ang dahilan kung bakit mas huling naaabot ng mahahalagang serbisyong pang-edukasyon.
+  </p>
+
+  <p>
+    May mga batang Pilipino na kailangang tumawid ng ilog, maglakad nang ilang kilometro sa bundok, bumiyahe nang mahigit isang oras, o dumaan sa mapanganib na daan bago makarating sa paaralan. Pagdating nila, may mga paaralang kulang sa silid-aralan, walang kuryente, walang internet, kulang ang tubig at palikuran, at hirap na makapag-deploy at mapanatili ang sapat na bilang ng mga guro.
+  </p>
+
+  <p>
+    Hindi ito iilang kuwento lamang.
+  </p>
+
+  <p>
+    Ayon sa mga ulat ng EDCOM II at Department of Education (DepEd), libu-libong Last Mile Schools, kabilang ang maraming paaralang nasa Geographically Isolated and Disadvantaged Areas (GIDA), ang matagal nang nangangailangan ng mas matibay na suporta. Sa mga ito, humigit-kumulang 1,500 ang wala pa ring kuryente at nasa 1,000 ang walang maayos na palikuran. Tinatayang 1.6 milyong mag-aaral ang nag-aaral sa mga paaralang ito.
+  </p>
+
+  <p>
+    Kapag ganito ang sitwasyon ng mismong paaralan, hindi na lamang ito usapin ng distansya. Nagiging hadlang na ito sa pantay na pagkakataong makapag-aral.
+  </p>
+
+  <p>
+    Dito pumapasok ang <strong>Republic Act No. 12321</strong> o <strong>Last Mile and Geographically Isolated and Disadvantaged Areas (GIDA) Schools Act</strong>.
+  </p>
+
+  <h2>Ano ang GIDA Schools Act?</h2>
+
+  <p>
+    Ang Republic Act No. 12321, o Last Mile and Geographically Isolated and Disadvantaged Areas (GIDA) Schools Act, ay isang batas na naglalayong gawing permanenteng polisiya ng pamahalaan ang pagbibigay ng mas sistematikong suporta sa Last Mile Schools at mga pampublikong paaralang nasa Geographically Isolated and Disadvantaged Areas (GIDA).
+  </p>
+
+  <p>
+    Hindi lamang nito kinikilala na may mga paaralang matagal nang naiiwan. Inaatasan din nito ang iba't ibang ahensya ng pamahalaan na sama-samang tugunan ang mga ugat ng problema upang mas mailapit ang de-kalidad na edukasyon sa mga komunidad na matagal nang nahuhuling maabot ng mga pangunahing serbisyong pang-edukasyon.
+  </p>
+
+  <h2>Hindi lang gusali ang problema. Buong sistema ang kailangang ayusin.</h2>
+
+  <p>
+    Madalas nating isipin na kapag kulang ang paaralan, sapat nang magpatayo ng panibagong classroom.
+  </p>
+
+  <p>
+    Pero sa maraming GIDA communities, mas malalim pa rito ang problema.
+  </p>
+
+  <ul>
+    <li>Kung walang maayos na kalsada, mahirap makarating ang mga guro.</li>
+    <li>Kung walang kuryente, limitado ang paggamit ng mga kagamitan sa pagtuturo.</li>
+    <li>Kung walang internet o signal, nahihirapan ang mga paaralan sa komunikasyon, digital learning, at maraming serbisyong pang-edukasyon.</li>
+    <li>Kung walang sapat na tubig at maayos na palikuran, naaapektuhan pati kalusugan, kalinisan, at regular na pagpasok ng mga mag-aaral.</li>
+    <li>At kung walang sapat na suporta sa mga gurong nagtuturo sa malalayong lugar, mas mahirap makapag-deploy at mapanatili ang mga kwalipikadong gurong higit na kailangan ng mga komunidad na ito.</li>
+  </ul>
+
+  <p>
+    Ipinapakita rin ng maraming pag-aaral sa education systems na ang kalidad ng edukasyon ay hindi lamang nakasalalay sa husay ng pagtuturo sa loob ng silid-aralan. Malaki rin ang epekto ng ligtas na pasilidad, access sa pangunahing serbisyo, sapat na learning resources, at tuloy-tuloy na suporta sa mga paaralan.
+  </p>
+
+  <p>
+    Ibig sabihin, ang kalidad ng edukasyon ay hindi lang nakasalalay sa loob ng silid-aralan. Nakadepende rin ito sa buong sistemang sumusuporta sa paaralan. Ito mismo ang sinusubukang tugunan ng RA 12321.
+  </p>
+
+  <h2>Ano ang pangunahing ginagawa ng batas?</h2>
+
+  <p>
+    Sa ilalim ng batas:
+  </p>
+
+  <ul>
+    <li>Magkakaroon ng National Last Mile and GIDA Schools Map upang malinaw na matukoy kung aling mga paaralan ang dapat unahing tulungan.</li>
+
+    <li>Magtatakda ang DepEd ng mas malinaw na accessibility standards upang mas madaling matukoy at matugunan ang pangangailangan ng mga paaralang nasa GIDA.</li>
+
+    <li>Inaatasan ang iba't ibang ahensya gaya ng DepEd, DPWH, DICT, DOE, DOTr, mga LGU, at iba pa na magtulungan sa imprastraktura, kuryente, internet, transportasyon, tubig, sanitation, at iba pang pangunahing pangangailangan ng mga paaralan.</li>
+
+    <li>Magbibigay ng mas matatag na suporta sa mga guro kabilang ang mga insentibo, housing assistance, professional development, at localized recruitment upang mas maraming gurong manatili sa GIDA communities.</li>
+
+    <li>Hihikayatin ang mas angkop na learning delivery o paghahatid ng serbisyong pang-edukasyon batay sa sitwasyon at pangangailangan ng bawat komunidad.</li>
+  </ul>
+
+  <h2>Bakit hindi pare-pareho ang solusyon sa bawat GIDA?</h2>
+
+  <p>
+    Hindi lahat ng GIDA ay magkapareho.
+  </p>
+
+  <p>
+    May mga paaralang nasa kabundukan. May nasa malalayong isla. May nasa mga komunidad ng Indigenous Peoples. Mayroon ding nasa mga lugar na madalas tamaan ng kalamidad o naapektuhan ng armadong sigalot.
+  </p>
+
+  <p>
+    Magkakaiba ang kultura, wika, paraan ng pamumuhay, at mga hamong kinakaharap ng bawat komunidad.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang iisang solusyon para sa lahat.
+  </p>
+
+  <p>
+    Isa sa mahahalagang layunin ng batas ay gawing mas akma ang suporta sa tunay na kalagayan ng bawat komunidad. Kabilang dito ang pagsasaalang-alang sa lokal na konteksto, kultura, at mga partikular na hamong kinakaharap upang mas maging epektibo ang paghahatid ng serbisyong pang-edukasyon.
+  </p>
+
+  <h2>Ano ang legal na batayan nito?</h2>
+
+  <p>
+    Mahalagang maunawaan na hindi nilikha ng RA 12321 ang karapatan sa edukasyon.
+  </p>
+
+  <p>
+    Matagal nang kinikilala ng <strong>1987 Philippine Constitution, Article XIV, Section 1</strong>, na tungkulin ng Estado na protektahan at itaguyod ang karapatan ng bawat Pilipino sa de-kalidad na edukasyon at gumawa ng mga angkop na hakbang upang maging accessible ito sa lahat.
+  </p>
+
+  <p>
+    Ang RA 12321 ang nagbibigay ng mas konkretong mekanismo kung paano maisasakatuparan ang tungkuling iyon para sa Last Mile Schools at mga paaralang nasa Geographically Isolated and Disadvantaged Areas (GIDA).
+  </p>
+
+  <p>
+    Sa madaling salita, ang Konstitusyon ang nagsasabing may karapatan ang bawat bata sa de-kalidad na edukasyon. Ang RA 12321 naman ang naglalatag ng mas malinaw na paraan upang mas mailapit ang serbisyong iyon sa mga komunidad na pinakamahirap maabot.
+  </p>
+
+  <h2>Reality Check</h2>
+
+  <p>
+    Mahalagang tandaan na ang pagpasa ng batas ay hindi pa awtomatikong katumbas ng pagbabago.
+  </p>
+
+  <p>
+    Ang batas ang nagbibigay ng direksiyon.
+  </p>
+
+  <p>
+    Ang sapat na pondo, maayos na implementasyon, koordinasyon ng mga ahensya, at tuloy-tuloy na pananagutan ang magpapasya kung tunay ngang mababawasan ang agwat sa edukasyon ng mga batang nasa Last Mile Schools at GIDA communities.
+  </p>
+
+  <p>
+    Maraming batas ang maganda ang layunin, ngunit ang tunay na sukatan ng tagumpay ay kung nararamdaman na ba ng mga mamamayan ang ipinangakong pagbabago.
+  </p>
+
+  <p>
+    Sa madaling salita, ang isang magandang batas ay nagiging tunay na pagbabago lamang kapag nararamdaman na ito sa mismong silid-aralan.
+  </p>
+
+  <h2>Real Talk</h2>
+
+  <blockquote>
+    <p>
+      Hindi dapat nakabatay sa bundok, ilog, isla, o layo ng tahanan ang kalidad ng edukasyong natatanggap ng isang batang Pilipino.
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag ang lugar kung saan ipinanganak ang bata ang nagdidikta kung gaano kahirap siyang makapag-aral, hindi na lamang ito usapin ng heograpiya. Usapin na ito ng patas na pagkakataon.
+  </p>
+
+  <p>
+    Iyan ang layuning tinutugunan ng RA 12321—ang gawing mas malapit ang buong sistema ng edukasyon sa mga batang matagal nang nasa "huling milya," upang ang karapatan sa edukasyon ay hindi lamang manatiling pangako sa batas, kundi maging realidad sa bawat komunidad.
+  </p>
+
+  <p><strong>Note:</strong> Ang ilang numerical data (hal. bilang ng Last Mile Schools, mga mag-aaral, o kakulangan sa mga pangunahing pasilidad) ay batay sa mga opisyal na ulat ng DepEd, EDCOM II, at iba pang sangguniang available sa panahon ng pagsulat ng civic explainer na ito. Maaaring magbago ang mga bilang habang may mga bagong opisyal na ulat o update, ngunit hindi nito binabago ang pangunahing layunin ng RA 12321, ang legal na batayan nito, at ang mga prinsipyong ipinaliliwanag sa post na ito.</p>
+
+</div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Philippine Constitution, Article XIV, Section 1
+    </li>
+
+    <li>
+      Republic Act No. 12321 – Last Mile and Geographically Isolated and Disadvantaged Areas (GIDA) Schools Act
+    </li>
+
+    <li>
+      Department of Education (DepEd) – Last Mile Schools Program
+    </li>
+
+    <li>
+      EDCOM II – <em>Fixing the Foundations: Year 2 Report</em> at iba pang policy briefs tungkol sa Last Mile at GIDA Schools
+    </li>
+
+    <li>
+      Philippine News Agency (PNA) – Overview ng Republic Act No. 12321
+    </li>
+
+    <li>
+      <a
+        href="https://lawphil.net/statutes/repacts/ra1987/ra_12321_2025.html"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Republic Act No. 12321 – Lawphil
+      </a>
+    </li>
+
+    <li>
+      <a
+        href="https://www.officialgazette.gov.ph/1987/02/02/constitution-of-the-philippines/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        1987 Philippine Constitution – Official Gazette
+      </a>
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
