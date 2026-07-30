@@ -1,1 +1,1563 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+ <meta
+  name="description"
+  content="Ano ba talaga ang sounding rocket na planong ilunsad mula sa Pilipinas? Alamin kung bakit hindi pa ito NASA-level mission, ano ang tunay na layunin ng unang 5-kilometrong demonstration flight, at bakit maaari pa rin itong maging mahalagang pundasyon ng aerospace capability ng bansa."
+>
+
+<title>Anong Rocket ba Ito? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    Anong Rocket ba Ito?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-rocket.png"
+      alt="Isang liquid-fueled sounding rocket na inilulunsad mula sa baybayin ng Pilipinas habang nangingibabaw sa kalangitan ang simbolikong higanteng rocket, na kumakatawan sa pagitan ng kasalukuyang kakayahan at pangmatagalang ambisyon ng bansa sa aerospace technology."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+       <div class="article-body">
+
+  <p>
+    Rocket daw ang paliliparin mula sa Pilipinas sa susunod na taon.
+  </p>
+
+  <p>
+    Dahil dito, marami ang natawa. May nagsabing napakataas ng imahinasyon ng Pangulo. May ilan ding nagbiro na baka iniisip na niyang kaya na nating magpalipad ng astronaut gaya ng NASA o SpaceX.
+  </p>
+
+  <p>
+    Hindi nakapagtataka ang pagkalito.
+  </p>
+
+  <p>
+    Kapag narinig natin ang salitang “rocket,” ang karaniwang pumapasok sa isip ay isang napakalaking sasakyang may naglalagablab na makina—nagdadala ng satellite, spacecraft, o tao palabas ng mundo.
+  </p>
+
+  <p>
+    Pero ganoon nga ba ang rocket na tinutukoy?
+    Aabot ba talaga ito sa kalawakan?
+    May ginagawa na bang spaceport sa Cagayan?
+    At kung limang kilometro lamang ang unang target na taas, may tunay pa rin ba itong halaga sa science, engineering, at posibleng aerospace industry ng bansa?
+  </p>
+
+  <p>
+    Dito kailangang ihiwalay ang biro sa aktuwal na teknolohiya.
+  </p>
+
+  <p>
+    Dahil hindi sapat na tawanan agad ang isang planong hindi pa nauunawaan. Pero hindi rin sapat na maniwala dahil lamang kahanga-hanga ang tunog ng pangako.
+  </p>
+
+  <p>
+    Bago natin sabihing napakalayo ng imahinasyon—o napakalaki ng advancement—linawin muna natin kung anong rocket ba talaga ito, ano lamang ang kaya nitong gawin sa unang test, at anong kakayahan ang maaari nitong simulang buuin para sa Pilipinas.
+  </p>
+
+  <h2>ANO ANG SOUNDING ROCKET?</h2>
+
+  <p>
+    Ang sounding rocket ay isang mas maliit na rocket na karaniwang ginagamit upang magdala ng scientific instruments, magsagawa ng measurements sa atmosphere, subukan ang bagong teknolohiya, at sanayin ang mga engineer sa aktuwal na rocket operations.
+  </p>
+
+  <p>
+    Hindi ito kailangang umikot sa mundo gaya ng satellite.
+  </p>
+
+  <p>
+    Umaakyat ito sa isang itinakdang trajectory, isinasagawa ang experiment o test, at pagkatapos ay bumabalik sa lupa.
+  </p>
+
+  <p>
+    Gumagamit din ang NASA ng sounding rockets dahil mas simple, mas mura, at mas mabilis ihanda ang mga ito kaysa sa isang buong orbital mission. Ngunit ang NASA sounding rockets ay karaniwang ginagamit para sa scientific research sa taas na humigit-kumulang 100 hanggang 1,400 kilometro.
+  </p>
+
+  <p>
+    Ibig sabihin, magkapareho man ang tawag sa uri ng rocket, hindi awtomatikong magkapareho ang laki, taas, kakayahan, at layunin ng bawat mission.
+  </p>
+
+  <h2>ANO MISMO ANG PLANONG ILULUNSAD?</h2>
+
+  <p>
+    Ayon sa Philippine Space Agency o PhilSA, ang planong launch sa Cagayan sa 2027 ay isang demonstration flight ng liquid-fueled sounding rocket.
+  </p>
+
+  <p>
+    Magdadala ito ng locally developed payload na hanggang dalawang kilo at may paunang target na umabot sa taas na hindi bababa sa limang kilometro.
+  </p>
+
+  <p>
+    Katuwang sa proyekto ang PhilSA, Department of Information and Communications Technology, Cagayan Economic Zone Authority, Philippine company na Ascend International Gateway, at South Korean rocket company na Perigee Aerospace.
+  </p>
+
+  <p>
+    Dito kailangang maging eksakto ang paliwanag.
+  </p>
+
+  <p>
+    Ang limang kilometro ay mataas kumpara sa mga gusali at karaniwang nakikita natin sa lupa. Pero nasa loob pa rin ito ng troposphere—ang pinakamababang bahagi ng atmosphere kung saan nabubuo ang halos lahat ng weather na nararanasan natin.
+  </p>
+
+  <p>
+    Ang troposphere ay umaabot nang average na humigit-kumulang 12 kilometro. Ang karaniwang ginagamit na hangganan ng outer space, ang Kármán line, ay nasa humigit-kumulang 100 kilometro.
+  </p>
+
+  <p>
+    Kaya batay sa paunang target, ang unang demonstration flight ay hindi pa makararating sa outer space.
+  </p>
+
+  <p>
+    Hindi pa rin ito katulad ng karaniwang scientific sounding-rocket mission na umaabot sa upper atmosphere o suborbital space.
+  </p>
+
+  <p>
+    Ang mas eksaktong paglalarawan ay:
+    Sounding rocket ang platform na gagamitin, pero ang unang limang-kilometrong flight ay pangunahing demonstration muna ng rocket system at launch operations—hindi pa isang ganap na space-science mission.
+  </p>
+
+  <p>
+    Batay sa technical details na inilabas ng PhilSA, mas ligtas unawain ang pahayag na paglulunsad ng rocket “into space” bilang pangmatagalang direksiyon ng programa—hindi bilang eksaktong paglalarawan sa unang limang-kilometrong demonstration flight.
+  </p>
+
+  <p>
+    Hindi pa tayo magpapadala ng astronaut.
+    Hindi pa tayo maglalagay ng sariling satellite sa orbit mula sa Cagayan.
+    At hindi pa rin ito patunay na isa na tayong space power.
+  </p>
+
+  <p>
+    Pero hindi rin ibig sabihin na walang teknolohikal na halaga ang test dahil hindi pa ito aabot sa kalawakan.
+  </p>
+  <h2>HINDI LANG TAAS ANG SINUSUBUKAN</h2>
+
+  <p>
+    Sa unang tingin, maaaring itanong:
+    Ano ang malaking bagay sa isang rocket na limang kilometro lamang ang target?
+  </p>
+
+  <p>
+    Ang mahalagang maunawaan ay hindi lang taas ng lipad ang sinusubukan.
+  </p>
+
+  <p>
+    Sa isang rocket launch, kailangang gumana nang magkakasabay ang propulsion, fuel handling, integration ng locally developed payload, communications, tracking, weather monitoring, launch authorization, airspace at maritime coordination, emergency response, at recovery procedures.
+  </p>
+
+  <p>
+    Kailangang malinaw kung sino ang magbibigay ng pahintulot. Kailangang ligtas ang mga taong nasa paligid. Kailangang makontrol ang airspace at bahagi ng karagatan na maaaring madaanan o bagsakan. Kailangang alam ng mga engineer kung ano ang gagawin kapag may pumalya bago, habang, o pagkatapos ng launch.
+  </p>
+
+  <p>
+    Sa madaling salita:
+    Hindi lamang rocket ang tine-test. Isang buong launch system ang sinusubukan.
+  </p>
+
+  <p>
+    Kapag matagumpay ang flight, hindi pa nito mapatutunayang kaya na nating maglunsad papunta sa orbit. Pero maaari nitong patunayang kaya nang magsagawa ng bansa ng isang controlled liquid-propellant rocket test gamit ang pinag-ugnay na engineering, safety, regulatory, at ground operations.
+  </p>
+
+  <p>
+    Mababa ang target na altitude.
+    Pero malawak ang sistemang kailangang gumana upang marating iyon nang ligtas.
+  </p>
+
+  <h2>HINDI ITO ANG UNANG ROCKET NG PILIPINAS</h2>
+
+  <p>
+    Mahalaga ring linawin na hindi ito ang unang pagkakataong nakapagpalipad ng locally developed rocket ang bansa.
+  </p>
+
+  <p>
+    Noong May 20, 2023, matagumpay na inilunsad sa Capas, Tarlac ang TALA, ang unang high-power hybrid rocket na binuo sa Pilipinas.
+  </p>
+
+  <p>
+    Nakapag-deploy ito ng CanSat payload bago bumaba at gumamit ng parachute para sa landing. Hybrid rocket ang TALA dahil gumamit ito ng solid fuel at liquid oxidizer.
+  </p>
+
+  <p>
+    Samakatuwid, ang bago sa 2027 project ay hindi ang simpleng pagkakaroon ng rocket launch sa Philippine soil.
+  </p>
+
+  <p>
+    Ang inaasahang magiging “first” dito ay ang liquid-fueled sounding rocket demonstration, kasama ang mas organisadong international training, launch authorization, liquid-propellant operations, integration ng locally developed payload, at paghahanda para sa mas malawak na launch activities.
+  </p>
+
+  <p>
+    Hindi ito biglaang pagtalon mula sa wala.
+  </p>
+
+  <p>
+    Mas tamang sabihing isa itong susunod na hakbang mula sa maliit ngunit totoong pundasyong nauna nang sinimulan ng local researchers, students, engineers, at government institutions.
+  </p>
+
+  <h2>MAY KAKAYAHAN NA BA ANG MGA PILIPINO?</h2>
+
+  <p>
+    Bago pa ito binanggit sa SONA, may mga Filipino engineer nang sumailalim sa structured launch-vehicle training.
+  </p>
+
+  <p>
+    Mula October 15 hanggang November 4, 2025, nagsanay sa South Korea ang mga piling PhilSA engineers gamit ang Blue Whale 0.1 sounding-rocket platform ng Perigee Aerospace. Nauna rito ang isang two-day workshop sa Quezon City.
+  </p>
+
+  <p>
+    Kasama sa kanilang training ang basic rocket theory, subsystem assembly, testing, regulatory processes, at aktuwal na mga hakbang sa launch-vehicle development. Ayon sa PhilSA, ito ang unang structured training engagement ng bansa na nakatuon mismo sa launch-vehicle technology.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi lamang ito ideyang biglang naisip at isinama sa talumpati.
+    May partnership, training, at technical preparation nang nauna.
+  </p>
+
+  <p>
+    Pero mahalagang huwag ding palakihin ang ibig sabihin nito.
+  </p>
+
+  <p>
+    Ang ilang linggong training ay hindi pa katumbas ng pagkakaroon ng mature rocket industry. Hindi pa rin nito awtomatikong binibigyan ang Pilipinas ng kakayahang magdisenyo, gumawa, at magpalipad nang mag-isa ng orbital rocket.
+  </p>
+
+  <p>
+    Pundasyon pa lamang ito.
+  </p>
+
+  <p>
+    Ang tunay na sukatan ay kung maisasalin ang training sa tuloy-tuloy na local research, testing, assembly, operations, at mas malaking papel para sa mga Filipino engineer.
+  </p>
+
+  <h2>MAY SPACEPORT NA BANG ITINATAYO?</h2>
+
+  <p>
+    Ang tamang tawag sa pasilidad na binanggit ay spaceport, hindi space station o aero station.
+  </p>
+
+  <p>
+    Ang spaceport ay lugar o pasilidad na ginagamit para sa paglulunsad at pagkontrol ng rockets at spacecraft. Para itong airport sa konsepto, ngunit mas komplikado ang safety, tracking, licensing, at flight requirements.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na may NASA-style launch complex nang halos tapos sa Cagayan.
+  </p>
+
+  <p>
+    Ayon sa PhilSA, gumagawa pa lamang ng interim guidelines para sa rocket launches at inihahanda ang mga unang launch activities. Isinusulong din ang isang public-private partnership para sa pangmatagalang development at operation ng isang commercial Philippine spaceport.
+  </p>
+
+  <p>
+    Kaya sa ngayon, mas tamang sabihing:
+    May planong spaceport at may inihahandang launch site at sistema. Pero wala pang ganap at regular na operational spaceport na kayang magpalipad ng commercial orbital rockets mula sa Pilipinas.
+  </p>
+
+  <p>
+    Ang 2027 test ay hindi pagtatapos ng spaceport project.
+    Isa pa lamang itong unang aktuwal na pagsubok kung kaya bang gumana nang ligtas at maayos ang mga sistemang kakailanganin nito.
+  </p>
+           <h2>BAKIT SA CAGAYAN?</h2>
+
+  <p>
+    May dalawang pangunahing dahilan kung bakit nakikita ang Cagayan bilang posibleng launch location.
+  </p>
+
+  <p>
+    Una, nasa silangan nito ang malawak na Pacific Ocean.
+  </p>
+
+  <p>
+    Mahalaga ang bukas na karagatan dahil maaaring ilayo rito ang flight path at posibleng bagsakan ng rocket parts mula sa mga matataong komunidad. Nagbibigay din ito ng mas malawak na lugar para sa tracking at recovery operations.
+  </p>
+
+  <p>
+    Ikalawa, mas malapit ang Pilipinas sa equator kumpara sa maraming bansa.
+  </p>
+
+  <p>
+    Sa ilang orbital missions, lalo na kapag eastward at patungo sa low-inclination orbit, maaaring magamit ng rocket ang bilis mula sa pag-ikot ng mundo. Maaari nitong bawasan ang kinakailangang fuel o payagang magdala ng mas mabigat na payload.
+  </p>
+
+  <p>
+    Pero hindi ito advantage sa lahat ng mission. Ang mga satellite na patungo sa polar o high-inclination orbit ay hindi nakikinabang sa parehong paraan.
+  </p>
+
+  <p>
+    At halos wala pang malaking kabuluhan ang equatorial advantage sa unang limang-kilometrong demonstration flight dahil hindi pa naman ito susubok pumasok sa orbit.
+  </p>
+
+  <p>
+    Kaya hindi sapat na sabihin lamang na maganda ang lokasyon ng Pilipinas.
+    Ang geography ay pagkakataon lamang.
+  </p>
+
+  <p>
+    Kailangan pa rin ng ligtas na pasilidad, maaasahang tracking system, malinaw na batas, mabilis ngunit mahigpit na approval process, environmental safeguards, skilled workforce, at tiwala ng mga posibleng launch clients.
+  </p>
+
+  <p>
+    Walang seryosong aerospace company ang pipili ng isang bansa dahil lamang malapit ito sa equator kung magulo naman ang proseso, kulang ang infrastructure, o hindi predictable ang regulasyon.
+  </p>
+
+  <h2>ANONG KAKAYAHAN BA TALAGA ANG NABUBUO?</h2>
+
+  <p>
+    Mahalagang paghiwalayin ang tatlong bagay na madalas napagsasama sa usapan.
+  </p>
+
+  <p>
+    Ang una ay launch-site capability—kakayahang mag-host at ligtas na magsagawa ng rocket launch mula sa Pilipinas.
+  </p>
+
+  <p>
+    Ang ikalawa ay launch-vehicle capability—kakayahang magdisenyo, gumawa, mag-test, at mag-operate ng mismong rocket.
+  </p>
+
+  <p>
+    Ang ikatlo ay sovereign orbital-launch capability—kakayahang maglagay ng satellite sa orbit gamit ang launch system na may sapat na sariling kontrol, kaalaman, at operasyon ang bansa.
+  </p>
+
+  <p>
+    Ang 2027 demonstration ay maaaring makatulong nang direkta sa launch-site capability.
+  </p>
+
+  <p>
+    Maaari rin itong magdagdag ng kaalaman at karanasan para sa launch-vehicle development.
+  </p>
+
+  <p>
+    Pero malayo pa ito sa sovereign orbital-launch capability.
+  </p>
+
+  <p>
+    Maaaring dito manggaling ang rocket. Maaaring dito ito ilunsad. Pero kung ang pangunahing disenyo, propulsion technology, manufacturing, at mission control ay nakasalalay pa rin sa foreign partner, hindi pa iyon ganap na sariling launch capability ng Pilipinas.
+  </p>
+
+  <p>
+    Hindi ito dahilan para maliitin ang proyekto.
+    Ito ang dahilan para maging eksakto sa kung anong antas na talaga ang naaabot.
+  </p>
+
+  <h2>MALAKING ADVANCEMENT BA ITO?</h2>
+
+  <p>
+    Hindi pa ito malaking breakthrough na maglalagay agad sa Pilipinas sa antas ng mga bansang may matatag nang rocket at orbital-launch industries.
+  </p>
+
+  <p>
+    Pero maaari itong maging mahalagang foundational advancement.
+  </p>
+
+  <p>
+    Kapag matagumpay ang test, maaari tayong magkaroon ng aktuwal na karanasan sa liquid-propellant rocket operations, integration ng locally developed payload, launch authorization, safety coordination, tracking, at recovery.
+  </p>
+
+  <p>
+    Maaari itong maging unang hakbang sa mas mahabang hagdan.
+    Pero hindi industriya ang isang launch lamang.
+  </p>
+
+  <p>
+    Upang maging tunay na advancement, kailangang masundan ito ng paulit-ulit na tests, malinaw at predictable na regulations, local university research, Filipino-led engineering work, local suppliers, commercial clients, at tuloy-tuloy na investment.
+  </p>
+
+  <p>
+    Doon maaaring magbukas ang mga oportunidad sa aerospace engineering, electronics, sensors, precision manufacturing, software, telemetry, communications, scientific research, launch-site operations, at highly skilled technical employment.
+  </p>
+
+  <p>
+    Ganito dapat makita ang progression:
+  </p>
+
+  <p>
+    Matagumpay na demonstration<br>
+    &rarr; maaasahang safety at regulatory system<br>
+    &rarr; sunod-sunod na research o commercial missions<br>
+    &rarr; paglahok ng local universities at industries<br>
+    &rarr; tunay na technology transfer<br>
+    &rarr; mas maraming skilled jobs at sariling teknikal na kakayahan.
+  </p>
+
+  <p>
+    Kapag naputol ang chain na ito pagkatapos ng unang launch, demonstration lamang ang maiiwan.
+    Kapag nagpatuloy, saka pa lamang maaaring mabuo ang isang industriya.
+  </p>
+
+  <h2>HINDI LAHAT NG “TECHNOLOGY TRANSFER” AY PAREHO</h2>
+
+  <p>
+    Isa sa pinakamahalagang pangako ng partnership ay ang technology transfer at paglinang ng Filipino aerospace professionals.
+  </p>
+
+  <p>
+    Pero kailangang malinaw kung anong klaseng kaalaman ang tunay na ililipat.
+  </p>
+
+  <p>
+    Ang pagmamasid sa foreign experts ay hindi pa technology transfer.
+    Ang pagsunod lamang sa instructions ay hindi pa rin sapat.
+  </p>
+
+  <p>
+    Masusukat ang totoong transfer kapag ang mga Pilipino ay natutong magdisenyo, mag-assemble, mag-test, mag-troubleshoot, at magpatakbo ng mahahalagang bahagi ng sistema—at nagagamit nila ang kaalamang iyon kahit wala na ang foreign partner.
+  </p>
+
+  <p>
+    Maaari kasing dito ilunsad ang rocket ngunit manatili sa dayuhan ang disenyo, manufacturing, software, operasyon, intellectual property, at malaking bahagi ng kita.
+  </p>
+
+  <p>
+    Kapag ganoon, launch site lamang ang Pilipinas.
+    Hindi tunay na kalahok sa industriya.
+  </p>
+
+  <p>
+    Ang pinakamahalagang maiiwan ay hindi ang usok ng rocket pagkatapos nitong lumipad.
+    Ang pinakamahalagang maiiwan ay ang kakayahang kaya nang ulitin, paunlarin, at gamitin ng mga Pilipino.
+  </p>
+           <h2>ANG TUNAY NA ACCOUNTABILITY TEST</h2>
+
+  <p>
+    Hindi dapat pagtawanan ang proyekto dahil lamang tila napakalayo nito sa karaniwang problema ng bansa.
+  </p>
+
+  <p>
+    Maraming teknolohiyang mahalaga ngayon ang nagsimula rin sa maliliit, mahal, at tila hindi praktikal na experiments.
+  </p>
+
+  <p>
+    Pero hindi rin dapat palakpakan ang bawat malaking pangako dahil lamang moderno at kahanga-hanga ang tunog nito.
+  </p>
+
+  <p>
+    Kailangang malaman kung magkano ang ilalabas na public funds, ano ang obligasyon ng bawat private partner, at ano ang malinaw na pakinabang ng bansa kapalit ng paggamit ng ating lupa, airspace, karagatan, at government resources.
+  </p>
+
+  <p>
+    Kailangang malinaw din ang safety at environmental safeguards, lalo na sa fuel handling, launch failure, falling debris, ingay, emissions, at epekto sa mga komunidad at karagatan.
+  </p>
+
+  <p>
+    At higit sa lahat, kailangang may malinaw na kasunod pagkatapos ng unang test.
+  </p>
+
+  <p>
+    Ano ang susunod na altitude?<br>
+    Ano ang susunod na mission?<br>
+    Gaano kalaki ang magiging Filipino participation?<br>
+    May local assembly at research bang mabubuo?<br>
+    May mga trabaho bang pangmatagalan?<br>
+    May mga kompanya o unibersidad bang magkakaroon ng sariling teknolohiya?<br>
+    O matatapos ang lahat pagkatapos ng isang matagumpay na launch at magandang litrato?
+  </p>
+
+  <p>
+    Dahil sa gobyerno, hindi sapat na may proyekto.
+    Kailangang may malinaw na direksiyon, sukatan, resulta, at pananagutang kayang suriin ng publiko.
+  </p>
+
+  <h2>ANG DAPAT TALAGANG MAUNAWAAN</h2>
+
+  <p>
+    Hindi ito NASA-level rocket mission.
+    Hindi pa ito flight papunta sa outer space batay sa unang limang-kilometrong target.
+    Hindi pa rin ito nangangahulugang may ganap nang Philippine spaceport na handa para sa regular na operasyon.
+    At hindi pa nito bibigyan ang bansa ng sariling kakayahang magpadala ng satellite sa orbit.
+  </p>
+
+  <p>
+    Pero totoong rocket technology ang sinusubukan.
+  </p>
+
+  <p>
+    May nauna nang local rocket development sa pamamagitan ng TALA. May aktuwal nang training ang Filipino engineers. May inihahandang launch guidelines, partnership, locally developed payload, at lugar para sa demonstration flight.
+  </p>
+
+  <p>
+    Kaya mali na agad itong tawaging kathang-isip o walang basehang imahinasyon.
+  </p>
+
+  <p>
+    Pero mali rin na ipresenta itong para bang malapit na tayong maging katulad ng NASA, SpaceX, o mga bansang may sariling orbital rocket program.
+  </p>
+
+  <p>
+    Ang totoo ay nasa pagitan ng dalawang iyon.
+    Hindi ito pantasya. Pero simula pa lamang ito.
+  </p>
+
+  <p>
+    Hindi kailangang pagtawanan ang isang ambisyon dahil bago at tila napakalayo.
+  </p>
+
+  <p>
+    Pero sa gobyerno, hindi rin sapat ang mataas na ambisyon.
+    Kailangan itong suportahan ng science, malinaw na plano, sapat na paghahanda, ligtas na implementasyon, transparent na paggastos, tuloy-tuloy na programa, at pakinabang na tunay na maiiwan sa bayan.
+  </p>
+
+  <p>
+    Dahil sa huli, ang pinakamahalagang tanong ay hindi lamang kung makalilipad ang rocket.
+  </p>
+
+  <p>
+    Ang tanong ay kung kasabay nitong aangat ang sariling kakayahan ng Pilipinas—o isa lamang itong malaking pangakong lilipad sandali at mawawala rin pagkatapos ng palakpakan.
+  </p>
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section class="article-sources">
+
+  <h2>Mga Sanggunian</h2>
+
+  <ul>
+
+    <li>
+      <strong>Philippine Space Agency (PhilSA)</strong>
+      <ul>
+        <li>
+          First liquid-fueled sounding rocket launch from Philippine soil, highlighted in SONA<br>
+          <a href="https://philsa.gov.ph/news/first-liquid-fueled-sounding-rocket-launch-from-philippine-soil-highlighted-in-sona/" target="_blank" rel="noopener noreferrer">
+            https://philsa.gov.ph/news/first-liquid-fueled-sounding-rocket-launch-from-philippine-soil-highlighted-in-sona/
+          </a>
+        </li>
+
+        <li>
+          PhilSA completes first phase of small launch vehicle training program with Perigee Aerospace<br>
+          <a href="https://philsa.gov.ph/news/philsa-completes-small-launch-vehicle-training-program-with-perigee-aerospace/" target="_blank" rel="noopener noreferrer">
+            https://philsa.gov.ph/news/philsa-completes-small-launch-vehicle-training-program-with-perigee-aerospace/
+          </a>
+        </li>
+
+        <li>
+          First PH-developed high-power hybrid rocket launched<br>
+          <a href="https://philsa.gov.ph/news/first-ph-developed-high-power-hybrid-rocket-launched/" target="_blank" rel="noopener noreferrer">
+            https://philsa.gov.ph/news/first-ph-developed-high-power-hybrid-rocket-launched/
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>NASA</strong>
+      <ul>
+        <li>
+          Sounding Rockets<br>
+          <a href="https://www.nasa.gov/soundingrockets/" target="_blank" rel="noopener noreferrer">
+            https://www.nasa.gov/soundingrockets/
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>NASA Science</strong>
+      <ul>
+        <li>
+          Earth's Atmosphere: A Multi-layered Cake<br>
+          <a href="https://science.nasa.gov/earth/earth-atmosphere/earths-atmosphere-a-multi-layered-cake/" target="_blank" rel="noopener noreferrer">
+            https://science.nasa.gov/earth/earth-atmosphere/earths-atmosphere-a-multi-layered-cake/
+          </a>
+        </li>
+
+        <li>
+          Basics of Space Flight — Launch Sites and Earth's Rotation<br>
+          <a href="https://science.nasa.gov/learn/basics-of-space-flight/chapter14-1/" target="_blank" rel="noopener noreferrer">
+            https://science.nasa.gov/learn/basics-of-space-flight/chapter14-1/
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <strong>NASA Jet Propulsion Laboratory (JPL)</strong>
+      <ul>
+        <li>
+          How Far Away Is Space?<br>
+          <a href="https://www.jpl.nasa.gov/edu/resources/lesson-plan/how-far-away-is-space/" target="_blank" rel="noopener noreferrer">
+            https://www.jpl.nasa.gov/edu/resources/lesson-plan/how-far-away-is-space/
+          </a>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
