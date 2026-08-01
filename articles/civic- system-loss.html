@@ -1,1 +1,2301 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Paliwanag tungkol sa system loss charge—kung bakit may bahaging binabayaran kahit hindi ito naging wastong na-meter at na-bill na konsumo, ano ang technical at non-technical loss, ano ang sinasabi ng batas, at bakit mahalaga ang transparency at pananagutan."
+>
+
+<title>
+  Kuryenteng Hindi Mo Nagamit—Bakit Kailangan Mong Bayaran? | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          KURYENTENG HINDI MO NAGAMIT—BAKIT KAILANGAN MONG BAYARAN?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-system-loss.png"
+            alt="Kuryenteng Hindi Mo Nagamit—Bakit Kailangan Mong Bayaran?"
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+<p>
+  Bawat buwan, binabayaran natin ang kuryenteng aktuwal na naitala sa ating metro.
+</p>
+
+<p>
+  Pero may bahagi rin ng electric bill na kaugnay sa enerhiyang binili at ipinasok sa distribution system ngunit hindi lumabas sa records bilang wastong na-meter at na-bill na konsumo ng mga customer.
+</p>
+
+<p>
+  Ito ang tinatawag na <strong>system loss charge.</strong>
+</p>
+
+<p>
+  Dito nagsisimula ang makatwirang tanong:
+  Kung hindi ito naging aktuwal na naitalang konsumo mo, bakit kasama ka sa pinagbabayad?
+</p>
+
+<p>
+  Pero mahalagang linawin agad:
+  Hindi lahat ng system loss ay literal na kuryenteng naglaho bago makarating sa tao.
+</p>
+
+<p>
+  Sa <strong>technical loss</strong>, may enerhiyang totoong nagiging init habang dumadaloy sa wires, transformers at iba pang equipment.
+</p>
+
+<p>
+  Sa <strong>non-technical loss</strong> naman, maaaring may kuryenteng aktuwal na nagamit—pero hindi na-meter o na-bill nang tama dahil sa illegal connection, meter tampering, maling meter reading o ibang error.
+</p>
+
+<p>
+  Kaya ang system loss ay hindi lamang usapin ng kuryenteng "nawala." Kasama rin dito ang enerhiyang nagamit ngunit hindi naging wastong billed consumption.
+</p>
+
+<p>
+  At may isa pang mahalagang pagkakaiba:
+  Kapag tama nang na-meter at na-bill ang konsumo ngunit hindi pa ito binabayaran ng customer, collection problem iyon—hindi system loss.
+</p>
+
+<p>
+  Hindi rin sapat na sabihing gawa-gawang singil lamang ang lahat ng ito.
+</p>
+
+<p>
+  Bago makarating ang kuryente sa bahay, nagkaroon na ng gastos sa paglikha nito—fuel at operating costs man ng conventional power plant o gastos sa pagpapatakbo ng solar, wind, hydro at iba pang renewable facilities.
+</p>
+
+<p>
+  Dumaan na rin ang enerhiya sa transmission grid, mga substation, transformer at distribution lines.
+</p>
+
+<p>
+  Kapag may bahaging hindi naging billed energy sales, hindi ibig sabihin na wala nang gumastos upang likhain at maihatid iyon.
+</p>
+
+<p>
+  Kaya hindi sapat ang dalawang madaling sagot:
+</p>
+
+<blockquote>
+  <p>“Imbento lamang iyan ng ganid na kumpanya.”</p>
+</blockquote>
+
+<p style="text-align:center;"><strong>O</strong></p>
+
+<blockquote>
+  <p>“Normal ang pagkawala, kaya consumer talaga ang dapat magbayad.”</p>
+</blockquote>
+
+<p>
+  Totoong may system loss.
+</p>
+
+<p>
+  Pero hindi lahat ng pagkawala ay pare-pareho ang dahilan, hindi lahat ay pare-pareho ang antas ng kontrol ng utility, at hindi rin awtomatikong nangangahulugang consumer ang dapat sumalo sa lahat ng gastos.
+</p>
+
+<p>
+  Ang pagkawala ng enerhiya ay maaaring usapin ng physics.<br>
+  Ang hindi naitalang paggamit ay maaaring usapin ng theft, error o enforcement.<br>
+  Ang pagpapasya kung sino ang magbabayad ay usapin ng batas, regulasyon at pananagutan.
+</p>
+
+<h2>
+  ANO BA TALAGA ANG SYSTEM LOSS?
+</h2>
+
+<p>
+  Sa payak na paliwanag, ang system loss ay ang bahagi ng enerhiyang pumapasok sa distribution network ngunit hindi lumalabas bilang wastong na-meter at billed energy sales sa regulatory computation.
+</p>
+
+<p>
+  Halimbawa, kung 100 kilowatt-hour ang pumasok sa network pero 94 kilowatt-hour lamang ang naitala bilang billed consumption, kailangang ma-account kung saan napunta ang natitirang anim.
+</p>
+
+<p>
+  Pero hindi nangangahulugang buong anim ay basta naglaho.
+</p>
+
+<p>
+  Maaaring may bahaging naging init habang dumadaloy sa linya.<br>
+  Maaaring may bahaging hindi wastong naitala dahil sa technical metering error.<br>
+  At maaaring may bahaging aktuwal na ginamit ngunit hindi na-meter o na-bill nang tama dahil sa pilferage, tampering o human error.
+</p>
+
+<p>
+  Sa opisyal na <strong>Philippine Distribution Code 2016 Edition</strong>, hinihiwalay ang system loss sa dalawang pangunahing kategorya: <strong>technical loss</strong> at <strong>non-technical loss</strong>. Hiwalay dito ang sariling paggamit ng distribution utility para sa operasyon ng network.
+</p>
+
+<h3>
+  TECHNICAL LOSS
+</h3>
+
+<p>
+  Ito ang pagkawala ng enerhiya dahil sa electrical at engineering characteristics ng network.
+</p>
+
+<p>
+  Kasama rito ang:
+</p>
+
+<ul>
+  <li>pagkawala habang dumadaloy ang kuryente sa wires;</li>
+  <li>losses sa transformers;</li>
+  <li>at ilang technical metering errors na kaugnay ng accuracy o operation ng metering equipment.</li>
+</ul>
+
+<p>
+  May resistance ang wires.<br>
+  May enerhiyang nagiging init.<br>
+  May loss sa pagbabago ng boltahe at pagdaan sa transformers.
+</p>
+
+<p>
+  Hindi kayang gawing literal na zero ang technical loss kahit mahusay at moderno ang sistema.
+</p>
+
+<p>
+  Pero maaari itong pababain sa pamamagitan ng:
+</p>
+
+<ul>
+  <li>pagpapalit ng luma o inefficient na equipment;</li>
+  <li>tamang load balancing;</li>
+  <li>pag-upgrade ng linya;</li>
+  <li>pag-iwas sa overloaded feeders;</li>
+  <li>mas mahusay na voltage management;</li>
+  <li>modern metering;</li>
+  <li>at maayos na network planning.</li>
+</ul>
+
+<p>
+  May bahagi itong hindi maiiwasan. Pero mayroon ding bahaging lumalaki kapag luma, overloaded o hindi napapanahong na-upgrade ang sistema.
+</p>
+
+<h3>
+  NON-TECHNICAL LOSS
+</h3>
+
+<p>
+  Ito naman ang enerhiyang hindi naging wastong billed consumption dahil sa mga dahilan na hindi normal na electrical line loss.
+</p>
+
+<p>
+  Kasama rito ang:
+</p>
+
+<ul>
+  <li>electricity pilferage;</li>
+  <li>illegal connection;</li>
+  <li>meter tampering;</li>
+  <li>maling meter reading;</li>
+  <li>erroneous billing;</li>
+  <li>at ibang unauthorized use o human error.</li>
+</ul>
+
+<p>
+  Dito kailangang maging eksakto.
+</p>
+
+<p>
+  Ang technical metering error ay maaaring mapabilang sa technical loss kapag ang problema ay nasa technical accuracy o operation ng metering equipment.
+</p>
+
+<p>
+  Pero ang meter tampering, maling pagbasa ng metro at billing error ay non-technical issues. Hindi normal na physics ng wires at transformers ang sanhi ng mga iyon.
+</p>
+
+<p>
+  At muli:<br>
+  Kapag tama nang na-meter at na-bill ang konsumo ngunit hindi pa nagbabayad ang customer, accounts receivable o collection issue iyon.<br>
+  Hindi iyon system loss.
+</p>
+
+<p>
+  Mismong <strong>EPIRA</strong> ang naghihiwalay sa system loss at collection efficiency bilang magkaibang performance standards ng distribution utility.
+</p>
+
+<h3>
+  DISTRIBUTION UTILITY USE—HIWALAY SA SYSTEM LOSS
+</h3>
+
+<p>
+  May kuryente ring ginagamit mismo sa wastong operasyon ng distribution system.
+</p>
+
+<p>
+  Maaaring kabilang dito ang enerhiyang kailangan sa substations, control equipment at iba pang operational facilities.
+</p>
+
+<p>
+  Ngunit hindi ito ikatlong system-loss category.
+</p>
+
+<p>
+  Ang <strong>Distribution Utility Use</strong> ay may hiwalay na regulatory treatment bilang bahagi ng pinahihintulutang operating expenses, subject sa pagsusuri at approval ng ERC.
+</p>
+
+<p>
+  Mahalaga ang distinction na ito dahil magkaiba ang:
+</p>
+
+<ul>
+  <li>enerhiyang nawala dahil sa physics;</li>
+  <li>enerhiyang ginamit ngunit hindi na-meter o na-bill nang tama;</li>
+  <li>at enerhiyang sadyang ginamit sa operasyon ng distribution system.</li>
+</ul>
+
+<p>
+  Hindi dapat maghalo ang lahat sa isang malabong label.
+</p>
+
+          <h2>
+  MAGKAIBA ANG LOSS RATE AT ANG BAHAGI NITO SA BILL
+</h2>
+
+<p>
+  Sa unang kalahati ng 2026, iniulat ng Meralco distribution utility ang <strong>6.07%</strong> na 12-month moving-average system loss, mula 5.88% sa kaparehong panahon noong 2025.
+</p>
+
+<p>
+  Iniulat din nitong nasa <strong>₱13.09 kada kWh</strong> ang overall average retail rate sa unang anim na buwan ng 2026. Hindi ito eksaktong residential rate ng bawat household.
+</p>
+
+<p>
+  Pero hindi nangangahulugang eksaktong <strong>6.07%</strong> din ng bawat Meralco bill ang system-loss charge.
+</p>
+
+<p>
+  Magkaibang sukatan iyon.
+</p>
+
+<p>
+  Ang <strong>6.07%</strong> ay operational measure ng energy input na hindi naging billed energy sales.
+</p>
+
+<p>
+  Ang system-loss charge naman ay ang halagang ginagamit upang mabawi ang generation at transmission costs na kaugnay ng recoverable loss, subject sa ERC cap at regulatory adjustments.
+</p>
+
+<p>
+  Hindi rin awtomatikong nangangahulugang buong <strong>6.07%</strong> ay ipinapasa sa consumer. Ang lampas sa pinahihintulutang cap ay hindi maaaring masingil sa customers.
+</p>
+
+<p>
+  Sa average Meralco bill breakdown noong 2025, humigit-kumulang <strong>5%</strong> ng kabuuang bill ang system-loss component.
+</p>
+
+<p>
+  Ayon naman sa datos na inilabas ng opisina ng naghain ng Senate Bill No. 2350, ang average monthly system-loss charge ng household na kumokonsumo ng 200 kWh mula August 2025 hanggang July 2026 ay <strong>₱148.95</strong>, hindi pa kasama ang kaugnay na VAT.
+</p>
+
+<p>
+  Mahalagang qualifier:<br>
+  Estimate ito na inilabas ng opisina ng bill sponsor—hindi hiwalay na independent consumer-bill audit.<br>
+  Pero nagbibigay ito ng konkretong larawan ng halagang nararamdaman ng ordinaryong household.
+</p>
+
+<p>
+  Sa pamilyang naghahati ng kita para sa pagkain, renta, pamasahe, gamot, tuition at iba pang pangangailangan, hindi maliit ang paulit-ulit na dagdag sa bill.
+</p>
+
+<h2>
+  BAKIT NASA BILL ITO?
+</h2>
+
+<p>
+  Sa kasalukuyang sistema, ang distribution utility ay bumibili ng kuryente para sa mga customer nito.
+</p>
+
+<p>
+  Kahit hindi lahat ng biniling enerhiya ay maging billed energy sales, kailangang bayaran pa rin ang generators at transmission provider para sa pinahihintulutang bahagi ng power costs.
+</p>
+
+<p>
+  Dito pumapasok ang system-loss charge.
+</p>
+
+<p>
+  Tinatawag itong <strong>pass-through charge</strong> dahil pangunahing layunin nitong mabawi ang generation at transmission costs na kaugnay ng recoverable system loss.
+</p>
+
+<p>
+  Hindi ito kapareho ng distribution charge na sumasaklaw sa:
+</p>
+
+<ul>
+  <li>poles at wires;</li>
+  <li>substations;</li>
+  <li>meters;</li>
+  <li>billing;</li>
+  <li>maintenance;</li>
+  <li>customer service;</li>
+  <li>at regulated return ng distribution utility.</li>
+</ul>
+
+<p>
+  Mahalagang paglilinaw:<br>
+  Hindi tamang sabihing bawat pisong system-loss charge ay direktang tubo ng regulated Meralco distribution utility.
+</p>
+
+<p>
+  Ayon sa Meralco, ang system-loss charge ay bahagi ng generation at transmission costs na ipinambabayad sa power suppliers at NGCP. Ang loss na lampas sa ERC cap ay hindi maaaring ipasa sa customers at kailangang akuin ng distribution utility.
+</p>
+
+<p>
+  Pero hindi rin tamang sabihing walang business benefit ang cost recovery.
+</p>
+
+<p>
+  Kapag pinapayagang mabawi ang allowable system-loss costs, hindi kailangang kunin ng distribution utility mula sa sarili nitong earnings ang buong pinahihintulutang purchased-power cost na kaugnay ng loss.
+</p>
+
+<p>
+  Hindi ito direktang profit line.<br>
+  Pero cost protection pa rin ito para sa utility.
+</p>
+
+<h2>
+  ANO ANG SABI NG BATAS?
+</h2>
+
+<p>
+  Hindi ilegal o palihim na imbentong charge ang system loss sa ilalim ng kasalukuyang legal framework.
+</p>
+
+<p>
+  Noong 1994, ipinasa ang <strong>Republic Act No. 7832</strong>, ang batas laban sa electricity pilferage.
+</p>
+
+<p>
+  Hindi lamang nito pinarusahan ang illegal tapping, meter tampering at pagnanakaw ng kuryente.
+</p>
+
+<p>
+  Naglatag din ito ng caps sa system loss na maaaring mabawi mula sa consumers at nagbigay sa regulator ng kapangyarihang pababain ang mga cap habang isinasaalang-alang ang interes ng consumer at financial viability ng utilities.
+</p>
+
+<p>
+  Pagdating ng <strong>EPIRA</strong> noong 2001, binigyan ang ERC ng kapangyarihang palitan ang dating caps at magtakda ng mga limitasyong nakabatay sa:
+</p>
+
+<ul>
+  <li>load density;</li>
+  <li>sales mix;</li>
+  <li>cost of service;</li>
+  <li>delivery voltage;</li>
+  <li>at iba pang technical considerations.</li>
+</ul>
+
+<p>
+  Inatasan din ang ERC na gumamit ng rate-setting methodology na nagtataguyod ng efficiency.
+</p>
+
+<p>
+  Sa RORB framework na tahasang inilatag ng EPIRA, hindi rin dapat isama sa rate base ang ilang management inefficiencies gaya ng hindi makatwirang project delays, penalties at kaugnay na interest na hindi dulot ng force majeure.
+</p>
+
+<p>
+  Noong 2017, naglabas ang ERC ng <strong>Resolution No. 20</strong> na nagtakda ng mas mababang system-loss caps at Performance Incentive Scheme upang hikayatin ang distribution utilities na bawasan ang losses.
+</p>
+
+<p>
+  Ibig sabihin, hindi sinasabi ng batas na:<br>
+  Kahit gaano kalaki ang mawala, ipasa lamang lahat sa consumer.
+</p>
+
+<p>
+  May caps.<br>
+  May performance standards.<br>
+  May regulatory review.<br>
+  At may obligasyong maging episyente.
+</p>
+
+          <h2>
+  HINDI DAPAT DOBLENG MABAWI ANG PILFERAGE LOSS
+</h2>
+
+<p>
+  Kapag may nabawing halaga mula sa electricity pilferer, inaatasan ng <strong>Section 12 ng RA 7832</strong> ang utility na i-report iyon sa regulator.
+</p>
+
+<p>
+  Inaatasan naman ng <strong>Section 14</strong> ang regulator na magtakda ng procedure para sa distribution o crediting sa consumers ng recovered pilferage losses.
+</p>
+
+<p>
+  Sa regulatory accounting, kailangang maisama ang recovery bilang adjustment upang hindi mabawi nang dalawang beses ang parehong loss—una mula sa consumers at muli mula sa nahuling pilferer.
+</p>
+
+<p>
+  Kinilala rin sa jurisprudence ang pagbawas ng pilferage recoveries sa power-cost computation at ang refund kapag nagkaroon ng over-recovery.
+</p>
+
+<p>
+  Hindi dapat mangyari na:
+</p>
+
+<ul>
+  <li>naipasa na sa consumers ang loss;</li>
+  <li>nakolekta rin mula sa pilferer;</li>
+  <li>at walang kaukulang credit, adjustment o refund na napakinabangan ng consumers.</li>
+</ul>
+
+<h2>
+  ANG CAP AY HINDI BLANK CHECK
+</h2>
+
+<p>
+  Ang system-loss cap ay maximum ceiling. Hindi ito garantisadong allowance na maaaring singilin nang buo kahit mas mababa ang aktuwal na loss.
+</p>
+
+<p>
+  Kinilala ng Korte Suprema na ang recoverable system loss ay dapat nakabatay sa aktuwal na loss ngunit hindi lalampas sa pinahihintulutang cap.
+</p>
+
+<p>
+  Maaari ring iutos ang refund kapag may over-recovery.
+</p>
+
+<p>
+  Kaya kapag sinabing <strong>below the cap</strong> ang isang utility, mahalagang performance indicator iyon.
+</p>
+
+<p>
+  Pero hindi pa iyon ang buong sagot.
+</p>
+
+<p>
+  Hindi nito awtomatikong pinatutunayan na:
+</p>
+
+<ul>
+  <li>lahat ng loss ay unavoidable;</li>
+  <li>walang pilferage;</li>
+  <li>walang meter-reading o billing error;</li>
+  <li>walang nakolektang pilferage recovery;</li>
+  <li>o wala nang puwedeng gawin upang mapababa pa ang loss.</li>
+</ul>
+
+<p>
+  Ang cap ay limitasyon sa maaaring mabawi. Hindi ito sertipikong nagsasabing bawat bahagi ng loss ay wala nang puwedeng kuwestiyunin.
+</p>
+
+<h2>
+  ANG PINAKAMALAKING KULANG—HINDI NAKIKITA ANG BREAKDOWN
+</h2>
+
+<p>
+  Nakikita ng consumer ang isang kabuuang system-loss charge.
+</p>
+
+<p>
+  Pero hindi niya karaniwang nakikita sa mismong bill kung gaano karami rito ang:
+</p>
+
+<ul>
+  <li>unavoidable line at transformer loss;</li>
+  <li>technical metering error;</li>
+  <li>electricity theft;</li>
+  <li>meter tampering;</li>
+  <li>maling meter reading;</li>
+  <li>erroneous billing;</li>
+  <li>at iba pang controllable non-technical loss.</li>
+</ul>
+
+<p>
+  Hiwalay ding dapat makita ang <strong>Distribution Utility Use</strong> at kung saang rate component ito binabawi.
+</p>
+
+<p>
+  Kung tunay na maliit lamang ang non-technical portion, makatutulong sa utility ang malinaw at independently verified disclosure.
+</p>
+
+<p>
+  Kung malaki naman ito, may karapatan ang publiko na malaman:
+</p>
+
+<ul>
+  <li>bakit hindi ito napipigilan;</li>
+  <li>sino ang responsable;</li>
+  <li>gaano karami ang nabawi mula sa pilferage cases;</li>
+  <li>at paano na-credit ang recovery sa consumers.</li>
+</ul>
+
+<p>
+  Ito ang sentrong tanong na hindi nasasagot ng simpleng pagsasabing normal ang system loss:
+</p>
+
+<blockquote>
+  <p>
+    Sa aktuwal na sinisingil sa publiko, gaano karami ang hindi maiiwasang physics—at gaano karami ang theft, error o controllable inefficiency?
+  </p>
+</blockquote>
+
+<p>
+  Hindi sapat ang total percentage.<br>
+  Hindi sapat ang "below the cap."<br>
+  Hindi sapat ang assurance ng kumpanya.
+</p>
+
+<p>
+  Kailangan ng regular, audited at madaling maintindihang breakdown—hindi lamang technical filing na mahirap hanapin at basahin.
+</p>
+
+<h2>
+  KUMIKITA BA ANG MERALCO RITO?
+</h2>
+
+<p>
+  Ang maingat na sagot: Hindi ito direktang profit charge ng regulated Meralco distribution utility—pero mali ring sabihing walang business benefit ang cost recovery.
+</p>
+
+<p>
+  Kung hindi naipasa ang allowable system-loss cost, may kailangang sumalo sa aktuwal na purchased-power expense.
+</p>
+
+<p>
+  Maaaring:
+</p>
+
+<ul>
+  <li>distribution utility at shareholders;</li>
+  <li>generators;</li>
+  <li>transmission provider;</li>
+  <li>gobyerno at taxpayers;</li>
+  <li>o consumers pa rin sa ibang regulatory mechanism.</li>
+</ul>
+
+<p>
+  Kaya lehitimong sabihin ng kumpanya na may financial effect ang pagtanggal.
+</p>
+
+<p>
+  Pero lehitimo rin ang tanong ng consumer:
+</p>
+
+<blockquote>
+  <p>
+    Bakit dapat akong maging automatic insurance laban sa lahat ng theft, error at avoidable loss ng isang negosyong wala naman akong direktang kontrol?
+  </p>
+</blockquote>
+
+<p>
+  Ang sagot ay hindi makukuha sa pagsigaw lamang ng "kasakiman."
+</p>
+
+<p>
+  Makukuha ito sa pagbubukas ng:
+</p>
+
+<ul>
+  <li>aktuwal na technical at non-technical breakdown;</li>
+  <li>epekto sa purchased-power costs;</li>
+  <li>recoveries mula sa pilferage;</li>
+  <li>efficiency targets;</li>
+  <li>capital spending;</li>
+  <li>at responsibilidad ng bawat bahagi ng power industry.</li>
+</ul>
+
+          <h2>
+  HUWAG PAGHALUIN ANG MERALCO GROUP AT ANG DISTRIBUTION UTILITY
+</h2>
+
+<p>
+  Ang Meralco group ay hindi lamang regulated distribution utility.
+</p>
+
+<p>
+  May negosyo rin ito sa power generation, retail electricity supply, renewable energy, engineering at iba pang energy-related activities.
+</p>
+
+<p>
+  Sa unang kalahati ng 2026, iniulat ng buong Meralco group ang humigit-kumulang <strong>₱26.5 bilyong consolidated core net income.</strong>
+</p>
+
+<p>
+  Sa halagang iyon:
+</p>
+
+<ul>
+  <li>₱12.7 bilyon o 48% ang contribution ng distribution utility;</li>
+  <li>₱10.5 bilyon o 39% ang contribution ng power-generation businesses;</li>
+  <li>at ang natitira ay mula sa ibang negosyo.</li>
+</ul>
+
+<p>
+  Kaya hindi tamang gamitin ang buong <strong>₱26.5 bilyon</strong> na parang lahat iyon ay kinita mula sa regulated distribution service ng ordinaryong household.
+</p>
+
+<p>
+  Pero hindi rin sapat na sabihing hindi kakayanin ng distribution utility ang reporma nang walang eksaktong computation.
+</p>
+
+<p>
+  Ang kailangang makita ay:
+</p>
+
+<ul>
+  <li>magkano ang direktang epekto sa regulated distribution utility;</li>
+  <li>magkano ang unavoidable technical loss;</li>
+  <li>magkano ang controllable portion;</li>
+  <li>magkano ang maaaring bawasan sa pamamagitan ng efficiency;</li>
+  <li>at anong investment o serbisyo ang aktuwal na malalagay sa panganib.</li>
+</ul>
+
+<p>
+  Hindi sapat ang consolidated group profit bilang paghatol.
+  Hindi rin sapat ang corporate warning bilang depensa.
+</p>
+
+<p>
+  Parehong kailangan ng detalye.
+</p>
+
+<h2>
+  BAKIT UMAARAY ANG MERALCO AT IBA PANG UTILITIES?
+</h2>
+
+<p>
+  Ayon sa pagtataya ni Meralco chair and CEO Manuel V. Pangilinan, maaaring umabot sa <strong>“tens of billions of pesos”</strong> ang industry-wide cost kung tuluyang ipagbabawal ang system-loss recovery at ipapaako ang gastos sa power companies.
+</p>
+
+<p>
+  Iginiit niyang kailangang malinaw kung sino ang sasalo sa gastos sa generation, transmission at distribution.
+</p>
+
+<p>
+  May lohika ang concern.
+</p>
+
+<p>
+  Kapag tinanggal ang charge sa bill, hindi kusang nawawala ang technical loss o ang kuryenteng ginamit ngunit hindi na-meter o na-bill nang tama.
+</p>
+
+<p>
+  Hindi rin nawawala ang generation at transmission costs na kaugnay nito.
+</p>
+
+<p>
+  Pero mahalagang ilagay sa tamang lugar ang warning:<br>
+  Pagtataya at posisyon ito ng Meralco leadership—hindi pa independent estimate o final government impact assessment.
+</p>
+
+<p>
+  Sa mga pampublikong dokumentong inilabas o natukoy hanggang July 31, 2026, wala pang final law, implementing framework o kumpletong independent impact assessment na nagsasabi kung gaano kalaki at kanino eksaktong mapupunta ang gastos.
+</p>
+
+<p>
+  Nasa technical, regulatory at legislative review pa ang reporma.
+</p>
+
+<p>
+  Kaya ang mga sumusunod ay posibleng scenario, hindi pa tiyak na resulta:
+</p>
+
+<ul>
+  <li>Maaaring shareholders ang sumalo. Posibleng bumaba ang earnings o dividends ng distribution utility at ibang power companies.</li>
+
+  <li>Maaaring ilipat sa ibang charge. Maaaring mawala ang pangalang system loss ngunit subukang bawiin ang ilang gastos sa ibang regulated mechanism.</li>
+
+  <li>Maaaring gobyerno ang tumulong. Posibleng gumamit ng loans, modernization support o subsidy—na may epekto rin sa taxpayers at public budget.</li>
+
+  <li>Maaaring ma-pressure ang investment. Kung walang maayos na transition, posibleng magkaroon ng pressure sa maintenance, meter replacement, anti-theft programs at network modernization.</li>
+
+  <li>Maaari ring mapabilis ang efficiency. Kapag utility ang may tunay na financial exposure sa avoidable loss, mas lumalakas ang insentibong bawasan ang pilferage, errors at inefficient equipment.</li>
+</ul>
+
+<p>
+  Alin dito ang tunay na mangyayari ay depende sa magiging batas, regulatory treatment at transition design.
+</p>
+
+<p>
+  Kaya hindi dapat gawing panakot ang pinakamasamang scenario.
+  Pero hindi rin dapat magpanggap na libre at walang epekto ang reporma.
+</p>
+
+<h2>
+  BAKIT MAHALAGA ANG RELIABILITY?
+</h2>
+
+<p>
+  Ang kuryente ay hindi lamang presyo kada kilowatt-hour.
+  Kasama rin dito ang kalidad, kaligtasan at tuloy-tuloy na serbisyo.
+</p>
+
+<p>
+  Kapag pumalya ang distribution system:
+</p>
+
+<ul>
+  <li>nasisira ang pagkain at gamot;</li>
+  <li>humihinto ang makina at tindahan;</li>
+  <li>napuputol ang online work;</li>
+  <li>naaantala ang klase;</li>
+  <li>at nalalagay sa panganib ang mga serbisyong umaasa sa tuloy-tuloy na kuryente.</li>
+</ul>
+
+<p>
+  Hindi ibig sabihin nito na awtomatikong magkakaroon ng brownout kapag inalis ang system-loss charge.
+</p>
+
+<p>
+  Ang ibig sabihin lamang:
+  Hindi puwedeng pag-usapan ang mas murang bill nang hiwalay sa maintenance, resilience at long-term reliability.
+</p>
+
+<p>
+  Kinikilala mismo ng DOE na kailangang pagsabayin ang consumer protection, operational efficiency at reliability ng power sector.
+</p>
+
+          <h2>
+  HINDI PARE-PAREHO ANG MERALCO AT ELECTRIC COOPERATIVES
+</h2>
+
+<p>
+  Malaki at customer-dense ang malaking bahagi ng Meralco franchise area.
+</p>
+
+<p>
+  Iba ang kalagayan ng maraming electric cooperative na nagseserbisyo sa malalayong bayan, bundok, isla at kalat-kalat na komunidad.
+</p>
+
+<p>
+  Kapag kakaunti ang customers ngunit mahaba ang linya:
+</p>
+
+<ul>
+  <li>mas mataas ang gastos kada consumer;</li>
+  <li>mas mahirap i-maintain ang network;</li>
+  <li>mas malaki ang exposure sa bagyo, baha, landslide at vegetation;</li>
+  <li>at mas limitado ang access sa kapital.</li>
+</ul>
+
+<p>
+  Kaya delikado ang iisang blanket rule na parang pareho ang kondisyon ng malaking urban distribution utility at maliit na rural cooperative.
+</p>
+
+<p>
+  Hindi ito dahilan upang panatilihin ang inefficiency. Dahilan ito upang gumamit ng magkakaibang technical benchmark, transition at conditional support mechanism batay sa tunay na kondisyon ng network.
+</p>
+
+<h2>
+  BAKIT MAKATUWIRAN ANG GALIT NG CONSUMER?
+</h2>
+
+<p>
+  Dahil captive market ang karamihan ng residential consumers. Hindi sila basta makapipili ng ibang distribution utility kapag hindi sila kuntento sa singil o serbisyo.
+</p>
+
+<p>
+  Kapag mataas ang presyo sa isang tindahan, maaari kang lumipat. Kapag pangit ang serbisyo ng isang restaurant, maaari kang pumili ng iba.
+</p>
+
+<p>
+  Pero hindi ka basta makapagpapakabit ng linya mula sa ibang electricity distributor dahil ayaw mo sa kasalukuyang utility.
+</p>
+
+<p>
+  Kaya mas mataas ang obligasyon ng distribution utility sa:
+</p>
+
+<ul>
+  <li>transparency;</li>
+  <li>efficiency;</li>
+  <li>public accountability;</li>
+  <li>at patas na paghahati ng risk.</li>
+</ul>
+
+<p>
+  Hindi makatwirang gawing automatic shock absorber ang nagbabayad nang tama para sa:
+</p>
+
+<ul>
+  <li>nakaw na ginawa ng iba;</li>
+  <li>meter tampering;</li>
+  <li>maling meter reading;</li>
+  <li>billing error;</li>
+  <li>o avoidable inefficiency.</li>
+</ul>
+
+<p>
+  Kapag laging naipapasa ang controllable losses, humihina ang financial consequence sa utility.
+</p>
+
+<p>
+  Sa madaling salita, kapag ibang tao ang laging sumasalo sa epekto ng pagkukulang, nababawasan ang pressure na pigilan ang pagkukulang.
+</p>
+
+<p>
+  Ito ang pinakamalakas na argumento ng consumer.
+</p>
+
+<p>
+  Pero hindi rin dapat gawing <strong>“mahirap laban sa kumpanya.”</strong>
+</p>
+
+<p>
+  Mali ang electricity theft.
+</p>
+
+<p>
+  Ang illegal connection at meter tampering ay maaaring magdulot ng sunog, electrocution, overloaded transformer, sirang linya at mas mataas na pagkawala sa network.
+</p>
+
+<p>
+  Hindi dapat gawing katanggap-tanggap ang pagnanakaw dahil lamang mahirap ang gumawa. Pero hindi rin dapat gawing simpleng kuwento ng <strong>“pasaway na mahihirap”</strong> ang lahat ng non-technical loss.
+</p>
+
+<p>
+  Sa isang World Bank study sa mga informal settlement na sinurvey sa Manila, Quezon City at Muntinlupa, 46% ng kabuuang surveyed households ang may sariling Meralco connection.
+</p>
+
+<p>
+  Sa parehong kabuuang sample:
+</p>
+
+<ul>
+  <li>37% ang gumagamit ng group connection;</li>
+  <li>14% ang kumukuha sa linya ng kapitbahay sa pamamagitan ng illegal "jumper";</li>
+  <li>at 2.5% ang walang kuryente sa bahay.</li>
+</ul>
+
+<p>
+  Ang maliit na diperensiya sa total ay bunga ng rounding.
+</p>
+
+<p>
+  Historical snapshot ito ng mga komunidad na sinurvey—hindi kasalukuyang national estimate ng lahat ng informal settlements sa Pilipinas. Pero ipinapakita nito ang social reality:
+</p>
+
+<p>
+  May mga pamilyang pisikal na abot ng electric grid ngunit walang sariling formal connection dahil sa gastos, administrative obstacles, insecure tenure o kawalan ng maayos na access.
+</p>
+
+<p>
+  Hindi nito ginagawang tama ang illegal jumper. Ipinapakita lamang nitong hindi sapat ang enforcement kung walang lehitimong daan.
+</p>
+
+<p>
+  Kailangan din ng:
+</p>
+
+<ul>
+  <li>mas simple at abot-kayang legal connection;</li>
+  <li>ligtas at individual na metering;</li>
+  <li>malinaw at makatwirang documentation requirements;</li>
+  <li>flexible ngunit accountable payment arrangements;</li>
+  <li>regularization ng qualified informal users;</li>
+  <li>at mahigpit na aksiyon laban sa organized pilferage at mga taong kumikita sa illegal connections.</li>
+</ul>
+
+<p>
+  Hindi lahat ng illegal user ay pare-pareho ang dahilan. Pero hindi rin dapat ang honest consumer ang gawing taga-salo sa problema ng poverty, informal access at mahinang enforcement.
+</p>
+
+<p>
+  Pamahalaan at utility ang kailangang gumawa ng mas ligtas at lehitimong daan.
+</p>
+
+<h2>
+  SA ELECTRIC BILL LANG BA MAY GANITO?
+</h2>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Sa water utilities, may tinatawag na <strong>non-revenue water</strong>—tubig na naipasok sa distribution system ngunit hindi naging billed consumption.
+</p>
+
+<p>
+  Maaari itong manggaling sa:
+</p>
+
+<ul>
+  <li>physical leakage;</li>
+  <li>meter at data errors;</li>
+  <li>theft o unauthorized use;</li>
+  <li>at authorized but unbilled consumption gaya ng tubig para sa utility operations o firefighting.</li>
+</ul>
+
+<p>
+  Ibig sabihin, maging sa tubig, kailangang paghiwalayin ang tunay na physical loss, controllable commercial loss at lehitimong awtorisadong paggamit na hindi sinisingil.
+</p>
+
+<p>
+  Sa natural-gas pipelines, mayroon ding tariff mechanisms para sa fuel use at lost-and-unaccounted-for gas, subject sa regulatory rules.
+</p>
+
+<p>
+  Sa retail at manufacturing, kasama rin sa kabuuang presyo ang spoilage, theft, breakage at wastage.
+</p>
+
+<p>
+  Pero may mahalagang pagkakaiba sa electricity distribution.
+</p>
+
+<p>
+  Sa ordinaryong negosyo:
+</p>
+
+<ul>
+  <li>kadalasang hindi nakahiwalay ang loss bilang direktang line item;</li>
+  <li>at maaaring lumipat ang customer sa ibang supplier.</li>
+</ul>
+
+<p>
+  Sa electricity distribution:
+</p>
+
+<ul>
+  <li>regulated monopoly ang utility sa franchise area;</li>
+  <li>walang madaling alternatibo ang consumer;</li>
+  <li>at nakahiwalay ang system-loss charge sa bill.</li>
+</ul>
+
+<p>
+  Kaya mas mataas ang nararapat na transparency, regulation at accountability.
+</p>
+
+          <h2>
+  ANO ANG MAS MAKATARUNGANG REPORMA?
+</h2>
+
+<p>
+  Hindi kailangang pumili sa pagitan ng dalawang extreme:
+</p>
+
+<p>
+  Ipasa ang lahat sa consumer.
+</p>
+
+<p>
+  O
+</p>
+
+<p>
+  Iutos na akuin agad ng utility ang lahat kahit ano ang pinagmulan.
+</p>
+
+<p>
+  Mas makatarungan ang sistemang naghihiwalay sa loss ayon sa sanhi, antas ng control at tunay na engineering condition.
+</p>
+
+<h2>
+  ILABAS ANG AUDITED BREAKDOWN
+</h2>
+
+<p>
+  Dapat regular na ipakita kung gaano karami ang:
+</p>
+
+<ul>
+  <li>technical line at transformer loss;</li>
+  <li>technical metering error;</li>
+  <li>non-technical loss;</li>
+  <li>pilferage;</li>
+  <li>meter tampering;</li>
+  <li>meter-reading at billing error;</li>
+  <li>at recoveries mula sa nahuling electricity thieves.</li>
+</ul>
+
+<p>
+  Hiwalay din dapat i-report ang Distribution Utility Use at kung saan ito binabawi.
+</p>
+
+<h2>
+  HUWAG IPASA ANG CONTROLLABLE LOSS
+</h2>
+
+<p>
+  Ang theft, tampering, erroneous reading, billing error at loss na lampas sa efficiency benchmark ay hindi dapat awtomatikong bayaran ng honest consumers.
+</p>
+
+<p>
+  Utility at shareholders ang dapat magkaroon ng tunay na financial exposure kapag hindi naabot ang makatwirang standard.
+</p>
+
+<h2>
+  MAGTAKDA NG REALISTIC TECHNICAL ALLOWANCE
+</h2>
+
+<p>
+  May technical loss na hindi maiiwasan kahit mahusay ang network.
+</p>
+
+<p>
+  Maaaring payagan ang limitadong recovery nito kung mapatutunayang prudent at efficient.
+</p>
+
+<p>
+  Pero dapat ibatay ang allowance sa:
+</p>
+
+<ul>
+  <li>haba at edad ng linya;</li>
+  <li>customer density;</li>
+  <li>terrain;</li>
+  <li>delivery voltage;</li>
+  <li>load pattern;</li>
+  <li>at aktuwal na engineering condition.</li>
+</ul>
+
+<p>
+  Hindi dapat pareho ang benchmark ng urban network at malawak na rural system.
+</p>
+
+<h2>
+  PABABAIN ANG BENCHMARK HABANG NAGMO-MODERNIZE
+</h2>
+
+<p>
+  Kapag napalitan ang lumang transformer, nagkaroon ng advanced meters at naayos ang overloaded feeders, dapat bumaba rin ang pinapayagang loss.
+</p>
+
+<p>
+  Hindi dapat permanenteng allowance ang dating inefficiency.
+</p>
+
+<h2>
+  PALAKASIN ANG UMIIRAL NA PERFORMANCE-BASED FRAMEWORK
+</h2>
+
+<p>
+  May umiiral nang system-loss caps at Performance Incentive Scheme.
+</p>
+
+<p>
+  Ang kailangang palakasin ay:
+</p>
+
+<ul>
+  <li>mas malinaw na consequence sa controllable loss;</li>
+  <li>mas madaling ma-audit na data;</li>
+  <li>at aktuwal na consumer benefit kapag napababa ang loss.</li>
+</ul>
+
+<p>
+  Kapag lumampas sa benchmark, utility ang dapat sumalo sa excess. Kapag mas mababa kaysa target dahil sa tunay na efficiency, maaaring magkaroon ng incentive—pero dapat may malinaw ding bahagi ng savings na bumabalik sa consumers.
+</p>
+
+<p>
+  Dapat makinabang ang kumpanya dahil mahusay itong nagpababa ng loss—hindi dahil mataas ang pagkawala.
+</p>
+
+<h2>
+  IBALIK NANG MALINAW ANG PILFERAGE RECOVERIES
+</h2>
+
+<p>
+  Dapat madaling makita sa public reports:
+</p>
+
+<ul>
+  <li>magkano ang nabawi;</li>
+  <li>saan ito na-account;</li>
+  <li>at paano nakinabang ang consumers.</li>
+</ul>
+
+<h2>
+  TULUNGAN ANG MAHIHINANG ELECTRIC COOPERATIVES—PERO MAY KONDISYON
+</h2>
+
+<p>
+  Maaaring kailanganin ang NEA loans, modernization assistance o transition support. Pero hindi ito dapat maging blank cheque.
+</p>
+
+<p>
+  Dapat kapalit nito ang:
+</p>
+
+<ul>
+  <li>audited loss-reduction plan;</li>
+  <li>malinaw na deadline;</li>
+  <li>modern metering;</li>
+  <li>professional management;</li>
+  <li>public performance reports;</li>
+  <li>at pananagutan kapag hindi naabot ang target.</li>
+</ul>
+
+          <h2>
+  BANTAYAN ANG PAGLIPAT SA IBANG PANGALAN
+</h2>
+
+<p>
+  Walang saysay na mawala ang salitang “system loss” kung ipapasok lamang ang parehong gastos sa distribution charge, subsidy, universal charge o ibang bagong label.
+</p>
+
+<p>
+  Hindi pangalan ng charge ang tunay na sukatan. Ang kabuuang pasanin ng consumer ang kailangang bumaba.
+</p>
+
+<h2>
+  NASAAN NA ANG PANUKALA?
+</h2>
+
+<p>
+  Noong July 27, 2026, nanawagan ang Pangulo na amyendahan ang EPIRA upang alisin ang system-loss charge at ang kaugnay na VAT sa electric bills.
+</p>
+
+<p>
+  Kasunod nito, bumuo ang DOE ng joint task force kasama ang ERC, NEA at electric cooperatives upang pag-aralan ang technical, regulatory at legislative implementation ng reporma.
+</p>
+
+<p>
+  Ayon sa opisina ni Senate President Win Gatchalian, inihain noong July 29, 2026 ang Senate Bill No. 2350 o System Loss Charge Abolition Act. May iba pang panukala rin sa Senado at Kamara, at sinabi ng House leadership na paiigtingin nito ang pagtalakay sa mga panukalang naglalayong alisin ang system-loss charge.
+</p>
+
+<p>
+  Pero mahalagang linawin:
+</p>
+
+<p>
+  Panukala pa lamang ang mga ito.
+</p>
+
+<p>
+  Kailangan pa ng approval ng Senado at House of Representatives, reconciliation kung magkaiba ang kanilang inaprubahang teksto, at presidential action.
+</p>
+
+<p>
+  Kakailanganin din ang implementing rules kung iaatas o kailanganin ng final law.
+</p>
+
+<p>
+  Wala pang final na mekanismo kung paano hahatiin ang unavoidable technical losses at kung paano poprotektahan ang mahihinang electric cooperatives.
+</p>
+
+<p>
+  Kaya hindi pa awtomatikong nawawala ang system-loss charge sa kasalukuyang electric bill.
+</p>
+
+<p>
+  Madaling ipangako na “tatanggalin ang system loss.”
+</p>
+
+<p>
+  Mas mahirap tiyaking hindi ito:
+</p>
+
+<ul>
+  <li>babalik sa ibang pangalan;</li>
+  <li>ipapasa sa taxpayers;</li>
+  <li>magiging dahilan ng mahinang maintenance;</li>
+  <li>o mauuwi sa repormang maganda lamang pakinggan pero walang tunay na savings.</li>
+</ul>
+
+<h2>
+  ANG TUNAY NA HATOL
+</h2>
+
+<p>
+  Hindi kasinungalingan ang system loss.
+</p>
+
+<p>
+  May enerhiyang totoong nagiging init at nawawala habang dumadaloy sa network. May konsumo ring aktuwal na nagagamit ngunit hindi na-meter o na-bill nang tama dahil sa theft, tampering at errors. May aktuwal na gastos na kailangang pagpasiyahang mabuti.
+</p>
+
+<p>
+  Pero hindi natural law na consumer ang dapat magbayad sa lahat.
+</p>
+
+<p>
+  Ang technical loss ay maaaring physics. Ang unbilled o under-recorded use ay maaaring theft o error. Ang hindi nabayarang wastong bill ay collection issue. Ang pagpasa ng system-loss cost ay public policy.
+</p>
+
+<p>
+  Hindi tamang tawaging kasakiman lamang ang bawat concern ng electric company.
+</p>
+
+<p>
+  May obligasyon itong bumili ng power, panatilihin ang network, mag-invest sa equipment at maghatid ng ligtas at tuloy-tuloy na serbisyo.
+</p>
+
+<p>
+  Pero hindi rin dapat gamitin ang salitang “industry survival” bilang panakot upang manatiling consumers ang automatic shock absorber ng theft, error at inefficiency.
+</p>
+
+<p>
+  Hindi charity ang electric utility. Pero hindi rin insurance company ng utility ang consumer.
+</p>
+
+<p>
+  Ang patas na sistema ay iyong malinaw na naghihiwalay:
+</p>
+
+<ul>
+  <li>Alin ang hindi maiiwasan.</li>
+  <li>Alin ang kayang kontrolin.</li>
+  <li>Alin ang aktuwal na nagamit ngunit hindi na-meter o na-bill nang tama.</li>
+  <li>Alin ang hiwalay na utility operating use.</li>
+  <li>Alin ang dapat akuin ng kumpanya.</li>
+  <li>At alin ang makatuwirang bahagi ng tunay na halaga ng maaasahang serbisyo.</li>
+</ul>
+
+<p>
+  Hindi dapat ipasa sa consumer ang kapabayaan.
+  Hindi dapat gawing blank check ang system loss.
+  Hindi dapat isakripisyo ang reliability para sa panandaliang pogi points.
+  At hindi dapat itago sa ibang pangalan ang gastos na ipinangakong aalisin.
+</p>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+         <h2
+  class="sources-title"
+  id="sources-heading"
+>
+  Mga Batayan at Sanggunian
+</h2>
+
+<ul class="sources-list">
+
+  <li>
+    Republic Act No. 7832 — system-loss caps, pilferage reporting, at consumer crediting ng recovered pilferage losses.
+  </li>
+
+  <li>
+    Republic Act No. 9136 o EPIRA — rate-setting, efficiency standards, system-loss caps, collection efficiency at RORB safeguards laban sa ilang management inefficiencies.
+  </li>
+
+  <li>
+    Philippine Distribution Code 2016 Edition, Energy Regulatory Commission — technical at non-technical system-loss classification.
+  </li>
+
+  <li>
+    ERC Resolution No. 20, Series of 2017 — distribution system-loss caps, Distribution Utility Use treatment at Performance Incentive Scheme.
+  </li>
+
+  <li>
+    Supreme Court, <em>ASTEC et al. v. Energy Regulatory Commission</em> — actual loss versus cap, pilferage adjustment at refund ng over-recovery.
+  </li>
+
+  <li>
+    Department of Energy — joint task force at ongoing technical, regulatory at legislative review.
+  </li>
+
+  <li>
+    Presidential Communications Office — July 27, 2026 policy announcement tungkol sa pagtanggal ng system-loss charge at kaugnay na VAT.
+  </li>
+
+  <li>
+    Meralco First-Half 2026 Financial and Operational Report — system-loss performance, average retail rate at segment earnings.
+  </li>
+
+  <li>
+    Meralco Bill Breakdown and FAQs — system loss bilang capped pass-through charge at average share nito sa bill.
+  </li>
+
+  <li>
+    Office of Senate President Win Gatchalian — announcement ng Senate Bill No. 2350 at sponsor-provided bill estimates.
+  </li>
+
+  <li>
+    House of Representatives — kasalukuyang mga panukala at hakbang upang alisin ang system-loss charge.
+  </li>
+
+  <li>
+    World Bank, <em>Navigating Informality</em> — historical Metro Manila data tungkol sa formal, group at illegal jumper electricity connections.
+  </li>
+
+  <li>
+    World Bank, <em>The Challenge of Reducing Non-Revenue Water</em> — physical losses, commercial losses at authorized but unbilled consumption sa water utilities.
+  </li>
+
+</ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
