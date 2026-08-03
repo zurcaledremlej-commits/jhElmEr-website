@@ -1,1 +1,2034 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa mental disorder, pananagutan, due process, at kung bakit hindi palusot ang sakit at hindi rin hustisya ang bugbog."
+>
+
+<title>
+  May Mental Disorder—Wala Nang Pananagutan? | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    May Mental Disorder—Wala Nang Pananagutan?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-pmd.png"
+  alt="Isang taong nasa gitna ng emosyonal at sikolohikal na pagdurusa, napapalibutan ng galit na mga tao, simbolo ng tensiyon sa pagitan ng mental disorder, pananagutan, proteksiyon sa biktima, at due process."
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+         <div class="article-body">
+
+  <p>
+    Hindi palusot ang sakit. Hindi rin hustisya ang bugbog.
+  </p>
+
+  <p>
+    Kapag bata ang binastos, madaling maunawaan kung bakit nagdidilim ang paningin ng isang magulang.
+  </p>
+
+  <p>
+    Kapag ang inakusahan naman ay may mental disorder, madaling lumitaw ang kabilang tanong: Alam ba niya ang kanyang ginawa—at hanggang saan siya maaaring panagutin?
+  </p>
+
+  <p>
+    Dito madalas nahahati ang publiko.
+  </p>
+
+  <p>
+    May agad humahatol na dapat bugbugin ang gumawa dahil may batang nasaktan. May nagsasabi namang hindi siya dapat bugbugin—dapat siyang pigilan, dalhin sa barangay o presinto, ipa-assess ang kanyang kondisyon, at papanagutin sa tamang proseso.
+  </p>
+
+  <p>
+    Iyon ang tamang direksiyon. Pero upang maging buo ang pagharap sa ganitong kaso, kailangang malinaw kung paano sabay na poprotektahan ang biktima, susuriin ang mental condition, papanagutin ang gumawa, at titimbangin kung lumampas na sa pagtatanggol ang naging tugon ng ibang sangkot.
+  </p>
+
+  <p>
+    Dahil maaaring may batang totoong kailangang protektahan. Maaaring may taong may mental condition na kailangang suriin, gamutin, at papanagutin ayon sa tunay niyang kakayahang umunawa. Maaaring may guardian o caregiver na nagpabaya sa nakikita nang panganib. At maaari ring may magulang o kamag-anak na nagsimulang nagtatanggol—pero nauwi sa paghihiganti nang tapos na ang panganib.
+  </p>
+
+  <p>
+    Kaya hindi dapat matapos ang usapan sa tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang kakampihan?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas mahalagang tanong ay: Paano poprotektahan ang biktima, paano papanagutin ang gumawa, paano isasaalang-alang ang mental disorder, at paano pipigilang maulit ang panganib—nang hindi ginagawang palusot ang sakit at hindi ginagawang hustisya ang bugbog?
+  </p>
+
+  <p>
+    Dito kailangang paghiwalayin ang emosyon, mental condition, legal responsibility, tungkulin ng guardian, at karapatan ng biktima.
+  </p>
+
+  <p>
+    Dahil sa ganitong usapin, hindi sapat ang awa lamang. Hindi rin sapat ang galit lamang.
+  </p>
+
+  <p>
+    Kailangan ng proteksiyon, tamang pananagutan, paggamot, due process, at malinaw na hangganan kung kailan nagtatapos ang pagtatanggol at nagsisimula ang paghihiganti.
+  </p>
+
+  <h2>
+    Unahin ang Bata—Hindi ang Palusot ng mga Adulto
+  </h2>
+
+  <p>
+    Kapag bata ang nagsabing binastos, hinipuan, tinakot, hinabol, o inilagay sa seksuwal na panganib, hindi dapat agad maliitin ang kanyang sinabi dahil lamang “wala namang mas malalang nangyari.”
+  </p>
+
+  <p>
+    Hindi pa ganap ang kakayahan ng isang bata na unawain ang ginawa sa kanya, ilarawan ang nangyari, ipagtanggol ang sarili, o harapin ang maaaring gulong idulot ng kanyang pagsasalita.
+  </p>
+
+  <p>
+    Sa unang National Baseline Study on Violence Against Children sa Pilipinas, 80% ng 3,866 respondents na edad 13 hanggang 24 ang nagsabing nakaranas sila ng kahit isang anyo ng karahasan noong kanilang kabataan. Sa mga edad 13 hanggang mas mababa sa 18, 17.1% ang nag-ulat na nakaranas ng sexual violence habang lumalaki.
+  </p>
+
+  <p>
+    Mas mabigat ang isang detalye: Sa mga bata at kabataang nakaranas ng sexual abuse, 11.9% lamang ang nagsabing may pinagsabihan sila tungkol sa nangyari.
+  </p>
+
+  <p>
+    Sa parehong pag-aaral, kabilang sa mga iniulat na dahilan ng hindi paghingi ng propesyonal na tulong ang hiya o takot, pag-ayaw sa dagdag na gulo, pangambang hindi paniwalaan o sila pa ang sisihin, at pagbabanta ng gumawa.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung seryoso iyon, sana nagsumbong agad.”
+    </p>
+  </blockquote>
+
+  <p>
+    May batang natatakot. May batang hindi alam ang tamang tawag sa ginawa sa kanya. May batang natitigilan sa takot at hindi agad makapagsalita. May batang natatakot na siya pa ang sisihin o maging dahilan ng gulo sa pamilya.
+  </p>
+
+  <p>
+    Kapag nagsalita ang bata, ang unang tungkulin ng matatanda ay ilayo siya sa panganib, pakinggan siya nang hindi nananakot, ipreserba ang ebidensiya, dalhin ang reklamo sa tamang awtoridad, at tiyaking hindi na muling makalalapit sa kanya ang inirereklamo habang iniimbestigahan ang pangyayari.
+  </p>
+
+  <p>
+    Pinoprotektahan ng RA 7610 ang mga bata laban sa iba't ibang anyo ng pang-aabuso at exploitation. Depende sa eksaktong kilos, lugar, at ebidensiya, maaari ring pumasok ang Safe Spaces Act, Revised Penal Code, o ibang batas. Ang tamang kaso ay hindi dapat hinuhulaan mula sa isang maikling video o social-media post lamang.
+  </p>
+
+  <p>
+    Hindi maaaring gamitin ang mental condition ng gumawa upang patahimikin ang bata.
+  </p>
+
+  <p>
+    Kapag sinabing “may sakit kasi” upang walang magreklamo, walang mag-imbestiga, at walang gumawa ng safety measures, hindi iyon awa.
+  </p>
+
+  <p>
+    Pagpapabaya iyon sa biktima at sa susunod pang maaaring mapahamak.
+  </p>
+
+             <h2>
+    Hindi Lahat ng PWD ay may Mental Disorder
+  </h2>
+
+  <p>
+    Mahalagang ituwid ito dahil madalas napagpapalit sa usapan.
+  </p>
+
+  <p>
+    Ang PWD ay hindi isang diagnosis.
+  </p>
+
+  <p>
+    Maaaring physical, sensory, intellectual, developmental, o psychosocial ang disability. Hindi lahat ng PWD ay may mental disorder. Hindi rin lahat ng taong may mental disorder ay walang kakayahang mag-isip, magdesisyon, o makilala ang tama at mali.
+  </p>
+
+  <p>
+    Malawak din ang terminong mental disorder o mental health condition.
+  </p>
+
+  <p>
+    Maaaring kabilang dito ang schizophrenia, bipolar disorder, severe depression, dementia, substance-induced psychosis, at iba pang psychiatric o neurologic conditions.
+  </p>
+
+  <p>
+    Iba naman ang intellectual o developmental disability, bagaman maaari rin nitong maapektuhan ang pag-unawa at maaari itong umiral kasabay ng isang mental disorder.
+  </p>
+
+  <p>
+    Magkakaiba ang epekto ng bawat kondisyon.
+  </p>
+
+  <p>
+    May taong may diagnosis ngunit malinaw ang pag-unawa sa kanyang kilos. May taong stable kapag tuloy-tuloy ang gamutan. May taong nakararanas ng sintomas ngunit kaya pa ring makilala ang tama at mali.
+  </p>
+
+  <p>
+    Mayroon ding nasa matinding episode na maaaring pansamantalang mawalan ng tamang ugnayan sa realidad.
+  </p>
+
+  <p>
+    Kaya hindi maaaring malaman sa itsura, pananamit, paraan ng pagsasalita, PWD card, o isang maikling video kung nauunawaan ba talaga ng isang tao ang kanyang ginawa.
+  </p>
+
+  <p>
+    Ang mental disorder ay clinical o medical matter. Ibang usapin ang legal insanity, na korte ang nagpapasya batay sa ebidensiya.
+  </p>
+
+  <h2>
+    Hindi Totoo na Lahat ng may Mental Disorder ay Marahas
+  </h2>
+
+  <p>
+    Kapag may krimeng iniugnay sa taong may mental condition, madaling mabuo ang impresyong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Delikado talaga ang mga ganiyang tao.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang buong larawan.
+  </p>
+
+  <p>
+    Ipinakikita ng malalaking research review na hindi sapat ang psychiatric diagnosis lamang upang mahulaan kung magiging marahas ang isang tao.
+  </p>
+
+  <p>
+    Mas mahalagang tingnan ang kanyang aktuwal na history at kasalukuyang risk factors—gaya ng dating karahasan, criminal history, kasabay na paggamit ng alak o droga, matinding sintomas, access sa posibleng biktima, at kawalan ng tuloy-tuloy na treatment o support.
+  </p>
+
+  <p>
+    Ibig sabihin, maling sabihin na:
+  </p>
+
+  <blockquote>
+    <p>
+      “May mental disorder, kaya siguradong mapanganib.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero mali rin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May mental disorder, kaya imposible siyang manakit.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang dapat sinusuri ay hindi lamang ang label.
+  </p>
+
+  <p>
+    Dapat suriin ang partikular na tao: May dati na ba siyang ginawang katulad? May reklamo na ba noon? May substance use ba? May matinding sintomas ba? Naiintindihan ba niya ang boundaries? May pagkakataon ba siyang pumili at tumigil? May access ba siya sa mga bata o ibang vulnerable persons? Sumusunod ba siya sa treatment? May nagbabantay ba kapag mataas ang panganib?
+  </p>
+
+  <p>
+    Mahalaga ring tandaan na ang mga taong may severe mental illness ay sila rin mismo ay mas mataas ang panganib na mabiktima ng pambubugbog, exploitation, at iba pang karahasan. Kaya hindi dapat gamitin ang isang insidente upang gawing kahina-hinala ang lahat ng taong may mental condition.
+  </p>
+
+  <p>
+    Ang tamang tugon ay individual risk assessment—hindi stigma at hindi denial.
+  </p>
+
+  <h2>
+    Sa Batas, Hindi Sapat ang Sabihing "May Sakit Siya"
+  </h2>
+
+  <p>
+    Sa Philippine law, kailangang paghiwalayin ang tatlong bagay: may mental disorder ang isang tao; legally insane siya noong gawin ang krimen; at hindi niya kayang unawain ang kasong kinakaharap niya sa kasalukuyan.
+  </p>
+
+  <p>
+    Hindi magkakapareho ang mga ito.
+  </p>
+
+  <p>
+    Sa Article 12 ng Revised Penal Code, maaaring ma-exempt sa criminal liability ang taong legally insane noong gawin ang felony, maliban kung kumilos siya sa isang lucid interval.
+  </p>
+
+  <p>
+    Pero hindi sapat ang simpleng diagnosis, dating pagkakaospital, kakaibang kilos, o pahayag ng pamilya na:
+  </p>
+
+  <blockquote>
+    <p>
+      “May diperensiya kasi siya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa framework na ginamit ng Supreme Court sa <em>Ruiz v. People</em> at <em>People v. Paña</em>, kailangang mapatunayan sa clear and convincing evidence na ang insanity ay umiiral noong mismong oras ng krimen; ang mental illness ang pangunahing dahilan ng ginawa at may sapat na medical proof; at dahil dito ay hindi niya kayang maunawaan ang nature, quality, o wrongfulness ng kanyang kilos.
+  </p>
+
+  <p>
+    Kaugnay nito ang matagal nang legal requirement na may complete deprivation of intelligence o reason—hindi lamang kakaibang pag-uugali, mahinang judgment, impulsiveness, o nabawasang self-control.
+  </p>
+
+  <p>
+    Mahalaga ang psychiatric at medical evidence. Pero hindi psychiatrist ang huling nagpapasya kung legally insane ang akusado. Legal question iyon na korte ang magpapasya batay sa kabuuang ebidensiya.
+  </p>
+
+  <p>
+    Maaaring tingnan ang kilos niya bago, habang, at pagkatapos ng insidente.
+  </p>
+
+  <p>
+    Nagtago ba siya? Tumakas ba upang hindi mahuli? Nagbanta ba upang walang magsumbong? Pinili ba niya ang oras na walang makakakita? Ipinakita ba ng kanyang kilos na alam niyang bawal ang ginawa? O may malinaw bang behavior na nagpapakitang wala siyang ugnayan sa realidad at hindi niya nauunawaan ang nangyayari?
+  </p>
+
+  <p>
+    Hindi rin dapat awtomatikong ibasura ang insanity defense dahil lamang walang dating psychiatric record. Maaaring isaalang-alang ang kanyang kilos at kondisyon sa makatwirang panahon bago at pagkatapos ng insidente, bagaman mas mataas ang evidentiary value ng medical at expert assessment.
+  </p>
+
+  <p>
+    Kapag napatunayang nauunawaan niya ang ginawa at alam niyang mali iyon, maaari siyang managot gaya ng ibang akusado.
+  </p>
+
+  <p>
+    Kapag may mental condition ngunit hindi umabot sa legal insanity, maaari itong magkaroon ng ibang epekto sa kaso depende sa ebidensiya—pero hindi awtomatikong nawawala ang criminal liability.
+  </p>
+
+  <p>
+    Kapag napatunayang legally insane noong krimen, maaaring mawala ang criminal liability.
+  </p>
+
+  <p>
+    Ngunit hindi ibig sabihin na pauuwiin lamang siya na parang walang nangyari.
+  </p>
+
+  <p>
+    Itinatadhana ng Article 12 na ipag-utos ng korte ang kanyang confinement, at hindi siya basta makalalabas nang walang pahintulot ng parehong korte.
+  </p>
+
+  <p>
+    Iba naman ang mental condition niya habang nililitis ang kaso.
+  </p>
+
+  <p>
+    Kung hindi niya kayang lubos na maunawaan ang charge o makapagbigay ng intelligent plea, maaaring ipasuspinde muna ang arraignment. Maaari ring iutos ng korte ang mental examination at, kung kinakailangan, confinement para sa pagsusuri.
+  </p>
+
+  <p>
+    Ang mental disorder ay maaaring magbago sa paraan ng pagpapapanagot. Hindi ito automatic immunity laban sa batas.
+  </p>
+
+             <h2>
+    Kailan Proteksiyon at Kailan Paghihiganti?
+  </h2>
+
+  <p>
+    Ito ang pinakamahalagang hangganan.
+  </p>
+
+  <p>
+    Kapag aktuwal na hinahawakan, hinahabol, sinasaktan, o inilalagay sa agarang panganib ang bata, may karapatang kumilos ang magulang o sinumang tumutulong upang mapigil ang umaatake.
+  </p>
+
+  <p>
+    Maaaring gumamit ng makatwiran at sapat na puwersa upang mailayo ang bata, mapatigil ang pagsalakay, mapigilan ang panibagong pag-atake, at maipasa ang tao sa pulis o responders.
+  </p>
+
+  <p>
+    Kinikilala ng Article 11 ng Revised Penal Code ang <em>defense of a relative</em> at <em>defense of a stranger</em>.
+  </p>
+
+  <p>
+    Ngunit kailangan ang aktuwal na unlawful aggression at reasonable necessity ng paraang ginamit upang pigilan o itaboy ang panganib. Sa <em>defense of a stranger</em>, hindi rin dapat paghihiganti o sama ng loob ang pangunahing motibo.
+  </p>
+
+  <p>
+    Hindi hinihingi ng batas na eksaktong pareho ang lakas, laki, o armas ng magkabilang panig.
+  </p>
+
+  <p>
+    Ang tanong ay kung makatwirang kailangan ang puwersang ginamit sa aktuwal na sitwasyon.
+  </p>
+
+  <p>
+    Pero kapag ligtas na ang bata—kapag napahiwalay na ang tao—kapag napigilan na—kapag nakahandusay na at hindi na umaatake—kapag hawak na ng maraming tao—at ipinagpatuloy pa rin ang suntok, sipa, o paghampas—hindi na agarang panganib ang pinipigil. Ang taong kinagagalitan na ang pinagbabayad.
+  </p>
+
+  <p>
+    Doon maaaring matapos ang depensa. Doon maaaring magsimula ang paghihiganti at panibagong krimen.
+  </p>
+
+  <p>
+    Nauunawaan kung bakit sumiklab ang galit ng isang magulang.
+  </p>
+
+  <p>
+    Pero magkaiba ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nauunawaan ko kung bakit niya nagawa.”
+    </p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>
+      “Tama at legal ang lahat ng ginawa niya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang bugso ng damdamin ay maaaring suriin ng korte sa angkop na kaso. Hindi nito awtomatikong pinapawalang-sala ang patuloy na pananakit matapos mawala ang panganib.
+  </p>
+
+  <h2>
+    Bakit Kayang Sumobra ng Isang Magulang o Kamag-anak?
+  </h2>
+
+  <p>
+    Kapag anak o mahal sa buhay ang sinaktan, hindi ordinaryong galit ang pumapasok.
+  </p>
+
+  <p>
+    May takot. May guilt dahil hindi siya naprotektahan. May pakiramdam na nilapastangan ang dignidad ng bata at ng buong pamilya. May pagnanais na mabawi agad ang kontrol.
+  </p>
+
+  <p>
+    May pressure ding ipakitang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ako mahina.”<br>
+      “Hindi ko hahayaang apihin ang pamilya ko.”<br>
+      “Dapat makita nilang pinagbabayaran niya ito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ito simpleng haka-haka tungkol sa kulturang Pilipino.
+  </p>
+
+  <p>
+    Sa National Baseline Study on Violence Against Children, nakita ang malawak na pag-iral at pagtanggap sa physical punishment bilang normal o kinakailangang paraan ng pagdidisiplina. Tinukoy mismo sa recommendations ng pag-aaral ang pangangailangang baguhin ang norms tungkol sa corporal punishment, masculinity, gender roles, at personal responsibility.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayang bawat magulang na nagagalit ay magiging marahas.
+  </p>
+
+  <p>
+    Pero ipinakikita nitong lumalaki tayo sa isang kulturang madalas nagtuturo na maaaring maging katanggap-tanggap ang pananakit kapag tinawag na disiplina, pagtatanggol sa dangal, o “pagtuturo ng leksiyon.”
+  </p>
+
+  <p>
+    Kapag may crowd, may nagvi-video, at may mga taong sumisigaw ng pagsang-ayon, maaari ring lumakas ang pressure na ipagpatuloy ang galit.
+  </p>
+
+  <p>
+    Ipinakikita ng social-psychology research na sa ilang sitwasyon, ang pagbaba ng self-awareness at personal accountability ay maaaring magpahina sa pagpipigil. Mahalaga rin ang kilos na ipinapakitang normal ng grupo: ang agresibong halimbawa ay maaaring magpalakas ng aggression, habang ang hindi agresibong halimbawa ay maaari rin itong pigilan.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi automatic na nagiging marahas ang tao dahil may crowd.
+  </p>
+
+  <p>
+    Pero kapag ang sigaw ng grupo ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sige pa.”<br>
+      “Kulang pa iyan.”<br>
+      “Dapat lang iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    mas madaling mabura ang hangganan sa pagitan ng pagpigil at pagpaparusa.
+  </p>
+
+  <p>
+    May paliwanag din dito ang research tungkol sa paghihiganti.
+  </p>
+
+  <p>
+    Ipinakikita ng experimental studies na ang pagkakataong makaganti ay maaaring magbigay ng pansamantalang pakiramdam ng reward o satisfaction, kaya maaaring maging kaakit-akit ang retaliation sa gitna ng matinding galit.
+  </p>
+
+  <p>
+    Pero may hiwalay na research naman ang nagpapakitang ang paulit-ulit na pagbabalik sa insulto o pinsala sa isip—anger rumination—ay maaaring magpanatili o magpalakas sa galit at aggressive impulses sa halip na tuluyang pahupain ang mga ito.
+  </p>
+
+  <p>
+    Kaya minsan, hindi agad pinapawi ng paghihiganti ang galit.
+  </p>
+
+  <p>
+    Maaari pa nitong palakasin ang pakiramdam na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi pa sapat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dito mahalaga ang pagpigil ng ibang responsable at kalmadong adulto.
+  </p>
+
+  <p>
+    Ang taong nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tama na. Ligtas na ang bata. Itawag na natin sa pulis.”
+    </p>
+  </blockquote>
+
+  <p>
+    ay hindi kumakampi sa gumawa.
+  </p>
+
+  <p>
+    Pinipigilan niyang magkaroon ng panibagong biktima, panibagong kaso, at panibagong pamilyang masisira.
+  </p>
+
+             <h2>
+    Responsibilidad ba Ito ng Guardian?
+  </h2>
+
+  <p>
+    May pananagutan ang guardian o caregiver—pero hindi dahil “owner” siya ng taong may mental disorder.
+  </p>
+
+  <p>
+    Maling gawing literal ang paghahambing sa owner ng hayop.
+  </p>
+
+  <p>
+    Ang taong may mental condition ay hindi pag-aari ng pamilya. Tao siya na may dignidad, legal personality, at karapatang hindi pahirapan o tratuhing mas mababa kaysa tao.
+  </p>
+
+  <p>
+    Pinoprotektahan ng Mental Health Act ang karapatan niya sa evidence-based care, affordable services, least restrictive treatment, at makataong pagtrato na malaya sa torture at cruel, inhuman, o degrading treatment.
+  </p>
+
+  <p>
+    Ang mas tamang konsepto ay duty of care, supervision, at prevention of foreseeable harm.
+  </p>
+
+  <p>
+    Kung alam ng guardian o caregiver na ang tao ay may history ng panghihipo, sexual disinhibition, pananakit, paghabol sa bata, paglayas, severe episodes, o paglabag sa boundaries, hindi sapat ang sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “May sakit kasi. Intindihin na lamang.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dapat may treatment plan. Dapat may malinaw na supervision. Dapat limitahan ang access sa mga bata at ibang vulnerable persons. Dapat may taong tatawagan kapag lumalala ang sintomas. Dapat seryosohin ang naunang reklamo. Dapat baguhin ang setup kapag hindi na ligtas.
+  </p>
+
+  <p>
+    Pero hindi awtomatikong kriminal o civilly liable ang bawat kapamilya.
+  </p>
+
+  <p>
+    Ang kapatid ay hindi agad legal guardian. Ang magulang ng isang adult ay hindi awtomatikong mananagot sa lahat ng kilos nito.
+  </p>
+
+  <p>
+    Kailangang malaman kung sino ang may legal authority o aktuwal na control, kung alam niya ang panganib, kung may kakayahan siyang gumawa ng safety measures, at kung may fault o negligence sa kanyang bahagi.
+  </p>
+
+  <p>
+    Sa Article 101 ng Revised Penal Code, ang civil liability para sa kilos ng taong exempt dahil sa insanity ay maaaring mapunta sa taong may legal authority o control sa kanya—maliban kung mapatutunayang walang fault o negligence ang taong iyon.
+  </p>
+
+  <p>
+    Sa Article 2180 ng Civil Code, maaari ring magkaroon ng liability ang guardian para sa pinsalang ginawa ng incapacitated person na nasa ilalim ng kanyang authority at nakatira kasama niya, subject sa mga requirement at depensang kinikilala ng batas.
+  </p>
+
+  <p>
+    Kaya ang tamang tanong ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang kamag-anak niya?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang may legal o aktuwal na tungkuling magbantay, ano ang alam niyang panganib, at ano ang ginawa o hindi niya ginawa upang pigilan iyon?”
+    </p>
+  </blockquote>
+
+  <h2>
+    Hindi rin Puwedeng Ipasa Lahat sa Pamilya
+  </h2>
+
+  <p>
+    May mga pamilyang tunay na nagpabaya. Pero mayroon ding mga caregiver na halos wala nang tulog, walang sapat na pera, kailangang magtrabaho, at walang malapit na psychiatric o community service na malalapitan.
+  </p>
+
+  <p>
+    May pasyenteng tumatangging uminom ng gamot. May kondisyong bumabalik kahit may treatment. May pamilyang humihingi ng tulong ngunit pinapauwi lamang dahil wala pang “aktuwal na krisis.”
+  </p>
+
+  <p>
+    Sa WHO investment case na inilabas noong 2021, tinatayang mayroon lamang 548 psychiatrists o humigit-kumulang 0.5 bawat 100,000 katao sa Pilipinas, at ang malaking bahagi ng specialists ay nasa Manila. Historical benchmark ito ng kakulangan at hindi dapat ipresenta bilang eksaktong 2026 headcount.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi sapat ang sermon na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bantayan ninyo kasi.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung seryoso ang lipunan sa public safety, kailangan din ng accessible community mental-health services, crisis-response system, maayos na referral mula barangay at health center, caregiver education, treatment at follow-up, child-protection coordination, at intervention bago pa umabot sa krimen, pananakit, o mob justice.
+  </p>
+
+  <p>
+    Kinikilala rin ng WHO report na kailangan ng coordinated response mula sa health care, education, social welfare, judiciary, at iba pang sektor—hindi lamang pribadong pagbabantay ng pamilya.
+  </p>
+
+  <p>
+    Ang pamilya ay may tungkulin. Pero ang mental-health crisis na may epekto sa public safety ay hindi dapat gawing pribadong problema lamang ng isang pagod at kulang sa suportang pamilya.
+  </p>
+
+  <h2>
+    Ano ang Dapat Gawin sa Aktuwal na Sitwasyon?
+  </h2>
+
+  <h3>
+    Habang may Agarang Panganib
+  </h3>
+
+  <p>
+    Ilayo muna ang bata o biktima.
+  </p>
+
+  <p>
+    Humingi ng tulong sa security, barangay, pulis, o responders.
+  </p>
+
+  <p>
+    Gumamit lamang ng puwersang sapat upang mapatigil ang aktuwal na panganib.
+  </p>
+
+  <p>
+    Ang bystander na hindi ligtas na makialam nang pisikal ay maaari pa ring tumawag ng tulong, mag-alis ng ibang bata sa lugar, magbigay ng mahalagang impormasyon, o tumulong sa pagpreserba ng ebidensiya.
+  </p>
+
+  <h3>
+    Kapag Tapos na ang Panganib
+  </h3>
+
+  <p>
+    Itigil ang pananakit.
+  </p>
+
+  <p>
+    Huwag gawing public punishment ang paghawak sa inakusahan.
+  </p>
+
+  <p>
+    Huwag piliting umamin sa pamamagitan ng bugbog, pagbabanta, o kahihiyan.
+  </p>
+
+  <p>
+    I-turn over sa awtoridad at ipa-assess kung may injury, psychosis, intoxication, intellectual impairment, o ibang medical condition.
+  </p>
+
+             <h3>
+    Para sa Bata o Biktima
+  </h3>
+
+  <p>
+    Ireport sa Women and Children Protection Desk at social-welfare authorities.
+  </p>
+
+  <p>
+    Ipreserba ang video, CCTV, messages, damit, at testimonya.
+  </p>
+
+  <p>
+    Huwag ipakalat ang pangalan, mukha, paaralan, o ibang detalyeng makakakilala sa bata.
+  </p>
+
+  <p>
+    Huwag sisihin o piliting magkuwento sa maraming tao.
+  </p>
+
+  <p>
+    Ipaabot nang malinaw:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi mo kasalanan ang nangyari. Tama ang pagsasabi mo. Poprotektahan ka namin.”
+    </p>
+  </blockquote>
+
+  <h3>
+    Para sa Inakusahan
+  </h3>
+
+  <p>
+    Imbestigahan ang mismong ginawa.
+  </p>
+
+  <p>
+    Huwag ipagpalagay na walang pananagutan dahil may diagnosis.
+  </p>
+
+  <p>
+    Huwag ding ipagpalagay na buo ang mental capacity nang walang assessment.
+  </p>
+
+  <p>
+    Suriin ang mental condition noong insidente, treatment history, dating behavior, substance use, kakayahang umunawa, at kasalukuyang risk.
+  </p>
+
+  <h3>
+    Para sa Guardian at Sistema
+  </h3>
+
+  <p>
+    Alamin kung may naunang reklamo o warning signs.
+  </p>
+
+  <p>
+    Suriin kung may treatment at safety plan.
+  </p>
+
+  <p>
+    Tukuyin kung may kapabayaan at kung sino ang may tunay na authority o control.
+  </p>
+
+  <p>
+    At kung humingi naman ng tulong ang pamilya ngunit walang serbisyong ibinigay, dapat ding siyasatin ang pagkukulang ng barangay, LGU, health system, at iba pang institusyong dapat sana ay tumugon.
+  </p>
+
+  <h2>
+    Ang Awa ay Hindi Pagpapalampas
+  </h2>
+
+  <p>
+    May maling awa na nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kawawa naman. Huwag nang ireklamo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero paano ang bata?
+  </p>
+
+  <p>
+    Paano kung may naunang biktima?
+  </p>
+
+  <p>
+    Paano kung walang treatment, supervision, o boundaries at maulit sa ibang tao?
+  </p>
+
+  <p>
+    Hindi awa ang pagbabalik sa isang taong may malinaw na panganib sa parehong sitwasyon nang walang intervention.
+  </p>
+
+  <p>
+    Awa sa gumawa ngunit kapabayaan sa posibleng biktima iyon.
+  </p>
+
+  <p>
+    May maling hustisya rin na nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bugbugin para matuto.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero paano kung hindi niya nauunawaan ang “leksiyon” dahil sa severe mental condition?
+  </p>
+
+  <p>
+    Paano kung lalo siyang maging confused, traumatized, o aggressive?
+  </p>
+
+  <p>
+    Paano kung mapatay siya bago makuha ang buong katotohanan?
+  </p>
+
+  <p>
+    At paano kung mali o kulang ang unang paratang?
+  </p>
+
+  <p>
+    Hindi hustisya ang parusang ipinataw ng crowd nang walang ebidensiya, limitasyon, at proseso. Paghihiganti iyon na tinawag lamang na hustisya.
+  </p>
+
+  <p>
+    Ang totoong awa ay hindi bulag sa panganib.
+  </p>
+
+  <p>
+    Ang totoong hustisya ay hindi bulag sa pagkatao.
+  </p>
+
+  <h2>
+    Sa Bibliya, Magkasama ang Proteksiyon, Hustisya at Awa
+  </h2>
+
+  <p>
+    Hindi itinuturo ng Bibliya na palampasin ang pang-aabuso.
+  </p>
+
+  <p>
+    Sa Awit 82:3–4 at Kawikaan 31:8–9, malinaw ang tungkuling ipagtanggol ang mahina at ang hindi kayang ipagtanggol ang sarili. Sa Mateo 18:6, mabigat ang babala laban sa pagpapahamak sa mga bata.
+  </p>
+
+  <p>
+    Kaya hindi maka-Bibliya ang pananahimik, pagtatakip, o pagpapabaya dahil lamang may mental disorder ang gumawa.
+  </p>
+
+  <p>
+    Pero hindi rin itinuturo ng Bibliya ang personal na paghihiganti.
+  </p>
+
+  <p>
+    Sa Roma 12:19, ipinagbabawal ang sariling pagganti. Sa Roma 13:1–4, kinikilala ang tungkulin ng lehitimong awtoridad na pigilan at papanagutin ang gumagawa ng masama. At sa Santiago 1:19–20, pinaaalalahanan tayong ang galit ng tao ay hindi awtomatikong nagbubunga ng katuwirang nais ng Diyos.
+  </p>
+
+  <p>
+    Kaya maaaring sabay na protektahan ang bata, ireport ang ginawa, humingi ng pananagutan, maglagay ng mahigpit na boundaries, ipagamot ang may kondisyon, at tumangging gawing paghihiganti ang hustisya.
+  </p>
+
+  <p>
+    Ang pagpapatawad, kung dumating man, ay hindi nangangahulugang walang kaso, walang treatment, walang supervision, at ibabalik agad ang access sa biktima.
+  </p>
+
+             <h2>
+    Maaaring Dalawang Mali ang Nangyari
+  </h2>
+
+  <p>
+    Maaaring totoong may biktimang binastos, hinawakan, o inilagay sa panganib.
+  </p>
+
+  <p>
+    At maaaring totoong sumobra rin ang mga taong gumanti.
+  </p>
+
+  <p>
+    Ang pag-imbestiga sa pambubugbog ay hindi pagbalewala sa sinapit ng bata.
+  </p>
+
+  <p>
+    Ang pag-imbestiga sa ginawa sa bata ay hindi pahintulot na bugbugin ang inakusahan.
+  </p>
+
+  <p>
+    Hindi binubura ng isang maling ginawa ang isa pang maling ginawa.
+  </p>
+
+  <p>
+    At ang pagiging balanse ay hindi nangangahulugang pareho ang bigat ng lahat ng ginawa o kailangang hatiin nang eksaktong pantay ang simpatiya.
+  </p>
+
+  <p>
+    Habang may agarang panganib, kaligtasan ng biktima ang unang prayoridad.
+  </p>
+
+  <p>
+    Kapag napigil na ang panganib, batas, ebidensiya, mental-health assessment, at due process na ang dapat manguna.
+  </p>
+
+  <p>
+    Hindi ang comment section.
+  </p>
+
+  <p>
+    Hindi ang crowd.
+  </p>
+
+  <p>
+    Hindi ang bugso ng galit.
+  </p>
+
+  <p>
+    At hindi rin ang simpleng palusot na:
+  </p>
+
+  <blockquote>
+    <p>
+      “May sakit kasi.”
+    </p>
+  </blockquote>
+
+  <h2>
+    Ang Tunay na Sukatan ng Makatarungang Lipunan
+  </h2>
+
+  <p>
+    Hindi nasusukat ang lipunan sa tindi ng bugbog na kaya nitong ibigay sa taong kinamumuhian.
+  </p>
+
+  <p>
+    Nasusukat ito sa kakayahan nitong protektahan ang mahina nang hindi nagiging mapang-abuso.
+  </p>
+
+  <p>
+    Sa kakayahan nitong papanagutin ang gumawa nang hindi siya inaalisan ng pagkatao.
+  </p>
+
+  <p>
+    Sa kakayahan nitong kilalanin ang mental disorder nang hindi ito ginagawang palusot.
+  </p>
+
+  <p>
+    Sa kakayahan nitong unawain ang galit ng biktima nang hindi ito ginagawang lisensya sa paghihiganti.
+  </p>
+
+  <p>
+    At sa kakayahan nitong pigilan ang susunod na insidente—hindi lamang magdiwang matapos may bugbugin.
+  </p>
+
+  <blockquote>
+    <p>
+      Mental disorder ay hindi lisensya para mambastos, manakit, o maglagay ng iba sa panganib.<br>
+      Galit ng biktima o magulang ay hindi lisensya para magparusa nang walang hangganan.<br>
+      Guardianship ay hindi ownership—pero may kasama itong tungkuling magbantay, magpagamot, at pumigil sa nakikitang panganib.
+    </p>
+  </blockquote>
+
+  <p>
+    Protektahan ang biktima.
+  </p>
+
+  <p>
+    Pigilan ang panganib.
+  </p>
+
+  <p>
+    Suriin ang mental capacity.
+  </p>
+
+  <p>
+    Panagutin ang may kasalanan.
+  </p>
+
+  <p>
+    Imbestigahan ang pagpapabaya.
+  </p>
+
+  <p>
+    Ipagamot ang may kondisyon.
+  </p>
+
+  <p>
+    At huwag palitan ng mob justice ang hustisyang dapat dumaan sa batas.
+  </p>
+
+  <p>
+    Dahil ang lipunang marunong lamang magalit ay maaaring makaganti.
+  </p>
+
+  <p>
+    Pero ang lipunang marunong magprotekta, magsuri, magpagamot, at maningil ng pananagutan—iyon ang lipunang tunay na makapipigil sa susunod na biktima.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+  <li>
+    Revised Penal Code — Articles 11, 12, and 101
+  </li>
+
+  <li>
+    Supreme Court: Ruiz v. People, G.R. No. 244692 (October 9, 2024); and People v. Paña framework on legal insanity
+  </li>
+
+  <li>
+    Rules of Court, Rule 116, Section 11 — Suspension of Arraignment
+  </li>
+
+  <li>
+    Republic Act No. 11036 — Philippine Mental Health Act
+  </li>
+
+  <li>
+    Republic Act No. 7610 — Special Protection of Children Against Abuse, Exploitation and Discrimination Act
+  </li>
+
+  <li>
+    Republic Act No. 11313 — Safe Spaces Act
+  </li>
+
+  <li>
+    Civil Code of the Philippines — Article 2180
+  </li>
+
+  <li>
+    UNICEF Philippines — National Baseline Study on Violence Against Children in the Philippines: Results and Recommendations
+  </li>
+
+  <li>
+    World Health Organization (WHO) and United Nations Development Programme (UNDP) — Prevention and Management of Mental Health Conditions in the Philippines: The Case for Investment
+  </li>
+
+  <li>
+    Whiting, Lichtenstein, and Fazel — Violence and Mental Disorders: A Structured Review of Associations by Individual Diagnoses, Risk Factors, and Risk Assessment
+  </li>
+
+  <li>
+    Latalova, Kamaradova, and Prasko — Violent Victimization of Adult Patients with Severe Mental Illness: A Systematic Review
+  </li>
+
+  <li>
+    Chester and DeWall — The Pleasure of Revenge: Retaliatory Aggression Arises from a Neural Imbalance Toward Reward
+  </li>
+
+  <li>
+    Denson, Moulds, and Grisham — The Effects of Analytical Rumination, Reappraisal, and Distraction on Anger Experience
+  </li>
+
+  <li>
+    Prentice-Dunn and Rogers — Effects of Deindividuating Situational Cues and Aggressive Models on Subjective Deindividuation and Aggression
+  </li>
+
+</ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
