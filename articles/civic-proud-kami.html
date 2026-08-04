@@ -1,1 +1,1826 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa absent sa proseso, present sa resulta, at kung bakit hindi awtomatikong ambag ang identity, congratulatory post, o pride sa tagumpay ng iba."
+>
+
+<title>
+Absent sa Proseso—Present sa Resulta | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    Absent sa Proseso—Present sa Resulta
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-proud-kami.png"
+      alt="Isang taong pagod at sugatan matapos ang mahabang proseso ng pagsisikap, habang sa kabilang panig ay may mga taong lumalapit lamang matapos ang tagumpay dala ang mga simbolo ng pride, pagkilala, at pag-aangkin ng resulta nang hindi naging bahagi ng mismong proseso."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag wala pang pangalan, kakaunti ang nakatingin.
+  </p>
+
+  <p>
+    Kapag puro gastos, pagod, pagkatalo, rejection, at panganib pa lamang ang nakikita, madalas ang mismong taong nangangarap at ang iilang tunay na naniniwala sa kanya ang sumasalo sa buong bigat ng proseso.
+  </p>
+
+  <p>
+    Pero kapag may medalya na, diploma, award, malaking kita, international recognition, o pangalang maipagmamalaki, biglang dumarami ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Proud kami sa iyo.”<br>
+      “Atin siya.”<br>
+      “Kababayan natin iyan.”<br>
+      “Diyan siya nagmula.”<br>
+      “Dugong Pilipino iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Doon lumilitaw ang isang malungkot ngunit pamilyar na katotohanan: Maraming absent habang binubuo ang tagumpay—pero present na present kapag maaari nang makihati sa resulta, karangalan, at pagkilala.
+  </p>
+
+  <p>
+    Hindi lahat ng nakiki-proud ay peke. Hindi rin kailangang personal na tumulong ang bawat tao bago siya magkaroon ng karapatang humanga, makisaya, o makaramdam ng national pride.
+  </p>
+
+  <p>
+    Pero may malinaw na hangganan ang pakikiisa.
+  </p>
+
+  <p>
+    Hindi maaaring gawing ambag ang simpleng pagkakapareho ng dugo, lugar, paaralan, organisasyon, o nasyonalidad. Hindi maaaring angkinin ang prosesong hindi naman sinuportahan. At lalong hindi maaaring gawing utang ng nagtagumpay ang tagumpay na siya, ang kanyang pamilya, at ang iilang totoong tumulong ang nagbayad ng presyo.
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi mali ang makiisa sa tagumpay.<br>
+      Ang mali ay gawing ambag ang identity, gawing pagmamay-ari ang pride, at gawing utang ang tagumpay na hindi mo naman tinulungang buuin.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero bakit nga ba napakadaling maging present kapag may resulta na—kahit absent noong mahirap, alanganin, at wala pang katiyakang magtatagumpay?
+  </p>
+
+  <p>
+    Hindi lamang ito simpleng pagiging plastik o oportunista. May mga psychological, cultural, social, at institutional na dahilan kung bakit mas madaling hangaan at angkinin ang bunga kaysa suportahan ang mahaba at mapanganib na prosesong bumuo rito.
+  </p>
+
+  <h2>
+    Resulta ang Nakikita—Pero Proseso ang Nagbuo Nito
+  </h2>
+
+  <p>
+    May dahilan kung bakit madaling magbago ang pagtingin ng tao kapag alam na niya ang naging resulta.
+  </p>
+
+  <p>
+    Sa psychology, may tinatawag na <em>outcome bias</em>. Ito ang tendensiyang husgahan kung tama, mahusay, o matalino ang isang desisyon batay sa naging kinalabasan—kahit hindi naman natin alam ang lahat ng impormasyon, panganib, limitasyon, at pagkakataong umiiral noong ginagawa pa lamang iyon.
+  </p>
+
+  <p>
+    Ipinakita ng mga eksperimento nina Jonathan Baron at John Hershey na maaaring maapektuhan ng resulta ang paghusga ng tao sa kalidad ng isang desisyon at sa kakayahan ng gumawa nito. Isang mas malaki at preregistered replication nina Sriraj Aiyer at mga kasama ang muling nakakita ng parehong direksiyon ng outcome-bias effect.
+  </p>
+
+  <p>
+    Kaya noong wala pang napapatunayan, madaling sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Wala iyang patutunguhan.”<br>
+      “Sayang lang ang pera.”<br>
+      “Masyadong ambisyoso.”<br>
+      “Maghanap na lang siya ng normal na trabaho.”<br>
+      “Marami nang sumubok niyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag nagtagumpay, ang dating “ilusyon” ay biglang tinatawag na vision. Ang dating “pag-aaksaya” ay biglang tinatawag na sacrifice. Ang dating “matigas ang ulo” ay biglang tinatawag na determination.
+  </p>
+
+  <p>
+    Hindi nagbago ang nakaraang proseso. Nagbago lamang ang pagtingin ng mga taong nakakita na ng resultang maaari nilang hangaan—o pakinabangan.
+  </p>
+
+  <h2>
+    Bakit Biglang “Atin Siya”?
+  </h2>
+
+  <p>
+    May isa pang dokumentadong human behavior na tinatawag na <em>basking in reflected glory</em> o BIRGing.
+  </p>
+
+  <p>
+    Sa klasikong pag-aaral nina Robert Cialdini at mga kasama, mas madalas ipakita ng mga estudyante ang koneksiyon nila sa kanilang paaralan pagkatapos manalo ang football team. Mas madalas din nilang gamitin ang salitang “we” kapag inilalarawan ang panalo—kahit wala naman silang personal na ambag sa laro.
+  </p>
+
+  <p>
+    Ipinakita ng tatlong field experiments na maaaring ilantad ng isang tao ang koneksiyon niya sa isang matagumpay na indibidwal o grupo upang makibahagi sa positibong reputasyon nito, kahit hindi siya naging dahilan ng tagumpay.
+  </p>
+
+  <p>
+    Hindi direktang sinuri ng mga eksperimentong iyon ang mga pamilyang naniningil, institusyong humihingi ng credit, o bansang nakikisakay sa pangalan ng isang achiever.
+  </p>
+
+  <p>
+    Pero maihahambing sa parehong pattern ang mga pagkakataong:
+  </p>
+
+  <ul>
+    <li>Biglang ipinagmamalaki ng isang paaralan ang dating estudyanteng hindi naman nito sinuportahan nang kailangan niya ng oportunidad.</li>
+    <li>Biglang ikinakabit ng isang bayan o lalawigan ang pangalan nito sa isang professional, artist, researcher, entrepreneur, o achiever dahil doon siya ipinanganak.</li>
+    <li>Mabilis maglabas ng congratulatory poster ang isang organisasyon, ngunit hindi makita noong humihingi pa ng training, scholarship, kagamitan, exposure, o proteksiyon ang tao.</li>
+    <li>Ang kamag-anak na unang nangmaliit ay biglang gumagamit ng “kami” matapos dumating ang tagumpay.</li>
+    <li>At ang mga taong halos walang alam sa proseso ay biglang nagmumukhang die-hard fan, tagapagtanggol, at sukdulang makabayan dahil may panalong maikakabit sa kanilang sariling identity.</li>
+  </ul>
+
+  <p>
+    Hindi awtomatikong peke ang kanilang saya.
+  </p>
+
+  <p>
+    Pero hindi rin awtomatikong nagiging ambag ang kanilang saya.
+  </p>
+
+  <h2>
+    Hindi Masama ang National Pride
+  </h2>
+
+  <p>
+    Mahalagang linawin ito: Hindi masama ang maging proud sa isang Pilipinong nagtagumpay.
+  </p>
+
+  <p>
+    Ang tagumpay sa sports, science, arts, negosyo, edukasyon, teknolohiya, at iba pang larangan ay maaaring magbigay ng inspirasyon, collective joy, representasyon, at pakiramdam na posible ring umangat ang ibang Pilipino.
+  </p>
+
+  <p>
+    May research na nagpapakitang maaaring lumakas ang national identification kasabay ng major sporting events, lalo na sa mga manonood na mataas ang emotional involvement.
+  </p>
+
+  <p>
+    Pero hindi ito awtomatikong pare-pareho o permanenteng epekto. May pag-aaral ding kumukuwestiyon sa malawak na paniniwalang mas maraming medalya o sporting success ay awtomatikong lumilikha ng mas mataas na national pride. Maaaring ang dati nang sense of belonging sa bansa ang nagiging pinagmumulan ng sport-related pride, habang limitado o pansamantala lamang ang mas malawak na pagbabagong dulot ng panalo.
+  </p>
+
+  <p>
+    Hindi kailangang magbigay ng pera ang bawat mamamayan bago siya magkaroon ng karapatang makisaya.
+  </p>
+
+  <p>
+    Hindi rin kailangang personal na kakilala ng isang fan ang atleta o achiever bago siya humanga.
+  </p>
+
+  <p>
+    Ang problema ay nagsisimula kapag ang:
+  </p>
+
+  <ul>
+    <li>pakikiisa ay ginawang pakikihati sa credit;</li>
+    <li>pagiging proud ay ginawang pagmamay-ari;</li>
+    <li>pagkakapareho ng identity ay ginawang patunay ng ambag;</li>
+    <li>at ang tagumpay ng isang tao ay ginawang utang niya sa lahat ng nagkataong kadugo, kababayan, kaeskuwela, kaorganisasyon, o kapareho ng nasyonalidad.</li>
+  </ul>
+
+  <p>
+    May karapatan ang publiko na makisaya.
+  </p>
+
+  <p>
+    Wala itong awtomatikong karapatang baguhin ang kasaysayan ng proseso.
+  </p>
+
+  <h2>
+    Ang Pinagmulan ay Bahagi ng Kuwento—Hindi Resibo ng Ambag
+  </h2>
+
+  <p>
+    Tama na huwag kalimutan ang pinanggalingan.
+  </p>
+
+  <p>
+    Ang pamilya, komunidad, kultura, paaralan, at bansa ay maaaring humubog sa pagkatao, pananaw, disiplina, wika, at identidad ng isang tao. Pero ang pagiging bahagi ng pinagmulan ay hindi awtomatikong nangangahulugang naging bahagi rin sa pagbuo ng tagumpay.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang connection ay hindi kapareho ng contribution.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi porke kadugo ay tumulong na.
+  </p>
+
+  <p>
+    Hindi porke kababayan ay sumuporta na.
+  </p>
+
+  <p>
+    Hindi porke doon nag-aral ang tao ay ang institusyon na ang gumawa sa kanya.
+  </p>
+
+  <p>
+    Hindi porke dala niya ang watawat ay buong bansa na ang nagpondo sa kanyang paghahanda.
+  </p>
+
+  <p>
+    Ang credit ay dapat ibigay ayon sa aktuwal na ambag.
+  </p>
+
+  <p>
+    Maaaring pera ang ambag. Pero maaari rin itong oras, pag-aalaga, mentoring, coaching, emotional support, household sacrifice, oportunidad, kagamitan, koneksiyon, proteksiyon, o simpleng paniniwala noong wala pang ibang naniniwala.
+  </p>
+
+  <p>
+    May mga ambag na hindi nakikita sa camera at hindi nasusukat sa pera. Hindi rin makatarungang burahin ang sakripisyo ng mga magulang, kapatid, coach, mentor, kaibigan, sponsor, o institusyong totoong tumulong dahil lamang nais nating ipakitang “sarili lang niya ang gumawa ng lahat.”
+  </p>
+
+  <p>
+    Madalang mabuo ang tagumpay nang ganap na hiwalay sa ibang tao, sistema, pagkakataon, at suwerte. Pero hindi rin ibig sabihin na lahat ng konektado sa nagtagumpay ay may pantay na credit.
+  </p>
+
+  <blockquote>
+    <p>
+      Kilalanin ang lahat ng totoong tumulong—pero huwag imbentuhin ang ambag ng mga nakisakay lamang nang may resulta na.
+    </p>
+  </blockquote>
+
+            <h2>
+    Utang na Loob ay Hindi Blank Check
+  </h2>
+
+  <p>
+    Malalim sa kulturang Pilipino ang utang na loob, kapwa, pakikisama, at pagbabalik ng kabutihan.
+  </p>
+
+  <p>
+    Sa Sikolohiyang Pilipino, ang konsepto ng <em>kapwa</em> ay nakaugat sa pagkilala sa shared identity at pagkakaugnay ng sarili sa ibang tao. Ang utang na loob naman ay hindi lamang simpleng perang kailangang bayaran, kundi pagkilala at pagtugon sa kabutihang natanggap.
+  </p>
+
+  <p>
+    Magandang pagpapahalaga ang utang na loob kapag nakaugat sa tunay na kabutihang natanggap at sa makataong pagkilala sa sakripisyo ng ibang tao.
+  </p>
+
+  <p>
+    Pero nagiging mapang-abuso kapag ginagamit upang sabihing:
+  </p>
+
+  <ul>
+    <li>“Pamilya mo kami, kaya obligasyon mong buhayin kami.”</li>
+    <li>“Dito ka nagmula, kaya may bahagi kami sa kinita mo.”</li>
+    <li>“Pilipino ka, kaya kailangan mong ibigay sa bansa ang lahat.”</li>
+    <li>“Tinulungan ka namin noon,” kahit ang tinatawag na tulong ay ordinaryong responsibilidad lamang o matagal nang binayaran at nasuklian.</li>
+  </ul>
+
+  <p>
+    Ang tunay na utang na loob ay tugon sa aktuwal na kabutihang natanggap.
+  </p>
+
+  <p>
+    Hindi ito awtomatikong utang sa buong angkan.
+  </p>
+
+  <p>
+    Hindi ito habambuhay na kontrol sa desisyon ng isang tao.
+  </p>
+
+  <p>
+    Hindi ito karapatang angkinin ang kanyang kita, pangalan, paninindigan, oras, at buong hinaharap.
+  </p>
+
+  <p>
+    At lalong hindi ito utang sa mga taong wala noong kailangan niya ng suporta, ngunit unang dumating nang may mapapakinabangan na.
+  </p>
+
+  <h2>
+    May Suporta—Pero Hindi Dapat Puro Pagkatapos ng Panalo
+  </h2>
+
+  <p>
+    Hindi patas sabihing walang anumang suporta ang pamahalaan, pribadong sektor, paaralan, sponsors, o sports institutions.
+  </p>
+
+  <p>
+    May mga batas, programa, training assistance, allowances, scholarships, facilities, at organisasyong totoong tumutulong.
+  </p>
+
+  <p>
+    Sa sports, mandato ng Philippine Sports Commission ang pambansang sports development, pakikipag-ugnayan sa iba’t ibang sektor, pagbuo ng facilities, sports research, incentives, grassroots development, at iba pang programang kailangan upang mapalawak ang sports participation at excellence.
+  </p>
+
+  <p>
+    Inilalarawan din ng 2026 PSC Citizen’s Charter ang talent identification, athlete development, financial assistance, coaching, international competition, sports science, medical at nutrition services, equipment, facilities, at logistical support bilang bahagi ng mandato at mga serbisyo nito.
+  </p>
+
+  <p>
+    Itinatakda naman ng Republic Act No. 10699 na isang hiwalay na pondong katumbas ng hindi bababa sa 60% ng umiiral na National Sports Development Fund ang awtomatikong ilaan sa training at paghahanda ng mga national athlete na sakop ng batas.
+  </p>
+
+  <p>
+    Kaya ang tamang tanong ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “May suporta ba o wala?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas eksaktong tanong ay:
+  </p>
+
+  <ul>
+    <li>Sapat ba?</li>
+    <li>Napapanahon ba?</li>
+    <li>Pantay at transparent ba ang pamamahagi?</li>
+    <li>Nakararating ba ito sa mga hindi pa sikat ngunit may malinaw na potensiyal?</li>
+    <li>May tuloy-tuloy bang pipeline mula grassroots hanggang elite level?</li>
+    <li>O mas malaki, mas mabilis, at mas visible ang parangal kapag napatunayan na ang panalo kaysa sa suporta habang alanganin pa ang resulta?</li>
+  </ul>
+
+  <h2>
+    Sports Bilang Malinaw na Case Study
+  </h2>
+
+  <p>
+    Hindi limitado sa sports ang pattern na ito.
+  </p>
+
+  <p>
+    Maaari rin itong mangyari sa education, science, arts, professions, entrepreneurship, at iba pang larangan kung saan may mga taong matagal na nagbubuhat ng sariling proseso bago mapansin ng mga institusyon at publiko.
+  </p>
+
+  <p>
+    Pero pinakamadaling makita ang pattern na ito sa sports dahil madaling ihambing ang:
+  </p>
+
+  <ul>
+    <li>suporta bago ang laban;</li>
+    <li>resources habang nag-eensayo;</li>
+    <li>at parangal pagkatapos ng panalo.</li>
+  </ul>
+
+  <p>
+    Hindi ibig sabihin na direktang pinatutunayan ng sports cases ang bawat karanasan sa lahat ng sektor.
+  </p>
+
+  <blockquote>
+    <p>
+      Ginagamit ang sports bilang case study ng mas malawak na problemang panlipunan: Mas madaling kilalanin ang napatunayan nang resulta kaysa mamuhunan sa prosesong wala pang kasiguruhan.
+    </p>
+  </blockquote>
+
+            <h2>
+    Ang Kuwento ni Alex Eala—Bago ang Malakas na Palakpakan
+  </h2>
+
+  <p>
+    Ngayong napanalunan ni Alex Eala ang 2026 Mubadala DC Open, mas madaling makita kung bakit napakalakas ng national pride sa kanya.
+  </p>
+
+  <p>
+    Tinalo niya ang top seed na si Jessica Pegula, 4–6, 6–4, 6–0, sa rain-delayed final. Dahil dito, siya ang naging unang manlalaro mula sa Pilipinas na nanalo ng WTA Tour-level singles title—isang makasaysayang resultang nararapat lamang kilalanin at ipagdiwang.
+  </p>
+
+  <p>
+    Pero hindi dahil champion na siya ay sa resultang ito na dapat magsimula ang buong kuwento.
+  </p>
+
+  <p>
+    Noong 2020, matapos niyang maging unang Pilipinong umabot sa semifinal ng French Open girls’ tournament, nag-post ang Philippine Sports Commission na masaya itong naging bahagi ng kanyang journey at nagbanggit ng ₱3 milyong assistance para sa kanyang tournament travels.
+  </p>
+
+  <p>
+    Kinontra iyon ng kanyang pamilya. Sinabi nilang hindi pa nila natatanggap ang pondong binanggit at nahihirapan pa silang ma-reimburse ang ilang naunang travel expenses.
+  </p>
+
+  <p>
+    Naglabas pagkatapos ang PSC ng erratum. Nilinaw nitong may aprubadong board resolution, ngunit pinoproseso pa ang assistance at hinihintay pa ang mga kinakailangang dokumento.
+  </p>
+
+  <p>
+    Nilinaw din noon ng kanyang tiyuhin na naka-scholarship si Eala sa Rafa Nadal Academy at ang kanyang mga biyahe ay sinagot ng pamilya sa tulong ng private sponsors.
+  </p>
+
+  <p>
+    Hindi ito kuwento ng kawalan ng lahat ng resources o suporta.
+  </p>
+
+  <p>
+    May scholarship siya.
+  </p>
+
+  <p>
+    May pamilya, coaches, academy, team, at private sponsors na totoong tumulong.
+  </p>
+
+  <p>
+    Hindi rin pinatutunayan ng insidente noong 2020 na hindi kailanman tumanggap si Eala ng anumang public support sa lahat ng sumunod na yugto ng kanyang career.
+  </p>
+
+  <p>
+    Ang usapin ay kung sino ang aktuwal na nagbigay ng suporta, kailan ito naibigay, at kung kanino dapat mapunta ang credit.
+  </p>
+
+  <p>
+    Ang pagkapanalo niya sa Washington ay hindi retroaktibong nagbabago sa nangyari noong 2020.
+  </p>
+
+  <p>
+    Hindi nito ginagawang ambag ang tulong na hindi pa naibibigay noong inaangkin na.
+  </p>
+
+  <p>
+    Pero hindi rin dapat gamitin ang insidenteng iyon upang burahin ang anumang lehitimong tulong na natanggap niya sa ibang panahon.
+  </p>
+
+  <blockquote>
+    <p>
+      Kilalanin ang resultang siya ang lumaban upang makamit. Kilalanin ang lahat ng totoong tumulong sa bawat yugto. Pero huwag bigyan ng credit ang connection, identity, o claim na hindi tugma sa aktuwal na ambag.
+    </p>
+  </blockquote>
+
+  <p>
+    Mas lumaki ang kanyang tagumpay.
+  </p>
+
+  <p>
+    Mas lumakas ang palakpakan.
+  </p>
+
+  <p>
+    Pero hindi nagbago ang pamantayan ng katotohanan: Ang pagkapanalo ay hindi nagbibigay sa sinuman ng karapatang baguhin kung sino talaga ang nagpondo, nagsakripisyo, nagturo, sumuporta, at nanatili sa proseso.
+  </p>
+
+  <p>
+    Ang kuwento ni Eala ay isang malinaw na case study—hindi ang buong usapin.
+  </p>
+
+  <p>
+    Ang parehong agwat sa pagitan ng tahimik na proseso at maingay na pagkilala ay maaari ring mangyari sa professionals, researchers, artists, entrepreneurs, scholars, workers, at iba pang taong matagal munang lumaban bago naging visible ang resulta.
+  </p>
+
+  <h2>
+    Ang Parangal Pagkatapos ng Panalo
+  </h2>
+
+  <p>
+    Ganoon din ang malaking pambansang pagdiriwang matapos manalo si Carlos Yulo ng dalawang Olympic gold noong 2024.
+  </p>
+
+  <p>
+    Mahigit isang libong supporters ang sumalubong sa victory parade. Nakatanggap siya ng hindi bababa sa ₱20 milyong government cash incentives, fully furnished condominium, at iba pang private rewards at perks.
+  </p>
+
+  <p>
+    Deserve niya ang pagkilala at gantimpala para sa pambihirang resultang naihatid niya.
+  </p>
+
+  <p>
+    Walang mali sa pagdiriwang.
+  </p>
+
+  <p>
+    Pero ang post-victory rewards ay hindi maaaring ipalit sa maagang talent discovery, tuloy-tuloy na training, mahusay na coaching, sports science, equipment, medical care, international exposure, at seguridad habang wala pang medalya.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang bonus ay gantimpala sa resulta. Ang development system ang tumutulong upang magkaroon ng resulta.
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan ang pareho.
+  </p>
+
+  <p>
+    Dahil kung ang sistema ay magaling lamang magbigay ng reward sa iilang umabot sa tuktok, pero mahina sa paghanap at pag-alalay sa libo-libong may potensiyal pa lamang, marami pa ring talento ang mawawala bago man lamang makita ng publiko.
+  </p>
+
+  <h2>
+    Hindi Lahat ng Hindi Umangat ay Tamad
+  </h2>
+
+  <p>
+    Dapat ding iwasan ang isa pang maling akala:
+  </p>
+
+  <blockquote>
+    <p>
+      Na ang lahat ng nagtagumpay ay nagsikap, samantalang ang lahat ng naiwan ay umasa lamang sa “share your blessings.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pare-pareho ang starting line.
+  </p>
+
+  <p>
+    May batang may mahusay na paaralan, coach, kagamitan, pagkain, internet, transportasyon, at pamilyang kayang pondohan ang kanyang talento.
+  </p>
+
+  <p>
+    Mayroon namang kailangang mamili kung pamasahe, pagkain, tuition, kagamitan, o training fee ang uunahin.
+  </p>
+
+  <p>
+    Ayon sa World Bank report na gumamit ng income data hanggang 2019, 17% ng national income sa Pilipinas ang napupunta sa pinakamataas na 1% ng earners, habang 14% lamang ang pinaghahatian ng pinakamababang 50%.
+  </p>
+
+  <p>
+    Tinukoy din ng report ang unequal access sa edukasyon, trabaho, assets, at oportunidad, pati ang mababang mobility, bilang mga hadlang sa pag-angat at paggamit ng buong potensiyal ng tao.
+  </p>
+
+  <p>
+    Kaya hindi makatarungang tawaging tamad ang lahat ng nangangailangan ng tulong.
+  </p>
+
+  <p>
+    May mga taong masipag ngunit kulang sa pagkakataon.
+  </p>
+
+  <p>
+    May talentong hindi nadidiskubre dahil walang access.
+  </p>
+
+  <p>
+    May potensiyal na nauubos sa survival.
+  </p>
+
+  <p>
+    May pangarap na hindi nabigo dahil kulang sa sipag, kundi dahil walang sapat na puhunan, network, proteksiyon, o sistemang sumalo.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang dapat kondenahin ay hindi ang simpleng paghingi ng tulong. Ang dapat kondenahin ay ang entitlement na walang pagsisikap, manipulasyon, sapilitang paniningil, at pag-angkin sa bunga ng prosesong hindi naman sinuportahan.
+    </p>
+  </blockquote>
+
+            <h2>
+    “Share Your Blessings”—Pero Hindi Share Your Entitlement
+  </h2>
+
+  <p>
+    Tama ang magbahagi.
+  </p>
+
+  <p>
+    Tama ang tumulong sa pamilya, komunidad, scholars, athletes, entrepreneurs, artists, professionals, at mga taong nagsisikap ding makabuo ng sariling pagkakataon.
+  </p>
+
+  <p>
+    Pero ang generosity ay kabutihang kusang ibinibigay.
+  </p>
+
+  <p>
+    Hindi ito public property na maaaring hati-hatiin ng sinumang may koneksiyon sa taong nagtagumpay.
+  </p>
+
+  <p>
+    Hindi lahat ng tumatangging magbigay ay madamot.
+  </p>
+
+  <p>
+    Maaaring mayroon siyang sariling pamilya, responsibilidad, pangmatagalang plano, kalusugan, retirement, negosyo, training, o mga taong matagal nang umaasa sa kanya.
+  </p>
+
+  <p>
+    Maaari rin niyang piliing tumulong sa paraang hindi direktang pamimigay ng pera:
+  </p>
+
+  <ul>
+    <li>scholarship;</li>
+    <li>training opportunity;</li>
+    <li>trabaho;</li>
+    <li>capital na may malinaw na accountability;</li>
+    <li>mentoring;</li>
+    <li>equipment;</li>
+    <li>network;</li>
+    <li>o suportang nagbibigay sa tao ng kakayahang tumayo sa sariling paa.</li>
+  </ul>
+
+  <p>
+    Ngunit hindi rin tama ang sabihing ang tulong ay para lamang sa taong napatunayang masipag.
+  </p>
+
+  <p>
+    May mga batang hindi pa nabibigyan ng pagkakataong ipakita ang kakayahan.
+  </p>
+
+  <p>
+    May mga taong pansamantalang nanghina, nagkasakit, nawalan ng trabaho, o nasalanta.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang tamang hatol ay hindi: “Tulungan lamang ang malakas.” Kundi: Tumulong nang may malasakit, malinaw na hangganan, at pananagutan—nang hindi ginagawang obligasyon ang tagumpay ng ibang tao.
+    </p>
+  </blockquote>
+
+  <h2>
+    Hindi Lahat ng Wala sa Simula ay Kaaway
+  </h2>
+
+  <p>
+    Hindi rin lahat ng hindi nakatulong ay dapat kondenahin.
+  </p>
+
+  <p>
+    May mga kamag-anak at kaibigang walang kakayahang magbigay.
+  </p>
+
+  <p>
+    May ordinaryong mamamayang hindi naman alam na may atletang naghahanap ng sponsor.
+  </p>
+
+  <p>
+    May institusyong limitado rin ang budget at kailangang pumili batay sa malinaw na criteria.
+  </p>
+
+  <p>
+    At may fans na ngayon lamang nakilala ang isang tao dahil ngayon lamang siya nabigyan ng exposure.
+  </p>
+
+  <p>
+    Ang kawalan ng ambag ay hindi awtomatikong kasalanan.
+  </p>
+
+  <p>
+    Ang kinokondena ay ang:
+  </p>
+
+  <ul>
+    <li>pagpapanggap na may ambag;</li>
+    <li>pagbura sa mga totoong tumulong;</li>
+    <li>pag-angkin sa tagumpay dahil lamang sa identity;</li>
+    <li>paghingi ng kapalit na para bang may utang ang achiever;</li>
+    <li>at paggamit sa kanyang pangalan para sa sariling publicity, reputasyon, negosyo, o pulitika nang hindi tapat sa naging proseso.</li>
+  </ul>
+
+  <p>
+    Maaari kang walang naitulong at makisaya nang may pagpapakumbaba.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang hindi mo dapat gawin ay umastang naging dahilan ka ng tagumpay.
+    </p>
+  </blockquote>
+
+  <h2>
+    Ang Tunay na Patriotismo ay Nagsisimula Bago ang Podium
+  </h2>
+
+  <p>
+    Madaling maging makabayan kapag may medalya nang nakasabit sa leeg.
+  </p>
+
+  <p>
+    Madaling iwagayway ang watawat kapag may international award na.
+  </p>
+
+  <p>
+    Madaling sabihing “Pilipino iyan” kapag hinahangaan na ng mundo.
+  </p>
+
+  <p>
+    Pero ang tunay na patriotismo ay hindi lamang pag-angkin sa panalo ng Pilipino.
+  </p>
+
+  <p>
+    Ito ay pagbuo ng sistemang nagbibigay ng makatwirang pagkakataon bago pa maging sikat ang pangalan.
+  </p>
+
+  <ul>
+    <li>Maayos na paaralan.</li>
+    <li>Transparent na scholarships at grants.</li>
+    <li>Grassroots development.</li>
+    <li>Maayos na facilities at equipment.</li>
+    <li>Sports science at healthcare.</li>
+    <li>Suporta sa researchers, inventors, artists, entrepreneurs, professionals, at iba pang talentong hindi agad kumikita o nagbibigay ng trophy.</li>
+    <li>Proteksiyon laban sa exploitation at political appropriation.</li>
+    <li>At pagkilala sa proseso—hindi lamang sa resultang maaaring gawing publicity.</li>
+  </ul>
+
+  <p>
+    Dahil kung proud lamang tayo kapag panalo na, maaaring pride iyon.
+  </p>
+
+  <p>
+    Pero hindi pa iyon sapat na suporta.
+  </p>
+
+  <blockquote>
+    <p>
+      Kung palaging “atin siya” kapag kilala na, pero “problema niya iyan” noong kailangan pa niya ng tulong, hindi iyon buong patriotismo. Pakikisakay iyon sa tagumpay na ibang tao ang nagbayad ng presyo.
+    </p>
+  </blockquote>
+
+            <h2>
+    Ang Hatol
+  </h2>
+
+  <p>
+    Kilalanin ang pinagmulan.
+  </p>
+
+  <p>
+    Igalang ang kulturang humubog sa iyo.
+  </p>
+
+  <p>
+    Pasalamatan ang mga taong tunay na nagsakripisyo, naniwala, nagtanggol, gumastos, nagturo, nagbukas ng oportunidad, at nanatili noong wala pang katiyakang magtatagumpay ka.
+  </p>
+
+  <p>
+    Magbahagi kapag kaya.
+  </p>
+
+  <p>
+    Tumulong nang hindi nanliliit.
+  </p>
+
+  <p>
+    Pero huwag payagang baguhin ng sinuman ang kasaysayan ng proseso.
+  </p>
+
+  <p>
+    Ang dugo ay patunay ng relasyon—hindi awtomatikong patunay ng ambag.
+  </p>
+
+  <p>
+    Ang lugar ng kapanganakan ay bahagi ng identity—hindi titulo ng pagmamay-ari.
+  </p>
+
+  <p>
+    Ang congratulatory post ay pagkilala—hindi ebidensiyang tumulong ka.
+  </p>
+
+  <p>
+    Ang watawat ay simbolo ng bansang kinakatawan—hindi resibong nagpapatunay na lahat ng nagwawagayway nito ay nagpondo sa paghahanda.
+  </p>
+
+  <p>
+    At ang “proud kami sa iyo” ay maaaring tapat at maganda.
+  </p>
+
+  <p>
+    Pero hindi nito binubura kung sino ang nanatili, sino ang tumulong, sino ang nanghamak, at sino ang dumating lamang nang mayroon nang bunga.
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi mali ang makiisa sa tagumpay. Ang mali ay gawing ambag ang identity, gawing pagmamay-ari ang pride, at gawing utang ang tagumpay na hindi mo naman tinulungang buuin.
+    </p>
+  </blockquote>
+
+  <p>
+    Maraming gustong makibahagi sa karangalan.
+  </p>
+
+  <p>
+    Pero bago ang podium, award, pangalan, at palakpakan—sino ang tunay na nagtiwala, nagbayad, nagsakripisyo, at nanatili?
+  </p>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>Baron, J., at Hershey, J. C. — <em>Outcome Bias in Decision Evaluation</em>, <em>Journal of Personality and Social Psychology</em>, 1988.</li>
+
+            <li>Aiyer, S., Kam, H. C., Ng, K. Y., Young, N. A., Shi, J., at Feldman, G. — <em>Outcomes Affect Evaluations of Decision Quality: Replication and Extensions of Baron and Hershey’s Outcome Bias Experiment 1</em>, <em>International Review of Social Psychology</em>, 2023.</li>
+
+            <li>Cialdini, R. B., Borden, R. J., Thorne, A., Walker, M. R., Freeman, S., at Sloan, L. R. — <em>Basking in Reflected Glory: Three Football Field Studies</em>, <em>Journal of Personality and Social Psychology</em>, 1976.</li>
+
+            <li>Mutz, M., at Gerke, M. — <em>Major Sporting Events and National Identification: The Moderating Effect of Emotional Involvement and the Role of the Media</em>, 2018.</li>
+
+            <li>Van Hilvoorde, I., Elling, A., at Stokvis, R. — <em>How to Influence National Pride? The Olympic Medal Index as a Unifying Narrative</em>, 2010.</li>
+
+            <li>Pe-Pua, R., at Protacio-Marcelino, E. — <em>Sikolohiyang Pilipino: A Legacy of Virgilio G. Enriquez</em>, <em>Asian Journal of Social Psychology</em>, 2000.</li>
+
+            <li>World Bank — <em>Overcoming Poverty and Inequality in the Philippines: Past, Present, and Prospects for the Future</em>, 2022.</li>
+
+            <li>Republic Act No. 6847 — <em>Philippine Sports Commission Act</em>.</li>
+
+            <li>Philippine Sports Commission — <em>Citizen’s Charter CY 2026</em>.</li>
+
+            <li>Republic Act No. 10699 — <em>National Athletes and Coaches Benefits and Incentives Act</em>.</li>
+
+            <li>GMA News — <em>PSC erratum at paglilinaw ng pamilya tungkol sa support, scholarship, at travel funding ni Alex Eala</em>, 2020.</li>
+
+            <li>Women’s Tennis Association — <em>Eala’s Breakthrough Is Complete with Washington Title</em>, 2026.</li>
+
+            <li>Reuters — <em>Philippines’ Eala Wins First WTA Title, Fritz Claims Washington Crown</em>, 2026.</li>
+
+            <li>Reuters — <em>Philippines Cheers Gold Medallist Gymnast Yulo in Victory Parade</em>, 2024.</li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
