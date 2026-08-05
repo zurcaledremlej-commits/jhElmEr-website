@@ -1,1 +1,1662 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa pagkakaiba ng patriotismo at pagkiling sa pamantayan ng pananagutan, at kung bakit hindi dapat nagbabago ang hustisya batay sa paboritong kulay."
+>
+
+  <title>Patriotismo o Pagkiling? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    Patriotismo o Pagkiling?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+     <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-patriotism-corruption.png"
+      alt="Isang taong nakapiring ng punit at bitak na watawat ng Pilipinas habang nakasabit sa timbangan ng hustisya, napapalibutan ng magkaibang reaksiyon at simbolo ng dobleng pamantayan, upang ilarawan ang pagkakaiba ng tunay na patriotismo at pagkiling sa pananagutan."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+  Kapag ibang bansa ang kinagagalitan, may mga taong buong lahi ang idinadawit. Kapag korupsiyon ang pinag-uusapan, may mga taong kulay-politikal ang ginagawang batayan ng paghatol.
+</p>
+
+<p>
+  Sa una, ang kasalanan ng isang pamahalaan, institusyon, o ilang tao ay ipinapasan sa lahat ng may kaparehong mukha, pangalan, dugo, wika, o pinagmulan.
+</p>
+
+<p>
+  Sa ikalawa, maaaring magkapareho ang uri ng alegasyon o bigat ng ebidensiya—o magkatulad ang bigat at kalagayan ng napatunayang paglabag—pero nag-iiba ang tapang, pamantayan, at hinihinging pananagutan depende kung kakampi o kalaban ang sangkot.
+</p>
+
+<p>
+  Doon dapat itanong: Makabayan ba talaga—o ginagamit lamang ang bayan upang bigyan ng marangal na pangalan ang paghamak sa ibang lahi at pinagmulan? Laban ba talaga sa korupsiyon—o ginagamit lamang ang pananagutan bilang sandata laban sa kabilang kampo at panangga para sa sariling kulay?
+</p>
+
+<p>
+  Madaling magsalita ng “makabayan.” Madali ring magsabing “galit ako sa korupsiyon.”
+</p>
+
+<p>
+  Pero kapag ang una ay nauuwi sa paghamak sa lahi o pinagmulan, at ang ikalawa ay nauuwi sa pagtatanggol sa kakampi, hindi prinsipyo ang gumagalaw—pagkiling.
+</p>
+
+<p>
+  Maganda ang salitang ginagamit. Marumi lang ang pamantayang nakatago sa likod nito.
+</p>
+
+<p>
+  Magkaiba man ang anyo, iisa ang ugat: hindi lamang ang ginawa at ebidensiya ang ginagamit sa paghusga—isinisingit din ang grupong pinagmulan o kampong kinabibilangan ng tao.
+</p>
+
+<p>
+  Kaya bago tawaging patriotism ang galit at anti-corruption ang pamumulitika, kailangang linawin kung saan nagtatapos ang lehitimong pagpuna—at kung saan nagsisimula ang racism, kampihan, at selective accountability.
+</p>
+
+<h2>
+  Hindi Kailangang May Kamuhian Para Mahalin ang Bayan
+</h2>
+
+<p>
+  May mga taong akala nila, mas makabayan sila kapag mas galit sila sa isang lahi o sa mga taong inuugnay nila sa bansang kinaiinisan nila.
+</p>
+
+<p>
+  Parang kailangang may hamakin muna, may pagbuntunan muna, at may idamay muna para magmukhang matapang ang pagtatanggol sa bansa.
+</p>
+
+<p>
+  Pero hindi iyan pagmamahal sa bayan. Iyan ay galit na naghahanap ng pinakamadaling target.
+</p>
+
+<p>
+  Hindi mo kailangang kamuhian ang buong lahi upang kondenahin ang panghihimasok ng isang dayuhang pamahalaan, paglabag sa ating soberanya, pananakot, panlalamang, mapaminsalang polisiya, o anumang abusong may malinaw na batayan.
+</p>
+
+<p>
+  Maaaring tutulan nang buong tapang ang isang estado, opisyal, hukbo, kompanya, sindikato, polisiya, o partikular na gawa nang hindi hinahatulan ang lahat ng taong may kaparehong mukha, pangalan, dugo, wika, o pinagmulan.
+</p>
+
+<p>
+  Dahil hindi awtomatikong responsible ang ordinaryong tao sa desisyon ng gobyernong namumuno sa bansang kaniyang pinagmulan.
+</p>
+
+<p>
+  Kapag ang pananagutan ng isang estado o institusyon ay basta inilipat sa buong lahi, hindi na kilos ang sinusuri. Pagkatao at pinagmulan na ang hinahatulan.
+</p>
+
+<p>
+  Magkaiba ang lahi, etnisidad, at nasyonalidad. Pero iisa ang maling shortcut kapag ang pinagmulan ng tao ang ginawang ebidensiya ng kaniyang pagkakasala.
+</p>
+
+<p>
+  Depende sa mismong batayan at anyo, maaari itong maging racism, ethnic prejudice, xenophobia, o diskriminasyon batay sa national o ethnic origin. Sa international human-rights framework, sakop ng racial discrimination ang distinctions batay sa race, colour, descent, at national o ethnic origin.
+</p>
+
+<p>
+  Hindi kailangang pagtalunan muna kung aling eksaktong label ang gagamitin bago kilalanin ang pangunahing mali:
+</p>
+
+<blockquote>
+  <p>
+    Hindi kasalanan ang pinagmulan.<br>
+    At hindi sapat ang pinagmulan upang patunayang may kasalanan ang isang tao.
+  </p>
+</blockquote>
+
+<h2>
+  May Pagmamahal sa Bayan na Marunong Magtanong
+</h2>
+
+<p>
+  Matagal nang pinag-iiba sa political psychology ang blind patriotism at constructive patriotism.
+</p>
+
+<p>
+  Ang blind patriotism ay attachment sa bansa na may kasamang halos hindi mapanuring positibong pagtingin, matinding loyalty, at intolerance sa kritisismo.
+</p>
+
+<p>
+  Ang constructive patriotism ay pagmamahal sa bayan na kayang magtanong at pumuna sa kasalukuyang ginagawa ng sariling grupo o pamahalaan dahil nais nitong magkaroon ng positibong pagbabago.
+</p>
+
+<p>
+  Sa isa pang pag-aaral, ang blind patriotism—hindi constructive patriotism—ang negatibong naiugnay sa suporta sa immigration at multiculturalism. Ipinaliwanag sa sample ang ugnayang ito, sa bahagi, ng nararamdamang cultural threat. Correlational ang pag-aaral, kaya hindi nito pinatutunayang awtomatikong racist ang bawat taong may matinding pagmamahal sa bansa. Ipinakikita lamang nitong may anyo ng national attachment na mas madaling maiugnay sa pagtingin sa mga tagalabas bilang banta.
+</p>
+
+<p>
+  Ibig sabihin, hindi kailangang maging mahina ang pagmamahal sa bayan para maging maingat laban sa racism.
+</p>
+
+<p>
+  Kailangang maging malinaw lamang kung ano ang minamahal: Ang kapakanan ba ng bansa at mamamayan? O ang pakiramdam na kailangang may lahing mas mababa upang masabing mas mataas ang atin?
+</p>
+
+<p>
+  Ang tunay na makabayan ay hindi bulag na tagapagtanggol ng lahat ng ginagawa ng sariling pamahalaan.
+</p>
+
+<p>
+  Minsan, ang pinaka-makabayang gawin ay ang pigilan ang sariling gobyerno kapag ito mismo ang umaabuso, nagpapabaya, nagsisinungaling, o naglalagay sa bansa sa kapahamakan.
+</p>
+
+<p>
+  Hindi pagtataksil ang pagpuna sa mali. Mas malaking pagtataksil ang makita ang mali at manahimik dahil ayaw mong mapahiya ang kampong pinili mo.
+</p>
+
+          <h2>
+  Bakit Madaling Idamay ang Buong Grupo?
+</h2>
+
+<p>
+  May dokumentadong tendensiya ang tao na tingnan ang kaniyang social world bilang “tayo” at “sila.”
+</p>
+
+<p>
+  Mas nakikita natin ang pagkakaiba-iba ng mga taong kabilang sa sarili nating grupo. Pero kapag kabilang sa ibang grupo, mas madali silang tingnan na parang magkakapareho—pare-pareho ang ugali, intensiyon, at pananagutan.
+</p>
+
+<p>
+  Ito ang tinatawag na out-group homogeneity effect.
+</p>
+
+<p>
+  Ipinakita sa klasikong research at sa sumunod na review na maaaring makita ng tao ang kabilang grupo bilang mas magkakatulad kaysa sa sariling grupo. Hindi ito pare-parehong lumilitaw sa lahat ng uri ng grupo at sitwasyon, ngunit matibay ang dokumentasyon nito lalo na sa natural o totoong social groups.
+</p>
+
+<p>
+  Kapag sinamahan ito ng takot, galit, banta, at paulit-ulit na mensaheng “sila ang problema,” mas madaling gawing mukha ng buong panganib ang isang lahi, nasyonalidad, rehiyon, partido, o grupo.
+</p>
+
+<p>
+  Kaya kapag may ginawang mali ang isang taong kabilang sa grupong hindi natin gusto, madaling sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Ganiyan talaga silang lahat.”
+  </p>
+</blockquote>
+
+<p>
+  Pero kapag sariling grupo ang gumawa, biglang nagiging:
+</p>
+
+<blockquote>
+  <p>
+    “Huwag nating lahatin.”<br>
+    “Hindi pa kumpleto ang kuwento.”<br>
+    “Baka may paliwanag.”<br>
+    “May mabuti rin naman siyang nagawa.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi mali ang humingi ng konteksto at ebidensiya. Ang mali ay kapag sa kakampi lamang ibinibigay ang konteksto, samantalang sa kalaban ay sapat na ang apelyido, mukha, lahi, kulay, o paratang upang humatol.
+</p>
+
+<p>
+  Doon makikita kung katotohanan ba talaga ang hinahanap—o kumpirmasyon lamang sa dati nang gustong paniwalaan.
+</p>
+
+<h2>
+  Sa Korupsiyon, Kulay ang Nagiging Salaan
+</h2>
+
+<p>
+  Ganiyan din sa usapin ng korupsiyon.
+</p>
+
+<p>
+  Maraming malakas sumigaw laban sa katiwalian, pero ang tapang nila ay may pinipiling target.
+</p>
+
+<p>
+  Kapag kalaban ang sangkot, isang alegasyon pa lang ay sapat na para sa ilan upang humingi agad ng pagbibitiw.
+</p>
+
+<p>
+  Minsan, isinasabay na rito ang panawagang suspindihin, tanggalin sa tungkulin, o ipakulong ang tao—na para bang iisa lamang ang antas ng mga hakbang na ito at pare-pareho ang kailangang batayan.
+</p>
+
+<p>
+  Pero hindi magkakapareho ang mga iyon.
+</p>
+
+<p>
+  Ang panawagang magpaliwanag, umatras, o magbitiw ay maaaring isang political o ethical demand. Maaari itong ibatay sa pagkawala ng tiwala, command responsibility, conflict of interest, o sa paniniwalang hindi na kayang gampanan nang maayos ng opisyal ang kaniyang tungkulin.
+</p>
+
+<p>
+  Ang administrative investigation, preventive suspension, o disciplinary action ay may sariling proseso at pamantayan. Sa Philippine administrative law, ang preventive suspension ay itinuturing na preventive measure habang isinasagawa ang imbestigasyon—hindi pa ito parusa o deklarasyong guilty na ang taong sinuspinde.
+</p>
+
+<p>
+  Ang pagkakakulong naman ay criminal punishment. Hindi sapat ang social-media verdict o political demand; nangangailangan ito ng criminal prosecution, due process, at conviction batay sa kinakailangang antas ng patunay.
+</p>
+
+<p>
+  Puwedeng humingi ng political accountability bago magkaroon ng criminal conviction. Puwedeng magsagawa ng administrative investigation nang hindi pa ipinapalagay na criminally guilty ang opisyal.
+</p>
+
+<p>
+  Pero hindi dapat pagsama-samahin ang resignation, preventive action, administrative penalty, at pagkakakulong na parang pare-pareho lamang ang kanilang kahulugan at evidentiary threshold.
+</p>
+
+<p>
+  Kapag kakampi ang nadawit, kabaligtaran naman ang nangyayari. Biglang naghahanap ng technicality, diversion, conspiracy, at palusot.
+</p>
+
+<blockquote>
+  <p>
+    “Hindi pa convicted.”<br>
+    “Political persecution lang.”<br>
+    “Mas malala naman ang kabila.”<br>
+    “Marami rin naman siyang nagawa.”<br>
+    “Bakit siya lang?”
+  </p>
+</blockquote>
+
+<p>
+  Maaaring lehitimong itanong kung nasaan ang ebidensiya, kung nasusunod ang due process, at kung ginagamit ba ang kaso bilang political persecution.
+</p>
+
+<p>
+  Pero kapag ang mga prinsipyong ito ay ginagamit lamang upang ipagtanggol ang kakampi—habang ipinagkakait sa kalaban—hindi na iyon pagtatanggol sa due process. Selective protection na iyon.
+</p>
+
+<blockquote>
+  <p>
+    Ang due process na para lamang sa kakampi ay hindi due process.<br>
+    Ang accountability na para lamang sa kalaban ay hindi accountability.
+  </p>
+</blockquote>
+
+<h2>
+  Hindi Lang Ito Kakulangan sa Impormasyon
+</h2>
+
+<p>
+  May tinatawag na motivated reasoning.
+</p>
+
+<p>
+  Sa halip na puro accuracy ang gumabay sa pag-iisip, maaaring maimpluwensiyahan ang paraan ng tao sa pag-access, pagbuo, at pagsusuri ng paniniwala ng konklusyong nais niyang marating.
+</p>
+
+<p>
+  Hindi ibig sabihin nitong sinasadya niyang magsinungaling sa bawat pagkakataon.
+</p>
+
+<p>
+  Maaaring tunay siyang naniniwalang patas ang kaniyang paghusga kahit mas mabilis niyang tinatanggap ang impormasyong pabor sa sariling panig at mas mahigpit niyang sinusuri ang impormasyong laban dito.
+</p>
+
+<p>
+  Kapag naging bahagi na ng pagkakakilanlan ang politiko o partido, ang pagpuna rito ay maaaring maramdaman na personal na pag-atake.
+</p>
+
+<p>
+  Kaya kahit may bagong impormasyon, hindi ito awtomatikong tinatanggap. Maaari itong maliitin, baluktutin, o ituring na gawa-gawa—hindi dahil mahina ang ebidensiya, kundi dahil masakit itong tanggapin para sa sariling kampo.
+</p>
+
+<p>
+  Sa isang formal model ng democratic accountability, ipinakita nina Andrew Little, Keith Schnakenberg, at Ian Turner na maaaring magkaroon ng divergence at desensitization kapag motivated reasoners ang mga botante.
+</p>
+
+<p>
+  Ang desensitization dito ay hindi simpleng pagkasanay o pagiging manhid dahil paulit-ulit na nakakakita ng mali.
+</p>
+
+<p>
+  Tumutukoy ito sa paghina ng relasyon sa pagitan ng aktuwal na performance ng opisyal at ng paniniwala ng botante tungkol sa performance na iyon. Kapag hindi gaanong nagbabago ang paniniwala kahit nagbabago ang aktuwal na performance, humihina ang kakayahan ng halalan na magpatupad ng pananagutan.
+</p>
+
+<p>
+  Ito ang brutal na realidad: Maaaring galit ang tao sa korupsiyon bilang ideya, pero hindi siya laging handang tanggapin ang ebidensiya kapag sariling kandidato na ang nakataya.
+</p>
+
+          <h2>
+  Kahit May Impormasyon, Hindi Laging Sumusunod ang Pananagutan
+</h2>
+
+<p>
+  Sa isang meta-analysis ng mga eksperimento tungkol sa corruption information at pagboto, umabot sa humigit-kumulang 32 percentage points ang average na parusa sa corrupt candidates sa hypothetical survey experiments.
+</p>
+
+<p>
+  Pero sa pinagsamang field experiments—kung saan mas malapit sa aktuwal na electoral setting ang pagsusuri—humigit-kumulang zero percentage points ang pooled average effect.
+</p>
+
+<p>
+  Hindi nito pinatutunayang walang pakialam ang mga botante sa korupsiyon. Hindi rin nito ibig sabihing walang field experiment na nakakita ng epekto.
+</p>
+
+<p>
+  Mismong pag-aaral ang nagbabala na maaaring bahagi ng malaking pagitan ang pagkakaiba ng research designs—gaya ng pagiging hypothetical ng survey choices, social-desirability pressure, lakas ng treatment, at kung talagang natanggap o binasa ng mga botante ang impormasyong ibinigay sa field.
+</p>
+
+<p>
+  Ang mas maingat na hatol: Malaki ang maaaring agwat ng sinasabing gagawin ng tao kapag hypothetical lamang ang pagpili at ng aktuwal na nangyayari kapag tunay na kandidato, partido, emosyon, interes, at consequence na ang nakataya.
+</p>
+
+<p>
+  Sa totoong halalan, maaaring makipagkompetensiya sa integridad ang partisan loyalty, personal na pakinabang, takot sa kabilang kandidato, kakulangan ng mapagpipilian, at iba pang konsiderasyon.
+</p>
+
+<p>
+  Kaya hindi sapat ang pagsasabing:
+</p>
+
+<blockquote>
+  <p>
+    “Alam naman ng mga tao ang issue.”
+  </p>
+</blockquote>
+
+<p>
+  Ang mas mahalagang tanong: Mas matimbang ba sa kanila ang ebidensiya—o ang kulay?
+</p>
+
+<h2>
+  Hindi Pare-pareho ang Reaksiyon Kahit Pareho ang Impormasyon
+</h2>
+
+<p>
+  Sa isang field at survey experiment sa mayoral runoff election sa São Paulo, parehong idineklarang corrupt ng isang reputable interest group ang dalawang kandidato.
+</p>
+
+<p>
+  Ang pagbibigay ng impormasyon tungkol sa record ng challenger ay nagpababa ng turnout nang 1.9 percentage points at nagtaas ng boto para sa kaniyang kalaban nang 2.6 percentage points.
+</p>
+
+<p>
+  Pero ang katulad na pagbibigay ng impormasyon tungkol sa incumbent ay walang nakitang behavioral effect. Iniugnay ng survey component ang pagkakaiba sa hindi pare-parehong kahandaan ng kani-kanilang supporters na parusahan ang sariling kandidato.
+</p>
+
+<p>
+  Hindi nito pinatutunayang ganito ang bawat botante sa bawat bansa. Pero malinaw nitong ipinakikitang ang epekto ng corruption information ay maaaring magbago depende sa political attachment at sa kahandaan ng sariling supporters na tanggapin ang pananagutan.
+</p>
+
+<p>
+  Sa isang hiwalay na pag-aaral sa South Korean legislative elections, nakita rin ang asymmetric electoral punishment sa corruption convictions.
+</p>
+
+<p>
+  Ang Democratic Party candidates na may political-corruption convictions ay nawalan ng humigit-kumulang anim hanggang walong percentage points kumpara sa ibang kandidato ng parehong partido, samantalang walang malinaw na kaparehong parusa sa authoritarian legacy party candidates sa ilan sa mga election na sinuri.
+</p>
+
+<p>
+  Pero context-specific ang resulta.
+</p>
+
+<p>
+  Nakaugat ito sa political history at authoritarian legacies ng South Korea, at may statistical limitations ang ilang bahagi ng pagsusuri. Hindi ito maaaring basta ilipat sa lahat ng bansa, partido, o ideology.
+</p>
+
+<p>
+  Ang mahalagang aral lamang: Maaaring hindi pareho ang interpretasyon at electoral consequence ng corruption kahit magkatulad ang uri ng conviction kapag magkaiba ang partisan attachment at historical context.
+</p>
+
+<h2>
+  Kapag ang Serbisyo ay Ginawang Personal na Pautang
+</h2>
+
+<p>
+  Sa personalistic na politika, ang serbisyong dapat ay karapatan ng mamamayan at obligasyon ng pamahalaan ay maaaring ipakitang personal na kabutihan ng politiko.
+</p>
+
+<p>
+  Ang scholarship na mula sa pondo ng bayan ay nagiging “tulong ni Mayor.” Ang ayuda na mula sa buwis ay nagiging “regalo ni Congressman.” Ang ospital, kalsada, gamot, at public service ay nagiging personal na utang na inaasahang babayaran sa halalan.
+</p>
+
+<p>
+  Sa qualitative research ni Cristina Jayme Montiel tungkol sa Philippine political culture, ginamit ang narratives ng political influentials upang ilarawan kung paano maaaring pumasok ang utang na loob, pakikisama, hiya, personal connections, at loyalty sa political decision-making.
+</p>
+
+<p>
+  Mahalagang limitasyon: Hindi ito nationwide representative survey at hindi nito sinusukat kung ilang porsiyento ng mga Pilipino o politiko ang gumagawa ng bawat practice.
+</p>
+
+<p>
+  Ang ambag nito ay ang paglalarawan sa mga mekanismo, relasyon, pressure, at karanasang isinalaysay ng mga taong nasa loob o malapit sa political process—hindi ang pag-angkin na ganito ang bawat Pilipino o bawat pagkakataon.
+</p>
+
+<p>
+  Hindi ibig sabihin nitong masama ang utang na loob o pakikisama.
+</p>
+
+<p>
+  Mahahalagang bahagi ang mga ito ng personal na ugnayan at pagtutulungan. Pero nagiging mapanganib kapag dinala sa pampublikong tungkulin at ginawang dahilan upang ilagay ang katapatan sa tao nang mas mataas kaysa katapatan sa batas, institusyon, at bayan.
+</p>
+
+<p>
+  Ang opisyal ay hindi dapat may personal na utang sa taong nagpondo sa kaniyang kampanya na babayaran gamit ang kapangyarihan at pondo ng gobyerno. Ang botante ay hindi dapat piliting tumanaw ng personal na utang para sa serbisyong obligasyon naman ng pamahalaan at binayaran din ng buwis ng mamamayan. At ang corruption allegation ay hindi dapat husgahan batay sa kung sino ang “atin” at kung sino ang “kanila.”
+</p>
+
+<p>
+  Sa mas pangkalahatang local-governance framework ng World Bank, ang mataas na discretion na hindi sinasabayan ng epektibong accountability ay maaaring lumikha ng perverse incentives at magbukas ng puwang sa elite capture, patronage, at mapanganib na paggamit ng kapangyarihan. Global framework ito at hindi eksklusibong pag-aaral tungkol sa Pilipinas, kaya ginagamit ito rito bilang pangkalahatang governance principle—hindi bilang sukatan ng national prevalence sa bansa.
+</p>
+
+<blockquote>
+  <p>
+    Hindi political loyalty ang lunas sa corruption.<br>
+    Mas malakas na transparency, institutions, oversight, citizen vigilance, at pare-parehong pananagutan ang kailangan.
+  </p>
+</blockquote>
+
+          <h2>
+  Walang Kulay ay Hindi Ibig Sabihing Pantay ang Lahat ng Paratang
+</h2>
+
+<p>
+  May mahalagang linaw dito.
+</p>
+
+<p>
+  Ang pagsasabing hindi dapat may kulay-politikal ang paglaban sa korupsiyon ay hindi nangangahulugang kailangang pantay palagi ang dami ng batikos sa lahat ng partido.
+</p>
+
+<p>
+  Hindi kailangang maghanap ng kasalanan sa kabilang kampo para lamang magmukhang “balanced.” Hindi rin ibig sabihin na pare-parehong guilty ang lahat ng politiko.
+</p>
+
+<p>
+  Ang tunay na pagiging patas ay hindi artipisyal na both sides.
+</p>
+
+<p>
+  Ang tunay na pagiging patas ay:
+</p>
+
+<blockquote>
+  <p>
+    Parehong pamantayan sa pagtingin sa alegasyon.<br>
+    Parehong pamantayan sa pagsusuri sa ebidensiya.<br>
+    Parehong karapatan sa due process.<br>
+    Parehong demand sa transparency.<br>
+    Parehong pamantayan sa pagtukoy ng pananagutan.
+  </p>
+</blockquote>
+
+<p>
+  Pero ang aktuwal na antas ng pananagutan o parusa ay dapat pa ring nakabatay sa bigat ng napatunayang paglabag, papel ng bawat sangkot, intensiyon, lawak ng pinsala, paggamit ng kapangyarihan, ebidensiya, at iba pang kaugnay na pangyayari.
+</p>
+
+<p>
+  Ang pagiging patas ay hindi nangangahulugang pareho ang parusa kahit magkaiba ang partisipasyon at bigat ng ginawa. Ang ibig sabihin nito ay hindi binabago ang pamantayan dahil lamang nagbago ang pangalan, partido, o kulay.
+</p>
+
+<p>
+  Kapag mas malinaw at mas mabigat ang ebidensiya laban sa isang opisyal o partido, natural lamang na mas mabigat din ang pagsusuri roon.
+</p>
+
+<p>
+  Hindi dami ng batikos ang dapat ipantay. Pamantayan ang dapat maging pareho.
+</p>
+
+<p>
+  Maaari ring maging mahalagang bahagi ng isang imbestigasyon ang political affiliation kapag may sinusuring patronage network, coordinated action, appointments, funding relationship, command structure, o conflict of interest.
+</p>
+
+<p>
+  Pero hindi kulay lamang ang dapat maging patunay ng pagkakasala. At hindi rin dapat gawing panangga ang kulay laban sa pananagutan.
+</p>
+
+<p>
+  Maaaring relevant ang political affiliation sa pag-unawa sa koneksiyon ng mga sangkot. Hindi ito determinative proof na guilty ang bawat miyembro ng partido—at hindi rin ito automatic immunity para sa mga kakampi.
+</p>
+
+<h2>
+  Ang Pinakasimpleng Pagsubok sa Sariling Prinsipyo
+</h2>
+
+<p>
+  May isang tanong na kayang ilantad ang pagkiling:
+</p>
+
+<blockquote>
+  <p>
+    Kung papalitan ang pangalan, lahi, pinagmulan, partido, at kulay ng taong sangkot—pareho pa rin ba ang magiging pamantayan mo?
+  </p>
+</blockquote>
+
+<p>
+  Hindi ito kapalit ng ebidensiya, imbestigasyon, o due process. Pagsubok lamang ito kung nagbabago ang pamantayan mo kapag nagbabago ang identidad ng sangkot.
+</p>
+
+<p>
+  Sa usapin ng patriotism:
+</p>
+
+<blockquote>
+  <p>
+    Kilos, polisiya, institusyon, at ebidensiya ba ang pinupuna—o buong lahi at pinagmulan ang hinahatulan?
+  </p>
+</blockquote>
+
+<p>
+  Sa usapin ng korupsiyon:
+</p>
+
+<blockquote>
+  <p>
+    Pareho ba ang hinihingi mong dokumento, imbestigasyon, transparency, due process, at pananagutan kapag kakampi at kalaban ang sangkot?
+  </p>
+</blockquote>
+
+<p>
+  Kapag kalaban, gusto mo bang ikulong agad na para bang napatunayan na ang paratang—pero kapag kakampi, ayaw mong maimbestigahan kahit may dokumento at testimoniya?
+</p>
+
+<p>
+  Kapag banyaga ang sangkot, idinadamay mo ba ang buong lahi—pero kapag Pilipino ang gumawa, bigla mong naaalalang hindi dapat lahatin?
+</p>
+
+<p>
+  Kung nagbabago ang pamantayan mo kasabay ng pangalan, pinagmulan, at kulay, hindi katotohanan ang sinusunod mo. Kampihan.
+</p>
+
+<h2>
+  Magandang Salita, Maruming Laman
+</h2>
+
+<p>
+  Sa huwad na patriotism, ginagamit ang bayan upang gawing katanggap-tanggap ang racism, xenophobia, at paghamak batay sa pinagmulan. Sa huwad na anti-corruption, ginagamit ang katarungan upang gawing katanggap-tanggap ang partisanship at selective accountability.
+</p>
+
+<p>
+  Sa parehong kaso, maganda ang salita—pero marumi ang laman.
+</p>
+
+<p>
+  Ang tunay na makabayan ay kayang tumindig laban sa dayuhang pang-aabuso nang hindi ginagawang kaaway ang buong lahi o ordinaryong taong walang personal na pananagutan. Kaya rin niyang punahin ang sariling gobyerno dahil hindi lamang bandila ang kaniyang pinoprotektahan—kundi ang mga taong nasa ilalim nito.
+</p>
+
+<p>
+  Ang tunay na laban sa korupsiyon ay pinapanagot ang corrupt kahit kaibigan, kakampi, idolo, kamag-anak, o kalaban.
+</p>
+
+<p>
+  Hindi dahil pare-parehong masama ang lahat. Hindi rin dahil dapat pareho ang parusa anuman ang papel at bigat ng ginawa. Kundi dahil hindi dapat nagbabago ang pamantayan batay sa piniling kulay-politikal.
+</p>
+
+<p>
+  Kapag lahi o pinagmulan ang ginawa mong ebidensiya ng pagkakasala, hindi iyon tunay na patriotism.
+</p>
+
+<p>
+  Kapag kulay-politikal ang ginawa mong batayan kung sino ang pananagutin at sino ang poprotektahan, hindi iyon tunay na anti-corruption.
+</p>
+
+<p>
+  Pareho lamang iyong pagkiling na nagbihis ng marangal na salita.
+</p>
+
+<h2>
+  Ang Hatol
+</h2>
+
+<p>
+  Ang tunay na pagmamahal sa bayan ay hindi nangangailangan ng racism, at ang tunay na paglaban sa korupsiyon ay hindi dapat may kulay-politikal.
+</p>
+
+<p>
+  Kapag lahi o pinagmulan ang ginawang target at kulay-politikal ang ginawang batayan ng pananagutan, hindi bayan o katarungan ang ipinagtatanggol—pagkiling at pagpipili lang.
+</p>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+       <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Schatz, Robert T.; Staub, Ervin; at Lavine, Howard — <em>On the Varieties of National Attachment: Blind Versus Constructive Patriotism</em>, Political Psychology.
+    </li>
+
+    <li>
+      Spry, Christina; at Hornsey, Matthew J. — <em>The Influence of Blind and Constructive Patriotism on Attitudes Toward Multiculturalism and Immigration</em>, Australian Journal of Psychology.
+    </li>
+
+    <li>
+      Quattrone, George A.; at Jones, Edward E. — <em>The Perception of Variability Within In-Groups and Out-Groups: Implications for the Law of Small Numbers</em>, Journal of Personality and Social Psychology. DOI: 10.1037/0022-3514.38.1.141.
+    </li>
+
+    <li>
+      Ostrom, Thomas M.; at Sedikides, Constantine — <em>Out-Group Homogeneity Effects in Natural and Minimal Groups</em>, Psychological Bulletin. DOI: 10.1037/0033-2909.112.3.536.
+    </li>
+
+    <li>
+      Kunda, Ziva — <em>The Case for Motivated Reasoning</em>, Psychological Bulletin.
+    </li>
+
+    <li>
+      Little, Andrew T.; Schnakenberg, Keith E.; at Turner, Ian R. — <em>Motivated Reasoning and Democratic Accountability</em>, American Political Science Review.
+    </li>
+
+    <li>
+      Incerti, Trevor — <em>Corruption Information and Vote Share: A Meta-Analysis and Lessons for Experimental Design</em>, American Political Science Review.
+    </li>
+
+    <li>
+      de Figueiredo, Miguel F. P.; Hidalgo, F. Daniel; at Kasahara, Yuri — <em>When Do Voters Punish Corrupt Politicians? Experimental Evidence from a Field and Survey Experiment</em>, British Journal of Political Science.
+    </li>
+
+    <li>
+      Kim-Leffingwell, Sanghoon — <em>Authoritarian Legacies and Partisan Bias in Corruption Voting</em>, Journal of East Asian Studies.
+    </li>
+
+    <li>
+      Montiel, Cristina Jayme — <em>Philippine Political Culture and Governance</em>, sa <em>Philippine Political Culture: View from Inside the Halls of Power</em>, copy archived sa Office of the Ombudsman–UNDP portal.
+    </li>
+
+    <li>
+      World Bank — <em>Local Government Discretion and Accountability: A Local Governance Framework</em>.
+    </li>
+
+    <li>
+      Supreme Court E-Library — mga tuntunin at desisyon ukol sa preventive suspension bilang preventive measure at sa criminal conviction na nangangailangan ng proof beyond reasonable doubt.
+    </li>
+
+    <li>
+      International Convention on the Elimination of All Forms of Racial Discrimination — definition ng racial discrimination na sumasaklaw sa race, colour, descent, at national o ethnic origin.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
