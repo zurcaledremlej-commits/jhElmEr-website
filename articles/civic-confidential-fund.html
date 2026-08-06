@@ -1,1 +1,2194 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+    <meta
+    name="description"
+    content="Confidential fund ba o corruption fund? Kailan nagiging lehitimong operational secrecy ang confidentiality, at kailan ito nagiging takip sa pondong hindi maipaliwanag, mapatunayan, o mapanagutan?"
+  >
+
+  <title>Confidential Fund o Corruption Fund? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=2">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          Confidential Fund o Corruption Fund?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-confidential-fund.png"
+            alt="Simbolikong paglalarawan ng hangganan sa pagitan ng lehitimong confidential fund at corruption fund, gamit ang confidential records, audit documents, public funds, at pananagutan sa paggamit ng pera ng bayan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <div class="article-body">
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+  Kailan humihinto ang lihim sa pagprotekta sa operasyon—at nagsisimulang protektahan ang pondong hindi mapanagutan?
+</p>
+
+<p>
+  May mga gawain ng gobyerno na hindi maaaring ibunyag agad sa publiko.
+</p>
+
+<p>
+  Kapag inilabas ang pangalan ng informer, maaaring malagay sa panganib ang kanyang buhay. Kapag ipinakita ang target, lugar, oras, at paraan ng surveillance, maaaring makatakas ang minamanmanan o masira ang operasyon.
+</p>
+
+<p>
+  Kaya may lehitimong dahilan kung bakit may confidential fund.
+</p>
+
+<p>
+  Pero hindi dapat paghaluin ang dalawang bagay:<br>
+  Maaaring maging lihim ang sensitibong detalye ng operasyon.<br>
+  Hindi maaaring mawala ang ebidensiyang nagpapatunay na totoong may operasyon, totoong may pinaglaanan, at tama ang paggamit ng pera.
+</p>
+
+<p>
+  Hindi corruption fund ang confidential fund dahil lamang lihim ito.
+</p>
+
+<p>
+  Pero nagiging mekanismo ito ng posibleng katiwalian kapag ang pagiging “confidential” ay hindi na ginagamit upang protektahan ang lehitimong operasyon—kundi upang protektahan ang pondong hindi maipaliwanag, mapatunayan, o mapanagutan.
+</p>
+
+<p>
+  Doon dapat nakasentro ang usapan.
+</p>
+
+<p>
+  Hindi lamang:
+</p>
+
+<blockquote>
+  <p>
+    “May legal bang confidential fund?”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<p>
+  May totoong confidential operation ba?<br>
+  May malinaw ba itong kaugnayan sa mandato ng opisina?<br>
+  Totoo ba ang mga pinaglaanan, dokumento, at tumanggap?<br>
+  At kaya ba itong patunayan sa awtorisadong auditor kahit hindi inilalantad sa publiko ang sensitibong detalye?
+</p>
+
+<h2>
+  Ang Lihim ay May Lehitimong Gamit
+</h2>
+
+<p>
+  Magkaiba ang confidential fund at intelligence fund.
+</p>
+
+<p>
+  Ang confidential expenses ay para sa surveillance activities ng civilian government agencies na sumusuporta sa mandato o operasyon ng ahensiya.
+</p>
+
+<p>
+  Ang intelligence expenses naman ay para sa intelligence information-gathering ng uniformed at military personnel at intelligence practitioners na may direktang epekto sa national security.
+</p>
+
+<p>
+  Ang kontrobersiya sa Office of the Vice President ay tungkol sa confidential fund, hindi intelligence fund.
+</p>
+
+<p>
+  Ibig sabihin, hindi lamang traditional security agency ang maaaring mabigyan ng confidential fund.
+</p>
+
+<p>
+  Pero wala ring automatic na karapatan ang bawat civilian government office na magkaroon nito.
+</p>
+
+<p>
+  Walang nakatakdang listahan na nagsasabing ang mga opisina lamang na ito ang maaaring bigyan. Ang dapat tingnan ay kung:<br>
+  may wastong appropriation o release authority;<br>
+  may partikular na confidential o surveillance purpose;<br>
+  direkta itong konektado sa mandato o operasyon ng ahensiya;<br>
+  at sumusunod ito sa reporting, accounting, at audit rules.
+</p>
+
+<p>
+  Hindi sapat na magdeklara lamang ang isang opisina na kailangan nito ng “seguridad.”
+</p>
+
+<p>
+  Lahat ng tanggapan ng gobyerno ay nangangailangan ng seguridad.
+</p>
+
+<p>
+  May security concern ang paaralan, ospital, social welfare office, agrikultura, turismo, at iba pang ahensiya. Pero kung sapat na ang generic na salitang “seguridad” upang bigyang-katwiran ang lihim na paggastos, halos anumang regular na programa ay maaaring ikabit sa confidential fund.
+</p>
+
+<p>
+  Kaya kailangang malinaw:<br>
+  Ano ang partikular na surveillance o confidential activity?<br>
+  Ano ang panganib na kailangang tugunan?<br>
+  Paano ito direktang konektado sa mandato ng opisina?<br>
+  At bakit hindi sapat ang regular na security service, police coordination, procurement, o ordinaryong program expense?
+</p>
+
+<p>
+  Hindi kailangang isapubliko ang target, source, at taktika.
+</p>
+
+<p>
+  Pero hindi maaaring puro malalawak na salita tulad ng “safe implementation,” “confidence-building,” o “peace and order” nang walang mas tiyak na planong maaaring suriin ng awtorisadong auditor.
+</p>
+
+<p>
+  Habang hindi malinaw o hindi likas sa pangunahing mandato ng opisina ang sinasabing surveillance o confidential activity, mas mabigat ang obligasyon nitong patunayang direkta itong kailangan sa operasyon at hindi lamang ordinaryong gastusing nilagyan ng label na “security.”
+</p>
+
+<p>
+  Hindi ito nangangahulugang law-enforcement o national-security agency lamang ang maaaring magkaroon ng CF.
+</p>
+
+<p>
+  Ang tunay na tanong ay kung may lehitimong mandate-linked confidential activity at kung bakit kailangan itong pondohan sa lihim na paraan.
+</p>
+
+          <h2>
+  Confidential sa Publiko—Hindi sa Audit
+</h2>
+
+<p>
+  Ito ang pinakapundasyon ng usapin:
+</p>
+
+<p>
+  Ang confidential fund ay hindi exempted sa audit.
+</p>
+
+<p>
+  Para sa FY 2022, malinaw sa General Provisions ng GAA na ang confidential funds ay para sa surveillance activities ng civilian agencies na sumusuporta sa kanilang mandato o operasyon.
+</p>
+
+<p>
+  Ang mga gumagamit nito ay kailangan ding magsumite ng quarterly accomplishment reports sa Pangulo at sa dalawang kapulungan ng Kongreso. Ang paggamit ng pondo ay sakop ng Joint Circular No. 2015-01 at ng regular na accounting at auditing rules.
+</p>
+
+<p>
+  Para naman sa FY 2023 transactions, ang FY 2023 GAA ang direktang governing budget law.
+</p>
+
+<p>
+  Nakasaad dito na ang paggastos na lumalabag sa umiiral na batas at rules ay maaaring ideklarang void. Ang mga opisyal o empleyadong nag-awtorisa, pumayag, o nagpabaya na nagresulta sa unlawful expenditure ay maaaring managot nang personal sa gobyerno para sa buong halagang ginastos at maharap sa disciplinary action.
+</p>
+
+<p>
+  Maaaring magkaroon ng hiwalay na civil o criminal liability, pero kailangan pa ring patunayan ang mga requirement ng naaangkop na batas sa hiwalay at wastong proseso. Hindi iyon awtomatikong nagmumula sa audit finding lamang.
+</p>
+
+<p>
+  Mahalaga ang pagkakahiwalay na ito.
+</p>
+
+<p>
+  Hindi dapat gamitin ang mas bagong GAA na parang iyon ang batas na retroactively namamahala sa mas lumang transaksiyon.
+</p>
+
+<p>
+  Ang 2022 spending ay kailangang sukatin sa FY 2022 rules at Joint Circular No. 2015-01.<br>
+  Ang 2023 spending ay kailangang sukatin sa FY 2023 rules at sa parehong Joint Circular.
+</p>
+
+<p>
+  Kaya mali ang depensang:
+</p>
+
+<blockquote>
+  <p>
+    “Hindi puwedeng magpakita ng patunay dahil confidential.”
+  </p>
+</blockquote>
+
+<p>
+  Maaaring hindi ito ipakita sa ordinaryong mamamayan.
+</p>
+
+<p>
+  Maaaring hindi ilabas sa social media o press conference ang pangalan ng informer, safe house, target, at paraan ng operasyon.
+</p>
+
+<p>
+  Pero kailangang may secure na paraan upang mapatunayan sa COA at iba pang awtorisadong institusyon na:<br>
+  may totoong operasyon;<br>
+  may legal at aprubadong layunin;<br>
+  may totoong transaksiyon;<br>
+  may totoong tumanggap;<br>
+  at ang inilabas na pera ay ginamit sa eksaktong layuning pinahintulutan.
+</p>
+
+<p>
+  Ang identity ay maaaring protektahan. Ang existence ay kailangang mapatunayan.<br>
+  Ang paraan ay maaaring lihim. Ang paggastos ay kailangang ma-audit.
+</p>
+
+<p>
+  Hindi eksaktong sipi sa batas ang mga linyang iyan.
+</p>
+
+<p>
+  Buod iyan ng simpleng logic ng audit:
+</p>
+
+<p>
+  Kung hindi maaaring malaman ng publiko ang sensitibong detalye, kailangang may independent at awtorisadong institusyong makapagpapatunay na hindi imbento ang operasyon at hindi gawa-gawa ang pinaglaanan.
+</p>
+
+<p>
+  Kapag maging ang awtorisadong auditor ay walang paraan upang malaman kung totoong naganap ang transaksiyon, hindi na iyon simpleng operational secrecy.
+</p>
+
+<p>
+  Pag-aalis na iyon ng independent verification.
+</p>
+
+<h2>
+  Ang “Corruption Fund” ay Hatol—Hindi Accounting Label
+</h2>
+
+<p>
+  Walang opisyal na budget line na tinatawag na corruption fund.
+</p>
+
+<p>
+  Wala ring criminal offense na ang legal na pangalan ay “paggamit ng corruption fund.”
+</p>
+
+<p>
+  Isa itong civic at moral na paglalarawan sa pondong maaaring legal ang pangalan sa budget, pero ginagamit upang itago, ilihis, o ipamahagi ang public money nang walang totoong public purpose at pananagutan.
+</p>
+
+<p>
+  Sa batas, kailangang tukuyin at patunayan ang partikular na paglabag—gaya ng malversation, graft, falsification, o ibang naaangkop na offense—kasama ang lahat ng legal elements nito at ang partisipasyon ng bawat taong inaakusahan.
+</p>
+
+<p>
+  Kaya hindi dapat tumalon mula sa tanong tungo agad sa hatol.
+</p>
+
+<p>
+  May magkakaibang antas ng ebidensiya.
+</p>
+
+<h3>
+  Red Flag
+</h3>
+
+<p>
+  May malabong mandato, napakabilis na paggastos, hindi pangkaraniwang halaga, magkakatulad na dokumento, o hindi ma-verify na pangalan.
+</p>
+
+<p>
+  Dahilan ito upang magtanong at mag-imbestiga.
+</p>
+
+<p>
+  Hindi pa ito awtomatikong patunay ng pagnanakaw.
+</p>
+
+<h3>
+  Audit Deficiency o Observation
+</h3>
+
+<p>
+  May dokumentong kulang, hindi malinaw, hindi tugma, o nangangailangan ng karagdagang paliwanag.
+</p>
+
+<p>
+  Maaari pa itong sagutin o itama kung may tunay at sapat na supporting evidence.
+</p>
+
+<h3>
+  Notice of Disallowance
+</h3>
+
+<p>
+  May paggastos na tinanggihan ng COA nang buo o bahagi dahil hindi ito pumasa sa audit rules, documentary requirements, o pinahihintulutang layunin.
+</p>
+
+<p>
+  Maaari itong humantong sa pagbabalik ng pera at pananagutan ng mga taong sangkot, depende sa finality ng ruling, kanilang aktuwal na partisipasyon, at iba pang legal rules.
+</p>
+
+<p>
+  Pero ang Notice of Disallowance ay audit action.
+</p>
+
+<p>
+  Hindi pa ito awtomatikong conviction sa isang criminal case o impeachment trial.
+</p>
+
+<h3>
+  Administrative, Civil, Criminal, o Impeachment Liability
+</h3>
+
+<p>
+  Kailangan dito ang hiwalay na proseso, ebidensiya, pagkakataong sumagot, at desisyon ng institusyong may kapangyarihang humatol.
+</p>
+
+<h3>
+  Napatunayang Corruption
+</h3>
+
+<p>
+  Dito kailangang mapatunayan na ang public fund ay sadyang inilayo sa legal na public purpose; na ang operasyon, recipient, transaksiyon, o dokumento ay peke; o na ginamit ang pera para sa personal, pampulitika, o ibang ilegal na pakinabang—at ginamit ang confidentiality upang itago iyon.
+</p>
+
+<p>
+  Kaya hindi sapat na sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “May CF, kaya ninakaw.”
+  </p>
+</blockquote>
+
+<p>
+  Pero hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “May appropriation at liquidation report, kaya malinis.”
+  </p>
+</blockquote>
+
+<p>
+  Ang budget approval ay pahintulot na gumastos.
+</p>
+
+<p>
+  Hindi ito certificate of innocence para sa bawat aktuwal na transaksiyon.
+</p>
+
+<p>
+  Ang liquidation report ay pagsusumite ng dokumento.
+</p>
+
+<p>
+  Hindi ito awtomatikong patunay na totoong nangyari ang nakasulat.
+</p>
+
+<p>
+  At ang resibo ay hindi magic eraser na awtomatikong naglilinis sa anumang inilagay sa papel.
+</p>
+
+          <h2>
+  Kailan Tumatawid ang CF Patungo sa Corruption Fund?
+</h2>
+
+<h3>
+  Kapag Walang Malinaw na Kaugnayan sa Mandato
+</h3>
+
+<p>
+  Kapag hindi malinaw o hindi likas sa pangunahing trabaho ng opisina ang sinasabing confidential activity, mas mabigat ang kailangan nitong paliwanag.
+</p>
+
+<p>
+  Hindi sapat na sabihin na mataas ang opisyal, maraming programa, o may mga banta.
+</p>
+
+<p>
+  Kailangang maipakita kung bakit kailangan mismo ng opisina ang confidential operation, paano ito konektado sa mandato, at bakit hindi sapat ang regular at mas transparent na paraan.
+</p>
+
+<p>
+  Maaari ring itanong kung bakit hindi kayang tugunan ng ibang government office na may umiiral nang security, investigation, o intelligence capability ang sinasabing pangangailangan.
+</p>
+
+<p>
+  Pero necessity at policy test ito—hindi legal na panuntunang law-enforcement o national-security agency lamang ang maaaring magkaroon ng CF.
+</p>
+
+<p>
+  Kung ang ordinaryong programa ay nilagyan lamang ng salitang “security” upang mailipat sa mas lihim na paraan ng paggastos, nabubura ang hangganan sa pagitan ng regular expense at confidential expense.
+</p>
+
+<h3>
+  Kapag May Perang Inilabas Pero Walang Mapatunayan na Operasyon
+</h3>
+
+<p>
+  Hindi kailangang makita ng publiko ang mismong confidential operation. Pero kailangang may secure operational trail na makapagpapatunay sa awtorisadong auditor na totoong nangyari ito.
+</p>
+
+<p>
+  Dapat may planong naaprubahan bago ang paggastos.<br>
+  May petsa at pangkalahatang saklaw ng operasyon.<br>
+  May accountable officer.<br>
+  May legal na objective.<br>
+  May accomplishment na konektado sa halagang inilabas.<br>
+  At may record na maaaring tingnan ng auditor na may awtorisasyon.
+</p>
+
+<p>
+  Hindi sapat na pagkatapos maubos ang pera ay saka lamang bubuo ng malawak na kuwentong hindi na maaaring ma-check.
+</p>
+
+<p>
+  Hindi kailangang malaman ng publiko ang sikreto. Pero kailangang mapatunayan na may totoong sekretong pinondohan.
+</p>
+
+<h3>
+  Kapag ang Recipient ay Hindi Lamang Confidential—Kundi Hindi Ma-verify
+</h3>
+
+<p>
+  May lehitimong dahilan upang hindi isapubliko ang pangalan ng informer. Ngunit magkaiba ang pagprotekta sa kanyang identity at ang kawalan ng secure record na makapagpapatunay sa awtorisadong auditor na totoong umiiral ang recipient, may ibinigay na impormasyon o serbisyo, at natanggap niya ang halagang nakatala.
+</p>
+
+<p>
+  Pero magkaiba ang "may totoong taong kailangang protektahan ang identity" at "may pangalang nakasulat pero walang secure record na makapagpapatunay na umiiral ang taong iyon".
+</p>
+
+<p>
+  Maaaring lihim ang pangalan. Hindi maaaring hindi mapatunayan ang tao at transaksiyon.
+</p>
+
+<p>
+  Sa isang matibay na secure verification system, dapat may awtorisadong paraan upang maiugnay ang code name sa tunay na recipient, serbisyong ibinigay, halagang natanggap, at operational result—nang hindi inilalantad sa publiko ang kanyang identity.
+</p>
+
+<p>
+  Accountability standard ito, hindi eksaktong mekanismong nakasulat nang salita-sa-salita sa GAA.
+</p>
+
+<p>
+  Ang mahalaga ay hindi mawala ang kakayahan ng awtorisadong auditor na mapatunayan ang existence at katotohanan ng transaksiyon.
+</p>
+
+<p>
+  Kung walang independent verification, maaaring maging pinakamadaling pagtataguan ang “confidential recipient” ng pangalang ginawa lamang para tumanggap sa papel.
+</p>
+
+<h3>
+  Kapag Maraming Dokumento Pero Walang Mapatunayan sa Likod ng Papel
+</h3>
+
+<p>
+  Hindi nasusukat ang maayos na liquidation sa kapal ng folder.
+</p>
+
+<p>
+  Maaaring magkaroon ng libu-libong acknowledgment receipts at documents evidencing payment. Pero kung hindi ma-verify ang recipients, magkakatulad ang pirma, hindi tugma ang petsa at operation, o generic at paulit-ulit ang paliwanag, hindi sapat ang dami ng papel.
+</p>
+
+<p>
+  Ang tunay na tanong ay:
+</p>
+
+<blockquote>
+  <p>
+    May totoong pangyayaring pinatutunayan ba ang dokumento?
+  </p>
+</blockquote>
+
+<p>
+  Kapag ang papel ay ginawa upang bigyan ng anyo ang transaksiyong hindi naman nangyari, hindi iyon documentation.
+</p>
+
+<p>
+  Pagtatago iyon na nakasuot bilang compliance.
+</p>
+
+<h3>
+  Kapag ang Bilis at Laki ng Paggastos ay Hindi Tugma sa Paliwanag
+</h3>
+
+<p>
+  Hindi awtomatikong corruption ang mabilis na paggastos.
+</p>
+
+<p>
+  May mga emergency at time-sensitive operation.
+</p>
+
+<p>
+  Pero habang mas malaki ang pera at mas maikli ang panahon, mas mabigat ang kailangang patunay.
+</p>
+
+<p>
+  Ilang operasyon ang ginawa?<br>
+  Saan nagmula ang breakdown?<br>
+  Paano ipinamahagi ang halaga?<br>
+  Ano ang naging resulta?<br>
+  Sino ang humawak at nagpatunay ng bawat transaksiyon?
+</p>
+
+<p>
+  Ang salitang “confidential” ay paliwanag kung bakit hindi maaaring ilabas sa publiko ang sensitibong detalye.
+</p>
+
+<p>
+  Hindi ito paliwanag kung bakit maaaring mawala ang planning, internal control, documentation, at audit verification.
+</p>
+
+<h3>
+  Kapag ang Audit ay Itinuturing na Kalaban
+</h3>
+
+<p>
+  Ang lehitimong confidential operation ay dapat kayang pagsabayin ang dalawang bagay:
+</p>
+
+<p>
+  protektado ang sensitibong impormasyon;<br>
+  napatutunayan ang paggamit ng pera.
+</p>
+
+          <p>
+  Kapag kusang nagbibigay ng secure records ang opisina sa awtorisadong auditor, sinasagot ang discrepancies, at itinatama ang pagkukulang, ipinakikita nitong ginagamit ang secrecy upang protektahan ang operasyon.
+</p>
+
+<p>
+  Pero kapag ang bawat tanong ay tinatawag na harassment, ang bawat audit finding ay ibinabaling agad sa politika, at ang bawat hinihinging patunay ay tinatanggihan dahil “confidential,” kailangang itanong:
+</p>
+
+<blockquote>
+  <p>
+    Ang operasyon ba ang pinoprotektahan—o ang kawalan ng mapatutunayang operasyon?
+  </p>
+</blockquote>
+
+<h3>
+  Kapag Napalitan ng Personal o Pampulitikang Pakinabang ang Public Purpose
+</h3>
+
+<p>
+  Kahit may totoong taong tumanggap at may totoong aktibidad na isinagawa, maaari pa ring maging corrupt ang paggastos kung napatunayang ang layunin ay hindi ang mandato ng opisina kundi patronage, reward sa loyalty, political machinery, pananakot, personal na proteksiyon, o pakinabang ng opisyal at kanyang grupo.
+</p>
+
+<p>
+  Hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Totoong ginastos ang pera.”
+  </p>
+</blockquote>
+
+<p>
+  Kailangan ding sagutin:
+</p>
+
+<blockquote>
+  <p>
+    “Ginastos para saan—at kaninong interes ang tunay na pinagsilbihan?”
+  </p>
+</blockquote>
+
+<h2>
+  Bakit Mas Dapat Mahigpit ang Control Kapag Mas Lihim ang Pondo?
+</h2>
+
+<p>
+  Sa regular na paggastos, karaniwang mas marami ang maaaring sumuri.
+</p>
+
+<p>
+  May procurement, accounting, delivery, inspection, at payment trail—public bidding man o ibang paraang pinahihintulutan ng batas.
+</p>
+
+<p>
+  Sa confidential operation, mas kaunti ang may access.
+</p>
+
+<p>
+  Mas limitado ang public disclosure.<br>
+  Mas mahirap para sa ordinaryong mamamayan na alamin kung totoong may transaksiyon.<br>
+  At mas madaling umasa sa salita ng iilang taong may kontrol sa pera at dokumento.
+</p>
+
+<p>
+  Kaya habang tumataas ang secrecy, hindi dapat bumababa ang accountability.
+</p>
+
+<p>
+  Dapat mas malinaw ang mandato.<br>
+  Mas tiyak ang aprubadong plano.<br>
+  Mas mahigpit ang custody ng cash at records.<br>
+  Mas independent ang verification.<br>
+  At mas mabilis ang aksiyon kapag may discrepancy.
+</p>
+
+<p>
+  Ayon sa OECD, ginagamit ang internal control, risk management, at independent audit upang mabawasan ang vulnerability ng public institutions sa fraud, corruption, waste, at abuse.
+</p>
+
+<p>
+  Hindi sapat na may rules lamang; kailangang gumagana ang controls bago, habang, at pagkatapos gastusin ang public money.
+</p>
+
+<p>
+  Ipinakikita rin ng World Bank at PEFA framework na mahalaga ang malinaw na authorization, reporting, transparency, at audit sa maayos na pamamahala ng public resources.
+</p>
+
+<p>
+  Hindi ibig sabihin nitong awtomatikong nawawala ang katiwalian kapag maayos ang accounting system.
+</p>
+
+<p>
+  Ang ibig sabihin ay mas mahirap itago ang diversion kapag malinaw kung sino ang nag-awtorisa, saan dapat mapunta ang pera, ano ang naiulat, at sino ang independent na nagsuri.
+</p>
+
+<p>
+  Sa isang randomized municipal-audit study sa Brazil, nakita nina Eric Avis, Claudio Ferraz, at Frederico Finan na ang mga munisipalidad na na-audit na noon ay nagkaroon ng humigit-kumulang 8% na mas mababang corruption sa mga sumunod na panahon, habang tumaas nang 20% ang posibilidad ng kasunod na legal action.
+</p>
+
+<p>
+  Hindi ito pag-aaral sa Pilipinas, sa OVP, o sa confidential funds.
+</p>
+
+<p>
+  Hindi maaaring ilipat nang direkta sa atin ang eksaktong porsiyento.
+</p>
+
+<p>
+  Pero malinaw ang general institutional lesson:
+</p>
+
+<blockquote>
+  <p>
+    Mas nakapipigil ang audit kapag totoo ang posibilidad na matuklasan at mapanagutan ang abuso—hindi kapag ritual lamang ang pagsusumite ng papel.
+  </p>
+</blockquote>
+
+<p>
+  May mahalagang paalala rin mula sa isang 1995 study sa mga empleyado ng dalawang uri ng Philippine government agencies.
+</p>
+
+<p>
+  Tiningnan nito hindi lamang ang personal na values kundi pati ang propinquity o opportunity—ang access, discretion, at pagkakataong makagawa ng abuso.
+</p>
+
+<p>
+  Limitado ang study:<br>
+  hindi random ang sample,<br>
+  hindi nito inilalarawan ang lahat ng government employees,<br>
+  at hindi rin ito direktang pag-aaral sa confidential funds.
+</p>
+
+<p>
+  Ang mahalagang aral lamang:
+</p>
+
+<blockquote>
+  <p>
+    Hindi sapat na umasa sa kabutihan ng taong humahawak ng pera. Kailangang bawasan mismo ng sistema ang pagkakataong magamit nang mali ang kapangyarihan.
+  </p>
+</blockquote>
+
+<p>
+  Hindi dahil awtomatikong masama ang opisyal.
+</p>
+
+<p>
+  Kundi dahil ang matinong sistema ay hindi dapat gumana lamang kapag mabuti ang nakaupo.
+</p>
+
+          <h2>
+  Ang OVP Confidential Fund Bilang Stress Test
+</h2>
+
+<p>
+  Mahalagang gamitin ang Office of the Vice President bilang konkretong halimbawa—pero hindi bilang dahilan upang kalimutan ang due process.
+</p>
+
+<h3>
+  Mga Verified na Budget Record
+</h3>
+
+<p>
+  Sa original FY 2022 General Appropriations Act, walang nakalistang Confidential Expenses para sa OVP.
+</p>
+
+<p>
+  Ang nakalagay sa ilalim ng umbrella heading na “Confidential, Intelligence and Extraordinary Expenses” ay ₱620,000 na Extraordinary and Miscellaneous Expenses—hindi confidential fund.
+</p>
+
+<p>
+  Pagkaupo ni Vice President Sara Duterte, humiling ang bagong OVP ng kabuuang ₱403.46 milyong additional budget, kasama ang ₱250 milyong hinihinging confidential fund.
+</p>
+
+<p>
+  Ayon sa official House committee report, ₱125 milyon sa hinihinging CF ang ipinagkaloob at isinama sa release na siningil sa 2022 Contingent Fund.
+</p>
+
+<p>
+  Ang pagkakaroon ng request at ₱125-million grant ay dokumentado.
+</p>
+
+<p>
+  Ang hiwalay na mga tanong ay kung sapat at constitutional ang ginamit na release mechanism at kung tama ang naging paggamit at liquidation ng pera.
+</p>
+
+<p>
+  Sa FY 2023 GAA, tahasan nang nakalista ang ₱500 milyong Confidential Expenses sa OVP budget.
+</p>
+
+<p>
+  Sa FY 2024 GAA, wala nang Confidential Expenses line ang OVP. Bumalik ito sa ₱620,000 na Extraordinary and Miscellaneous Expenses sa ilalim ng parehong umbrella heading.
+</p>
+
+<p>
+  Ipinakikita nito na ang confidential fund ay hindi automatic o permanenteng katangian ng OVP.
+</p>
+
+<p>
+  Isa itong partikular na budget at operational decision na kailangang bigyang-katwiran at i-audit.
+</p>
+
+<h3>
+  Ang 2014 Binay-era SARO na Iniharap ng Depensa
+</h3>
+
+<p>
+  May mahalagang paglilinaw na lumitaw sa impeachment trial noong August 4, 2026.
+</p>
+
+<p>
+  Nagharap ang depensa ni Vice President Sara Duterte ng isang dokumentong inilalarawan nito bilang DBM Special Allotment Release Order o SARO na may petsang December 2014 at may kaugnayan umano sa confidential-fund allotment ng OVP noong si Jejomar Binay ang bise presidente.
+</p>
+
+<p>
+  Mahalaga ang dokumentong ito dahil kinukuwestiyon nito ang categorical claim na si Sara Duterte ang unang o tanging VP na nagkaroon ng anumang OVP confidential-fund authority.
+</p>
+
+<p>
+  Pero kailangang maging eksakto sa status nito:
+</p>
+
+<blockquote>
+  <p>
+    Dokumento itong iniharap ng depensa bilang ebidensiya—hindi pa independent final finding na aktuwal na nagamit ang pondo.
+  </p>
+</blockquote>
+
+<p>
+  Sa ngayon, ang publicly reported trial record ay nagpapakitang ipinrisinta ng depensa ang dokumento bilang SARO. Kailangan pa rin itong iugnay sa official DBM confirmation at sa kaukulang cash, disbursement, utilization, liquidation, at audit records bago makagawa ng final conclusion tungkol sa aktuwal na paggamit.
+</p>
+
+<p>
+  Magkaiba ang:<br>
+  appropriation;<br>
+  allotment;<br>
+  cash authority;<br>
+  actual disbursement;<br>
+  at liquidation.
+</p>
+
+<p>
+  Ayon sa DBM glossary, ang allotment order ay authority upang magkaroon ng obligasyon ang isang ahensiya hanggang sa itinakdang halaga. Ang NCA at iba pang cash authorities naman ang ginagamit para sa disbursement requirements.
+</p>
+
+<p>
+  Kaya hindi na fact-safe na sabihing walang anumang Binay-era CF-related allotment document.
+</p>
+
+<p>
+  Pero hindi rin fact-safe na sabihin, batay sa SARO lamang, na napatunayan nang aktuwal na nailabas, nagastos, at na-liquidate ang confidential fund.
+</p>
+
+<h3>
+  Ang “₱125 Milyon sa Loob ng 11 Araw”
+</h3>
+
+<p>
+  Kailangang maging precise dito.
+</p>
+
+<p>
+  Ang dokumentadong period of utilization na nakasaad sa 2022 OVP accomplishment at liquidation records ay December 21 hanggang 31, 2022—labing-isang araw.
+</p>
+
+<p>
+  Batay sa period na iyon, inilalarawan ng House prosecution ang buong ₱125 milyon bilang na-disburse o nagamit sa loob ng labing-isang araw.
+</p>
+
+<p>
+  Kinuwestiyon naman ng depensa ang characterization na iyon sa impeachment trial.
+</p>
+
+<p>
+  Kaya ang fact-locked framing ay:
+</p>
+
+<p>
+  Dokumentado ang December 21–31 period of utilization na nakasaad sa records.
+</p>
+
+<p>
+  Prosecution characterization ang pagsasabing ang buong ₱125 milyon ay aktuwal na nagastos sa loob ng 11 araw.<br>
+  Kinukuwestiyon ng depensa ang characterization na iyon.
+</p>
+
+<p>
+  Ang eksaktong oras, paraan, at katotohanan ng bawat disbursement ay bahagi ng ebidensiyang kailangang timbangin sa trial.
+</p>
+
+<p>
+  Hindi pinahihina ng precision na ito ang usapin.
+</p>
+
+<p>
+  Nililinaw lamang nito kung alin ang nakasulat sa records at alin ang claim na sinusubok pa sa paglilitis.
+</p>
+
+          <h3>
+  Ang Affirmed ₱73.287-Million COA Disallowance
+</h3>
+
+<p>
+  Noong 2026, pinagtibay ng COA Commission Proper ang Notice of Disallowance na sumasaklaw sa humigit-kumulang ₱73.287 milyon mula sa 2022 OVP confidential expenses.
+</p>
+
+<p>
+  Ayon sa COA testimony sa House proceedings, hindi napatunayan ng mga dokumentong isinumite na ang mga expenditure ay ginamit para sa confidential activities. Sinabi rin ng COA na ang affirmation ay nangangahulugang kailangang maibalik ang disallowed amount sa public coffers, subject sa mga naaangkop na legal remedy at determination ng liability.
+</p>
+
+<p>
+  Mahalagang linawin ang legal status:
+</p>
+
+<p>
+  Hindi na simpleng audit observation ang ₱73.287 milyon.<br>
+  Na-affirm na ang disallowance sa COA Commission Proper level.
+</p>
+
+<p>
+  Pero ang audit ruling ay maaari pa ring sumailalim sa naaangkop na judicial review.
+</p>
+
+<p>
+  At kahit affirmed na ang disallowance, hindi pa rin iyon awtomatikong conviction sa graft, malversation, falsification, o impeachment.
+</p>
+
+<p>
+  Pinatutunayan nitong may bahagi ng paggastos na hindi pumasa sa COA audit.
+</p>
+
+<p>
+  Hindi pa nito mag-isang pinatutunayan ang lahat ng elements ng criminal offense o ang personal criminal intent ng bawat taong sangkot.
+</p>
+
+<h3>
+  Ang ₱375-Million 2023 Disallowance
+</h3>
+
+<p>
+  Bukod sa affirmed ₱73.287-million disallowance para sa 2022, sinabi ng COA sa 2026 House proceedings na naglabas ito ng disallowance action na sumaklaw sa tatlong tig-₱125 milyong confidential-fund releases ng OVP noong 2023—kabuuang ₱375 milyon.
+</p>
+
+<p>
+  Hindi kailangang pag-awayan kung isa o higit pang formal notice documents ang ginamit upang ilarawan ito sa iba’t ibang report.
+</p>
+
+<p>
+  Ang mahalagang fact ay ang saklaw:
+</p>
+
+<p>
+  tatlong ₱125-million batches, kabuuang ₱375 milyon.
+</p>
+
+<p>
+  Kabilang sa iniulat na audit issue ang kawalan o kakulangan ng dokumentong nagpapatunay na ginamit ang pera para sa lehitimong confidential activities o successful information-gathering at surveillance accomplishments.
+</p>
+
+<p>
+  Hindi dapat paghaluin ang status nito sa ₱73.287-million ruling.
+</p>
+
+<p>
+  Ang ₱73.287 milyon ay na-affirm na sa COA Commission Proper level.
+</p>
+
+<p>
+  Sa mga publicly available record na nasuri hanggang August 5, 2026, hindi pa ipinakikitang final at executory na ang ₱375-million disallowance action. May sarili itong appeal at finality process na hiwalay sa affirmed 2022 ruling.
+</p>
+
+<p>
+  Seryoso ang audit action.
+</p>
+
+<p>
+  Pero hindi ito awtomatikong final criminal o impeachment judgment.
+</p>
+
+<h2>
+  Ang Bagong 2026 Impeachment Proceeding
+</h2>
+
+<p>
+  Ang kasalukuyang impeachment trial ay hindi simpleng pagpapatuloy ng 2025 Articles of Impeachment.
+</p>
+
+<p>
+  Ang 2025 articles ay idineklarang unconstitutional ng Supreme Court, at noong January 29, 2026 ay denied with finality ang motion for reconsideration.
+</p>
+
+<p>
+  Noong 2026, dumaan sa panibagong House proceeding ang mga bagong impeachment complaint.
+</p>
+
+<p>
+  Noong May 11, 2026, bumoto ang House ng 257 pabor, 25 laban, at siyam na abstention upang ipadala ang bagong impeachment case sa Senado.
+</p>
+
+<p>
+  Kaya ang kasalukuyang trial ay kailangang tumayo sa sarili nitong complaints, articles, ebidensiya, depensa, at due process.
+</p>
+
+<p>
+  Isa sa mga alegasyon nito ang umano’y misuse ng confidential funds ng OVP at DepEd, kasama ang kuwestiyonableng liquidation reports, recipients, at supporting documents.
+</p>
+
+<p>
+  Mga alegasyon at prosecution evidence pa ang mga iyon hangga’t hindi natatapos ang trial at wala pang final judgment ng Senate impeachment court.
+</p>
+
+          <h3>
+  Ang Panig at Depensa ng OVP
+</h3>
+
+<p>
+  May karapatan ang bise presidente at kanyang mga opisyal na:
+</p>
+
+<p>
+  kuwestiyunin ang admissibility at bigat ng ebidensiya;<br>
+  ipaliwanag ang mga dokumento at disbursement;<br>
+  magharap ng sariling records at witnesses;<br>
+  ipakita kung paano konektado sa lehitimong operation ang bawat gastos;<br>
+  at igiit ang confidentiality kung talagang kailangan upang protektahan ang tao o operasyon.
+</p>
+
+<p>
+  Pero ang confidentiality ay hindi kapalit ng patunay.
+</p>
+
+<p>
+  At ang due process ay hindi nangangahulugang bawal magtanong.
+</p>
+
+<p>
+  Ibig sabihin lamang nito:
+</p>
+
+<blockquote>
+  <p>
+    Walang dapat hatulan sa sigaw.<br>
+    Pero walang dapat iligtas sa ebidensiya dahil lamang makapangyarihan, popular, o kakampi.
+  </p>
+</blockquote>
+
+<h2>
+  Hindi Partido ang Pamantayan
+</h2>
+
+<p>
+  Kapag kaalyado ang nakaupo, madaling sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Magtiwala na lang kayo.”
+  </p>
+</blockquote>
+
+<p>
+  Kapag kalaban, madaling sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Siguradong ninakaw iyan.”
+  </p>
+</blockquote>
+
+<p>
+  Parehong kulang.
+</p>
+
+<p>
+  Hindi dapat magbago ang pamantayan depende sa apelyido, kulay, rehiyon, o partidong sinusuportahan.
+</p>
+
+<p>
+  Kung kalaban ang gumagamit ng CF, humingi ng ebidensiya.<br>
+  Kung kakampi ang gumagamit ng CF, humingi rin ng parehong ebidensiya.
+</p>
+
+<p>
+  Ang political loyalty ay hindi audit procedure.
+</p>
+
+<p>
+  Ang popularidad ay hindi supporting document.
+</p>
+
+<p>
+  Ang “marami naman siyang natulungan” ay hindi sagot kung ang tanong ay saan napunta ang partikular na public fund.
+</p>
+
+<p>
+  At ang “lahat naman sila corrupt” ay hindi depensa.
+</p>
+
+<p>
+  Pag-amin lamang iyon na masyado na nating ibinaba ang pamantayan.
+</p>
+
+<h2>
+  Ang Tunay na Hangganan
+</h2>
+
+<p>
+  Ang lehitimong confidential fund ay may sekretong pinoprotektahan—pero may katotohanang mapatutunayan.
+</p>
+
+<p>
+  May pangalan itong hindi maaaring isapubliko—pero may totoong identity na maaaring i-verify sa secure process.<br>
+  May operasyong hindi maaaring ikuwento sa lahat—pero may legal na plano, financial trail, at aktuwal na resulta.<br>
+  May perang ginastos—pero may malinaw na public purpose.
+</p>
+
+<p>
+  Ang corruption fund ay kabaligtaran.
+</p>
+
+<p>
+  Humihingi ito ng pera sa pangalan ng lihim.<br>
+  Humihingi ito ng tiwala dahil hindi maaaring ilantad ang detalye.<br>
+  Pero kapag dumating ang awtorisadong audit at imbestigasyon, ang ibinibigay na sagot ay mas marami pang takip, hindi ma-verify na pangalan, mahihinang dokumento, at pagtutol sa independent verification.
+</p>
+
+<p>
+  Doon humihinto ang confidentiality sa pagiging proteksiyon.
+</p>
+
+<p>
+  Doon ito nagiging panangga.
+</p>
+
+<p>
+  Hindi corruption fund ang confidential fund dahil lamang lihim ito.
+</p>
+
+<p>
+  Pero nagiging corruption fund ito kapag napatunayang ang pagiging lihim ay hindi na ginamit upang protektahan ang lehitimong operasyon—kundi upang itago ang pekeng operasyon, pekeng recipient, ilegal na paggamit, o pondong inilayo sa kapakanan ng bayan.
+</p>
+
+<p>
+  Hindi ang pagkakaroon lamang ng confidential fund ang pinakamabigat na usapin.
+</p>
+
+<p>
+  Ang tanong ay kung may lehitimong confidential operation ba talaga, kung totoo ang mga pinaglaanan at tumanggap, at kung ang pagiging lihim ay ginamit upang protektahan ang operasyon—o upang protektahan ang posibleng katiwalian mula sa pananagutan.
+</p>
+
+<p>
+  Ang lehitimong sikreto ay kayang patunayan sa tamang institusyon.
+</p>
+
+<blockquote>
+  <p>
+    Kapag pananagutan na ang kailangang itago, ang lihim ay hindi na proteksiyon—takip na ito.
+  </p>
+</blockquote>
+
+          <h2>
+  Factual Status: August 5, 2026
+</h2>
+
+<ul>
+  <li>
+    Patuloy ang bagong 2026 impeachment trial at wala pang final impeachment judgment sa confidential-fund allegations.
+  </li>
+
+  <li>
+    Ang ₱73.287-million 2022 disallowance ay na-affirm na sa COA Commission Proper level.
+  </li>
+
+  <li>
+    Sa mga publicly available record na nasuri hanggang August 5, 2026, hindi pa ipinakikitang final at executory na ang disallowance action na sumasaklaw sa tatlong 2023 cash advances na may kabuuang ₱375 milyon.
+  </li>
+
+  <li>
+    Ang 2014 Binay-era SARO ay dokumentong iniharap ng depensa bilang ebidensiya ng allotment authority. Hindi pa ito mag-isang independent final proof ng actual cash release, disbursement, utilization, o liquidation.
+  </li>
+</ul>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Mga Sanggunian
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      FY 2022 GAA General Provisions—definition, reporting, at rules sa confidential funds.
+    </li>
+
+    <li>
+      FY 2023 GAA General Provisions—confidential versus intelligence expenses at liability para sa unauthorized expenditure.
+    </li>
+
+    <li>
+      FY 2022 OVP GAA—walang Confidential Expenses line; ₱620,000 Extraordinary and Miscellaneous Expenses lamang.
+    </li>
+
+    <li>
+      FY 2023 OVP GAA—₱500-million Confidential Expenses line.
+    </li>
+
+    <li>
+      FY 2024 OVP GAA—wala nang Confidential Expenses line.
+    </li>
+
+    <li>
+      Official House Committee Report No. 1503—₱403.46-million OVP request, ₱250-million requested CF, ₱125-million grant mula sa Contingent Fund, at December 21–31 utilization records.
+    </li>
+
+    <li>
+      August 4, 2026 impeachment-trial reporting tungkol sa 2014 SARO na iniharap ng depensa.
+    </li>
+
+    <li>
+      DBM budget glossary at NCA records—pagkakaiba ng allotment authority at cash/disbursement authority.
+    </li>
+
+    <li>
+      COA affirmation ng ₱73.287-million 2022 OVP disallowance.
+    </li>
+
+    <li>
+      COA disallowance action na sumasaklaw sa tatlong ₱125-million 2023 releases.
+    </li>
+
+    <li>
+      GMA News timeline ng bagong 2026 impeachment proceedings at trial developments.
+    </li>
+
+    <li>
+      OECD research sa public-sector internal control, audit, at corruption-risk management.
+    </li>
+
+    <li>
+      World Bank at PEFA materials sa public financial management, transparency, at accountability.
+    </li>
+
+    <li>
+      Avis, Ferraz, at Finan, <em>Do Government Audits Reduce Corruption?</em>
+    </li>
+
+    <li>
+      Tapales, Enriquez, at Trinidad, <em>Value Profile and Corruption Propensity.</em>
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
