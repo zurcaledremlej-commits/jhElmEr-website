@@ -1,1 +1,1734 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Masaya ba ang bata, o malaya ba siyang huminto? Sinusuri ng Civic Explainer na ito ang hangganan ng talento, child content creation, child labor, karapatan ng bata, at responsibilidad ng mga adult sa panahon ng social media."
+>
+
+  <title>Anak Mo Ba—o Hanapbuhay Mo? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  Anak Mo Ba—o Hanapbuhay Mo?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-child-creator.png"
+  alt="Anak Mo Ba—o Hanapbuhay Mo? Civic Explainer ni jhElmEr"
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag ang mukha, talento, emosyon, at araw-araw na buhay ng bata ang dahilan kung bakit may views, sponsors, regalo, at pambayad sa bahay, hindi na sapat na itanong kung masaya ba siyang ginagawa iyon.
+  </p>
+
+  <p>
+    Ang mas mabigat na tanong:<br>
+    Kapag ayaw na niyang humarap sa camera, kaya mo ba siyang hayaang huminto—kahit mawala ang kita?
+  </p>
+
+  <p>
+    Dahil doon makikita kung ang pinoprotektahan mo ay ang bata o ang kabuhayang nakasandal na sa kanya.
+  </p>
+
+  <p>
+    Hindi agad nangangahulugang inaabuso ang bawat batang kumikita o lumalabas sa social media. Maaaring totoong may talento siya, gusto niya ang ginagawa niya, at nasisiyahan siya sa atensiyon at oportunidad.
+  </p>
+
+  <p>
+    Pero may mga magulang at adult na kayang gawing cute ang isang mabigat na problema.
+  </p>
+
+  <p>
+    Lagyan lang ng ring light.<br>
+    Pagsuotin ng magandang damit.<br>
+    Turuan ng sayaw, linya, prank, challenge, o eksenang patok.
+  </p>
+
+  <p>
+    Kapag dumami ang views, followers, sponsors, regalo, at kita, tatawagin itong blessing.
+  </p>
+
+  <p>
+    Pero kapag may nagtanong kung hindi ba nagiging pagkakakitaan ang bata, ilalabas ang paboritong depensa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nag-e-enjoy naman siya.”<br>
+      “Gusto naman niya.”<br>
+      “Hindi naman namin pinipilit.”<br>
+      “Para rin naman sa kinabukasan niya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero real talk:<br>
+    Ang saya ng bata ay hindi resibo na malinis ang ginagawa ng matatanda.
+  </p>
+
+  <p>
+    Maaaring totoong nasisiyahan siyang sumayaw, umarte, magpatawa, mag-unbox, mag-vlog, o humarap sa camera. Pero maaari siyang masaya sa mismong gawain habang mali na ang sistemang itinayo ng mga adult sa paligid niya.
+  </p>
+
+  <p>
+    Dahil magkaiba ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Masaya siyang gawin ito.”
+    </p>
+  </blockquote>
+
+  <p style="text-align:center;"><strong>At</strong></p>
+
+  <blockquote>
+    <p>
+      “Malaya siyang huminto rito kahit kailan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang una ay tungkol sa nararamdaman niya habang ginagawa ang content.
+    Ang ikalawa ay tungkol sa kung may tunay pa ba siyang choice kapag may audience, schedule, sponsor, bayarin, at mga adult nang umaasa sa patuloy niyang pagharap sa camera.
+  </p>
+
+  <p>
+    Doon nagsisimula ang tunay na usapan.
+  </p>
+
+  <h2>
+    Hindi Lahat ng Batang Lumalabas sa Content ay Exploited
+  </h2>
+
+  <p>
+    Kailangang malinaw iyan.
+  </p>
+
+  <p>
+    Hindi awtomatikong child labor o exploitation ang bawat batang kumakanta, sumasayaw, umaarte, naglalaro, tumutulong sa negosyo, o paminsan-minsang lumalabas sa family content.
+  </p>
+
+  <p>
+    May mga batang tunay na may talento at interes. May mga magulang ding maingat sa oras, pag-aaral, pahinga, privacy, kaligtasan, kita, at karapatan ng anak na tumanggi.
+  </p>
+
+  <p>
+    Pero huwag ding gamitin ang linyang “hindi naman lahat” para takpan ang mga sitwasyong ang bata na ang naging produkto, puhunan, at sentro ng kabuhayan.
+  </p>
+
+  <p>
+    Hindi kailangang nakakadena ang bata para masabing ginagamit siya.<br>
+    Hindi lahat ng pressure ay sigaw.<br>
+    Hindi lahat ng pamimilit ay pagbabanta.<br>
+    Hindi lahat ng exploitation ay mukhang malupit sa camera.
+  </p>
+
+  <p>
+    Minsan, nakangiti ang lahat.<br>
+    Minsan, “family bonding” ang caption.
+  </p>
+
+  <p>
+    Pero sa likod nito, may upload schedule, sponsor deadline, affiliate link, livestream, guest appearance, o audience na kailangang panatilihin.
+  </p>
+
+  <p>
+    At may batang unti-unting natututo na mas masaya ang mga adult kapag mataas ang views at mas tahimik ang bahay kapag kumikita ang content.
+  </p>
+
+  <h2>
+    Kapag ang Paglalaro ay may Deadline at Kita, Hindi na Ito Laro Lang
+  </h2>
+
+  <p>
+    May terminong ginagamit ang ilang researchers para sa gawaing mukhang laro ngunit may commercial value: <strong>“playbour”</strong>—pinagsamang <em>play</em> at <em>labor</em>.
+  </p>
+
+  <p>
+    Mukhang naglalaro lamang ang bata. Mukhang natural lang ang tawanan, sayawan, unboxing, family trip, o pang-araw-araw na eksena.
+  </p>
+
+  <p>
+    Pero kapag ito ay pinaplano, inuulit, nire-record, ine-edit, ipinopost, ipinopromote, at pinagkakakitaan, maaari na itong magkaroon ng katangian ng trabaho at commercial labor kahit hindi naka-uniform at walang opisina.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na bawat masayang video ay trabaho agad.
+    Pero kapag may kailangang eksenang kunan muli, may produktong kailangang hawakan, may linyang kailangang sabihin, may oras ng posting, o may perang mawawala kapag hindi nakapag-content ang bata, huwag nang magkunwaring ordinaryong laro lamang ang lahat.
+  </p>
+
+  <p>
+    Maaaring masaya ang isang bata sa ginagawa niya kahit may katangian na itong trabaho.
+  </p>
+
+  <p>
+    Maraming adult ang masaya rin sa kanilang hanapbuhay.
+    Pero may karapatan pa rin sila sa pahinga, tamang oras, sariling kita, kaligtasan, at proteksiyon laban sa pang-aabuso.
+  </p>
+
+  <blockquote>
+    <p>
+      Bakit kapag bata ang kumikita, sapat na raw ang:<br><br>
+      “Nag-e-enjoy naman siya”?
+    </p>
+  </blockquote>
+
+          <h2>
+  Hindi ang Ngiti ang Sukatan ng Malayang Pagsang-ayon
+</h2>
+
+<p>
+  Ang mas mahalagang tanong ay hindi kung nakangiti ang bata habang naka-record.
+</p>
+
+<p>
+  Ang tanong:<br>
+  Pwede ba siyang tumanggi?
+</p>
+
+<p>
+  Pwede ba niyang sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Ayoko munang mag-video.”<br>
+    “Pagod ako.”<br>
+    “Huwag ninyong i-post iyan.”<br>
+    “Ayoko nang ikuwento sa publiko ang nangyari sa akin.”<br>
+    “Gusto ko munang maglaro nang walang camera.”
+  </p>
+</blockquote>
+
+<p>
+  At kapag sinabi niya iyon, igagalang ba siya?<br>
+  O kokonsensiyahin?
+</p>
+
+<blockquote>
+  <p>
+    “Sayang ang opportunity.”<br>
+    “Maraming naghihintay sa iyo.”<br>
+    “Para rin naman ito sa iyo.”<br>
+    “Mahina na ang page natin.”<br>
+    “May bayarin tayo.”<br>
+    “Konting video lang naman.”
+  </p>
+</blockquote>
+
+<p>
+  Kapag ang pagtanggi ng bata ay may kapalit na guilt, tampo, disappointment, problema sa pera, o pakiramdam na pinabayaan niya ang pamilya, huwag mo nang sabihing malaya ang kanyang choice.
+</p>
+
+<p>
+  Hindi malayang “oo” ang sagot kapag mabigat ang kapalit ng pagsasabing “ayoko.”
+</p>
+
+<p>
+  Bata siya, habang ang magulang o adult ang may mas malaking kapangyarihan sa approval, desisyon, resources, at araw-araw niyang buhay.
+</p>
+
+<p>
+  Kaya responsibilidad ng adult na tiyaking hindi ginagamit ang pagmamahal, papuri, regalo, o pangangailangan ng pamilya upang sanayin siyang laging sumunod at laging maging kapaki-pakinabang.
+</p>
+
+<p>
+  Maaaring pumayag ang bata sa video ngayon.
+  Pero hindi ibig sabihin na ganap niyang nauunawaan ang permanenteng digital footprint, public comments, paggamit ng kanyang larawan, pagkalat ng pribadong kuwento, at posibilidad na hindi na niya mabawi ang content kapag ayaw na niya rito paglaki.
+</p>
+
+<p>
+  Ang pagsang-ayon sa isang masayang activity ay hindi awtomatikong informed consent sa pangmatagalang public exposure.
+</p>
+
+<h2>
+  Sa Social Media, ang Bata ay Hindi Lang Tao sa Video—Maaari Siyang Maging Commercial Asset
+</h2>
+
+<p>
+  Hindi lamang direktang bayad sa video ang posibleng kita.
+  Maaaring kumita ang isang account mula sa platform advertisements, revenue sharing, memberships, gifts, fan funding, affiliate shopping, merchandise, sponsorships, branded content, product placements, appearances, at iba pang commercial arrangements.
+</p>
+
+<p>
+  Halimbawa, opisyal na kinikilala ng YouTube ang advertising at Premium revenue, channel memberships, Shopping, Super Chat, Super Stickers, at Super Thanks bilang magkakaibang paraan ng pagkita ng mga eligible creator.
+</p>
+
+<p>
+  Kaya kulang ang depensang:
+</p>
+
+<blockquote>
+  <p>
+    “Wala naman siyang direktang sweldo.”
+  </p>
+</blockquote>
+
+<p>
+  Posibleng walang payslip na nakapangalan sa bata.
+  Pero kung siya ang dahilan kung bakit pinapanood ang account, siya ang hinahanap sa comments, siya ang nasa thumbnails, at bumababa ang engagement kapag wala siya, malinaw na may commercial value ang kanyang presensiya.
+</p>
+
+<p>
+  Maaaring nasa pangalan ng adult ang account.
+  Maaaring adult ang tumanggap ng payout.
+  Maaaring magulang ang nag-shoot at nag-edit.
+</p>
+
+<p>
+  Pero hindi nito binubura ang tanong:<br>
+  Kanino ba talaga nanggagaling ang attention na ginawang pera?
+</p>
+
+<p>
+  Sa isang pag-aaral tungkol sa child influencers sa Pilipinas, makikita sa mga obserbasyon at kasong sinuri kung paano nagiging content ang pang-araw-araw na gawain, chores, talento, cuteness, at relasyon sa pamilya.
+</p>
+
+<p>
+  Ipinakita rin kung paano maaaring magsimula ang exposure sa isang viral family video at humantong sa mas malawak na influencer o entertainment career.
+</p>
+
+<p>
+  Case-study overview ito at hindi kumakatawan sa lahat ng Filipino child influencers. Pero ipinakikita nitong maaaring magsanib ang pamilya, entertainment culture, at social-media economy sa iisang sistema.
+</p>
+
+<h2>
+  Kapag ang Pamilya na ang Umaasa, Nagbabago ang Kapangyarihan
+</h2>
+
+<p>
+  May malaking kaibahan ang kumikita ang bata dahil sinusuportahan ng pamilya ang talento niya at sinusuportahan ng bata ang pamilya dahil ginawa siyang pagkakakitaan.
+</p>
+
+<p>
+  Sa una, ang adult ang sandigan ng bata.<br>
+  Sa ikalawa, ang bata ang ginawang sandigan ng adult.
+</p>
+
+<p>
+  Kapag ang bata ang palaging dahilan ng views, sponsorships, gifts, at opportunities—at ang kinikita mula rito ay ginagamit na sa regular na bayarin o lifestyle ng bahay—mahirap nang sabihing malaya siyang huminto.
+</p>
+
+<p>
+  Paano siya magsasabing ayaw na niya kung alam niyang may bills na nakatali sa uploads niya?<br>
+  Paano siya magpapahinga kung mababa ang engagement kapag wala siya?<br>
+  Paano siya magiging ordinaryong bata kung ipinaparamdam sa kanya na may mga adult na umaasa sa mukha, talento, emosyon, at araw-araw niyang buhay?
+</p>
+
+<p>
+  Dito pumapasok ang kulturang “para sa pamilya.”
+</p>
+
+<p>
+  Maganda ang pagtutulungan.
+</p>
+
+<p>
+  Hindi masama ang kusang pag-abot ng anak kapag kaya niya.
+  Pero nagiging mapanganib ito kapag ang tulong ay ginawang obligasyon, ang pagtanggi ay ginawang kawalan ng utang na loob, at ang batang kumikita ay tinuruan na siya ang may responsibilidad sa seguridad ng buong pamilya.
+</p>
+
+<p>
+  Sa isang lokal na pag-aaral tungkol sa working panganays sa Southern Philippines, lumitaw ang mga karanasan ng maagang pag-mature, filial pressure, pagiging financial provider at “second parent,” pati ang internalized na obligasyong suportahan ang pamilya.
+</p>
+
+<p>
+  Hindi ito pag-aaral tungkol mismo sa child influencers. Pero malinaw ang socio-cultural warning:
+  Maaaring maramdaman ng isang anak na ang pagtulong ay hindi na pagpili kundi bahagi na ng kanyang pagkakakilanlan at utang na dapat bayaran.
+</p>
+
+<p>
+  Kaya hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Pamilya naman kami.”
+  </p>
+</blockquote>
+
+<p>
+  Dahil minsan, mismong salitang “pamilya” ang ginagamit upang patahimikin ang batang hindi malayang makapagsabi ng:
+</p>
+
+<blockquote>
+  <p>
+    “Hindi ko responsibilidad na buhayin kayong matatanda.”
+  </p>
+</blockquote>
+
+          <h2>
+  Working Child at Child Labor—Hindi Pareho, Pero Hindi Rin Dapat Paglaruan ang Pagkakaiba
+</h2>
+
+<p>
+  Hindi lahat ng batang gumagawa ng economic activity ay awtomatikong nasa child labor.
+</p>
+
+<p>
+  May mga uri ng child work na maaaring pahintulutan sa ilalim ng batas kapag nasusunod ang mga kondisyon at proteksiyon sa oras, edukasyon, kalusugan, kaligtasan, moralidad, at normal na development.
+</p>
+
+<p>
+  Sa datos ng Philippine Statistics Authority, kabilang sa child labor ang hazardous work at gawaing lumalampas sa itinakdang oras o ipinagbabawal na oras para sa edad ng bata.
+</p>
+
+<p>
+  Noong 2025, tinaya ng PSA na may humigit-kumulang 868,540 working children na edad 5–17 sa bansa.
+</p>
+
+<p>
+  Sa bilang na iyon, humigit-kumulang 513,650 o 59.1% ang classified na nasa child labor.
+</p>
+
+<p>
+  Hindi nito sinasabing child influencers ang mga batang iyon—walang ganoong breakdown ang datos.
+</p>
+
+<p>
+  Ang halaga ng estadistika ay ipakitang ang child work at child labor ay totoong pambansang usapin, hindi simpleng imbentong argumento laban sa mga pamilyang kumikita online.
+</p>
+
+<p>
+  Kaya dapat parehong iwasan ang dalawang maling hatol:<br>
+  Hindi lahat ng batang kumikita ay exploited.
+</p>
+
+<p>
+  Pero:<br>
+  Hindi rin nawawala ang posibilidad ng exploitation dahil nasa bahay, hawak ng magulang ang camera, at masaya ang background music.
+</p>
+
+<h2>
+  Ang Batas ay Hindi Nagtatanong Lang Kung Gusto ng Bata
+</h2>
+
+<p>
+  Sa ilalim ng Republic Act No. 9231, ang batang wala pang 15 ay hindi maaaring i-employ, maliban sa mga partikular na exception na pinapayagan ng batas.
+</p>
+
+<p>
+  Kabilang dito ang pagtatrabaho nang direkta sa ilalim ng sole responsibility ng magulang o legal guardian, kung saan mga miyembro lamang ng pamilya ang employed, at ang essential na participation ng bata sa public entertainment o information through media.
+</p>
+
+<p>
+  Pero hindi sapat na magulang ang may hawak o pumayag ang bata.
+</p>
+
+<p>
+  Sa entertainment o media exception, kailangang may kontratang ginawa ng magulang o legal guardian, may express agreement ng bata kung posible, may approval ng DOLE, at may proteksiyon sa kanyang kalusugan, kaligtasan, moralidad, normal na development, remuneration, working time, at laban sa exploitation o discrimination.
+</p>
+
+<p>
+  Sa mga exceptional case na sakop ng batas, kailangang kumuha muna ng work permit bago i-engage ang bata.
+</p>
+
+<p>
+  Noong 2026, nilinaw ng DOLE sa Labor Advisory No. 12 na ang content creation para sa online media ay maaari ring pumasok sa Working Child Permit requirement kapag natutugunan ng bata o ng activity ang mga kondisyong tinukoy ng advisory.
+</p>
+
+<p>
+  Hindi nito sinasabing bawat simpleng paglitaw ng bata sa isang family post ay awtomatikong nangangailangan ng permit. Pero hindi rin nawawala ang child-protection obligations dahil cellphone lamang ang camera, bahay ang location, at social-media page ng magulang ang naglalabas ng content.
+</p>
+
+<p>
+  Para sa batang below 15 na pinahihintulutang magtrabaho sa ilalim ng exceptions, itinakda ng batas ang maximum na apat na oras bawat araw at 20 oras bawat linggo, at bawal ang trabaho mula 8 p.m. hanggang 6 a.m.
+</p>
+
+<p>
+  Para sa edad 15 hanggang below 18, ang maximum ay walong oras bawat araw at 40 oras bawat linggo, at bawal ang trabaho mula 10 p.m. hanggang 6 a.m. Bawal din ang pagsabak sa worst forms of child labor at hazardous work.
+</p>
+
+<p>
+  Pero huwag gawing moral shield ang permit.
+</p>
+
+<p>
+  Ang permit ay minimum legal protection—hindi certificate na mabuti ang lahat ng ginagawa ng magulang.
+</p>
+
+<p>
+  Maaaring pasok sa isang legal production arrangement ang participation ng bata pero mali pa ring ilantad ang kanyang kahihiyan, sakit, takot, parusa, pag-iyak, away, o pribadong problema para sa engagement.
+</p>
+
+<p>
+  Ang matinong magulang ay hindi lamang nagtatanong:
+</p>
+
+<blockquote>
+  <p>
+    “Pwede ba ito?”
+  </p>
+</blockquote>
+
+<p>
+  Tinatanong din niya:
+</p>
+
+<blockquote>
+  <p>
+    “Kailangan ba talagang ipakita ito?”<br>
+    “Makabubuti ba ito sa anak ko?”<br>
+    “Igagalang ba niya ang desisyon naming ito paglaki niya?”<br>
+    “Ginagawa ba namin ito para sa talento niya—o dahil ayaw naming mawala ang kita?”
+  </p>
+</blockquote>
+
+<h2>
+  Ang Kita ng Bata ay Hindi Automatic na Pera ng Magulang
+</h2>
+
+<p>
+  Malinaw sa RA 9231:<br>
+  Ang wages, salaries, earnings, at iba pang income ng working child ay pag-aari ng bata.
+</p>
+
+<p>
+  Pangunahing dapat itong ilaan sa kanyang suporta, edukasyon, at skills acquisition. Hindi hihigit sa 20% ng kanyang income ang maaaring gamitin para sa collective needs ng pamilya.
+</p>
+
+<p>
+  Kapag umabot sa hindi bababa sa ₱200,000 kada taon ang kanyang wages, salaries, at iba pang income, kailangang magtatag ang magulang o legal guardian ng trust fund na hindi bababa sa 30% ng kanyang earnings.
+</p>
+
+<p>
+  Kailangan ding magsumite ng semiannual accounting sa DOLE, at magkakaroon ang bata ng buong control sa trust fund kapag umabot siya sa legal age.
+</p>
+
+<p>
+  Kaya huwag basta sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Para rin naman sa kanya ang bahay, pagkain, damit, at biyahe.”
+  </p>
+</blockquote>
+
+<p>
+  Magulang ka.<br>
+  Obligasyon mo nang pakainin, damitan, pag-aralin, at bigyan ng tirahan ang anak mo.
+</p>
+
+<p>
+  Hindi mo puwedeng ituring na awtomatikong pera ng magulang ang kinita ng bata. Maaari itong gamitin para sa kanyang suporta, edukasyon, at skills development, at sa limitadong bahagi para sa kolektibong pangangailangan ng pamilya ayon sa batas—pero hindi upang ipasa sa bata ang pangunahing responsibilidad na buhayin ang mga adult o pondohan ang lifestyle ng bahay.
+</p>
+
+<p>
+  Hindi mo puwedeng tawaging “para sa kanya” ang lahat ng paggastos mula sa perang nanggaling sa kanya—lalo na kung walang malinaw na accounting, proteksiyon sa bahagi ng bata, at pagsunod sa layunin at limitasyong itinakda ng batas.
+</p>
+
+          <h2>
+  Hindi Mo Kontrolado Kung Paano Titingnan ng Internet ang Anak Mo
+</h2>
+
+<p>
+  Kapag inilabas ang content, hindi na lamang pamilya ang nakakakita.
+  May strangers, screenshots, downloads, reposts, edits, comments, fan pages, hate pages, at mga paggamit na hindi kayang bantayan ng magulang.
+</p>
+
+<p>
+  Sa isang pag-aaral ng 5,253 Instagram posts mula sa sampung British motherhood influencers, lumitaw ang mga bata sa mahigit 75% ng posts.
+</p>
+
+<p>
+  Sa mga post na may bata, 46.4% ang may sponsorship o product advertising. May 11.5% ding naglalaman ng embarrassing, intimate, o revealing content.
+</p>
+
+<p>
+  Hindi ito Philippine estimate at maliit at partikular ang sample. Pero ipinakikita nitong maaaring magsanib sa iisang post ang parenting, privacy ng bata, at commercial promotion.
+</p>
+
+<p>
+  Sa hiwalay na pagsusuri ng 5,896 TikTok videos at 432,178 comments mula sa 115 accounts na nagtatampok ng mga bata, 21% ng comments ay may kaugnayan sa visual appearance.
+</p>
+
+<p>
+  Nakita rin sa sample na mas maraming appearance-based comments at likes ang ilang content na nagpakita ng mga batang naka-swimwear, bare midriff, o iba pang mas revealing na kasuotan kaysa sa fully clothed content.
+</p>
+
+<p>
+  Research preprint ito at hindi Philippine prevalence estimate. Pero ipinakikita ng sample nito ang uri ng audience behavior na kailangang isaalang-alang kapag inilalantad ang bata online.
+</p>
+
+<p>
+  Hindi ito patunay ng masamang intensiyon ng bawat uploader.
+</p>
+
+<p>
+  Pero malinaw ang punto:<br>
+  Maaaring inosente ang intensiyon ng magulang habang hindi inosente ang tingin ng lahat ng nasa audience.
+</p>
+
+<p>
+  Kaya hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Wala naman kaming masamang ibig sabihin.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi lang intensiyon ng uploader ang mahalaga.
+  Mahalaga rin kung anong impormasyon, larawan, kahinaan, at bahagi ng pagkatao ng bata ang ibinigay mo sa mundong hindi mo kontrolado.
+</p>
+
+<h2>
+  Mga Tanong na Mas Mahalaga Kaysa “Masaya Naman Siya”
+</h2>
+
+<p>
+  Pwede ba siyang tumanggi nang walang guilt?<br>
+  May araw ba siyang hindi kailangang maging entertaining?<br>
+  Protektado ba ang pag-aaral, tulog, laro, privacy, at pakikisalamuha niya sa ibang bata?<br>
+  May malinaw bang accounting ng lahat ng kinita dahil sa kanya?<br>
+  May sarili ba siyang ipon o trust fund na hindi ginagamit na parang ordinaryong pera ng bahay?<br>
+  May mga sandaling sadyang hindi kinukunan dahil pribado at para sa pamilya lamang?<br>
+  Kapag ayaw niyang i-post ang isang video, siya ba ang nasusunod?<br>
+  At kapag tuluyan siyang huminto, kaya pa rin bang buhayin ng mga adult ang pamilya nang hindi siya ginagawang guilty?
+</p>
+
+<p>
+  Diyan mo makikita kung inaalagaan ang bata o pinoprotektahan lamang ang income stream.
+</p>
+
+<h2>
+  Real Talk sa mga Magulang at Adult
+</h2>
+
+<p>
+  Kung talento talaga ng bata ang inaalagaan mo, kaya mong suportahan iyon kahit hindi agad kumikita.
+  Kung kasiyahan talaga niya ang mahalaga, kaya niyang huminto nang hindi ka nagagalit o nangangamba sa views.
+  Kung kinabukasan talaga niya ang iniisip mo, may malinaw siyang edukasyon, privacy, ipon, pahinga, at proteksiyon sa bunga ng sarili niyang trabaho.
+  Kung anak talaga ang tingin mo sa kanya, hindi dapat bumababa ang halaga niya kapag bumaba ang engagement.
+  At kung pamilya talaga ang sentro, hindi kailangang ibenta sa publiko ang bawat luha, sakit, away, takot, pagkakamali, at pribadong sandali para manatiling kumikita ang tahanan.
+</p>
+
+<p>
+  Hindi lahat ng pagyayabang sa talento ng anak ay suporta.<br>
+  Minsan, pagmamay-ari iyon.
+</p>
+
+<p>
+  Hindi lahat ng family content ay bonding.<br>
+  Minsan, production iyon.
+</p>
+
+<p>
+  Hindi lahat ng opportunity ay para sa bata.<br>
+  Minsan, ang ayaw pakawalan ng adult ay ang pera at atensiyong dala ng bata.
+</p>
+
+<p>
+  At hindi lahat ng batang nakangiti ay malaya.<br>
+  Minsan, natutuhan lamang niyang ngumiti dahil iyon ang inaasahan sa kanya.
+</p>
+
+<h2>
+  Ang Pagkabata ay Hindi Dapat Magkaroon ng Sales Quota
+</h2>
+
+<p>
+  Maaaring magkaroon ng talento ang bata.
+  Maaari siyang kumita mula rito sa ilalim ng wastong proteksiyon.
+  Maaari siyang matuwa sa performance, recognition, at oportunidad.
+</p>
+
+<p>
+  Pero hindi siya dapat gawing solusyon sa problemang pinansyal ng mga adult.
+</p>
+
+<p>
+  Hindi niya dapat maramdaman na kailangang patuloy siyang maging cute, nakakatawa, talented, kontrobersiyal, o relatable para manatiling maayos ang buhay ng pamilya.
+  Hindi dapat nakasalalay sa kanya ang bayarin.
+  Hindi dapat nakatali sa performance niya ang kapayapaan sa bahay.
+</p>
+
+<p>
+  At hindi dapat maging pabigat sa konsensiya niya ang karapatang magsabing:
+</p>
+
+<blockquote>
+  <p>
+    “Ayoko na.”
+  </p>
+</blockquote>
+
+<p>
+  Dahil ang tunay na mapagmahal na magulang ay hindi lamang nagtatanong kung masaya ang bata habang kumikita.
+  Tinitiyak niyang mananatiling ligtas, malaya, edukado, pribado, at buo ang bata—kahit mawala ang views, sponsors, gifts, at pera.
+</p>
+
+<p>
+  Kaya sa susunod na sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Nag-e-enjoy naman ang bata,”
+  </p>
+</blockquote>
+
+<p>
+  Huwag doon tapusin ang usapan.
+</p>
+
+<p>
+  Itanong:<br>
+  Pwede ba siyang huminto nang walang guilt?<br>
+  At kapag huminto siya, kaya pa rin bang gampanan ng mga adult ang responsibilidad nilang buhayin at protektahan siya?
+</p>
+
+<p>
+  Kapag hindi—huwag mong gawing depensa ang ngiti niya.
+</p>
+
+<blockquote>
+  <p>
+    Aminin mo ang totoo:<br>
+    Nasanay ka nang may pakinabang sa pagkabata niya.
+  </p>
+</blockquote>
+
+</div>
+
+        <!-- ===================================
+     SOURCES / REFERENCES
+
+     PALITAN SA BAWAT BAGONG ARTICLE
+=================================== -->
+
+<section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Mga Sanggunian
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Department of Labor and Employment — <em>Labor Advisory No. 12, Series of 2026: Engagement or Participation of Children Below 15 Years of Age in Public Entertainment or Information Through Cinema, Theater, Radio, Television, or Other Forms of Media.</em>
+    </li>
+
+    <li>
+      Republic Act No. 9231 — employment restrictions, legal exceptions, working-hour limits, protection laban sa exploitation, ownership at administration ng income, 20% family-use limit, at trust-fund requirement.
+    </li>
+
+    <li>
+      Philippine Statistics Authority — <em>2025 Working Children Situation: Preliminary Results.</em>
+    </li>
+
+    <li>
+      Samuel I. Cabbuag — <em>When I Grow Up, I Want to Be a Vlogger: Child Influencers in the Philippines.</em> Social Media + Society, 2025.
+    </li>
+
+    <li>
+      Catherine J. Archer at Kate M. Delmo — <em>Children’s “Playbour” as Influencers on Social Media: An Investigation into the Legal and Ethical Issues Surrounding Kidfluencers.</em> Communication Research and Practice, 2025.
+    </li>
+
+    <li>
+      Mary Therese C. Lasanas at mga kasama — <em>Narratives of Utang na Loob among Working Panganays in the Southern Philippines.</em> Social Transformations: Journal of the Global South, 2024.
+    </li>
+
+    <li>
+      Katherine Baxter at Barbara Czarnecka — <em>Sharing Images of Children on Social Media: British Motherhood Influencers and the Privacy Paradox.</em> PLOS ONE, 2025.
+    </li>
+
+    <li>
+      Miriam Schirmer, Angelina Voggenreiter, at Jürgen Pfeffer — <em>More Skin, More Likes! Measuring Child Exposure and User Engagement on TikTok.</em> Research preprint, 2024.
+    </li>
+
+    <li>
+      YouTube Help — opisyal na dokumentasyon tungkol sa advertising revenue, YouTube Premium, Channel Memberships, Shopping, Super Chat, Super Stickers, Super Thanks, at iba pang fan-funding monetization features.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
