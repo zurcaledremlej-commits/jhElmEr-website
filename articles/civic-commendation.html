@@ -1,1 +1,2008 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+    <meta
+    name="description"
+    content="Karangalan ba talaga o ingay lang? Isang fact-based civic explainer tungkol sa commendation resolutions, pambansang pagkilala, merit standards, legislative discretion, at tamang pamantayan sa institutional recognition."
+  >
+
+  <title>Karangalan Ba Talaga—O Ingay Lang? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          Karangalan Ba Talaga—O Ingay Lang?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-commendation.png"
+            alt="Simbolikong paglalarawan ng pambansang pagpupugay, merit, media attention, at tanong kung ang pagkilala ba ay batay sa napatunayang ambag o sa ingay at public attention."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Hindi lahat ng napapansin ay pambihira.
+            Hindi lahat ng nakaaantig na kuwento ay patunay ng pambihirang ambag.
+            At hindi lahat ng magaling, promising, nanalo, o nag-viral ay umabot na sa antas na dapat parangalan bilang natatanging karangalan ng bansa.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na walang halaga ang kanilang talento, pagsisikap, o tagumpay.
+          </p>
+
+          <p>
+            Ang mahusay ay dapat purihin.<br>
+            Ang may potensyal ay dapat suportahan.<br>
+            Ang nanalo ay dapat batiin.<br>
+            Ang naging inspirasyon ay maaaring kilalanin.
+          </p>
+
+          <p>
+            At kapag maagang nawala ang isang tao, nararapat damayan ang pamilya at alalahanin ang kanyang buhay at mga tunay na nagawa.
+          </p>
+
+          <p>
+            Pero hindi magkakapareho ang pagbati, suporta, pakikiramay, pag-alala, at pambansang pagpupugay.
+          </p>
+
+          <h2>
+            Ang Resolusyon ay Hindi Batas—Pero Hindi Rin Ito Ordinaryong Post
+          </h2>
+
+          <p>
+            May mas mataas na pamantayang dapat gamitin kapag isang mambabatas ang naghain—at lalo na kapag isang kapulungan ng Kongreso ang nag-adopt—ng resolusyon upang magbigay ng pagkilala.
+          </p>
+
+          <p>
+            Dahil kapag isang kapulungan ng Kongreso na ang nagbibigay-pugay, hindi na lamang ito usapin ng personal na paghanga. Nagiging usapin na rin ito ng pampublikong pamantayan.
+          </p>
+
+          <p>
+            Ano ba talaga ang kailangang mapatunayan bago sabihing ang isang tao ay nagbigay ng pambihirang karangalan sa bansa?
+          </p>
+
+          <p>
+            Sapat na ba ang pagiging magaling?<br>
+            Sapat na ba ang nakikitang potensyal?<br>
+            Sapat na ba ang pagiging bahagi ng isang nanalong grupo?<br>
+            Sapat na ba ang pagiging viral, ang malakas na public reaction, o ang isang trahedyang pumukaw sa damdamin ng marami?
+          </p>
+
+          <p>
+            O dapat bang may malinaw, mataas, pare-pareho, at proporsiyonal na pamantayan bago gawing pambansang pagpupugay ang isang paghanga?
+          </p>
+
+          <p>
+            Dahil kung walang malinaw na guhit sa pagitan ng karapat-dapat purihin at karapat-dapat bigyan ng pambihirang pambansang pagkilala, madaling mapalitan ng visibility ang merit, ng emosyon ang pagsusuri, at ng ingay ang tunay na bigat ng nagawa.
+          </p>
+
+          <h2>
+            Ang Resolusyon ay Hindi Batas—Pero Hindi Rin Ito Ordinaryong Post
+          </h2>
+
+          <p>
+            Ang simple resolution ay ginagamit para sa mga bagay na saklaw ng isang kapulungan lamang ng Kongreso.
+          </p>
+
+          <p>
+            Hindi ito isinasaalang-alang ng kabilang kapulungan.<br>
+            Hindi ito ipinadadala sa Pangulo upang lagdaan.
+          </p>
+
+          <p>
+            Wala rin itong bisa at puwersa ng batas.
+          </p>
+
+          <p>
+            Maaari itong gamitin upang ipahayag ang opinyon ng Senado o Kamara at manawagan ng congressional action tungkol sa isang usaping may pambansang interes.
+          </p>
+
+          <p>
+            Kapag inihain pa lamang, panukala pa lamang iyon ng isa o ilang mambabatas. Kapag in-adopt, nagiging opisyal na pagpapahayag iyon ng Senado o Kamara bilang isang kapulungan—pero hindi pa rin ito batas, hindi awtomatikong formal state honor, at hindi legal na deklarasyon ng buong sambayanang Pilipino.
+          </p>
+
+          <p>
+            Gayunman, may bigat pa rin ito.
+          </p>
+
+          <p>
+            Bahagi ito ng opisyal na legislative record.<br>
+            Ginagamit dito ang oras, proseso, at pangalan ng isang pambansang institusyon.
+          </p>
+
+          <p>
+            Kaya may karapatan ang publiko na itanong hindi lamang kung mabuting tao o kahanga-hanga ba ang recipient.
+          </p>
+
+          <p>
+            Dapat ding itanong:<br>
+            Ano ang eksaktong pamantayang ginamit—at pareho ba itong ginagamit sa ibang Pilipinong may kapareho o mas mataas na nagawa?
+          </p>
+
+          <h2>
+            Ano ang Ipinapakita ng Aktuwal na Senate Data?
+          </h2>
+
+          <p>
+            Sa official statistical report ng Senado na may cutoff na January 12, 2026, 206 Senate resolutions ang naihain sa First Regular Session ng 20th Congress at 31 simple resolutions ang na-adopt.
+          </p>
+
+          <p>
+            Hindi lahat ng 31 ay commendation.
+            Kasama sa listahan ang internal Senate matters, diplomatic at treaty-related matters, policy positions, commemorations, at condolence.
+          </p>
+
+          <p>
+            Pero makikita rin sa parehong opisyal na tala na ang commendation resolutions ay sumaklaw sa napakalawak na uri at antas ng accomplishment:
+          </p>
+
+          <p>
+            isang WBC boxing title;<br>
+            isa pang professional boxing victory;<br>
+            historic tennis achievements;<br>
+            isang world pool championship;<br>
+            mga national volleyball, curling, football, ice hockey, chess, basketball, padel, at swimming achievements;<br>
+            isang U16 national football team;<br>
+            isang U13 football club;<br>
+            isang dance group;<br>
+            mga individual athlete;<br>
+            at mga awardee ng isang private foundation.
+          </p>
+
+          <p>
+            Sa hiwalay na official resolution record, ang pagkilala kay Alex Eala ay tahasang nakabatay sa kanyang historic achievements and outstanding contributions to Philippine tennis.
+          </p>
+
+          <p>
+            Ang pagkilala kay Carlo Biado naman ay para sa kanyang pagkapanalo sa 2025 World Pool Championship at pagiging unang Pilipinong dalawang beses nanalo sa naturang titulo.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang walang merit ang alinman sa mga kinilala.
+            Hindi rin nito sinasabing dapat magkakapantay ang kanilang achievements.
+          </p>
+
+          <p>
+            Ang malinaw na ipinapakita ng datos ay ito:
+            Ang simple resolution ay isang malawak na legislative instrument na ginagamit para sa magkakaibang layunin at magkakaibang bigat ng accomplishment.
+          </p>
+
+          <p>
+            Kaya ang simpleng pagkakaroon ng resolusyon ay hindi sapat upang patunayang ang recipient ay umabot na sa pinakamataas na antas ng pambansang distinction.
+          </p>
+
+          <p>
+            Ang resolusyon mismo ay hindi sukatan ng achievement.
+            Ang dapat sukatin ay ang achievement na nasa likod nito.
+          </p>
+
+                            <h2>
+            Walang Iisa at Obligadong Merit Checklist
+          </h2>
+
+          <p>
+            Walang nakasaad sa general rules tungkol sa simple resolutions na kailangan munang maging Olympic medalist, world champion, record holder, national artist, o transformative public servant bago maaaring paghainan ng commendation.
+          </p>
+
+          <p>
+            Malawak ang discretion ng mambabatas.
+          </p>
+
+          <p>
+            Maaari siyang maghain dahil sa isang historic world achievement.<br>
+            Maaari ring dahil sa school, youth, regional, professional, cultural, religious, institutional, o memorial occasion.
+          </p>
+
+          <p>
+            Legal at procedurally possible ang ganitong kaluwagan.
+            Pero ang pagiging pinapayagan ng proseso ay hindi awtomatikong nangangahulugang mataas, pare-pareho, at makatarungan na ang pamantayan.
+          </p>
+
+          <p>
+            Maaaring valid ang paghahain pero mahina ang comparative basis.<br>
+            Maaaring ma-adopt ang resolusyon pero hindi ibig sabihin na kapantay na nito ang formal state honor o Hall of Fame recognition.
+          </p>
+
+          <p>
+            At kapag walang malinaw na threshold, nagiging mas madali para sa visibility, timing, public emotion, at political value na makaimpluwensiya sa pagpili.
+          </p>
+
+          <h2>
+            Hindi Pare-pareho ang Pagbati, Suporta, Pag-alala, at Pambansang Karangalan
+          </h2>
+
+          <p>
+            May lugar ang simpleng pagbati.<br>
+            May lugar ang pagkilala sa promising talent.<br>
+            May lugar ang pagpupugay sa isang team victory.<br>
+            May lugar ang resolution of condolence.<br>
+            May lugar ang memorial tribute para sa isang buhay na maagang nawala.
+          </p>
+
+          <p>
+            At may lugar ang pambansang pagpupugay para sa historic, extraordinary, o sustained contribution.
+          </p>
+
+          <p>
+            Hindi dapat ipaghalo ang mga ito na para bang iisa lamang ang ibig sabihin.
+          </p>
+
+          <p>
+            Ang isang promising athlete ay maaaring tunay na magaling kahit hindi pa national icon.<br>
+            Ang isang youth champion ay maaaring karapat-dapat purihin kahit hindi pa kapantay ng isang world o Olympic champion.<br>
+            Ang isang team member ay maaaring mahalagang bahagi ng tagumpay kahit hindi siya ang pangunahing dahilan nito.<br>
+            At ang isang taong maagang nawala ay maaaring karapat-dapat alalahanin kahit hindi pa siya nakabuo ng pambihirang national legacy.
+          </p>
+
+          <p>
+            Hindi lahat ng karapat-dapat purihin ay nangangailangan ng pinakamabigat na uri ng institutional commendation.
+          </p>
+
+          <h2>
+            Pantay ang Dignidad—Hindi Kailangang Pantay ang Parangal
+          </h2>
+
+          <p>
+            Hindi nakadepende ang halaga ng isang tao sa dami ng medalya, titulo, award, o resolusyong natanggap niya.<br>
+            Hindi mas mahalaga ang buhay ng world champion kaysa ordinaryong student-athlete.<br>
+            Hindi mas karapat-dapat damayan ang sikat kaysa hindi kilala.
+          </p>
+
+          <p>
+            Pantay ang dignidad ng tao.
+          </p>
+
+          <p>
+            Pero ang merit-based public recognition ay hindi lamang pagkilala sa dignidad.
+            Pagtataya rin ito sa bigat ng nagawa.
+          </p>
+
+          <p>
+            Sa Sikolohiyang Pilipino, binigyang-diin ni Virgilio Enriquez ang mga paninindigang tulad ng paggalang at pagmamalasakit, pagtulong at pagdamay, pakikiramdam, at pakikipagkapwa. Iniuugnay niya ang pakikipagkapwa sa pagkilala at pagtrato sa iba bilang kapantay na tao.
+          </p>
+
+          <p>
+            Hindi masama ang pagiging madaling makiramay.
+            Bahagi ito ng makataong pakikitungo sa kapwa.
+          </p>
+
+          <p>
+            Pero kapag pampublikong institusyon ang gumagawa ng merit judgment, hindi maaaring palitan ng pakikiramay ang beripikadong achievement.
+          </p>
+
+          <p>
+            Hindi kailangang pigilan ang malasakit.
+          </p>
+
+          <p>
+            Ang kailangang pigilan ay ang paghalo ng tatlong magkaibang bagay:<br>
+            halaga ng buhay;<br>
+            bigat ng trahedya;<br>
+            at antas ng accomplishment.
+          </p>
+
+          <p>
+            Pantay ang paggalang na nararapat sa tao.
+            Hindi kailangang pareho ang antas ng parangal dahil hindi pareho ang uri, lawak, at bigat ng nagawa.
+          </p>
+
+          <h2>
+            Ang Potensyal ay Dapat Suportahan—Hindi Ituring na Natupad na
+          </h2>
+
+          <p>
+            Ang potensyal ay posibilidad ng maaaring marating.
+            Hindi pa ito resulta.
+          </p>
+
+          <p>
+            Ang “maaari sana siyang maging mahusay” ay hindi kapareho ng “napatunayan na niyang kabilang siya sa pinakamahuhusay.”<br>
+            Ang “posibleng makapagbigay siya ng malaking karangalan” ay hindi kapareho ng “nakapagbigay na siya ng pambihirang karangalan.”
+          </p>
+
+          <p>
+            Kung may promising athlete, artist, researcher, o estudyante, ang wastong tugon ay suporta:
+          </p>
+
+          <p>
+            maayos na training;<br>
+            scholarship;<br>
+            nutrisyon;<br>
+            kagamitan;<br>
+            insurance;<br>
+            ligtas na biyahe at kapaligiran;<br>
+            mentorship;<br>
+            at pagkakataong umunlad.
+          </p>
+
+          <p>
+            Mas makabuluhang suportahan ang potensyal habang maaari pa itong mamunga kaysa hintaying magkaroon ng trahedya bago ito bigyan ng pambansang atensiyon.
+          </p>
+
+          <p>
+            Kapag ginawang accomplishment ang potensyal, parang sinasabi nating nangyari na ang isang kinabukasang hindi pa naman dumarating.
+          </p>
+
+                            <h2>
+            Ang Trahedya ay Hindi Dapat Maging Merit Multiplier
+          </h2>
+
+          <p>
+            Kapag maaga at biglaan ang pagkamatay ng isang taong nasa public attention, maaaring lumakas nang husto ang visibility at pagbanggit sa kanya.
+          </p>
+
+          <p>
+            Sinuri ng isang peer-reviewed study ang mentions ng 2,362 public figures sa English-language online news at Twitter isang taon bago at isang taon matapos silang mamatay.
+          </p>
+
+          <p>
+            Sa median, tumaas nang humigit-kumulang 9,400% ang news mentions at 28,000% ang Twitter mentions sa panahon ng pagkamatay.
+          </p>
+
+          <p>
+            Mas malakas din ang attention boost sa mga namatay nang bata o sa hindi natural na paraan.
+          </p>
+
+          <p>
+            Hindi nito sinasabing peke ang lungkot ng publiko.
+            Ipinapakita lamang nitong kayang baguhin ng trahedya ang antas ng visibility ng isang taong nakikita na ng publiko.
+          </p>
+
+          <p>
+            Doon kailangang maging maingat ang institusyon.
+          </p>
+
+          <p>
+            Maaaring tumaas ang public attention matapos ang pagkamatay.
+            Pero hindi kasabay nitong tumataas ang bilang ng titulong napanalunan, record na nabasag, o contribution na aktuwal nang natapos bago ang trahedya.
+          </p>
+
+          <p>
+            Ang trahedya ay maaaring magpabigat sa dahilan upang alalahanin ang tao. Hindi nito awtomatikong pinabibigat ang kanyang achievement.
+          </p>
+
+          <p>
+            Maaaring magbigay ng memorial tribute.<br>
+            Maaaring magpahayag ng pakikiramay.<br>
+            Maaaring imbestigahan kung may kapabayaan.<br>
+            Maaaring gumawa ng reporma upang hindi na maulit ang nangyari.
+          </p>
+
+          <p>
+            Pero hindi kailangang gawing completed national legacy ang nasayang na potensyal.
+          </p>
+
+          <h2>
+            Bakit Madaling Masundan ng Pulitika ang Ingay?
+          </h2>
+
+          <p>
+            Hindi lahat ng resolusyong inihahain matapos ang isang viral event ay political stunt.
+            Hindi rin maaaring basta ideklarang publicity lamang ang motibo ng isang mambabatas kung walang direktang ebidensiya.
+          </p>
+
+          <p>
+            Pero may mga pag-aaral na nagpapakitang may tunay na ugnayan ang public attention at political attention.
+          </p>
+
+          <p>
+            Sa pagsusuri sa social-media discussions noong 113th United States Congress, natuklasan ng mga researcher na mas madalas sumunod ang discussion ng legislators sa mga isyung pinag-uusapan na ng publiko kaysa sila ang unang nagtakda ng usapan.
+          </p>
+
+          <p>
+            Nanatili ang resultang iyon kahit isinama sa analysis ang agenda-setting effect ng news media.
+          </p>
+
+          <p>
+            Hindi ito pag-aaral sa Senado ng Pilipinas.
+            Hindi rin ito patunay sa personal na motibo ng sinumang Pilipinong mambabatas.
+          </p>
+
+          <p>
+            Pero ipinapakita nito ang isang mas malawak na political reality:
+            Mas madaling mapansin, pag-usapan, at mabigyan ng political attention ang isang usaping malakas na ang public attention.
+          </p>
+
+          <p>
+            May kaugnay ding tinatawag na cumulative advantage o Matthew effect.
+          </p>
+
+          <p>
+            Sa isang pag-aaral sa science funding, ang mga aplikanteng bahagyang lumampas sa funding threshold ay nakakuha ng lumalaking advantage sa mga sumunod na taon kumpara sa mga aplikanteng halos kapareho ang evaluation scores ngunit bahagyang hindi napili.
+          </p>
+
+          <p>
+            Pagkaraan ng walong taon, umabot sa humigit-kumulang €180,000 ang average funding gap, at higit sa doble ang naipong kasunod na funding ng mga naunang napili.
+          </p>
+
+          <p>
+            Hindi rin ito direktang pag-aaral sa congressional resolutions.
+          </p>
+
+          <p>
+            Pero malinaw ang mekanismong ipinapakita:
+            Ang napansin na ay mas madaling muling mapansin.<br>
+            Ang kinilala na ay mas madaling muling kilalanin.
+          </p>
+
+          <p>
+            Samantalang ang taong kapantay o mas mataas ang achievement ngunit walang viral story, media machinery, o institutional connection ay maaaring manatiling hindi nakikita.
+          </p>
+
+          <p>
+            Dito nagiging civic issue ang pagpupugay.
+          </p>
+
+          <p>
+            Hindi lamang kung may merit ba ang pinili.
+            Kundi kung bakit siya ang pinili samantalang maraming iba ang may kapareho o mas mataas na nagawa.
+          </p>
+
+          <h2>
+            Ang Philippine Sports Hall of Fame Bilang Legal-Merit Benchmark
+          </h2>
+
+          <p>
+            May pinakamalapit na konkretong legal comparison para sa sports recognition: Republic Act No. 8757 o Philippine Sports Hall of Fame Act.
+          </p>
+
+          <p>
+            Itinatag ng batas ang Hall of Fame para sa Filipino athletes, coaches, at trainers na tunay na namukod sa kanilang larangan.
+          </p>
+
+          <p>
+            Hindi sapat na naging magaling o promising lamang.
+          </p>
+
+          <p>
+            Ayon sa batas, kailangang may character at integrity ang candidate.
+          </p>
+
+          <p>
+            Para sa atleta, kailangan niyang magkaroon ng kahit isa sa sumusunod na minimum achievements:
+          </p>
+
+          <p>
+            gold medal sa Southeast Asian Games;<br>
+            silver medal sa Asian Games, Asian Cup, o regional games;<br>
+            bronze medal sa Olympic o World Games;<br>
+            o world championship sa professional o amateur competition.
+          </p>
+
+          <p>
+            May screening committee rin na binubuo ng mga kinatawan mula sa Philippine Sports Commission, Philippine Olympic Committee, Games and Amusements Board, national sports associations, at private sector.
+          </p>
+
+          <p>
+            Tungkulin nitong tumanggap at magsuri ng nominations, gumawa ng karagdagang selection criteria, at magsagawa ng hearings, meetings, at consultations kung kinakailangan.
+          </p>
+
+          <p>
+            Hindi direktang pinamamahalaan ng RA 8757 ang Senate o House commendation resolutions.
+            Hindi rin ibig sabihin na kailangang Hall of Fame-level ang lahat ng pagbating manggagaling sa isang kapulungan ng Kongreso.
+          </p>
+
+          <p>
+            Pero mahalaga ang ipinapakita ng batas:
+            Kapag formal at mataas ang uri ng pagkilala, hindi lamang paghanga ang ginagamit. May minimum threshold, character requirement, nomination, comparative screening, at selection process.
+          </p>
+
+          <p>
+            At kahit maabot ng atleta ang minimum medal requirement, hindi sinasabi ng batas na awtomatiko na siyang inducted.
+          </p>
+
+          <p>
+            Daraan pa rin ang nomination sa screening committee na may kapangyarihang magsuri at magtakda ng selection criteria.
+          </p>
+
+          <p>
+            Iyan ang ubod ng Hall of Fame comparison:
+            Hindi lahat ng magaling ay Hall of Famer.<br>
+            Hindi lahat ng may qualifying achievement ay awtomatikong inducted.
+          </p>
+
+          <p>
+            At lalong hindi sapat ang potensyal, kasikatan, o viral story kung ang pinag-uusapan ay pagkilalang nakalaan sa mga tunay na namukod sa kasaysayan.
+          </p>
+
+                            <h2>
+            May Hierarchy Din ang Formal State Honors
+          </h2>
+
+          <p>
+            Sa mas malawak na sistema ng pambansang parangal, itinatag ng Executive Order No. 236 ang Honors Code of the Philippines.
+          </p>
+
+          <p>
+            Layunin nitong magkaroon ng consistency sa criteria, mapangalagaan ang integrity at prestige ng mga parangal, at linawin ang kanilang hierarchy o order of precedence.
+          </p>
+
+          <p>
+            Nililinaw din ng Honors Code na hindi lahat ng presidential award ay maituturing na “Honor” sa pinakamataas at teknikal na kahulugan.
+          </p>
+
+          <p>
+            May Committee on Honors ding tumutulong sa pagsusuri ng nominations.
+          </p>
+
+          <p>
+            Hindi direktang saklaw nito ang ordinaryong Senate o House commendation resolution.
+            Kaya hindi tamang sabihing nilabag agad ang Honors Code dahil lamang kuwestiyonable ang merit ng isang resolusyon.
+          </p>
+
+          <p>
+            Pero malinaw ang aral:
+            Kapag pambansang karangalan ang pinag-uusapan, mahalaga ang distinction, hierarchy, consistency, evaluation, at proteksiyon sa prestige.
+          </p>
+
+          <p>
+            Kung kailangan ang mga iyon sa formal state honors, makatwiran ding hingin sa Senado o Kamara na malinaw na ipaliwanag ang batayan ng pagpupugay na ginagamit ang pangalan at awtoridad ng isang pambansang institusyon.
+          </p>
+
+          <h2>
+            Ano Dapat ang Minimum Threshold?
+          </h2>
+
+          <p>
+            Hindi ito kasalukuyang obligadong legal checklist para sa bawat commendation resolution.
+          </p>
+
+          <p>
+            Isa itong public accountability framework.
+          </p>
+
+          <p>
+            Kung ang isang resolusyon ay nagbibigay ng pambansang pagpupugay dahil sa achievement, may mga pangunahing pamantayang hindi dapat mawala.
+          </p>
+
+          <h3>
+            Beripikado at Malinaw na Achievement
+          </h3>
+
+          <p>
+            Dapat matukoy kung ano mismo ang nagawa.
+          </p>
+
+          <p>
+            Hindi sapat ang malalawak na salitang:
+          </p>
+
+          <p>
+            “nagbigay ng inspirasyon”;<br>
+            “naghatid ng karangalan”;<br>
+            “ipinagmamalaki ng bayan”;<br>
+            o “may malaking potensyal.”
+          </p>
+
+          <p>
+            Mga conclusion ang mga iyon.
+          </p>
+
+          <p>
+            Kailangan munang ilatag ang facts:
+          </p>
+
+          <p>
+            Ano ang event o accomplishment?<br>
+            Ano ang titulo, medalya, award, record, o kontribusyon?<br>
+            Sino ang sanctioning o awarding body?<br>
+            Gaano kataas at kalawak ang kompetisyon?<br>
+            Ano ang aktuwal na resulta?<br>
+            Lehitimo at kinikilala ba ang event o institusyong nagbigay ng pagkilala?
+          </p>
+
+          <h3>
+            May Malinaw na National Relevance
+          </h3>
+
+          <p>
+            Hindi sapat na Pilipino ang recipient.
+            Kailangang maipakita kung bakit pambansang institusyon ang nararapat na kumilos.
+          </p>
+
+          <p>
+            Kinatawan ba niya ang bansa?<br>
+            May binuksan ba siyang landas para sa ibang Pilipino?<br>
+            Itinaas ba niya ang antas o reputasyon ng Pilipinas?<br>
+            May pangmatagalang ambag ba sa sports, agham, sining, edukasyon, kultura, serbisyo, o industriya?
+          </p>
+
+          <p>
+            Hindi lahat ng personal success ay pambansang contribution.
+            Ang pambansang pagpupugay ay dapat may pambansang dahilan.
+          </p>
+
+          <h3>
+            May Comparative Distinction
+          </h3>
+
+          <p>
+            Dapat kayang sagutin:
+            Bakit siya ang kinilala samantalang maraming iba ang may kapareho o mas mataas na achievement?
+          </p>
+
+          <p>
+            Hindi kailangang bigyan ng resolusyon ang lahat.
+            Pero kailangang maipaliwanag kung ano ang tunay na natatangi sa pinili.
+          </p>
+
+          <p>
+            Kung ang pinakamalinaw na kaibahan ay siya ang nag-trending, mas dramatic ang personal na kuwento, mas malakas ang fan base, o mas malaki ang publicity value, mahina ang merit standard.
+          </p>
+
+          <p>
+            Hindi dapat media visibility ang maging tahimik na qualification.
+          </p>
+
+          <h3>
+            Proporsiyonal ang Uri at Wika ng Pagkilala
+          </h3>
+
+          <p>
+            Dapat tugma ang bigat ng salita sa bigat ng nagawa.
+          </p>
+
+          <p>
+            Maaaring tawaging promising athlete ang isang promising athlete.<br>
+            Maaaring tawaging youth champion ang isang youth champion.<br>
+            Maaaring tawaging historic achiever ang nakagawa ng tunay na historic breakthrough.<br>
+            Maaaring tawaging national icon o legend ang may sapat na body of work at transformative contribution.
+          </p>
+
+          <p>
+            Pero hindi dapat gamitin ang mga katawagang iyon na para bang magkakapantay ang antas at bigat ng pagkilalang kinakatawan nila.
+          </p>
+
+          <p>
+            Ang career na nasa developmental stage pa lamang ay hindi pa completed national sporting legacy.<br>
+            Ang isang team member ay hindi awtomatikong pangunahing dahilan ng championship.<br>
+            Ang isang youth o regional achievement ay hindi awtomatikong kapantay ng world, Olympic, o elite professional distinction.
+          </p>
+
+          <p>
+            Ang precision ay hindi kawalan ng respeto. Ito ang pagiging tapat sa taong kinikilala at sa publikong pinagsasalitaan.
+          </p>
+
+                            <h2>
+            Kailangang May Isa sa mga Mabibigat na Merit Route
+          </h2>
+
+          <p>
+            Ang mabibigat na merit route na ito ay para sa resolusyong nag-aangkin ng pambihirang pambansang karangalan, national legacy, pinakamataas na pagpupugay, o pagtatanging lampas sa ordinaryong pagbati.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang bawal kilalanin ng Senado o Kamara ang mas mababang antas ng tagumpay.
+          </p>
+
+          <p>
+            Pero kapag mas limitado ang napatunayang achievement, kailangang mas limitado at proporsiyonal din ang uri at wikang ginagamit sa pagkilala.
+          </p>
+
+          <p>
+            Bukod sa beripikadong achievement, national relevance, comparative distinction, at proportionality, kailangang may matibay na dahilan kung bakit pambihirang pambansang pagpupugay—at hindi simpleng pagbati—ang nararapat.
+          </p>
+
+          <h3>
+            Pambihirang Antas
+          </h3>
+
+          <p>
+            Top-tier international, continental, world, Olympic, o globally recognized professional achievement.
+          </p>
+
+          <p>
+            Hindi pareho ang bigat ng school, regional, national youth, Southeast Asian, continental, world, at Olympic levels.
+          </p>
+
+          <p>
+            May halaga ang lahat.<br>
+            Pero hindi pareho ang bigat.
+          </p>
+
+          <h3>
+            Tunay na Historic Rarity
+          </h3>
+
+          <p>
+            Maaaring sapat ang isang achievement kahit isang beses lamang nangyari kung pambihira ang mismong nagawa:
+          </p>
+
+          <p>
+            unang Pilipino;<br>
+            unang medalya o titulo ng bansa;<br>
+            unang lehitimong global breakthrough;<br>
+            o record na nagbago sa puwesto ng Pilipinas sa isang larangan.
+          </p>
+
+          <p>
+            Pero hindi lahat ng “first” ay historic.
+            May mga “first” na nabubuo lamang dahil masyadong makitid ang category, edad, platform, lugar, o technical description.
+          </p>
+
+          <p>
+            Kailangang may tunay na historical weight—hindi lamang magandang headline.
+          </p>
+
+          <h3>
+            Sustained Excellence o Transformative Contribution
+          </h3>
+
+          <p>
+            Kung hindi singularly historic ang isang panalo, dapat tingnan ang kabuuang body of work:
+          </p>
+
+          <p>
+            tuloy-tuloy na mataas na performance;<br>
+            maraming lehitimong tagumpay;<br>
+            records;<br>
+            leadership;<br>
+            innovation;<br>
+            mahabang serbisyo;<br>
+            o pagbabagong iniwan sa larangan.
+          </p>
+
+          <p>
+            Dito pumapasok ang prinsipyo ng Hall of Fame.
+          </p>
+
+          <p>
+            Hindi lahat ng nagkaroon ng magandang season ay Hall of Famer.<br>
+            Hindi lahat ng naging champion ay legend.<br>
+            Hindi lahat ng magaling ay nagkaroon na ng natatanging puwesto sa kasaysayan.
+          </p>
+
+          <h3>
+            Kapag Team Achievement, Dapat Malinaw ang Personal na Ambag
+          </h3>
+
+          <p>
+            Mahalaga ang bawat miyembro ng koponan.
+            Pero kung indibidwal ang bibigyan ng pambihirang national commendation dahil sa team victory, kailangang malinaw ang personal niyang naging papel.
+          </p>
+
+          <p>
+            Ano ang aktuwal niyang contribution?<br>
+            Starter ba siya?<br>
+            Captain?<br>
+            MVP?<br>
+            Leading performer?<br>
+            May decisive role ba siya?<br>
+            O kabilang lamang siya sa roster?
+          </p>
+
+          <p>
+            Hindi nito minamaliit ang ibang miyembro.
+            Pinoprotektahan lamang nito ang accuracy ng individual recognition.
+          </p>
+
+          <p>
+            Ang team achievement ay dapat kilalaning team achievement maliban kung may malinaw na batayan upang itangi ang personal na ambag ng isang miyembro.
+          </p>
+
+          <h2>
+            Ano ang Hindi Sapat Kung Nag-iisa?
+          </h2>
+
+          <p>
+            Hindi sapat ang pagiging trending.
+            Patunay iyon ng atensiyon, hindi awtomatikong patunay ng excellence.
+          </p>
+
+          <p>
+            Hindi sapat ang potensyal.
+            Patunay iyon ng maaaring marating, hindi pa ng napatunayang ambag.
+          </p>
+
+          <p>
+            Hindi sapat ang pagiging inspirasyon.
+            Mahalaga ang inspirasyon, pero kailangang tukuyin kung anong aktuwal na accomplishment ang pinagmulan nito.
+          </p>
+
+          <p>
+            Hindi sapat ang pagiging bahagi ng champion team.
+            Kailangang malinaw ang antas ng event at personal na contribution kung indibidwal ang pararangalan.
+          </p>
+
+          <p>
+            Hindi sapat ang trahedya.
+            Dahilan iyon upang makiramay, umalala, maghanap ng katotohanan, at gumawa ng reporma—hindi upang dagdagan ang achievement na hindi pa nakamit.
+          </p>
+
+          <p>
+            Maaaring bahagi ng kuwento ang mga ito.
+            Pero hindi sila dapat pumalit sa merit.
+          </p>
+
+                            <h2>
+            Ang Test na Walang Pangalan, Mukha, at Trending Story
+          </h2>
+
+          <p>
+            Bago maghain o mag-adopt ng national commendation, alisin muna ang mga bagay na madaling humatak ng emosyon.
+          </p>
+
+          <p>
+            Alisin ang pangalan.<br>
+            Alisin ang mukha.<br>
+            Alisin ang fan base.<br>
+            Alisin ang viral posts.<br>
+            Alisin ang political connection.<br>
+            Alisin ang personal na trahedya.
+          </p>
+
+          <p>
+            Iwan lamang ang dokumentadong achievement.
+          </p>
+
+          <p>
+            Ihahain pa rin ba ang parehong resolusyon?
+          </p>
+
+          <p>
+            Kung oo, malakas ang merit.<br>
+            Kung hindi, kailangang tanungin kung achievement ba talaga ang kinilala—o ang atensiyong nakapaligid dito.
+          </p>
+
+          <p>
+            May ikalawang test:
+          </p>
+
+          <p>
+            Kung buhay siya at hindi nag-trending, mapapansin pa rin ba siya ng parehong institusyon?<br>
+            Kung hindi, maaaring mas mabilis kilalanin ng sistema ang nasayang na potensyal matapos ang trahedya kaysa suportahan ito habang maaari pang umunlad.
+          </p>
+
+          <p>
+            May ikatlong test:
+          </p>
+
+          <p>
+            May ibang Pilipino bang may kapareho o mas mataas na achievement ngunit walang kaparehong pagkilala?
+          </p>
+
+          <p>
+            Kung mayroon, dapat kayang ipaliwanag ang pagkakaiba.
+          </p>
+
+          <p>
+            Ang discretion ay kapangyarihang pumili.
+            Hindi ito kalayaang pumili nang walang malinaw at mapanagutang pamantayan.
+          </p>
+
+          <h2>
+            Ang Dapat Hingin sa mga Mambabatas
+          </h2>
+
+          <p>
+            Hindi kailangang ipagbawal ang commendation resolutions.
+          </p>
+
+          <p>
+            Pero dapat kayang sagutin ng bawat naghahain:
+          </p>
+
+          <p>
+            Ano ang eksaktong achievement?<br>
+            Sino ang nag-verify nito?<br>
+            Gaano kataas at kabihira ang antas?<br>
+            Ano ang personal na ambag ng recipient?<br>
+            Ano ang malinaw na national significance?<br>
+            Ano ang kaibahan niya sa ibang may katulad o mas mataas na credentials?<br>
+            Bakit proporsiyonal ang salitang ginamit?<br>
+            At ang resolusyon ba ay para sa achievement, pakikiramay, memorial, o panawagan para sa reporma?
+          </p>
+
+          <p>
+            Kapag malinaw ang mga sagot, mas matibay ang pagkilala.
+            Kapag puro papuri ngunit walang comparative standard, mas nagmumukha itong publicity statement kaysa institutional judgment.
+          </p>
+
+          <h2>
+            Ang Karangalan ay Hindi Dapat Sumunod sa Ingay
+          </h2>
+
+          <p>
+            Hindi kailangang maliitin ang recipient upang punahin ang mababang threshold.
+            Hindi kailangang burahin ang kanyang tunay na nagawa upang sabihing marami ring nakagawa ng kapareho o higit pa.
+            Hindi rin kailangang maging manhid sa trahedya upang igiit na magkaiba ang pakikiramay at merit-based national recognition.
+          </p>
+
+          <p>
+            Maaaring deserving ang isang tao ng pagbati pero sobra ang wikang ginamit sa resolusyon.<br>
+            Maaaring karapat-dapat siyang alalahanin pero hindi kailangang gawing extraordinary achiever.<br>
+            Maaaring may totoong merit ang pagpupugay pero inconsistent ang pagpili kumpara sa ibang hindi napansin.
+          </p>
+
+          <p>
+            Ang pangunahing pananagutan ay hindi dapat ibuhos sa recipient.
+            Nasa mambabatas at kapulungang pumili ng uri, antas, at bigat ng pagkilala ang pananagutan.
+          </p>
+
+          <p>
+            Dahil kapag lahat ng magandang achievement ay tinawag na historic, humihina ang kahulugan ng pagiging historic.
+          </p>
+
+          <p>
+            Kapag lahat ng promising talent ay tinawag na national icon, nabubura ang pagitan ng posibilidad at napatunayang ambag.<br>
+            Kapag ang viral grief ay nagiging daan sa pinakamabigat na pagpupugay, natatabunan ang mga taong tahimik na nakamit ang kapareho o mas mataas na antas.
+          </p>
+
+          <p>
+            At kapag parehong wika ang ginagamit sa developmental achievement at world-class legacy, nawawala ang distinction na dapat pinoprotektahan ng pambansang pagkilala.
+          </p>
+
+          <p>
+            Ang potensyal ay dapat suportahan.<br>
+            Ang achievement ay dapat kilalanin sa tunay nitong antas.<br>
+            Ang trahedya ay dapat tugunan ng pakikiramay, katotohanan, pananagutan, at reporma.
+          </p>
+
+          <p>
+            Pero ang pambihirang karangalan ng bansa ay dapat nakalaan sa pambihirang, napatunayan, at proporsiyonal na ambag.
+          </p>
+
+          <p>
+            Hindi lahat ng magaling ay Hall of Famer.<br>
+            Hindi lahat ng champion ay national icon.<br>
+            Hindi lahat ng promising ay accomplished na.<br>
+            Hindi lahat ng viral ay historic.
+          </p>
+
+          <p>
+            At hindi lahat ng karapat-dapat purihin ay nangangailangan ng pambansang resolusyon.
+          </p>
+
+          <p>
+            Kapag lahat ng kapansin-pansin ay tinawag na pambihira, nawawala ang saysay ng pagiging pambihira.
+          </p>
+
+          <p>
+            Kapag lahat ng paghanga ay ginawang pambansang pagpupugay, ang resolusyon ay hindi na sukatan ng merito.
+            Nagiging sukatan na lamang ito kung sino ang napansin.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Senate of the Philippines — Legislative Process: Types of Legislation and Simple Resolutions
+            </li>
+
+            <li>
+              Senate of the Philippines, Legislative Bills and Index Service — Statistical Report on Bills and Resolutions Filed and Acted Upon, 20th Congress, January 12, 2026
+            </li>
+
+            <li>
+              Senate Legislative Reference Bureau — Senate Resolution No. 5, 20th Congress: Alex Eala
+            </li>
+
+            <li>
+              Senate Legislative Reference Bureau — Senate Resolution No. 7, 20th Congress: Carlo Biado
+            </li>
+
+            <li>
+              Senate Legislative Reference Bureau — Selected Adopted Resolutions of the 20th Congress
+            </li>
+
+            <li>
+              Republic Act No. 8757 — Philippine Sports Hall of Fame Act
+            </li>
+
+            <li>
+              Executive Order No. 236 — Honors Code of the Philippines
+            </li>
+
+            <li>
+              Virgilio G. Enriquez — <em>Filipino Psychology in the Third World</em>, Philippine Journal of Psychology
+            </li>
+
+            <li>
+              West, Leskovec, and Potts — <em>Postmortem Memory of Public Figures in News and Social Media</em>, Proceedings of the National Academy of Sciences
+            </li>
+
+            <li>
+              Barberá and colleagues — <em>Who Leads? Who Follows? Measuring Issue Attention and Agenda Setting by Legislators and the Mass Public Using Social Media Data</em>, American Political Science Review
+            </li>
+
+            <li>
+              Bol, de Vaan, and van de Rijt — <em>The Matthew Effect in Science Funding</em>, Proceedings of the National Academy of Sciences
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
