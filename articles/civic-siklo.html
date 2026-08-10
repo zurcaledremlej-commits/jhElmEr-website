@@ -1,1 +1,2404 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Bakit paulit-ulit ang mahinang pamamahala kahit galit tayo sa korapsyon? Isang fact-based Civic Explainer tungkol sa boto, accountability, vote buying, patronage, at responsibilidad ng mamamayan at ng mga nasa kapangyarihan."
+>
+
+  <title>GALIT SA KURAP—PERO MAY PRESYO ANG BOTO | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    GALIT SA KURAP—PERO MAY PRESYO ANG BOTO
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-siklo.png"
+      alt="Galit sa kurap pero may presyo ang boto—Civic Explainer tungkol sa vote buying, accountability, at kung paano nakaaapekto ang pamantayan ng pagboto sa kalidad ng pamamahala."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag baha na ang bahay, gusto natin ng mahusay na pamahalaan.
+  </p>
+
+  <p>
+    Kapag palpak ang flood control, gusto natin ng competent na opisyal.
+  </p>
+
+  <p>
+    Kapag may pondong nawawala, gusto natin ng malinis at transparent na gobyerno.
+  </p>
+
+  <p>
+    Kapag mabagal ang rescue, kulang ang evacuation, o sablay ang paghahanda, gusto natin ng lider na marunong mamahala.
+  </p>
+
+  <p>
+    At tama lang iyon.
+  </p>
+
+  <p>
+    Pero bakit kapag eleksyon na—kung kailan tayo mismo ang may pagkakataong pumili kung sino ang hahawak ng kapangyarihan at pera ng bayan—may mga pagkakataong biglang nag-iiba ang sukatan?
+  </p>
+
+  <p>
+    Hindi na competence.
+  </p>
+
+  <p>
+    Hindi na track record.
+  </p>
+
+  <p>
+    Hindi na integridad.
+  </p>
+
+  <p>
+    Hindi na kakayahang mamahala.
+  </p>
+
+  <p>
+    Kundi:
+  </p>
+
+  <p>
+    Magkano ang bigay?<br>
+    May ayuda ba?<br>
+    May personal bang naitulong?<br>
+    Kilala ba namin?<br>
+    Kaalyado ba namin?<br>
+    Malakas ba ang apelyido?
+  </p>
+
+  <p>
+    At pagkatapos ng eleksyon, kapag may bagyo, baha, sirang kalsada, baradong drainage, palpak na proyekto, o pondong hindi malaman kung saan napunta, bumabalik ang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Nasaan ang gobyerno?
+    </p>
+  </blockquote>
+
+  <p>
+    Tamang itanong iyon.
+  </p>
+
+  <p>
+    Tamang magreklamo.
+  </p>
+
+  <p>
+    Tamang maningil kapag may kapabayaan, anomalya o korapsyon.
+  </p>
+
+  <p>
+    Pero kung seryoso nating gustong maintindihan kung bakit paulit-ulit ang problema, hindi puwedeng hanggang sa mga nakaupo lamang ang pagsusuri.
+  </p>
+
+  <p>
+    May isa pang mas hindi komportableng tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang pamantayan natin noong tayo naman ang pumipili kung sino ang pauupuin?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil hindi lang pangalan ng kandidato ang inilalagay natin sa balota.
+  </p>
+
+  <p>
+    Sa paraan ng pagboto natin, ginagantimpalaan din natin kung anong klase ng pulitika ang epektibong paraan para manalo.
+  </p>
+
+  <p>
+    Kung competence at performance ang may electoral reward, may dahilan ang kandidato para pagbutihin ang competence at performance.
+  </p>
+
+  <p>
+    Pero kung mas malakas ang political return ng sobre, personal na pabor, patronage, kasikatan, apelyido o “may naitulong naman,” iyon din ang sistemang matututong gamitin ng mga gustong manatili sa kapangyarihan.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na ang botante na ang may kasalanan sa bawat baha, bawat palpak na proyekto, o bawat korapsyon.
+  </p>
+
+  <p>
+    At lalong hindi nito binabawasan ang mas mabigat na pananagutan ng opisyal na may hawak ng kapangyarihan at pera ng bayan.
+  </p>
+
+  <p>
+    Pero hindi rin makukumpleto ang usapan tungkol sa masamang pamamahala kung ayaw nating pag-usapan kung anong political behavior ang patuloy nating ginagantimpalaan sa eleksyon.
+  </p>
+
+  <p>
+    Diyan kailangang magsimula ang mas mahirap na RealTalk.
+  </p>
+
+  <h2>
+    HINDI KASALANAN NG BOTANTE ANG BAGYO
+  </h2>
+
+  <p>
+    Unahin nating linawin ito.
+  </p>
+
+  <p>
+    Hindi dahil binoto mo ang isang opisyal ay ikaw na ang may kasalanan kapag bumaha.
+  </p>
+
+  <p>
+    Hindi rin lahat ng baha, landslide, pagkasira ng imprastraktura o pinsala ng bagyo ay ebidensiya agad ng korapsyon.
+  </p>
+
+  <p>
+    May mga kalamidad na talagang napakalakas. May natural hazards, geography, climate conditions at limitasyon kung gaano karaming pinsala ang kayang pigilan.
+  </p>
+
+  <p>
+    Pero hindi rin puwedeng gamitin ang salitang “natural disaster” para alisin ang lahat ng tanong tungkol sa pamamahala.
+  </p>
+
+  <p>
+    Sa ilalim ng Republic Act No. 10121 o Philippine Disaster Risk Reduction and Management Act, hindi lamang relief goods pagkatapos ng sakuna ang saklaw ng disaster governance. Kasama rito ang prevention at mitigation, preparedness, response, rehabilitation, risk assessment, early-warning systems, planning, budgeting, monitoring at pag-integrate ng disaster risk reduction sa development at land-use planning. May mga partikular ding responsibilidad ang national government at LGUs.
+  </p>
+
+  <p>
+    Kaya kapag may baha, hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Umulan kasi.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tamang tanong ay:
+  </p>
+
+  <p>
+    Gaano kalakas ang hazard?<br>
+    Ano ang kayang pigilan at hindi kayang pigilan?<br>
+    May plano ba?<br>
+    Naipatupad ba?<br>
+    May warning ba?<br>
+    May drainage, flood mitigation o evacuation measures bang dapat sana ay gumana?<br>
+    Maayos bang ginamit ang pondong inilaan?<br>
+    May kapabayaan ba?<br>
+    May corruption ba?
+  </p>
+
+  <p>
+    Ang kalamidad ay hindi awtomatikong ebidensiya ng corruption. Pero hindi rin exemption sa accountability ang kalamidad.
+  </p>
+
+  <h2>
+    MAS MABIGAT PA RIN ANG PANANAGUTAN NG NASA PWESTO
+  </h2>
+
+  <p>
+    Dito rin kailangang maging malinaw.
+  </p>
+
+  <p>
+    Hindi maaaring baligtarin ang usapan at sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Binoto ninyo sila, kaya huwag kayong magreklamo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mali iyon.
+  </p>
+
+  <p>
+    Kahit ikaw mismo ang bumoto sa opisyal, may karapatan kang punahin siya.
+  </p>
+
+  <p>
+    Kahit sinuportahan mo siya noong kampanya, hindi mo isinuko ang karapatan mong maningil.
+  </p>
+
+  <p>
+    At kahit hindi mo siya binoto, tungkulin pa rin niyang pagsilbihan ka.
+  </p>
+
+  <p>
+    Malinaw ang Article XI, Section 1 ng 1987 Constitution: <em>public office is a public trust.</em> Ang public officers at employees ay kailangang maging accountable sa mga mamamayan at magsilbi nang may responsibility, integrity, loyalty, efficiency, patriotism at justice.
+  </p>
+
+  <p>
+    Hindi nakasulat:
+  </p>
+
+  <blockquote>
+    <p>
+      “Accountable lamang sa mga hindi tumanggap ng ayuda.”
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      “Accountable lamang sa mga bumoto nang tama.”
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      “Kapag ibinoto ka ng mga tao, bahala ka na sa kapangyarihan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang opisyal ang may hawak ng public authority.
+  </p>
+
+  <p>
+    Ang opisyal ang may access sa public funds.
+  </p>
+
+  <p>
+    Ang opisyal ang may tungkuling ipatupad ang batas at programa.
+  </p>
+
+  <p>
+    Kaya sa usapin ng public accountability, mas mabigat ang pananagutan ng taong nasa kapangyarihan.
+  </p>
+
+  <p>
+    Pero ang pagkilala sa mas mabigat na public accountability ng opisyal ay hindi nangangahulugang wala nang anumang pananagutan ang mamamayan sa paraan niya ng paggamit ng boto.
+  </p>
+
+  <p>
+    Magkaibang antas.
+  </p>
+
+  <p>
+    Parehong kailangang pag-usapan.
+  </p>
+
+            <h2>
+    ANG MASAKIT NA TANONG: ANO BA TALAGA ANG SUKATAN NATIN SA ELEKSYON?
+  </h2>
+
+  <p>
+    Kung gusto natin ng matinong gobyerno, dapat tingnan din natin kung anong klase ng political behavior ang ginagantimpalaan natin.
+  </p>
+
+  <p>
+    May Philippine research na nagpapakitang hindi maliit o gawa-gawang problema ang vote buying.
+  </p>
+
+  <p>
+    Sa pag-aaral nina Tristan Canare, Ronald Mendoza at Mario Antonio Lopez gamit ang survey ng low-income voters sa Metro Manila matapos ang 2016 elections, food at clothing ang pinakakaraniwang anyo ng vote buying sa kanilang sample, habang mahigit isang-kapat ng respondents ang nag-report na inalok sila ng pera. Ipinakita rin ng pag-aaral na nagkakaiba ang patterns depende sa uri ng vote buying at sa socioeconomic at electoral conditions.
+  </p>
+
+  <p>
+    Sa background na inilatag ng J-PAL para sa isang Philippine field experiment tungkol sa vote-selling, binanggit ang estimate na humigit-kumulang 30% ng Filipinos ang inalok ng pera ng politician o local leader noong 2010 election campaign. Hindi ito dapat basahin bilang kasalukuyang national prevalence rate, at hindi rin ito mismong resulta ng field experiment na isinagawa kalaunan sa Sorsogon. Pero mahalaga itong historical indication na malawak na ang problemang pinag-uusapan natin noon pa.
+  </p>
+
+  <p>
+    Sa mismong experiment, sinuri naman kung maaaring mabawasan ang vote-selling sa pamamagitan ng anti-vote-selling pledges. Nakita na ang pangakong huwag tanggapin ang pera kapalit ng boto ay nakapagpababa ng vote-selling sa isang lower-stakes race, pero hindi naging ganoon ang epekto sa mayoral contest kung saan mas mataas ang stakes at mas malaki ang vote-buying payments.
+  </p>
+
+  <p>
+    At hindi rin ito simpleng problemang nawala na lang sa paglipas ng panahon.
+  </p>
+
+  <p>
+    Sa assessment ng European Union Election Observation Mission sa 2025 Philippine midterm elections, kabilang pa rin sa kanilang mga naobserbahang suliranin ang vote buying, kasama ang mga indikasyon at ulat ng cash at goods na ginagamit sa electoral context.
+  </p>
+
+  <p>
+    Kaya kapag sinabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Normal lang naman iyan tuwing eleksyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyon mismo ang problema.
+  </p>
+
+  <p>
+    Kapag ang mali ay naging normal, hindi ibig sabihin na tumigil itong maging mali. Ibig sabihin lamang, nasanay na tayo rito.
+  </p>
+
+  <h2>
+    HINDI LANG SOBRE ANG VOTE BUYING
+  </h2>
+
+  <p>
+    Mahalagang maunawaan din na mas malawak ang konsepto kaysa sa simpleng eksenang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hetong ₱500, iboto mo ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa Section 261 ng Omnibus Election Code, election offense ang vote-buying at vote-selling.
+  </p>
+
+  <p>
+    Saklaw ng vote-buying ang pagbibigay, pag-aalok o pangako ng pera o anumang bagay na may halaga, posisyon, trabaho o iba pang benepisyong tinukoy ng batas upang hikayatin ang isang tao o publiko na bumoto para o laban sa isang kandidato, o huwag bumoto.
+  </p>
+
+  <p>
+    Sa kabilang panig, saklaw din ng vote-selling ang paghingi o pagtanggap—direkta man o hindi—ng ipinagbabawal na kapalit para sa naturang electoral consideration, ayon sa Section 261(a)(2).
+  </p>
+
+  <p>
+    Mahalaga ang huling bahagi.
+  </p>
+
+  <p>
+    Hindi lahat ng perang natanggap, ayuda o tulong mula sa isang politiko ay awtomatikong vote-buying o vote-selling.
+  </p>
+
+  <p>
+    Kailangang pumasok pa rin ang ginawa sa mga elementong itinakda ng batas, kabilang ang kaugnayan nito sa electoral choice.
+  </p>
+
+  <p>
+    At seryoso ang legal consequence.
+  </p>
+
+  <p>
+    Sa ilalim ng Section 264 ng parehong Code, ang taong mapatunayang guilty sa election offense ay maaaring makulong nang hindi bababa sa isang taon at hindi hihigit sa anim na taon, bukod pa sa disqualification to hold public office at deprivation of the right of suffrage.
+  </p>
+
+  <p>
+    Kaya huwag nating gawing harmless tradition ang bentahan ng boto.
+  </p>
+
+  <p>
+    Hindi ito simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Diskarte lang iyan.”<br>
+      “Sayang naman ang pera.”<br>
+      “Lahat naman nagbibigay.”<br>
+      “Kunin na lang natin, pera rin naman natin ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung may kapalit na electoral support ang pera o benepisyo, hindi na simpleng generosity ang pinag-uusapan. Political transaction na iyon.
+  </p>
+
+  <p>
+    At kapag ang transaksiyong iyon ang naging normal na tulay papunta sa public office, hindi na dapat ikagulat kung may mga opisyal ding tingin sa public office ay isang investment na kailangang mabawi.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na bawat politikong nagbibigay ay tiyak na magnanakaw pagkatapos. Hindi iyon mapatutunayan nang ganoon kasimple.
+  </p>
+
+  <p>
+    Pero may mas pangunahing problema: Kapag puwedeng bumili ng political loyalty gamit ang private benefit, humihina ang pangangailangan ng kandidato na manalo gamit ang public performance.
+  </p>
+
+  <h2>
+    “TINANGGAP KO LANG. HINDI NAMAN IYON ANG DAHILAN NG BOTO KO.”
+  </h2>
+
+  <p>
+    Ito ang isang mahalagang nuance.
+  </p>
+
+  <p>
+    Hindi totoo na bawat tumanggap ng pera ay awtomatikong binago ang boto niya dahil sa pera.
+  </p>
+
+  <p>
+    Sa Philippine research nina Canare, Mendoza at Lopez, ipinakita ring hindi simpleng one-to-one purchase ang lahat ng vote-buying transactions. Sa kanilang analysis, maaaring bahagi ang vote buying ng mas malawak na clientelism at patronage relationship, hindi lamang isang isolated na pagbili ng boto.
+  </p>
+
+  <p>
+    Mas malalim ito kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      ₱500 = isang boto.
+    </p>
+  </blockquote>
+
+  <p>
+    Minsan ang nabubuo ay relasyon.
+  </p>
+
+  <blockquote>
+    <p>
+      “Tinulungan niya kami.”<br>
+      “Siya ang lumapit noong kailangan namin.”<br>
+      “Kilala ng pamilya namin iyan.”<br>
+      “May trabaho ang pinsan ko dahil sa kanya.”<br>
+      “May ibinigay noong namatayan kami.”
+    </p>
+  </blockquote>
+
+  <p>
+    At dito pumapasok ang human behavior.
+  </p>
+
+  <p>
+    Sa literature tungkol sa clientelism, mahalaga ang reciprocity—ang pressure o pakiramdam na kailangang suklian ang natanggap na pabor.
+  </p>
+
+  <p>
+    Hindi kailangang may taong literal na nakabantay sa ballot para magkaroon ng social expectation o pakiramdam ng obligasyon.
+  </p>
+
+  <p>
+    Sa Philippine research ni Cesi Cruz, nakita ring mahalaga ang social networks. Ang mga taong mas maraming family at friendship ties ay disproportionately na-target sa vote buying, at ipinakita ng research kung paano maaaring makatulong ang social networks sa identification, social pressure at monitoring na mahalaga sa clientelistic electoral strategies.
+  </p>
+
+  <p>
+    Kaya minsan hindi direktang sinasabi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Utang na loob mo sa akin ang boto mo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi na kailangan.
+    <br>
+    Naramdaman na iyon.
+  </p>
+
+  <p>
+    At iyan ang dahilan kung bakit napakadelikado kapag ang personal na kabutihan ng politiko at ang public duty ng opisyal ay pinaghalo.
+  </p>
+
+            <h2>
+    HINDI LAHAT NG TUMATANGGAP AY PARE-PAREHO ANG KALAGAYAN
+  </h2>
+
+  <p>
+    Dito kailangang iwasan ang madaling moral superiority.
+  </p>
+
+  <p>
+    Madaling sabihin ng taong may laman ang refrigerator:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit naman ibebenta ang boto sa ₱500?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahirap unawain iyon mula sa bahay na ang ₱500 ay maaaring pagkain ng pamilya sa loob ng ilang araw.
+  </p>
+
+  <p>
+    Research sa psychology at behavioral economics tungkol sa scarcity ay nagmumungkahing kapag limitado ang pera at kailangang patuloy na harapin ang agarang pangangailangan, maaaring makuha ng urgent financial demands ang malaking bahagi ng attention at cognitive resources.
+  </p>
+
+  <p>
+    Hindi nangangahulugan itong “irrational ang mahihirap.”
+  </p>
+
+  <p>
+    At maging ang research literature ay nagbababala laban sa sobrang simplistic na paggamit ng scarcity theory bilang paliwanag sa lahat ng desisyon ng mahihirap.
+  </p>
+
+  <p>
+    Pero mahalagang kilalanin na hindi pareho ang psychological at economic environment ng bawat taong gumagawa ng desisyon.
+  </p>
+
+  <p>
+    Sa Philippine political research, may ebidensiya ring nagpapakitang hindi simpleng one-way ang relasyon ng kahirapan at political entrenchment.
+  </p>
+
+  <p>
+    Sa isang 2013 empirical analysis nina Mendoza at mga kasama, nakita na maaaring makatulong ang poverty sa pag-entrench ng political dynasties, habang mas limitado noon ang ebidensiya sa kanilang dataset para sa kabaligtarang direksiyon—na political dynasties mismo ang nagpapalala ng poverty.
+  </p>
+
+  <p>
+    Pero hindi doon nagtapos ang research.
+  </p>
+
+  <p>
+    Sa isang 2016 analysis mula sa parehong research line, may nakita namang worsening effect ng political dynasties on poverty sa mga probinsiyang outside Luzon.
+  </p>
+
+  <p>
+    Mahalaga ang pagkakaibang ito dahil ipinapakita nitong hindi sapat ang simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mahihirap ang mga lugar dahil may dynasty.”
+      <br><br>
+      O
+      <br><br>
+      “May dynasty dahil mahirap ang mga tao.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring magpalakas sa isa’t isa ang political entrenchment at socioeconomic vulnerability, at maaaring mag-iba ang relasyon depende sa lugar at political-economic context.
+  </p>
+
+  <p>
+    Kaya mas tama itong tingnan bilang posibleng feedback loop kaysa isang simpleng one-way explanation.
+  </p>
+
+  <p>
+    Kapag mahirap ang tao, mas mahalaga ang immediate assistance.<br>
+    Kapag ang access sa assistance ay personal na nakakabit sa politiko, mas lumalakas ang patronage.<br>
+    Kapag patronage ang malakas, mas mahirap hamunin ng policy-based politics.<br>
+    Kapag mahina ang institutional accountability, patuloy na umaasa ang tao sa personal na tulong.<br>
+    At kapag patuloy ang kahirapan, lalo namang nagiging mahalaga ang personal na tulong.
+  </p>
+
+  <p>
+    Hindi ito dahilan para sisihin ang mahirap sa kahirapan niya.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit mas masama ang politikong sinasamantala ang kahinaan ng taong nangangailangan.
+  </p>
+
+  <p>
+    Pero paliwanag iyon sa pressure. Hindi awtomatikong legal o moral absolution sa sadyang pagbebenta ng boto.
+  </p>
+
+  <h2>
+    AT HINDI RIN PUWEDENG LAHAT AY ISISI SA KAHIRAPAN
+  </h2>
+
+  <p>
+    Dahil mayroon ding mga botanteng hindi naman desperado.
+  </p>
+
+  <p>
+    May trabaho.<br>
+    May pinag-aralan.<br>
+    May access sa impormasyon.<br>
+    May kakayahang mag-check ng record.
+  </p>
+
+  <p>
+    Pero:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kaibigan namin iyan.”<br>
+      “Kababayan namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kamag-anak.<br>
+    Kaalyado.<br>
+    Idolo.<br>
+    Pareho ng political color.<br>
+    Nakakatawa sa TikTok.<br>
+    Sikat ang pamilya.<br>
+    May picture kami noong fiesta.<br>
+    May naipagawa sa basketball court.<br>
+    Nagbigay noong birthday.
+  </p>
+
+  <p>
+    At kapag may mali:
+  </p>
+
+  <blockquote>
+    <p>
+      “Lahat naman kurap.”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan hindi na sapat ang kahirapan bilang paliwanag.
+    Diyan pumapasok ang standards.
+  </p>
+
+  <p>
+    Kung kaya nating maging mapili sa cellphone na bibilhin natin—
+    <br>
+    Processor,<br>
+    Battery,<br>
+    Camera,<br>
+    Reviews,<br>
+    Presyo,<br>
+    Warranty—
+  </p>
+
+  <p>
+    Pero sa taong bibigyan natin ng kapangyarihang humawak ng milyon o bilyong public funds ay sapat na ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “mabait,”<br>
+      “sikat,”<br>
+      “may naitulong,”
+      <br><br>
+      O
+      <br><br>
+      “amin iyan,”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi lamang politician ang may kailangang baguhin.
+    Pati pamantayan natin sa pagpili.
+  </p>
+
+  <h2>
+    HINDI TOTOO NA WALANG EPEKTO ANG MAS MATINONG PAGPILI
+  </h2>
+
+  <p>
+    Minsan may depensang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pare-pareho lang naman sila.”<br>
+      “Wala namang matinong pagpipilian.”<br>
+      “Wala namang epekto ang boto ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero mahalagang hindi gawing hopeless ang usapan.
+  </p>
+
+  <p>
+    Sa isang malaking Philippine field experiment na inilathala sa <em>The Economic Journal</em>, binigyan ang voters ng impormasyon tungkol sa policy promises ng mayoral candidates at kung tinupad ng incumbents ang mga naunang commitments nila.
+  </p>
+
+  <p>
+    Ano ang nakita?
+  </p>
+
+  <p>
+    Kapag may usable information ang voters tungkol sa policy positions, mas malamang silang pumili ng kandidatong mas tugma sa kanilang policy preferences.
+  </p>
+
+  <p>
+    At kapag nalaman nila kung tinupad ng incumbent ang nakaraang commitments, naging responsive din ang kanilang boto sa actual promise-keeping.
+  </p>
+
+  <p>
+    Ipinakita rin ng analysis na ang impormasyon tungkol sa policy promises ay nakaaapekto sa pagtingin ng voters sa qualities ng kandidato, hindi lamang sa policy position nito.
+  </p>
+
+  <p>
+    Napakahalaga ng mensaheng iyon.
+  </p>
+
+  <p>
+    Hindi kailangang tanggapin ang stereotype na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganyan talaga ang Filipino voter.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi permanenteng kondisyon ang transactional politics.
+  </p>
+
+  <p>
+    Kayang tumugon ng botante sa policy, performance at impormasyon kapag iyon ang ginawang mahalaga at may sapat na batayan para husgahan ang kandidato.
+  </p>
+
+  <p>
+    Pero mayroon ding warning ang parehong research: Mas mahina ang epekto ng programmatic information sa mga botanteng mas malalim ang involvement sa clientelistic networks at direct benefits.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi sapat ang voter education lang.
+    Kailangan ding putulin ang sistemang ginagawang personal na pabor ang dapat sana ay institutional na serbisyo.
+  </p>
+
+            <h2>
+    AYUDA AY HINDI PERSONAL NA REGALO NG POLITIKO
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang mindset na kailangang baguhin.
+  </p>
+
+  <p>
+    Kapag ang ayuda ay galing sa public funds, hindi iyon personal na pera ng mayor, governor, congressman, senador o sinumang opisyal.
+  </p>
+
+  <p>
+    Kapag may scholarship program ang gobyerno, hindi iyon personal na kabutihan ng politikong nagpapatupad.
+  </p>
+
+  <p>
+    Kapag may medical assistance, relief goods, kalsada, drainage, health center o classroom, hindi iyon regalo mula sa bulsa ng opisyal kung public resources ang ginamit.
+  </p>
+
+  <p>
+    Trabaho iyon.<br>
+    Serbisyo iyon.<br>
+    Pondo ng bayan iyon.
+  </p>
+
+  <p>
+    Tugma rin ito sa basic standard ng Republic Act No. 6713: dapat unahin ng public officials ang public interest kaysa personal interest, gamitin nang mahusay, tapat at matipid ang government resources, at iwasang mabuo ang maling pananaw na sila ay tagapamudmod ng undue patronage. Dapat ding ibigay ang serbisyo nang walang unfair discrimination batay sa party affiliation o preference.
+  </p>
+
+  <p>
+    Kapag nasanay tayong magpasalamat sa opisyal na parang personal niyang pera ang ibinalik sa atin mula sa kaban ng bayan, nagbabago ang relationship:
+  </p>
+
+  <blockquote>
+    <p>
+      Mula citizen at public servant nagiging debtor at patron.
+    </p>
+  </blockquote>
+
+  <p>
+    At kapag nakaramdam ang citizen na may utang siyang personal na loyalty dahil nakatanggap siya ng serbisyong karapatan naman niyang matanggap, napakadaling gawing political capital ang public resources.
+  </p>
+
+  <p>
+    Hindi utang na loob ang tamang paggamit ng pondo at kapangyarihang ipinagkatiwala sa gobyerno.
+    Trabaho iyon ng public office.
+  </p>
+
+  <h2>
+    DITO NAGIGING “SALAMIN” ANG GOBYERNO
+  </h2>
+
+  <p>
+    Madalas sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ang gobyerno ay salamin ng mamamayan.”
+    </p>
+  </blockquote>
+
+  <p>
+    May katotohanan doon—pero kailangang tama ang ibig sabihin.
+  </p>
+
+  <p>
+    Hindi nito ibig sabihin na kapag may corrupt na opisyal, corrupt na rin ang bawat Filipino.
+  </p>
+
+  <p>
+    Hindi rin ibig sabihin na morally equal ang isang ordinaryong mamamayang tumanggap ng ₱500 at ang opisyal na nagnakaw ng milyon sa kaban ng bayan.
+  </p>
+
+  <p>
+    Hindi sila pareho ng kapangyarihan.<br>
+    Hindi sila pareho ng responsibilidad.<br>
+    Hindi sila pareho ng pinsalang kayang gawin.
+  </p>
+
+  <p>
+    Ang mas tamang ibig sabihin ng “salamin” ay ito:
+    Nakikita ng political system kung anong behavior ang pinapaboran, pinapatawad at ginagantimpalaan natin.
+  </p>
+
+  <p>
+    Kung competence ang nagdadala ng boto, may incentive ang kandidato na ipakita ang competence.
+  </p>
+
+  <p>
+    Kung performance ang sinusukat, may incentive siyang mag-perform.
+  </p>
+
+  <p>
+    Kung corruption ang may political consequence, may incentive siyang umiwas dito.
+  </p>
+
+  <p>
+    Pero kung sapat na ang:
+  </p>
+
+  <blockquote>
+    <p>
+      Sobre,<br>
+      Ayuda,<br>
+      Apelyido,<br>
+      Pakikisama,<br>
+      Personal na pabor,<br>
+      Celebrity,<br>
+      Political color,<br>
+      O “kahit kurap basta may ginagawa,”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan din ang signal na natatanggap ng political system.
+  </p>
+
+  <p>
+    Hindi kailangang maging mahusay kung puwedeng maging popular.
+  </p>
+
+  <p>
+    Hindi kailangang gumawa ng long-term public policy kung mas mabilis makakuha ng loyalty gamit ang short-term private benefit.
+  </p>
+
+  <p>
+    Hindi kailangang magkaroon ng malinis na record kung alam mong patatawarin ka rin ng sariling kampo.
+  </p>
+
+  <p>
+    Hindi kailangang respetuhin ang institution kung personalidad ang mas mahalaga sa botante kaysa standard.
+  </p>
+
+  <p>
+    Ito ang punto.
+  </p>
+
+  <p>
+    Hindi lang tayo pumipili ng tao sa eleksyon. Nagse-set din tayo ng incentive kung anong klaseng politician ang may pinakamalaking tsansang manalo.
+  </p>
+
+  <h2>
+    “PERO WALA NAMANG MAGALING NA KANDIDATO.”
+  </h2>
+
+  <p>
+    May mga pagkakataong totoo iyan.
+  </p>
+
+  <p>
+    Maaaring mahina ang choices.<br>
+    Maaaring political dynasty ang halos lahat.<br>
+    Maaaring kapos sa impormasyon.<br>
+    Maaaring may intimidation, misinformation, machinery, patronage at malaking imbalance sa resources.
+  </p>
+
+  <p>
+    Kaya hindi tama ang fantasy na parang perfectly free marketplace ang bawat election at kung masama ang resulta ay purong kasalanan lamang ng voters.
+  </p>
+
+  <p>
+    Hindi ganoon kasimple.
+  </p>
+
+  <p>
+    Pero kahit limitado ang pagpipilian, may pagkakaiba pa rin sa pamantayang ginagamit natin.
+  </p>
+
+  <p>
+    Track record ba?<br>
+    Competence?<br>
+    Integrity?<br>
+    Policy?<br>
+    Ability to govern?<br>
+    Treatment of public funds?<br>
+    Respect for law and institutions?
+  </p>
+
+  <p>
+    O:
+  </p>
+
+  <blockquote>
+    <p>
+      Magkano ang bigay?<br>
+      Sino ang kakilala?<br>
+      Sino ang sikat?<br>
+      Sino ang kaalyado ng paborito kong grupo?<br>
+      Sino ang “atin”?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi natin kontrolado lahat ng candidates na ihaharap.
+  </p>
+
+  <p>
+    Pero may pananagutan tayo sa pamantayang kusa nating pinipiling gamitin.
+  </p>
+
+  <h2>
+    MAY KARAPATAN KANG MAGREKLAMO—PERO HUWAG MONG KALIMUTAN ANG SARILI MONG BOTO
+  </h2>
+
+  <p>
+    Ito ang pinakamahalagang distinction.
+  </p>
+
+  <p>
+    Kung binoto mo ang maling tao, may karapatan ka pa ring magreklamo.
+  </p>
+
+  <p>
+    Kung tumanggap ka ng pera, hindi nawawala ang obligasyon ng gobyerno na magbigay ng serbisyong ayon sa batas at tungkulin nito.
+  </p>
+
+  <p>
+    Hindi nawawala ang constitutional accountability ng public official dahil nagkamali ang voter.
+  </p>
+
+  <p>
+    Pero ibang usapan ang karapatan mong magreklamo at ang tanong kung may natutuhan ka ba sa dahilan kung bakit ka nagrereklamo.
+  </p>
+
+  <p>
+    Kung pagkatapos bumaha ay galit ka dahil walang maayos na drainage—pero sa susunod na eleksyon ang una mong tanong ay “Magkano bigay?”
+    <br>
+    May contradiction.
+  </p>
+
+  <p>
+    Kung galit ka kapag nawawala ang public funds—pero ibinoboto mo pa rin ang may questionable record dahil “Malaki naman ang naitulong sa amin,”
+    <br>
+    May contradiction.
+  </p>
+
+  <p>
+    Kung galit ka sa political dynasty—pero tuwing eleksyon ay apelyido rin ang pinakamalaking dahilan ng boto mo,
+    <br>
+    May contradiction.
+  </p>
+
+  <p>
+    Kung galit ka sa corruption ng kabilang kulay—pero gumagawa ka ng excuse kapag sariling kulay ang sangkot,
+    <br>
+    May contradiction.
+  </p>
+
+  <p>
+    Kung gusto mo ng gobyernong hindi transactional—pero transactional ang sarili mong pamantayan sa eleksyon,
+    <br>
+    May contradiction.
+  </p>
+
+  <p>
+    At hindi ito nalulutas sa panibagong rant pagkatapos ng susunod na baha.
+  </p>
+
+            <h2>
+    HINDI ANG PAGTANGGAP NG PERA ANG PINAKAMALALIM NA PROBLEMA
+  </h2>
+
+  <p>
+    Mas malalim ang problema kapag naging normal na ang mentalidad na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang makukuha ko sa kandidatong ito ngayon?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang magagawa ng kandidatong ito sa gobyerno sa susunod na tatlo o anim na taon?”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang unang tanong ay tungkol sa private benefit.
+    <br>
+    Ang pangalawa ay tungkol sa public good.
+  </p>
+
+  <p>
+    Ang unang tanong ay maaaring magbigay sa iyo ng ilang daang piso ngayon.
+  </p>
+
+  <p>
+    Ang pangalawa ang may kinalaman sa:
+    <br>
+    Ospital,<br>
+    Paaralan,<br>
+    Trabaho,<br>
+    Kalsada,<br>
+    Flood control,<br>
+    Disaster preparedness,<br>
+    Peace and order,<br>
+    Social services,<br>
+    Local economy,<br>
+    Public funds,<br>
+    At kalidad ng institusyong iiwan sa susunod na henerasyon.
+  </p>
+
+  <p>
+    Hindi mo kailangang maging political scientist para maintindihan ang trade-off.
+  </p>
+
+  <p>
+    Ang perang matatanggap mo bago ang eleksyon ay mauubos.
+    <br>
+    Ang kapangyarihang ibibigay mo pagkatapos ng eleksyon ay mananatili nang ilang taon.
+  </p>
+
+  <h2>
+    HINDI LANG POLITIKO ANG DAPAT MATAKOT SA CONSEQUENCE
+  </h2>
+
+  <p>
+    Isa sa pinakamalaking dahilan kung bakit nabubuhay ang accountability ay consequence.
+  </p>
+
+  <p>
+    Kapag palpak ang opisyal, dapat may political consequence.
+    <br>
+    Kapag corrupt, dapat may legal consequence kung may sapat na ebidensiya at due process.
+    <br>
+    Kapag nagsinungaling, dapat may credibility consequence.
+    <br>
+    Kapag incompetent, dapat may electoral consequence.
+  </p>
+
+  <p>
+    Pero paano magkakaroon ng political consequence kung sa susunod na eleksyon ay isang sobre lamang ang kailangan para makalimutan ang nakaraang tatlo o anim na taon?
+  </p>
+
+  <p>
+    Paano matututo ang kandidato na ayusin ang serbisyo kung alam niyang mas madali ang personal na ayuda kaysa ayusin ang institution?
+  </p>
+
+  <p>
+    Paano magiging mahalaga ang long-term planning kung ang pinakamabilis na political return ay makukuha sa short-term handout?
+  </p>
+
+  <p>
+    Hindi ibig sabihin na masama ang ayuda.
+    <br>
+    Kailangan ang social assistance.
+  </p>
+
+  <p>
+    Ang problema ay kapag ginagawang personal na political investment ang tulong na dapat institutional, rules-based at hindi nakadepende sa loyalty.
+  </p>
+
+  <h2>
+    KAYA HINDI SAPAT ANG “KURAP ANG GOBYERNO”
+  </h2>
+
+  <p>
+    Mas madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kurap talaga ang mga politiko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahirap itanong:
+    <br>
+    Ano ang ginagawa nating mga mamamayan kapag may pagkakataon tayong pumili?
+  </p>
+
+  <p>
+    Hindi patas sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kurap ang karamihan sa mga Filipino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Walang sapat na empirical basis para gawing blanket judgment iyon.
+  </p>
+
+  <p>
+    Pero maaari nating sabihin ang mas mahirap takasan:
+  </p>
+
+  <p>
+    May political practices at voter behaviors sa Pilipinas na tumutulong magpanatili ng patronage, vote buying at mahinang accountability.
+  </p>
+
+  <p>
+    At may mga pagkakataong tayo mismo ang lumalahok dito.
+  </p>
+
+  <p>
+    Hindi lahat.<br>
+    Hindi palagi.<br>
+    Hindi pare-pareho ang dahilan.<br>
+    Hindi pare-pareho ang kalayaan at economic pressure ng bawat voter.
+  </p>
+
+  <p>
+    Pero hindi rin natin kailangang magkunwaring walang citizen-side problem.
+  </p>
+
+  <p>
+    Dahil kung ang corruption ay problema lamang kapag tayo ang nawawalan—pero okay lang ang maling paggamit ng kapangyarihan kapag tayo naman ang nakikinabang—hindi pa talaga corruption ang tinututulan natin.
+  </p>
+
+  <p>
+    Ang tinututulan lang natin ay corruption na hindi tayo kasama sa benepisyo.
+    <br>
+    At iyon ang mentalidad na kailangang tamaan.
+  </p>
+
+  <h2>
+    ANG PINAKAMASAKIT NA REAL TALK
+  </h2>
+
+  <p>
+    Kapag baha na ang bahay, gusto natin ng competent na mayor.
+    <br>
+    Kapag sira ang kalsada, gusto natin ng matinong engineer at mahusay na pamahalaan.
+    <br>
+    Kapag may nawawalang pondo, gusto natin ng honest na opisyal.
+    <br>
+    Kapag mabagal ang rescue, gusto natin ng prepared na LGU.
+    <br>
+    Kapag walang trabaho, gusto natin ng lider na may malinaw na economic policy.
+    <br>
+    Kapag mahal ang bilihin, gusto natin ng gobyernong mahusay mag-manage.
+  </p>
+
+  <p>
+    Pero bakit minsan, sa mismong araw na binibigyan tayo ng pagkakataong pumili kung sino ang hahawak ng gobyernong iyon, biglang bumababa ang standard?
+  </p>
+
+  <p>
+    Bakit ang hinahanap nating competence sa panahon ng krisis ay napapalitan ng cash sa panahon ng kampanya?
+    <br>
+    Bakit ang accountability na hinihingi natin pagkatapos ng eleksyon ay hindi natin ginagawang qualification bago ang eleksyon?
+    <br>
+    Bakit gusto nating professional ang pamamahala—pero personal ang basehan ng boto?
+  </p>
+
+  <p>
+    Diyan kailangang magsimula ang pagbabago.
+  </p>
+
+  <p>
+    Hindi sa pananahimik.
+    <br>
+    Hindi sa pagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kasalanan ninyo naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi sa mas seryosong accountability:
+    <br>
+    Maningil sa opisyal ngayon.
+    <br>
+    At mas maging mapanuri sa pagpili sa susunod.
+  </p>
+
+            <h2>
+    HINDI MO KAILANGANG TUMIGIL SA PAGREKLAMO
+  </h2>
+
+  <p>
+    Mas kailangan mong magreklamo kung may mali.
+  </p>
+
+  <p>
+    Mag-demand ng records.<br>
+    Maghanap ng ebidensiya.<br>
+    Mag-fact-check.<br>
+    Magtanong kung saan napunta ang pondo.<br>
+    I-compare ang pangako sa ginawa.
+  </p>
+
+  <p>
+    Tingnan ang track record bago ang campaign jingle.<br>
+    Tingnan ang competence bago ang apelyido.<br>
+    Tingnan ang integrity bago ang kulay.<br>
+    Tingnan ang performance bago ang personal na pabor.
+  </p>
+
+  <p>
+    At higit sa lahat:
+    <br>
+    Huwag mong gawing limang minutong transaksiyon ang kapangyarihang tatagal nang ilang taon.
+  </p>
+
+  <p>
+    Dahil ang boto ay hindi thank-you card.
+  </p>
+
+  <p>
+    Hindi loyalty card.<br>
+    Hindi bayad sa ayuda.<br>
+    Hindi sukli sa pakikisama.<br>
+    Hindi premyo sa sikat na pangalan.<br>
+    Hindi tiket para makabawi ng ₱500.
+  </p>
+
+  <p>
+    Ang boto ay pagpapahiram ng kapangyarihan.
+  </p>
+
+  <p>
+    At pagkatapos mong ipahiram iyon, pera ng bayan, kaligtasan ng komunidad, kalidad ng serbisyo at direksiyon ng pamahalaan ang maaaring nakataya.
+  </p>
+
+  <h2>
+    ANG HATOL
+  </h2>
+
+  <p>
+    Hindi kasalanan ng mamamayan ang ulan.<br>
+    Hindi kasalanan ng mamamayan ang bagyo.<br>
+    At hindi awtomatikong kasalanan ng bawat botante ang korapsyon ng opisyal na nanalo.
+  </p>
+
+  <p>
+    Ang magnakaw ay desisyon ng magnanakaw.<br>
+    Ang magpabaya ay pananagutan ng nagpabaya.<br>
+    Ang abusuhin ang kapangyarihan ay pananagutan ng may hawak ng kapangyarihan.
+  </p>
+
+  <p>
+    Pero mayroon ding desisyong nasa kamay natin.
+  </p>
+
+  <p>
+    Kung paulit-ulit nating ginagantimpalaan ang maling pamantayan, hindi natin maaaring sabihing wala tayong anumang bahagi sa political environment na nabubuo pagkatapos.
+  </p>
+
+  <p>
+    May karapatan tayong maningil sa gobyerno.
+    <br>
+    Pero may responsibilidad din tayong suriin kung paano tayo pumipili ng gobyerno.
+  </p>
+
+  <p>
+    Kaya sa susunod na bumaha at itanong natin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nasaan ang gobyerno?”
+    </p>
+  </blockquote>
+
+  <p>
+    Tamang itanong iyon.
+  </p>
+
+  <p>
+    Pero pagdating ng susunod na eleksyon, dapat kaya rin nating itanong sa sarili:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ba ang hinanap ko noong may pagkakataon akong pumili—serbisyo ba, o sobre?”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil kung pinakamalaking bigay ang pinakamabigat na qualification bago ang eleksyon, huwag tayong magulat kung pinakamalaking balik sa sarili ang maging priority ng ilang taong naluklok pagkatapos.
+  </p>
+
+  <p>
+    Hindi lahat ng masamang gobyerno ay simpleng kasalanan ng botante.
+  </p>
+
+  <p>
+    Pero hindi rin lahat ng masamang sistema ay nabubuhay nang walang pumapayag, nakikinabang, nagpapalampas, at paulit-ulit na nagbibigay rito ng panibagong mandato.
+  </p>
+
+  <p>
+    Todo reklamo sa bad times, pero may presyo ang boto sa election time—hindi iyan accountability.
+    <br>
+    Siklo iyan.
+  </p>
+
+  <p>
+    At kung gusto nating putulin ang siklo, hindi sapat na palitan lamang ang mga pangalang minumura natin pagkatapos ng kalamidad.
+  </p>
+
+  <p>
+    Kailangan ding baguhin ang pamantayang ginagamit natin bago sila makaupo.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Mga Batayan at Sanggunian
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Constitution of the Philippines, Article XI, Section 1 — Constitutional principle na <em>public office is a public trust</em> at accountable sa mamamayan ang public officials.
+    </li>
+
+    <li>
+      Batas Pambansa Blg. 881 (Omnibus Election Code), Sections 261 at 264 — Legal provisions tungkol sa vote-buying, vote-selling, at penalties para sa election offenses.
+    </li>
+
+    <li>
+      Republic Act No. 10121 (Philippine Disaster Risk Reduction and Management Act of 2010) — Institutional framework at responsibilities para sa disaster prevention and mitigation, preparedness, response, rehabilitation, risk assessment, at local DRRM planning.
+    </li>
+
+    <li>
+      Republic Act No. 6713 (Code of Conduct and Ethical Standards for Public Officials and Employees) — Public interest over personal interest, responsible use of government resources, professionalism, political neutrality, at pag-iwas sa perception ng undue patronage.
+    </li>
+
+    <li>
+      Canare, Tristan; Mendoza, Ronald; &amp; Lopez, Mario Antonio. <em>An Empirical Analysis of Vote Buying Among the Poor: Evidence from Elections in the Philippines.</em> <em>South East Asia Research</em> — Survey-based Philippine evidence tungkol sa vote-buying patterns sa low-income voters pagkatapos ng 2016 elections.
+    </li>
+
+    <li>
+      J-PAL. <em>Combating Vote-Selling in the Philippines.</em> Philippine field experiment — Historical context tungkol sa vote-selling at experimental evidence sa anti-vote-selling pledges.
+    </li>
+
+    <li>
+      Cruz, Cesi. <em>Social Networks and the Targeting of Vote Buying.</em> <em>Comparative Political Studies</em> — Philippine evidence tungkol sa family/friend networks, targeting, at social-network mechanisms sa vote buying.
+    </li>
+
+    <li>
+      Cruz, Cesi; Keefer, Philip; Labonne, Julien; &amp; Trebbi, Francesco. <em>Making Policies Matter: Voter Responses to Campaign Promises.</em> <em>The Economic Journal</em> — Philippine field evidence tungkol sa voter responses sa policy promises, previous commitments, at programmatic information.
+    </li>
+
+    <li>
+      Mendoza et al. <em>Political Dynasties and Poverty: Evidence from the Philippines.</em> — 2013 evidence na poverty can contribute to dynastic entrenchment habang mas limitado ang evidence noon para sa reverse causal direction.
+    </li>
+
+    <li>
+      Mendoza et al. <em>Political Dynasties and Poverty: Measurement and Evidence of Linkages in the Philippines.</em> — 2016 analysis na nakakita ng worsening effect ng political dynasties on poverty sa mga probinsiyang outside Luzon.
+    </li>
+
+    <li>
+      de Bruijn, Ernst-Jan &amp; Antonides, Gerrit. <em>Poverty and Economic Decision Making: A Review of Scarcity Theory.</em> <em>Theory and Decision</em> — Critical review ng research tungkol sa financial scarcity, attention, cognitive resources, at economic decision-making.
+    </li>
+
+    <li>
+      European Union Election Observation Mission — Philippines 2025. Election observation findings at recommendations kaugnay ng 2025 Philippine midterm elections, kabilang ang concerns tungkol sa vote buying.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
