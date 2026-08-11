@@ -1,1 +1,1942 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Fact-based Civic Explainer ng jhElmEr tungkol sa tinatawag na “Robin Padilla Law,” Republic Act No. 8294, ang legislative record, at ang tunay na konteksto ng naging epekto nito sa illegal possession of firearms."
+>
+
+<title>“Robin Padilla Law”: Sino Talaga ang Gumawa—At Sino ang Nakinabang? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  “ROBIN PADILLA LAW”: SINO TALAGA ANG GUMAWA—AT SINO ANG NAKINABANG?
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-robin-law.png"
+  alt="Robin Padilla Law Civic Explainer ng jhElmEr tungkol sa Republic Act No. 8294 at sa tunay na legislative record"
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+  May mga kuwento sa pulitika na kapag paulit-ulit nang naririnig, unti-unting nagmumukhang fact kahit hindi pa malinaw kung ano talaga ang sinasabi ng record.
+</p>
+
+<p>
+  Isa rito ang tinatawag na “Robin Padilla Law.”
+</p>
+
+<p>
+  Ang kuwento ay bago pa naging senador si Robin Padilla, nakagawa o nakatulong na raw siyang makabuo ng batas habang nakakulong sa Bilibid.
+</p>
+
+<p>
+  Kapansin-pansin ang claim dahil hindi ordinaryong detalye ang sinasabi nito. Kung totoo, isang taong hindi pa mambabatas at kasalukuyang preso noon ang nagkaroon umano ng mahalagang papel sa paghubog ng isang national law.
+</p>
+
+<p>
+  Pero bago ito gawing patunay ng husay sa paggawa ng batas—o kabaligtaran, gawing basehan agad ng masamang motibo—mas mahalagang tingnan muna kung ano talaga ang kayang patunayan.
+</p>
+
+<p>
+  May batas ba talagang tinatawag na “Robin Padilla Law”?<br>
+  Sino ang dokumentadong gumawa, nag-author, nag-amend at nagpasa nito?
+</p>
+
+<p>
+  At may isa pang bahagi ng kuwento na hindi dapat mawala:<br>
+  Ano ang naging epekto ng batas na iyon sa mismong kasong dahilan kung bakit nakakulong si Robin noong panahong sinasabi niyang nakikilahok siya sa pagbuo nito?
+</p>
+
+<p>
+  Dito nagsisimulang maging mas mahalaga ang legislative record kaysa sa political storytelling.
+</p>
+
+<p>
+  Sa isang video na naka-post mismo sa official Facebook page ni Robin, sinabi niya:
+</p>
+
+<blockquote>
+  <p>
+    “Nung hindi pa po ako tumatakbong senador, nakagawa na po ako ng batas.”
+  </p>
+</blockquote>
+
+<p>
+  Tinawag niya itong “Robin Padilla Law.” Ikinuwento rin niya na habang nakakulong ay nakipagsulatan umano siya kina Sen. Ramon Revilla Sr. at isang Congressman Daza, nakakatanggap sila ng drafts, nagbibigay sila ng suggestions, at ibinabalik ang mga iyon hanggang mabuo ang panukala.
+</p>
+
+<p>
+  Ang parehong account ay na-document din ng FactRakers noong 2022.
+</p>
+
+<p>
+  Posible bang magbigay ng ideya sa isang batas kahit preso ka at hindi mambabatas?<br>
+  Oo.
+</p>
+
+<p>
+  Pero pareho ba ang pagbibigay ng ideya, pagtulong sa draft, pagiging legislative author, at pagpapasa ng batas?<br>
+  Hindi.
+</p>
+
+<p>
+  At dito kailangang balikan hindi lamang ang kuwento—kundi ang mismong batas, Supreme Court records, legislative history at legal effect nito.
+</p>
+
+<h2>
+  ANO BA TALAGA ANG “ROBIN PADILLA LAW”?
+</h2>
+
+<p>
+  Walang batas na opisyal na pinamagatang “Robin Padilla Law.”
+</p>
+
+<p>
+  Ang tinutukoy ay Republic Act No. 8294, approved noong June 6, 1997. Inamyendahan nito ang Presidential Decree No. 1866, ang dating batas tungkol sa unlawful manufacture, sale, acquisition, disposition o possession ng firearms, ammunition at explosives.
+</p>
+
+<p>
+  At mahalaga ang salitang <strong>inamyendahan</strong>.
+</p>
+
+<p>
+  Hindi ito batas na ginawa mula sa wala at hindi rin batas na opisyal na ipinangalan kay Robin.
+</p>
+
+<p>
+  Isa itong pagbabago sa umiiral nang firearms law.
+</p>
+
+<p>
+  Isa sa pinakamahalagang ginawa nito:<br>
+  Malaki ang ibinawas ng RA 8294 sa dating parusa para sa simple illegal possession of firearms.
+</p>
+
+<h2>
+  GAANO KABIGAT ANG DATING PARUSA?
+</h2>
+
+<p>
+  Sa ilalim ng PD 1866, mabigat ang penalty para sa simple illegal possession of firearms.
+</p>
+
+<p>
+  Sa mismong kaso ni Robin, hinatulan siya ng Angeles City Regional Trial Court noong April 25, 1994 ng 17 years, 4 months and 1 day hanggang 21 years. Inaffirm ng Court of Appeals ang conviction.
+</p>
+
+<p>
+  Pagdating sa Supreme Court noong March 12, 1997, inaffirm din ang conviction ngunit binago ang indeterminate sentence sa:<br>
+  10 years and 1 day bilang minimum hanggang 18 years, 8 months and 1 day bilang maximum.
+</p>
+
+<p>
+  Noong nagdesisyon ang Supreme Court, wala pa ang RA 8294.<br>
+  PD 1866 pa ang umiiral na batas na kailangang gamitin sa kanyang kaso.
+</p>
+
+<p>
+  Isa pa sa arguments ni Robin noon ay excessive at cruel punishment ang napakabigat na penalty para sa simple illegal possession. Hindi iyon naging dahilan para balewalain ng Supreme Court ang batas na umiiral noon.
+</p>
+
+<p>
+  At ilang buwan pagkatapos ng desisyong iyon, binago nga ng Congress ang penalty framework.
+</p>
+
+          <h2>
+  ANO ANG BINAGO NG RA 8294?
+</h2>
+
+<p>
+  Sa ilalim ng RA 8294, hindi na pare-pareho ang penalty sa lahat ng klase ng firearm.
+</p>
+
+<p>
+  Para sa ilang low-powered firearms, itinakda ang <em>prision correccional in its maximum period</em> at minimum fine na ₱15,000.
+</p>
+
+<p>
+  Para naman sa high-powered firearms, itinakda ang <em>prision mayor in its minimum period</em> at ₱30,000 fine, kung walang ibang krimeng ginawa.
+</p>
+
+<p>
+  Sa ordinaryong bilang ng panahon ng pagkakakulong, ang <em>prision mayor minimum</em> ay 6 years and 1 day hanggang 8 years.
+</p>
+
+<p>
+  At hindi abstract ang high-powered classification sa kaso ni Robin.
+</p>
+
+<p>
+  Mismong RA 8294 ay tahasang nagbanggit ng caliber .357 bilang high-powered firearm at sumaklaw rin sa firearms na may full-automatic o burst-firing capability.
+</p>
+
+<p>
+  Samantalang ayon sa Supreme Court record, kabilang sa mga nakuhang baril kay Robin ang:<br>
+  isang .357 Smith &amp; Wesson revolver,<br>
+  isang M-16 Baby Armalite rifle,<br>
+  at isang .380 Pietro Beretta,
+</p>
+
+<p>
+  kasama ang mga bala.
+</p>
+
+<p>
+  Kaya hindi lamang parehong general topic ang kaso niya at ang bagong batas.
+</p>
+
+<p>
+  Ang mismong uri ng offense at ilan sa mga armas sa kanyang conviction ay direktang relevant sa penalty changes ng RA 8294.
+</p>
+
+<h2>
+  BAKIT BA BINABA NG CONGRESS ANG PARUSA?
+</h2>
+
+<p>
+  Dito kailangang maging patas.
+</p>
+
+<p>
+  Madaling gumawa ng kuwento na:
+</p>
+
+<blockquote>
+  <p>
+    “Nakulong si Robin, tapos gumawa sila ng batas para mapagaan ang kaso niya.”
+  </p>
+</blockquote>
+
+<p>
+  Pero hindi iyan ang kayang patunayan ng legislative record.
+</p>
+
+<p>
+  May documented policy reason ang Congress kung bakit gustong baguhin ang PD 1866.
+</p>
+
+<p>
+  Sa <em>People v. Comadre</em>, binalikan mismo ng Supreme Court ang legislative history ng RA 8294. Ipinakita roon na isa sa mga problemang gustong tugunan ay ang sobrang bigat at disproportionality ng mga penalty sa ilalim ng lumang PD 1866.
+</p>
+
+<p>
+  Sa House side, binanggit ng Supreme Court ang sponsorship ni Rep. Roilo Golez para sa House Bill No. 8820 at ang layuning bawasan ang penalties sa simple illegal possession, kasama ang iba pang pagbabago sa lumang firearms regime.
+</p>
+
+<p>
+  Sa Senate side, lumitaw din sa legislative history ang concern na hindi makatuwirang halos mapantayan ng penalty sa simpleng possession ang mas seryosong unlawful manufacture o sale ng firearms.
+</p>
+
+<p>
+  Ibig sabihin:<br>
+  May independent legislative reason para baguhin ang batas kahit alisin natin si Robin sa kuwento.
+</p>
+
+<p>
+  Mahalaga iyon.
+</p>
+
+<p>
+  Dahil kung gusto nating maging patas sa facts, hindi puwedeng ang personal benefit lang ang ipakita at itago ang lehitimong policy rationale.
+</p>
+
+<p>
+  Pero hindi rin puwedeng kabaligtaran:<br>
+  ipakita lamang ang policy rationale at kalimutang sabihin na ang taong nagke-credit sa sarili bilang bahagi ng pagbuo nito ay kasalukuyang nakakulong noon sa offense na direktang pinagaan ng batas.
+</p>
+
+<h2>
+  SI ROBIN BA TALAGA ANG “GUMAWA” NG BATAS?
+</h2>
+
+<p>
+  Dito kailangang linawin ang isang simpleng bagay na madalas nagugulo sa political storytelling.
+</p>
+
+<p>
+  Ang pagbibigay ng ideya sa batas ay hindi kapareho ng pagiging legislative author.
+</p>
+
+<p>
+  Puwedeng magbigay ng suggestion ang ordinaryong mamamayan.<br>
+  Puwedeng magsulat sa senador.<br>
+  Puwedeng magbigay ng draft ang abogado, advocacy group, government agency, industry representative o affected citizen.<br>
+  Puwedeng konsultahin maging ang mga taong direktang apektado ng isang batas.
+</p>
+
+<p>
+  Sa katunayan, hindi masamang gawain iyon.
+</p>
+
+<p>
+  Sa good regulatory policy, mahalaga ang stakeholder participation dahil nakakatulong itong maipasok sa policymaking ang karanasan at impormasyong maaaring hindi nakikita agad ng gobyerno. Pero kasabay nito, mahalaga rin ang transparency kung sino ang nagbibigay ng input at kung anong interes ang maaaring maapektuhan, para mabawasan ang panganib na ma-capture ang proseso ng makitid na vested interests.
+</p>
+
+<p>
+  Kaya hindi problema kung isang preso ang nagsabi:
+</p>
+
+<blockquote>
+  <p>
+    “Ganito ang problema sa batas na nararanasan namin.”
+  </p>
+</blockquote>
+
+<p>
+  Maaaring valuable information iyon.
+</p>
+
+<p>
+  Pero ibang usapan kapag ang framing ay naging:
+</p>
+
+<blockquote>
+  <p>
+    “Nakagawa ako ng batas.”
+  </p>
+</blockquote>
+
+<p>
+  O:
+</p>
+
+<blockquote>
+  <p>
+    “Nakapagpasa na siya ng batas kahit hindi pa senador.”
+  </p>
+</blockquote>
+
+<h2>
+  PAANO BA TALAGA NAGIGING BATAS ANG ISANG PANUKALA?
+</h2>
+
+<p>
+  Sa Article VI, Section 1 ng 1987 Constitution, ang legislative power ay nakatalaga sa Congress of the Philippines—Senate at House of Representatives, maliban sa lawmaking power na direktang nakalaan sa mga mamamayan sa initiative at referendum.
+</p>
+
+<p>
+  Ang bill ay hindi nagiging batas dahil may isang taong nakaisip nito.<br>
+  Dumadaan ito sa formal legislative process.
+</p>
+
+<p>
+  May bill na ipinapakilala.<br>
+  May committee referral at deliberation.<br>
+  May readings at amendments.<br>
+  May botohan.
+</p>
+
+<p>
+  Kailangang magkaroon ng action ang dalawang kapulungan.
+</p>
+
+<p>
+  At pagkatapos ng congressional approval, papasok ang constitutional role ng Presidente.
+</p>
+
+<p>
+  Kaya puwedeng sabihin ng isang private citizen:
+</p>
+
+<blockquote>
+  <p>
+    “May idea akong naipasok.”<br>
+    “Nagbigay ako ng proposal.”<br>
+    “May bahagi akong iminungkahi.”
+  </p>
+</blockquote>
+
+<p>
+  Pero ibang factual statement ang:
+</p>
+
+<blockquote>
+  <p>
+    “Ako ang nagpasa ng batas.”
+  </p>
+</blockquote>
+
+<p>
+  Kung hindi ka miyembro ng Congress, hindi ikaw ang bumoboto para maipasa ang bill sa chamber.
+</p>
+
+          <h2>
+  AT ANO ANG DOCUMENTED LEGISLATIVE TRAIL NG RA 8294?
+</h2>
+
+<p>
+  Hindi tayo kailangang umasa lamang sa memorya o kuwento ng isang tao dahil may legislative records.
+</p>
+
+<p>
+  Ayon sa official Senate legislative database, ang RA 8294 ay kaugnay ng Senate Bill No. 1148 at House Bill No. 8820.
+</p>
+
+<p>
+  At may mas malinaw pang record mula mismo sa Supreme Court.
+</p>
+
+<p>
+  Sa Senate deliberations na kalaunang sinipi ng Korte, makikita ang aktuwal na pagtalakay sa Senate Bill No. 1148.
+</p>
+
+<p>
+  Si Sen. Franklin Drilon ay nagmungkahi ng amendment tungkol sa paggamit ng unlicensed firearm sa homicide o murder.<br>
+  Si Sen. Miriam Defensor Santiago ay nagsalita bilang co-author.
+</p>
+
+<p>
+  At nang hingin ang pahintulot ng principal author, si Sen. Ramon Revilla Sr. ang tumugon.
+</p>
+
+<p>
+  Iyan ay mahalagang detalye.
+</p>
+
+<p>
+  Hindi tayo nanghuhula kung sino ang gumaganap ng formal legislative roles.<br>
+  Nasa deliberation mismo.
+</p>
+
+<p>
+  May principal author.<br>
+  May co-author.<br>
+  May senator na nagmumungkahi ng amendment.<br>
+  May deliberation at approval.
+</p>
+
+<p>
+  At sa official Senate profile ni Ramon B. Revilla Sr., mismong RA 8294 ang inilalarawan bilang <em>“now known as ‘The Revilla Law.’”</em> Hindi iyon opisyal na pamagat ng batas kundi impormal na tawag na ginamit sa profile kaugnay ng kanyang papel dito.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na imposible nang may informal contribution si Robin.
+</p>
+
+<p>
+  Kung totoong may palitan sila ng sulat, may drafts na ipinadala sa loob ng kulungan at may suggestions na ibinalik, posibleng may informal stakeholder contribution siya. Ang mismong official Facebook video niya ang primary source ng claim na iyon.
+</p>
+
+<p>
+  Pero iyon mismo ang kailangang pangalanan nang tama.
+</p>
+
+<blockquote>
+  <p>
+    Informal contribution is not the same as formal authorship.
+  </p>
+</blockquote>
+
+<p>
+  At sa publicly accessible records na maaari nating beripikahin, wala tayong dokumentong nagpapakita kung anong partikular na section, sentence, penalty range o amendment ng final RA 8294 ang personal na nagmula kay Robin.
+</p>
+
+<p>
+  Kung may ganoong correspondence o draft at mailabas iyon, maaari nitong palakasin ang claim na may substantive contribution siya.
+</p>
+
+<p>
+  Hangga't wala iyon, hindi dapat gawing mas malaki ang claim kaysa sa kayang suportahan ng record.
+</p>
+
+<h2>
+  PERO SI ROBIN BA MISMO AY NAKINABANG SA BATAS?
+</h2>
+
+<p>
+  Dito kailangang mas maingat kaysa sa karaniwang social-media post.
+</p>
+
+<p>
+  May dalawang magkaibang tanong:<br>
+  Naging pabor ba sa legal situation niya ang RA 8294?
+</p>
+
+<p>
+  At:<br>
+  May primary document ba tayong nagpapakitang pormal na ni-recompute ang sarili niyang sentence dahil sa RA 8294?
+</p>
+
+<p>
+  Sa unang tanong, malinaw ang legal direction.
+</p>
+
+<p>
+  Noong March 12, 1997, mayroon siyang Supreme Court sentence na 10 years and 1 day hanggang 18 years, 8 months and 1 day.
+</p>
+
+<p>
+  Noong June 6, 1997, naaprubahan ang RA 8294 at nagtakda ito ng mas mababang statutory penalties para sa simple illegal possession depende sa uri ng firearm.
+</p>
+
+<p>
+  Ibig sabihin, ang bagong penalty regime ay mas pabor sa uri ng conviction na mayroon siya kaysa sa lumang PD 1866 regime.
+</p>
+
+<p>
+  Pero paano mangyayari iyon kung nahatulan na siya bago pa naging batas ang RA 8294?
+</p>
+
+<h2>
+  PUWEDENG IAPPLY KAHIT SA MGA NAHATULAN NA ANG MAS PABOR NA BATAS
+</h2>
+
+<p>
+  Ito ang mahalagang legal principle.
+</p>
+
+<p>
+  Sa Article 22 ng Revised Penal Code, ang isang penal law na mas pabor sa offender ay maaaring magkaroon ng retroactive effect, subject sa qualifications ng batas.
+</p>
+
+<p>
+  At tahasang sakop ng prinsipyo maging ang taong mayroon nang final sentence at nagsisilbi na ng sentensiya.
+</p>
+
+<p>
+  Hindi lang ito theory.
+</p>
+
+<p>
+  Sa official DOJ-DILG Joint Rules and Regulations implementing RA 8294, may mekanismo mismo para sa mga convicts na nagsisilbi na ng sentence.
+</p>
+
+<p>
+  Batay sa report ng Director o Warden, maaaring i-adjust ang sentence ng convict alinsunod sa RA 8294.
+</p>
+
+<p>
+  Kaya walang duda sa isang mahalagang bagay:<br>
+  Hindi lamang future offenders ang maaaring makinabang sa mas magaang penalty regime.
+</p>
+
+<p>
+  May legal mechanism upang umabot ang paborableng pagbabago maging sa qualified persons na nakakulong na.
+</p>
+
+<h2>
+  DITO DAPAT EKSAKTO ANG CLAIM TUNGKOL KAY ROBIN
+</h2>
+
+<p>
+  May secondary fact-checks na naglalarawan kay Robin bilang isa sa mga retroactively benefited ng RA 8294.
+</p>
+
+<p>
+  Pero kung ang standard natin ay primary-document level, kailangang paghiwalayin ang siguradong alam natin sa hindi pa natin dokumentadong personal application.
+</p>
+
+<p>
+  Kayang patunayan ng primary records na:<br>
+  Una: convicted at nakakulong na si Robin sa illegal possession of firearms bago naging epektibo ang RA 8294.<br>
+  Ikalawa: ibinaba ng RA 8294 ang statutory penalties para sa naturang offense.<br>
+  Ikatlo: pinapayagan ng Article 22 ang retroactive application ng mas pabor na penal law sa qualified offenders.<br>
+  Ikaapat: may official implementing mechanism ang RA 8294 para sa adjustment ng sentence ng qualified convicts.
+</p>
+
+<p>
+  Kaya si Robin ay hindi simpleng outsider na walang personal stake sa pagbabago.
+</p>
+
+<p>
+  Ang sarili niyang conviction ay nasa mismong uri ng criminal liability na direktang pinagaan ng batas habang nakakulong siya.
+</p>
+
+<p>
+  Pero may hangganan ang kaya nating sabihin.
+</p>
+
+<p>
+  Sa publicly accessible primary records na nasuri, wala tayong hawak na specific court, DOJ o prison order na nagpapakitang ang sarili niyang sentence ay pormal na ni-recompute mula X years tungo sa Y years dahil sa RA 8294 bago siya nakalabas.
+</p>
+
+<p>
+  Kaya mas eksaktong sabihin:<br>
+  Direktang pabor sa uri ng kanyang conviction ang RA 8294 at kabilang siya sa klase ng convicts na maaaring saklawin ng retroactive sentence adjustment.
+</p>
+
+<p>
+  Hindi natin kailangang tumalon sa:
+</p>
+
+<blockquote>
+  <p>
+    “RA 8294 mismo ang nagpalaya sa kanya.”
+  </p>
+</blockquote>
+
+          <h2>
+  DAHIL HINDI RA 8294 ANG CONDITIONAL PARDON
+</h2>
+
+<p>
+  Ito rin ang madalas napaghalo.
+</p>
+
+<p>
+  Noong April 1998, nakalabas si Robin sa New Bilibid Prison matapos siyang mabigyan ng conditional pardon ni President Fidel V. Ramos.
+</p>
+
+<p>
+  May contemporaneous reporting noong April 8, 1998 na nagsasabing lumabas siya ng kulungan noong nakaraang araw matapos siyang pardoned ni Ramos. Sinusuportahan din ito ng later reporting tungkol sa kanyang pardon history.
+</p>
+
+<p>
+  May magkakaibang public references tungkol sa eksaktong petsa o taon kung kailan pormal na na-grant ang conditional pardon, kaya ang mas ligtas na chronology ay ang dokumentadong punto:<br>
+  April 1998 ang kanyang release after conditional pardon.
+</p>
+
+<p>
+  Mahalaga iyon dahil malinaw ang sequence:<br>
+  Naaprubahan ang RA 8294 noong June 6, 1997.
+</p>
+
+<p>
+  Naging bahagi ito ng legal landscape habang nakakulong pa si Robin.
+</p>
+
+<p>
+  At April 1998 pa siya nakalabas matapos ang conditional pardon.
+</p>
+
+<p>
+  Magkaibang legal action ang dalawang iyon.
+</p>
+
+<p>
+  Ang pagbabago ng penalty sa RA 8294 ay legislative action.<br>
+  Ang conditional pardon ay executive clemency mula sa Presidente.
+</p>
+
+<p>
+  Kaya hindi sapat na sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Dahil sa Robin Padilla Law kaya siya nakalaya.”
+  </p>
+</blockquote>
+
+<p>
+  Mas eksakto:<br>
+  Habang nagsisilbi si Robin ng sentence para sa illegal possession of firearms, naging batas ang RA 8294 na nagpababa ng penalty para sa naturang offense at may mechanism para sa retroactive adjustment ng qualified convicts; hiwalay dito ang conditional pardon na sinundan ng kanyang release noong April 1998.
+</p>
+
+<h2>
+  PROBLEMA BA AGAD KUNG MAY PERSONAL KANG INTERES SA BATAS NA ISINUSULONG MO?
+</h2>
+
+<p>
+  Hindi rin ganoon kasimple.
+</p>
+
+<p>
+  Maraming batas ang nabubuo dahil nagsasalita ang mga taong direktang apektado.
+</p>
+
+<p>
+  Manggagawa ang nagbibigay ng input sa labor policy.<br>
+  Negosyante sa business regulation.<br>
+  PWD sa accessibility policy.<br>
+  Pasyente at doktor sa health policy.<br>
+  Prisoner o dating prisoner sa penal reform.
+</p>
+
+<p>
+  Ang pagiging apektado ay maaaring magbigay ng firsthand knowledge na mahalaga sa policymaking.
+</p>
+
+<p>
+  Ang problema ay hindi awtomatikong:
+</p>
+
+<blockquote>
+  <p>
+    “May personal interest ka, kaya invalid ang sinabi mo.”
+  </p>
+</blockquote>
+
+<p>
+  Ang mas mahalagang tanong ay:<br>
+  Transparent ba ang personal interest?<br>
+  May independent policy reason ba para sa pagbabago?<br>
+  Dumaan ba ito sa tunay na deliberation?<br>
+  At malinaw ba kung sino talaga ang nagmungkahi, nag-author, nag-amend at bumoto sa batas?
+</p>
+
+<p>
+  Ito ang dahilan kung bakit binibigyang-diin sa regulatory-policy research ang parehong stakeholder participation at transparency. Mahalaga ang input ng affected people, pero kailangan ding mapangalagaan ang proseso laban sa disproportionate influence o policy capture ng makitid na interests.
+</p>
+
+<p>
+  Sa RA 8294, mahalagang tandaan na may documented policy rationale ang Congress na hiwalay kay Robin. Nakita nitong kailangang gawing mas proportionate ang penalties ng lumang PD 1866 framework.
+</p>
+
+<p>
+  Kaya hindi makatarungang sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Ginawa ang batas para kay Robin.”
+  </p>
+</blockquote>
+
+<p>
+  Wala tayong sapat na ebidensiya para doon.
+</p>
+
+<p>
+  Pero hindi rin dapat burahin ang kabilang katotohanan: Ang taong nagsasabing tumulong siyang hubugin ang panukala ay kabilang mismo sa mga taong may direktang personal na interes sa pagpapagaan ng penalty habang ginagawa ang pagbabago.
+</p>
+
+<h2>
+  KAYA ANO TALAGA ANG FAIR NA HATOL?
+</h2>
+
+<p>
+  May totoong Republic Act No. 8294.<br>
+  Pero “Robin Padilla Law” ay hindi official title nito.
+</p>
+
+<p>
+  Sa official Senate profile ni Ramon B. Revilla Sr., mismong RA 8294 ang inilalarawan sa linyang <em>“Now known as ‘The Revilla Law.’”</em> Hindi iyon ang opisyal na pamagat na nakasulat sa batas, kundi isang tawag na ginamit sa Senate profile kaugnay ng legislative work ni Revilla Sr. sa RA 8294.
+</p>
+
+<p>
+  May sariling claim si Robin na nakipagsulatan siya sa mga mambabatas, nakakita ng drafts at nagbigay ng suggestions habang nakakulong.
+</p>
+
+<p>
+  Posible iyon.
+</p>
+
+<p>
+  At ngayon, hindi lamang secondary report ang source natin sa claim na iyon—nasa sarili niyang official Facebook video mismo ang account.
+</p>
+
+<p>
+  Hindi natin kailangang sabihing gawa-gawa ang kanyang kuwento kung wala rin tayong ebidensiyang nagpapabulaan dito.
+</p>
+
+<p>
+  Pero hindi iyon kapareho ng formal legislative authorship.
+</p>
+
+<p>
+  Ang documented Senate deliberations ay nagpapakita kay Ramon Revilla Sr. bilang principal author, Miriam Defensor Santiago bilang co-author, at Franklin Drilon bilang nagmungkahi ng isang mahalagang amendment.
+</p>
+
+<p>
+  At hindi rin puwedeng alisin sa kuwento ang personal context:<br>
+  Noong panahong iyon, si Robin ay nakakulong sa ilalim ng lumang mas mabigat na firearms law.
+</p>
+
+<p>
+  Pagkatapos, naging batas ang RA 8294 na nagpababa ng penalty para sa mismong uri ng offense na iyon.
+</p>
+
+<p>
+  May legal doctrine at implementing mechanism para umabot ang mas pabor na pagbabago maging sa qualified convicts na nakasentensiya na.
+</p>
+
+<p>
+  Kaya ang tanong ay hindi:
+</p>
+
+<blockquote>
+  <p>
+    “May karapatan ba siyang magmungkahi dahil preso siya?”
+  </p>
+</blockquote>
+
+<p>
+  Mayroon.
+</p>
+
+<p>
+  Hindi rin:
+</p>
+
+<blockquote>
+  <p>
+    “Masama ba agad ang batas dahil personal siyang maaaring makinabang?”
+  </p>
+</blockquote>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang mas matinong tanong:<br>
+  Gaano kalaki ang aktuwal at dokumentadong ambag niya—at bakit kailangang sabihin din na ang bagong batas ay direktang pabor sa mismong uri ng offense na ikinakulong niya noon?
+</p>
+
+          <h2>
+  ANG MAS MALAKING CIVIC LESSON
+</h2>
+
+<p>
+  Ito ang dahilan kung bakit mahalaga ang records sa usaping pampubliko.
+</p>
+
+<p>
+  Hindi dahil gusto nating bawasan ang ambag ng isang tao.
+</p>
+
+<p>
+  Kundi dahil may pagkakaiba ang:<br>
+  nagkaroon ng ideya,<br>
+  nagbigay ng suggestion,<br>
+  tumulong sa draft,<br>
+  nag-author ng bill,<br>
+  nag-amend ng bill,<br>
+  at nagpasa ng batas.
+</p>
+
+<p>
+  Hindi pare-pareho ang mga iyon.
+</p>
+
+<p>
+  At kapag public accomplishment ang pinag-uusapan, mahalaga kung alin talaga ang ginawa mo.
+</p>
+
+<p>
+  Lalong mahalaga ang transparency kung ang pagbabagong ipinagmamalaki mong tinulungan mong buuin ay direkta ring pabor sa sarili mong legal situation.
+</p>
+
+<p>
+  Hindi iyon awtomatikong ebidensiya ng katiwalian.<br>
+  Hindi iyon awtomatikong ebidensiya ng masamang motibo.
+</p>
+
+<p>
+  Pero relevant fact iyon na hindi dapat mawala sa pagkukuwento.
+</p>
+
+<p>
+  Dahil ang isang mulat na mamamayan ay hindi kailangang pumili sa dalawang simpleng propaganda:
+</p>
+
+<blockquote>
+  <p>
+    “Bayani siya dahil nakagawa siya ng batas habang preso.”
+  </p>
+</blockquote>
+
+<p style="text-align:center;">
+  o
+</p>
+
+<blockquote>
+  <p>
+    “Ginawa niya ang batas para makalaya.”
+  </p>
+</blockquote>
+
+<p>
+  Parehong masyadong simple.
+</p>
+
+<p>
+  Mas kumpleto ang realidad:<br>
+  May lumang batas na may napakabigat na penalties.<br>
+  May lehitimong dahilan ang Congress para baguhin iyon.<br>
+  May formal legislators na dokumentadong gumawa, nag-sponsor, nag-amend at nagpasa ng panukala.<br>
+  May claim si Robin—mula mismo sa sarili niyang public statement—na nagbigay siya ng input mula sa kulungan.
+</p>
+
+<p>
+  At kasabay nito, siya mismo ay nakakulong dahil sa offense na direktang pinagaan ng resulta ng prosesong iyon.
+</p>
+
+<p>
+  Hindi natin kailangang dagdagan.<br>
+  Hindi rin natin kailangang bawasan.
+</p>
+
+<p>
+  Kapag kumpleto ang record, sapat nang magsalita ang facts.
+</p>
+
+<h2>
+  ISANG HULING LINAW: ITO PA BA ANG FIREARMS LAW NGAYON?
+</h2>
+
+<p>
+  Hindi na dapat basahin ang RA 8294 na para bang ito pa rin ang buong kasalukuyang firearms regime ng Pilipinas.
+</p>
+
+<p>
+  Noong May 29, 2013, naging batas ang Republic Act No. 10591 o Comprehensive Firearms and Ammunition Regulation Act, na naglatag ng mas komprehensibong firearms framework at nag-repeal o nag-supersede sa mahahalagang provisions ng dating PD 1866/RA 8294 regime.
+</p>
+
+<p>
+  Kaya ang RA 8294 ay mahalaga rito bilang historical law na direktang kaugnay ng conviction, imprisonment at claim ni Robin noong 1990s.
+</p>
+
+<p>
+  At doon natin dapat ito suriin.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+     <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Supreme Court — <em>Padilla v. Court of Appeals</em>, G.R. No. 121917, March 12, 1997. Conviction, firearms recovered, defenses, at final Supreme Court sentence ni Robin Padilla.
+    </li>
+
+    <li>
+      Republic Act No. 8294 (June 6, 1997). Aktuwal na amendments at penalty structure para sa illegal possession of firearms.
+    </li>
+
+    <li>
+      Supreme Court — <em>People v. Comadre</em>, G.R. No. 153559, June 8, 2004. Legislative purpose at historical rationale ng Republic Act No. 8294.
+    </li>
+
+    <li>
+      Supreme Court jurisprudence reproducing Senate deliberations on Senate Bill No. 1148. Formal legislative roles nina Sen. Ramon Revilla Sr., Sen. Miriam Defensor Santiago, at Sen. Franklin Drilon.
+    </li>
+
+    <li>
+      Senate of the Philippines Legislative Reference Bureau — Ramon B. Revilla Sr. Profile. Official Senate biographical material na nag-uugnay kay Ramon B. Revilla Sr. sa Republic Act No. 8294 at gumagamit ng phrasing na <em>“now known as ‘The Revilla Law.’”</em> Hindi ito official statutory title ng batas.
+    </li>
+
+    <li>
+      1987 Philippine Constitution, Article VI. Constitutional framework ng legislative power at formal lawmaking process sa Pilipinas.
+    </li>
+
+    <li>
+      Senate of the Philippines — Legislative Process. Opisyal na paliwanag sa proseso ng pagbuo at pagpasa ng batas.
+    </li>
+
+    <li>
+      Revised Penal Code, Article 22. Retroactive application ng penal laws na mas pabor sa qualified offenders.
+    </li>
+
+    <li>
+      DOJ-DILG Joint Rules and Regulations Implementing Republic Act No. 8294. Mechanism para sa adjustment ng sentence ng qualified convicts.
+    </li>
+
+    <li>
+      Official Robin Padilla Facebook Video — <em>Ang Robin Padilla Law</em>. Primary source ng sarili niyang account tungkol sa sinasabi niyang participation habang nakakulong.
+    </li>
+
+    <li>
+      FactRakers — <em>“Robin Padilla Law” Needs Context</em> (April 30, 2022). Secondary documentation ng account ni Robin na habang nakakulong ay nakipagsulatan umano siya at nagbigay ng suggestions sa proposed firearms-law amendment.
+    </li>
+
+    <li>
+      Reuters (April 8, 1998), archived by NewspaperSG. Contemporaneous documentation na nakalabas si Robin Padilla noong April 1998 matapos siyang mabigyan ng conditional pardon ni President Fidel V. Ramos.
+    </li>
+
+    <li>
+      OECD Regulatory Policy Outlook — Stakeholder Engagement. Research basis sa stakeholder participation, transparency, at pag-iwas sa undue influence o policy capture.
+    </li>
+
+    <li>
+      Republic Act No. 10591 — Comprehensive Firearms and Ammunition Regulation Act. Mas bagong comprehensive firearms framework na pumalit sa mahahalagang bahagi ng dating legal regime.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
