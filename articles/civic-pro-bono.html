@@ -1,1 +1,2297 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Ano ba talaga ang ibig sabihin ng pro bono? Alamin ang pagkakaiba nito sa PAO lawyer, private attorney, public prosecutor, counsel de oficio, at kung sino talaga ang nagbabayad sa legal services."
+>
+
+<title>
+PRO BONO: LIBRE SA KLIYENTE—PERO SINO TALAGA ANG NAGBABAYAD? | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    PRO BONO: LIBRE SA KLIYENTE—PERO SINO TALAGA ANG NAGBABAYAD?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-pro-bono.png"
+      alt="Simbolikong paglalarawan ng pro bono legal service, professional fee, public legal aid, at iba't ibang pinagmumulan ng bayad sa legal representation."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>“Pro bono naman ang abogado.”</p>
+
+  <p>
+    Madalas sapat na ang linyang iyan para matapos ang usapan tungkol sa
+    bayad.
+  </p>
+
+  <p>
+    Dahil libre raw ang serbisyo, madaling isipin na walang professional
+    fee, walang public money, walang ibang gumagastos—at kung libre ang
+    abogado, baka public attorney na rin siya.
+  </p>
+
+  <p>
+    Pero sa totoong legal system, hindi ganoon kasimple.
+  </p>
+
+  <p>
+    May abogadong libre sa kliyente pero may sweldo mula sa gobyerno.<br>
+    May private lawyer na talagang hindi naniningil ng professional fee.<br>
+    May private lawyer na hindi binayaran ng client pero may ibang tao o
+    organisasyong sumagot sa kanyang professional fee.<br>
+    May government lawyer na walang hiwalay na bayad sa bawat kasong
+    hinahawakan dahil bahagi iyon ng kanyang opisyal na trabaho.<br>
+    May legal service na pro bono pero may reimbursement sa aktuwal na
+    gastusin.
+  </p>
+
+  <p>
+    At may perang tinatawag na “attorney’s fees” na hindi naman awtomatikong
+    nangangahulugang iyon ang professional fee na direktang natanggap ng
+    abogado.
+  </p>
+
+  <p>
+    Kaya bago sabihing “libre,” “bayad,” “pro bono,” o “pera ng taong
+    bayan,” may mas mahahalagang tanong:<br>
+    Sino ang abogado?<br>
+    Sino ang kinakatawan niya?<br>
+    Sa anong kapasidad siya kumikilos?<br>
+    At ano talaga—kung mayroon man—ang binabayaran?
+  </p>
+
+  <p>
+    Hindi ito usaping mahalaga lamang kapag may impeachment,
+    kontrobersiyal na kaso, o politikong sangkot.
+  </p>
+
+  <p>
+    Mahalaga ito sa ordinaryong taong naghahanap ng abogado, sa biktima ng
+    krimen, sa akusado, sa mahirap na litigant, sa taxpayer, at sa sinumang
+    gustong maintindihan kung paano talaga gumagana ang access sa hustisya
+    at ang perang umiikot sa legal services.
+  </p>
+
+  <p>
+    At para hindi tayo malito sa mga label, kailangang magsimula sa
+    pinakaunang distinction:
+  </p>
+
+  <h2>ANG “PRO BONO” AY HINDI URI NG ABOGADO</h2>
+
+  <p>
+    Ang pro bono ay mula sa <em>pro bono publico</em>—para sa public good.
+  </p>
+
+  <p>
+    Sa pinakapayak na kahulugan nito sa legal profession, may totoong legal
+    service na ginagawa ang abogado pero walang professional o attorney’s
+    fee na sinisingil sa beneficiary o client para sa covered engagement.
+  </p>
+
+  <p>
+    Maaaring legal consultation iyon.<br>
+    Maaaring paggawa ng affidavit, pleading o kontrata.<br>
+    Maaaring pakikipagnegosasyon.<br>
+    Maaaring representation sa korte o quasi-judicial body.
+  </p>
+
+  <p>
+    Hindi kailangang buong trial agad bago matawag na legal service.
+  </p>
+
+  <p>
+    Sa Unified Legal Aid Service o ULAS ng Supreme Court, kabilang sa
+    maaaring pro bono legal aid ang court at quasi-judicial representation,
+    legal counseling, contract negotiation, drafting of legal documents,
+    developmental legal assistance, legal outreach at notarization para sa
+    qualified beneficiaries.
+  </p>
+
+  <p>
+    Kaya mali ang simpleng equation na:
+  </p>
+
+  <blockquote>
+    <p>PRO BONO = PUBLIC ATTORNEY.</p>
+  </blockquote>
+
+  <p>
+    Puwedeng private practitioner ang abogado at pro bono ang isang kaso
+    niya. Puwede ring nagtatrabaho siya sa isang law firm at may sweldo mula
+    sa firm, pero ang beneficiary ay hindi sinisingil ng professional fee
+    para sa particular na pro bono matter.
+  </p>
+
+  <p>
+    Ang “private lawyer” ay nagsasabi kung saan o sa anong kapasidad siya
+    nagpa-practice.
+  </p>
+
+  <p>
+    Ang “pro bono” ay nagsasabi kung paano ibinibigay o sinisingil ang
+    particular na legal service.
+  </p>
+
+  <p>
+    Magkaibang bagay iyon.
+  </p>
+
+  <h2>HINDI NA RIN LAGING “VOLUNTARY” ANG PRO BONO SA PILIPINAS</h2>
+
+  <p>
+    Tradisyonal na iniisip ang pro bono bilang boluntaryong serbisyo ng
+    abogado.
+  </p>
+
+  <p>
+    Pero sa kasalukuyang Philippine legal system, kailangan nang lagyan iyon
+    ng qualification.
+  </p>
+
+  <p>
+    Nagkabisa noong February 3, 2025 ang Rules on Unified Legal Aid Service.
+    Sa pangkalahatan, ang covered lawyers ay kailangang makapag-render ng
+    hindi bababa sa 60 oras ng pro bono legal aid sa bawat tatlong taong
+    compliance period para sa qualified beneficiaries.
+  </p>
+
+  <p>
+    May mga exclusions at may limitadong mekanismo rin para mapalitan ng
+    financial contribution ang bahagi ng required hours.
+  </p>
+
+  <p>
+    Ibig sabihin:<br>
+    Pro bono pa rin ang legal service para sa beneficiary kahit ang paggawa
+    nito ay bahagi na ng regulatory obligation ng covered lawyer.
+  </p>
+
+  <p>
+    Mahalagang distinction iyon.
+  </p>
+
+  <p>
+    Hindi na ligtas sabihin na:
+  </p>
+
+  <blockquote>
+    <p>“Pro bono, kaya siguradong kusang-loob lamang.”</p>
+  </blockquote>
+
+  <p>
+    Mas tama: Pro bono dahil libre ang qualifying legal service sa
+    beneficiary; kung voluntary o mandatory ang pag-render nito ay hiwalay
+    na usapin.
+  </p>
+
+            <h2>PERO KUNG LIBRE, IBIG BANG SABIHIN WALANG GASTOS?</h2>
+
+  <p>Hindi.</p>
+
+  <p>
+    Ito marahil ang isa sa pinakamahalagang loophole na kailangang isara.
+  </p>
+
+  <p>
+    Libreng professional service at zero expense ay hindi magkapareho.
+  </p>
+
+  <p>
+    Isipin ang abogado na kailangang bumiyahe, mag-print ng maraming
+    dokumento, kumuha ng records, magpadala ng papeles, gumamit ng
+    communications, o gumastos para maisagawa ang legal work.
+  </p>
+
+  <p>
+    Puwedeng walang professional fee ang kanyang oras at legal expertise
+    pero may tunay na gastos pa rin ang paggawa ng trabaho.
+  </p>
+
+  <p>
+    Maging sa ULAS, kinikilala ang posibilidad ng reimbursement ng
+    reasonable at documented eligible expenses na nagastos habang
+    nagbibigay ng pro bono legal aid, subject sa availability ng ULAS Fund.
+  </p>
+
+  <p>
+    Kaya posible ang sabay na katotohanan:<br>
+    Pro bono ang abogado.<br>
+    May gumastos pa rin para maisagawa ang legal work.
+  </p>
+
+  <p>
+    Walang contradiction doon.
+  </p>
+
+  <p>
+    Ang dapat itanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      "Ano ang binayaran?"
+    </p>
+  </blockquote>
+
+  <p>
+    Professional compensation ba?<br>
+    O actual operational expense?
+  </p>
+
+  <p>
+    Magkaiba iyon.
+  </p>
+
+  <h2>KUNG GAYON, ANO NAMAN ANG PRIVATE ATTORNEY?</h2>
+
+  <p>
+    Ang private lawyer ay abogadong nagpa-practice sa private sector o
+    private capacity—solo practitioner man, law-firm partner o associate,
+    in-house counsel, o ibang private legal arrangement.
+  </p>
+
+  <p>
+    At hindi iisa ang paraan ng pagsingil.
+  </p>
+
+  <p>
+    Maaaring may acceptance fee, appearance fee, retainer, bayad sa
+    particular legal work, contingent arrangement, o reimbursement ng
+    litigation at out-of-pocket expenses depende sa engagement at sa
+    pinapahintulutan ng batas at professional rules.
+  </p>
+
+  <p>
+    Hindi rin may isang government-prescribed na universal price tag ang
+    bawat serbisyo ng abogado.
+  </p>
+
+  <p>
+    Sa Code of Professional Responsibility and Accountability, kailangang
+    fair and reasonable ang professional fees.
+  </p>
+
+  <p>
+    Isinasaalang-alang dito ang mga bagay gaya ng oras at lawak ng
+    serbisyo, novelty at hirap ng issue, skill at expertise na kailangan,
+    opportunity cost, customary charges, halaga ng interest na sangkot,
+    contingency ng compensation at character ng engagement.
+  </p>
+
+  <p>
+    Kaya kung mas mataas ang singil ng isang abogado kaysa sa iba, hindi
+    sapat ang presyo lamang para sabihing unreasonable iyon.
+  </p>
+
+  <p>
+    At kung libre naman ang serbisyo, hindi ibig sabihin na walang
+    economic value ang trabahong ibinigay.
+  </p>
+
+  <p>
+    Oras, research, pleadings, preparation, strategy, hearings at
+    professional responsibility pa rin ang ginamit.
+  </p>
+
+  <p>
+    Ang pro bono ay hindi pagkawala ng halaga ng legal work.
+  </p>
+
+  <p>
+    Ang nawawala ay ang professional fee na sisingilin sa beneficiary para
+    sa covered service.
+  </p>
+
+  <h2>PERO “WALANG BINAYARAN ANG CLIENT” ≠ AUTOMATIC NA PRO BONO</h2>
+
+  <p>
+    Ito ang isa pang mahalagang distinction.
+  </p>
+
+  <p>
+    Posibleng walang inilabas na professional fee ang mismong client pero
+    may ibang tao o entity na nagbayad sa abogado para sa legal service.
+  </p>
+
+  <p>
+    Maaaring kamag-anak.<br>
+    Maaaring employer.<br>
+    Maaaring organisasyon.<br>
+    Maaaring ibang third party.
+  </p>
+
+  <p>
+    Pinapayagan ng Code of Professional Responsibility and Accountability
+    ang lawyer na tumanggap ng compensation mula sa taong hindi niya
+    client, pero may safeguards: kailangan ang written informed consent ng
+    client, at hindi maaaring maapektuhan ng third-party payer ang
+    independence o professional judgment ng abogado, ang lawyer-client
+    relationship, o ang confidentiality ng impormasyon ng client.
+  </p>
+
+  <p>
+    Kaya hindi sapat na itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “May binayaran ba ang client?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahalaga:
+  </p>
+
+  <blockquote>
+    <p>
+      “May professional fee bang binayaran para sa legal service—at sino ang
+      nagbayad?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung may third party na sumagot sa professional fee, maaaring libre
+    iyon sa client.
+  </p>
+
+  <p>
+    Pero hindi iyon kapareho ng sitwasyong mismong abogado ang nag-waive
+    ng kanyang professional compensation bilang pro bono service.
+  </p>
+
+  <p>
+    Libre sa kliyente at pro bono ay maaaring mag-overlap.
+  </p>
+
+  <p>
+    Pero hindi sila awtomatikong pareho.
+  </p>
+
+            <h2>MAY ISA PANG NAKALILITONG TERMINO: “ATTORNEY’S FEES”</h2>
+
+  <p>
+    Kapag nabasa sa desisyon ng korte na:
+  </p>
+
+  <blockquote>
+    <p>
+      “The defendant is ordered to pay attorney’s fees…”
+    </p>
+  </blockquote>
+
+  <p>
+    Huwag agad isipin na iyon ang eksaktong bill na siningil ng abogado sa
+    kanyang client.
+  </p>
+
+  <p>
+    Matagal nang kinikilala ng Supreme Court ang dalawang konsepto ng
+    attorney’s fees.
+  </p>
+
+  <p>
+    Sa ordinary sense, iyon ang reasonable compensation na binabayaran ng
+    client sa sariling lawyer para sa legal services.
+  </p>
+
+  <p>
+    Sa extraordinary sense, maaari itong maging damages na ipinagkakaloob
+    ng korte sa prevailing party at ipinababayad sa losing party sa mga
+    sitwasyong pinapayagan ng batas.
+  </p>
+
+  <p>
+    Bilang general rule, ang award na iyon ay para sa litigant, hindi
+    awtomatikong direkta sa abogado, maliban kung may ibang valid agreement
+    sila.
+  </p>
+
+  <p>
+    Kaya maging ang salitang “attorney’s fees” ay kailangang tingnan sa
+    context.
+  </p>
+
+  <p>
+    Hindi lahat ng perang tinatawag na attorney’s fees ay pare-pareho ang
+    legal meaning.
+  </p>
+
+  <h2>PUBLIC ATTORNEY: LIBRE SA KLIYENTE, PERO HINDI “UNPAID LAWYER”</h2>
+
+  <p>
+    Ito naman ang malaking pagkakaiba.
+  </p>
+
+  <p>
+    Ang Public Attorney’s Office o PAO ay government institution.
+  </p>
+
+  <p>
+    Sa ilalim ng Republic Act No. 9406, ang PAO ang principal law office ng
+    gobyerno sa pagbibigay ng free legal assistance sa indigent persons sa
+    criminal, civil, labor, administrative at iba pang quasi-judicial
+    cases.
+  </p>
+
+  <p>
+    Inaatasan din itong magbigay, free of charge, ng legal representation,
+    assistance at counseling sa saklaw ng mandato nito.
+  </p>
+
+  <p>
+    Ang PAO lawyer ay government employee.
+  </p>
+
+  <p>
+    May government position.<br>
+    May salary at benefits bilang public servant.
+  </p>
+
+  <p>
+    Kaya kapag qualified PAO client ang sinerbisyuhan niya nang walang
+    binabayarang professional fee:
+  </p>
+
+  <p>
+    Libre sa kliyente ang legal service, pero hindi ibig sabihin na
+    nagtatrabaho nang walang sweldo ang PAO lawyer.
+  </p>
+
+  <p>
+    Binabayaran siya bilang government employee upang gawin ang mandato ng
+    kanyang opisina.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit hindi sapat ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nagbayad ba ang client?”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil maaaring ang sagot ay hindi, pero may ibang legitimate funding
+    model ang serbisyo.
+  </p>
+
+  <h2>AT HINDI MALIIT ANG TRABAHONG ITO</h2>
+
+  <p>
+    Sa sariling 2025 accomplishment report ng PAO, iniulat nitong
+    nakahawak ito ng 848,805 judicial cases at nakapagtala ng 16,426,655
+    “clients assisted” sa judicial at non-judicial services.
+  </p>
+
+  <p>
+    Sa criminal cases lamang, 654,187 ang naiulat na cases handled.
+  </p>
+
+  <p>
+    Sa executive summary nito, iniulat din ng PAO ang average na 315 cases
+    handled at 6,098 client assists bawat lawyer noong 2025.
+  </p>
+
+  <p>
+    May mahalagang qualification sa 16.4 million figure:
+  </p>
+
+  <p>
+    Ang opisyal na report ay gumagamit ng bilang na “clients assisted,”
+    pero hindi ipinakikita ng executive summary na ang 16,426,655 ay
+    16.4 milyong magkakaibang unique individuals.
+  </p>
+
+  <p>
+    Kaya hindi dapat awtomatikong ipakahulugan ang figure bilang
+    16.4 million distinct persons.
+  </p>
+
+  <p>
+    Pero kahit may qualification na iyon, malinaw ang isang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      Malaki ang demand para sa publicly funded legal assistance.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dekorasyon sa justice system ang legal aid.
+  </p>
+
+  <h2>PUBLIC ATTORNEY ≠ PUBLIC PROSECUTOR</h2>
+
+  <p>
+    Pareho silang government lawyers.
+  </p>
+
+  <p>
+    Pero halos kabaligtaran ang function nila sa maraming criminal cases.
+  </p>
+
+  <p>
+    Ang PAO lawyer ay maaaring kumatawan sa qualified accused.
+  </p>
+
+  <p>
+    Ang public prosecutor naman ay bahagi ng prosecution machinery ng
+    Estado.
+  </p>
+
+  <p>
+    Sa Republic Act No. 10071, ang National Prosecution Service ang
+    pangunahing responsable sa preliminary investigation at prosecution ng
+    mga kasong may kinalaman sa paglabag sa penal laws, sa ilalim ng
+    supervision ng Secretary of Justice.
+  </p>
+
+  <p>
+    Kaya sa isang karaniwang criminal case:
+  </p>
+
+  <blockquote>
+    <p>
+      PAO LAWYER<br>
+      → maaaring counsel ng qualified accused.
+    </p>
+
+    <p>
+      PUBLIC PROSECUTOR<br>
+      → nagsasagawa ng prosecution para sa People of the Philippines.
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong maaaring may government salary.
+  </p>
+
+  <p>
+    Parehong abogado.
+  </p>
+
+  <p>
+    Pero hindi pareho ang representational role, mandato at function.
+  </p>
+
+            <h2>AT HINDI RIN “PERSONAL LAWYER NG BIKTIMA” ANG PUBLIC PROSECUTOR</h2>
+
+  <p>
+    Ito rin ang isang mahalagang misconception.
+  </p>
+
+  <p>
+    Kapag may krimen, maaaring ang complainant o victim ang nagreport,
+    nagreklamo at pangunahing witness.
+  </p>
+
+  <p>
+    Pero ang criminal prosecution ay public function.
+  </p>
+
+  <p>
+    Sa Rule 110 ng Rules of Criminal Procedure, ang criminal actions ay
+    prosecuted under the direction and control of a public prosecutor.
+  </p>
+
+  <p>
+    Kaya ang public prosecutor ay hindi simpleng hired personal lawyer ng
+    complainant na kailangang sundin ang bawat gusto nito.
+  </p>
+
+  <p>
+    Ang kasong kriminal ay isinasagawa sa pangalan ng People of the
+    Philippines.
+  </p>
+
+  <p>
+    May pagkakataon ding kumuha ang offended party ng private prosecutor—
+    isang private lawyer na maaaring tumulong sa prosecution at sa private
+    interests na konektado sa kaso.
+  </p>
+
+  <p>
+    Pero sa ordinary rule, ang criminal prosecution ay nananatili sa
+    direction and control ng public prosecutor, subject sa mga exceptions at
+    procedures na itinakda ng rules.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      PRIVATE PROSECUTOR ≠ PUBLIC PROSECUTOR.
+    </p>
+
+    <p>
+      PROSECUTOR ≠ PAO LAWYER.
+    </p>
+  </blockquote>
+
+  <h2>HINDI RIN LAHAT NG GOVERNMENT LAWYER AY “PUBLIC ATTORNEY”</h2>
+
+  <p>
+    May lawyers sa Office of the Solicitor General.
+  </p>
+
+  <p>
+    May prosecutors sa DOJ.
+  </p>
+
+  <p>
+    May legal officers sa government agencies.
+  </p>
+
+  <p>
+    May government corporate lawyers.
+  </p>
+
+  <p>
+    May lawyers sa constitutional bodies at iba pang tanggapan.
+  </p>
+
+  <p>
+    Hindi sila awtomatikong PAO lawyers.
+  </p>
+
+  <p>
+    Halimbawa, ang Office of the Solicitor General ay may legal mandate na
+    kumatawan sa Government of the Philippines, mga ahensiya at
+    instrumentalities nito, at mga public officials sa mga matter na sakop
+    ng batas.
+  </p>
+
+  <p>
+    Ibang institutional role iyon kaysa PAO na pangunahing nagbibigay ng
+    legal assistance sa qualified individuals.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit misleading ang generic na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Public attorney naman lahat ng abogado ng gobyerno.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa casual English maaaring malawak ang tunog ng “public attorney,” pero
+    sa Philippine institutional context, kapag sinabing Public Attorney,
+    napakalakas ng reference nito sa Public Attorney’s Office.
+  </p>
+
+  <h2>PAANO NAMAN ANG COUNSEL DE OFICIO?</h2>
+
+  <p>
+    Isa pa itong terminong madaling mapagkamalang pro bono.
+  </p>
+
+  <p>
+    Sa karaniwang criminal-court context, ang counsel de oficio ay
+    abogadong itinatalaga ng korte para sa accused na walang sariling
+    counsel kapag kinakailangan upang maprotektahan ang kanyang
+    constitutional at procedural right to counsel.
+  </p>
+
+  <p>
+    Sa Rule 116, Sections 6 at 7 ng Rules of Criminal Procedure nakapaloob
+    ang appointment at duties ng counsel de oficio para sa accused sa
+    ganitong sitwasyon.
+  </p>
+
+  <p>
+    Hindi awtomatikong ibig sabihin nito na PAO lawyer siya.
+  </p>
+
+  <p>
+    At hindi rin awtomatikong ibig sabihin na permanently unpaid siya.
+  </p>
+
+  <p>
+    Sa kasalukuyang Code of Professional Responsibility and Accountability,
+    Canon III, Section 48, maaaring mag-order ang court ng compensation para
+    sa counsel de oficio, subject sa availability of funds.
+  </p>
+
+  <p>
+    Ang halaga ay dapat itakda gamit ang mga pamantayan sa fair and
+    reasonable professional fees sa Section 41.
+  </p>
+
+  <p>
+    Mahalaga rin ang legal update na ito:
+  </p>
+
+  <p>
+    Ang dating Sections 20 hanggang 37 ng Rule 138—kabilang ang dating
+    provisions tungkol sa assigned attorneys at compensation ng attorneys de
+    oficio—ay expressly repealed nang magkabisa ang CPRA.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      Court-appointed ang nagsasabi kung paano siya naitalaga sa particular
+      na proceeding.
+    </p>
+
+    <p>
+      Pro bono ang nagsasabi tungkol sa compensation arrangement ng legal
+      service.
+    </p>
+  </blockquote>
+
+  <p>
+    Muli—magkaibang tanong.
+  </p>
+
+  <h2>BAKIT GANITO KAHALAGA ANG PRO BONO AT LEGAL AID?</h2>
+
+  <p>
+    Dahil may karapatan sa papel at may realidad ng paggamit ng karapatan.
+  </p>
+
+  <p>
+    Ang Constitution mismo ay nagpoprotekta laban sa pagkakait ng access sa
+    courts at adequate legal assistance dahil lamang sa kahirapan.
+  </p>
+
+  <p>
+    Pero ang pagkakaroon ng legal right ay hindi awtomatikong
+    nangangahulugang madaling makahanap, makalapit at makapagbayad ng tamang
+    tulong upang maipaglaban iyon.
+  </p>
+
+  <p>
+    Sa World Justice Project survey gamit ang nationally representative
+    probability sample na 1,000 respondents sa Pilipinas, 35% ang nagsabing
+    nakaranas sila ng legal problem sa nakaraang dalawang taon.
+  </p>
+
+  <p>
+    Sa may legal problems, 20% lamang ang naiulat na nakakuha ng tulong.
+  </p>
+
+  <p>
+    Dalawampu’t dalawang porsiyento ang nagsabing mahirap o halos
+    imposibleng mahanap ang perang kailangan upang lutasin ang problema, at
+    49% ang nakaranas ng hardship kaugnay ng kanilang legal problem.
+  </p>
+
+  <p>
+    At may isa pang mahalagang detalye sa parehong survey.
+  </p>
+
+  <p>
+    Sa mga nakakuha ng tulong, 72% ang nag-report ng kaibigan o pamilya
+    bilang isa sa kanilang sources of help.
+  </p>
+
+  <p>
+    Labinlimang porsiyento ang nag-report ng lawyer o professional advice
+    service.
+  </p>
+
+  <p>
+    Siyam na porsiyento ang nag-report ng government legal aid office.
+  </p>
+
+  <p>
+    Hindi dapat basahin ang 72%, 15% at 9% na parang tatlong exclusive na
+    bahagi na kailangang mag-total sa 100%.
+  </p>
+
+  <p>
+    Ipinapakita ng survey ang iba’t ibang sources of help na maaaring
+    ginamit ng respondents.
+  </p>
+
+  <p>
+    Hindi rin nito awtomatikong pinatutunayan na “ayaw ng Pilipino sa
+    abogado” o na may iisang cultural reason sa likod nito.
+  </p>
+
+  <p>
+    Pero malinaw nitong ipinapakita na sa realidad, malaking bahagi ng legal
+    help-seeking ay maaaring magsimula muna sa informal personal networks
+    bago makarating sa professional legal system.
+  </p>
+
+  <p>
+    At kapag ang unang paliwanag tungkol sa batas ay nanggagaling sa
+    sabi-sabi, kakilala, social media o sariling pagkaunawa, madaling
+    mapaghalo ang mga terminong gaya ng “public attorney,” “prosecutor,”
+    “libre,” “pro bono,” at “attorney’s fees.”
+  </p>
+
+  <p>
+    Kaya hindi lang legal representation ang mahalaga.
+  </p>
+
+  <p>
+    Legal literacy din.
+  </p>
+
+  <p>
+    Doon pumapasok ang PAO, IBP legal aid, law-school clinics, NGOs, court
+    appointments at pro bono private lawyers.
+  </p>
+
+  <p>
+    Sa isang ABA Rule of Law Initiative partnership kasama ang Integrated
+    Bar of the Philippines, 458 lawyers ang nagbigay ng pro bono services sa
+    22 legal-aid caravans mula November 2022 hanggang February 2023, na
+    umabot sa humigit-kumulang 3,616 underserved individuals.
+  </p>
+
+  <p>
+    Kaya ang pro bono ay hindi simpleng charity photo-op.
+  </p>
+
+  <blockquote>
+    <p>
+      Bahagi ito ng mas malaking imprastraktura ng access to justice.
+    </p>
+  </blockquote>
+
+            <h2>NGAYON, BALIK TAYO SA PERA</h2>
+
+  <p>
+    Ito ang practical test kapag may public controversy at sinabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pro bono ang mga abogado.”
+    </p>
+  </blockquote>
+
+  <p>
+    Huwag agad maniwala.
+  </p>
+
+  <p>
+    Pero huwag ding agad akusahan.
+  </p>
+
+  <p>
+    Tanungin nang tama.
+  </p>
+
+  <p>
+    Hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May gastos ba?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “May professional compensation ba para sa particular na legal representation—at saan galing?”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan naghihiwalay ang mga bagay.
+  </p>
+
+  <blockquote>
+    <p>
+      Private lawyer na sinisingil ang client<br>
+      → Paid private legal service.
+    </p>
+
+    <p>
+      Private lawyer na walang professional fee para sa engagement<br>
+      → Maaaring pro bono.
+    </p>
+
+    <p>
+      Client na walang binayaran pero may third party na sumagot sa professional fee<br>
+      → Libre sa client, pero hindi automatic na pro bono.
+    </p>
+
+    <p>
+      PAO lawyer na kumakatawan sa qualified client<br>
+      → Government-funded legal aid; libre sa qualified client.
+    </p>
+
+    <p>
+      Public prosecutor na nagpo-prosecute bilang official duty<br>
+      → Government legal service; may government compensation bilang public official o employee.
+    </p>
+
+    <p>
+      Government lawyer na gumagawa ng legal work bilang bahagi ng official position<br>
+      → Government-paid official duty.
+    </p>
+
+    <p>
+      Court-appointed counsel<br>
+      → Counsel de oficio; ang compensation ay nakadepende sa applicable law, rules at availability of funds.
+    </p>
+
+    <p>
+      Pro bono lawyer na nire-reimburse lamang ang documented actual necessary expenses<br>
+      → Maaari pa ring pro bono; ang reimbursement ng gastos ay hindi automatic na professional fee.
+    </p>
+  </blockquote>
+
+  <h2>AT DITO NAGIGING MAHALAGA ANG “HONORARIUM”</h2>
+
+  <p>
+    Kung sinabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Wala siyang professional fee, honorarium lang.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi sapat ang pagpapalit ng pangalan.
+  </p>
+
+  <p>
+    Ang dapat tingnan ay ang tunay na nature at legal basis ng payment.
+  </p>
+
+  <p>
+    Kung ang tinatawag na honorarium ay compensation kapalit ng mismong legal
+    representation, hindi nawawala ang usapin ng compensation dahil lamang iba
+    ang label na ginamit.
+  </p>
+
+  <p>
+    Kung reimbursement naman iyon ng documented transportation, printing o
+    ibang actual expenses, ibang bagay iyon.
+  </p>
+
+  <p>
+    Ang substance ng bayad ang mahalaga—hindi lamang ang nakasulat na pangalan
+    nito.
+  </p>
+
+  <h2>KAYA SA ISANG IMPEACHMENT, CONGRESSIONAL PROCEEDING, O ANUMANG PUBLIC CASE…</h2>
+
+  <p>
+    Kapag sinabing ang isang private lawyer ay “pro bono prosecution counsel,”
+    ang precise claim ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang pera ng bayan na ginagastos.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas limitado ang ibig sabihin nito:
+  </p>
+
+  <p>
+    Walang professional fee na sinisingil para sa particular na legal
+    service—kung iyon nga ang aktuwal at mapatutunayang arrangement.
+  </p>
+
+  <p>
+    Maaaring may staff.
+  </p>
+
+  <p>
+    May government employees na nagtatrabaho bilang bahagi ng kanilang
+    official duties.
+  </p>
+
+  <p>
+    May printing.
+  </p>
+
+  <p>
+    May research.
+  </p>
+
+  <p>
+    May communications.
+  </p>
+
+  <p>
+    May facilities.
+  </p>
+
+  <p>
+    May administrative at logistical expenses.
+  </p>
+
+  <p>
+    Kaya maaaring parehong totoo ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pro bono ang private counsel.”
+    </p>
+
+    <p>
+      “May public expenditure ang proceeding.”
+    </p>
+  </blockquote>
+
+  <p>
+    Walang contradiction.
+  </p>
+
+  <p>
+    Ang maling claim ay gawing magkasingkahulugan ang dalawa.
+  </p>
+
+  <p>
+    At kung government employee naman ang lawyer at ginagawa niya ang
+    representation bilang bahagi ng kanyang opisyal na trabaho, hindi sapat
+    sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Wala naman siyang separate attorney’s fee, kaya pro bono.”
+    </p>
+  </blockquote>
+
+  <p>
+    May regular government compensation siyang natatanggap upang gawin ang
+    kanyang official duties.
+  </p>
+
+  <p>
+    Hindi bawat government task na walang hiwalay na appearance fee ay pro bono.
+  </p>
+
+  <h2>ANG PINAKAMAHALAGANG CIVIC TEST</h2>
+
+  <p>
+    Kapag may nagsabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pro bono iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Huwag itanong lamang kung libre.
+  </p>
+
+  <p>
+    Itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Sino ang lawyer?<br>
+      Sino ang client o entity na kinakatawan?<br>
+      Private capacity ba o official government capacity?<br>
+      May professional fee, retainer, consultancy payment o honorarium ba para
+      sa particular na service?<br>
+      Kung walang binayaran ang client, may third party bang sumagot sa
+      professional fee?<br>
+      May reimbursement lamang ba ng actual expenses?<br>
+      Kung public money ang ginamit, professional compensation ba iyon o
+      operational expense?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil doon mo malalaman kung ano talaga ang pinag-uusapan.
+  </p>
+
+  <p>
+    Hindi sa label.
+  </p>
+
+  <p>
+    Ang abogado ay hindi nagiging public attorney dahil libre siyang tumulong.
+  </p>
+
+  <p>
+    Ang PAO lawyer ay hindi unpaid volunteer dahil libre sa qualified client
+    ang serbisyo niya.
+  </p>
+
+  <p>
+    Ang prosecutor ay hindi PAO lawyer dahil pareho silang empleyado ng
+    gobyerno.
+  </p>
+
+  <p>
+    Ang public prosecutor ay hindi personal attorney ng complainant dahil siya
+    ang nagpo-prosecute.
+  </p>
+
+  <p>
+    Ang government lawyer ay hindi awtomatikong pro bono dahil walang hiwalay
+    na professional fee sa bawat kasong hinahawakan.
+  </p>
+
+  <p>
+    Ang client na walang binayaran ay hindi awtomatikong may pro bono lawyer
+    kung ibang tao o organisasyon naman ang nagbayad ng professional fee.
+  </p>
+
+  <p>
+    At ang pro bono lawyer ay hindi nangangahulugang walang anumang gastusing
+    ginawa upang maisagawa ang trabaho.
+  </p>
+
+  <blockquote>
+    <p>
+      Pro bono ang legal service kapag walang professional fee na sinisingil
+      para sa covered engagement.
+    </p>
+
+    <p>
+      Public attorney ang isang partikular na institutional role sa ilalim ng
+      PAO.
+    </p>
+
+    <p>
+      Public prosecutor ang government function sa criminal prosecution.
+    </p>
+
+    <p>
+      Private attorney ang practice o capacity—na maaaring bayad o pro bono.
+    </p>
+  </blockquote>
+
+  <p>
+    At sa usapin ng pera ng bayan:
+  </p>
+
+  <p>
+    Huwag pagbintangan dahil lamang may abogado.
+  </p>
+
+  <p>
+    Pero huwag ding magpalinlang sa salitang “pro bono.”
+  </p>
+
+  <p>
+    Alamin kung anong serbisyo ang ibinigay, sa anong kapasidad, sino ang
+    kinakatawan, sino ang nagbayad—kung may nagbayad—at ano talaga ang
+    binayaran.
+  </p>
+
+  <blockquote>
+    <p>
+      Dahil sa pampublikong pananagutan, hindi sapat ang label—ang tunay na
+      arrangement ang dapat mapatunayan.
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Supreme Court of the Philippines — Rules on Unified Legal Aid Service
+      at <em>Manual on the Rules on ULAS</em>; kabilang ang 60-hour requirement,
+      qualified beneficiaries, covered services, exclusions, financial-contribution
+      mechanism at reimbursement ng eligible expenses.
+    </li>
+
+    <li>
+      Supreme Court of the Philippines — <em>A.M. No. 22-09-01-SC</em>,
+      <em>Code of Professional Responsibility and Accountability</em>;
+      Canon III, Section 41 tungkol sa fair and reasonable professional fees.
+    </li>
+
+    <li>
+      <em>Code of Professional Responsibility and Accountability</em> —
+      Canon III, Section 44; compensation ng lawyer mula sa taong hindi client,
+      subject sa written informed consent at safeguards para sa independence,
+      professional judgment, lawyer-client relationship at confidentiality.
+    </li>
+
+    <li>
+      <em>Code of Professional Responsibility and Accountability</em> —
+      Canon III, Section 48; compensation ng counsel de oficio subject sa
+      availability of funds at professional-fee standards sa Section 41.
+    </li>
+
+    <li>
+      Rule 116, Sections 6 at 7, <em>Revised Rules of Criminal Procedure</em> —
+      appointment at duties ng counsel de oficio para sa accused sa criminal
+      proceedings.
+    </li>
+
+    <li>
+      Republic Act No. 9406 — PAO Law; mandato ng Public Attorney’s Office
+      na magbigay ng libreng legal representation, assistance at counseling
+      sa indigent at iba pang qualified persons.
+    </li>
+
+    <li>
+      Republic Act No. 10071 — <em>Prosecution Service Act of 2010</em>;
+      mandato at structure ng National Prosecution Service.
+    </li>
+
+    <li>
+      Rule 110, Section 5, <em>Rules of Criminal Procedure</em> —
+      direction and control ng public prosecutor sa criminal actions at
+      rules kaugnay ng private prosecutors.
+    </li>
+
+    <li>
+      Executive Order No. 292,
+      <em>Administrative Code of 1987</em> —
+      mandate ng Office of the Solicitor General bilang law office ng
+      Government of the Philippines.
+    </li>
+
+    <li>
+      Supreme Court jurisprudence on attorney’s fees —
+      distinction ng attorney’s fees sa ordinary sense bilang compensation
+      ng lawyer at extraordinary sense bilang damages awarded to a litigant.
+    </li>
+
+    <li>
+      Public Attorney’s Office —
+      <em>2025 Clients Served/Cases Handled Report</em> at
+      <em>2025 Executive Summary of Accomplishments</em>.
+    </li>
+
+    <li>
+      World Justice Project —
+      <em>Global Insights on Access to Justice</em>, Philippines profile;
+      data sa legal problems, access to help, sources of assistance,
+      financial difficulty at hardship.
+    </li>
+
+    <li>
+      American Bar Association Rule of Law Initiative /
+      Integrated Bar of the Philippines —
+      <em>Access to Justice and Rule of Law in the Philippines</em>;
+      documented legal-aid caravans at pro bono participation.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
