@@ -1,1 +1,1983 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Hindi lahat ng maling gawain ay dahil hindi natin alam ang tama. Bakit mas madaling piliin ang personal convenience kahit may ibang taong sasalo ng perwisyo? Isang fact-based Civic Explainer tungkol sa disiplina, personal responsibility, social norms, RA 9003, at waste management."
+>
+
+<title>
+GINHAWA MO—PERWISYO NG IBA | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    GINHAWA MO—PERWISYO NG IBA
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-basura.png"
+      alt="Simbolikong paglalarawan ng personal convenience na nagiging perwisyo sa iba—kamay na naghuhulog ng basura, sirang hourglass na gawa sa basura, at maruming komunidad na sumasalo ng epekto."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+         <h2>
+  KAPAG PERSONAL CONVENIENCE ANG LAGING UNA
+</h2>
+
+<p>
+  May mga maling gawain na hindi naman ginagawa dahil hindi natin alam ang tama.
+</p>
+
+<p>
+  Alam nating bawal magtapon sa kanal.<br>
+  Alam nating dapat pumila.<br>
+  Alam nating hindi dapat humarang sa daan.<br>
+  Alam nating may ibang taong maaabala sa ginagawa natin.
+</p>
+
+<p>
+  Pero minsan, sapat na ang isang dahilan para isantabi ang alam nating tama:<br>
+  Mas convenient kasi.<br>
+  Mas madaling bitawan ang basura kaysa bitbitin muna.<br>
+  Mas madaling sumingit kaysa maghintay.<br>
+  Mas madaling humarang “sandali lang” kaysa humanap ng tamang paradahan.<br>
+  Mas madaling isipin na “wala namang mangyayari” kapag hindi naman tayo ang agad na maaapektuhan.
+</p>
+
+<p>
+  Sa mismong sandaling iyon, maliit lang ang kapalit sa atin.
+</p>
+
+<p>
+  Kaunting oras ang natipid.<br>
+  Kaunting lakad ang naiwasan.<br>
+  Kaunting abala ang nawala.
+</p>
+
+<p>
+  Pero may problema:<br>
+  Ang inconvenience na ayaw nating akuin ay hindi nawawala. Madalas, ipinapasa lang natin sa ibang tao.
+</p>
+
+<p>
+  May mamumulot ng basurang iniwan natin.<br>
+  May maghihintay dahil sumingit tayo.<br>
+  May iikot dahil hinarangan natin ang daan.<br>
+  May maglilinis ng kanal.<br>
+  May komunidad na sasalo sa maruming paligid.<br>
+  At may mga epekto na hindi natin agad makikita dahil malayo sa atin ang lugar, panahon, o taong tatamaan.
+</p>
+
+<p>
+  Dito nagiging mas malalim ang usapin kaysa simpleng “walang disiplina.”
+</p>
+
+<p>
+  Dahil ang tanong ay hindi lang kung alam ba natin ang tama.
+</p>
+
+<p>
+  Ang mas mahirap na tanong ay:<br>
+  Kapag ang tama ay may kaunting abala pero ang mali ay mas convenient—alin ang pinipili natin?
+</p>
+
+<p>
+  At kapag paulit-ulit nating pinipili ang sariling ginhawa kahit ibang tao ang sasalo ng perwisyo, hindi na lang ito tungkol sa basura, pila, trapiko o isang maliit na paglabag.
+</p>
+
+<p>
+  Usapin na ito ng personal responsibility, entitlement, social norms, at kung gaano kalaking epekto sa iba ang handa nating balewalain para lamang hindi tayo maabala.
+</p>
+
+<h2>
+  HINDI SAPAT ANG “WALANG DISIPLINA”
+</h2>
+
+<p>
+  Magandang linawin agad:<br>
+  Hindi makatwiran na sabihing “ganyan talaga ang Pilipino.”
+</p>
+
+<p>
+  Walang matibay na basehan para gawing permanenteng national character ang pagiging madumi, tamad, entitled o walang disiplina.
+</p>
+
+<p>
+  Ang kilos ng tao ay naaapektuhan ng maraming bagay—personal habits, social norms, convenience, availability ng facilities, enforcement, household conditions at kung ano ang nakikita nating normal na ginagawa ng ibang tao.
+</p>
+
+<p>
+  Ibig sabihin, may personal responsibility, pero mayroon ding environment at system na maaaring magpalakas o magpahina sa tamang behavior.
+</p>
+
+<p>
+  Hindi nito inaalis ang pananagutan.<br>
+  Ginagawa lamang nitong mas eksakto ang problema.
+</p>
+
+<p>
+  Dahil kung mali ang diagnosis, mali rin ang solusyon.
+</p>
+
+<h2>
+  KAPAG MAS MADALI ANG MALI
+</h2>
+
+<p>
+  May direktang research tungkol dito. Sa isang malaking observational study nina P. Wesley Schultz at mga kasama, 9,757 tao sa 130 outdoor public locations ang inobserbahan.
+</p>
+
+<p>
+  Sa mga disposal behavior na nakita, humigit-kumulang 17% ang nauwi sa littering.
+</p>
+
+<p>
+  Mahalaga ang nakita nilang environmental patterns: Mas mataas ang littering sa mga lugar na mayroon nang existing litter, samantalang mas mababa ito kapag may available na trash receptacles. Sa mga taong kailangang mag-dispose ng isang bagay, mas tumataas din ang posibilidad ng littering habang lumalayo ang receptacle.
+</p>
+
+<p>
+  Hindi Philippine study iyon, kaya hindi iyon patunay tungkol sa “ugali ng Pilipino.”
+</p>
+
+<p>
+  Pero mahalaga ang ipinapakita nitong human-behavior pattern: May malinaw na kaugnayan ang accessibility ng tamang disposal option at kondisyon ng kapaligiran sa posibilidad ng littering.
+</p>
+
+<p>
+  Simple lang.
+</p>
+
+<p>
+  Kung malapit at available ang basurahan, maliit ang effort na kailangan para mag-dispose nang tama. Kung kailangan mong maglakad nang mas malayo, magbitbit muna o maghintay hanggang makakita ng tamang tapunan, mas malaki ang personal inconvenience—kahit maliit lamang iyon.
+</p>
+
+<p>
+  At dito makikita kung ano talaga ang ibig sabihin ng disiplina.
+</p>
+
+<p>
+  Dahil madaling gawin ang tama kapag iyon din ang pinakamadaling gawin. Ang mas mahirap ay piliin ang tama kapag may kaunting inconvenience.
+</p>
+
+<h2>
+  ALAM ANG TAMA—PERO ANG ALAM AT GAWA AY HINDI DAPAT PAG-ISAHIN
+</h2>
+
+<p>
+  Dito kailangan ding maging maingat sa paggamit ng Philippine research.
+</p>
+
+<p>
+  Sa 2024 study sa 399 households sa dalawang coastal barangay sa Mati City, Davao Oriental, nakita ang moderate solid-waste-management awareness na may mean na 2.55 at moderate practices na 2.66.
+</p>
+
+<p>
+  Mababa rin ang familiarity sa legal at regulatory framework, kabilang ang RA 9003 at local ordinances, at nakita ang particular gaps sa segregation at pag-iwas sa waste burning.
+</p>
+
+<p>
+  Hindi tamang gamitin ang study na iyon para sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Alam naman ng lahat ang tama pero ayaw lang gawin.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon ang pinatunayan ng pag-aaral. Sa katunayan, ipinakita rin nitong may gaps mismo sa awareness.
+</p>
+
+<p>
+  Mas tamang takeaway: Magkaibang bagay ang kaalaman, attitude, available system at actual practice—at kailangang tingnan ang lahat.
+</p>
+
+<p>
+  May isa pang Philippine household study na mas direktang pumapasok sa behavioral side.
+</p>
+
+<p>
+  Sa isang pag-aaral nina Treyes at mga kasama na inilathala noong 2023, nagsagawa sila ng socio-behavioral assessment sa households sa Barangay Calicanto, Batangas City.
+</p>
+
+<p>
+  Ang data collection ay isinagawa mula Hulyo hanggang Agosto 2022.
+</p>
+
+<p>
+  Bahagi mismo ng research framework nila ang pagharap sa intention-action gap sa household solid-waste management.
+</p>
+
+<p>
+  Sa kanilang findings at recommendations, hindi lang education ang binigyang-diin kundi household dynamics, financial capacity, support, waste-management infrastructure at mga kondisyong nagpapadali sa behavioral change.
+</p>
+
+<p>
+  Iyan ang mahalagang distinction.
+</p>
+
+<p>
+  Hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>“Turuan lang natin sila.”</p>
+</blockquote>
+
+<p>
+  Hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>“Lagyan lang natin ng basurahan.”</p>
+</blockquote>
+
+<p>
+  At hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>“Multahan lang natin.”</p>
+</blockquote>
+
+<p>
+  Dahil ang behavior ay nabubuo sa pagsasalubong ng alam ng tao, nakasanayan niya, nakikita niyang ginagawa ng iba, convenience, facilities, enforcement at sariling pagpapasya.
+</p>
+
+<p>
+  Pero pagkatapos nating kilalanin ang lahat ng iyon, mayroon pa ring isang bagay na hindi maaaring alisin: May choice pa rin ang tao.
+</p>
+
+          <h2>
+  KAPAG HINDI IKAW ANG AGAD NA SASALO
+</h2>
+
+<p>
+  Ito ang isa sa pinakamalaking dahilan kung bakit madaling maliitin ang isang maliit na maling gawain.
+</p>
+
+<p>
+  Itinapon mo ang wrapper.
+</p>
+
+<p>
+  Ano agad ang nangyari sa iyo?
+</p>
+
+<p>
+  Wala.
+</p>
+
+<p>
+  Hindi ka binaha.<br>
+  Hindi ka nagkasakit.<br>
+  Hindi ka nagbayad para sa paglilinis.<br>
+  Hindi mo kailangang pulutin.
+</p>
+
+<p>
+  At maaaring hindi mo na makita kung saan iyon napunta.
+</p>
+
+<p>
+  Immediate ang convenience. Malayo o nakakalat ang consequence.
+</p>
+
+<p>
+  Ang basura ay wala na sa kamay mo—pero hindi ibig sabihin na nawala na ang problema.
+</p>
+
+<p>
+  Lumipat lang.
+</p>
+
+<p>
+  Maaaring mapunta sa gilid ng kalsada.<br>
+  Maaaring mapadpad sa kanal.<br>
+  Maaaring hakutin ng ibang tao.<br>
+  Maaaring mapasama sa basurang kailangan pang kolektahin at iproseso.
+</p>
+
+<p>
+  At kapag nakapasok sa drainage at waterways, maaari itong makadagdag sa obstruction ng daloy ng tubig.
+</p>
+
+<p>
+  Mahalaga ring huwag itong sobrahan:<br>
+  Hindi basura lamang ang dahilan ng pagbaha.
+</p>
+
+<p>
+  Flooding involves rainfall intensity, drainage capacity, waterways, land use, pumping systems at iba pang infrastructure at environmental factors.
+</p>
+
+<p>
+  Pero sa Metro Manila, mismong World Bank material tungkol sa flood management ang kumilala na ang solid waste na bumabara sa waterways at pumping-station entrances ay nakaaapekto sa maayos na pagdaloy ng tubig at operasyon at maintenance ng flood-control infrastructure.
+</p>
+
+<p>
+  Kaya parehong mali ang dalawang shortcut:
+</p>
+
+<blockquote>
+  <p>
+    “Basura lang kaya bumabaha.”
+  </p>
+</blockquote>
+
+<p>
+  at
+</p>
+
+<blockquote>
+  <p>
+    “Walang epekto ang basura dahil trabaho naman ng flood-control system iyan.”
+  </p>
+</blockquote>
+
+<p>
+  May structural problem.<br>
+  May behavioral contribution.
+</p>
+
+<p>
+  Hindi kailangang burahin ang isa para kilalanin ang isa.
+</p>
+
+<h2>
+  “ISA LANG NAMAN”—HANGGANG MAGING MILYON-MILYONG “ISA LANG”
+</h2>
+
+<p>
+  Dito nagiging civic issue ang isang personal na kilos.
+</p>
+
+<p>
+  Sa isang tao:<br>
+  isang wrapper lang.<br>
+  isang bote lang.<br>
+  isang plastic cup lang.<br>
+  isang beses lang.
+</p>
+
+<p>
+  Pero maraming public problems ang hindi nabubuo dahil may isang taong gumawa ng napakalaking mali. Nabubuo sila dahil napakaraming tao ang gumawa ng maliit na bagay na convenient para sa sarili pero may cost na ipinasa sa iba.
+</p>
+
+<p>
+  Iyan ang basic logic ng isang social dilemma.
+</p>
+
+<p>
+  Kung ako lang ang gagawa, parang maliit ang epekto. Pero kung marami ang gagawa dahil pare-parehong iniisip na maliit lang ang ambag nila, lumalaki ang collective damage.
+</p>
+
+<p>
+  At dito pumapasok ang mentality na:
+</p>
+
+<blockquote>
+  <p>
+    “Bakit ako mag-aabala kung ginagawa rin naman ng iba?”
+  </p>
+</blockquote>
+
+<p>
+  Pero may problema sa reasoning na iyon.
+</p>
+
+<p>
+  Kung ginagamit nating dahilan ang maling kilos ng marami para gawin din natin ang mali, ang pagiging common ng problema ang nagiging dahilan para lalo natin itong paramihin.
+</p>
+
+<h2>
+  KAPAG NAGIGING NORMAL ANG MALI
+</h2>
+
+<p>
+  Ito ang mas malalim na socio-cultural layer.
+</p>
+
+<p>
+  Kapag malinis ang isang lugar at may isang taong naghagis ng bote, halatang-halata ang ginawa niya.
+</p>
+
+<p>
+  Kapag tambak na ang basura?
+</p>
+
+<p>
+  Mas madaling maramdaman na:
+</p>
+
+<blockquote>
+  <p>
+    “Marumi naman na.”<br>
+    “May mga nagtapon na.”<br>
+    “Ano pa bang maidagdag nitong isa?”
+  </p>
+</blockquote>
+
+<p>
+  Hindi lang common-sense observation iyan.
+</p>
+
+<p>
+  Classic experiments nina Robert Cialdini, Raymond Reno at Carl Kallgren tungkol sa littering showed that people respond to descriptive norms—mga palatandaan tungkol sa kung ano ang aktwal na ginagawa ng ibang tao—at injunctive norms, o kung ano ang nakikitang socially approved o disapproved.
+</p>
+
+<p>
+  Ang physical condition ng lugar mismo ay maaaring maging social signal.
+</p>
+
+<p>
+  At makalipas ang mahigit dalawang dekada, sa malaking observational study nina Schultz at colleagues, nakita ring existing litter positively predicted further littering.
+</p>
+
+<p>
+  Dito mapanganib ang paulit-ulit na pagpapabaya.
+</p>
+
+<p>
+  Ang mali ay hindi lang nag-iiwan ng basura.<br>
+  Nag-iiwan din ito ng mensahe sa susunod na tao: “Normal dito iyan.”
+</p>
+
+<p>
+  At kapag matagal nang normal ang mali, minsan nababaligtad pa ang tingin natin.
+</p>
+
+<p>
+  Ang taong pumipila ang mukhang mabagal.<br>
+  Ang ayaw sumingit ang mukhang nagpapakabait.<br>
+  Ang nagbabalik ng sariling kalat ang mukhang maarte.<br>
+  Ang naninita ang mukhang pakialamero.
+</p>
+
+<p>
+  Kapag umabot sa ganoon, hindi na simpleng individual habit ang problema. Nagkakaroon na ng social permission ang maling behavior.
+</p>
+
+<p>
+  At iyon ang mas mahirap baguhin.
+</p>
+
+          <h2>
+  KAPAG NAHIHIWALAY ANG KILOS SA RESPONSIBILIDAD
+</h2>
+
+<p>
+  May isa pang mahalagang finding sa littering research.
+</p>
+
+<p>
+  Sina Chris Sibley at James Liu ay naghiwalay ng active littering at passive littering.
+</p>
+
+<p>
+  Active littering ang direktang pagtatapon at pag-alis.<br>
+  Passive littering naman ang halimbawa na inilapag muna ng isang tao ang isang bagay habang nasa isang lugar, pagkatapos ay iniwan na lamang iyon nang umalis siya.
+</p>
+
+<p>
+  Ang kanilang two-stage model ay tumingin sa prosesong nangyayari kapag may pagitan ang paglalagay ng isang bagay at ang sandaling umaalis ang tao sa lugar.
+</p>
+
+<p>
+  Isa sa mahalagang findings ng study: Tumataas ang posibilidad ng littering habang humahaba ang pagitan ng paglalagay ng isang bagay at ng pag-alis ng tao sa lugar.
+</p>
+
+<p>
+  Hindi direktang sinukat ng pag-aaral kung “lumuluwag ang pakiramdam ng responsibilidad” habang lumilipas ang oras.
+</p>
+
+<p>
+  Kaya hindi natin kailangang ipasa sa research ang paliwanag na iyon.
+</p>
+
+<p>
+  Pero bilang RealTalk application, may mahalagang bagay tayong makikita rito:
+</p>
+
+<p>
+  Kapag nahiwalay ang unang kilos sa sandaling kailangan na nating akuin ang resulta nito, mas madaling tratuhin ang naiwan bilang problemang wala na sa atin.
+</p>
+
+<p>
+  Kapag hawak ko pa, basura ko.<br>
+  Kapag binitawan ko na sa tabi ng kalsada, parang biglang problema na ng iba.
+</p>
+
+<p>
+  Pero hindi nagbabago ang pinagmulan ng responsibility dahil lamang nawala na sa kamay natin ang bagay.
+</p>
+
+<h2>
+  ENTITLEMENT: KAPAG ANG COMFORT KO ANG DAPAT PAG-ADJUSTAN NG IBA
+</h2>
+
+<p>
+  Dito pumapasok ang salitang entitlement—pero kailangang gamitin nang tama.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na bawat nagkakalat ay may psychological disorder.<br>
+  Hindi rin ito basehan para sabihing psychologically entitled ang mga Pilipino bilang isang lahi.
+</p>
+
+<p>
+  Ang entitlement ay mas kapaki-pakinabang dito bilang behavioral lens: Kapag paulit-ulit nating ipinapalagay na ang personal comfort natin ay sapat na dahilan para ipasa ang inconvenience, cost o consequence sa ibang tao.
+</p>
+
+<p>
+  Research nina W. Keith Campbell at colleagues on psychological entitlement involved nine studies.
+</p>
+
+<p>
+  Among the interpersonal consequences associated with higher entitlement were more competitive choices in a commons dilemma and other self-serving interpersonal behaviors.
+</p>
+
+<p>
+  Hindi littering study iyon.
+</p>
+
+<p>
+  Kaya hindi dapat sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Entitlement ang scientifically proven cause ng littering.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon ang evidence.
+</p>
+
+<p>
+  Pero relevant ang concept para makita ang isang broader attitude:
+</p>
+
+<blockquote>
+  <p>
+    “Mas mahalaga ang gusto ko ngayon kaysa sa epekto sa ibang tao.”
+  </p>
+</blockquote>
+
+<p>
+  Ayokong magbitbit ng basura.<br>
+  Kaya ibang tao ang mamumulot.
+</p>
+
+<p>
+  Ayokong maglakad papunta sa basurahan.<br>
+  Kaya public space ang sasalo.
+</p>
+
+<p>
+  Ayokong maabala.<br>
+  Kaya ang abala ay ipinapasa ko.
+</p>
+
+<p>
+  Napakaliit ng convenience.<br>
+  Pero may ibang nagbabayad ng presyo.
+</p>
+
+<p>
+  At kapag ganoon ang mentality, hindi na lang ito tungkol sa kalinisan. Usapin na ito ng kung gaano natin kinikilala na may karapatan din ang ibang tao sa isang lugar na hindi natin sinasadyang dinudumihan para lamang mapadali ang sarili nating buhay.
+</p>
+
+<h2>
+  PERO HINDI PUWEDENG UGALI LANG ANG SISIHIN
+</h2>
+
+<p>
+  Dito kailangang patas ang RealTalk.
+</p>
+
+<p>
+  Kung gusto nating magsalita tungkol sa personal responsibility, kailangan din nating tingnan kung may maayos bang system kung saan inaasahang susunod ang tao.
+</p>
+
+<p>
+  Ayon sa Philippine Statistics Authority, sa 2020 Census of Population and Housing, 50.7% ng 26.4 million households ang nagsabing garbage-truck collection o pick-up ang usual nilang paraan ng pagtatapon ng kitchen garbage.
+</p>
+
+<p>
+  Samantala:<br>
+  16.3% ang burning,<br>
+  10.3% ang individual pit,<br>
+  8.8% ang feeding to animals,<br>
+  8.6% ang composting,<br>
+  4.3% ang burying,<br>
+  at 1.0% ang ibang pamamaraan, kabilang ang pagtatapon sa estero, vacant lot at ilog.
+</p>
+
+<p>
+  Malalaki rin ang regional differences.
+</p>
+
+<p>
+  Halimbawa, garbage-truck collection was reported by 87.6% of NCR households kumpara sa 65.8% sa Central Luzon.
+</p>
+
+<p>
+  Mahalaga ring huwag maling basahin ang numerong iyon.
+</p>
+
+<p>
+  Hindi ibig sabihin na ang natitirang 49.3% ay basta “walang garbage service.”
+</p>
+
+<p>
+  Iba't ibang usual disposal methods ang sinusukat ng PSA. Pero malinaw na hindi pare-pareho ang waste-management environment ng bawat household sa Pilipinas.
+</p>
+
+<p>
+  Kaya kung walang regular na collection, walang accessible disposal point, walang maayos na segregation system, o palpak mismo ang pagpapatupad, totoong governance problem iyon.
+</p>
+
+<p>
+  Hindi puwedeng sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Disiplina lang ang kailangan.”
+  </p>
+</blockquote>
+
+<p>
+  Pero baligtarin natin:
+</p>
+
+<p>
+  Kung may paraan naman para itapon nang tama, at ang dahilan lamang ay ayaw mong magbitbit, maghintay o maabala—hindi na rin sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Kasalanan ng sistema.”
+  </p>
+</blockquote>
+
+<p>
+  Magkaibang problema iyon.
+</p>
+
+<p>
+  At sa totoong buhay, puwedeng sabay na umiiral ang dalawa.
+</p>
+
+<h2>
+  MAY BATAS—AT HINDI ISANG PANIG LANG ANG MAY RESPONSIBILIDAD
+</h2>
+
+<p>
+  Mahigit dalawang dekada nang malinaw ang basic framework sa Republic Act No. 9003 o Ecological Solid Waste Management Act of 2000.
+</p>
+
+<p>
+  Sa Section 10, LGUs ang primarily responsible sa implementation at enforcement ng batas sa kani-kanilang jurisdiction.
+</p>
+
+<p>
+  Ang segregation at collection ng biodegradable, compostable at reusable waste ay inilalagay sa barangay level, habang city o municipality ang responsable sa collection ng non-recyclable at special wastes.
+</p>
+
+<p>
+  Pero hindi doon nagtatapos ang responsibilidad.
+</p>
+
+<p>
+  Sa Section 21, malinaw na segregation shall primarily be conducted at source, kabilang ang household, institutional, industrial, commercial at agricultural sources.
+</p>
+
+<p>
+  Ibig sabihin, hindi disenyo ng batas ang:
+</p>
+
+<blockquote>
+  <p>
+    “Bahala na ang garbage collector sa lahat.”
+  </p>
+</blockquote>
+
+<p>
+  May obligasyon bago pa dumating ang collection truck.
+</p>
+
+<p>
+  Sa Section 48, tahasang ipinagbabawal ang littering, throwing at dumping ng waste sa public places gaya ng roads, sidewalks, canals, esteros at parks. Kasama rin sa prohibited acts ang open burning at iba pang improper waste practices.
+</p>
+
+<p>
+  Sa Section 49 ng RA 9003, as amended by RA 11898, ang statutory base penalty para sa littering under Section 48(1) ay ₱300 hanggang ₱1,000 o community service na isa hanggang labinlimang araw, o pareho.
+</p>
+
+<p>
+  Mahalaga ring linawin: Inamyendahan ng RA 11898 noong 2022 ang Section 49 upang magdagdag ng hiwalay na penalties kaugnay ng Extended Producer Responsibility o EPR; hindi nito binago ang existing penalty sa paragraph (a) para sa littering under Section 48(1).
+</p>
+
+<p>
+  May provision din ang RA 9003 na ang prescribed fines ay tataas nang hindi bababa sa 10% kada tatlong taon upang tugunan ang inflation at mapanatili ang deterrent function.
+</p>
+
+<p>
+  At narito ang bahagi na madalas nawawala kapag puro mamamayan ang sinisisi:
+</p>
+
+<p>
+  Sa Section 50, government officials na hindi tumutupad o nagpapatupad ng mga rules at regulations kaugnay ng RA 9003 ay maaaring maharap sa administrative sanctions.
+</p>
+
+<p>
+  Napakahalaga niyan.
+</p>
+
+<p>
+  Dahil mismong batas ang nagsasabing hindi ito mamamayan lang ang may obligasyon o gobyerno lang ang may obligasyon.
+</p>
+
+<p>
+  May responsibility sa source.<br>
+  May responsibility sa collection.<br>
+  May responsibility sa infrastructure.<br>
+  May responsibility sa enforcement.<br>
+  At may responsibility sa sariling kilos.
+</p>
+
+          <h2>
+  HINDI PALUSOT ANG KAPALPAKAN NG ISA PARA SA KAPALPAKAN NG ISA
+</h2>
+
+<p>
+  Ito ang punto kung saan madalas nasisira ang usapan.
+</p>
+
+<p>
+  Kapag pinuna ang mamamayan:
+</p>
+
+<blockquote>
+  <p>
+    “Eh gobyerno nga hindi ginagawa ang trabaho.”
+  </p>
+</blockquote>
+
+<p>
+  Kapag pinuna ang gobyerno:
+</p>
+
+<blockquote>
+  <p>
+    “Eh mga tao kasi walang disiplina.”
+  </p>
+</blockquote>
+
+<p>
+  Parehong madaling sagot.<br>
+  Parehong maaaring gamitin para takasan ang sariling bahagi.
+</p>
+
+<p>
+  Kung palpak ang waste collection, singilin ang LGU.<br>
+  Kung kulang ang facilities, hingan ng solusyon.<br>
+  Kung mahina ang enforcement, tanungin kung bakit.<br>
+  Kung hindi nasusunod ang RA 9003, may karapatan ang mamamayan na maningil.
+</p>
+
+<p>
+  Pero walang failure ng gobyerno na magically nagpapalit sa maling pagtatapon para maging tama.
+</p>
+
+<p>
+  At walang personal discipline ng mamamayan na nagpapalaya sa gobyerno sa legal obligation nitong magkaroon ng maayos na sistema.
+</p>
+
+<p>
+  Dalawang pananagutan iyon.<br>
+  Hindi magkalaban.
+</p>
+
+<h2>
+  ANG DISIPLINA AY HINDI LANG PAGSUNOD KAPAG MAY NAKATINGIN
+</h2>
+
+<p>
+  Madaling sumunod kapag may guard.<br>
+  Madaling huwag magtapon kapag may CCTV.<br>
+  Madaling pumila kapag may bantay.<br>
+  Madaling sumunod kapag siguradong mahuhuli.
+</p>
+
+<p>
+  Pero kung ang tanging dahilan natin para gawin ang tama ay takot sa parusa, enforcement pa ang pumipigil sa atin—hindi pa sariling disiplina.
+</p>
+
+<p>
+  Mas makabuluhan ang disiplina sa ordinaryong sandali:
+</p>
+
+<p>
+  Walang nakatingin.<br>
+  Walang nakakakilala sa iyo.<br>
+  Walang makakapuri.
+</p>
+
+<p>
+  Maliit lang ang consequence na makikita mo.<br>
+  At mas convenient sana ang mali.<br>
+  Pero hindi mo ginawa.
+</p>
+
+<p>
+  Hindi dahil heroic ka.<br>
+  Hindi dahil espesyal kang tao.
+</p>
+
+<p>
+  Kundi dahil naiintindihan mong hindi lahat ng personal inconvenience ay dapat ipasa sa ibang tao.
+</p>
+
+<h2>
+  ANG PINAKAMALIIT NA DESISYON ANG MADALAS HINDI NATIN SINESERYOSO
+</h2>
+
+<p>
+  Kapag pinag-uusapan ang pagbabago ng bansa, gusto natin agad ng malalaking salita.
+</p>
+
+<p>
+  Reporma.<br>
+  Sistema.<br>
+  Pamumuno.<br>
+  Batas.<br>
+  Budget.
+</p>
+
+<p>
+  Lahat mahalaga.
+</p>
+
+<p>
+  Pero may bahagi ng civic life na walang kailangang press conference.<br>
+  Walang kailangang bagong programa.<br>
+  Walang kailangang viral campaign bago natin magawa.
+</p>
+
+<p>
+  Minsan hawak mo lang ang wrapper at walang basurahan sa tabi.
+</p>
+
+<p>
+  Iyon na ang test.
+</p>
+
+<p>
+  Hindi mo kontrolado ang ginagawa ng buong bansa.<br>
+  Hindi mo kontrolado kung disiplinado ang lahat.<br>
+  Hindi mo kontrolado kung may susunod sa iyo.<br>
+  Pero kontrolado mo kung ikaw ang susunod na magdadagdag.
+</p>
+
+<p>
+  At maliit man iyon sa isang pagkakataon, ganoon din naman nagsisimula ang kabaligtaran.
+</p>
+
+<p>
+  Kung ang libu-libong “isa lang naman” ay nakabubuo ng malaking problema, libu-libong “hindi ko itatapon dito” din ang kailangan para hindi iyon madagdagan.
+</p>
+
+<p>
+  Hindi sapat ang personal discipline para ayusin ang buong waste-management problem ng Pilipinas.
+</p>
+
+<p>
+  Kailangan pa rin ng maayos na collection, infrastructure, enforcement, education, accountability at governance.
+</p>
+
+<p>
+  Iyan mismo ang ipinapakita ng batas, national household data at Philippine household research.
+</p>
+
+<p>
+  Pero hindi rin totoo na wala nang saysay ang personal responsibility dahil may problema ang sistema.
+</p>
+
+<p>
+  Dahil bago naging baradong kanal ang maraming basura, may mga pirasong unang itinapon.<br>
+  Bago naging normal ang maling gawain, may mga pagkakataong hinayaan itong maging normal.
+</p>
+
+<p>
+  At bago natin maituro ang daliri sa lahat ng nasa paligid natin, may isang tanong na tayo lang ang makasasagot:
+</p>
+
+<blockquote>
+  <p>
+    Kapag ang tama ay may kaunting abala, pero ang mali ay mas convenient—ano ang pinipili ko?
+  </p>
+</blockquote>
+
+<p>
+  Dahil hindi lahat ng bagay na convenient para sa atin ay karapatan nating gawin.
+</p>
+
+<p>
+  At hindi lahat ng consequence na hindi natin personal na nararamdaman ay ibig sabihin wala tayong pananagutan.
+</p>
+
+<p>
+  Kung ang ginhawa natin ay laging inuuna kahit ibang tao ang sasalo ng epekto, hindi na lang basura ang problema.
+</p>
+
+<p>
+  Problema na kung paano natin tinitingnan ang responsibilidad natin sa isa't isa.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Republic Act No. 9003 — <em>Ecological Solid Waste Management Act of 2000.</em> Sections 10, 21, 48, 49 at 50: LGU responsibilities, segregation at source, prohibited acts, penalties at administrative accountability. LawPhil.
+    </li>
+
+    <li>
+      Republic Act No. 11898 — <em>Extended Producer Responsibility Act of 2022.</em> Section 8 amending Section 49 of RA 9003 to include penalties related to EPR compliance. LawPhil.
+    </li>
+
+    <li>
+      Philippine Statistics Authority. <em>Household Characteristics, 2020 Census of Population and Housing.</em> National household data on usual manner of kitchen-garbage disposal.
+    </li>
+
+    <li>
+      Verzosa, R. C., Katipunan, F. J. M., Lumangyao, J. G. B., &amp; Antonio, E. S. (2024). <em>Solid Waste Management Awareness and Practices in Coastal Communities.</em> Davao Research Journal, 15(3), 60–77. DOI: 10.59120/drj.v15i3.247
+    </li>
+
+    <li>
+      Treyes, A. C., Osorio, E., Tanchuling, M. A., Andal, M. D., Requejo, B., Inocencio, B., &amp; Panopio, C. (2023). <em>Socio-behavioral Assessment of Household Solid Waste Management: The Case of Barangay Calicanto, Philippines.</em> IOP Conference Series: Earth and Environmental Science, 1257, 012008. DOI: 10.1088/1755-1315/1257/1/012008
+    </li>
+
+    <li>
+      Schultz, P. W., Bator, R. J., Large, L. B., Bruni, C. M., &amp; Tabanico, J. J. (2013). <em>Littering in Context: Personal and Environmental Predictors of Littering Behavior.</em> Environment and Behavior, 45(1), 35–59. DOI: 10.1177/0013916511412179
+    </li>
+
+    <li>
+      Cialdini, R. B., Reno, R. R., &amp; Kallgren, C. A. (1990). <em>A Focus Theory of Normative Conduct: Recycling the Concept of Norms to Reduce Littering in Public Places.</em> Journal of Personality and Social Psychology, 58(6), 1015–1026. DOI: 10.1037/0022-3514.58.6.1015
+    </li>
+
+    <li>
+      Sibley, C. G., &amp; Liu, J. H. (2003). <em>Differentiating Active and Passive Littering: A Two-Stage Process Model of Littering Behavior in Public Spaces.</em> Environment and Behavior, 35(3), 415–433. DOI: 10.1177/0013916503035003006
+    </li>
+
+    <li>
+      Campbell, W. K., Bonacci, A. M., Shelton, J., Exline, J. J., &amp; Bushman, B. J. (2004). <em>Psychological Entitlement: Interpersonal Consequences and Validation of a Self-Report Measure.</em> Journal of Personality Assessment, 83(1), 29–45. DOI: 10.1207/S15327752JPA8301_04
+    </li>
+
+    <li>
+      World Bank. <em>Project Highlights: Metro Manila Flood Management.</em> Official project material on flood-management challenges, including solid waste obstructing waterways and pumping-station entrances and affecting pump operation and maintenance.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+        </html>
