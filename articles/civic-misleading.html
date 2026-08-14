@@ -1,1 +1,2322 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Puwede bang leading question sa cross-examination? Oo. Pero puwede rin bang misleading question? Alamin ang mahalagang legal na pagkakaiba ng leading at misleading questions sa ilalim ng Rule 132, jurisprudence, at Rules on Evidence."
+>
+
+<title>PUWEDENG LEADING—PERO HINDI MISLEADING | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+     <header class="article-header">
+
+  <h1 class="article-title">
+    PUWEDENG LEADING—PERO HINDI MISLEADING
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-misleading.png"
+      alt="Simbolikong paglalarawan ng pagkakaiba ng leading at misleading questions sa cross-examination, na nagpapakita ng hangganan ng wastong pagtatanong sa ilalim ng Rules of Evidence."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+<div class="article-body">
+
+  <h2>
+    Bakit May Hangganan Kahit Cross-Examination
+  </h2>
+
+  <p>
+    Sa cross-examination, puwedeng madiin ang tanong.
+  </p>
+
+  <p>
+    Puwedeng kontrolado.<br>
+    Puwedeng yes-or-no.<br>
+    Puwedeng balikan at idiin ang isang relevanteng detalye para masubok kung tugma ba talaga ang sinasabi ng witness—hangga’t nananatili ang pagtatanong sa pinapayagang saklaw at kontrol ng proceeding.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na dahil cross-examination, puwede na ang lahat ng paraan ng pagtatanong.
+  </p>
+
+  <p>
+    Diyan nagiging mahalaga ang dalawang salitang madalas mapagpalit:
+    <strong>LEADING</strong> at <strong>MISLEADING</strong>.
+  </p>
+
+  <p>
+    Magkalapit pakinggan.<br>
+    Parehong maaaring gamitin habang mahigpit na sinusubok ang testimony.
+  </p>
+
+  <p>
+    Pero sa Rules of Evidence, hindi sila magkapareho—at magkaiba rin ang legal treatment sa kanila.
+  </p>
+
+  <p>
+    Kaya kapag may nagsabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Allowed ang leading questions sa cross-examination.”
+    </p>
+  </blockquote>
+
+  <p>
+    Tama iyon.
+  </p>
+
+  <p>
+    Pero kapag naging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Allowed ang misleading questions sa cross-examination.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi na iyon simpleng ibang paraan lamang ng pagsabi sa parehong rule. Ibang legal proposition na iyon.
+  </p>
+
+  <p>
+    At hindi ito usapin ng kung sino ang mas magaling makipagtalo, kung sino ang mas malakas ang boses, o kung aling panig ang gusto nating manalo.
+  </p>
+
+  <p>
+    May nakasulat na rule.<br>
+    May Supreme Court jurisprudence.<br>
+    May dahilan kung bakit binibigyan ng malawak na freedom ang cross-examination—pero may hangganan pa rin kung paano maaaring buuin ang tanong.
+  </p>
+
+  <p>
+    At para maintindihan kung nasaan ang hangganang iyon, kailangang malinaw muna ang isang bagay:
+    Ano ba talaga ang pinagkaiba ng leading question at misleading question?
+  </p>
+
+  <h2>
+    HINDI MISMO ANG KONSTITUSYON ANG NAGSABING “BAWAL ANG MISLEADING QUESTION”
+  </h2>
+
+  <p>
+    Unahin natin ang isang mahalagang paglilinaw.
+  </p>
+
+  <p>
+    Walang provision sa 1987 Constitution na literal na nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Misleading questions are prohibited.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang Constitution ang nagbibigay sa Supreme Court ng kapangyarihang magpromulgate ng rules tungkol sa pleading, practice, at procedure sa mga korte, kabilang ang rules na ginagamit sa presentation at examination of evidence.
+  </p>
+
+  <p>
+    Ang specific rule tungkol sa leading at misleading questions ay nasa <strong>Rule 132, Section 10</strong> ng Revised Rules on Evidence.
+  </p>
+
+  <p>
+    At doon malinaw ang dalawang konsepto.
+  </p>
+
+  <h2>
+    ANO ANG LEADING QUESTION?
+  </h2>
+
+  <p>
+    Ayon sa Rule 132, Section 10, ang leading question ay tanong na nagsa-suggest sa witness ng sagot na gustong makuha ng nagtatanong.
+  </p>
+
+  <p>
+    General rule:
+    Hindi basta pinapayagan ang leading question.
+  </p>
+
+  <p>
+    Pero may mga expressly recognized exceptions.
+  </p>
+
+  <p>
+    Isa sa pinakamahalaga:
+    Sa cross-examination, allowed ito.
+  </p>
+
+  <p>
+    Halimbawa, sinabi na ng witness sa kanyang testimony na siya ang lumagda sa isang dokumento.
+  </p>
+
+  <p>
+    Sa cross-examination, maaaring itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ikaw ang pumirma sa dokumentong ito, tama?”
+    </p>
+  </blockquote>
+
+  <p>
+    Malinaw na may direksiyong gustong puntahan ang tanong.
+    Hindi nito hinihintay na kusang ikuwento ng witness ang lahat.
+    Kinokontrol ng examiner ang punto.
+  </p>
+
+  <p>
+    Iyan ang isa sa normal na gamit ng leading question sa cross-examination.
+  </p>
+
+  <h2>
+    BAKIT PINAPAYAGAN ANG LEADING SA CROSS?
+  </h2>
+
+  <p>
+    Dahil iba ang trabaho ng cross-examination sa direct examination.
+  </p>
+
+  <p>
+    Sa direct examination, karaniwang ang witness ng sarili mong panig ang nagsasalaysay.
+    Sa cross-examination, kabilang panig na ang nagtatanong.
+  </p>
+
+  <p>
+    At ayon mismo sa Rule 132, Section 6, binibigyan ang cross-examination ng sapat na fullness and freedom upang masubukan ang accuracy, truthfulness, interest, at bias ng witness at mailabas ang mahahalagang facts tungkol sa issue.
+  </p>
+
+  <p>
+    Kaya hindi aksidente na pinapayagan ang leading questions dito.
+  </p>
+
+  <p>
+    Kung ang factual premise ng tanong ay mayroon nang sapat na foundation sa naunang testimony o sa facts na maayos nang naiharap sa proceeding, maaaring kailangan ng examiner na i-isolate ang isang specific point:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nandoon ka noong meeting, tama?”<br>
+      “Hindi mo personal na nakita ang pag-abot ng pera, tama?”<br>
+      “Ang sinabi mo kanina ay alas-dos, hindi alas-tres, tama?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang technique ay maaaring matalim.
+    Maaaring uncomfortable sa witness.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na improper na agad.
+  </p>
+
+  <p>
+    Ang mahalagang qualification:
+    Hindi sapat na leading lamang ang form. Kailangang hindi nito ipasok bilang established ang isang factual premise na wala pang foundation o salungat sa naunang testimony ng witness.
+  </p>
+
+  <p>
+    <strong>Leading does not automatically mean misleading.</strong>
+  </p>
+
+  <h2>
+  ANO NAMAN ANG MISLEADING QUESTION?
+</h2>
+
+<p>
+  Dito nagbabago ang rule.
+</p>
+
+<p>
+  Ayon din sa Rule 132, Section 10, misleading ang tanong kapag ina-assume nitong totoo ang isang fact na hindi pa na-testify ng witness, o isang fact na salungat sa dati nang sinabi ng witness.
+</p>
+
+<p>
+  At pagkatapos ng definition, direkta ang rule:
+</p>
+
+<blockquote>
+  <p>
+    “It is not allowed.”
+  </p>
+</blockquote>
+
+<p>
+  Walang kasunod na exception na:
+</p>
+
+<blockquote>
+  <p>
+    “except on cross-examination.”
+  </p>
+</blockquote>
+
+<p>
+  Iyan ang malaking pagkakaiba.
+</p>
+
+<h2>
+  ISANG HALIMBAWA PARA MAS MADALING MAKITA
+</h2>
+
+<p>
+  Sabihin nating ang testimony ng witness ay:
+</p>
+
+<blockquote>
+  <p>
+    “Hindi ako tumanggap ng pera.”
+  </p>
+</blockquote>
+
+<p>
+  Pagkatapos itanong sa kanya:
+</p>
+
+<blockquote>
+  <p>
+    “Noong matanggap mo ang ₱100,000, kanino mo ito ibinigay?”
+  </p>
+</blockquote>
+
+<p>
+  Hindi lang nito ginagabayan ang witness patungo sa isang sagot.
+</p>
+
+<p>
+  May inilagay na agad itong factual premise:
+  Tumanggap ka ng ₱100,000.
+</p>
+
+<p>
+  Samantalang iyon mismo ang hindi pa established—o maaari pang direktang salungat sa sinabi ng witness.
+</p>
+
+<p>
+  Isa pang halimbawa.
+  Wala pang testimony na dumalo ang witness sa isang meeting.
+</p>
+
+<p>
+  Pero tinanong siya:
+</p>
+
+<blockquote>
+  <p>
+    “Anong oras ka umalis sa meeting?”
+  </p>
+</blockquote>
+
+<p>
+  Bago pa siya makasagot, nakapasok na sa tanong ang premise:
+  Nandoon ka sa meeting.
+</p>
+
+<p>
+  Iyan ang dahilan kung bakit iba ang leading sa misleading.
+</p>
+
+<p>
+  Sa leading question, maaaring kontrolado ang direksiyon ng sagot.
+  Sa misleading question, may fact nang ipinapasok sa tanong na para bang established na kahit hindi pa.
+</p>
+
+<h2>
+  HINDI LANG RULEBOOK INTERPRETATION ITO—MISMONG SUPREME COURT NA ANG NAGSABI
+</h2>
+
+<p>
+  Hindi natin kailangang hulaan kung ang exception para sa cross-examination ay umaabot din sa misleading questions.
+</p>
+
+<p>
+  Matagal nang nilinaw ng Supreme Court ang distinction.
+</p>
+
+<p>
+  Sa <strong>Savory Luncheonette v. Lakas ng Manggagawang Pilipino</strong> noong 1975, tinalakay ng Court ang halaga ng cross-examination bilang bahagi ng due process at binanggit mismo ang governing principle:
+  Sa cross-examination, leading—but not misleading—questions are allowed.
+</p>
+
+<p>
+  Mahalaga ang kaso dahil hindi lamang nito tinitingnan ang cross-examination bilang courtroom technique.
+</p>
+
+<p>
+  Ang pagkakataong ma-cross-examine ang adverse witness ay konektado sa fairness at due process: pagkakataon itong subukan ang testimony bago ito gamiting batayan laban sa isang party.
+</p>
+
+<p>
+  Pagdating naman sa <strong>People v. Landicho</strong> noong 1996, mas direkta pa ang Supreme Court.
+</p>
+
+<p>
+  Sinabi ng Court na misleading questions are not allowed even on cross-examination.
+</p>
+
+<p>
+  Kaya hindi ito simpleng debate na:
+</p>
+
+<blockquote>
+  <p>
+    “Ganito ang interpretation ko.”
+    <br><br>
+    versus
+    <br><br>
+    “Ganito naman ang interpretation mo.”
+  </p>
+</blockquote>
+
+<p>
+  May textual rule.
+  <br>
+  May jurisprudence.
+</p>
+
+<p>
+  At parehong iisa ang direksiyon:
+</p>
+
+<blockquote>
+  <p>
+    LEADING — maaaring allowed sa cross.<br>
+    MISLEADING — hindi.
+  </p>
+</blockquote>
+
+<h2>
+  BAKIT HINDI PUWEDENG “KAHIT ANO” DAHIL CROSS-EXAMINATION?
+</h2>
+
+<p>
+  Dahil ang pagiging malawak ng cross-examination ay hindi nangangahulugang wala na itong hangganan.
+</p>
+
+<p>
+  Oo, puwedeng subukan ang credibility.
+</p>
+
+<p>
+  Puwedeng idiin ang inconsistency.<br>
+  Puwedeng ilantad ang bias.<br>
+  Puwedeng ipakita na kulang ang personal knowledge.<br>
+  Puwedeng gumamit ng leading questions.
+</p>
+
+<p>
+  Pero ang layunin ng cross-examination ay subukan ang testimony at evidence—hindi ipalit ang version ng abogado sa testimony ng witness.
+</p>
+
+<p>
+  Kapag ang tanong mismo ang nagdadala ng isang unproven factual premise, may panganib na hindi na lamang witness ang naririnig natin.
+</p>
+
+<p>
+  Unti-unting nagiging bahagi ng narrative ang sariling assertions ng nagtatanong.
+</p>
+
+<p>
+  At dito pumapasok ang isang simpleng prinsipyo:
+</p>
+
+<blockquote>
+  <p>
+    Ang abogado ang nagtatanong.<br>
+    Ang witness ang tumetestigo.<br>
+    Hindi dapat mapalitan ang testimony ng fact na nakatago lamang sa wording ng tanong.
+  </p>
+</blockquote>
+
+<h2>
+  HINDI RIN NEUTRAL ANG PARAAN NG PAGTATANONG
+</h2>
+
+<p>
+  Dito nagiging mahalaga ang psychology of testimony.
+</p>
+
+<p>
+  Hindi dahil may psychological study ay iyon na ang source ng legal prohibition.
+  Magkaiba iyon.
+</p>
+
+<p>
+  Ang legal definition ng misleading question ay galing sa Rules of Evidence.
+</p>
+
+<p>
+  Pero makatutulong ang research para maunawaan kung bakit hindi maliit na bagay ang wording ng tanong.
+</p>
+
+<p>
+  Isa sa pinakakilalang experiments tungkol dito ay ang Loftus and Palmer study noong 1974 tungkol sa interaction ng language at memory.
+</p>
+
+<p>
+  Sa unang experiment, 45 students ang nanood ng films ng traffic accidents. Pagkatapos, tinanong sila kung gaano kabilis ang mga sasakyan nang magbanggaan—pero iba-ibang verb ang ginamit sa tanong.
+</p>
+
+<p>
+  Ang average estimates ay:
+</p>
+
+<blockquote>
+  <p>
+    “smashed” — 40.8 mph<br>
+    “collided” — 39.3 mph<br>
+    “bumped” — 38.1 mph<br>
+    “hit” — 34.0 mph<br>
+    “contacted” — 31.8 mph
+  </p>
+</blockquote>
+
+<p>
+  Iisang uri ng event ang tinatanong, pero nagbago ang estimates kasabay ng pagbabago ng salitang ginamit sa tanong.
+</p>
+
+<p>
+  Sa ikalawang experiment, 150 participants ang hinati sa tatlong grupo.
+</p>
+
+<p>
+  Limampu ang nakatanggap ng tanong gamit ang “smashed,” limampu gamit ang “hit,” at limampu ang walang speed question.
+</p>
+
+<p>
+  Isang linggo pagkatapos mapanood ang accident film, tinanong sila kung nakakita sila ng broken glass.
+</p>
+
+<p>
+  Ang mahalagang detalye:
+  Walang broken glass sa film.
+</p>
+
+<p>
+  Gayunman, 16 sa 50 sa “smashed” group ang nagsabing oo.
+  Sa “hit” group, 7 sa 50.
+  Sa control group, 6 sa 50.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na lahat ng leading question sa courtroom ay sisira sa memory.
+</p>
+
+<p>
+  At lalong hindi ibig sabihin na ang “smashed” question sa experiment ay automatically isang misleading question sa technical definition ng Philippine Rule 132.
+</p>
+
+<p>
+  Hindi iyon ang tamang paggamit ng study.
+</p>
+
+<p>
+  Ang ipinapakita nito ay mas basic:
+  Ang wording ng tanong ay maaaring makaapekto sa report, estimate, at maging sa subsequent recollection ng isang tao.
+</p>
+
+<p>
+  Kaya hindi walang saysay na pinag-iingatan ng legal system kung paano inilalagay ang factual premises sa tanong.
+</p>
+
+  <h2>
+  PERO HUWAG DIN NATING SOBRANG PASIMPLEHIN ANG SCIENCE
+</h2>
+
+<p>
+  Madaling mahulog sa kabilang extreme:
+</p>
+
+<blockquote>
+  <p>
+    “Leading questions are psychologically bad, kaya dapat bawal.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi rin ganoon kasimple.
+</p>
+
+<p>
+  At dito mahalaga ang mas bagong psycholegal research.
+</p>
+
+<p>
+  Sa Wade and Spearing study na inilathala noong 2023 sa journal na <em>Memory</em>, dalawang experiments ang gumamit ng mock-crime material at limang uri ng cross-examination-style questions upang tingnan kung paano naaapektuhan ang accuracy at confidence ng adult eyewitnesses.
+</p>
+
+<p>
+  Ang findings ay hindi simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “Leading = inaccurate.”
+  </p>
+</blockquote>
+
+<p>
+  Sa kanilang experiments, negative at double-negative questions sometimes impaired witness accuracy, samantalang ang leading at leading-with-feedback questions ay hindi necessarily nakabawas sa accuracy at sa ilang circumstances ay nakapag-improve pa nito.
+</p>
+
+<p>
+  Mahalagang safeguard ito laban sa maling paggamit ng psychology.
+</p>
+
+<p>
+  Ang science ay hindi nagbibigay sa atin ng simpleng formula na:
+</p>
+
+<blockquote>
+  <p>
+    Lahat ng controlled questions = masama.
+  </p>
+</blockquote>
+
+<p>
+  Ang ipinapakita nito ay mas nuanced:
+</p>
+
+<blockquote>
+  <p>
+    Iba-ibang questioning form, iba-ibang cognitive effect.
+  </p>
+</blockquote>
+
+<p>
+  At iyon mismo ang isa sa mga dahilan kung bakit hindi dapat pag-isahin ang leading at misleading na para bang iisang klase lamang sila.
+</p>
+
+<h2>
+  MAY TUNAY NA TAO SA WITNESS STAND
+</h2>
+
+<p>
+  Madaling tingnan ang cross-examination bilang chess match ng dalawang abogado.
+</p>
+
+<p>
+  Objection.<br>
+  Sustain.<br>
+  Overrule.<br>
+  Next question.
+</p>
+
+<p>
+  Pero may isa pang participant na madaling mawala sa eksena:
+  Ang witness.
+</p>
+
+<p>
+  At hindi robot ang witness.
+</p>
+
+<p>
+  Nakikinig siya.<br>
+  Nag-aalala.
+</p>
+
+<p>
+  Nag-aalala kung tama ang pagkakaintindi niya.<br>
+  Nagri-recall ng detalye.<br>
+  Minsan nagkukuwento ng traumatic o emotionally difficult events.
+</p>
+
+<p>
+  At habang ginagawa iyon, maaaring matalim, mabilis, mahaba, o confusing ang tanong.
+</p>
+
+<p>
+  Makikita ang ganitong courtroom reality sa <strong>People v. Delos Reyes</strong> noong 2003.
+</p>
+
+<p>
+  Sa partikular na kasong iyon, ang complainant ay isang batang witness sa rape case. Sa pagsusuri sa mga sinasabing inconsistency sa kanyang testimony, kinilala ng Supreme Court na ang tension at nervousness sa pagtestigo at hostile cross-examination ay maaaring makaapekto sa accuracy, at napansin ding ang mahahaba at kung minsan ay misleading na tanong ay maaaring humantong sa hindi responsive na sagot.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na lahat ng witness ay automatically unreliable kapag pressured.
+  Hindi rin ibig sabihin na bawal maging incisive o aggressive ang cross-examination.
+</p>
+
+<p>
+  Ang mas mahalagang punto:
+  Ang form ng tanong ay bahagi ng environment kung saan nabubuo ang sagot.
+</p>
+
+<p>
+  Kaya may rules hindi lamang para protektahan ang strategy ng dalawang panig, kundi para tulungan ding mapanatiling maayos ang fact-finding process.
+</p>
+
+<p>
+  Mismong Rule 132, Section 3 ay nagbibigay sa witness ng karapatang maprotektahan laban sa irrelevant, improper, o insulting questions at harsh or insulting demeanor.
+</p>
+
+<h2>
+  PUWEDENG MATAPANG ANG CROSS—NANG HINDI MISLEADING
+</h2>
+
+<p>
+  Ito ang madaling makaligtaan.
+</p>
+
+<p>
+  Hindi kailangan ng abogado na maging mahina ang cross-examination para sumunod sa rule.
+</p>
+
+<p>
+  Halimbawa, sinabi ng witness:
+</p>
+
+<blockquote>
+  <p>
+    “Hindi ko nakita kung sino ang kumuha ng bag.”
+  </p>
+</blockquote>
+
+<p>
+  Maaaring itanong:
+</p>
+
+<blockquote>
+  <p>
+    “So wala kang personal na nakitang kumuha ng bag, tama?”
+  </p>
+</blockquote>
+
+<p>
+  Leading.<br>
+  Matulis.<br>
+  Pero nakaugat sa kanyang testimony.
+</p>
+
+<p>
+  Iba ito sa:
+</p>
+
+<blockquote>
+  <p>
+    “Nang makita mong kunin ng akusado ang bag, bakit hindi ka sumigaw?”
+  </p>
+</blockquote>
+
+<p>
+  Kung ang witness ay hindi naman kailanman nagsabing nakita niyang kinuha ng akusado ang bag.
+</p>
+
+<p>
+  Sa unang halimbawa, sinusubukan ang testimony.
+  Sa pangalawa, may factual conclusion nang ipinasok sa tanong bago pa iyon ma-establish.
+</p>
+
+<p>
+  Kaya hindi pagiging “mabait” versus pagiging “aggressive” ang issue.
+  Proper versus improper questioning ang issue.
+</p>
+
+<h2>
+  PAANO KUNG GUSTONG IPALABAS NA NAGBABAGO NG KUWENTO ANG WITNESS?
+</h2>
+
+<p>
+  May legal na paraan din para rito.
+</p>
+
+<p>
+  Kung may previous statement ang witness na inconsistent sa kanyang present testimony, hindi kailangang lokohin siya sa wording ng tanong.
+</p>
+
+<p>
+  Rule 132 itself provides the procedure for impeachment by prior inconsistent statements:
+  Kailangang i-relate sa witness ang statement at ang circumstances nito at bigyan siyang pagkakataong kilalanin o ipaliwanag ang inconsistency; kung written ang statement, kailangang maipakita ito sa witness bago siya tanungin tungkol dito.
+</p>
+
+<p>
+  Ibig sabihin:
+</p>
+
+<blockquote>
+  <p>
+    Puwedeng ilantad ang contradiction nang direkta.<br>
+    Hindi kailangang gumawa ng false premise para gawin iyon.
+  </p>
+</blockquote>
+
+<p>
+  Matapang na cross-examination at fair cross-examination are not opposites.
+</p>
+
+<h2>
+  ANO ANG CONSEQUENCE KAPAG MAY MISLEADING QUESTION?
+</h2>
+
+<p>
+  Hindi naman sa bawat maling tanong ay titigil ang buong trial.
+  May procedural mechanisms ang courtroom para itama iyon.
+</p>
+
+<p>
+  Sa ilalim ng Rule 132, objection sa isang tanong ay dapat gawin kapag reasonably apparent na ang ground ng objection.
+</p>
+
+<p>
+  Pagkatapos, kailangang mag-rule ang court sa objection habang may pagkakataon pa ang affected party na harapin ang epekto ng ruling.
+</p>
+
+<p>
+  Kung sustained ang objection dahil improper ang form ng tanong, maaaring hindi payagang sagutin iyon sa ganoong anyo.
+</p>
+
+<p>
+  Karaniwan, maaaring i-rephrase ang tanong nang maayos.
+</p>
+
+<p>
+  Hindi ibig sabihin na bawal nang itanong ang legitimate underlying issue.
+  Ang bawal ay iyong improper form o premise.
+</p>
+
+  <h2>
+  PAANO KUNG NAKASAGOT NA ANG WITNESS?
+</h2>
+
+<p>
+  Dito mahalagang maging eksakto sa Rule 132, Section 39 dahil may dalawang magkaibang procedural situations.
+</p>
+
+<p>
+  Una, kung nakasagot ang witness bago nagkaroon ng sapat na pagkakataon ang adverse party na maipahayag nang buo ang objection, o kung hindi objectionable ang tanong pero hindi responsive ang sagot, o kung nag-testify ang witness nang walang tanong, lumampas sa limits na itinakda ng court, o nag-narrate sa halip na sagutin ang tanong—at meritorious ang objection—ang rule ay hindi simpleng nagsasabing puwedeng alisin ang sagot.
+</p>
+
+<blockquote>
+  <p>
+    The court shall sustain the objection and order the answer, testimony, or narration stricken from the record.
+  </p>
+</blockquote>
+
+<p>
+  Ibig sabihin, sa mga sitwasyong partikular na nakalista sa unang bahagi ng Section 39 at may meritorious objection, <strong>“shall”</strong> ang ginagamit ng rule.
+</p>
+
+<p>
+  May hiwalay namang authority sa sumunod na bahagi ng Section 39:
+</p>
+
+<blockquote>
+  <p>
+    On proper motion, the court may also order the striking out of answers which are incompetent, irrelevant, or otherwise improper.
+  </p>
+</blockquote>
+
+<p>
+  Dito naman <strong>“may”</strong> ang ginagamit.
+</p>
+
+<p>
+  Kaya hindi dapat pag-isahin ang dalawang sitwasyon na para bang discretionary lamang lahat ng pag-strike ng testimony.
+</p>
+
+<p>
+  May circumstances na <strong>shall</strong> ang rule.
+  May hiwalay na circumstances na <strong>may</strong>, on proper motion.
+</p>
+
+<p>
+  At ito rin ang dahilan kung bakit hindi sapat na sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Nasabi na naman ng witness, so counted na.”
+  </p>
+</blockquote>
+
+<p>
+  May procedural mechanism para alisin sa evidentiary record ang sagot o testimony kapag pasok sa requirements ng rule.
+</p>
+
+<h2>
+  PAANO KUNG PAULIT-ULIT ANG GANITONG TANONG?
+</h2>
+
+<p>
+  May tinatawag na continuing objection.
+</p>
+
+<p>
+  Kapag reasonably apparent nang pare-parehong class ng objectionable questions ang sunod-sunod na itinatanong, hindi na kailangang paulit-ulit na sabihin ang parehong objection.
+</p>
+
+<p>
+  Maaaring i-record ng adverse party ang continuing objection sa ganoong class of questions.
+</p>
+
+<p>
+  Practical ang dahilan.
+</p>
+
+<p>
+  Kung bawat sampung segundo ay:
+</p>
+
+<blockquote>
+  <p>
+    “Objection.”<br>
+    “Objection.”<br>
+    “Objection.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi lamang witness ang nahihirapan.
+  Pati mismong flow ng proceeding ay nasisira.
+</p>
+
+<p>
+  Kaya may mechanism para maprotektahan ang record nang hindi ginagawang endless argument ang bawat tanong.
+</p>
+
+<h2>
+  PERO HINDI AUTOMATIC CONTEMPT ANG ISANG MISLEADING QUESTION
+</h2>
+
+<p>
+  Mahalagang huwag ding sobrahan ang consequence.
+</p>
+
+<p>
+  Isang improper question na na-objectan at na-sustain ay hindi automatic contempt.
+  Hindi rin automatic disciplinary case.
+  Hindi rin ibig sabihin na wala nang karapatan ang abogado na ipagpatuloy ang cross-examination.
+</p>
+
+<p>
+  Courtroom advocacy involves rulings.
+</p>
+
+<p>
+  May tanong na ina-allow.<br>
+  May tanong na dini-disallow.
+</p>
+
+<p>
+  May objections na sustained.<br>
+  May objections na overruled.
+</p>
+
+<p>
+  Bahagi iyon ng trial.
+</p>
+
+<p>
+  Mas seryoso lamang ang usapin kapag ang behavior ay lumipat na mula sa ordinary evidentiary disagreement tungo sa willful disobedience sa lawful ruling, obstruction, o conduct na talagang nakakasagabal sa administration of justice, kung saan maaaring pumasok ang ibang procedural o disciplinary rules depende sa facts.
+</p>
+
+<p>
+  Kaya hindi tama ang shortcut na:
+</p>
+
+<blockquote>
+  <p>
+    Misleading question = contempt.
+  </p>
+</blockquote>
+
+<p>
+  Pero hindi rin tama ang:
+</p>
+
+<blockquote>
+  <p>
+    Cross-examination naman = kahit paulit-ulit na improper, okay lang.
+  </p>
+</blockquote>
+
+<p>
+  May authority ang tribunal na kontrolin ang proceeding.
+</p>
+
+<h2>
+  COURTROOM ETHICS: MAY ISA PANG MAHALAGANG DISTINCTION
+</h2>
+
+<p>
+  May provision din sa Code of Professional Responsibility and Accountability o CPRA na kailangang basahin nang maingat.
+</p>
+
+<p>
+  Sa Canon II, Section 8, pinagbabawalan ang lawyer na mag-misquote, misrepresent, o mislead sa court, tribunal, o government agency tungkol sa document, argument, evidence, law, o legal authority, at kabilang din sa provision ang pag-assert bilang fact ng bagay na hindi pa proven.
+</p>
+
+<p>
+  At sa Canon III, Section 2, tungkulin ng abogado bilang officer of the court na tumulong sa speedy and efficient administration of justice habang ipinagtatanggol ang kanyang client nang may fidelity at zeal within the bounds of law and the CPRA.
+</p>
+
+<p>
+  Pero huwag nating pag-isahin ang dalawang magkaibang konsepto:
+  Misleading question under Rule 132 at Misleading the court under the CPRA ay hindi automatically synonymous.
+</p>
+
+<p>
+  Ang una ay technical evidentiary rule tungkol sa form at premise ng question.
+  Ang ikalawa ay professional-responsibility rule tungkol sa conduct ng lawyer sa tribunal.
+</p>
+
+<p>
+  Maaaring may conceptual overlap kapag may unproven fact na ipinipilit bilang totoo, pero hindi nangangahulugan na bawat misleading question na na-sustain ay automatic ethical violation.
+</p>
+
+<p>
+  Maaaring nagkamali ang abogado.<br>
+  Maaaring mabilis ang exchange.<br>
+  Maaaring may genuine disagreement tungkol sa factual foundation.<br>
+  Maaaring i-rephrase at itama agad ang tanong.
+</p>
+
+<p>
+  Mas seryoso ang ethical issue kung ang kabuuang conduct ay nagpapakita ng deliberate misrepresentation, deception, o knowing disregard ng professional obligations.
+</p>
+
+<p>
+  Isang evidentiary mistake ay hindi dapat gawing automatic moral conviction.
+  Pero ang professional duty ay hindi rin nawawala dahil lamang nasa cross-examination ang abogado.
+</p>
+
+  <h2>
+  MAY SPECIAL CAVEAT KAPAG IMPEACHMENT TRIAL ANG PINAG-UUSAPAN
+</h2>
+
+<p>
+  Mahalaga rin ito dahil madaling sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Hindi naman regular court trial ang impeachment.”
+  </p>
+</blockquote>
+
+<p>
+  Totoo.
+</p>
+
+<p>
+  Ang impeachment trial ay may sariling constitutional at Senate framework.
+</p>
+
+<p>
+  Ang Senate ang may sole power to try and decide impeachment cases, at may sarili itong Rules of Procedure on Impeachment Trials.
+</p>
+
+<p>
+  Sa original Senate Resolution No. 39, Rule VI ang nagtakda ng mekanismo para sa rulings sa questions of evidence at incidental issues. Mahalaga rin ang huling bahagi ng Rule VI: ang Rules of the Senate at Revised Rules of Court shall apply suppletorily whenever applicable.
+</p>
+
+<p>
+  Pero kailangan ding basahin iyan kasama ng 2026 amendment sa Rule II.
+</p>
+
+<p>
+  Noong June 3, 2026, in-adopt ng Senate ang Resolution No. 48, na nag-amend sa Rule II para sa impeachment cases na hindi involving the President of the Philippines: Senate President ang magpe-preside, unless a majority of the members present elects another Senator as the Presiding Officer. Kapag President of the Philippines naman ang nililitis, nananatili ang constitutional arrangement na Chief Justice ang magpe-preside at hindi boboto.
+</p>
+
+<p>
+  Kaya mas precise na sabihin:
+</p>
+
+<blockquote>
+  <p>
+    Sa impeachment trial, ang questions of evidence ay nireresolba sa loob ng procedural framework at authority ng Senate sitting as an impeachment court.
+  </p>
+</blockquote>
+
+<p>
+  Hindi ordinaryong RTC proceeding ang impeachment.
+  At hindi rin tama na mechanically ipalagay na bawat provision ng Rules of Court ay gumagana roon sa eksaktong paraan na parang regular civil o criminal trial.
+</p>
+
+<p>
+  Pero hindi rin tama ang kabilang shortcut:
+</p>
+
+<blockquote>
+  <p>
+    “Impeachment ito, kaya walang saysay ang Rule 132.”
+  </p>
+</blockquote>
+
+<p>
+  Mismong Rule VI ng impeachment rules ang nagsasabing ang Rules of the Senate at Revised Rules of Court ay suppletorily applicable whenever applicable.
+</p>
+
+<p>
+  Kaya kung may dispute sa isang actual impeachment proceeding, may dalawang layer:
+</p>
+
+<p>
+  Ano ang substantive evidentiary principle?<br>
+  Paano ito ia-apply at irurule ng Senate impeachment court sa ilalim ng sarili nitong procedural framework?
+</p>
+
+<p>
+  Magkaibang tanong iyon.
+</p>
+
+<h2>
+  KAYA PAANO BABASAHIN ANG “THEY ARE ALLOWED”?
+</h2>
+
+<p>
+  Kung may exchange na:
+</p>
+
+<blockquote>
+  <p>
+    “Misleading questions are not allowed.”
+  </p>
+</blockquote>
+
+<p>
+  at ang sagot ay:
+</p>
+
+<blockquote>
+  <p>
+    “They are allowed.”
+  </p>
+</blockquote>
+
+<p>
+  Ang unang dapat itanong ay hindi kung sino ang mas sikat, mas matapang, o mas magaling magsalita.
+</p>
+
+<p>
+  Ang tanong ay:
+</p>
+
+<blockquote>
+  <p>
+    Ano ang antecedent ng “they”?
+  </p>
+</blockquote>
+
+<p>
+  Kung ang “they” ay malinaw na tumutukoy sa misleading questions, at ang proposition ay:
+</p>
+
+<blockquote>
+  <p>
+    “Misleading questions are allowed on cross-examination,”
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon tugma sa Rule 132, Section 10.
+</p>
+
+<p>
+  At hindi lang Rule 132 ang nagsasabi nito.
+</p>
+
+<p>
+  May <strong>Savory Luncheonette</strong> na nagsasabing leading, but not misleading, questions ang allowed sa cross.
+  May <strong>People v. Landicho</strong> na tahasang nagsasabing hindi allowed ang misleading questions even on cross-examination.
+</p>
+
+<p>
+  Posibleng may taong mabigla.<br>
+  Posibleng leading ang nasa isip pero misleading ang salitang nasagot.<br>
+  Posibleng ibang punto ang gustong sabihin.
+</p>
+
+<p>
+  Pero kung walang clarification mula sa mismong nagsalita, hindi rin trabaho ng publiko na mag-imbento ng explanation para protektahan o kondenahin siya.
+</p>
+
+<p>
+  Suriin ang statement ayon sa rule.
+  Hindi ayon sa political team.
+</p>
+
+<h2>
+  AT HINDI RIN DAHIL MALI ANG ISANG STATEMENT AY BOBO NA ANG ABOGADO
+</h2>
+
+<p>
+  Ito rin ang kailangang pigilan.
+</p>
+
+<p>
+  Ang legal literacy ay hindi dapat mauwi sa personality attack.
+</p>
+
+<p>
+  Isang lawyer can make a wrong statement.<br>
+  Isang prosecutor can make a wrong objection.<br>
+  Isang judge can be reversed.<br>
+  Isang Supreme Court decision can even have dissenting opinions.
+</p>
+
+<p>
+  Ganiyan ang legal system.
+</p>
+
+<p>
+  Kaya mas mahalaga ang tanong na:
+</p>
+
+<blockquote>
+  <p>
+    Ano ang tamang rule?
+  </p>
+</blockquote>
+
+<p>
+  kaysa:
+</p>
+
+<blockquote>
+  <p>
+    Sino ang puwedeng pagtawanan?
+  </p>
+</blockquote>
+
+<p>
+  Kapag ang civic discussion ay napunta lamang sa pang-iinsulto, nawawala ang pinakamahalagang pagkakataon:
+  Matuto ang publiko kung paano talaga gumagana ang proseso.
+</p>
+
+<h2>
+  ISANG SALITA LANG—PERO HINDI MALIIT ANG PAGKAKAIBA
+</h2>
+
+<p>
+  Cross-examination is supposed to be searching.
+</p>
+
+<p>
+  Minsan uncomfortable.<br>
+  Minsan relentless.<br>
+  Minsan very controlled.
+</p>
+
+<p>
+  At dapat lamang magkaroon ng sapat na freedom ang adverse party upang subukan ang testimony.
+</p>
+
+<p>
+  Dahil kung hindi puwedeng hamunin ang witness, mahirap tawaging fair ang adversarial process.
+</p>
+
+<p>
+  Pero ang freedom na iyon ay may rules.
+</p>
+
+<p>
+  Leading ang tanong na nagtutulak patungo sa desired answer.
+  At sa cross-examination, maaari itong maging legitimate technique.
+</p>
+
+<p>
+  Misleading ang tanong na nag-a-assume bilang totoo ng fact na hindi pa na-testify o salungat sa dating testimony.
+</p>
+
+<p>
+  At ayon sa Rule 132:
+</p>
+
+<blockquote>
+  <p>
+    Hindi iyon allowed.
+  </p>
+</blockquote>
+
+<p>
+  Hindi ito arbitrary technicality lamang.
+</p>
+
+<p>
+  May procedural logic.<br>
+  May due-process dimension.<br>
+  May jurisprudence.<br>
+  May professional-responsibility framework.
+</p>
+
+<p>
+  At may behavioral research na nagpapaalala na ang paraan ng pagtatanong ay hindi laging neutral sa paraan ng pagsagot at pag-alala.
+</p>
+
+<p>
+  Pero huwag ding gamitin ang science para gawing mas malawak ang legal prohibition kaysa sa totoong sinasabi ng batas.
+</p>
+
+<p>
+  Hindi lahat ng leading question ay misleading.<br>
+  Hindi lahat ng uncomfortable question ay improper.<br>
+  Hindi lahat ng sustained objection ay ethical offense.<br>
+  At hindi lahat ng maling legal statement ay patunay agad ng incompetence o bad faith.
+</p>
+
+<p>
+  Ang tamang pagsusuri ay nasa distinction.
+</p>
+
+<blockquote>
+  <p>
+    Dahil sa korte, minsan isang salita lamang ang pagitan:<br>
+    <strong>LEADING</strong> at <strong>MISLEADING</strong>.
+  </p>
+</blockquote>
+
+<p>
+  Pero sa batas, maaaring iyon ang pagitan ng lehitimong cross-examination at tanong na expressly hindi pinapayagan.
+</p>
+
+<p>
+  At sa paghahanap ng katotohanan, mahalaga hindi lamang ang sagot ng witness.
+  Mahalaga rin kung paano binuo ang tanong na nagpakuha ng sagot na iyon.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+  <li>
+    1987 Constitution, Article VIII, Section 5(5) — constitutional rule-making authority ng Supreme Court tungkol sa pleading, practice, at procedure.
+  </li>
+
+  <li>
+    A.M. No. 19-08-15-SC, 2019 Amendments to the Revised Rules on Evidence, Rule 132 — Sections 3, 6, 10, 14, at 36–39 tungkol sa rights of witnesses, cross-examination, leading at misleading questions, impeachment by inconsistent statements, objections, continuing objections, rulings, at striking out of answers.
+  </li>
+
+  <li>
+    Savory Luncheonette v. Lakas ng Manggagawang Pilipino, G.R. No. L-38964, January 31, 1975 — cross-examination, due process, at distinction na leading but not misleading questions ang allowed.
+  </li>
+
+  <li>
+    People v. Landicho, G.R. No. 116600, July 3, 1996 — Supreme Court statement na misleading questions are not allowed even on cross-examination.
+  </li>
+
+  <li>
+    People v. Delos Reyes, G.R. No. 135241, January 22, 2003 — discussion ng Court sa courtroom pressure, tension at nervousness, at long-winded at sometimes misleading questions sa context ng isang young witness.
+  </li>
+
+  <li>
+    Code of Professional Responsibility and Accountability, A.M. No. 22-09-01-SC, Canon II Section 8 at Canon III Section 2 — duties tungkol sa candor, misleading the tribunal, assertions of unproven facts, at responsible advocacy within the bounds of law.
+  </li>
+
+  <li>
+    Senate Resolution No. 39, Rules of Procedure on Impeachment Trials, particularly Rule VI — evidentiary rulings at suppletory application ng Rules of the Senate at Revised Rules of Court whenever applicable.
+  </li>
+
+  <li>
+    Senate Resolution No. 48, adopted June 3, 2026 — amendment to Rule II providing that in impeachment cases not involving the President, the Senate President presides unless a majority of members present elects another Senator as Presiding Officer.
+  </li>
+
+  <li>
+    Elizabeth F. Loftus &amp; John C. Palmer, <em>Reconstruction of Automobile Destruction: An Example of the Interaction Between Language and Memory</em> (1974) — experimental evidence tungkol sa epekto ng question wording sa speed estimates at later reports of nonexistent broken glass.
+  </li>
+
+  <li>
+    Kimberley A. Wade &amp; Emily R. Spearing, <em>The Effect of Cross-Examination Style Questions on Adult Eyewitness Accuracy Depends on Question Type and Eyewitness Confidence</em>, <em>Memory</em> (2023) — two-experiment psycholegal study na nagpapakitang iba-iba ang epekto ng questioning styles at hindi scientifically defensible ang simpleng equation na leading question = inaccurate testimony.
+  </li>
+
+</ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
