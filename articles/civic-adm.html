@@ -1,1 +1,2051 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="WALANG BAGYO—PERO MASAMA ANG PANAHON. PASOK PA RIN? Isang fact-based na paliwanag tungkol sa class suspension, flexible learning, DepEd learning continuity framework, weather risks, at kung paano maaaring maging mas malinaw at predictable ang school response sa masamang panahon."
+>
+
+<title>WALANG BAGYO—PERO MASAMA ANG PANAHON. PASOK PA RIN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  WALANG BAGYO—PERO MASAMA ANG PANAHON. PASOK PA RIN?
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-adm.png"
+      alt="Simbolikong paglalarawan ng masamang panahon, pagpasok sa paaralan, class suspension, flexible learning, at pangangailangan ng malinaw na school response."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    Hindi kailangang may bagyo para maging mahirap—o minsan, hindi na ligtas—ang pagpasok sa paaralan.
+  </p>
+
+  <p>
+    Puwedeng walang tropical cyclone wind signal pero malakas ang ulan.<br>
+    Puwedeng walang bagyo pero baha na ang ilang ruta.<br>
+    Puwedeng maliwanag ang langit pero sobrang init naman para sa mahabang biyahe at classroom.
+  </p>
+
+  <p>
+    At kapag nasa ganitong pagitan ang kondisyon—hindi normal, pero hindi pa rin sapat para sa automatic suspension—doon madalas nagsisimula ang uncertainty.
+  </p>
+
+  <p>
+    Alas-singko ng umaga.
+  </p>
+
+  <p>
+    Ang estudyante, nakabihis na.<br>
+    Ang iba, naghihintay na ng jeep o tricycle.<br>
+    Ang teacher, naghahanda nang bumiyahe.
+  </p>
+
+  <p>
+    Ang magulang, paulit-ulit na chine-check ang Facebook page ng school, LGU o barangay:
+  </p>
+
+  <blockquote>
+    <p>
+      “May pasok ba?”
+    </p>
+  </blockquote>
+
+  <p>
+    Minsan, makakaalis na ang ilan bago lumabas ang desisyon.<br>
+    Minsan naman, walang suspension pero napakalakas na ng ulan, mahirap na ang magcommute, may baha sa ilang ruta o sobrang init sa classroom.
+  </p>
+
+  <p>
+    At parang bumabalik tayo palagi sa parehong dalawang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY PASOK BA?<br><br>
+      o<br><br>
+      SUSPENDED NA?
+    </p>
+  </blockquote>
+
+  <p>
+    Pero pagkatapos ng pandemic—at lalo na ngayong may mas malinaw nang learning-continuity policies ang DepEd—hindi na dapat hanggang dalawang opsyon lang ang pagtingin natin sa problema.
+  </p>
+
+  <p>
+    May Alternative Delivery Modes o ADM.<br>
+    May modular learning.<br>
+    May asynchronous at online options.<br>
+    May printed learning materials.
+  </p>
+
+  <p>
+    At mayroon nang DepEd framework na kumikilala mismo na hindi pare-pareho ang antas ng disruption at hindi pare-pareho ang dapat na educational response.
+  </p>
+
+  <p>
+    Kaya ang punto ng usaping ito ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit walang ibang opsyon bukod sa pasok at suspend?”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil meron na.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ngayon ay:<br>
+    Paano gagawing mas malinaw, predictable at consistent ang paglipat mula F2F papunta sa flexible learning—at mula flexible learning papunta sa tunay na suspension?
+  </p>
+
+  <p>
+    At bago sabihing wala namang sistema para rito, mahalagang tingnan muna kung ano na ang umiiral na rules—at saan talaga naroon ang gray zone.
+  </p>
+
+  <h2>
+    MAY AUTOMATIC TRIGGERS NA—PERO MAY GRAY ZONE PA RIN
+  </h2>
+
+  <p>
+    Mahalagang maging patas dito.<br>
+    Hindi tamang sabihin na tuwing masama ang panahon ay puro hintayan at wala nang konkretong rules o authority ang DepEd at local officials.
+  </p>
+
+  <p>
+    Sa DepEd Order No. 22, s. 2024, mayroon nang automatic at localized responses para sa iba't ibang hazards.
+  </p>
+
+  <p>
+    Sa Yellow Rainfall Warning o Alarm Water Level, hindi pa automatic ang suspension.
+  </p>
+
+  <p>
+    Kung may torrential rain o flooding at, batay sa assessment ng school, exposed pa rin sa risk ang learners at personnel, ang Schools Division Superintendent o SDS ang makikipag-coordinate sa LGU para sa localized school suspension. Ang Local Chief Executive o LCE naman ang magdedesisyon kung isu-suspend ang face-to-face classes at work sa schools.
+  </p>
+
+  <p>
+    Kapag nasuspinde ang F2F, maaaring gumamit ang schools ng modular distance learning, performance tasks, projects o iba pang arrangement na nakapaloob sa kanilang Learning and Service Continuity Plan, ayon sa sitwasyon at feasibility.
+  </p>
+
+  <p>
+    Pero kapag may Orange o Red Rainfall Warning, o Critical Water Level dahil sa flooding, bago pa magsimula ang klase, automatic nang suspended ang classes at work mula Kindergarten hanggang Grade 12 at ALS sa mga apektadong paaralan.
+  </p>
+
+  <p>
+    Kung lumabas naman ang ganitong warning habang nagsimula na ang klase, kailangang suspindihin agad ng school head ang classes at work at pauwiin ang learners at personnel kung ligtas nang bumiyahe.
+  </p>
+
+  <p>
+    Kung mas mapanganib nang umalis, obligasyon ng school na panatilihin muna silang ligtas sa loob ng paaralan.
+  </p>
+
+  <p>
+    Pero mahalagang linawin ang ibig sabihin ng automatic suspension:<br>
+    Hindi ibig sabihin na hindi na kailangan ang communication sa mga magulang, estudyante at guro.
+  </p>
+
+  <p>
+    Ang ibig sabihin ay hindi na kailangan ng panibagong discretionary decision kung isususpinde ba o hindi kapag natugunan na ang automatic trigger.
+  </p>
+
+  <p>
+    Mahalaga pa rin ang mabilis at malinaw na advisory kung ano ang status ng school, ano ang gagawin ng learners, at ano ang susunod na learning arrangement. Mismong LSCP requirements ng DO 22 ay may communication at contingency planning sa pagitan ng LGUs, schools at parents.
+  </p>
+
+  <p>
+    At mayroon pang isang mahalagang safeguard na madaling makaligtaan.
+  </p>
+
+  <p>
+    Kapag walang automatic suspension at wala ring declaration mula sa LGU, binibigyan pa rin ng DO 22 ng authority ang school head o district/division ALS coordinator na magpatupad ng localized o granular suspension, basta may kinakailangang coordination sa LCE at SDS.
+  </p>
+
+  <p>
+    Kasama sa mga sitwasyong maaaring pagbatayan nito ang torrential rain, localized flooding, landslide o storm-surge risk, prolonged power interruption na nagiging unsafe ang classroom, temperature na hindi na conducive sa learning at nakaaapekto sa health and safety, poor air quality, at iba pang hazards na maaaring magbanta sa learners at personnel.
+  </p>
+
+  <p>
+    Kaya mahalagang maging eksakto:<br>
+    Ang gray zone ay hindi kawalan ng authority.
+  </p>
+
+  <p>
+    May authority.<br>
+    May framework.<br>
+    May paraan para sa localized action.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ay kung paano magiging predictable, consistent, mabilis at madaling maintindihan ng pamilya ang assessment at paggamit ng mga mekanismong iyon sa actual conditions.
+  </p>
+
+  <p>
+    Halimbawa:<br>
+    Malakas na ang ulan pero Yellow Warning pa lamang—or wala pang rainfall warning sa mismong locality.<br>
+    May ilang bahang ruta pero hindi pa Critical Water Level.<br>
+    Mahirap na ang magcommute pero hindi pa disaster-level.<br>
+    Napakataas ng init pero wala namang automatic nationwide suspension trigger.<br>
+    O may localized condition na sapat nang magdagdag ng risk sa physical attendance pero kailangan pa ring i-assess kung normal F2F, localized suspension o flexible learning ang pinakaangkop.
+  </p>
+
+  <p>
+    Dito nagiging mahalaga ang predictable transition papuntang flexible learning o ADM.
+  </p>
+
+  <p>
+    Hindi para palitan ang existing automatic suspension rules.<br>
+    Hindi rin dahil walang may authority na kumilos.
+  </p>
+
+  <p>
+    Kundi para gawing mas malinaw sa publiko kung anong response ang aasahan habang nagbabago ang actual level ng risk.
+  </p>
+
+    <h2>
+    MAY MAS BAGONG LEARNING-CONTINUITY FRAMEWORK NA RIN ANG DEPED
+  </h2>
+
+  <p>
+    Noong June 4, 2026, inilabas ang DepEd Order No. 014, s. 2026 — Guidelines on Learning Continuity in Emergencies.
+  </p>
+
+  <p>
+    Mas nuanced na rito ang pagtingin sa disruptions.
+  </p>
+
+  <p>
+    Hindi pare-pareho ang educational response kapag normal ang kondisyon, mild pa lamang ang disruption, may significant stress at recovery na, o kapag safety at basic needs na mismo ang nakataya.
+  </p>
+
+  <p>
+    May apat itong Learning Continuity Levels:
+  </p>
+
+  <p>
+    <strong>HAYO — CONTINUE</strong><br>
+    Ito ang normal o stable condition kung saan ligtas at ready ang learners at teachers at maaaring magpatuloy ang regular learning.
+  </p>
+
+  <p>
+    <strong>HINAY — EASE-IN</strong><br>
+    Ito ang para sa mild disruption o stress.<br>
+    Puwedeng bawasan o gawing mas flexible ang learning activities at gumamit ng modality na angkop sa capacity at sitwasyon ng learners.
+  </p>
+
+  <p>
+    <strong>HINGA — CHECK-IN</strong><br>
+    Iba ito sa Hinay.<br>
+    Ito ay para sa mas significant stress at recovery period, kung saan mas binibigyang-prayoridad ang well-being, reduced academic demand, teacher-led check-ins at mas magaang na learning o review activities.
+  </p>
+
+  <p>
+    <strong>HINTO — STOP</strong><br>
+    Kapag safety at basic needs na ang nanganganib, academic learning itself is halted upang unahin ang protection at emergency response.
+  </p>
+
+  <p>
+    Mahalagang distinction.
+  </p>
+
+  <p>
+    HINAY ay hindi HINGA.
+  </p>
+
+  <p>
+    Sa Hinay, nagpapatuloy pa ang learning pero mas flexible at mas magaang.<br>
+    Sa Hinga, mas mabigat na ang disruption at mas sentro na ang check-in, recovery at well-being.
+  </p>
+
+  <p>
+    At sa Hinto, safety na talaga ang priority kaysa academic activity.
+  </p>
+
+  <p>
+    Magandang development iyon.
+  </p>
+
+  <p>
+    Pero para sa ordinaryong pamilya, may praktikal na tanong pa rin:<br>
+    Kapag malakas ang ulan bukas ng umaga, ano agad ang ibig sabihin nito sa amin?
+  </p>
+
+  <blockquote>
+    <p>
+      F2F?<br>
+      Hinay?<br>
+      Flexible learning?<br>
+      Hinga?<br>
+      O Hinto?
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan puwedeng palakasin pa ang public-facing side ng sistema.
+  </p>
+
+  <p>
+    Hindi sa pag-imbento ng panibagong framework.<br>
+    Kundi sa paggawa nitong mas madaling maintindihan at mas predictable bago pa bumiyahe ang estudyante, magulang at guro.
+  </p>
+
+  <h2>
+    HINDI LAHAT NG DELIKADONG PANAHON AY MAY WIND SIGNAL
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang bagay na kailangang maintindihan.
+  </p>
+
+  <p>
+    Ang Tropical Cyclone Wind Signal o TCWS ng PAGASA ay warning tungkol sa inaasahang wind threat mula sa tropical cyclone sa isang partikular na lugar.
+  </p>
+
+  <p>
+    Mismong PAGASA ang naglalarawan dito bilang warning sa general wind strength associated with a tropical cyclone.
+  </p>
+
+  <p>
+    Hindi iyon universal danger meter para sa lahat ng weather hazards.
+  </p>
+
+  <p>
+    Puwedeng walang tropical cyclone wind signal pero magkaroon ng:<br>
+    malakas na Habagat;<br>
+    thunderstorm;<br>
+    localized torrential rain;<br>
+    flash flood;<br>
+    mataas na water level;<br>
+    o sobrang init.
+  </p>
+
+  <p>
+    May magkakahiwalay ding PAGASA products at information para sa tropical cyclone winds, rainfall, thunderstorms, floods at heat.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang signal, kaya normal ang pasok.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang dapat tingnan ay mas malawak:<br>
+    Ano ang actual risk sa lugar, paaralan at rutang dadaanan ng mga bata?
+  </p>
+
+  <h2>
+    AT HINDI PANSAMANTALANG PROBLEMA ANG WEATHER DISRUPTION SA PILIPINAS
+  </h2>
+
+  <p>
+    Sa average, nasa 20 tropical cyclones ang pumapasok o nabubuo sa Philippine Area of Responsibility kada taon at humigit-kumulang 8 o 9 ang tumatawid sa Pilipinas.
+  </p>
+
+  <p>
+    Hindi pa kasama roon ang ibang weather conditions na maaari ring makaapekto sa klase.
+  </p>
+
+  <p>
+    At sa climate projections ng PAGASA, inaasahang magiging mas madalas ang hot temperatures at heavy daily rainfall, habang projected ding tumaas ang extreme-rainfall events sa Luzon at Visayas.
+  </p>
+
+  <p>
+    Kaya kung paulit-ulit ang disruption, hindi puwedeng paulit-ulit ding improvisation.
+  </p>
+
+  <blockquote>
+    <p>
+      Recurring problem needs a recurring workflow.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi kailangang tuwing masama ang panahon ay parang first time nating haharapin ang problema.
+  </p>
+
+  <h2>
+    SA SOBRANG INIT, HINDI LANG COMFORT ANG USAPAN
+  </h2>
+
+  <p>
+    Madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mainit lang naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag matindi ang heat exposure, kalusugan at learning mismo ang puwedeng maapektuhan.
+  </p>
+
+  <p>
+    At hindi lamang problema ito sa mga classroom sa Pilipinas.
+  </p>
+
+  <p>
+    Isang malaking international study nina Park, Behrer at Goodman ang gumamit ng standardized achievement data mula sa 58 bansa at humigit-kumulang 12,000 U.S. school districts at nakitang bumabagal ang rate of learning habang dumarami ang hot school days.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na pare-pareho ang epekto sa bawat classroom.
+  </p>
+
+  <p>
+    Pero malinaw ang mas malaking punto:<br>
+    Ang init ay puwedeng maging learning problem, hindi lamang comfort problem.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Basta nakapasok ang bata, tuloy ang edukasyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Physical attendance at meaningful learning are not always the same thing.
+  </p>
+
+  <p>
+    Kung hirap nang mag-concentrate dahil sa init o hindi ligtas ang kondisyon ng classroom, hindi automatic na mas mahusay ang F2F dahil lamang present ang estudyante.
+  </p>
+
+  <p>
+    Safety at learning quality ang parehong kailangang timbangin.
+  </p>
+
+  <h2>
+  PERO HINDI RIN SOLUSYON ANG SUSPEND LANG NANG SUSPEND
+</h2>
+
+<p>
+  May kabilang problema rin.
+</p>
+
+<p>
+  Kapag every disruption ay:
+</p>
+
+<blockquote>
+  <p>
+    “Walang pasok. Bawi na lang.”
+  </p>
+</blockquote>
+
+<p>
+  Naiipon naman ang nawawalang actual teaching time.
+</p>
+
+<p>
+  Noong 2024, naglabas ang EDCOM II at Philippine Institute for Development Studies ng preliminary findings mula sa assessment ng MATATAG K-to-10 pilot implementation sa 35 schools.
+</p>
+
+<p>
+  Sa kanilang estimate, umabot sa 53 teaching days ang maaaring nawala o naapektuhan dahil sa kombinasyon ng non-teaching activities, school closures, calamities at iba pang disruptions.
+</p>
+
+<p>
+  Sa estimate na iyon, 32 days ang naapektuhan ng high heat index at iba pang calamities.
+</p>
+
+<p>
+  Mahalaga ang qualifier:<br>
+  Hindi ito nationwide count na nagsasabing bawat paaralan sa Pilipinas ay literal na nawalan ng eksaktong 53 araw.
+</p>
+
+<p>
+  Estimate ito mula sa preliminary study ng 35 pilot schools.
+</p>
+
+<p>
+  Pero mahalaga pa rin ang problemang ipinapakita nito:<br>
+  Kapag kulang ang teacher-student contact time, kahit maganda ang curriculum sa papel, nababawasan ang pagkakataong magkaroon ng aktuwal na pagtuturo at interaction.
+</p>
+
+<p>
+  Dito nagiging mahalaga ang learning continuity.
+</p>
+
+<h2>
+  PERO ADM AY HINDI AUTOMATIC NA KATUMBAS NG ACTUAL LEARNING
+</h2>
+
+<p>
+  Ito rin ang lesson ng pandemic na hindi dapat kalimutan.
+</p>
+
+<p>
+  Sa parehong EDCOM II/PIDS discussion, binanggit na noong pandemic, humigit-kumulang 75% ng learners ang gumamit ng printed modules para sa distance learning.
+</p>
+
+<p>
+  Kaya binigyang-diin din ng discussion ang posibilidad na limitado ang teacher-student interaction kahit technically ay gumagamit ng ADM.
+</p>
+
+<p>
+  Kaya hindi puwedeng ganito ang mindset:
+</p>
+
+<blockquote>
+  <p>
+    “May module naman—solved na.”
+  </p>
+</blockquote>
+
+<p>
+  Ang tanong ay hindi kung may papel na naipamigay.
+</p>
+
+<p>
+  Ang tanong ay:<br>
+  Nakakatulong ba talaga ito para magpatuloy ang pagkatuto?
+</p>
+
+<p>
+  May malinaw bang instruction?<br>
+  May reasonable workload ba?<br>
+  May paraan bang makapagtanong ang bata?<br>
+  May teacher feedback ba?<br>
+  May oras bang habulin ang hindi naintindihan?
+</p>
+
+<blockquote>
+  <p>
+    ADM should preserve learning continuity—not merely preserve the appearance of a school day.
+  </p>
+</blockquote>
+
+<h2>
+  “EH PAANO KUNG WALANG INTERNET, CELLPHONE O SIGNAL?”
+</h2>
+
+<p>
+  Ito ang isa sa pinakamalakas na posibleng butas sa proposal.<br>
+  At valid iyon.
+</p>
+
+<p>
+  Hindi lahat may home internet.<br>
+  Hindi lahat may sariling cellphone.<br>
+  Hindi lahat ng barangay ay pare-pareho ang signal.<br>
+  At hindi lahat ng pamilya ay kayang bumili ng data sa tuwing biglang mag-o-online ang klase.
+</p>
+
+<p>
+  Ayon sa 2024 National ICT Household Survey ng Philippine Statistics Authority, 48.8% lamang ng households ang may internet access sa bahay.
+</p>
+
+<p>
+  At sa mga individuals aged 10 years and over na gumagamit ng internet, cellphone ang dominant device—98.8% ang gumamit nito para kumonekta.
+</p>
+
+<p>
+  Pero hindi ibig sabihin niyan na 98.8% ng lahat ng estudyante ay may sariling cellphone.
+</p>
+
+<p>
+  Ang statistic ay tungkol sa devices na ginagamit ng internet users aged 10 years and over, hindi guarantee na bawat learner ay may sariling gadget na available buong school day.
+</p>
+
+<p>
+  Dagdag pa rito, kabilang sa pangunahing dahilan ng mga walang internet access ang mataas na subscription cost at equipment cost.
+</p>
+
+<p>
+  Kaya dito dapat malinaw:
+</p>
+
+<blockquote>
+  <p>
+    ADM ≠ ONLINE CLASS LANG.
+  </p>
+</blockquote>
+
+<p>
+  Puwedeng printed module.<br>
+  Offline lesson file.<br>
+  Pre-distributed activity sheet.<br>
+  SMS instruction.<br>
+  Phone-based support.<br>
+  Recorded lesson na puwedeng buksan kapag may signal.<br>
+  Online session kung feasible.<br>
+  At ibang low-bandwidth o offline alternatives depende sa community.
+</p>
+
+<p>
+  Mismong DO 22 ay nagpapahintulot sa modular distance learning, online distance learning o blended learning kung feasible, at binabanggit ang modules, worksheets at Learner Activity Sheets bilang maaaring learning materials.
+</p>
+
+<p>
+  May international evidence ding nagpapakitang hindi kailangang high-tech palagi ang remote support.
+</p>
+
+<p>
+  Sa isang randomized trial sa Botswana, sinubukan ang SMS messages at phone calls kasama ang parents/caregivers upang suportahan ang pag-aaral ng kanilang mga anak habang sarado ang schools.
+</p>
+
+<p>
+  Ang combined intervention ay nagpakita ng measurable improvement sa learning.
+</p>
+
+<p>
+  Hindi ito blueprint na basta kokopyahin sa Pilipinas.
+</p>
+
+<p>
+  Iba ang bansa, context at education system.<br>
+  Pero ipinapakita nito na posible ang meaningful remote support kahit low-tech ang tools kapag maayos ang design at may involvement ng adult support sa bahay.
+</p>
+
+<p>
+  Kaya kung ang ADM system ay gumagana lamang kapag may mabilis na Wi-Fi, laptop at unlimited data—hindi iyon tunay na alternative delivery system.
+</p>
+
+<p>
+  Online-only system iyon.<br>
+  At maiiwan talaga ang batang walang access.
+</p>
+
+<h2>
+  DITO PUWEDENG GAWING MAS SIMPLE PARA SA PAMILYA ANG EXISTING FRAMEWORK
+</h2>
+
+<p>
+  Hindi kailangang palitan ang Hayo-Hinay-Hinga-Hinto framework.<br>
+  Hindi rin kailangang burahin ang automatic at localized suspension mechanisms ng DO 22.
+</p>
+
+<p>
+  Ang puwedeng palakasin ay isang madaling maintindihang public-facing workflow na direktang nag-uugnay ng local risk, decision at learning response.
+</p>
+
+<p>
+  Sa simpleng logic:
+</p>
+
+<p>
+  <strong>NORMAL AT LIGTAS — HAYO / REGULAR LEARNING</strong>
+</p>
+
+<p>
+  Normal ang weather at school conditions.<br>
+  Passable ang routes.<br>
+  Walang significant hazard.<br>
+  Regular learning.
+</p>
+
+<p>
+  <strong>MILD ANG DISRUPTION — HINAY / FLEXIBLE LEARNING</strong>
+</p>
+
+<p>
+  May disruption o uncertainty pero hindi pa severe.<br>
+  Puwedeng kailanganing baguhin ang pacing, bawasan ang pressure o gumamit ng flexible learning modality na akma sa kondisyon at resources ng learners.
+</p>
+
+<p>
+  Ito ang espasyong puwedeng paggamitan ng online, digital, printed, broadcast o ibang learning options ayon sa LSCP at feasibility.
+</p>
+
+<p>
+  Hindi kailangan ng full school day sa Zoom.<br>
+  Hindi rin kailangan ng tambak na activity.<br>
+  Ang kailangan ay appropriate learning for the actual situation.
+</p>
+
+<p>
+  <strong>SIGNIFICANT NA ANG STRESS O NASA RECOVERY — HINGA / CHECK-IN</strong>
+</p>
+
+<p>
+  Kapag mas mabigat na ang disruption—halimbawa, affected na ang well-being, nasa recovery period ang pamilya o komunidad, o hindi na reasonable ang normal academic demand—iba na ito sa Hinay.
+</p>
+
+<p>
+  Dito mas binibigyang-prayoridad ang well-being checks, teacher connection, reduced academic demands at magaang na learning o review activities.
+</p>
+
+<p>
+  Ito ang HINGA / CHECK-IN, hindi lamang “mas mabagal na Hinay.”
+</p>
+
+<blockquote>
+  <p>
+    Learning continuity should adjust to the emergency—not pretend the emergency does not exist.
+  </p>
+</blockquote>
+
+<p>
+  <strong>SAFETY AT BASIC NEEDS NA ANG NAKATAYA — HINTO</strong>
+</p>
+
+<p>
+  Kapag delikado na ang sitwasyon at safety, protection at basic needs na ang pangunahing concern—
+</p>
+
+<p>
+  malubhang baha;<br>
+  dangerous winds;<br>
+  evacuation;<br>
+  serious damage;<br>
+  major emergency;<br>
+  o ibang sitwasyong hindi na compatible sa academic learning—HINTO.
+</p>
+
+<p>
+  Sa Hinto, academic learning activities are suspended upang unahin ang safety at emergency response.
+</p>
+
+<p>
+  Kapag emergency, emergency.
+</p>
+
+<p>
+  Hindi iyong:
+</p>
+
+<blockquote>
+  <p>
+    “Suspended ang klase dahil delikado, pero may tatlong activity pa ring kailangang gawin.”
+  </p>
+</blockquote>
+
+<p>
+  May panahon para ipagpatuloy ang learning.<br>
+  May panahon para mag-Hinay.<br>
+  May panahon para mag-Hinga.<br>
+  At may panahon ding ang tamang educational response ay:
+</p>
+
+<blockquote>
+  <p>
+    Hinto muna. Unahin ang kaligtasan.
+  </p>
+</blockquote>
+
+  <h2>
+  ANG KAILANGAN: OBJECTIVE PERO LOCALIZED
+</h2>
+
+<p>
+  Hindi puwedeng isang number lang ang magdesisyon para sa buong Pilipinas.
+</p>
+
+<p>
+  Magkaiba ang risk ng coastal school at upland school.<br>
+  Magkaiba ang barangay na mabilis bahain at barangay na mataas ang lugar.<br>
+  Magkaiba ang classroom na maayos ang ventilation at classroom na yero ang bubong at naiipon ang init.<br>
+  Magkaiba rin ang estudyanteng ihahatid ng kotse at estudyanteng maglalakad, sasakay ng tricycle at dalawang jeep bago makarating sa school.
+</p>
+
+<p>
+  Kaya dapat may national framework—but decisions must still reflect actual local conditions.
+</p>
+
+<p>
+  At iyan mismo ang dahilan kung bakit pinapayagan ng DO 22 ang localized at granular suspension kapag warranted ng actual hazard assessment.
+</p>
+
+<p>
+  Kabilang sa maaaring tingnan ang:<br>
+  rainfall at flood warnings;<br>
+  actual water level;<br>
+  road passability;<br>
+  transport disruption;<br>
+  heat conditions;<br>
+  availability ng electricity at water;<br>
+  condition ng school facilities;<br>
+  at Tropical Cyclone Wind Signals kapag may bagyo.
+</p>
+
+<p>
+  Hindi nangangahulugang lahat ng iyan ay kailangang magkaroon ng iisang automatic numerical trigger.
+</p>
+
+<p>
+  Ang mahalaga ay mas malinaw sa publiko ang relationship ng risk, assessment, authority at response.
+</p>
+
+<p>
+  Hindi iyong saka pa lamang mauunawaan ng pamilya kung ano ang mangyayari kapag marami nang nasa kalsada.
+</p>
+
+<h2>
+  HINDI LANG ITO SCHOOL PROBLEM—FAMILY PROBLEM DIN ANG LAST-MINUTE UNCERTAINTY
+</h2>
+
+<p>
+  Kapag late o hindi malinaw ang communication, hindi pare-pareho ang epekto sa lahat.
+</p>
+
+<p>
+  May pamilyang may sariling sasakyan at madaling bumalik.<br>
+  May batang naglakad na.<br>
+  May nakasakay na sa jeep.<br>
+  May magulang na nakapagbayad na ng pamasahe.<br>
+  May magulang na kailangang pumasok sa trabaho at kailangang biglang humanap ng maiiwanan ng anak.<br>
+  May komunidad na mabilis bahain pero hindi pareho ang kondisyon sa sentro ng bayan.
+</p>
+
+<p>
+  Kinilala rin ng UNICEF Philippines na sa climate-related education disruptions, hindi lang school buildings ang problema.
+</p>
+
+<p>
+  Kasama rin ang limited access to transportation, damage sa infrastructure at learning materials bilang mga hadlang sa pag-aaral.
+</p>
+
+<p>
+  Kaya ang predictable decision-making at mabilis na communication ay hindi lamang convenience.
+</p>
+
+<blockquote>
+  <p>
+    Equity issue din ito.
+  </p>
+</blockquote>
+
+<p>
+  Kapag mas kaunti ang resources ng pamilya, mas kaunti rin ang allowance nila para sa last-minute uncertainty.
+</p>
+
+<h2>
+  PERO HUWAG DIN GAWING PALUSOT ANG ADM PARA HAYAANG MAHINA ANG PAARALAN
+</h2>
+
+<p>
+  May isa pang safeguard.<br>
+  Hindi dapat maging permanent substitute ang ADM sa maayos na school infrastructure.
+</p>
+
+<p>
+  Hindi dahilan ang:
+</p>
+
+<blockquote>
+  <p>
+    “May module naman.”
+  </p>
+</blockquote>
+
+<p>
+  para hindi ayusin ang ventilation.
+</p>
+
+<p>
+  Hindi dahilan ang:
+</p>
+
+<blockquote>
+  <p>
+    “Puwede namang online.”
+  </p>
+</blockquote>
+
+<p>
+  para hindi ayusin ang drainage.
+</p>
+
+<p>
+  Hindi dahilan ang flexible learning para pabayaan ang classroom, water supply, electrical system, internet infrastructure at disaster preparedness.
+</p>
+
+<p>
+  UNICEF has likewise emphasized the importance of climate-resilient schools habang binibigyang-diin ang epekto ng climate-related disruptions sa learning.
+</p>
+
+<p>
+  Face-to-face learning remains important.
+</p>
+
+<p>
+  Ang ADM ay continuity mechanism, hindi lisensya para tanggapin na lang ang unsafe o inadequate learning environment.
+</p>
+
+<h2>
+  KAYA ANG ISSUE AY HINDI LANG “PASOK BA O WALANG PASOK?”
+</h2>
+
+<p>
+  Mas malaki roon ang usapan.
+</p>
+
+<p>
+  May dalawang bagay tayong gustong protektahan:<br>
+  Kaligtasan ng mag-aaral at tuloy-tuloy na pagkatuto.
+</p>
+
+<p>
+  Hindi kailangang isa lang ang piliin.<br>
+  At hindi rin kailangang every bad-weather day ay maging full suspension.
+</p>
+
+<p>
+  Pero hindi rin dapat pilitin ang physical attendance dahil lamang walang tropical cyclone wind signal.
+</p>
+
+<p>
+  May framework na ngayon para sa mas nuanced na response.<br>
+  May automatic suspension triggers na para sa ilang seryosong conditions.<br>
+  May authority para sa localized o granular suspension kapag kailangan.<br>
+  May ADM.<br>
+  May modular at flexible learning experience na tayo.<br>
+  May weather information ang PAGASA.<br>
+  May local DRRM systems.<br>
+  May Learning and Service Continuity Plans.<br>
+  At may Hayo-Hinay-Hinga-Hinto learning-continuity framework ang DepEd.
+</p>
+
+<p>
+  Kaya ang next logical step ay hindi simpleng gumawa pa ng panibagong authority.
+</p>
+
+<p>
+  Ang hamon ay gawing mas madaling sundan ng ordinaryong pamilya ang koneksiyon ng lahat ng umiiral nang mekanismong iyon.
+</p>
+
+<p>
+  Bago pa dumating ang masamang panahon, malinaw sana:<br>
+  Ano ang trigger?<br>
+  Ano ang kailangang i-assess kapag walang automatic trigger?<br>
+  Sino ang may authority na magdesisyon?<br>
+  Kailan dapat maiparating ang desisyon?<br>
+  Anong learning-continuity level ang gagamitin?<br>
+  Anong learning mode ang ihahanda kung kailangan?<br>
+  Ano ang gagawin kung walang internet, signal o sariling gadget?<br>
+  At kailan dapat tuluyang tumigil ang academic demand dahil safety at basic needs na ang prayoridad?
+</p>
+
+<p>
+  Hindi kailangang hintaying nasa jeep na ang estudyante bago maging malinaw ang sagot.
+</p>
+
+<p>
+  Hindi sapat ang may authority kung hindi predictable ang paggamit nito.<br>
+  Hindi sapat ang automatic rule kung hindi malinaw ang communication nito.
+</p>
+
+<p>
+  Hindi rin learning strategy ang puro cancellation.
+</p>
+
+<p>
+  At hindi rin tunay na ADM ang simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “Mag-online kayo.”
+  </p>
+</blockquote>
+
+<p>
+  Ang magandang sistema ay iyong may malinaw nang paraan ng pagresponde bago pa dumating ang problema.
+</p>
+
+<p>
+  Normal at ligtas?<br>
+  <strong>HAYO.</strong>
+</p>
+
+<p>
+  Mild ang disruption at kaya pang magpatuloy nang flexible?<br>
+  <strong>HINAY.</strong>
+</p>
+
+<p>
+  Significant na ang stress at recovery ang kailangan?<br>
+  <strong>HINGA.</strong>
+</p>
+
+<p>
+  Safety at basic needs na ang nakataya?<br>
+  <strong>HINTO.</strong>
+</p>
+
+<p>
+  Hindi ito laban sa existing DepEd framework.
+</p>
+
+<p>
+  Sa katunayan, mas malapit na ngayon ang official policy sa ganitong idea kaysa dati.
+</p>
+
+<p>
+  Ang hamon ay gawing malinaw sa publiko, predictable sa pamilya, flexible sa learner, localized sa actual risk, at consistent sa implementation.
+</p>
+
+<p>
+  Dahil kung natutuhan natin noong pandemic na posible ang learning sa labas ng classroom, hindi ibig sabihin na dapat manatili tayong naka-distance learning.
+</p>
+
+<p>
+  Ang ibig sabihin:<br>
+  May isa na tayong dagdag na kagamitan sa sistema.
+</p>
+
+<p>
+  Gamitin kapag nararapat.<br>
+  Huwag gamitin kapag hindi kailangan.
+</p>
+
+<blockquote>
+  <p>
+    At kapag kaligtasan na ang nakataya—huwag ipilit ang academic activity para lamang masabing may klase.
+  </p>
+</blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Mga Pangunahing Sanggunian
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Department of Education — DepEd Order No. 022, s. 2024, <em>Revised Guidelines on Class and Work Suspension in Schools During Disasters and Emergencies</em>; automatic, localized/granular suspension mechanisms, Alternative Delivery Modes at Learning and Service Continuity Plans.
+    </li>
+
+    <li>
+      Department of Education — DepEd Order No. 014, s. 2026, <em>Guidelines on Learning Continuity in Emergencies</em>; Hayo, Hinay, Hinga at Hinto framework.
+    </li>
+
+    <li>
+      DOST-PAGASA — Tropical Cyclone Wind Signal, Philippine tropical cyclone climatology at climate-change projections.
+    </li>
+
+    <li>
+      Philippine Statistics Authority — <em>2024 National Information and Communications Technology Household Survey</em>.
+    </li>
+
+    <li>
+      EDCOM II / Philippine Institute for Development Studies — preliminary findings on teaching/contact-time disruptions and calamity-related learning days in MATATAG pilot schools.
+    </li>
+
+    <li>
+      Park, Behrer &amp; Goodman, <em>Nature Human Behaviour</em> — international evidence on heat exposure and learning.
+    </li>
+
+    <li>
+      Angrist, Bergman &amp; Matsheng, <em>Nature Human Behaviour</em> — randomized evidence on SMS and phone-call interventions with parents to support children's learning in Botswana.
+    </li>
+
+    <li>
+      UNICEF Philippines — climate-resilient schools, transportation barriers and climate-related learning disruption.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
