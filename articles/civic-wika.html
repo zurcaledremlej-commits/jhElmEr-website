@@ -1,1 +1,1726 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="MAHAL DAW ANG SARILING WIKA—PERO BAKIT ENGLISH ANG WIKA NG KAPANGYARIHAN? Isang fact-based Civic Explainer tungkol sa Filipino, English, wika, kapangyarihan, public communication, at demokratikong pag-unawa."
+>
+
+<title>MAHAL DAW ANG SARILING WIKA—PERO BAKIT ENGLISH ANG WIKA NG KAPANGYARIHAN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  MAHAL DAW ANG SARILING WIKA—PERO BAKIT ENGLISH ANG WIKA NG KAPANGYARIHAN?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-wika.png"
+  alt="MAHAL DAW ANG SARILING WIKA—PERO BAKIT ENGLISH ANG WIKA NG KAPANGYARIHAN? Civic Explainer tungkol sa Filipino, English, wika ng kapangyarihan, at pampublikong pag-unawa."
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+       <div class="article-body">
+
+  <p>Tuwing Agosto, parang biglang mas ramdam natin ang pagmamahal sa sariling wika.</p>
+
+  <p>May Buwan ng Wika.<br>
+  May mga programa sa paaralan, slogan at poster.<br>
+  May Barong at Filipiniana.<br>
+  May mga tula, talumpati at paalala tungkol sa kahalagahan ng wikang Filipino.</p>
+
+  <p>At walang masama roon.</p>
+
+  <p>Pero pagkatapos ng selebrasyon, may mas mahirap na tanong:<br>
+  Kapag tapos na ang Agosto, gaano pa kalaki ang puwang ng sariling wika sa mga lugar kung saan seryosong usapan, kaalaman at kapangyarihan na ang nakataya?</p>
+
+  <p>Dahil madaling sabihing mahal natin ang sariling wika kapag kultura at selebrasyon ang usapan.</p>
+
+  <p>Ibang sukatan kapag batas na ang tinatalakay.<br>
+  Kapag budget na.<br>
+  Kapag polisiya na.<br>
+  Kapag may congressional hearing, impeachment proceeding, national debate o paliwanag ng gobyerno tungkol sa mga desisyong direktang makaaapekto sa mamamayan.</p>
+
+  <p>Doon mapapansin ang isang matagal nang contradiction:<br>
+  Habang ipinagdiriwang natin ang sariling wika bilang bahagi ng ating pagkakakilanlan, English pa rin ang madalas na may pinakamalakas na presensya sa maraming pormal at makapangyarihang institusyon ng lipunan.</p>
+
+  <blockquote>
+    <p>“Ang hindi magmahal sa kanyang salita<br>
+    Mahigit sa hayop at malansang isda.”</p>
+  </blockquote>
+
+  <p>Kaya mas nagkakaroon ng bigat ang isang linyang ilang henerasyon na nating naririnig.</p>
+
+  <p>Ito ang anyong makikita sa pinakamaagang kilalang pagkalathala ng <em>Sa Aking Mga Kabata</em> noong 1906 sa aklat ni Hermenegildo Cruz.</p>
+
+  <p>Matagal itong iniuugnay kay José Rizal, pero disputed ang authorship. Walang natitirang kilalang original manuscript nito sa sulat-kamay ni Rizal, at matagal nang kinukuwestiyon ng mga historyador ang tradisyonal na attribution.</p>
+
+  <p>Pero baka mas mahalaga pa sa kung sino ang sumulat ng linya ang tanong na iniwan nito sa atin:<br>
+  Kung sinasabi nating mahalaga ang sariling wika, bakit kapag seryoso, teknikal at makapangyarihan na ang usapan, parang English pa rin ang mas natural na wikang binibigyan natin ng bigat?</p>
+
+  <p>At dito nagsisimula ang mas malaking usapin.</p>
+
+  <p>Hindi kung masama ba ang English.<br>
+  Hindi kung dapat ba itong alisin.</p>
+
+  <p>Kundi kung paano naging posible na sa isang bansang ipinagdiriwang taun-taon ang sariling wika, ang wikang mas madaling maunawaan ng malaking bahagi ng mamamayan ay hindi pa rin laging siyang pinakamalakas ang presensya sa mismong mga institusyong nagsasalita at nagpapasya para sa kanila.</p>
+
+  <h2>KAPAG MAS SERYOSO ANG USAPAN, BAKIT PARANG MAS KAILANGANG MAG-ENGLISH?</h2>
+
+  <p>Hindi masama ang English.<br>
+  Sa katunayan, malaking advantage ang mahusay na English proficiency.</p>
+
+  <p>Mahalaga ito sa international communication, science, technology, research, diplomacy, negosyo, higher education at trabaho sa loob at labas ng bansa.</p>
+
+  <p>Hindi kailangang pahinain ang English ng Pilipino para mapahalagahan ang Filipino.</p>
+
+  <p>Ang mas dapat pag-isipan ay ibang bagay:<br>
+  Bakit sa lipunan natin, ang English ay hindi lang naging kapaki-pakinabang na wika—nagkaroon din ito ng malakas na koneksiyon sa kapangyarihan, oportunidad at prestihiyo?</p>
+
+  <p>May historical reason dito.</p>
+
+  <p>Sa ilalim ng American colonial rule, naging pangunahing medium of instruction ang English sa bagong public education system.</p>
+
+  <p>Sa pag-aaral ni psychologist Allan B. I. Bernardo tungkol sa mahigit isang siglo ng English sa Philippine education, tinalakay niya ang privileged status na nakuha ng English sa formal education mula pa noong American period.</p>
+
+  <p>Hindi lang paaralan ang naging epekto nito.</p>
+
+  <p>Sa sociolinguistic work ni Bonifacio Sibayan, mahalaga ang konsepto ng <em>controlling domains</em>—mga larangang may mataas na kapangyarihan, prestihiyo at institutional value gaya ng government, higher education, professions, science and technology at iba pang formal domains.</p>
+
+  <p>Sa kasaysayan ng Pilipinas, naging napakalakas ng posisyon ng English sa marami sa mga larangang ito.</p>
+
+  <p>Kaya hindi nakapagtatakang magkaroon ito ng social prestige na lampas sa simpleng kakayahang makipag-usap.</p>
+
+  <p>Ito ang kontekstong pinagmumulan ng pamilyar na karanasan:<br>
+  Kapag mahusay mag-English, madaling sabihing “matalino.”<br>
+  Kapag polished ang accent, madaling sabihing “educated.”<br>
+  Kapag formal at technical ang English, parang mas may authority ang nagsasalita.</p>
+
+  <p>Samantalang kapag hirap mag-English ang isang tao, puwedeng mapagkamalang kulang sa alam—kahit maaaring mas naiintindihan niya ang mismong paksa kaysa sa taong mas mahusay lamang magsalita.</p>
+
+  <p>Pero mahalagang huwag din nating palakihin ang research nang lampas sa kaya nitong sabihin.</p>
+
+  <p>Isang 2016 study nina Faith Patricia Sicam at Rochelle Irene Lucas sa 473 bilingual high-school students mula sa dalawang public at isang private school ang nakitang generally very positive ang attitudes ng respondents sa parehong English at Filipino.</p>
+
+  <p>Nakita rin nilang statistically related ang socioeconomic status sa positive attitudes toward English at sa ilang language orientations.</p>
+
+  <p>Hindi ibig sabihin nito na:<br>
+  mayaman = English<br>
+  mahirap = Filipino</p>
+
+  <p>Hindi rin nito pinatutunayang ang pagsasalita ng English ang sanhi ng mataas na social status.</p>
+
+  <p>Mas limitado ang tamang pagbasa:<br>
+  May empirical evidence na ang attitudes toward language ay may social at socioeconomic dimension.</p>
+
+  <p>At tugma iyon sa mas malawak na kasaysayan kung paano naging konektado ang English sa education, professions at institutional opportunity sa Pilipinas.</p>
+
+<h2>HINDI LANG HISTORY—NAKIKITA PA RIN ITO SA ILANG INSTITUSYON NG GOBYERNO</h2>
+
+<p>May contemporary institutional evidence din na nagpapakitang hindi lamang historical ang malakas na posisyon ng English sa ilang bahagi ng gobyerno.</p>
+
+<p>Sa isang 2021 study ni Gerard P. Concepcion, sinuri sa pamamagitan ng content analysis ang 235 Philippine government websites na gumagamit ng <em>.gov.ph</em> domain mula sa national government, local government at government-owned or controlled corporations.</p>
+
+<p>Ang resulta:<br>
+Overwhelmingly English ang ginagamit sa kanilang content, habang minimal ang paggamit ng Filipino at ng ilang regional languages.</p>
+
+<p>Sa mas detalyadong findings, English ang pangunahing wikang lumilitaw sa halos lahat ng uri ng content na sinuri.</p>
+
+<p>Kabilang dito ang maraming impormasyon tungkol sa policies, memoranda, regulations, local legislation at public-service applications o transactions.</p>
+
+<p>Filipino at regional languages naman ay mas limitado ang presensya.</p>
+
+<p>Mahalagang huwag palakihin ang saklaw ng study.</p>
+
+<p>Government websites ang sinuri nito—hindi lahat ng congressional hearings, court proceedings o lahat ng komunikasyon ng gobyerno.</p>
+
+<p>Pero bilang contemporary institutional evidence, malinaw ang ipinapakita nito:<br>
+Sa isang mahalagang digital space kung saan direktang nagbibigay ng impormasyon at serbisyo ang gobyerno sa publiko, nananatiling dominante ang English kaysa Filipino at regional languages.</p>
+
+<p>Kaya kapag pinag-uusapan natin ang “wika ng kapangyarihan,” hindi kailangang ipagpalagay na may iisang nationwide study na nagsukat sa bawat salita sa bawat hearing o tanggapan.</p>
+
+<p>Mas maingat ang punto:<br>
+May matagal na historical at sociolinguistic basis ang mataas na institutional prestige ng English, at may contemporary evidence na patuloy itong dominante sa ilang importanteng government communication spaces.</p>
+
+<h2>HINDI RIN ENGLISH VERSUS FILIPINO ANG PAGKAKAKILANLAN</h2>
+
+<p>May isa pang mahalagang nuance.</p>
+
+<p>Hindi porke gumagamit tayo ng English ay nababawasan na agad ang pagiging Pilipino.</p>
+
+<p>Sa isang 2009 study ni Ariane Macalinga Borlongan tungkol sa language use, attitudes at identity ng isang selected sample ng young Filipinos mula sa isang private university, nakita ang malawak na paggamit at preference sa English sa maraming domains.</p>
+
+<p>Pero ang respondents ay nanatiling pabor sa Tagalog/Filipino bilang national language habang kinikilala rin na ang Philippine English mismo ay maaaring maging simbolo ng kanilang pagiging Filipino.</p>
+
+<p>Mahalagang limitahan din ang claim:<br>
+Isang initial university sample iyon, hindi national survey.</p>
+
+<p>Pero mahalaga ang ipinapakita nitong punto.<br>
+Hindi kailangang English o Filipino lang ang pagkakakilanlan natin.</p>
+
+<p>Mahigit isang siglo nang bahagi ng buhay-Pilipino ang English.</p>
+
+<p>Nagkaroon na tayo ng sariling Philippine English, sariling accent, expressions at paraan ng paggamit nito.</p>
+
+<p>Kaya ang tanong ay hindi:</p>
+
+<blockquote>
+  <p>“Alisin ba natin ang English?”</p>
+</blockquote>
+
+<p>Ang mas mahalagang tanong ay:</p>
+
+<blockquote>
+  <p>“Kapag usaping pampubliko at pambansa ang pinag-uusapan, sapat ba ang puwang na ibinibigay natin sa wikang mas madaling maunawaan ng mas maraming mamamayan?”</p>
+</blockquote>
+
+<h2>KAPAG GOBYERNO ANG NAGSASALITA, SINO ANG DAPAT UMANGKOP?</h2>
+
+<p>Dito nagiging civic issue ang usapan.</p>
+
+<p>Isipin ang mga paksang direktang nakaaapekto sa ordinaryong Pilipino:<br>
+Impeachment proceedings.<br>
+Congressional investigations.<br>
+Budget hearings.<br>
+Pagpapaliwanag ng bagong batas.<br>
+Buwis.<br>
+Presyo ng kuryente.<br>
+Agrikultura.<br>
+Edukasyon.<br>
+Health policy.<br>
+Public funds.<br>
+Korupsiyon.<br>
+Mga pambansang polisiya.</p>
+
+<p>Mga usaping publiko ang mga ito.<br>
+Buwis ng mamamayan ang ginagamit.<br>
+Mga halal na opisyal ang nagsasalita.<br>
+Mga batas, polisiya at desisyong makaaapekto sa mamamayan ang pinag-uusapan.</p>
+
+<p>Kaya may simpleng tanong:<br>
+Kung ang impormasyon ay para sa publiko, gaano kadaling maintindihan iyon ng mismong publiko?</p>
+
+<p>Hindi problema na may English.<br>
+Problema kung ang language at technical complexity ay nagiging dagdag na hadlang bago pa makarating ang mamamayan sa mismong argumento.</p>
+
+<p>At may datos tayong dapat pag-isipan.</p>
+
+         <h2>MARUNONG MAG-ENGLISH AY HINDI PAREHO SA KAYANG SUNDAN ANG TECHNICAL NA ENGLISH</h2>
+
+<p>Sa face-to-face Social Weather Stations survey noong March 26–29, 2023 na may 1,200 adult respondents, iniulat na hindi bababa sa 75% ang “competent” sa Filipino at 47% sa English batay sa kombinasyon ng language abilities na tinanong sa survey.</p>
+
+<p>Pero mahalagang tingnan ang breakdown.</p>
+
+<p>Sa English:<br>
+80% ang nagsabing nakauunawa ng spoken English.<br>
+80% ang nakakabasa nito.<br>
+69% ang nakasusulat.<br>
+55% ang nakapagsasalita nito.<br>
+At 47% ang nagsabing nakapag-iisip gamit ang English.</p>
+
+<p>Sa Filipino naman:<br>
+93% ang nagsabing nakauunawa.<br>
+87% ang nakapagsasalita.<br>
+At 75% ang nakapag-iisip gamit ito.</p>
+
+<p>At mahalagang caveat:<br>
+Survey measure ito batay sa sagot ng respondents tungkol sa kanilang language abilities. Hindi ito standardized English o Filipino proficiency examination.</p>
+
+<p>Kaya mali ring gamitin ang 47% para sabihing:</p>
+
+<blockquote>
+  <p>“53% ng Pilipino ay hindi marunong mag-English.”</p>
+</blockquote>
+
+<p>Hindi iyon ang sinasabi ng datos.</p>
+
+<p>Sa katunayan, ipinapakita mismo ng survey na mas marami ang nakauunawa at nakakabasa ng English kaysa sa 47%.</p>
+
+<p>Pero dito lumilitaw ang isang mahalagang distinction:<br>
+Iba ang nakakaintindi ng conversational English sa kayang komportableng sundan ang mahaba, mabilis at technical na legal, economic o constitutional discussion sa English.</p>
+
+<p>Halimbawa:</p>
+
+<blockquote>
+  <p>“I understand English.”</p>
+</blockquote>
+
+<p>Iba iyon sa:</p>
+
+<blockquote>
+  <p>“Kaya kong sundan nang dalawang oras ang argumentong tungkol sa jurisdiction, due process, evidentiary standards, constitutional interpretation at procedural rules.”</p>
+</blockquote>
+
+<p>Kahit mahusay mag-English ang isang tao, puwede pa ring mahirapan sa pangalawa.<br>
+Mas lalo kung second o third language niya ang English.</p>
+
+<h2>MAY MAS MALAKI PA TAYONG PROBLEMA SA PAG-UNAWA</h2>
+
+<p>May isa pang datos na kailangang isama sa usapan.</p>
+
+<p>Sa 2024 Functional Literacy, Education and Mass Media Survey o FLEMMS, gumamit ang Philippine Statistics Authority ng revised definition at methodology para masukat ang basic at functional literacy.</p>
+
+<p>Sa mga Pilipinong edad 10–64, 93.1% ang may basic literacy, samantalang 70.8% ang functionally literate.</p>
+
+<p>Ayon mismo sa PSA, sa bawat siyam na indibidwal na kayang magbasa, magsulat at magcompute, humigit-kumulang dalawa ang may difficulty sa comprehension batay sa kanilang 2024 measure.</p>
+
+<p>Hindi ibig sabihin nito na English ang sanhi ng literacy problem.<br>
+Hindi iyon kayang patunayan ng datos, at hindi iyon ang argumento rito.</p>
+
+<p>Maraming dahilan ang learning at comprehension problems—quality of education, kahirapan, access sa learning resources, nutrition, school conditions, teaching quality at marami pang iba.</p>
+
+<p>Pero may malinaw itong implication sa public communication:<br>
+Kung mayroon na tayong malaking comprehension challenge, bakit pa natin kailangang gawing mas mahirap intindihin ang impormasyong kailangang maintindihan ng mamamayan?</p>
+
+<p>Technical na nga ang paksa.<br>
+Technical pa ang vocabulary.<br>
+Mabilis pa ang discussion.</p>
+
+<p>Kung hindi pa pamilyar sa audience ang pangunahing wikang ginagamit, may dagdag na layer na kailangang lampasan bago maunawaan ang mismong ideya.</p>
+
+<h2>MAY “LANGUAGE COST” BAGO MAKARATING SA NILALAMAN</h2>
+
+<p>May research basis din ang prinsipyong ito.</p>
+
+<p>Sa isang 2025 Philippine Institute for Development Studies paper nina Michael R.M. Abrigo, Katha Ma-i M. Estopace, Edmar E. Lingatong at Charlotte Marjorie L. Relos tungkol sa linguistic mismatch sa Philippine education, pinag-aralan kung paano naaapektuhan ng hindi pagkakatugma ng home language ng estudyante at language of instruction ang learning productivity.</p>
+
+<p>Sa framework ng researchers, ang linguistic distance ay kumikilos bilang isang “multiplicative tax” sa educational production—ibig sabihin, habang lumalaki ang linguistic mismatch, maaaring bumaba ang pagiging produktibo ng learning process at ang educational outcomes.</p>
+
+<p>Classroom at learning outcomes ang context ng research.</p>
+
+<p>Kaya hindi tama na basta sabihin:</p>
+
+<blockquote>
+  <p>“Pinatunayan ng study na ganito rin ang nangyayari sa congressional hearing.”</p>
+</blockquote>
+
+<p>Hindi iyon ang pinag-aralan nila.</p>
+
+<p>Pero may mahalagang principle itong ipinapakita:<br>
+Ang linguistic mismatch ay maaaring magkaroon ng measurable learning at productivity cost kapag kailangang matutuhan ang content sa wikang hindi lubos na nakaayon sa wikang ginagamit o pamilyar sa learner.</p>
+
+<p>Iyon ang research-faithful na punto.</p>
+
+<p>Hindi natin kailangang gawing eksaktong pareho ang classroom at gobyerno para makita ang mas limitadong practical implication:<br>
+Kapag komplikado na ang impormasyong kailangang unawain, mahalaga rin kung gaano kapamilyar at ka-accessible sa audience ang wikang nagdadala ng impormasyong iyon.</p>
+
+<p>Ito rin ang mas malawak na dahilan kung bakit binibigyang-diin ng UNESCO ang multilingual education at ang kahalagahan ng wikang naiintindihan ng learner sa learning at inclusion.</p>
+
+         <h2>ANG ACCESS AY HINDI LANG PAGKAKAROON NG LIVESTREAM</h2>
+
+<p>Dito dapat mas lumawak ang ibig sabihin natin ng “public access.”</p>
+
+<p>Hindi sapat na public ang hearing dahil naka-livestream.<br>
+Hindi sapat na transparent ang dokumento dahil naka-upload online.<br>
+Hindi sapat na bukas sa publiko ang impormasyon kung ang ordinaryong mamamayan ay kailangang magsalin muna sa isip, manghula sa technical terms, o maghintay ng ibang tao na magpaliwanag kung ano talaga ang sinabi.</p>
+
+<p>Ang access ay hindi lang kakayahang makarinig o makabasa.<br>
+Kasama rito ang kakayahang makaunawa.</p>
+
+<p>At sa usaping demokratiko, napakahalaga ng distinction na iyon.</p>
+
+<p>Dahil paano makakabuo ng informed opinion ang mamamayan kung hindi malinaw sa kanya ang argumento?<br>
+Paano niya masusuri kung tama ang sinabi ng opisyal?<br>
+Paano niya malalaman kung may nilaktawang detalye?<br>
+Paano niya matitimbang ang magkabilang panig?</p>
+
+<p>Kung ang pangunahing pinanggagalingan niya ng “pag-unawa” ay short clips, captions, commentators at viral summaries dahil mahirap sundan ang mismong proceeding, mas lumalaki rin ang espasyo para sa misinterpretation at selective framing.</p>
+
+<p>Hindi ibig sabihin na mawawala ang misinformation kapag Filipino ang ginamit.<br>
+Hindi ganoon kasimple.</p>
+
+<p>Pero mas direktang access sa mismong argumento ang isang paraan para hindi palaging nakadepende ang publiko sa interpretation ng ibang tao.</p>
+
+<h2>ANG SABI MISMO NG ATING KONSTITUSYON</h2>
+
+<p>Hindi rin kailangang humiram ng prinsipyo sa ibang bansa para sabihing may lugar ang Filipino sa official communication.</p>
+
+<p>Nasa sarili nating Constitution iyon.</p>
+
+<p>Sa Article XIV, Section 6 ng 1987 Constitution:<br>
+Filipino ang national language ng Pilipinas.</p>
+
+<p>At habang umuunlad ito, dapat itong patuloy na paunlarin at payamanin batay sa existing Philippine at other languages.</p>
+
+<p>Inaatasan din ang gobyerno, subject sa batas at kung ano ang ituturing ng Congress na appropriate, na gumawa ng hakbang upang initiate and sustain the use of Filipino as a medium of official communication at bilang language of instruction.</p>
+
+<p>Pero mahalaga ang Section 7.<br>
+Para sa purposes of communication and instruction, Filipino at English ang official languages ng Pilipinas, habang ang regional languages ay auxiliary official languages sa kani-kanilang rehiyon at auxiliary media of instruction doon.</p>
+
+<p>Kaya malinaw:<br>
+Hindi Filipino-only ang constitutional policy ng Pilipinas.</p>
+
+<p>Legal at official ang English.<br>
+Hindi violation ng Constitution ang paggamit nito sa gobyerno.</p>
+
+<p>Ang mas magandang tanong ay hindi:</p>
+
+<blockquote>
+  <p>“Bakit gumagamit ng English?”</p>
+</blockquote>
+
+<p>Kundi:</p>
+
+<blockquote>
+  <p>“Kung pareho namang official ang Filipino at English, bakit parang hindi pareho ang bigat ng kanilang aktwal na puwang sa maraming high-level public discussions at government communication spaces?”</p>
+</blockquote>
+
+<h2>HINDI RIN TAGALOG-ONLY ANG PILIPINAS</h2>
+
+<p>Ito ang isa pang loophole na kailangang isara.</p>
+
+<p>Hindi maaaring ang sagot sa English dominance ay:</p>
+
+<blockquote>
+  <p>“Mag-Tagalog na lang lahat.”</p>
+</blockquote>
+
+<p>Multilingual country ang Pilipinas.</p>
+
+<p>Sa 2020 Census of Population and Housing, Tagalog ang pinakakaraniwang wikang generally spoken at home—pero nasa 10.52 million households o 39.9% lamang ng 26.39 million households ang gumagamit nito.</p>
+
+<p>Malalaki rin ang gumagamit ng Bisaya/Binisaya, Hiligaynon/Ilonggo, Ilocano, Cebuano, Bikol, Waray, Kapampangan at marami pang ibang wika.</p>
+
+<p>Kaya kung ipagpipilitan nating Tagalog lang ang dapat mangibabaw saanman sa bansa, maaari rin tayong lumikha ng panibagong language barrier para sa milyon-milyong Pilipino.</p>
+
+<p>At mismong batas na lumikha sa Commission on the Filipino Language ang nagpapakita na hindi dapat ikulong ang Filipino sa Tagalog lamang.</p>
+
+<p>Sa Republic Act No. 7104, policy ng gobyerno ang development at enrichment ng Filipino batay sa existing Philippine and other languages.</p>
+
+<p>Inaatasan din ang Commission na isulong hindi lamang ang Filipino kundi pati ang development at preservation ng ibang Philippine languages.</p>
+
+<p>Iyon ang mas matinong direksiyon:<br>
+Filipino bilang pambansang tulay, English bilang mahalagang official at international language, at regional languages bilang buhay na bahagi ng pagkakakilanlan at komunikasyon ng mga komunidad.</p>
+
+<p>Hindi kailangang may isang wikang patayin para mabuhay ang isa.</p>
+
+<h2>MATAGAL NANG MAY DIREKSIYONG PALAWAKIN ANG FILIPINO SA GOBYERNO</h2>
+
+<p>Hindi rin bagong idea ang paggamit ng Filipino sa official transactions.</p>
+
+<p>Noong 1988, inilabas ang Executive Order No. 335, na nag-uutos sa departments, bureaus, offices, agencies at instrumentalities ng gobyerno na gumawa ng mga kinakailangang hakbang para gamitin ang Filipino sa official transactions, communications at correspondence.</p>
+
+<p>Mahalaga ang rationale ng mismong kautusan.</p>
+
+<p>Sinabi nitong ang intensified use ng Filipino sa government transactions at communications ay makatutulong sa greater understanding and appreciation among the people of government programs, projects and activities.</p>
+
+<p>Iyan mismo ang sentro ng usapan.</p>
+
+<p>Hindi lang:</p>
+
+<blockquote>
+  <p>“Mahal natin ang Filipino dahil bahagi ito ng kultura.”</p>
+</blockquote>
+
+<p>Kundi:</p>
+
+<blockquote>
+  <p>“May practical value ang wikang mas nauunawaan ng mamamayan sa pagpapaliwanag kung ano ang ginagawa ng gobyerno.”</p>
+</blockquote>
+
+<p>At higit tatlong dekada matapos ang EO 335, valid pa ring itanong:<br>
+Gaano kalayo na ba talaga ang narating natin sa paggawa sa Filipino bilang normal na wika ng seryosong official communication—hindi lamang wika ng ceremonial speeches at Buwan ng Wika?</p>
+
+         <h2>HINDI KAILANGANG MAG-ENGLISH ANG ISANG BANSA PARA MAGING MODERNO</h2>
+
+<p>Dito pumapasok ang comparison sa ibang bansa.</p>
+
+<p>Pero dapat maingat ang argumento.</p>
+
+<p>Maling sabihin:</p>
+
+<blockquote>
+  <p>“Maunlad ang France, Germany o South Korea dahil ginagamit nila ang sariling wika.”</p>
+</blockquote>
+
+<p>Hindi kayang patunayan iyon ng language policy.</p>
+
+<p>Napakaraming dahilan ng economic at institutional development—governance, education, technology, capital, industrial policy, history, institutions at marami pang iba.</p>
+
+<p><em>Correlation is not causation.</em></p>
+
+<p>Pero may mas limitado at mas defensible na observation:<br>
+Hindi kailangang gawing English ang pangunahing wika ng domestic public administration para magkaroon ng modernong estado at makipagsabayan sa mundo.</p>
+
+<p>Sa France, may batas na nagbibigay ng malinaw na institutional role sa French sa public services at iba pang public domains.</p>
+
+<p>Sa Germany, diretso ang Section 23 ng federal Administrative Procedure Act:<br>
+German ang official administrative language.</p>
+
+<p>May rules pa kapag foreign-language documents ang isinusumite sa authorities at kailangang magkaroon ng translation.</p>
+
+<p>Sa South Korea, mas malinaw pa ang connection sa comprehension.</p>
+
+<p>Sa kanilang Framework Act on Korean Language, kailangang gumawa ang public institutions ng public documents sa Hangeul gamit ang terms and sentences na madaling maunawaan ng ordinaryong mamamayan.</p>
+
+<p>May institutional evaluation pa sa implementation.</p>
+
+<p>Hindi ibig sabihin na ayaw ng mga bansang iyon sa English.<br>
+Hindi ibig sabihin na hindi sila nag-aaral ng foreign languages.</p>
+
+<p>Ang point ay mas simple:<br>
+May wikang mahalaga para makipag-ugnayan sa mundo.<br>
+At may tungkulin ding tiyakin na naiintindihan ng sariling mamamayan ang sariling pamahalaan.</p>
+
+<p>Hindi kailangang magkalaban ang dalawa.</p>
+
+<h2>BAKA NAPAGHALO NATIN ANG LANGUAGE OF OPPORTUNITY AT LANGUAGE OF INTELLIGENCE</h2>
+
+<p>Ito marahil ang isang bagay na kailangan nating suriin sa sarili.</p>
+
+<p>Matagal nating itinuring ang English bilang language of opportunity.</p>
+
+<p>At may malaking katotohanan iyon.</p>
+
+<p>Pero baka minsan, hindi natin namamalayang napaghalo natin ang language of opportunity at language of intelligence.</p>
+
+<p>Napaghalo rin natin ang language of international communication at language na kailangang mangibabaw sa domestic public affairs.</p>
+
+<p>Hindi pareho ang mga iyon.</p>
+
+<p>Hindi mas matalino ang argumento dahil English.<br>
+Hindi mas tama ang legal reasoning dahil English.<br>
+Hindi mas propesyonal ang isang ideya dahil mas maraming technical English words.</p>
+
+<p>At hindi nagiging mababaw ang komplikadong konsepto dahil ipinaliwanag sa Filipino, Cebuano, Ilocano, Hiligaynon, Waray o ibang wikang mas naiintindihan ng kausap.</p>
+
+<p>Minsan nga, mas mahirap ang tunay na mahusay na pagpapaliwanag.<br>
+Dahil kailangan mong maintindihan nang mabuti ang konsepto para maipaliwanag ito nang simple nang hindi sinisira ang accuracy.</p>
+
+<h2>PERO PAANO ANG MGA TECHNICAL AT LEGAL TERMS?</h2>
+
+<p>Ito ang practical objection na hindi dapat balewalain.</p>
+
+<p>Maraming legal, scientific, medical, economic at technical terms ang mas established sa English.<br>
+Maraming batas, court decisions, textbooks, journals at international materials ang English ang ginagamit.</p>
+
+<p>May mga terminong mahirap isalin nang eksaktong one-to-one.</p>
+
+<p>Totoo iyon.</p>
+
+<p>Pero hindi nangangahulugang dalawa lang ang pagpipilian:<br>
+English lahat o Filipino lahat.</p>
+
+<p>Puwedeng panatilihin ang established English technical term at agad itong ipaliwanag sa malinaw na Filipino.<br>
+Puwedeng bilingual ang official materials.<br>
+Puwedeng manatili ang authoritative legal wording habang may plain-language Filipino explanation.<br>
+Puwedeng gamitin ang natural na code-switching kapag iyon ang pinakamalinaw.</p>
+
+<p>At sa regional setting, puwedeng gumamit ng translation o interpretation sa wikang pinakaangkop sa audience.</p>
+
+<p>Hindi kailangang piliting magkaroon ng purong salin ang bawat termino kung mas magiging mahirap lamang itong maintindihan.</p>
+
+<p>Hindi language purity ang habol.<br>
+Pag-unawa ang habol.</p>
+
+<h2>MAY GANITONG TANONG NA MISMO SA PINAKAMATAAS NA POLITICAL PROCEEDINGS</h2>
+
+<p>Hindi rin theoretical lamang ang issue.</p>
+
+<p>Sa paghahanda para sa impeachment proceedings ngayong 2026, kabilang sa mga procedural reforms na pinag-usapan ng House prosecution panel ang paggamit ng Filipino kasama ng English bilang official languages sa impeachment trial.</p>
+
+<p>Mahalagang eksakto ang wording:<br>
+Pinag-usapan at kinonsidera ito.</p>
+
+<p>Hindi ibig sabihin na awtomatikong naging final rule na iyon.<br>
+Pero ang mismong paglitaw ng proposal ay mahalaga.</p>
+
+<p>Ipinapakita nitong maging sa isang legal at technical na proceeding na may malaking national audience, may lehitimong tanong tungkol sa language accessibility.</p>
+
+<p>At iyon naman talaga ang sentro.<br>
+Hindi kung kaya bang mag-English ng mga senador, congressman, abogado o eksperto.</p>
+
+<p>Kundi:</p>
+
+<blockquote>
+  <p>Kaya bang direktang sundan ng mamamayang pinaglilingkuran nila ang usapang ginagawa sa pangalan niya?</p>
+</blockquote>
+
+         <h2>HINDI SAPAT NA IPAGDIWANG ANG WIKA—KAILANGANG GAMITIN ITO</h2>
+
+<p>Dito bumabalik ang Buwan ng Wika.</p>
+
+<p>Madaling sabihin na mahalaga ang Filipino kapag tula ang binibigkas.<br>
+Madaling magsuot ng Barong at Filipiniana.<br>
+Madaling gumawa ng poster tungkol sa pagmamahal sa wika.</p>
+
+<p>Pero mas malaking test kung may natural na lugar ang Filipino kapag ang pinag-uusapan ay:<br>
+economics,<br>
+batas,<br>
+science,<br>
+technology,<br>
+budget,<br>
+public policy,<br>
+constitutional issues,<br>
+government accountability,<br>
+at iba pang seryosong pambansang usapin.</p>
+
+<p>Dahil kung lagi nating sasabihin:</p>
+
+<blockquote>
+  <p>“Mas madaling English dahil technical.”</p>
+</blockquote>
+
+<p>May mahirap na tanong na kasunod:<br>
+Paano lalawak ang technical vocabulary at intellectual capacity ng isang wika kung hindi natin ito gagamitin sa technical at intellectual na usapan?</p>
+
+<p>Ganito naman nabubuhay ang mga wika.</p>
+
+<p>Humihiram.<br>
+Lumilikha.<br>
+Nag-aadjust.<br>
+Nagbabago.<br>
+Nagkakaroon ng bagong termino.</p>
+
+<p>Hindi nagiging capable ang isang wika sa batas, science o economics dahil idineklara nating capable ito.<br>
+Nagiging capable ito dahil ginagamit, pinauunlad, sinusubukan, isinasalin at patuloy na pinayayaman.</p>
+
+<p>At mismong Constitution at Republic Act No. 7104 ang kumikilala sa Filipino bilang isang wikang patuloy na pinauunlad at pinayayaman—hindi isang nakasarang wikang kailangang manatiling purong-puro.</p>
+
+<h2>HINDI ENGLISH VERSUS FILIPINO—WIKA AT KAPANGYARIHAN ANG USAPIN</h2>
+
+<p>Sa huli, hindi ito English versus Filipino.</p>
+
+<p>Hindi rin ito Tagalog versus Bisaya.<br>
+Hindi ito tungkol sa pagpapahiya sa taong komportableng mag-English.</p>
+
+<p>At hindi rin ito argumento na lahat ng government proceedings ay dapat gawing Filipino-only.</p>
+
+<p>Mas malaki ang tanong:<br>
+Kapag ang impormasyon ay para sa publiko, naiintindihan ba ito ng publiko?</p>
+
+<p>Kapag ang batas ay ginagawa para sa mamamayan:<br>
+Kaya ba itong ipaliwanag sa mamamayan?</p>
+
+<p>Kapag may budget hearing:<br>
+Naiintindihan ba ng taxpayer kung saan napupunta ang pera niya?</p>
+
+<p>Kapag may congressional investigation:<br>
+Kaya bang sundan ng ordinaryong Pilipino ang mismong argumento, hindi lamang ang viral clips pagkatapos?</p>
+
+<p>Kapag may impeachment:<br>
+Kaya ba niyang maintindihan kung ano ang accusation, ano ang defense, ano ang legal standard at bakit mahalaga ang bawat argumento?</p>
+
+<p>Kapag gobyerno ang nagsasalita sa publiko:<br>
+Sapat ba na technically correct ang sinabi kung malaking bahagi ng audience ay hindi naman lubos na nakaunawa?</p>
+
+<p>Dito nagiging civic issue ang wika.<br>
+Dahil ang demokrasya ay hindi lamang tungkol sa karapatang magsalita ng gobyerno.<br>
+Kasama rito ang kakayahan ng mamamayan na maintindihan, magsuri, magtanong at maningil.</p>
+
+<h2>PAGKATAPOS NG AGOSTO, ANO NA?</h2>
+
+<p>Walang masama sa Pilipinong mahusay mag-English.<br>
+Dapat pa nga nating pagbutihin iyon.</p>
+
+<p>Napakalaking advantage ng pagiging multilingual.</p>
+
+<p>Mas maraming wikang kaya nating gamitin, mas maraming tao, kaalaman at oportunidad ang naaabot natin.</p>
+
+<p>Pero hindi rin dapat maging tahimik na entrance requirement ang mataas na English proficiency bago lubos na maunawaan ng isang Pilipino kung paano ginagamit ang kanyang buwis, anong batas ang ginagawa para sa kanya, bakit may iniimbestigahan, ano ang posisyon ng magkabilang panig at paano naaapektuhan ang kanyang mga karapatan.</p>
+
+<p>Kaya marahil ang tunay na hamon ng Buwan ng Wika ay hindi kung gaano karaming Pilipino ang kayang ulitin ang:</p>
+
+<blockquote>
+  <p>“Ang hindi magmahal sa kanyang salita…”</p>
+</blockquote>
+
+<p>Mas mahirap ang tanong:<br>
+Pagkatapos ng Agosto, mahalaga pa rin ba ang Filipino kapag wala na ang programa, poster at selebrasyon?</p>
+
+<p>At kapag batas, pera, kapangyarihan at kinabukasan na ng bayan ang pinag-uusapan—may sapat bang lugar ang wikang mas naiintindihan ng mamamayan sa mismong mesa kung saan ginagawa ang mga desisyong para sa kanila?</p>
+
+<p>Dahil ang sariling wika ay hindi lamang palamuti ng kultura.</p>
+
+<p>Hindi lamang asignatura.<br>
+Hindi lamang ginagamit kapag Buwan ng Wika.</p>
+
+<p>Wika rin ito ng pag-unawa.<br>
+Wika ng pagkakakilanlan.<br>
+Wika ng pakikilahok.</p>
+
+<p>At dapat kaya rin nitong maging wika ng pampublikong kapangyarihang kayang intindihin at panagutin ng bayan.</p>
+
+<p>Hindi natin kailangang mamili kung mahusay ba tayong mag-English o pinahahalagahan natin ang Filipino at iba pang wikang Pilipino.</p>
+
+<p>Puwede nating gawin pareho.</p>
+
+<p>Ang tanong ay hindi kung marunong ba tayong mag-English.<br>
+Ang tanong ay kung bakit kailangang mataas muna ang English proficiency ng mamamayan para lubos niyang masundan ang usaping siya rin naman ang apektado.</p>
+
+<p>Kung talagang para sa mamamayan ang impormasyon, hindi lamang dapat itong available sa mamamayan.<br>
+Dapat hangga’t maaari, naiintindihan din ito ng mamamayan.</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Constitution of the Republic of the Philippines, Article XIV, Sections 6–9 — Filipino bilang national language; Filipino at English bilang official languages; pagkilala sa regional languages; at constitutional direction sa paggamit at pagpapaunlad ng Filipino.
+    </li>
+
+    <li>
+      Executive Order No. 335 (1988) — pag-enhance sa paggamit ng Filipino sa official transactions, communications at correspondence ng national at local government offices.
+    </li>
+
+    <li>
+      Republic Act No. 7104, Commission on the Filipino Language Act (1991) — development at enrichment ng Filipino batay sa existing Philippine and other languages, at development at preservation ng Philippine languages.
+    </li>
+
+    <li>
+      Philippine Statistics Authority, 2020 Census of Population and Housing — Tagalog is the Most Widely Spoken Language at Home; 10.52 million o 39.9% ng 26.39 million households ang nag-report ng Tagalog bilang language generally spoken at home.
+    </li>
+
+    <li>
+      Philippine Statistics Authority, 2024 Functional Literacy, Education and Mass Media Survey (FLEMMS) — basic at functional literacy statistics gamit ang revised measurement framework; 93.1% basic literacy at 70.8% functional literacy sa population aged 10–64.
+    </li>
+
+    <li>
+      Social Weather Stations, March 26–29, 2023 language survey — reported abilities ng adult respondents sa Filipino at English, kabilang ang understanding, reading, writing, speaking at thinking in English.
+    </li>
+
+    <li>
+      Bonifacio P. Sibayan, <em>The Intellectualization of Filipino and Other Sociolinguistic and Education Essays</em>, Linguistic Society of the Philippines, 1999 — intellectualization of Filipino at konsepto ng controlling domains.
+    </li>
+
+    <li>
+      Allan B. I. Bernardo, “McKinley’s Questionable Bequest: Over 100 Years of English in Philippine Education,” <em>World Englishes</em>, Vol. 23, No. 1, 2004 — historical privileged status ng English sa Philippine formal education. Publisher: Wiley; institutional record: De La Salle University Animo Repository.
+    </li>
+
+    <li>
+      Faith Patricia M. Sicam &amp; Rochelle Irene G. Lucas, “Language Attitudes of Adolescent Filipino Bilingual Learners towards English and Filipino,” <em>Asian Englishes</em>, 2016 — language attitudes at relationship ng socioeconomic status sa attitudes toward English sa 473 bilingual high-school participants. De La Salle University Animo Repository.
+    </li>
+
+    <li>
+      Ariane Macalinga Borlongan, “A Survey on Language Use, Attitudes, and Identity in Relation to Philippine English among Young Generation Filipinos: An Initial Sample from a Private University,” <em>Philippine ESL Journal</em>, 2009 — Philippine English, language attitudes at Filipino identity. ERIC repository.
+    </li>
+
+    <li>
+      Gerard P. Concepcion, “Language Choice in Philippine Government Websites: Sociolinguistic Issues and Implications,” <em>SUVANNABHUMI</em>, Vol. 13, No. 1, 2021, pp. 35–64 — content analysis ng 235 Philippine government websites; overwhelmingly English ang content habang minimal ang Filipino at regional languages.
+    </li>
+
+    <li>
+      Michael R.M. Abrigo, Katha Ma-i M. Estopace, Edmar E. Lingatong &amp; Charlotte Marjorie L. Relos, “Linguistic Mismatch and Learning Productivity: Evidence from Mother Tongue-based Education in the Philippines,” <em>PIDS Discussion Paper 2025-41</em> — linguistic distance bilang “multiplicative tax” sa educational production at epekto ng linguistic mismatch sa learning productivity.
+    </li>
+
+    <li>
+      UNESCO, multilingual-education research and guidance, kabilang ang <em>Languages Matter: Global Guidance on Multilingual Education</em> — language, comprehension, learning at inclusion.
+    </li>
+
+    <li>
+      France, <em>Loi n° 94-665 du 4 août 1994 relative à l’emploi de la langue française</em> — institutional use ng French sa public services at iba pang public domains.
+    </li>
+
+    <li>
+      Germany, <em>Verwaltungsverfahrensgesetz</em>, Section 23 — German bilang official administrative language sa federal administrative procedure.
+    </li>
+
+    <li>
+      Republic of Korea, <em>Framework Act on Korean Language</em>, Article 14 — paggamit ng Hangeul at easily understandable terms and sentences sa public documents.
+    </li>
+
+    <li>
+      House of Representatives of the Philippines, 2026 official material on proposed impeachment procedural reforms — proposal under discussion na gamitin ang Filipino alongside English bilang official languages sa impeachment trial.
+    </li>
+
+    <li>
+      Hermenegildo Cruz, <em>Kun Sino ang Kumathâ ng “Florante”</em> (1906) — earliest known publication ng <em>Sa Aking Mga Kabata</em>, kasama ang historical scholarship tungkol sa disputed attribution ng tula kay José Rizal.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
