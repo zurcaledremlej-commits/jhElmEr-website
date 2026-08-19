@@ -1,1 +1,2352 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Isang fact-based Civic Explainer tungkol sa professional accountability ng mga guro, collective guilt, collective immunity, DepEd policies, legal standards, educational research, at kung bakit ebidensiya ang dapat manaig bago hatol."
+>
+
+ <title>HINDI LAHAT NG GURO—PERO HINDI RIN DAPAT IPAGTANGGOL ANG MALI | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  HINDI LAHAT NG GURO—PERO HINDI RIN DAPAT IPAGTANGGOL ANG MALI
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-guro.png"
+  alt="Simbolikong paglalarawan ng professional accountability ng mga guro, ebidensiya, at patas na pananagutan."
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag may isang gurong napuna dahil sa asal, biro, content o paraan ng paggamit sa kanyang professional identity, mabilis mapunta ang usapan sa dalawang kampo:
+  </p>
+
+  <blockquote>
+    <p>“Huwag lahatin ang mga guro.”</p>
+
+    <p>o</p>
+
+    <p>“Kita ninyo? Ganyan talaga ang mga guro ngayon.”</p>
+  </blockquote>
+
+  <p>
+    Parehong may problema.
+  </p>
+
+  <p>
+    Dahil ang magandang reputasyon ng nakararami ay hindi depensa sa maling ginawa ng isang partikular na guro—pero ang maling ginawa ng iilan ay hindi rin ebidensiya laban sa buong profession.
+  </p>
+
+  <p>
+    At dito dapat magsimula ang mas patas na usapan.
+  </p>
+
+  <p>
+    Hindi sa pagtatanggol dahil kapwa guro.<br>
+    Hindi rin sa paghusga dahil guro ang gumawa.
+  </p>
+
+  <p>
+    Kundi sa mas simpleng tanong:<br>
+    Ano ba talaga ang ginawa, ano ang professional responsibility na kasama nito, at hanggang saan lang ang kayang patunayan ng ebidensiya?
+  </p>
+
+  <p>
+    Dahil may karapatan ang guro sa personal na buhay, biro, opinyon, content at legal na karagdagang pagkakakitaan.
+  </p>
+
+  <p>
+    Pero kapag ang professional identity, authority, classroom, learners o tiwalang kasama ng pagiging guro ang mismong pumapasok sa ginawa, hindi na sapat na tapusin ang usapan sa:
+  </p>
+
+  <blockquote>
+    <p>“Content lang naman.”</p>
+  </blockquote>
+
+  <p>
+    Kasabay nito, hindi rin sapat na gamitin ang pagkakamali ng ilan para magpalabas ng mas malawak na hatol laban sa profession.
+  </p>
+
+  <p>
+    Accountability ang kailangan—hindi collective immunity at hindi collective guilt.
+  </p>
+
+  <p>
+    At para maintindihan kung saan talaga ang hangganan, kailangang tingnan hindi lang ang viral reactions, kundi ang aktuwal na datos, professional ethics, DepEd policies, legal history ng teaching profession, child-development research, school culture at mismong bigat ng ebidensiya.
+  </p>
+
+  <h2>
+    MAY TOTOONG PROBLEMA—PERO GAANO KALAWAK?
+  </h2>
+
+  <p>
+    Noong Agosto 2026, sinabi mismo ng Department of Education na nalaman nito ang “several incidents” involving public-school teachers na ginamit ang kanilang profession sa paggawa ng online content. May mga naiulat ding content na kinasasangkutan ng learners at maaaring hindi naaayon sa professional at ethical standards ng DepEd.
+  </p>
+
+  <p>
+    Mahalaga iyon.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi gawa-gawa lamang ang concern tungkol sa inappropriate teacher content.<br>
+    May aktuwal na naiulat na mga insidente.
+  </p>
+
+  <p>
+    Pero equally important ang hindi sinasabi ng salitang “several.”
+  </p>
+
+  <p>
+    Walang inilabas sa naturang public statement na exact number ng incidents, wala ring relevant teacher-specific denominator, at wala ring prevalence rate, representative national sample o sapat na breakdown para masukat kung gaano kalaking bahagi ng teaching profession ang sangkot.
+  </p>
+
+  <p>
+    At dito kailangang marunong tayong bumasa ng datos.
+  </p>
+
+  <p>
+    Kung hindi natin alam ang eksaktong numerator—kung ilang kaso talaga—at wala rin tayong tamang denominator—kung ilang relevant teachers ang dapat paghambingan—wala tayong sapat na batayan para kalkulahin ang prevalence.
+  </p>
+
+  <p>
+    Kaya statistically, magkaibang claim ang:
+  </p>
+
+  <blockquote>
+    <p>“May nangyayaring mga kaso.”</p>
+
+    <p>at</p>
+
+    <p>“Karaniwan o laganap ito sa mga guro.”</p>
+  </blockquote>
+
+  <p>
+    Sapat ang documented cases para patunayang umiiral ang problema. Hindi iyon sapat para patunayang representative ng profession ang problema.
+  </p>
+
+  <p>
+    Napakahalaga ng distinction na ito dahil dito nahihiwalay ang critical criticism sa generalization.
+  </p>
+
+  <p>
+    Kung may mga taong napatunayang gumawa ng mali, puwedeng panagutin ang mga taong iyon.
+  </p>
+
+  <p>
+    Hindi mo kailangang protektahan sila dahil marami silang kasamahang walang ginawang ganoon. Pero hindi mo rin maaaring gamitin ang ilang documented cases bilang statistical portrait ng buong profession nang walang sapat na datos.
+  </p>
+
+  <blockquote>
+    <p>Existence is not prevalence.</p>
+  </blockquote>
+
+  <p>
+    At ang respeto sa datos ay nangangahulugang alam natin ang pagkakaiba.
+  </p>
+
+  <h2>
+    HINDI LANG “MORAL EXPECTATION” ANG PROFESSIONAL BOUNDARY SA ONLINE CONTENT
+  </h2>
+
+  <p>
+    May isa pang maling framing: Na kapag pinuna ang social-media content ng isang teacher, simpleng moral policing lamang iyon.
+  </p>
+
+  <p>
+    Hindi ganoon kasimple. May aktuwal na institutional policy framework ang DepEd tungkol dito.
+  </p>
+
+  <p>
+    Sa 2026 reminder ng DepEd, binigyang-diin na kailangang gumamit ang personnel ng professionalism, prudence at sound judgment sa online activity, lalo na kapag may learners, classroom activities, school premises o official functions na kasama sa content.
+  </p>
+
+  <p>
+    Hindi rin sapat ang simpleng depensang:
+  </p>
+
+  <blockquote>
+    <p>“Personal account ko naman ito.”</p>
+  </blockquote>
+
+  <p>
+    Kapag malinaw na pumapasok sa content ang pagiging DepEd employee, learners, school activities o school environment, hindi basta nawawala ang professional at ethical obligations dahil personal account ang ginamit.
+  </p>
+
+  <p>
+    Hindi rin iisang memo lamang ang pinanggagalingan nito.
+  </p>
+
+  <p>
+    May DepEd Order No. 49, s. 2022 tungkol sa professionalism at responsible social-media conduct ng DepEd personnel.<br>
+    May DepEd Order No. 40, s. 2012, ang Child Protection Policy.
+  </p>
+
+  <p>
+    May mga sumunod ding reiteration hinggil sa responsible social-media use at paglalagay ng learners’ images o data online.
+  </p>
+
+  <p>
+    At noong 2026, inilabas ang DepEd Order No. 006, s. 2026 — Guidelines on Ensuring a Safe and Motivating Learning Environment, na bahagi ng mas malawak na framework para sa learner protection, rights, safety at professional responsibility sa physical at virtual learning environments.
+  </p>
+
+  <p>
+    Kaya kapag may content na gumagamit ng bata, classroom, school identity o authority ng teacher, hindi na sapat na itanong:
+  </p>
+
+  <blockquote>
+    <p>“Nakakatawa ba?”</p>
+
+    <p>o</p>
+
+    <p>“Personal account naman niya, ano ang problema?”</p>
+  </blockquote>
+
+  <p>
+    Mas tamang tanong ang:<br>
+    May learner bang ginamit?<br>
+    May privacy o dignity bang nalagay sa panganib?<br>
+    May professional authority bang ginawang bahagi ng entertainment?<br>
+    May school environment o official identity bang ginamit?<br>
+    At may policy o ethical boundary bang nalampasan?
+  </p>
+
+  <p>
+    Doon nagiging professional-accountability question ang isang bagay na sa ibang tao ay maaaring purely personal content lamang.
+  </p>
+
+            <h2>
+    HINDI DAHIL GURO AY DAPAT SANTO—PERO HINDI RIN ORDINARYONG TRABAHO LANG ANG PROPESYON
+  </h2>
+
+  <p>
+    Minsan kapag sinabing may mas mataas na professional expectation sa teachers, ang sagot:
+  </p>
+
+  <blockquote>
+    <p>“Tao lang din ang guro.”</p>
+  </blockquote>
+
+  <p>
+    Tama.<br>
+    Pero hindi iyon ang disputed point.
+  </p>
+
+  <p>
+    Tao rin ang doktor.<br>
+    Tao rin ang abogado.<br>
+    Tao rin ang pulis.<br>
+    Tao rin ang accountant.<br>
+    Tao rin ang social worker.
+  </p>
+
+  <p>
+    Ang pagiging professional ay hindi pagkawala ng pagkatao. Ang ibig sabihin lamang nito: may responsibilidad na kusang kaakibat ng papel, tiwala at kapangyarihang ibinigay sa iyo ng propesyon.
+  </p>
+
+  <p>
+    At sa teaching profession, matagal nang kinikilala ng ating legal framework na hindi lamang impormasyon ang hawak ng teacher. May formative influence din siya.
+  </p>
+
+  <h2>
+    BAGO PA ANG SOCIAL MEDIA, KINIKILALA NA NG BATAS ANG FORMATIVE POWER NG GURO
+  </h2>
+
+  <p>
+    Noong 1970s pa lamang, napakalinaw na nito sa Presidential Decree No. 1006, ang naunang legal framework sa professionalization of teachers.
+  </p>
+
+  <p>
+    Binanggit mismo ng batas ang layunin ng educational institutions na magturo ng citizenship, moral character at personal discipline.
+  </p>
+
+  <p>
+    At ipinaliwanag nito kung bakit espesyal ang papel ng teacher: Dahil sa kanilang direct at continuing interaction sa mga bata at kabataan, nagiging mahalagang puwersa sila sa pagbuo ng attitudes ng mamamayan.
+  </p>
+
+  <p>
+    Iyan ay decades bago ang Facebook.
+  </p>
+
+  <p>
+    Bago ang TikTok.<br>
+    Bago ang monetized reels.<br>
+    Bago naging posible na ang isang eksena sa classroom ay mapanood ng milyon-milyong tao.
+  </p>
+
+  <p>
+    Pagdating ng Republic Act No. 7836 o Philippine Teachers Professionalization Act of 1994, ipinagpatuloy ang prinsipyo ng teaching bilang regulated profession.
+  </p>
+
+  <p>
+    Tahasang kinilala ng batas ang vital role ng teachers sa nation-building sa pamamagitan ng paghubog ng responsible at literate citizenry at binigyan ang professional regulatory system ng kapangyarihang magtakda at magpatupad ng ethical at professional standards.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na bawat pagkakamali ng guro ay professional offense.<br>
+    Hindi rin ibig sabihin na gobyerno ang may-ari ng buong personal na buhay niya.
+  </p>
+
+  <p>
+    Ang ibig sabihin:<br>
+    Hindi bagong imbento ng social-media critics ang ideya na may formative responsibility ang guro. Nasa mismong legal history ng professionalization ng teaching sa Pilipinas ang prinsipyong iyon.
+  </p>
+
+  <h2>
+    MAS DIREKTA PA ANG CODE OF ETHICS
+  </h2>
+
+  <p>
+    Sa Code of Ethics for Professional Teachers, ang teacher ay hindi lamang tagapaghatid ng lesson.
+  </p>
+
+  <p>
+    Inilalarawan siyang facilitator ng learning at development ng kabataan.
+  </p>
+
+  <p>
+    Inaatasan siyang panatilihin ang honor at dignity ng profession, unahin ang interest at welfare ng learners, at panatilihin ang isang dignified personality na maaaring maging mabuting halimbawa sa learners, peers at iba.
+  </p>
+
+  <p>
+    Mahalaga ito dahil ipinapakita nitong ang professional ethics ng teacher ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>“Na-discuss mo ba nang tama ang aralin?”</p>
+  </blockquote>
+
+  <p>
+    Kasama rin dito ang relasyon niya sa learner, paggamit ng authority, dignity ng bata, professional boundaries at personal conduct na direktang nakaugnay sa kanyang professional role.
+  </p>
+
+  <p>
+    At may tunay na regulatory consequence ang ethics na iyon.
+  </p>
+
+  <p>
+    Sa RA 7836, maaaring maging grounds for professional disciplinary action ang immoral, unprofessional o dishonorable conduct at paglabag sa code of ethical and professional standards—subject, siyempre, sa tamang proseso at ebidensiya.
+  </p>
+
+  <p>
+    Kaya hindi tama ang dalawang extreme:
+  </p>
+
+  <blockquote>
+    <p>“Teacher ka, kaya lahat ng personal mong ginagawa ay pakikialaman ng profession.”</p>
+  </blockquote>
+
+  <p>
+    Mali.
+  </p>
+
+  <p>
+    Pero mali rin ang:
+  </p>
+
+  <blockquote>
+    <p>“Basta outside class hours, wala nang professional accountability kahit teacher identity, learners at classroom mismo ang ginagamit sa content.”</p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon kasimple ang boundary.
+  </p>
+
+  <h2>
+    HINDI LANG GRADES ANG HINUHUBOG NG PAARALAN
+  </h2>
+
+  <p>
+    Kung may nagsasabing trabaho lamang ng teacher ang magturo ng academic subject at walang kinalaman ang paaralan sa character formation, hindi iyon tugma sa mismong architecture ng Philippine basic education.
+  </p>
+
+  <p>
+    Sa Republic Act No. 11476, institutionalized ang Good Manners and Right Conduct at Values Education sa K–12 curriculum.
+  </p>
+
+  <p>
+    Ang GMRC ay separate subject sa Grades 1–6 at integrated na mula kindergarten; ang Values Education naman ay bahagi ng Grades 7–10 at integrated sa Grades 11–12.
+  </p>
+
+  <p>
+    Higit pa rito, inaatasan ng batas ang paggamit ng whole-school approach sa values education—hindi lamang isang subject period na hiwalay sa kultura at asal ng buong school community.
+  </p>
+
+  <p>
+    Napakahalaga ng “whole-school” idea.
+  </p>
+
+  <p>
+    Dahil mahirap turuan ang bata ng:<br>
+    respeto,<br>
+    human dignity,<br>
+    disiplina,<br>
+    responsibility,<br>
+    integrity,<br>
+    at good conduct—<br><br>
+
+    kung ang kabaligtaran naman ang paulit-ulit niyang nakikitang normal sa adults na may authority sa paligid niya.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na kailangan maging flawless ang teacher.
+  </p>
+
+  <p>
+    Ang ibig sabihin:<br>
+    Hindi neutral ang example ng adult authority sa isang institusyong mismong may mandato sa character formation.
+  </p>
+
+            <h2>
+    ANG BATA AY HINDI LANG NATUTUTO SA FORMAL LESSON
+  </h2>
+
+  <p>
+    Dito pumapasok ang child-development at educational research.
+  </p>
+
+  <p>
+    Ang bata ay hindi lamang natututo kapag sinabi ng teacher:
+  </p>
+
+  <blockquote>
+    <p>“Ito ang lesson natin ngayon.”</p>
+  </blockquote>
+
+  <p>
+    May learning ding nangyayari sa relationships, observed behavior, reinforcement, classroom norms at kung ano ang nakikitang tinatanggap o kino-correct ng adults.
+  </p>
+
+  <p>
+    At may Philippine evidence para rito.
+  </p>
+
+  <p>
+    Sa isang peer-reviewed study nina Banzon-Librojo, Garabiles at Alampay, sinuri ang 401 high-school students mula sa isang urban public school sa Pilipinas.
+  </p>
+
+  <p>
+    Nakita ng researchers na ang experience ng harsh discipline mula sa teachers ay predictive of higher bullying victimization at mas negative na perception ng teacher support.
+  </p>
+
+  <p>
+    Hindi nito sinasabing ang teachers ang nag-iisang sanhi ng bullying.
+  </p>
+
+  <p>
+    Ipinapakita nitong may consequential relationship ang paraan ng adult authority at social experience ng learners sa school.
+  </p>
+
+  <p>
+    At mahalaga ang interpretasyon ng Philippine researchers: Ang discipline strategies sa school ay maaaring magkaroon ng repercussions sa student behavior at relationships, kaya mahalaga ang role ng teachers sa modeling at pagtatakda ng norms ng acceptable behavior.
+  </p>
+
+  <p>
+    Hindi ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>“Kapag nagmura ang teacher, siguradong magmumura ang bata.”</p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon ka-mechanical ang development ng tao.
+  </p>
+
+  <p>
+    Maraming bagay ang nakakaimpluwensiya sa bata:<br>
+    pamilya,<br>
+    kaibigan,<br>
+    community,<br>
+    internet,<br>
+    media,<br>
+    culture,<br>
+    temperament,<br>
+    at sarili niyang mga desisyon.
+  </p>
+
+  <p>
+    Pero mali rin ang kabilang extreme na:
+  </p>
+
+  <blockquote>
+    <p>“Walang epekto ang behavior ng teacher dahil hindi naman iyon bahagi ng lesson plan.”</p>
+  </blockquote>
+
+  <h2>
+    HINDI LANG ISANG PHILIPPINE STUDY ANG NAGSASABI NA MAHALAGA ANG TEACHER–STUDENT RELATIONSHIP
+  </h2>
+
+  <p>
+    Sa mas malaking research literature, isang meta-analysis ng 57 primary studies na may kabuuang 73,933 students ang nakakita ng significant links sa pagitan ng affective teacher–student relationships at externalizing behavior ng students—mga behavior gaya ng aggression at conduct problems.
+  </p>
+
+  <p>
+    Pero dapat ding maging disiplinado sa pagbasa ng research.
+  </p>
+
+  <p>
+    Ang association ay hindi awtomatikong patunay ng simpleng one-way causation.
+  </p>
+
+  <p>
+    Maaaring impluwensiyahan ng teacher ang learner.<br>
+    Maaaring makaapekto rin ang existing behavior ng learner sa relasyon niya sa teacher.<br>
+    At maaaring may family, peer, socioeconomic at school factors na sabay na nakaaapekto.
+  </p>
+
+  <p>
+    Kaya hindi natin ginagamit ang research para sabihing:
+  </p>
+
+  <blockquote>
+    <p>“Teacher ang dahilan kung bakit masama ang asal ng isang bata.”</p>
+  </blockquote>
+
+  <p>
+    Ang mas defensible na conclusion ay:<br>
+    May sapat na research para hindi ituring na irrelevant ang behavior, relationship at example ng mga gurong regular na may authority at interaction sa learners.
+  </p>
+
+  <h2>
+    AT MAY PHILIPPINE SCHOOL-CLIMATE PROBLEM NA HINDI DAPAT MINAMALIIT
+  </h2>
+
+  <p>
+    Sa PISA 2022, sinabi ng 43% ng Filipino girls at 53% ng Filipino boys na edad 15 na nakararanas sila ng bullying acts nang hindi bababa sa ilang beses kada buwan.
+  </p>
+
+  <p>
+    Sa OECD average, nasa 20% ng girls at 21% ng boys ang katumbas na figures.
+  </p>
+
+  <p>
+    Hindi ito ebidensiya na teachers ang sanhi ng bullying.<br>
+    Hindi iyon ang claim.
+  </p>
+
+  <p>
+    Ang ipinapakita nito ay may tunay na school-social environment kung saan malaking usapin ang dignity, aggression, humiliation, belonging at acceptable conduct.
+  </p>
+
+  <p>
+    Kaya sa ganitong environment, mahalaga kung anong behavior ang nakikitang kino-correct ng adults—at kung anong behavior ang nakikitang ginagawa, pinagtatawanan, ginagawang content o ginagawang normal mismo ng adults.
+  </p>
+
+  <p>
+    Hindi curriculum lang ang nagtuturo ng norms.<br>
+    May itinuturo rin ang kulturang nakikita at pinapayagan.
+  </p>
+
+  <p>
+    Iyan ang socio-cultural dimension na madaling mawala kapag ginawang simpleng:
+  </p>
+
+  <blockquote>
+    <p>“Biro lang naman.”</p>
+  </blockquote>
+
+  <h2>
+    ANG PAGIGING GURO AY HINDI PAGKAWALA NG PERSONAL NA BUHAY—PERO HINDI RIN LAGING HIWALAY ANG PERSONAL SA PROFESSIONAL
+  </h2>
+
+  <p>
+    Dapat equally clear ito.
+  </p>
+
+  <p>
+    May karapatan ang teacher na:<br>
+    tumawa,<br>
+    magbiro,<br>
+    mag-post,<br>
+    magkaroon ng political o social opinion,<br>
+    gumawa ng harmless entertainment,<br>
+    magkaroon ng hobby,<br>
+    at magkaroon ng sariling pagkatao na hindi kontrolado ng school.
+  </p>
+
+  <p>
+    Hindi natin dapat gawing moral police ang teaching profession.<br>
+    Hindi rin kailangang 24 oras na magmukhang nasa faculty meeting ang isang guro.
+  </p>
+
+  <p>
+    At ang pagiging role model ay hindi nangangahulugang bawat personal na pagkakamali, unpopular opinion o bagay na hindi gusto ng ibang tao ay automatic nang professional offense.
+  </p>
+
+  <p>
+    Pero may mahalagang qualification dito.
+  </p>
+
+  <p>
+    Hindi rin tama na isipin na kapag ginawa ang isang bagay sa personal na oras, personal account, labas ng school o walang estudyanteng kaharap ay awtomatiko na itong wala nang anumang professional relevance.
+  </p>
+
+  <p>
+    Mas malawak nang kaunti ang ethical standard ng teaching profession.
+  </p>
+
+  <p>
+    Sa Code of Ethics for Professional Teachers, inaasahang mamuhay ang teacher nang may dignidad “in all places at all times” at panatilihin ang isang dignified personality na maaaring maging modelong karapat-dapat tularan.
+  </p>
+
+  <p>
+    At sa professional regulation ng teaching, ang good moral character at ethical fitness ay hindi requirement lamang sa araw ng pagkuha ng lisensya. Patuloy itong bahagi ng pagiging licensed professional.
+  </p>
+
+  <p>
+    Ibig sabihin, mas malinaw at mas direktang pumapasok ang professional accountability kapag sangkot ang:<br>
+    learners,<br>
+    classroom,<br>
+    school premises,<br>
+    teacher authority,<br>
+    professional relationship,<br>
+    official activity,<br>
+    school resources,<br>
+    o teacher identity mismo.
+  </p>
+
+  <p>
+    Pero hindi rin sila ang tanging posibleng batayan.
+  </p>
+
+  <p>
+    May ilang sufficiently serious conduct sa personal na buhay na maaaring magkaroon pa rin ng professional implications—halimbawa kung pumapasok na ito sa legally o professionally recognized grounds gaya ng immoral, unprofessional o dishonorable conduct—subject sa actual facts, applicable law, ethical standards at due process.
+  </p>
+
+  <p>
+    Napakahalaga ng distinction.
+  </p>
+
+  <p>
+    Hindi ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>“Teacher ka, kaya puwedeng pakialaman ang buong personal mong buhay.”</p>
+  </blockquote>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Pero hindi rin tama ang:
+  </p>
+
+  <blockquote>
+    <p>“Personal life ko ito, kaya kahit gaano kaseryoso ang ginawa ko ay wala nang kinalaman ang pagiging professional teacher ko.”</p>
+  </blockquote>
+
+  <p>
+    Hindi rin ganoon ka-absolute ang boundary.
+  </p>
+
+  <p>
+    Kaya ang tamang tanong ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>“Ginawa ba ito sa classroom?”</p>
+
+    <p>At hindi rin:</p>
+
+    <p>“Teacher ba ang gumawa?”</p>
+  </blockquote>
+
+  <p>
+    Mas tama ang serye ng tanong:<br>
+    Ano mismo ang conduct?<br>
+    Gaano ito kaseryoso?<br>
+    May direktang koneksiyon ba sa learners, school, authority o professional identity?<br>
+    Kung wala, pumapasok ba naman ito sa isang malinaw na ethical o professional standard na may sapat na legal basis?<br>
+    At higit sa lahat—may sapat bang ebidensiya at nasunod ba ang due process bago magdeklara ng professional violation?
+  </p>
+
+  <p>
+    Dahil may malaking pagkakaiba ang personal behavior na ayaw lang ng ibang tao at personal conduct na maaaring umabot sa lehitimong professional-accountability concern.
+  </p>
+
+  <p>
+    Hindi dapat gawing pareho ang dalawa.
+  </p>
+
+  <p>
+    Ang teaching profession ay may mas mataas na ethical expectation. Pero ang mas mataas na expectation ay hindi lisensya para sa walang-hanggang moral policing.
+  </p>
+
+  <p>
+    At mahalaga rin ang karapatan ng guro sa personal na buhay, sariling pagpapahayag at pribadong espasyo. Pero hindi rin ito automatic immunity sa serious conduct na maaaring makaabot sa mismong fitness, dignity at ethical standards ng profession.
+  </p>
+
+            <h2>
+    AT OO—MAY KARAPATAN ANG GURO NA KUMITA SA LABAS NG PAGTUTURO
+  </h2>
+
+  <p>
+    Mahalagang itama rin ito dahil madaling maging unfair ang usapan.
+  </p>
+
+  <p>
+    Mismong Code of Ethics for Professional Teachers ang kumikilala sa karapatan ng teacher na magkaroon ng legitimate income generation, ngunit may malinaw na qualification:
+  </p>
+
+  <blockquote>
+    <p>“provided that it does not relate to or adversely affect his work.”</p>
+  </blockquote>
+
+  <p>
+    Ibig sabihin, hindi sapat na sabihing legal lamang ang isang sideline o pagkakakitaan.
+  </p>
+
+  <p>
+    May professional boundary pa ring kailangang tingnan ayon sa mismong wording ng Code.
+  </p>
+
+  <p>
+    Kaya walang matinong basehan ang blanket statement na:
+  </p>
+
+  <blockquote>
+    <p>“Teacher ka, bawal kang magkaroon ng additional income.”</p>
+  </blockquote>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Pero hindi rin natin dapat baligtarin ang Code at sabihing:
+  </p>
+
+  <blockquote>
+    <p>“Basta legal ang pagkakakitaan at hindi naaapektuhan ang oras ko sa pagtuturo, wala nang ibang professional question.”</p>
+  </blockquote>
+
+  <p>
+    Dahil hindi lamang “adversely affect his work” ang qualification.<br>
+    Kasama rin ang “does not relate to” his work.
+  </p>
+
+  <p>
+    At dahil maaaring mangailangan ng legal o administrative interpretation ang application ng wording na ito sa isang partikular na uri ng content o sideline, hindi rin tama na tayo mismo ang magdeklara na automatic na bawal ang lahat ng income na may anumang koneksiyon sa pagiging teacher.
+  </p>
+
+  <p>
+    Ang mas responsable ay tingnan ang actual circumstances:<br>
+    Ginagamit ba ang learners?<br>
+    Ginagamit ba ang classroom o school resources?<br>
+    Ginagamit ba ang professional authority o relationship?<br>
+    May conflict ba sa professional obligations?<br>
+    At may specific policy o ethical standard bang naaapektuhan?
+  </p>
+
+  <p>
+    Iyan ang kailangang suriin sa isang actual case.
+  </p>
+
+  <h2>
+    PERO HINDI RIN DAPAT GAMITIN ANG “MABABA ANG SWELDO” BILANG UNIVERSAL ETHICAL EXEMPTION
+  </h2>
+
+  <p>
+    May lehitimong economic issue sa teaching profession.
+  </p>
+
+  <p>
+    At mas matibay ang mismong Magna Carta for Public School Teachers — RA 4670 bilang policy benchmark.
+  </p>
+
+  <p>
+    Matagal nang deklaradong polisiya ng batas na dapat mapabuti ang social at economic status at working conditions ng public-school teachers.
+  </p>
+
+  <p>
+    Sa salary criteria nito, sinabi ring ang teacher compensation ay dapat maihambing nang maayos sa ibang occupations na nangangailangan ng katulad na qualifications at training, at dapat makatulong upang magkaroon ang teacher at pamilya niya ng reasonable standard of life.
+  </p>
+
+  <p>
+    Ibig sabihin, legitimate public-policy question talaga ang adequacy ng teacher compensation.
+  </p>
+
+  <p>
+    Hindi natin kailangang pagtawanan o maliitin ang teacher na naghahanap ng additional source of income.
+  </p>
+
+  <p>
+    Para magkaroon din ng konkretong snapshot: sa 2026 national-government salary schedule, ang Salary Grade 11 ay nasa ₱31,705 sa Step 1 hanggang ₱33,611 sa Step 8 kada buwan.
+  </p>
+
+  <p>
+    Ang Teacher I positions ay classified sa Salary Grade 11.
+  </p>
+
+  <p>
+    Pero hindi rin intellectually honest na tingnan ang numerong iyon at basta sabihing:
+  </p>
+
+  <blockquote>
+    <p>“Mababa.”</p>
+
+    <p>o</p>
+
+    <p>“Sapat na sapat.”</p>
+  </blockquote>
+
+  <p>
+    nang walang context.
+  </p>
+
+  <p>
+    Ang adequacy ng sahod ay nakadepende rin sa cost of living, household size, location, debt, benefits, career level at iba pang economic conditions.<br>
+    At nagbabago rin ang government salary schedules sa paglipas ng panahon.
+  </p>
+
+  <p>
+    Kaya mas timeless at mas patas ang prinsipyo:<br>
+    Lehitimong pag-usapan at ipaglaban ang mas mahusay na compensation ng teachers.<br>
+    Lehitimo ring magkaroon sila ng karagdagang legal na pagkakakitaan.
+  </p>
+
+  <p>
+    Pero ibang tanong pa rin ang:<br>
+    Ethical at professionally defensible ba ang paraan ng pagkita?
+  </p>
+
+  <p>
+    Kung ang content ay harmless at sariling creativity ang puhunan—ibang usapan iyon.<br>
+    Kung ang content naman ay gumagamit ng learner humiliation, privacy, classroom authority o professional relationship bilang materyal para kumita—hindi automatic na nawawala ang ethical question dahil kailangan ng additional income.
+  </p>
+
+  <p>
+    Ang financial need ay maaaring magpaliwanag kung bakit pinasok ang content creation.<br>
+    Hindi nito awtomatikong sinasagot kung tama ang paraan ng content creation.
+  </p>
+
+  <p>
+    Iyan ang distinction.
+  </p>
+
+  <h2>
+    MAY HANGGANAN ANG “BIRO LANG NAMAN”
+  </h2>
+
+  <p>
+    Pareho rin ito sa comedy.
+  </p>
+
+  <p>
+    Hindi lahat ng offensive joke ay krimen.<br>
+    Hindi lahat ng pangit na biro ay administrative offense.<br>
+    Hindi rin dahil may isang taong na-offend ay automatic nang professional violation.
+  </p>
+
+  <p>
+    Pero ang salitang:
+  </p>
+
+  <blockquote>
+    <p>“Biro lang.”</p>
+  </blockquote>
+
+  <p>
+    ay hindi magic eraser ng context.
+  </p>
+
+  <p>
+    Kung ang teacher ay gumagawa ng joke tungkol sa sariling buhay sa personal account at walang learner o professional authority na ginagamit—malawak ang personal space niya.
+  </p>
+
+  <p>
+    Ibang usapan kapag ang biro ay:<br>
+    nanghihiya ng learner,<br>
+    ginagawang punchline ang kahinaan ng bata,<br>
+    ginagamit ang pagkakamali ng estudyante para sa engagement,<br>
+    ginagawang unwilling character ang learner sa monetized content,<br>
+    o ginagamit ang classroom authority para gawing entertainment ang humiliation.
+  </p>
+
+  <p>
+    Doon hindi na sapat ang:
+  </p>
+
+  <blockquote>
+    <p>“Nakakatawa naman.”</p>
+  </blockquote>
+
+  <p>
+    Dahil may power imbalance.
+  </p>
+
+  <p>
+    Ang teacher ang adult professional.<br>
+    Ang learner ang batang ipinagkatiwala sa kanyang pangangalaga at authority.
+  </p>
+
+  <p>
+    Hindi sila simpleng dalawang equal content creators na nagkataong nasa iisang video.
+  </p>
+
+  <h2>
+    HINDI RIN UNIFORM LANG ANG HANGGANAN
+  </h2>
+
+  <p>
+    Mahalagang maging precise rito.
+  </p>
+
+  <p>
+    Hindi magic switch ang teacher uniform.
+  </p>
+
+  <p>
+    Hindi ibig sabihin:<br>
+    Naka-uniform = bawal magbiro.<br>
+    Hindi naka-uniform = wala nang professional responsibility.
+  </p>
+
+  <p>
+    Mas malalim ang test.
+  </p>
+
+  <p>
+    Ginagamit ba ang professional identity?
+  </p>
+
+  <p>
+    Maaaring makita iyon sa:<br>
+    teacher uniform,<br>
+    classroom,<br>
+    school premises,<br>
+    learners,<br>
+    teacher title,<br>
+    official activity,<br>
+    school resources,<br>
+    o mismong authority at credibility na nakukuha dahil teacher ang creator.
+  </p>
+
+  <p>
+    Ang uniform ay isang malinaw na visual marker ng professional identity, pero hindi iyon ang nag-iisang batayan.
+  </p>
+
+  <p>
+    Kapag ginamit mo ang pagiging teacher bilang bahagi ng dahilan kung bakit interesting, credible o monetizable ang content, hindi makatwirang sabihin na walang kinalaman ang profession sa sandaling accountability na ang usapan.
+  </p>
+
+  <p>
+    Hindi puwedeng:<br>
+    professional identity kapag advantage,<br>
+    purely private identity kapag may criticism.
+  </p>
+
+  <p>
+    Pero muli—hindi rin automatic na violation ang paggamit ng teacher identity.<br>
+    Kailangan pa ring tingnan ang actual conduct, context, policy at harm.
+  </p>
+
+            <h2>
+    MAGKAIBA ANG LEGAL, PROFESSIONAL AT MORAL NA HANGGANAN
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang distinction.
+  </p>
+
+  <p>
+    May content na legal pero questionable professionally.<br>
+    May content na maaaring walang sapat na basis para sa administrative sanction pero morally irresponsible.<br>
+    At mayroon ding conduct na maaaring tumawid sa malinaw na policy o legal prohibition.
+  </p>
+
+  <p>
+    Kaya hindi dapat paghalu-haluin ang tatlo.
+  </p>
+
+  <p>
+    <strong>LEGAL</strong><br>
+    May batas bang nilabag?
+  </p>
+
+  <p>
+    <strong>PROFESSIONAL / ADMINISTRATIVE</strong><br>
+    May Code of Ethics, DepEd rule, child-protection standard o employment obligation bang nilabag?
+  </p>
+
+  <p>
+    <strong>MORAL / ETHICAL</strong><br>
+    Kahit walang formal violation, ginamit ba ang kapangyarihan, kahinaan o dignidad ng ibang tao sa paraang mahirap ipagtanggol bilang tama?
+  </p>
+
+  <p>
+    Hindi lahat ng immoral ay criminal.<br>
+    Hindi lahat ng distasteful ay administrative offense.<br>
+    At hindi lahat ng legal ay automatically professionally responsible.
+  </p>
+
+  <p>
+    Dahil dito, mas seryoso ang analysis kaysa:
+  </p>
+
+  <blockquote>
+    <p>“Bawal ba o hindi?”</p>
+  </blockquote>
+
+  <p>
+    Minsan ang tamang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>“Kahit puwede, tama bang gawin sa tungkuling hawak mo?”</p>
+  </blockquote>
+
+  <h2>
+    PERO DAPAT ACCOUNTABLE DIN ANG PUMUPUNA
+  </h2>
+
+  <p>
+    Hindi dahil may totoong inappropriate teacher content ay puwede nang magsalita nang walang hangganan ang critics, officials o commentators.
+  </p>
+
+  <p>
+    Kung may documented teacher misconduct, sabihin:
+  </p>
+
+  <blockquote>
+    <p>“May documented teacher misconduct.”</p>
+  </blockquote>
+
+  <p>
+    Kung may ilang kaso, sabihin:
+  </p>
+
+  <blockquote>
+    <p>“May ilang kaso.”</p>
+  </blockquote>
+
+  <p>
+    Kung may policy violation, tukuyin kung anong policy.<br>
+    Kung may administrative finding, sabihin kung ano talaga ang finding.
+  </p>
+
+  <p>
+    Pero huwag tumalon mula:
+  </p>
+
+  <blockquote>
+    <p>“May ilang teachers na gumawa nito”</p>
+  </blockquote>
+
+  <p>
+    papunta sa:
+  </p>
+
+  <blockquote>
+    <p>“Ganito ang mga teacher.”</p>
+  </blockquote>
+
+  <p>
+    At huwag ding tumalon mula:
+  </p>
+
+  <blockquote>
+    <p>“May inappropriate behavior ang ilang guro”</p>
+  </blockquote>
+
+  <p>
+    papunta sa mas mabigat na claim na:
+  </p>
+
+  <blockquote>
+    <p>“Tinuturuan ng mga guro ang mga bata na maging walang modo”</p>
+  </blockquote>
+
+  <p>
+    kung wala namang ipinakitang ebidensiya ng actual instruction, encouragement, deliberate modeling o sapat na factual basis para sa ganoong specific allegation.
+  </p>
+
+  <p>
+    Hindi nagiging fact ang assertion dahil mataas ang posisyon ng nagsalita.<br>
+    Hindi rin nagiging false ang criticism dahil nasaktan ang sector na pinuna.
+  </p>
+
+  <p>
+    Pareho ang standard:<br>
+    Ano ang ebidensiya?
+  </p>
+
+  <p>
+    At:<br>
+    Hanggang saan lang ang kayang patunayan nito?
+  </p>
+
+  <p>
+    Kung mas mabigat ang claim—mas mabigat din dapat ang ebidensiya.
+  </p>
+
+  <h2>
+    HINDI DAPAT “TEACHERS VS. CRITICS” ANG LABAN
+  </h2>
+
+  <p>
+    Dahil kapag naging kampihan ang usapan, parehong nawawala ang accountability.
+  </p>
+
+  <p>
+    Kapag may specific teacher na may maling ginawa, hindi sapat na sagot ang:
+  </p>
+
+  <blockquote>
+    <p>“Maraming mabubuting guro.”</p>
+  </blockquote>
+
+  <p>
+    Totoo iyon.<br>
+    Pero hindi iyon depensa sa maling ginawa ng specific teacher.
+  </p>
+
+  <p>
+    Ganito rin kapag may isang teacher na nagkamali, hindi sapat na sabihin:
+  </p>
+
+  <blockquote>
+    <p>“Kita ninyo? Ganyan ang mga guro ngayon.”</p>
+  </blockquote>
+
+  <p>
+    Wala ring logic iyon.
+  </p>
+
+  <p>
+    Ang mabuting asal ng marami ay hindi pambura sa kasalanan ng iilan.<br>
+    At ang maling asal ng iilan ay hindi pagkakakilanlan ng marami.
+  </p>
+
+  <p>
+    Ang profession ay hindi dapat magkaroon ng collective immunity.<br>
+    Pero hindi rin ito dapat magkaroon ng collective guilt.
+  </p>
+
+  <h2>
+    MAS LALO NATING PINOPROTEKTAHAN ANG MABUBUTING GURO KAPAG MAY ACCOUNTABILITY
+  </h2>
+
+  <p>
+    Minsan parang iniisip nating insulto sa profession ang pagpuna sa isang guro.
+  </p>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Kung patas, specific at evidence-based ang criticism, maaari pa ngang proteksiyon iyon sa profession.
+  </p>
+
+  <p>
+    Dahil kapag pinapalampas ang maling conduct ng iilan dahil:
+  </p>
+
+  <blockquote>
+    <p>“Kawawa naman, teacher.”</p>
+  </blockquote>
+
+  <p>
+    ang reputasyon ng libo-libong teacher na maayos magtrabaho ang ginagamit na panangga ng taong gumawa ng mali.
+  </p>
+
+  <p>
+    At kapag naman ginawang representative ng buong profession ang kasalanan ng iilan—ang libo-libong disenteng guro rin ang pinagbabayad sa bagay na hindi nila ginawa.
+  </p>
+
+  <p>
+    Parehong unfair.
+  </p>
+
+  <p>
+    Kaya ang tunay na respeto sa profession ay hindi pagtatakip.<br>
+    At hindi rin panlalait.
+  </p>
+
+  <p>
+    Standards ang tunay na respeto.
+  </p>
+
+  <h2>
+    ANG HANGGANAN AY HINDI “BAWAL MAG-CONTENT”
+  </h2>
+
+  <p>
+    Gumawa ng content.
+  </p>
+
+  <p>
+    Magpatawa.<br>
+    Mag-share ng talento.<br>
+    Magkaroon ng sariling boses.<br>
+    Kumita sa legal na paraan.
+  </p>
+
+  <p>
+    Walang problema roon dahil lamang teacher ang isang tao.
+  </p>
+
+  <p>
+    Pero kapag ang content ay umaasa sa professional identity na pinagkatiwalaang magturo, gumabay at humubog sa kabataan, may kasama iyong responsibility.<br>
+    Lalo na kapag learner, classroom, school authority o professional relationship ang mismong ginagawang materyal.
+  </p>
+
+  <p>
+    Doon may hangganan ang:
+  </p>
+
+  <blockquote>
+    <p>“Content lang naman.”</p>
+  </blockquote>
+
+  <p>
+    May hangganan ang:
+  </p>
+
+  <blockquote>
+    <p>“Biro lang naman.”</p>
+  </blockquote>
+
+  <p>
+    At may hangganan din ang:
+  </p>
+
+  <blockquote>
+    <p>“Additional source of income lang dahil kailangan ko.”</p>
+  </blockquote>
+
+  <p>
+    Hindi dahil bawal tumawa ang guro.<br>
+    Hindi dahil bawal kumita ang guro.<br>
+    Hindi dahil dapat perpekto ang guro.
+  </p>
+
+  <p>
+    Kundi dahil ang dahilan kung bakit mo ginawa ang isang bagay ay hindi awtomatikong sagot sa tanong kung tama ang paraan ng paggawa nito.
+  </p>
+
+  <p>
+    At pareho ang obligasyon ng kabilang panig:<br>
+    Pumuna—pero ebidensiya ang gamitin.
+  </p>
+
+  <p>
+    Huwag gawing collective accusation ang individual misconduct.<br>
+    Huwag gawing prevalence ang ilang incidents kung wala kang exact numerator at relevant denominator para sukatin ang prevalence.<br>
+    Huwag gawing causal claim ang correlation.<br>
+    At huwag gawing katotohanan ang isang mas mabigat na accusation kung hindi iyon kayang patunayan ng record.
+  </p>
+
+  <p>
+    Sa dulo, hindi kailangang pumili sa pagitan ng:
+  </p>
+
+  <blockquote>
+    <p>“Ipagtanggol ang mga guro.”</p>
+
+    <p>at</p>
+
+    <p>“Panagutin ang mga guro.”</p>
+  </blockquote>
+
+  <p>
+    Puwedeng gawin ang pareho.
+  </p>
+
+  <p>
+    Ipagtanggol ang walang kasalanan.<br>
+    Panagutin ang may ebidensiyang paglabag.
+  </p>
+
+  <p>
+    Dahil ang tunay na accountability ay hindi kampihan.
+  </p>
+
+  <p>
+    Ebidensiya bago hatol.<br>
+    Specific conduct bago generalization.<br>
+    Karapatan kasama ang responsibilidad.<br>
+    Professional identity kasama ang professional accountability.
+  </p>
+
+  <p>
+    At higit sa lahat:<br>
+    Hindi kolektibong depensa ang magandang reputasyon ng nakararaming guro para sa maling asal ng iilan.<br>
+    Pero hindi rin lisensya ang pagkakamali ng iilan para magpalabas ng claim na mas malawak kaysa sa kayang patunayan ng ebidensiya.
+  </p>
+
+  <p>
+    Diyan patas ang respeto.<br>
+    Diyan patas ang criticism.
+  </p>
+
+  <p>
+    At diyan nagiging tunay na accountability ang usapan.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Department of Education / Presidential Communications Office — August 2026 reminder on public-school teachers, professionalism and online content; reported “several incidents” involving the use of the teaching profession in online content.
+    </li>
+
+    <li>
+      Philippine Information Agency / Department of Education — 2026 guidance on professionalism, personal social-media accounts, learners, classrooms, school premises and official functions.
+    </li>
+
+    <li>
+      Department of Education — DO 006, s. 2026, <em>Guidelines on Ensuring a Safe and Motivating Learning Environment.</em>
+    </li>
+
+    <li>
+      Department of Education — DO 049, s. 2022 and DO 040, s. 2012, including responsible social-media conduct and learner protection.
+    </li>
+
+    <li>
+      Presidential Decree No. 1006 — professionalization framework recognizing teachers’ continuing interaction with children and formative influence on attitudes.
+    </li>
+
+    <li>
+      Republic Act No. 7836 — <em>Philippine Teachers Professionalization Act of 1994.</em>
+    </li>
+
+    <li>
+      Professional Regulation Commission — <em>Code of Ethics for Professional Teachers</em>, including learner welfare, dignity, professional example, personal conduct and the qualification on legitimate income generation: “does not relate to or adversely affect his work.”
+    </li>
+
+    <li>
+      Supreme Court, <em>Puse v. Puse</em>, G.R. No. 183678, March 15, 2010 — on good moral character as a continuing requirement and the exemplary standards applicable to a professional teacher’s official and personal conduct.
+    </li>
+
+    <li>
+      Republic Act No. 4670 — <em>Magna Carta for Public School Teachers</em>, including state policy on teachers’ social and economic status and salary adequacy standards.
+    </li>
+
+    <li>
+      Department of Budget and Management — 2026 Third Tranche Monthly Salary Schedule and classification of Teacher I at Salary Grade 11.
+    </li>
+
+    <li>
+      Republic Act No. 11476 — <em>GMRC and Values Education Act</em>, including character formation and the whole-school approach.
+    </li>
+
+    <li>
+      Banzon-Librojo, Garabiles &amp; Alampay, <em>Journal of Adolescence</em> — Philippine study involving 401 high-school students on harsh teacher discipline, perceived teacher support and bullying victimization.
+    </li>
+
+    <li>
+      Lei et al., <em>Frontiers in Psychology</em> — meta-analysis of 57 studies and 73,933 students on teacher–student relationships and externalizing behavior.
+    </li>
+
+    <li>
+      OECD — <em>PISA 2022 Philippines Country Note</em>, including Philippine student reports of bullying and school-climate indicators.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
