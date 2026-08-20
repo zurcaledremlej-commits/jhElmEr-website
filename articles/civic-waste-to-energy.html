@@ -1,1 +1,2224 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Possible ba talagang gawing kuryente ang basura? Isang fact-based na paliwanag tungkol sa waste-to-energy, science, batas, environmental safeguards, at kung paano ito dapat suriin nang lampas sa simpleng pagtawa o propaganda."
+>
+
+<title>KURYENTE MULA SA BASURA—POSSIBLE BA ’YUN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    KURYENTE MULA SA BASURA—POSSIBLE BA ’YUN?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-waste-to-energy.png"
+      alt="Simbolikong paglalarawan ng waste-to-energy technology kung saan ang angkop na basura ay ginagamit para sa energy recovery at electricity generation."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+  Kapag unang narinig ang ideyang basura ang gagamitin para makagawa ng kuryente, natural lang na mapatanong: Possible ba talaga ’yun?
+</p>
+
+<p>
+  Mas madaling paniwalaan kung coal, natural gas, tubig, araw o hangin ang pinagkukunan ng energy.
+</p>
+
+<p>
+  Pero basura?
+</p>
+
+<p>
+  Dito naghihiwalay ang makatuwirang pagdududa sa pangungutya nang hindi muna inaalam ang pinagtatawanan.
+</p>
+
+<p>
+  Dahil ang waste-to-energy o WtE ay hindi bagong imbentong konsepto, at lalong hindi teknolohiyang biglang naisip dahil maraming basurang nahakot sa kasagsagan ng masamang panahon.
+</p>
+
+<p>
+  May umiiral na science at engineering sa likod nito. Ang usable energy na nasa angkop na waste ay maaaring i-recover at i-convert sa init, gas o biogas—at mula roon ay makagawa ng electricity, depende sa teknolohiyang ginagamit. Ang waste-to-energy ay ginagamit bilang malawak na tawag sa iba't ibang energy-recovery processes, kabilang ang combustion, gasification, pyrolysis, anaerobic digestion at landfill-gas recovery.
+</p>
+
+<p>
+  Pero dito rin kailangang maging maingat.
+</p>
+
+<p>
+  Ang katotohanang possible ang waste-to-energy ay hindi nangangahulugang kahit anong basura ay puwedeng basta gawing kuryente.
+</p>
+
+<p>
+  Hindi ibig sabihin na ang basang tambak na may putik, bote, bakal at tubig mula sa kanal ay diretso lamang ihahagis sa isang makina at lalabas na ang electricity. At hindi rin ibig sabihin na dahil totoong technology ang WtE, automatic nang ligtas, mura, malinis o magandang proyekto ang anumang plantang tatawaging waste-to-energy.
+</p>
+
+<p>
+  Magkaibang tanong ang mga iyon.
+</p>
+
+<p>
+  Possible ba ang kuryente mula sa basura? Oo.
+</p>
+
+<p>
+  Pero pagkatapos niyan, mas mahalagang itanong: Anong basura? Anong proseso? Anong technology? Gaano kaligtas? Magkano? Ano ang environmental impact? At kaya ba itong ipatupad nang tama sa Pilipinas?
+</p>
+
+<p>
+  Diyan dapat magsimula ang seryosong usapan—hindi sa pagtawa dahil bago sa pandinig, at hindi rin sa paniniwala agad dahil gobyerno ang nagsabi.
+</p>
+
+<p>
+  At para maintindihan kung bakit muling naging usapin ito ngayon, kailangan munang linawin kung ano talaga ang sinabi ni Pangulong Marcos at kung anong waste-to-energy system ang isinusulong ng pamahalaan.
+</p>
+
+<h2>ANO BA TALAGA ANG SINABI NI MARCOS?</h2>
+
+<p>
+  Noong August 12, 2026, habang iniinspeksyon ni Pangulong Ferdinand Marcos Jr. ang clearing operations sa isang pumping station sa Jose W. Diokno Avenue sa Pasay, nakita ang malaking volume ng solid waste—kabilang ang plastic, styrofoam, kahoy at iba pang debris—na naipon sa pasilidad.
+</p>
+
+<p>
+  Doon niya muling tinalakay ang waste-to-energy program bilang bahagi ng long-term response sa lumalaking problema sa basura. Sinabi niyang pinag-aaralan ang locations ng WtE plants upang mabawasan din ang hauling costs ng LGUs at na, sa halip na landfill lamang ang destinasyon ng nakolektang garbage, maaari itong dalhin sa waste-to-energy plant.
+</p>
+
+<p>
+  Pero mahalagang linawin kung ano ang hindi sinabi nito.
+</p>
+
+<p>
+  Hindi ibig sabihin na mayroon nang nationwide network ng operational WtE plants ngayon na handang tumanggap sa lahat ng basurang nahakot mula sa baha at waterways.
+</p>
+
+<p>
+  Ayon mismo sa official report, pinag-aaralan pa ang locations, LGU arrangements at electricity procurement para sa sistema.
+</p>
+
+<p>
+  Kaya kung pupunahin natin ang gobyerno, dapat ang totoong sinabi at totoong proyekto ang pinupuna—hindi bersiyong tayo mismo ang nag-imbento para mas madaling pagtawanan.
+</p>
+
+<h2>PAANO NGA BA NAGIGING KURYENTE ANG BASURA?</h2>
+
+<p>
+  Sa conventional thermal-combustion waste-to-energy plant, hindi literal na nagiging electricity ang basura.
+</p>
+
+<p>
+  May serye ng energy conversion.
+</p>
+
+<p>
+  Ang municipal solid waste na angkop sa sistema ay dinadala sa facility. Sa combustion system, sinusunog ang waste sa kontroladong kondisyon. Ang heat na nalilikha ay ginagamit upang pakuluan ang tubig sa boiler. Nagiging steam ang tubig. Ang steam ang nagpapaikot sa turbine. Ang turbine ang nagpapatakbo sa generator. At doon nalilikha ang electricity.
+</p>
+
+<p>
+  Ganito rin ang basic energy-conversion principle sa maraming thermal power plant: fuel → init → steam → turbine → generator → electricity.
+</p>
+
+<p>
+  Ang pinagkaiba ay kung anong fuel o energy source ang ginagamit. Sa coal-fired plant, coal. Sa natural-gas plant, gas. Sa thermal WtE, ang recoverable energy content ng municipal solid waste ang ginagamit. Ipinaliliwanag mismo ng U.S. EPA na sa mass-burn WtE, ang heat mula sa combustion ang gumagawa ng steam na nagpapatakbo sa turbine-generator.
+</p>
+
+<p>
+  Kaya kapag may nagsabing: Paano magiging kuryente ang basura?
+</p>
+
+<p>
+  Hindi ang salitang “basura” ang nagpapagana sa planta.
+</p>
+
+<p>
+  Maraming waste materials ang may combustible components na may stored chemical energy. Ang ginagawa ng engineering system ay i-convert ang bahagi ng energy na iyon sa usable electricity.
+</p>
+
+<p>
+  Hindi political slogan iyon. Energy conversion iyon.
+</p>
+
+<h2>PERO HINDI IISANG TEKNOLOHIYA LANG ANG WASTE-TO-ENERGY</h2>
+
+<p>
+  Ito rin ang madalas nawawala sa usapan.
+</p>
+
+<p>
+  Ang waste-to-energy ay malawak na konsepto, hindi pangalan ng iisang makina.
+</p>
+
+<p>
+  May combustion. May gasification at pyrolysis. May anaerobic digestion, kung saan microorganisms ang nagde-decompose ng angkop na biodegradable material at gumagawa ng biogas. May landfill-gas recovery, kung saan ang gas na nalilikha habang nabubulok ang organic material ay kinokolekta at maaaring gamitin bilang energy source.
+</p>
+
+<p>
+  Kinikilala rin ng RA 9513 o Renewable Energy Act ang WtE processes para sa biodegradable materials, kabilang ang anaerobic digestion, fermentation at gasification, subject sa Clean Air Act at RA 9003.
+</p>
+
+<p>
+  Pero mahalagang ihiwalay ang general concept sa kasalukuyang Philippine government auction.
+</p>
+
+<p>
+  As of August 2026, ang DOE Special Auction Round for Waste-to-Energy ay exclusively para sa WtE facilities na gumagamit ng thermal-combustion technology upang magproseso ng municipal solid waste.
+</p>
+
+<p>
+  Ang current Second Supplemental Terms of Reference ay may 400-MW installation target, may Delivery Commencement Period mula March 1, 2028 hanggang December 31, 2029, at nagre-require ng mechanical completion on or before December 31, 2028 para sa winning projects.
+</p>
+
+<p>
+  Ibig sabihin: Kapag pinag-uusapan natin ang WtE bilang science, marami itong possible pathways. Kapag pinag-uusapan natin ang kasalukuyang DOE auction, thermal combustion ang technology na tinutukoy.
+</p>
+
+<p>
+  Magkaibang level ng usapan iyon.
+</p>
+
+          <h2>EH BASURANG GALING SA BAHA—PUWEDE BA TALAGA IYON?</h2>
+
+<p>
+  Ito ang mas matinong tanong.
+</p>
+
+<p>
+  At dito rin makikita kung bakit maling isipin na: basura → diretsong furnace → electricity.
+</p>
+
+<p>
+  Ang waste na nahahango mula sa ilog, drainage system o pumping station pagkatapos ng matinding ulan ay maaaring halo-halo: plastic, papel, kahoy, food at garden waste, tela, metal, salamin, buhangin, putik, tubig, at iba pang materyales.
+</p>
+
+<p>
+  Hindi pare-pareho ang energy value ng mga iyon.
+</p>
+
+<p>
+  Ang metal at salamin ay hindi combustible fuel. Ang putik at tubig ay hindi nagbibigay ng useful heating value.
+</p>
+
+<p>
+  At kapag mataas ang moisture content ng waste, energy muna ang kinakailangan upang mapasingaw ang tubig—kaya bumababa ang net heating value na maaaring magamit ng thermal process.
+</p>
+
+<p>
+  Ito ang dahilan kung bakit mahalaga ang calorific o heating value.
+</p>
+
+<p>
+  Sa Asia Waste Management Outlook, binigyang-diin na ang waste characteristics mismo ay nakaaapekto sa pagpili at performance ng treatment technology. Mataas na moisture ang isa sa pangunahing problema sa thermal treatment ng maraming Asian waste streams, at may mga combustion projects na kinailangang gumamit pa ng additional fuel nang hindi sapat ang heating value ng waste.
+</p>
+
+<p>
+  Kaya kung may trak na ang laman ay malaking bahagi ng tubig, putik, bote at bakal, hindi iyon nagiging magandang fuel dahil tinawag natin itong “basura.”
+</p>
+
+<p>
+  Kailangang malaman: Ano ang composition? Gaano kataas ang moisture? Ano ang combustible fraction? Ano ang recyclable? Ano ang inert material? May hazardous o unsuitable material ba?
+</p>
+
+<p>
+  Depende sa technology at design ng facility, maaaring kailangan ang sorting, characterization, removal ng unsuitable materials at iba pang preprocessing.
+</p>
+
+<p>
+  Mahalaga rin dito ang Waste Analysis and Characterization Study o WACS.
+</p>
+
+<p>
+  Pero kailangang eksakto ang claim.
+</p>
+
+<p>
+  Ang current DOE Terms of Reference ay gumagamit ng WACS bilang bahagi ng feasibility requirements sa ilang qualification at change-of-development-scheme cases—halimbawa, kapag ang isang existing biomass development scheme ay binabago tungo sa thermal-combustion WtE, o kapag ang existing WtE project ay mula sa non-thermal technology at gustong maging eligible sa auction.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na iisang WACS requirement sa eksaktong parehong anyo ang nakalista para sa lahat ng bidder.
+</p>
+
+<p>
+  Pero malinaw ang mas malaking prinsipyo: Hindi puwedeng hulaan lamang kung magandang WtE feedstock ang isang waste stream.
+</p>
+
+<p>
+  Mahalaga ang aktwal na waste composition at characteristics sa technical feasibility.
+</p>
+
+<p>
+  Kaya pati project assessment ay hindi nakabase sa ideyang:
+</p>
+
+<blockquote>
+  <p>
+    “Kahit anong basura, sunugin.”
+  </p>
+</blockquote>
+
+<h2>KAYA BA NITONG TANGGAPIN ANG BASURANG NAKUHA SA WATERWAYS?</h2>
+
+<p>
+  Posibleng may bahagi nito na maging feedstock pagkatapos ng tamang handling at processing.
+</p>
+
+<p>
+  Pero maling gawing absolute na: Lahat ng nahakot sa baha ay magiging kuryente.
+</p>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang mas eksaktong ideya: Sa waste stream na makokolekta, ang mga material na compatible sa design at feedstock requirements ng WtE facility ang maaaring maproseso, habang ang recyclables, inert materials, hazardous materials at iba pang unsuitable fractions ay kailangang maihiwalay o mapamahalaan ayon sa tamang proseso.
+</p>
+
+<p>
+  Iyan ang engineering reality.
+</p>
+
+<p>
+  Hindi kailangan palakihin ang claim para maging impressive. Sapat nang totoong technology ang WtE kung ipapaliwanag nang tama.
+</p>
+
+<h2>GAANO BA KALAKI ANG PROBLEMA NATIN SA BASURA?</h2>
+
+<p>
+  Dito nagiging mas mahalaga ang usapan kaysa sa viral punchline.
+</p>
+
+<p>
+  Sa isang 2024 Climate Change Commission report na gumagamit ng DENR data, tinatayang nasa 61,000 metric tons ng solid waste kada araw ang nalilikha sa Pilipinas at hanggang 24% nito ay plastic.
+</p>
+
+<p>
+  Isipin iyon.
+</p>
+
+<p>
+  Hindi 61,000 kilo. 61,000 metric tons bawat araw.
+</p>
+
+<p>
+  At hindi lamang dami ng basura ang problema. Problema rin kung paano ito sine-segregate, kinokolekta, nire-recycle, pinoproseso at saan ito dinadala.
+</p>
+
+<p>
+  Sa performance audit ng Commission on Audit, as of 2021 ay may 11,637 Materials Recovery Facilities o MRFs lamang na nagseserbisyo sa 16,418 sa 42,046 barangays—39.05% ng lahat ng barangays.
+</p>
+
+<p>
+  Mayroon ding 245 operational sanitary landfills na nagseserbisyo sa 478 sa 1,634 LGUs sa audited period.
+</p>
+
+<p>
+  Ibig sabihin, kapag nakita nating tambak ang basura sa estero at drainage system, madaling sabihin: Walang disiplina ang mga tao.
+</p>
+
+<p>
+  May bahagi ng katotohanan doon. Pero kung doon matatapos ang pagsusuri, kulang din iyon.
+</p>
+
+<h2>HINDI LANG ITO PROBLEMA NG “DISIPLINA”</h2>
+
+<p>
+  Personal responsibility matters.
+</p>
+
+<p>
+  Kung may tamang paraan ng pagtatapon pero pinili mong ihagis ang basura sa kanal dahil mas convenient, may personal accountability ka.
+</p>
+
+<p>
+  Hindi dapat gawing excuse ang kakulangan ng sistema para gawing tama ang maling pagtatapon. Pero hindi rin natatapos sa kamay ng individual ang waste-management chain.
+</p>
+
+<p>
+  May: household segregation, collection schedule, collection vehicles, Materials Recovery Facilities, recycling markets, composting, transfer facilities, final disposal, special-waste handling, local enforcement, LGU financing, at national policy.
+</p>
+
+<p>
+  Mismong RA 9003 ay naglalagay ng pangunahing responsibilidad sa LGUs para sa implementation at enforcement ng solid-waste management, habang barangay-level ang segregation at collection ng biodegradable, compostable at reusable wastes at city o municipality naman ang may responsibility sa non-recyclable materials at special wastes.
+</p>
+
+<p>
+  Kaya kung sasabihin nating:
+</p>
+
+<blockquote>
+  <p>
+    “Tao lang ang problema.”
+  </p>
+</blockquote>
+
+<p>
+  Binubura natin ang documented infrastructure at implementation gaps.
+</p>
+
+<p>
+  Kung sasabihin naman nating:
+</p>
+
+<blockquote>
+  <p>
+    “System lang ang problema.”
+  </p>
+</blockquote>
+
+<p>
+  Binubura natin ang personal responsibility.
+</p>
+
+<p>
+  Parehong kulang.
+</p>
+
+<p>
+  Ang totoong waste problem ay may interaction ng: ugali + social norms + convenience + access sa facilities + enforcement + economics + institutional capacity.
+</p>
+
+<p>
+  May Philippine research ding tumitingin sa waste-management behavior sa National Capital Region at nagpapakitang may mahalagang papel ang attitudes, subjective norms, knowledge at behavioral intention sa waste-management practices.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na iisa ang psychology ng buong Pilipinas. Pero ipinapakita nitong ang basura ay hindi lamang engineering problem. Behavioral at social problem din ito.
+</p>
+
+          <h2>MAY BATAS NA TAYO—BAKIT MAY GANITO PA RING PROBLEMA?</h2>
+
+<p>
+  Noong 2001 pa naging batas ang Republic Act No. 9003 o Ecological Solid Waste Management Act.
+</p>
+
+<p>
+  Matagal nang naroon ang prinsipyo ng: source reduction, segregation, reuse, recycling, composting, materials recovery, at proper disposal.
+</p>
+
+<p>
+  Inaatasan din nito ang LGUs na magkaroon ng solid-waste management plans at magbigay ng primary emphasis sa feasible reuse, recycling at composting programs bago tukuyin ang landfill o transformation capacity na kailangan para sa natitirang waste.
+</p>
+
+<p>
+  At malinaw ding ipinagbabawal ng batas ang littering o pagtatapon ng waste sa roads, sidewalks, canals, esteros at parks, pati ang open burning at collection ng non-segregated waste.
+</p>
+
+<p>
+  Pero ang existence ng batas ay hindi kapareho ng effective implementation.
+</p>
+
+<p>
+  Iyan mismo ang malaking aral sa basura sa Pilipinas: Hindi sapat na tama ang policy sa papel kung kulang ang execution sa lupa.
+</p>
+
+<p>
+  At iyon din ang dapat nating tandaan sa waste-to-energy.
+</p>
+
+<p>
+  Maganda ang technology? Possible.
+</p>
+
+<p>
+  Pero ang susunod na tanong: Kaya ba nating patakbuhin nang tama?
+</p>
+
+<h2>SAAN DAPAT PUMASOK ANG WASTE-TO-ENERGY?</h2>
+
+<p>
+  Hindi dapat isipin na WtE ang unang sagot sa bawat basurang nabuo.
+</p>
+
+<p>
+  Kung maaari pang maiwasang maging waste ang isang produkto, mas mainam iyon.
+</p>
+
+<p>
+  Kung reusable pa, gamitin muli kung practical. Kung recyclable at may viable recovery pathway, dapat munang tingnan ang recycling. Kung biodegradable at practical para sa composting o biological treatment, iyon din ay bahagi ng system.
+</p>
+
+<p>
+  Sa waste hierarchy ng U.S. EPA, ang energy recovery ay nasa ibaba ng source reduction at recycling/reuse, bagama't nasa itaas ng treatment at disposal.
+</p>
+
+<p>
+  Ganito rin ang direksiyon ng RA 9003: primary emphasis sa reuse, recycling at composting bago tukuyin ang capacity para sa natitirang waste na hindi na maaaring ma-manage sa mga iyon.
+</p>
+
+<p>
+  Kaya ang matinong WtE policy ay hindi:
+</p>
+
+<blockquote>
+  <p>
+    “May WtE na tayo, huwag na tayong mag-segregate.”
+  </p>
+</blockquote>
+
+<p>
+  Kabaligtaran.
+</p>
+
+<p>
+  Mas mahalaga ang maayos na waste characterization at segregation dahil kailangang malaman kung alin ang recyclable, biodegradable, special o hazardous, inert at tunay na residual.
+</p>
+
+<p>
+  Ang WtE ay mas makatuwirang tingnan bilang isang bahagi ng integrated waste-management system. Hindi kapalit ng buong sistema.
+</p>
+
+<h2>HINDI RIN DAPAT KALIMUTAN ANG EXTENDED PRODUCER RESPONSIBILITY</h2>
+
+<p>
+  May isa pang bahagi ng waste problem na madaling ipasa lahat sa ordinaryong consumer: Sino ba ang gumagawa at naglalagay sa market ng napakaraming packaging na kalaunan ay kailangang i-manage bilang waste?
+</p>
+
+<p>
+  Dito pumapasok ang Republic Act No. 11898 o Extended Producer Responsibility Act of 2022, na nag-amend sa RA 9003.
+</p>
+
+<p>
+  Pinalakas nito ang producer responsibility para sa plastic packaging at inilagay sa policy framework ang waste reduction, recovery, recycling, circular economy at responsibility ng producers sa life cycle ng kanilang products.
+</p>
+
+<p>
+  Mahahalagang prinsipyo iyon.
+</p>
+
+<p>
+  Dahil ang waste problem ay hindi dapat maging: consumer ang bumili, consumer ang nagtapon, gobyerno ang naglinis—tapos wala nang responsibility ang producer sa dulo ng product life cycle.
+</p>
+
+<p>
+  May responsibility ang consumer. May responsibility ang LGU. May responsibility ang national government. May responsibility ang producer at industry.
+</p>
+
+<p>
+  Iyan ang tunay na integrated waste-management thinking.
+</p>
+
+<h2>EH KUNG SUNUGIN ANG BASURA, WALA NA BA IYON?</h2>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Isa ito sa pinakamalaking misconception sa thermal WtE.
+</p>
+
+<p>
+  Nababawasan nang malaki ang volume ng waste sa combustion, pero hindi nawawala ang matter. May natitirang bottom ash at fly ash o air-pollution-control residues.
+</p>
+
+<p>
+  Ayon sa U.S. EPA, ang ash na nalilikha mula sa MSW combustion ay maaaring nasa humigit-kumulang 15–25% ng original waste by weight at 5–15% by volume, depende sa waste at proseso.
+</p>
+
+<p>
+  Kaya hindi:
+</p>
+
+<blockquote>
+  <p>
+    Sunugin → nawala ang basura → tapos na ang problema.
+  </p>
+</blockquote>
+
+<p>
+  Mas tama:
+</p>
+
+<blockquote>
+  <p>
+    Waste → combustion at energy recovery → mas maliit na residue na kailangan pa ring i-manage.
+  </p>
+</blockquote>
+
+<p>
+  Ang ash ay kailangang kolektahin at hawakan nang maayos, at maaaring mangailangan ng further testing, recovery o disposal depende sa characteristics at applicable environmental requirements.
+</p>
+
+<p>
+  Kaya kahit may WtE, hindi nawawala ang pangangailangan para sa ligtas na residue at final-disposal management.
+</p>
+
+          <h2>PAANO NAMAN ANG USOK AT POLLUTION?</h2>
+
+<p>
+  Ito ang lehitimong concern.
+</p>
+
+<p>
+  Hindi ito dapat pagtawanan. Hindi rin dapat i-dismiss bilang anti-progress.
+</p>
+
+<p>
+  Kapag thermal combustion ang technology, may flue gas. At kapag kulang ang combustion control, mali ang waste stream o inadequate ang pollution-control system, may posibilidad ng harmful emissions.
+</p>
+
+<p>
+  Isa sa mga pollutant groups na seryosong binabantayan ay dioxins at furans.
+</p>
+
+<p>
+  Ayon sa World Health Organization, ang dioxins ay highly toxic at maaaring makaapekto sa reproductive at developmental systems, immune system at hormones at maaari ring magdulot ng cancer. WHO also notes that uncontrolled waste incinerators can be major sources because of incomplete combustion, habang may technologies naman para sa controlled incineration na may low dioxin emissions.
+</p>
+
+<p>
+  Kaya ang modern thermal WtE facility ay hindi simpleng:
+</p>
+
+<blockquote>
+  <p>
+    furnace + chimney + turbine.
+  </p>
+</blockquote>
+
+<p>
+  Kasama dapat sa engineering ang: combustion control, particulate removal, flue-gas treatment, emission-control systems, ash handling, at environmental monitoring.
+</p>
+
+<p>
+  At ito mismo ang makikita sa current DOE Second Supplemental TOR.
+</p>
+
+<p>
+  Kabilang sa major equipment na kailangang ma-deliver para sa mechanical completion ang boiler and furnace system, ash-handling system, air-pollution-control devices gaya ng electrostatic precipitators o bag filters, flue-gas treatment units, stack at continuous emissions monitoring system o CEMS, kasama ang steam turbine-generator at iba pang plant systems.
+</p>
+
+<p>
+  Ibig sabihin: Kayang bawasan at kontrolin ng modern engineering ang emissions.
+</p>
+
+<p>
+  Pero hindi ibig sabihin: wala nang emissions o environmental risk.
+</p>
+
+<p>
+  Mas matinong tanong ang: Ano ang actual emission standards? Ano ang pollution-control system? Continuous ba ang monitoring? Accessible ba sa regulator at publiko ang relevant data? May independent verification ba? At ano ang mangyayari kapag lumampas sa legal limits?
+</p>
+
+<p>
+  Iyan ang environmental accountability.
+</p>
+
+<h2>“CLEAN ENERGY” BA AGAD ANG WtE?</h2>
+
+<p>
+  Dapat ding maging maingat dito.
+</p>
+
+<p>
+  May potential environmental benefit ang pag-divert ng ilang waste mula sa landfill, lalo na kapag nababawasan ang methane generation mula sa biodegradable material.
+</p>
+
+<p>
+  Pero may emissions din ang thermal combustion.
+</p>
+
+<p>
+  At kapag fossil-derived material gaya ng plastic ang sinusunog, may fossil carbon emissions.
+</p>
+
+<p>
+  Kaya ang net environmental o climate performance ng WtE ay hindi dapat hulaan mula sa label lamang.
+</p>
+
+<p>
+  Nakadepende ito sa: waste composition, gaano karaming recyclable material ang nailihis muna, gaano karaming biodegradable waste ang hindi na napunta sa landfill, energy efficiency ng facility, pollution-control performance, transport at hauling, at kung anong energy generation ang napapalitan ng electricity mula sa WtE.
+</p>
+
+<p>
+  Kaya hindi seryosong environmental analysis ang dalawang extreme:
+</p>
+
+<blockquote>
+  <p>
+    “WtE = maruming incinerator lang.”
+  </p>
+</blockquote>
+
+<p style="text-align:center;">
+  o
+</p>
+
+<blockquote>
+  <p>
+    “WtE = automatic clean energy.”
+  </p>
+</blockquote>
+
+<p>
+  Parehong masyadong simple.
+</p>
+
+<p>
+  Mas tama ang: technology-specific, facility-specific at system-level assessment.
+</p>
+
+<h2>LEGAL BA ANG THERMAL WASTE-TO-ENERGY SA PILIPINAS?</h2>
+
+<p>
+  Ito ang isang bahagi ng usapan na hindi dapat gawing isang-linyang argumento.
+</p>
+
+<p>
+  May nagsasabing:
+</p>
+
+<blockquote>
+  <p>
+    “Bawal ang incineration sa Pilipinas. Period.”
+  </p>
+</blockquote>
+
+<p>
+  May kabilang panig namang parang sinasabing:
+</p>
+
+<blockquote>
+  <p>
+    “May WtE policy na, kaya legal na ang kahit anong pagsusunog.”
+  </p>
+</blockquote>
+
+<p>
+  Parehong kulang.
+</p>
+
+<p>
+  Sa Republic Act No. 8749 o Clean Air Act, Section 20 prohibits incineration of municipal, biomedical and hazardous waste kung ang process ay nag-e-emit ng poisonous at toxic fumes.
+</p>
+
+<p>
+  Sa MMDA v. Jancom Environmental Corporation, sinabi rin ng Supreme Court na ang Section 20 ng Clean Air Act ay hindi absolute prohibition sa lahat ng incineration; ang ipinagbabawal nito ay burning processes na nag-e-emit ng poisonous at toxic fumes.
+</p>
+
+<p>
+  Pero hindi doon nagtatapos ang legal picture.
+</p>
+
+<p>
+  May mahalagang tension sa RA 9003 mismo.
+</p>
+
+<p>
+  Sa Declaration of Policies nito, nakasaad na ang ecological solid-waste management ay dapat gumamit ng best environmental practices “excluding incineration.” Sa definition naman ng resource recovery, sinabi ring ang resource-recovery facilities ay nag-e-exclude ng incineration.
+</p>
+
+<p>
+  Kasabay nito, sa National Solid Waste Management Framework ng parehong RA 9003, kabilang sa practical applications na dapat isaalang-alang ang resource recovery, including waste-to-energy generation. Binibigyang-diin din ng batas ang research sa recovery ng materials at energy mula sa solid waste.
+</p>
+
+<p>
+  Iyan ang dahilan kung bakit hindi intellectually honest ang simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “Bawal lahat.”
+  </p>
+</blockquote>
+
+<p style="text-align:center;">
+  o
+</p>
+
+<blockquote>
+  <p>
+    “Legal lahat basta WtE.”
+  </p>
+</blockquote>
+
+<p>
+  May statutory tension at environmental conditions na kailangang kilalanin.
+</p>
+
+<p>
+  Samantala, mayroon ding umiiral na regulatory pathway.
+</p>
+
+<p>
+  Naglabas ang DENR ng Administrative Order No. 2019-21 — Guidelines Governing Waste-to-Energy Facilities for the Integrated Management of Municipal Solid Wastes, at may hiwalay na EMB guidance tungkol sa ECC requirements ng WtE projects.
+</p>
+
+<p>
+  At sa kasalukuyan, ang DOE ay may formal Special Auction Round na eksklusibo sa thermal-combustion WtE projects, sa ilalim ng amended WtE framework at current Terms of Reference.
+</p>
+
+<p>
+  Kaya ang pinakaligtas at pinakatapat na legal framing ay: May umiiral na regulatory pathway para sa WtE, pero hindi ito blanket permission sa kahit anong pagsusunog ng basura.
+</p>
+
+<p>
+  Ang isang specific project ay kailangang dumaan sa applicable environmental standards, permits, waste-management requirements, energy rules at regulatory interpretation.
+</p>
+
+<p>
+  At dahil may mga provision ng existing laws na kailangang sabay na basahin, hindi rin dapat ikubli ang patuloy na pangangailangan para sa malinaw at coherent na policy at legislative framework.
+</p>
+
+<p>
+  Iyan ang mas seryosong legal discussion kaysa slogan na:
+</p>
+
+<blockquote>
+  <p>
+    “Bawal.”
+  </p>
+</blockquote>
+
+<p style="text-align:center;">
+  o
+</p>
+
+<blockquote>
+  <p>
+    “Legal.”
+  </p>
+</blockquote>
+
+<h2>HINDI RIN ITO LIBRENG KURYENTE GALING SA BASURA</h2>
+
+<p>
+  Isa pang madaling misconception: May basura na. Kaya libre ang fuel. Kaya mura na dapat ang electricity.
+</p>
+
+<p>
+  Hindi ganoon kasimple.
+</p>
+
+<p>
+  Ang WtE plant ay malaking industrial facility.
+</p>
+
+<p>
+  May gastos sa: lupa, engineering, construction, waste-receiving system, boiler at furnace, turbine-generator, pollution-control equipment, water treatment, ash handling, monitoring, personnel, maintenance, grid connection, financing, at waste transport.
+</p>
+
+<p>
+  May income mula sa electricity. Depende sa business model, maaaring may tipping o waste-processing fees din.
+</p>
+
+<p>
+  Sa U.S. experience, binabanggit ng EPA na significant ang upfront financing ng MSW combustion facilities at karaniwang may revenue streams mula sa tipping fees at electricity sales.
+</p>
+
+<p>
+  May konkretong Philippine benchmark din.
+</p>
+
+<p>
+  Ang planned large-scale WtE project sa New Clark City ay may reported investment na humigit-kumulang ₱4 billion, target processing capacity na 600 metric tons ng waste kada araw, at planned electricity output na 12 MW.
+</p>
+
+<p>
+  Magandang reality check iyon.
+</p>
+
+<p>
+  600 metric tons kada araw ang processing capacity. 12 MW ang planned generation.
+</p>
+
+<p>
+  Hindi ibig sabihin na walang value ang electricity.
+</p>
+
+<p>
+  Pero malinaw na ang WtE ay hindi:
+</p>
+
+<blockquote>
+  <p>
+    isang tambak ng libreng basura = tambak din ng libreng kuryente.
+  </p>
+</blockquote>
+
+<p>
+  Malaking infrastructure at operating system ang nasa pagitan ng dalawa.
+</p>
+
+<p>
+  At may dalawang pangunahing trabahong ginagawa ang facility: waste treatment at energy generation.
+</p>
+
+<p>
+  Kaya hindi dapat electricity price lamang ang tingnan. Dapat buong project economics.
+</p>
+
+          <h2>MAY SOCIAL COST DIN ANG PAGBABAGO NG WASTE SYSTEM</h2>
+
+<p>
+  May isang grupo ring madaling mawala sa usapan kapag landfill at WtE plant lang ang tinitingnan: waste pickers, junk shops, itinerant waste buyers at iba pang informal recyclers.
+</p>
+
+<p>
+  Totoong bahagi sila ng Philippine recycling economy.
+</p>
+
+<p>
+  World Bank work on Philippine plastic waste describes an informal waste sector composed of waste reclaimers, people recovering materials from garbage trucks and dumpsites, junk shops at iba pang actors sa recovery chain.
+</p>
+
+<p>
+  May kabuhayan dito. May environmental contribution.
+</p>
+
+<p>
+  Pero mayroon ding occupational risk at vulnerability.
+</p>
+
+<p>
+  Kaya kung magde-develop ng large-scale WtE system, hindi sapat na itanong lang:
+</p>
+
+<blockquote>
+  <p>
+    Ilang megawatts?
+  </p>
+</blockquote>
+
+<p>
+  Kailangan ding itanong: Ano ang mangyayari sa recyclable materials? May mawawalang livelihood ba? Paano isasama ang existing recovery sector? May safer at formalized opportunities ba?
+</p>
+
+<p>
+  Mismong RA 9003 ay nag-aatas sa National Solid Waste Management Commission na gumawa ng safety nets at alternative livelihood programs para sa small recyclers at sectors na maaapektuhan ng construction o operation ng waste-management facilities.
+</p>
+
+<p>
+  Ibig sabihin: Kasama dapat ang tao sa system design.
+</p>
+
+<p>
+  Ang modernization ay hindi lang pagpapalit ng dumpsite ng mas malaking makina. Modernization din ang mas ligtas, mas maayos at mas integrated na waste-recovery economy.
+</p>
+
+<h2>MAY PANGANIB BA NA KAILANGAN NG WtE ANG MAS MARAMING BASURA?</h2>
+
+<p>
+  May ganitong policy risk.
+</p>
+
+<p>
+  Ang malaking thermal WtE plant ay capital-intensive.
+</p>
+
+<p>
+  Kapag gumawa ka ng facility na kailangang tumakbo nang maraming taon para mabawi ang investment, kailangan din nitong magkaroon ng predictable waste feedstock.
+</p>
+
+<p>
+  Dito maaaring magkaroon ng conflict kung mali ang contract design o incentives: Paano kung bumaba ang residual waste dahil gumanda ang reduction at recycling?
+</p>
+
+<p>
+  Dapat bang gumawa o magpanatili ng mas maraming waste para lamang mapakain ang planta?
+</p>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang tamang hierarchy ay: Hindi dapat gumawa ng basura para mapatakbo ang WtE. Ang WtE ang dapat mag-fit sa residual-waste stream matapos ang serious efforts sa reduction, reuse, recycling at iba pang recovery. Hindi dapat ang recycling target ang ibaba para lamang siguraduhing maraming masusunog.
+</p>
+
+<p>
+  Iyan ang dahilan kung bakit mahalaga ang contract design, feedstock planning at waste hierarchy.
+</p>
+
+<h2>SO ANO ANG ROLE NG WASTE-TO-ENERGY?</h2>
+
+<p>
+  Hindi ito savior. Hindi rin ito joke.
+</p>
+
+<p>
+  Isa itong tool. At tulad ng anumang tool, may tamang gamit at maling gamit.
+</p>
+
+<p>
+  Maaaring makatulong ang well-designed WtE system sa: pagbawas ng waste volume na kailangang i-final-dispose, pag-recover ng energy mula sa angkop na waste, pagbawas ng pressure sa landfill capacity, at pagdagdag ng electricity generation.
+</p>
+
+<p>
+  Pero hindi nito kayang palitan ang: waste reduction, segregation, reuse, recycling, composting, MRFs, EPR, collection infrastructure, environmental monitoring, enforcement, at personal responsibility.
+</p>
+
+<p>
+  Kung wala ang mga iyon, hindi integrated waste management ang ginagawa natin. Nagpalit lang tayo ng destinasyon ng problema.
+</p>
+
+<h2>AT HINDI PA ITO NATIONWIDE OPERATIONAL SYSTEM NGAYON</h2>
+
+<p>
+  Mahalaga ito para hindi rin tayo mahulog sa kabilang extreme—ang gawing propaganda ang existing technology.
+</p>
+
+<p>
+  As of August 2026, patuloy pang binubuo at ipinapatupad ang bagong WtE expansion na tinutukoy ng administrasyon.
+</p>
+
+<p>
+  Ang current DOE Special Auction Round ay may 400-MW installation target para sa thermal-combustion WtE, may Delivery Commencement Period na March 1, 2028 hanggang December 31, 2029, at mechanical-completion requirement na on or before December 31, 2028.
+</p>
+
+<p>
+  Ibig sabihin, ang mga auction projects ay kailangan pang dumaan sa development, financing, permitting, construction, equipment installation, commissioning at regulatory requirements bago maging actual operating generation capacity.
+</p>
+
+<p>
+  May individual projects na ring nasa development pipeline gaya ng New Clark City WtE facility.
+</p>
+
+<p>
+  Pero hindi ibig sabihin na bukas ay maaari nang ipadala ang lahat ng basurang nahango sa estero sa pinakamalapit na thermal WtE plant.
+</p>
+
+<p>
+  Iyan ang mahalagang pagkakaiba ng: existing technology at existing nationwide operational capacity.
+</p>
+
+<p>
+  Existing ang technology. Hindi pa existing ang nationwide operational system na ipinapalagay ng ilang discussion.
+</p>
+
+<h2>KAYA ANO ANG DAPAT TALAGANG PUNAHIN?</h2>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “Basura magiging kuryente? Imposible iyan.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon sophisticated criticism. Existing science at engineering principle ang pinagtatawanan mo.
+</p>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “Kahit anong basurang galing baha, itapon diretso sa furnace at magiging kuryente.”
+  </p>
+</blockquote>
+
+<p>
+  Mali rin iyon.
+</p>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “Dahil WtE, wala nang pollution.”
+  </p>
+</blockquote>
+
+<p>
+  Mali.
+</p>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “Dahil thermal combustion, imposible nang kontrolin ang pollution.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi rin tama.
+</p>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “May WtE na, hindi na kailangan ang recycling.”
+  </p>
+</blockquote>
+
+<p>
+  Mali.
+</p>
+
+<p>
+  Kung sasabihin mo:
+</p>
+
+<blockquote>
+  <p>
+    “Disiplina lang ang problema; walang kakulangan sa waste-management system.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon tugma sa documented infrastructure at implementation gaps.
+</p>
+
+<p>
+  Kung sasabihin mo naman:
+</p>
+
+<blockquote>
+  <p>
+    “System lang ang problema, kaya walang personal responsibility ang taong nagtatapon sa kanal.”
+  </p>
+</blockquote>
+
+<p>
+  Mali rin.
+</p>
+
+<p>
+  Mas seryosong tanong ang: Anong waste ang tatanggapin? Ano ang composition at moisture ng feedstock? Ano ang calorific value? May segregation at characterization ba? Ano ang mangyayari sa recyclable materials? Anong thermal-combustion system ang gagamitin? Gaano ka-efficient ang energy recovery? Ano ang pollution-control equipment? Ano ang emissions limits? Continuous ba ang monitoring? Ano ang gagawin sa bottom ash at fly ash? Ano ang environmental permits? Magkano ang capital at operating cost? May tipping o processing fee ba? Magkano ang electricity? Ano ang hauling arrangement ng LGUs? Ano ang epekto sa waste pickers at recycling sector? Ano ang contract incentives? At sino ang mananagot kapag lumabag sa environmental at operating requirements?
+</p>
+
+<p>
+  Iyan ang criticism na may laman.
+</p>
+
+          <h2>HINDI LAHAT NG PAGKONTRA AY CRITICAL THINKING</h2>
+
+<p>
+  May maling akala minsan na kapag kinontra mo agad ang sinabi ng gobyerno, automatic na critical thinker ka na.
+</p>
+
+<p>
+  Hindi. At hindi rin critical thinking ang maniwala agad dahil Pangulo ang nagsabi.
+</p>
+
+<p>
+  Ang tunay na critical thinking ay pareho ang standard kahit sino ang nagsasalita: Ano ang claim? Ano ang evidence? Ano ang science? Ano ang limitation? Ano ang risk? Ano ang batas? Ano ang actual implementation?
+</p>
+
+<p>
+  Kung mali ang gobyerno, punahin. Kung kulang ang safeguards, bantayan. Kung questionable ang presyo o kontrata, busisiin. Kung lumalabag sa environmental standards, panagutin.
+</p>
+
+<p>
+  Pero kung totoong technology ang pinagtatawanan mo dahil ngayon mo lang narinig—hindi gobyerno ang na-expose mo. Ang na-expose mo ay kung gaano kabilis kang humatol bago magbasa.
+</p>
+
+<h2>BAGO TUMAWA, ALAMIN MUNA KUNG ANO ANG TINATAWANAN</h2>
+
+<p>
+  Hindi kailangang maging pro-Marcos para kilalaning totoong technology ang waste-to-energy. Hindi kailangang maging anti-Marcos para hingin ang emissions data, presyo, kontrata at environmental safeguards.
+</p>
+
+<p>
+  Puwede kang maging skeptical nang hindi ignorant. Puwede mong kilalaning possible ang technology nang hindi automatic na sinusuportahan ang specific project. Puwede mong kilalanin ang personal responsibility nang hindi itinatago ang failure ng sistema. At puwede mong punahin ang sistema nang hindi ginagawang excuse ang personal irresponsibility.
+</p>
+
+<p>
+  Iyan ang mas mahirap gawin.
+</p>
+
+<p>
+  Dahil mas madaling pumili ng kampo. Mas madaling tumawa. Mas madaling mag-comment. Mas madaling magsalita nang may kumpiyansa.
+</p>
+
+<p>
+  Ang mahirap ay alamin muna kung tama ang sinasabi mo.
+</p>
+
+<p>
+  Ang basura ay hindi nagiging kuryente dahil sinabi ng Pangulo. Nagiging posible ito dahil may science at engineering process na kayang mag-recover at mag-convert ng usable energy mula sa angkop na waste.
+</p>
+
+<p>
+  At ang isang WtE project ay hindi nagiging mahusay dahil possible ang science nito. Magiging mahusay lamang ito kung tama ang waste na pinoproseso, angkop ang technology, gumagana ang segregation at recycling system, kontrolado at mino-monitor ang emissions, ligtas ang residue management, makatwiran ang economics, protektado ang komunidad, at may tunay na pananagutan kapag pumalpak.
+</p>
+
+<blockquote>
+  <p>
+    Iyan ang pagitan ng pangungutya at pag-unawa. Iyan din ang pagitan ng simpleng opinyon at informed criticism.
+  </p>
+</blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Presidential Communications Office / Philippine Information Agency — Official August 12, 2026 report sa Pasay pumping-station inspection at pahayag ni Pangulong Ferdinand Marcos Jr. tungkol sa landfill constraints, Waste-to-Energy planning, LGU hauling, at facility locations.
+    </li>
+
+    <li>
+      Department of Energy — Department Circular No. DC2026-07-0015 — Amendment sa Waste-to-Energy integration framework at current policy basis ng Special Auction Round.
+    </li>
+
+    <li>
+      Department of Energy — Second Supplemental Terms of Reference, Special Auction Round for Waste-to-Energy — Thermal-combustion requirements, 400-MW installation target, Delivery Commencement Period (March 1, 2028–December 31, 2029), mechanical-completion requirement, pollution-control systems, at qualification provisions kabilang ang WACS sa specified cases.
+    </li>
+
+    <li>
+      Commission on Audit — Solid Waste Management Program Performance Audit — Materials Recovery Facility (MRF) coverage, sanitary landfill coverage, at implementation gaps sa Philippine solid-waste management.
+    </li>
+
+    <li>
+      Climate Change Commission (using DENR data) — 2024 report sa estimated 61,000 metric tons ng solid waste kada araw sa Pilipinas at hanggang 24% plastic.
+    </li>
+
+    <li>
+      Republic Act No. 9003 — Ecological Solid Waste Management Act of 2000.
+    </li>
+
+    <li>
+      Republic Act No. 8749 — Philippine Clean Air Act of 1999.
+    </li>
+
+    <li>
+      Supreme Court — MMDA v. Jancom Environmental Corporation, G.R. No. 147465.
+    </li>
+
+    <li>
+      Republic Act No. 9513 — Renewable Energy Act of 2008.
+    </li>
+
+    <li>
+      Republic Act No. 11898 — Extended Producer Responsibility Act of 2022.
+    </li>
+
+    <li>
+      DENR Administrative Order No. 2019-21 / Environmental Management Bureau — Guidelines Governing Waste-to-Energy Facilities for the Integrated Management of Municipal Solid Wastes at ECC requirements.
+    </li>
+
+    <li>
+      Asian Development Bank — <em>Asia Waste Management Outlook.</em>
+    </li>
+
+    <li>
+      U.S. Environmental Protection Agency — <em>Energy Recovery from the Combustion of Municipal Solid Waste.</em>
+    </li>
+
+    <li>
+      World Health Organization — <em>Dioxins.</em>
+    </li>
+
+    <li>
+      World Bank — <em>Combating the Plastic Waste Crisis in the Philippines.</em>
+    </li>
+
+    <li>
+      Bases Conversion and Development Authority — New Clark City Waste-to-Energy Project — approximately ₱4-billion investment, 600 metric tons/day waste-processing capacity, at planned 12-MW electricity generation.
+    </li>
+
+    <li>
+      Valentin et al. (2024) — Philippine/NCR research sa attitudes, subjective norms, knowledge, intention, at waste-management behavior.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
