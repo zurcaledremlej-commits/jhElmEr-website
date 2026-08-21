@@ -1,1 +1,2555 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+    <meta
+    name="description"
+    content="Basahin ang Civic Explainer ng jhElmEr tungkol sa credibility, ebidensiya, recantation, confirmation bias, at kung bakit hindi dapat nagbabago ang pamantayan ng paghusga ayon sa kampo o naratibo."
+  >
+
+  <title>BAYANI O BAYARAN—CREDIBLE LANG BA KAPAG PABOR SA NARATIBO MO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+       <h1 class="article-title">
+          BAYANI O BAYARAN—CREDIBLE LANG BA KAPAG PABOR SA NARATIBO MO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-kain-suka.png"
+            alt="Bayani o Bayaran? Civic Explainer tungkol sa credibility, ebidensiya, confirmation bias, recantation, at pare-parehong pamantayan sa paghusga."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+        <div class="article-body">
+
+          <p>
+            May kakaibang sukatan tayo minsan sa credibility.
+          </p>
+
+          <p>
+            Kapag ang isang tao ay nagsasalita laban sa taong ayaw natin, matapang siya, credible siya, dapat pakinggan at protektahan.
+          </p>
+
+          <p>
+            Pero kapag ang parehong tao ay nagbago ng salaysay at ang bago niyang sinasabi ay hindi na pabor sa gusto nating paniwalaan, biglang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bumaligtad.”<br>
+              “Bayaran.”<br>
+              “Sinungaling.”<br>
+              “Sino’ng maniniwala diyan?”
+            </p>
+          </blockquote>
+
+          <p>
+            Posibleng nagsisinungaling siya noon.
+            Posibleng nagsisinungaling siya ngayon.
+            Posibleng may bahagi ng dalawang salaysay na tama, mali, kulang, o kailangang patunayan.
+          </p>
+
+          <p>
+            Pero kung nagbabago rin ang sarili nating standard sa credibility kasabay ng pagbabago ng direksiyon ng kanyang testimonya, may mas malalim nang problemang kailangang pag-usapan.
+          </p>
+
+          <p>
+            Dahil baka hindi na ang tanong natin ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ano ang kayang patunayan ng ebidensiya?”
+            </p>
+          </blockquote>
+
+          <p>
+            Baka ang tunay na tanong na natin ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Aling bersyon ang mas pabor sa naratibong gusto ko nang paniwalaan?”
+            </p>
+          </blockquote>
+
+          <p>
+            At dito nagiging mahalagang case study ang nangyari kay retired Marine Orly Guteza.
+          </p>
+
+          <p>
+            Noong September 25, 2025, humarap siya sa Senate Blue Ribbon Committee. Nagpakilala siyang dating security consultant/aide ni dating Ako Bicol Rep. Zaldy Co at nagsabing personal siyang nakibahagi sa paghahatid ng mga maletang umano’y may lamang pera sa mga tirahan nina Co at dating House Speaker Martin Romualdez.
+          </p>
+
+          <p>
+            Itinanggi ni Romualdez ang alegasyon.
+          </p>
+
+          <p>
+            Sa mga sumunod na araw, may mga nanawagan pang protektahan si Guteza. Humingi rin siya ng pagpasok sa Witness Protection Program dahil umano sa pangamba para sa sarili at pamilya, bagaman hindi siya sumipot sa nakatakdang DOJ meeting. Nilinaw din kalaunan ng Philippine Navy na retirado na siya mula June 30, 2020 at wala siya sa official custody o proteksiyon ng Philippine Marine Corps.
+          </p>
+
+          <p>
+            Pero makalipas ang halos isang taon, nagbago ang kuwento.
+          </p>
+
+          <p>
+            Sa affidavit na may petsang August 13, 2026 at naging publiko noong August 19, binawi ni Guteza ang mahahalagang bahagi ng kanyang naunang salaysay.
+          </p>
+
+          <p>
+            Sinabi niyang wala siyang personal knowledge sa ilang cash-delivery allegations na una niyang inangkin at nagparatang naman siya kina Sen. Rodante Marcoleta at dating Rep. Mike Defensor na may papel umano sa pagbuo ng nauna niyang kuwento.
+          </p>
+
+          <p>
+            Mga alegasyon din ang mga bagong paratang na iyon.
+            Hindi sila nagiging totoo dahil lamang nakapaloob sila sa isang recantation affidavit.
+            At hindi rin awtomatikong nabubura ang lahat ng naunang ebidensiya dahil lamang may bagong affidavit.
+          </p>
+
+          <p>
+            At dito nagsisimula ang mas malaking civic question:
+            Ano ba talaga ang pamantayan natin sa credibility?
+            Ebidensiya?
+            O kung pabor sa gusto nating paniwalaan ang sinasabi?
+          </p>
+
+          <h2>KAPAG ANG PANINIWALA ANG NAUNA SA EBIDENSIYA</h2>
+
+          <p>
+            May matagal nang pinag-aaralang pattern sa psychology tungkol dito.
+          </p>
+
+          <p>
+            Kasama rito ang confirmation bias, myside bias, partisan bias at motivated reasoning—mga tendency kung saan mas madali nating hanapin, tanggapin, paniwalaan o tandaan ang impormasyong umaayon sa dati na nating political beliefs at affinities.
+          </p>
+
+          <p>
+            Isang malawak na 2025 review sa Annual Review of Psychology ang nagbuod ng empirical literature at nakakita ng robust ingroup favoritism sa political judgment. Systematic ang tendency ng partisans na mas paborang tratuhin ang information na tugma sa kanilang political beliefs.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na bawat taong gumagawa nito ay sinasadyang magsinungaling sa sarili.
+            Mas komplikado roon.
+          </p>
+
+          <p>
+            Minsan, sa halip na ang unang tanong ng isip ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Totoo ba ito?”
+            </p>
+          </blockquote>
+
+          <p>
+            nagiging:
+          </p>
+
+          <blockquote>
+            <p>
+              “May sapat ba akong dahilan para paniwalaan ito?”
+            </p>
+          </blockquote>
+
+          <p>
+            kapag gusto natin ang konklusyon.
+          </p>
+
+          <p>
+            Pero kapag ayaw natin:
+          </p>
+
+          <blockquote>
+            <p>
+              “May sapat ba akong dahilan para hindi ito paniwalaan?”
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya posible ang ganitong pattern:
+            Parehong tao.
+            Parehong pangalan.
+            Parehong background.
+            Pero nag-iiba ang assessment sa credibility depende sa direksiyon ng kanyang sinasabi.
+          </p>
+
+          <p>
+            Noong pabor:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bakit siya magsisinungaling?”
+            </p>
+          </blockquote>
+
+          <p>
+            Ngayong salungat:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bakit tayo maniniwala sa sinungaling?”
+            </p>
+          </blockquote>
+
+          <p>
+            Kung ganoon ang standard, hindi na evidence ang gumagalaw.
+            Narrative standard na.
+          </p>
+
+          <p>
+            Pero may mahalagang limitasyon.
+          </p>
+
+          <p>
+            Ang psychological research na ito ay nagpapakita ng general patterns at mechanisms sa political judgment.
+          </p>
+
+          <p>
+            Hindi ito psychological diagnosis sa motibo ng bawat taong pumuri, naniwala, nagduda, o tumawag kay Guteza na “bayaran.”
+          </p>
+
+          <p>
+            Hindi natin nababasa ang isip ng bawat tao mula sa isang Facebook comment.
+          </p>
+
+          <p>
+            Ang research ay ginagamit para ipaliwanag kung bakit maaaring mangyari ang ganitong pattern—hindi para mag-imbento ng motibo ng isang partikular na indibidwal.
+            Gamitin ang research para ipaliwanag ang pattern—hindi para magbasa ng isip.
+          </p>
+
+          <h2>BAKIT MAS MATINDI KAPAG PULITIKA?</h2>
+
+          <p>
+            Dahil ang politika ay hindi palaging simpleng pagpili lang ng polisiya.
+            Maaari itong maging bahagi ng social identity.
+          </p>
+
+          <p>
+            Kapag matagal mo nang ipinagtanggol ang isang kandidato, pamilya, grupo o political camp, ang impormasyong kumokontra rito ay maaaring maramdaman hindi lamang bilang bagong impormasyon.
+          </p>
+
+          <p>
+            Para sa ilan, para na rin itong hamon sa sariling judgment:
+          </p>
+
+          <blockquote>
+            <p>
+              “Kung mali sila, baka mali rin ako.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag malakas na ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “kami laban sa kanila,”
+            </p>
+          </blockquote>
+
+          <p>
+            mas madaling mabigyan ng benefit of the doubt ang impormasyon mula sa sariling kampo habang mas mahigpit nating sinusuri ang impormasyong galing sa kabilang panig.
+          </p>
+
+          <p>
+            Mahalaga rito ang isang 2025 study sa British Journal of Political Science.
+          </p>
+
+          <p>
+            Sa dalawang survey experiments, nakita na kaya namang baguhin ng mga partisan ang kanilang opinion kahit ang evidence ay hindi pabor sa kanila.
+          </p>
+
+          <p>
+            Pero nang gawing hostile at adversarial ang political environment, naging mas dismissive sila sa uncongenial information.
+          </p>
+
+          <p>
+            Kaya may problema rin sa kulturang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bobo kayo.”<br>
+              “Bayaran kayo.”<br>
+              “Mga uto-uto.”<br>
+              “Mga panatiko.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi dahil bawal pumuna.
+            Kundi dahil kung ang layunin ay matukoy ang katotohanan, hindi nakatutulong ang political environment na ginagawang personal na pagkatalo ang pag-amin na maaaring mali ang dati mong pinaniwalaan.
+          </p>
+
+          <p>
+            At hindi rin simpleng:
+            matalino = immune sa bias
+            mahina ang isip = biased.
+          </p>
+
+          <p>
+            Sa research ni Dan Kahan, ang mas mataas na cognitive-reflection scores ay hindi naging automatic protection laban sa ideologically motivated cognition. Sa experiment na iyon, ang mga mas reflective na participants pa nga ang nagpakita ng mas malakas na ideologically motivated cognition sa ilang politically charged judgments.
+          </p>
+
+          <p>
+            Hindi ibig sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mas matalino, mas biased.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ang mas tamang lesson:
+            Ang kakayahang mag-reason ay hindi automatic immunity sa motivated reasoning.
+          </p>
+
+          <p>
+            Puwede nating gamitin ang reasoning para kuwestiyunin ang sarili nating paniniwala.
+            Pero maaari rin natin itong gamitin para gumawa ng mas mahusay na depensa sa konklusyong gusto na nating paniwalaan.
+          </p>
+
+          <p>
+            Kaya minsan, hindi kulang sa argumento ang taong biased.
+            Magaling lang siyang gumawa ng argumento para sa bias niya.
+          </p>
+
+                    <h2>MAY PHILIPPINE CONTEXT DIN ITO</h2>
+
+          <p>
+            Mas mahalaga ito sa Pilipinas dahil hindi simpleng conventional left-versus-right ideology ang naghahati sa political alignment ng maraming botante.
+          </p>
+
+          <p>
+            Sa isang 2026 study tungkol sa contemporary Filipino voter, 57.5% ng respondents ang nag-identify bilang centrist.
+          </p>
+
+          <p>
+            Mas mahalaga pa rito ang broader finding:
+            Hindi gaanong nagkakaiba ang tatlong major political factions sa self-reported left-right ideology, habang lumilitaw ang kahalagahan ng regional affinities at personalistic political loyalties sa voter alignment.
+          </p>
+
+          <p>
+            Mahalaga iyon.
+          </p>
+
+          <p>
+            Dahil sa political environment na malakas ang personalidad at factional loyalty, mas madaling maging:
+          </p>
+
+          <blockquote>
+            <p>
+              “Tao ko ito.”<br>
+              “Kampo namin ito.”<br>
+              “Kalaban namin iyan.”
+            </p>
+          </blockquote>
+
+          <p>
+            kaysa:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ano ang ebidensiya?”
+            </p>
+          </blockquote>
+
+          <p>
+            May Philippine research din tungkol sa online political fandom.
+          </p>
+
+          <p>
+            Sa <em>Strong Fans, Weak Campaigns</em>, sinuri ng researchers ang humigit-kumulang 20 milyong Facebook activities, 39,942 randomly sampled comments at survey ng 621 respondents kaugnay ng 2016 presidential election.
+          </p>
+
+          <p>
+            Sa kaso ng Duterte supporters na pinag-aralan, nakita nilang hindi lahat ng matinding digital political support ay maipapaliwanag bilang fabricated activity lamang; bahagi nito ay repleksiyon din ng genuine offline grassroots political support.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi natin dapat maliitin ang emotional at social investment ng ordinaryong tao sa politika.
+          </p>
+
+          <p>
+            Kapag naging bahagi na ng pagkakakilanlan ang political camp, mas mahirap tanggapin ang inconvenient evidence.
+          </p>
+
+          <p>
+            Kaya minsan mas madaling palitan ang standard kaysa palitan ang paniniwala.
+          </p>
+
+          <blockquote>
+            <p>
+              Pabor sa akin = Credible.<br>
+              Salungat sa akin = Bayaran.
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag ganyan ang sistema, kahit ano pa ang sabihin ng witness ay may nakahandang hatol.
+          </p>
+
+          <p>
+            Hindi na investigation iyon.
+            Confirmation ritual na.
+          </p>
+
+          <h2>HINDI CREDENTIAL ANG KATUMBAS NG KATOTOHANAN</h2>
+
+          <p>
+            Ang pagiging Marine, pulis, abogado, doktor, engineer, journalist, professor o public official ay maaaring magsabi sa atin ng background, training o expertise ng isang tao.
+            Pero hindi iyon automatic certificate na totoo ang bawat sinasabi niya.
+          </p>
+
+          <p>
+            At hindi rin nabubura ang buong military service ng isang tao dahil lamang hindi natin gusto ang bago niyang pahayag.
+          </p>
+
+          <p>
+            Maling shortcut ang parehong extreme:
+          </p>
+
+          <blockquote>
+            <p>
+              “Marine siya, kaya totoo.”
+            </p>
+          </blockquote>
+
+          <p>
+            at
+          </p>
+
+          <blockquote>
+            <p>
+              “Bumaligtad siya, kaya bayaran.”
+            </p>
+          </blockquote>
+
+          <p>
+            Parehong hindi sapat.
+          </p>
+
+          <p>
+            Ang testimony ay kailangang tingnan sa:
+            personal knowledge,
+            specificity,
+            internal consistency,
+            opportunity to observe,
+            circumstances ng paggawa ng statement,
+            corroboration,
+            documents,
+            records,
+            physical evidence,
+            digital evidence,
+            financial trail,
+            at iba pang independent evidence.
+          </p>
+
+          <p>
+            Hindi sa uniform.
+            Hindi sa titulo.
+            Hindi sa political usefulness.
+          </p>
+
+          <h2>HINDI RIN TALAGA “18 EX-MARINES” ANG BUONG GRUPO</h2>
+
+          <p>
+            Mahalaga itong linawin dahil naging bahagi ng public credibility framing ang kanilang military background.
+          </p>
+
+          <p>
+            Ayon sa Philippine Navy, apat sa 18 ay hindi kailanman naging miyembro ng Philippine Navy o Philippine Marine Corps.
+          </p>
+
+          <p>
+            Sa mga totoong dating servicemen naman sa grupo, sinabi ng Navy na karamihan ay dishonorably discharged habang ang ilan ay nakapagretiro in good standing.
+          </p>
+
+          <p>
+            Kalaunan ay hinikayat din ng AFP ang publiko at media na mas wastong tawagin silang witnesses, affiants, o former staff/bodyguards kaysa kolektibong “Marines.”
+          </p>
+
+          <p>
+            Iyan mismo ang klase ng inconvenient fact na hindi dapat itago dahil lamang hindi ito bagay sa narrative.
+            Pabor man o hindi—isama ang fact.
+          </p>
+
+          <h2>MAY CRIMINAL CASES NA RIN LABAN SA GRUPO—PERO HINDI IYON CONVICTION</h2>
+
+          <p>
+            Noong July 2026, inaprubahan at kalaunan ay inihain ng DOJ ang mga kasong may kaugnayan sa perjury at cyberlibel laban sa tinaguriang 18 “Maleta Boys.”
+          </p>
+
+          <p>
+            Ang 18 ay kinasuhan sa 10 separate Informations—anim para sa cyberlibel at apat para sa perjury.
+          </p>
+
+          <p>
+            Ang kanilang abogado na si Levito Baligod ay co-accused sa ilang Informations at mayroon ding hiwalay na cyberlibel Information laban sa kanya.
+          </p>
+
+          <p>
+            Mahalaga ang fact na iyon.
+          </p>
+
+          <p>
+            Pero hindi puwedeng gawin ang maling shortcut na:
+          </p>
+
+          <blockquote>
+            <p>
+              “May kaso sila, kaya sinungaling na sila.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi.
+          </p>
+
+          <blockquote>
+            <p>
+              Charged ≠ Convicted.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang Information ay formal criminal charge.
+            Ang guilt ay kailangan pa ring mapatunayan sa korte ayon sa tamang evidentiary standard.
+          </p>
+
+          <p>
+            Kung hinihingi natin ang presumption of innocence para sa political personality na iniimbestigahan, kailangan ding pareho ang prinsipyo kapag witness naman ang kinasuhan.
+            Parehong standard.
+          </p>
+
+                    <h2>AT MAY ISA PANG MAHALAGANG FACT: ANO ANG NAKITA NG NBI?</h2>
+
+          <p>
+            Noong June 8, 2026, nagbigay ang National Bureau of Investigation ng sarili nitong evaluation sa joint affidavit at materials na isinumite ng grupo.
+          </p>
+
+          <p>
+            Ayon kay NBI Director Melvin Matibag, sa evidence na na-evaluate ng NBI, nanatiling unproven ang cash-delivery allegations dahil wala silang nakitang sapat na independent evidence, corroborating documents, o witnesses with direct personal knowledge upang ma-establish ang probable cause sa kanilang assessment.
+          </p>
+
+          <p>
+            Sinabi rin niyang ayon sa NBI evaluation, tinatayang 10% hanggang 20% lamang ng statements ang based sa personal knowledge, habang karamihan ay umaasa sa impormasyon mula sa ibang miyembro, executive assistants o group chats.
+          </p>
+
+          <p>
+            Sinabi rin ng NBI na wala silang natanggap na CCTV footage, receipts, cellphone records o comparable physical/documentary corroboration mula sa grupo.
+          </p>
+
+          <p>
+            Mabigat na fact iyon.
+          </p>
+
+          <p>
+            At kung evidence-based talaga tayo, hindi natin dapat itago iyon.
+          </p>
+
+          <p>
+            Pero hindi rin tama ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Sinabi ng NBI na kulang ang ebidensiya—kaya tapos na ang lahat.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang sinabi ng NBI ay tungkol sa evidence na kanilang na-evaluate.
+          </p>
+
+          <p>
+            Hindi iyon final judgment ng korte.
+            Hindi rin nito awtomatikong sinasabi na walang ibang evidence na maaaring makuha o hawak ng ibang investigative body.
+          </p>
+
+          <p>
+            At dito nagiging mahalaga ang sumunod na bahagi.
+          </p>
+
+          <h2>MAGKAIBA ANG NBI EVALUATION AT ANG OMBUDSMAN RECORD—HUWAG PAGHALUIN</h2>
+
+          <p>
+            Noong April 21, 2026, sa application nito para sa precautionary hold departure order laban kay Romualdez, sinabi ng Office of the Ombudsman na batay sa complaint-affidavit ng Special Panel of Investigators, witness statements at documents na nasa sarili nitong record, nakagawa ito ng preliminary finding of probable cause kaugnay ng alleged plunder, bribery, graft-related offenses at money laundering.
+          </p>
+
+          <p>
+            Kasabay nito, wala pang pending criminal charges laban kay Romualdez noon at nagpapatuloy pa ang Ombudsman process.
+          </p>
+
+          <p>
+            Kaya mayroon tayong dalawang official developments:
+          </p>
+
+          <blockquote>
+            <p>
+              <strong>NBI:</strong> Sa materials na kanilang na-evaluate, kulang ang independent corroboration para ma-establish ang allegations sa kanilang assessment.<br><br>
+
+              <strong>Ombudsman:</strong> Sa mas malawak nitong sariling investigative record, nagkaroon ito ng preliminary finding of probable cause sa context ng PHDO application.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang pumili ng isang statement at itago ang isa.
+            Hindi rin kailangang sabihing awtomatikong nagsisinungaling ang isang agency.
+          </p>
+
+          <p>
+            Maaaring magkaiba ang evidentiary record, scope, stage at legal function ng dalawang evaluation.
+          </p>
+
+          <p>
+            Iyan ang dahilan kung bakit kailangang itanong palagi:
+          </p>
+
+          <blockquote>
+            <p>
+              Ano mismo ang ebidensiyang tiningnan?<br>
+              Sa anong proceeding?<br>
+              Ano ang legal standard sa stage na iyon?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi sapat ang headline.
+          </p>
+
+          <h2>MAY SERIOUS PROBLEM DIN ANG ORIGINAL AFFIDAVIT NI GUTEZA</h2>
+
+          <p>
+            Hindi ngayon lamang nagkaroon ng credibility issue ang unang Guteza affidavit dahil sa recantation.
+          </p>
+
+          <p>
+            Noong October 24, 2025, naglabas ng order ang Manila RTC Branch 18 matapos ang forensic examination ng signature na nakapangalan sa notary sa kanyang affidavit.
+          </p>
+
+          <p>
+            Napag-alamang hindi tunay ang signature ng lawyer/notary at falsified ang kaugnay na notarial details.
+            Ni-refer din ang matter para sa kaukulang falsification action.
+          </p>
+
+          <p>
+            Hindi maliit na bagay iyon.
+          </p>
+
+          <p>
+            Kapag peke ang notarial signature at details, may seryosong tanong sa authenticity, regularity at integrity ng dokumento.
+          </p>
+
+          <p>
+            Pero kailangan ding malinaw ang distinction:
+          </p>
+
+          <blockquote>
+            <p>
+              Falsified ang notarization
+            </p>
+          </blockquote>
+
+          <p>
+            ay hindi automatic na katumbas ng:
+          </p>
+
+          <blockquote>
+            <p>
+              Mali ang bawat underlying factual allegation.
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaibang tanong iyon.
+          </p>
+
+          <p>
+            Una:
+            Authentic at regular ba ang dokumento?
+          </p>
+
+          <p>
+            Ikalawa:
+            Totoo ba ang facts na sinasabi ng witness?
+          </p>
+
+          <p>
+            Serious evidentiary problem ang una.
+            Pero ang ikalawa ay kailangan pa ring patunayan o pabulaanan sa pamamagitan ng independent evidence.
+          </p>
+
+          <p>
+            At hiwalay din sa defective affidavit ang oral testimony ni Guteza sa Senate Blue Ribbon Committee.
+          </p>
+
+          <p>
+            Sinabi mismo ni Sen. Panfilo Lacson na ang statements ni Guteza sa Blue Ribbon hearing ay ginawa under oath at nanatiling bahagi ng Senate proceeding, bagaman sinabi rin niyang maaaring magkaroon ng credibility problem kung mapatutunayang nagsinungaling si Guteza tungkol sa notarization.
+          </p>
+
+          <p>
+            Kaya hindi tama ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Peke ang notary—kaya walang saysay ang sworn Senate testimony.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi rin tama ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “May sworn Senate testimony—kaya balewala ang pekeng notarization.”
+            </p>
+          </blockquote>
+
+          <p>
+            Parehong inconvenient fact.
+            Parehong dapat harapin.
+          </p>
+
+          <h2>ANG RECANTATION AY HINDI MAGIC ERASER</h2>
+
+          <p>
+            Ngayon naman sa bagong affidavit ni Guteza.
+          </p>
+
+          <p>
+            Ang pagbawi ng witness sa naunang salaysay ay hindi awtomatikong nagpapatunay na mali ang una.
+            Pero hindi rin awtomatikong tama ang bago dahil recantation iyon.
+          </p>
+
+          <p>
+            Kung may dalawang magkasalungat na version ang parehong tao:
+            Kailangang paghambingin ang dalawa.
+          </p>
+
+          <p>
+            Ano ang personal knowledge sa bawat version?<br>
+            Ano ang opportunity niyang makita o marinig ang sinasabi niya?<br>
+            Ano ang circumstances ng paggawa ng bawat statement?<br>
+            Ano ang dahilan ng pagbabago?<br>
+            Ano ang naco-corroborate?<br>
+            Ano ang hindi?
+          </p>
+
+          <p>
+            Hindi:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mas nauna, kaya totoo.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mas bago, kaya totoo.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              Alin ang mas kayang tumayo kapag hinarap sa independent evidence?
+            </p>
+          </blockquote>
+
+                    <h2>PAREHONG SUKATAN ≠ PAREHONG TIMBANG</h2>
+
+          <p>
+            Ito ang mahalagang distinction.
+          </p>
+
+          <p>
+            Kapag sinabi nating:
+          </p>
+
+          <blockquote>
+            <p>
+              “Parehong busisiin ang original testimony at recantation,”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ibig sabihin na obligadong bigyan ang dalawa ng eksaktong parehong evidentiary weight.
+            <strong>Equal standard does not mean equal weight.</strong>
+          </p>
+
+          <p>
+            Maaaring mas mabigat ang una.
+            Maaaring mas mabigat ang bago.
+            Maaaring parehong mahina.
+            Maaaring may bahagi ng isa na corroborated at ibang bahagi naman ay hindi.
+          </p>
+
+          <p>
+            Ang requirement ay:
+          </p>
+
+          <blockquote>
+            <p>
+              Parehong dumaan sa masinsing pagbusisi.
+            </p>
+          </blockquote>
+
+          <p>
+            Pagkatapos noon, puwedeng magkaiba ang timbang—kung ebidensiya ang dahilan.
+          </p>
+
+          <p>
+            Ang mali ay:
+          </p>
+
+          <blockquote>
+            <p>
+              Mas mabigat ang isa dahil lang mas pabor sa akin.
+            </p>
+          </blockquote>
+
+          <p>
+            Iyan ang pagkakaiba ng evidence evaluation at narrative loyalty.
+          </p>
+
+          <h2>ANO ANG LEGAL NA BIGAT NG MAGKASALUNGAT NA PAHAYAG?</h2>
+
+          <p>
+            Dito kailangang paghiwalayin ang courtroom proceeding at Senate inquiry.
+          </p>
+
+          <p>
+            Hindi sila pareho.
+          </p>
+
+          <p>
+            Sa judicial proceedings, nasa Rule 132, Section 14 ng Revised Rules on Evidence ang proseso sa paggamit ng prior inconsistent statements upang kuwestiyunin ang credibility ng witness.
+          </p>
+
+          <p>
+            Kailangang maiugnay sa witness ang dating statement at ang circumstances nito, tanungin kung ginawa niya iyon, at bigyan siyang pagkakataong ipaliwanag ang inconsistency. Kung written statement, kailangan itong ipakita sa witness bago siya tanungin tungkol dito.
+          </p>
+
+          <p>
+            Ang civic lesson:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang contradiction ay hindi tinatakasan.<br>
+              Inilalatag, ipinaliliwanag at tinitimbang.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi courtroom ang Senate Blue Ribbon Committee.
+          </p>
+
+          <p>
+            Sa Senate Rules Governing Inquiries in Aid of Legislation, hindi kailangang sundin ng committee ang lahat ng technical judicial rules of evidence kung hindi naman naaapektuhan ang substantive rights.
+          </p>
+
+          <p>
+            Gayunman, ang factual testimony ay ibinibigay under oath or affirmation, at ang false o evasive testimony ay maaaring magkaroon ng contempt consequences sa ilalim ng Senate rules.
+          </p>
+
+          <p>
+            Kaya hindi criminal trial ang Senate inquiry.
+            Pero hindi rin simpleng kuwentuhan sa harap ng camera.
+          </p>
+
+          <p>
+            May bigat ang panunumpa.
+          </p>
+
+          <h2>PERO HINDI AUTOMATIC PERJURY ANG CONTRADICTION</h2>
+
+          <p>
+            Sa Republic Act No. 11594, na nag-amend sa Article 183 ng Revised Penal Code, sakop ng perjury ang knowingly making untruthful statements under oath tungkol sa material matter sa mga pagkakataong sakop ng batas.
+          </p>
+
+          <p>
+            Mahalaga ang:
+          </p>
+
+          <blockquote>
+            <p>
+              Knowingly.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya hindi sapat ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Magkasalungat ang dalawang affidavit—perjury na agad.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kailangan pa ring patunayan ang elements ng offense.
+          </p>
+
+          <p>
+            Ang contradiction ay maaaring malaking credibility problem.
+            Maaaring maging dahilan ng imbestigasyon.
+            Maaaring magkaroon ng criminal consequence kung mapatunayan ang deliberate falsehood at iba pang elements.
+          </p>
+
+          <p>
+            Pero hindi puwedeng palitan ng social-media conclusion ang legal proof.
+          </p>
+
+          <h2>HINDI RIN DAPAT GAWING ARITHMETIC ANG MGA WITNESS</h2>
+
+          <p>
+            Ito ang bahagi kung saan madaling mahulog ang magkabilang kampo.
+          </p>
+
+          <p>
+            Ayon sa Office of the Ombudsman, isinama nito ang statements mula sa walo sa 18 “Maleta Boys” bilang bahagi ng evidence laban kay Romualdez.
+          </p>
+
+          <p>
+            May mga miyembro ng mismong witness group na kalaunang nag-withdraw ng kanilang allegations.
+          </p>
+
+          <p>
+            Hiwalay sa grupo ng 18, nag-recant din si Guteza.
+          </p>
+
+          <p>
+            Dahil hindi pare-pareho ang counting frame sa public reports kung paano binibilang ang mga recanter kasama o hiwalay kay Guteza, hindi natin gagawing mathematical scoreboard ang 8, 9, 3 o 4.
+          </p>
+
+          <p>
+            Ang settled at material fact ay ito:
+          </p>
+
+          <blockquote>
+            <p>
+              May mga statements na aktuwal na ginamit sa Ombudsman investigation na kalaunang binawi.
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalaga iyon.
+          </p>
+
+          <p>
+            Kailangang suriin ang epekto nito sa credibility at sa evidentiary theory.
+            Pero hindi rin awtomatikong nangangahulugan na wala nang natitirang evidence.
+          </p>
+
+          <p>
+            Sa kabilang banda, noong August 20, sinabi ng Ombudsman na mayroon itong 28 witnesses na handang magbigay umano ng direct at material knowledge tungkol sa transactions na iniimbestigahan.
+          </p>
+
+          <p>
+            At sa depensa naman ni Romualdez, iniulat ng GMA na ang supplemental counter-affidavit ay may affidavits ng 25 individuals, kabilang si Guteza, na ginagamit upang kontrahin ang cash-delivery allegations.
+          </p>
+
+          <p>
+            Ngayon, kung consistent tayo:
+          </p>
+
+          <blockquote>
+            <p>
+              28 witnesses ≠ automatic guilt.<br><br>
+
+              25 defense affidavits ≠ automatic exoneration.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi election ang katotohanan.
+            Hindi nananalo ang version dahil mas marami ang pumirma.
+          </p>
+
+          <p>
+            Ang tanong ay:
+          </p>
+
+          <blockquote>
+            <p>
+              Ano ang personal knowledge ng bawat isa?<br>
+              Independent ba ang kanilang information?<br>
+              May direct observation ba?<br>
+              May hearsay?<br>
+              May contradictions?<br>
+              May interes o motive bang kailangang timbangin?<br>
+              May documents bang sumusuporta?
+            </p>
+          </blockquote>
+
+          <p>
+            At higit sa lahat:
+          </p>
+
+          <blockquote>
+            <p>
+              Ano ang naco-corroborate ng ebidensiyang hindi umaasa sa salita ng isa pang witness?
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              Headcount ≠ Evidentiary Weight.
+            </p>
+          </blockquote>
+
+                    <h2>MAY PRELIMINARY FINDING OF PROBABLE CAUSE—PERO HINDI IYON CONVICTION</h2>
+
+          <p>
+            Hindi hypothetical ang distinction na ito sa kasong pinag-uusapan.
+          </p>
+
+          <p>
+            Noong April 21, 2026, sinabi ng Ombudsman sa PHDO application nito na nakagawa ito ng preliminary finding of probable cause laban kay Romualdez kaugnay ng mga offense na iniimbestigahan.
+          </p>
+
+          <p>
+            Pero wala pang pending criminal charges laban sa kanya noong panahong iyon at nagpapatuloy pa ang Ombudsman proceedings.
+          </p>
+
+          <p>
+            Kaya hindi tama ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “May probable cause—guilty na.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi rin tama ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi pa convicted—kaya walang kahulugan ang probable cause.”
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaiba ang legal significance.
+          </p>
+
+          <p>
+            Ang probable cause ay preliminary determination.
+            Ang conviction ay nangangailangan ng proof beyond reasonable doubt pagkatapos ng judicial process.
+          </p>
+
+          <p>
+            Kaya:
+          </p>
+
+          <blockquote>
+            <p>
+              Preliminary finding of probable cause ≠ Conviction.<br><br>
+
+              Probable cause ≠ Proof beyond reasonable doubt.<br><br>
+
+              Filing of charges ≠ Conviction.
+            </p>
+          </blockquote>
+
+          <p>
+            Ganoon din sa 18 na kinasuhan.
+          </p>
+
+          <p>
+            Parehong standard.
+            Kahit sino pa ang respondent.
+          </p>
+
+          <h2>KAYA BALIK TAYO SA PINAKAMAHALAGANG TANONG</h2>
+
+          <p>
+            Hindi sapat:
+            Ilan ang witness?
+          </p>
+
+          <p>
+            Hindi sapat:
+            Ilan ang nag-recant?
+          </p>
+
+          <p>
+            Hindi sapat:
+            Ilan ang affidavit ng depensa?
+          </p>
+
+          <p>
+            Hindi sapat:
+            May probable cause finding ba?
+          </p>
+
+          <p>
+            Hindi sapat:
+            May criminal case ba laban sa witness?
+          </p>
+
+          <p>
+            Lahat ng iyon ay relevant facts.
+            Pero walang isa sa mga iyon ang magic shortcut papunta sa katotohanan.
+          </p>
+
+          <p>
+            Ang dapat itanong:
+          </p>
+
+          <blockquote>
+            <p>
+              Ano mismo ang alam nila?<br>
+              Personal ba nilang nakita o narinig?<br>
+              Independent ba sa isa’t isa ang information?<br>
+              Nagkakatugma ba ang material details?<br>
+              Ano ang naco-corroborate ng documents?<br>
+              May financial trail ba?<br>
+              May communication records?<br>
+              May CCTV o location evidence?<br>
+              May physical evidence?<br>
+              May digital evidence?
+            </p>
+          </blockquote>
+
+          <p>
+            At kapag may magkasalungat na statement:
+          </p>
+
+          <blockquote>
+            <p>
+              Alin ang sinusuportahan ng independent facts?
+            </p>
+          </blockquote>
+
+          <p>
+            Diyan dapat bumalik ang usapan.
+          </p>
+
+          <p>
+            Hindi sa ingay.
+            Hindi sa dami.
+            Hindi sa trending hashtag.
+            Hindi sa political surname.
+          </p>
+
+          <blockquote>
+            <p>
+              Corroboration at Independent Evidence.<br>
+              Iyan ang mas matibay na timbangan.
+            </p>
+          </blockquote>
+
+          <h2>ANG TUNAY NA PAGSUBOK AY KAPAG AYAW MO ANG EBIDENSIYA</h2>
+
+          <p>
+            Madaling sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Evidence-based ako.”
+            </p>
+          </blockquote>
+
+          <p>
+            kapag ang evidence ay pabor sa iyo.
+          </p>
+
+          <p>
+            Madaling maniwala sa witness kapag kalaban mo ang kanyang itinuturo.
+            Madaling ipagsigawan ang credentials niya kapag nakatutulong siya sa narrative mo.
+          </p>
+
+          <p>
+            Ang tunay na test ng intellectual honesty ay kapag may lumabas na impormasyong sumisira sa sarili mong kuwento.
+          </p>
+
+          <p>
+            Kaya bago sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bayaran ang bumaligtad.”
+            </p>
+          </blockquote>
+
+          <p>
+            itanong:
+            May ebidensiya ba talaga na binayaran?
+          </p>
+
+          <p>
+            Bago sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bayani ang nagsalita.”
+            </p>
+          </blockquote>
+
+          <p>
+            itanong:
+            Na-corroborate na ba ang sinabi?
+          </p>
+
+          <p>
+            Bago ipagtanggol ang original Guteza affidavit:
+            Ano ang gagawin natin sa falsified notarization?
+          </p>
+
+          <p>
+            Bago gamitin ang notarization problem para ideklarang fabricated ang lahat:
+            Napatunayan ba nitong mali ang bawat underlying allegation?
+          </p>
+
+          <p>
+            Bago ipagdiwang ang recantation:
+            Ano ang independent evidence na sumusuporta sa bagong version?
+          </p>
+
+          <p>
+            Bago ipagsigawan ang 28 witnesses:
+            Ano ang actual evidentiary value ng bawat isa?
+          </p>
+
+          <p>
+            Bago ipagsigawan ang 25 defense affidavits:
+            Ano rin ang actual evidentiary value ng bawat isa?
+          </p>
+
+          <p>
+            Bago gamitin ang NBI evaluation bilang pangwakas:
+            Pareho ba ang evidentiary record na tiningnan ng NBI at Ombudsman?
+          </p>
+
+          <p>
+            Bago sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “May probable cause na.”
+            </p>
+          </blockquote>
+
+          <p>
+            itanong:
+            Preliminary determination ba iyan o final judgment?
+          </p>
+
+          <p>
+            At bago sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “May kaso ang mga witness, kaya sinungaling.”
+            </p>
+          </blockquote>
+
+          <p>
+            itanong:
+            May final conviction na ba?
+          </p>
+
+          <p>
+            Iyan ang standard na hindi nagbabago kahit sino ang tamaan.
+          </p>
+
+          <h2>ITO ANG TUNAY NA KAIN-SUKA POLITICS</h2>
+
+          <p>
+            Kung noong pabor sa iyo ang witness ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Protektahan natin.”
+            </p>
+          </blockquote>
+
+          <p>
+            pero nang bumaligtad ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bayaran ’yan.”
+            </p>
+          </blockquote>
+
+          <p>
+            nang wala pang patunay na binayaran—may problema.
+          </p>
+
+          <p>
+            Kung dati naman ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Sinungaling ’yan.”
+            </p>
+          </blockquote>
+
+          <p>
+            pero ngayong pabor na sa iyo ang recantation ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ayan! Lumabas din ang katotohanan!”
+            </p>
+          </blockquote>
+
+          <p>
+            nang hindi pa rin sinusuri ang bagong statement—pareho lang ang problema.
+          </p>
+
+          <p>
+            Nagpalit lang ng kampo.
+          </p>
+
+          <p>
+            Ito ang tunay na kain-suka politics:
+            Hindi dahil nagbago ang kalidad ng ebidensiya kaya nagbago ang conclusion.
+            Kundi dahil nagbago kung kanino pabor ang salaysay, kaya biglang nagbago ang standard.
+          </p>
+
+          <blockquote>
+            <p>
+              Kapag useful ang witness:<br>
+              Bayani.<br><br>
+
+              Kapag hindi na useful:<br>
+              Bayaran.<br><br>
+
+              Kapag allegation laban sa kalaban:<br>
+              Credible.<br><br>
+
+              Kapag inconvenient sa sariling kampo:<br>
+              Sinungaling.<br><br>
+
+              Kapag pabor ang sworn statement:<br>
+              “Ebidensiya ’yan.”<br><br>
+
+              Kapag inconvenient ang defect:<br>
+              “Minor lang ’yan.”<br><br>
+
+              Kapag pabor ang recantation:<br>
+              “Ito na ang katotohanan.”<br><br>
+
+              Kapag 28 ang witnesses:<br>
+              “Guilty na.”<br><br>
+
+              Kapag 25 ang defense affidavits:<br>
+              “Wala nang kaso.”<br><br>
+
+              Kapag may probable-cause finding:<br>
+              “Convicted na sa public opinion.”<br><br>
+
+              Kapag wala pang conviction:<br>
+              “Wala palang ebidensiya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Parehong maling shortcut.
+          </p>
+
+          <p>
+            Ganyan ang nangyayari kapag hindi truth-seeking ang standard.
+            Narrative-protection ang standard.
+          </p>
+
+                    <h2>AT IYAN ANG PINAKAMABIGAT NA SAMPAL</h2>
+
+          <p>
+            Kung ang isang tao ay credible lamang habang sinasabi niya ang gusto mong marinig—hindi pala credibility niya ang pinaniniwalaan mo.
+          </p>
+
+          <p>
+            Kung bayani lamang siya habang useful sa narrative mo—hindi pala prinsipyo ang ipinagtatanggol mo.
+          </p>
+
+          <p>
+            Ginagamit mo lang ang tao bilang validation ng konklusyong nauna mo nang pinili.
+          </p>
+
+          <p>
+            Ang mature na mamamayan ay kayang sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Pabor sa paniniwala ko ang sinabi niya—pero patunayan muna.”
+            </p>
+          </blockquote>
+
+          <p>
+            At kaya ring sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Masakit sa paniniwala ko ang bago niyang sinabi—pero suriin pa rin natin.”
+            </p>
+          </blockquote>
+
+          <p>
+            Iyan ang consistency.
+            Iyan ang evidence-based thinking.
+            At iyan ang tunay na accountability.
+          </p>
+
+          <blockquote>
+            <p>
+              Walang bayani dahil lang pabor sa atin.<br>
+              Walang bayaran dahil lang bumaligtad sa atin.<br>
+              Walang immunity ang unang salaysay.<br>
+              Walang free pass ang recantation.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang falsified notarization ay hindi dapat itago.
+            Ang NBI finding ay hindi dapat itago.
+            Ang Ombudsman finding ay hindi rin dapat itago.
+            Ang mga recantation ay hindi dapat balewalain.
+          </p>
+
+          <blockquote>
+            <p>
+              28 witnesses ≠ automatic guilt.<br>
+              25 defense affidavits ≠ automatic exoneration.<br>
+              Charged ≠ Convicted.<br>
+              Preliminary finding of probable cause ≠ Conviction.<br>
+              Recantation ≠ Automatic truth.<br>
+              Original testimony ≠ Automatic truth.
+            </p>
+          </blockquote>
+
+          <p>
+            At higit sa lahat:
+          </p>
+
+          <blockquote>
+            <p>
+              Parehong standard—pero hindi automatic na parehong bigat.
+            </p>
+          </blockquote>
+
+          <p>
+            Parehong busisiin.
+            Parehong hingan ng ebidensiya.
+            Parehong tumpakin kung may kasinungalingan.
+          </p>
+
+          <p>
+            Dahil kung ang pamantayan mo ay nagbabago depende kung sino ang natatamaan:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi katotohanan ang pinaglalaban mo.<br>
+              Kampo ang pinaglalaban mo.
+            </p>
+          </blockquote>
+
+          <p>
+            At sa isang demokrasya, kapag kampihan na ang pumalit sa consistent na pamantayan ng ebidensiya, hindi lamang ang witness ang nawawalan ng credibility.
+            Pati tayo, bilang publiko.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Pangunahing Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              GMA Integrated News — Guteza testimony before the Senate Blue Ribbon Committee, September 25, 2025.
+            </li>
+
+            <li>
+              INQUIRER.net — Guteza recantation and August 13, 2026 affidavit; reporting on the Ombudsman’s eight Maleta Boys statements and 28-witness position.
+            </li>
+
+            <li>
+              GMA Integrated News — Romualdez supplemental counter-affidavit; 25 defense affidavits including Guteza.
+            </li>
+
+            <li>
+              Philippine News Agency / NBI — June 8, 2026 evaluation of the Maleta Boys’ joint affidavit, personal-knowledge and corroboration issues.
+            </li>
+
+            <li>
+              Department of Justice / Philippine News Agency — perjury and cyberlibel Informations involving the 18 Maleta Boys and Atty. Levito Baligod.
+            </li>
+
+            <li>
+              Manila RTC Branch 18 / Philippine News Agency — October 24, 2025 order concerning the falsified signature and notarial details in Guteza’s affidavit.
+            </li>
+
+            <li>
+              Senate of the Philippines / Sen. Panfilo Lacson — Guteza’s testimony under oath and the effect of the notarization controversy on credibility.
+            </li>
+
+            <li>
+              GMA Integrated News — April 21, 2026 Ombudsman PHDO application and preliminary finding of probable cause against Romualdez.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — 2019 Amendments to the Revised Rules on Evidence, Rule 132, Section 14.
+            </li>
+
+            <li>
+              Senate of the Philippines — Rules of Procedure Governing Inquiries in Aid of Legislation.
+            </li>
+
+            <li>
+              Republic Act No. 11594 — Articles 183 and 184 of the Revised Penal Code on perjury and false testimony.
+            </li>
+
+            <li>
+              Ditto, Celniker, Siddiqi, Güngör &amp; Relihan — <em>Partisan Bias in Political Judgment</em>, Annual Review of Psychology, 2025.
+            </li>
+
+            <li>
+              Jin Woo Kim — <em>Evidence Can Change Partisan Minds but Less So in Hostile Contexts</em>, British Journal of Political Science, 2025.
+            </li>
+
+            <li>
+              Dan M. Kahan — <em>Ideology, Motivated Reasoning, and Cognitive Reflection</em>, Judgment and Decision Making, 2013.
+            </li>
+
+            <li>
+              Dulay &amp; Arguelles — <em>The Contemporary Filipino Voter: Factionalism, Demographics, and Vote Choice</em>, 2026.
+            </li>
+
+            <li>
+              Sinpeng, Gueorguiev &amp; Arugay — <em>Strong Fans, Weak Campaigns: Social Media and Duterte in the 2016 Philippine Election</em>, Journal of East Asian Studies, 2020.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
