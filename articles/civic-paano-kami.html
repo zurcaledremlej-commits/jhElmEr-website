@@ -1,1 +1,1941 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Bakit laging may “Paano naman kami?” Isang fact-based na paliwanag tungkol sa fairness, social comparison, public policy, equal protection, at kung kailan may batayan o wala ang ganitong tanong."
+>
+
+<title>BAKIT LAGING MAY “PAANO NAMAN KAMI?” | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    BAKIT LAGING MAY “PAANO NAMAN KAMI?”
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-paano-kami.png"
+      alt="Simbolikong paglalarawan ng mga grupong sabay-sabay na humihiling ng inclusion habang nakasentro ang isang nakabinbing panukala—sumasagisag sa usapin ng fairness, public policy, at 'Paano naman kami?'"
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>May panukalang dagdag-sahod para sa isang sektor.</p>
+
+  <p>
+    Hindi pa aprobado.<br>
+    Hindi pa batas.<br>
+    Hindi pa nga natatanggap ng mga taong para roon.
+  </p>
+
+  <p>
+    Pero bago pa man malaman kung ano talaga ang saklaw, dahilan at magiging takbo ng panukala, may kasunod na agad:
+  </p>
+
+  <p><strong>“Paano naman kami?”</strong></p>
+
+  <p>May ayuda para sa isang partikular na grupo.</p>
+
+  <p><strong>“Bakit sila lang?”</strong></p>
+
+  <p>May bagong benepisyo para sa isang hanay.</p>
+
+  <p><strong>“Eh kami?”</strong></p>
+
+  <p>May pagkakataon para sa promotion.</p>
+
+  <p><strong>“Bakit hindi kami kasama?”</strong></p>
+
+  <p>
+    Paulit-ulit itong nangyayari sa iba’t ibang usapin.
+  </p>
+
+  <p>
+    At sa unang tingin, parang simpleng paghiling lang na huwag maiwan.
+  </p>
+
+  <p>Minsan, lehitimo naman talaga.</p>
+
+  <p>
+    May mga sektor na totoong underpaid. May mga grupong may makatuwirang dahilan para humiling ng inclusion. May mga pagkakataong ang pagkakaiba ng treatment ay kailangang kuwestiyunin.
+  </p>
+
+  <p>
+    Pero may mas malalim na tanong dito:
+    Bakit kapag may nakikitang pag-usad para sa ibang grupo, nagiging automatic na reaksiyon ng ilan ang paghahambing sa sarili?
+  </p>
+
+  <p>
+    Bakit ang magandang balita para sa iba ay madaling maging:
+  </p>
+
+  <p><strong>“Kami naman?”</strong></p>
+
+  <p>
+    Bakit ang pagkakaroon ng nauna ay madaling maramdaman na may napag-iwanan?
+    At kailan ba lehitimong fairness issue ang ganitong tanong—at kailan naman nagiging reflex na lamang na kung may para sa kanila, dapat may katapat agad para sa amin?
+  </p>
+
+  <p>
+    Diyan kailangang lumampas sa simpleng “inggit” o “reklamo.”
+  </p>
+
+  <p>
+    Dahil may paliwanag dito ang psychology at human behavior. May pamantayan ang fairness. May hangganan at batayan ang equal protection sa batas. May totoong limitasyon ang public budget. At may epekto rin ang visibility at political attention sa kung aling mga usapin ang mas mabilis mapansin.
+  </p>
+
+  <p>
+    Kaya bago natin husgahan kung makatwiran ba ang “paano naman kami?”—alamin muna natin kung saan ito nanggagaling, kailan ito may punto, at kailan ang simpleng comparison ay nagkakamaling gawing ebidensiya ng pagiging unfair.
+  </p>
+
+  <h2>HINDI LANG ITO TUNGKOL SA INGGIT</h2>
+
+  <p>
+    May konsepto sa social psychology na tinatawag na <em>relative deprivation</em>.
+  </p>
+
+  <p>
+    Hindi ito simpleng “naiinggit kayo.”
+  </p>
+
+  <p>
+    Mas komplikado iyon.
+  </p>
+
+  <p>
+    Nangyayari ito kapag ikinumpara ng tao o grupo ang kalagayan nila sa ibang tao o grupong tingin nila ay relevant na comparison—at naramdaman nilang sila ang comparatively disadvantaged o hindi patas ang natatanggap nila.
+  </p>
+
+  <p>
+    Sa isang major theoretical at meta-analytic review ng 210 studies, 293 independent samples, 421 tests at 186,073 respondents, mahalagang bahagi ng relative deprivation ang hindi lamang comparison kundi ang pakiramdam na may injustice, anger o resentment na kasama nito.
+  </p>
+
+  <p>
+    Kaya understandable kung bakit mas madaling marinig ang:
+  </p>
+
+  <p>
+    “Kung may dagdag ang teachers, paano ang ibang personnel sa education system?”<br>
+    “Kung may benepisyo ang isang government sector, paano ang katabi nilang sektor?”
+  </p>
+
+  <p>
+    Dahil mas madaling ikumpara ang sarili sa grupong malapit, kapareho o relevant sa atin.
+  </p>
+
+  <p>
+    Research on social comparison likewise shows that comparison can become an important source of competitive behavior, lalo na kapag relevant ang pinaghahambingan at may perceived similarity o closeness sa pagitan ng mga nagko-compare.
+  </p>
+
+  <p>
+    Kaya hindi kataka-takang magkaroon ng ganitong reaction.
+  </p>
+
+  <p>
+    Pero narito ang mahalagang distinction:
+    Ang pagkaramdam na napag-iiwanan kayo ay hindi pa ebidensiya na talagang unfair ang policy.
+  </p>
+
+  <p>
+    Feelings can point us toward a legitimate problem.
+    Pero kailangan pa ring patunayan kung may problema talaga.
+  </p>
+
+  <h2>KAPAG ANG GAIN NG IBA AY PARANG LOSS AGAD NINYO</h2>
+
+  <p>
+    May isa pang psychological trap:
+    <em>Zero-sum thinking.</em>
+  </p>
+
+  <p>
+    Ito ang pagtingin na kapag may nakuha ang isang grupo, may nawala naman sa ibang grupo.
+  </p>
+
+  <p>
+    Kapag umangat sila, bumaba kayo.<br>
+    Kapag nabigyan sila, naagawan kayo.<br>
+    Kapag sila ang napansin, kayo ang kinalimutan.
+  </p>
+
+  <p>
+    Pero hindi lahat ng social at policy situation ay ganoon.
+  </p>
+
+  <p>
+    A 2023 review in <em>Nature Reviews Psychology</em> describes zero-sum beliefs as the perception that one party's gain must necessarily come at another party's expense, at ipinapakitang maaaring lumakas ang ganitong pag-iisip kapag may perceived scarcity, threat, o mas kaunting deliberation.
+  </p>
+
+  <p>
+    Cross-cultural research published in the <em>Journal of Cross-Cultural Psychology</em> likewise examined belief in a zero-sum game across 37 nations, treating it not merely as an individual reaction but also as a broader social worldview.
+  </p>
+
+  <p>
+    Kaya halimbawa:
+    Hindi dahil may ₱10,000 salary increase na ipinapanukala para sa isang grupo, may ₱10,000 nang inalis sa inyo.
+  </p>
+
+  <p>
+    Pero huwag din nating baligtarin ang argumento.
+  </p>
+
+  <p>
+    May tunay na limitasyon ang public funds.<br>
+    Hindi unlimited ang budget.<br>
+    May opportunity costs.
+  </p>
+
+  <p>
+    May programang kapag pinalawak ang coverage ay talagang lalaki ang kailangang pondohan at maaaring makaapekto sa ibang priorities.
+  </p>
+
+  <p>
+    Kaya hindi rin tamang sabihing:
+  </p>
+
+  <p><strong>“Walang epekto sa iba kahit ilan pa ang idagdag.”</strong></p>
+
+  <p>
+    Ang tamang tanong ay:
+    <strong>Ano ang actual na fiscal tradeoff?</strong>
+  </p>
+
+  <p>
+    Hindi:
+  </p>
+
+  <p><strong>“May nakuha sila, ibig sabihin may nawala sa amin.”</strong></p>
+
+  <p>
+    At hindi rin:
+  </p>
+
+  <p><strong>“May pera naman ang gobyerno, isama na lahat.”</strong></p>
+
+  <p>
+    Parehong kailangang patunayan.
+  </p>
+
+            <h2>HINDI LAHAT NG FAIR AY PARE-PAREHO</h2>
+
+  <p>
+    Ito ang isa sa mga puntong madalas pagmulan ng kalituhan sa usapan.
+  </p>
+
+  <p>
+    Kapag sinabing “fair,” madalas ang unang naiisip:
+  </p>
+
+  <p><strong>“Kung mayroon sila, dapat mayroon din kami.”</strong></p>
+
+  <p>
+    Pero matagal nang kinikilala sa distributive-justice research na hindi iisa ang prinsipyo ng patas na distribution.
+  </p>
+
+  <p>
+    May equality—pare-pareho ang allocation.<br>
+    May equity—may pagkakaiba ayon sa relevant contribution, responsibility o circumstance.<br>
+    At may need—mas malaking tulong para sa mas nangangailangan.
+  </p>
+
+  <p>
+    Depende sa layunin at sitwasyon kung alin ang mas makatarungang batayan.
+  </p>
+
+  <p>
+    Halimbawa:<br>
+    Kung relief goods matapos ang baha, maaaring need ang pangunahing batayan.<br>
+    Kung compensation para sa trabaho, maaaring relevant ang duties, responsibility, qualifications at value of work.<br>
+    Kung isang universal benefit, maaaring equality ang design.
+  </p>
+
+  <p>
+    Ibig sabihin:<br>
+    <strong>Fairness is not automatic sameness.</strong>
+  </p>
+
+  <p>
+    Hindi dahil hindi pareho ang natanggap ay unfair na.
+    Pero hindi rin dahil magkaiba ang grupo ay automatic nang justified ang unequal treatment.
+  </p>
+
+  <p>
+    Kailangan pa ring itanong:
+    <strong>May makatuwirang dahilan ba sa pagkakaiba?</strong>
+  </p>
+
+  <h2>PATAS AY HINDI IBIG SABIHING DAPAT KASAMA ANG LAHAT SA BAWAT POLICY</h2>
+
+  <p>
+    Pati ang batas natin ay hindi nagsasabing kailangang identical ang treatment ng bawat grupo sa bawat pagkakataon.
+  </p>
+
+  <p>
+    Article III, Section 1 ng 1987 Constitution guarantees equal protection of the laws.
+  </p>
+
+  <p>
+    Pero malinaw din sa Supreme Court jurisprudence na ang equal protection ay hindi nangangahulugan ng absolute equality.
+  </p>
+
+  <p>
+    Puwedeng magkaroon ng reasonable classification at magkaibang treatment kung may tunay at substantial na distinction at may makatwirang koneksiyon ito sa layunin ng batas.
+  </p>
+
+  <p>
+    Sa traditional reasonable-classification test na ginagamit sa equal-protection analysis, kailangang ang classification ay:<br>
+    nakabatay sa substantial distinctions;<br>
+    germane sa purpose ng batas;<br>
+    hindi limitado sa existing conditions lamang;<br>
+    at pantay na naa-apply sa lahat ng kabilang sa parehong class.
+  </p>
+
+  <p>
+    Kaya kung may programang para lamang sa isang partikular na sektor, hindi sapat ang:
+  </p>
+
+  <p><strong>“Bakit hindi kami kasama?”</strong></p>
+
+  <p>
+    Ang mas magandang civic question ay:
+  </p>
+
+  <p>
+    <strong>“Ano ang policy reason kung bakit sila ang sakop, at makatuwiran ba ang pagkakaibang iyon?”</strong>
+  </p>
+
+  <p>
+    Kung may substantial distinction at natutugunan din ang iba pang requirements ng reasonable classification, maaaring justified ang targeted policy.
+    Kung wala—at arbitrary lang ang exclusion—doon mas lumalakas ang fairness at equal-protection question.
+  </p>
+
+  <p>
+    Iyan ang mas seryosong argumento kaysa simpleng:
+  </p>
+
+  <p><strong>“Kung sila, dapat kami rin.”</strong></p>
+
+  <h2>KAHIT SA EDUCATION SYSTEM, HINDI AUTOMATIC NA IDENTICAL ANG POLICY PARA SA LAHAT</h2>
+
+  <p>
+    Magandang halimbawa mismo ang Constitution.
+  </p>
+
+  <p>
+    Article XIV, Section 5 says the State shall enhance teachers' right to professional advancement.
+  </p>
+
+  <p>
+    Sa parehong provision, sinasabi ring ang non-teaching academic at non-academic personnel ay dapat magkaroon ng protection ng Estado.
+  </p>
+
+  <p>
+    At hiwalay pang sinasabi ng Constitution na dapat matiyak na makakahikayat at makakapagpanatili ang teaching profession ng mahuhusay na talento sa pamamagitan ng adequate remuneration at iba pang paraan ng job satisfaction and fulfillment.
+  </p>
+
+  <p>
+    May RA 4670 o Magna Carta for Public School Teachers din, na partikular na naglalayong iangat ang social at economic status, living and working conditions, terms of employment at career prospects ng public-school teachers.
+  </p>
+
+  <p>
+    Ano ang ipinapakita nito?
+    Puwedeng parehong mahalaga ang dalawang grupo nang hindi kailangang identical ang bawat policy para sa kanila.
+  </p>
+
+  <p>
+    Ang pagkakaroon ng teacher-specific policy ay hindi awtomatikong deklarasyon na walang halaga ang non-teaching personnel.
+    At ang pagkilala sa lehitimong pangangailangan ng non-teaching personnel ay hindi rin dahilan para sabihing mali na agad ang isang teacher-specific proposal.
+  </p>
+
+  <p>
+    Puwedeng parehong totoo:<br>
+    May espesyal na policy concern ang teachers.
+  </p>
+
+  <p>
+    At:<br>
+    May sarili ring lehitimong compensation at welfare concerns ang non-teaching personnel.
+  </p>
+
+  <p>
+    Hindi kailangang patayin ang isang claim para mabuhay ang isa.
+  </p>
+
+            <h2>TINGNAN NATIN ANG ₱10,000 TEACHER PROPOSAL</h2>
+
+  <p>
+    Dito pumapasok ang kasalukuyang halimbawa.
+  </p>
+
+  <p>
+    Si Sen. JV Ejercito ang naghain ng Senate Bill No. 335, o <em>Dagdag Suweldo Para sa mga Guro Act.</em>
+  </p>
+
+  <p>
+    Ang proposal ay ₱10,000 across-the-board increase sa basic monthly salary ng lahat ng public elementary at secondary school teachers.
+  </p>
+
+  <p>
+    Filed ito noong July 9, 2025, at nakalista sa Senate Legislative Information System bilang pending in the Committee, na may status date na August 11, 2025.
+  </p>
+
+  <p>
+    Ibig sabihin:<br>
+    <strong>Panukala pa.</strong>
+  </p>
+
+  <p>
+    Wala pang ₱10,000 na pumapasok sa payroll dahil lamang may bill.
+  </p>
+
+  <p>
+    At dito nagiging magandang halimbawa ang reflex na pinag-uusapan natin:
+  </p>
+
+  <p>
+    Hindi pa nga nakukuha ng teachers—may <strong>“paano naman kami?”</strong> na agad.
+  </p>
+
+  <p>
+    Pero mahalaga ring malaman ang buong picture.
+  </p>
+
+  <p>
+    May Senate Bill No. 211 din ni Sen. Risa Hontiveros na nagmumungkahi naman ng ₱15,000 across-the-board increase para sa teachers at employees sa public basic education.
+  </p>
+
+  <p>
+    May Senate Bill No. 1606 din ni Sen. Joel Villanueva na nagmumungkahi ng additional benefits para sa teaching at non-teaching personnel sa public basic education schools.
+  </p>
+
+  <p>
+    Kaya maling framing ang:
+  </p>
+
+  <p>
+    <strong>“Teachers lang ang nakikita; wala nang may pakialam sa iba.”</strong>
+  </p>
+
+  <p>
+    May iba't ibang legislative proposals na magkakaiba ang scope.
+  </p>
+
+  <p>
+    Puwede ninyong suportahan ang mas inclusive proposal.<br>
+    Puwede ninyong hingin ang amendment ng isang bill.<br>
+    Puwede kayong maglatag ng hiwalay na proposal para sa sektor ninyo.<br>
+    Puwede ninyong patunayang may compensation gap, workload issue o inequity na kailangang tugunan.
+  </p>
+
+  <p>
+    Iyan ang advocacy.
+  </p>
+
+  <p>
+    Ang hindi sapat na argumento ay:
+  </p>
+
+  <p>
+    <strong>“Kasama rin kami sa education system, kaya kung may ₱10,000 sila, dapat may ₱10,000 din kami.”</strong>
+  </p>
+
+  <p>
+    Ang pagiging bahagi ng parehong sistema ay relevant information.
+    Pero hindi iyon ang katapusan ng policy analysis.
+  </p>
+
+  <p>
+    Kailangan pa ring tingnan ang trabaho, duties, qualifications, existing compensation, recruitment and retention problems, workload, fiscal impact at mismong purpose ng proposal.
+  </p>
+
+  <h2>DAHIL BAWAT “ISAMA NINYO RIN KAMI” AY KAILANGAN DING PONDOHAN</h2>
+
+  <p>
+    Ito ang minsang nawawala kapag emotions at comparison na ang nauuna.
+  </p>
+
+  <p>
+    Public policy is not just:
+  </p>
+
+  <p><strong>“Sino ang deserving?”</strong></p>
+
+  <p>
+    Kasama rin ang:<br>
+    Magkano?<br>
+    Ilan ang covered?<br>
+    Saan kukunin ang pondo?<br>
+    Recurring ba ang gastos?<br>
+    Ano ang epekto sa personnel-services budget?<br>
+    Ano ang pinakamabisang paraan para tugunan ang problema?
+  </p>
+
+  <p>
+    RA 11466, o Salary Standardization Law of 2019, expressly recognizes equal pay for work of equal value, pero sinasabi rin nitong maaaring magkaiba ang pay batay sa substantive differences sa duties, responsibilities, accountabilities at qualification requirements.
+  </p>
+
+  <p>
+    At sinasabi rin ng batas na dapat isaalang-alang ng compensation system ang financial capability of government at efficient allocation of funds for personnel services.
+  </p>
+
+  <p>
+    Kaya kapag dinagdagan ninyo ang coverage ng isang salary bill mula sa isang grupo patungo sa maraming grupo, hindi lang wording ng bill ang nagbabago.
+  </p>
+
+  <p>
+    Nagbabago ang costing.<br>
+    Nagbabago ang number of beneficiaries.<br>
+    Nagbabago ang annual recurring obligation.<br>
+    At maaaring magbago ang feasibility ng mismong proposal.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na:
+  </p>
+
+  <p><strong>“Wala nang budget, tumahimik na kayo.”</strong></p>
+
+  <p>
+    Ang ibig sabihin:
+    Kung gusto ninyong isama ang inyong sektor, mas malakas ang argumento kapag kaya ninyong sagutin ang:
+  </p>
+
+  <p>
+    Bakit kayo dapat kasama?<br>
+    Ano ang evidence ng need o inequity?<br>
+    Magkano ang requirement?<br>
+    Ano ang makatarungang policy design?
+  </p>
+
+  <p>
+    Iyan ang policymaking.
+  </p>
+
+  <p>
+    Hindi lang:
+  </p>
+
+  <p><strong>“Eh sila meron.”</strong></p>
+
+  <h2>GANITO RIN SA PROMOTION</h2>
+
+  <p>
+    Kapag may promotion ang iba, hindi rin automatic na:
+  </p>
+
+  <p><strong>“Matagal na rin kami rito, bakit sila?”</strong></p>
+
+  <p>
+    Sa public civil service, ang constitutional principle mismo ay appointments according to merit and fitness, subject to the applicable rules and qualifications.
+  </p>
+
+  <p>
+    Kaya may karapatang kuwestiyunin ang promotion kung may favoritism, manipulation, bypassing of rules o unfair treatment.
+  </p>
+
+  <p>
+    Pero hindi sapat ang:
+  </p>
+
+  <p><strong>“Na-promote siya; kami hindi.”</strong></p>
+
+  <p>
+    Ang tanong ay:<br>
+    Qualified ba?<br>
+    Nasunod ba ang process?<br>
+    May comparative merit ba?<br>
+    May irregularity ba?<br>
+    May ebidensiya ba ng favoritism?
+  </p>
+
+  <p>
+    Doon nagiging accountability issue.
+    Hindi sa simpleng katotohanang may naunang umangat.
+  </p>
+
+            <h2>KAPAG BAWAT ADVOCACY AY NAGING KOMPETISYON</h2>
+
+  <p>
+    Ito ang mas malaking civic problem.
+  </p>
+
+  <p><strong>Teachers:</strong></p>
+
+  <p>“Dagdagan ang sahod namin.”</p>
+
+  <p>Paano ang non-teaching?</p>
+
+  <p><strong>Non-teaching personnel:</strong></p>
+
+  <p>“Dagdagan din kami.”</p>
+
+  <p>Paano ang ibang government employees?</p>
+
+  <p><strong>Government workers:</strong></p>
+
+  <p>“Dagdagan din kami.”</p>
+
+  <p>Paano ang private sector?</p>
+
+  <p><strong>Private sector:</strong></p>
+
+  <p>“Dagdagan din kami.”</p>
+
+  <p>Paano ang informal workers?</p>
+
+  <p>May ayuda sa poorest households.</p>
+
+  <p>Paano ang lower middle class?</p>
+
+  <p>May assistance sa farmers.</p>
+
+  <p>Paano ang fisherfolk?</p>
+
+  <p>May para sa fisherfolk.</p>
+
+  <p>Paano naman ang iba?</p>
+
+  <p>
+    At kapag ganito ang naging default framework, ang tanong ay hindi na:
+  </p>
+
+  <p><strong>“Makatuwiran ba ang proposal na ito?”</strong></p>
+
+  <p>
+    Nagiging:
+  </p>
+
+  <p><strong>“Sino pa ang hindi kasama?”</strong></p>
+
+  <p>
+    At kung ang standard ay kailangang walang maunang grupo hangga't walang sabay-sabay na benepisyo para sa lahat—walang targeted policy na makakalusot.
+  </p>
+
+  <p>
+    Dahil halos bawat policy ay may boundary.
+  </p>
+
+  <p>
+    May eligible at hindi eligible.<br>
+    May priority at hindi priority.<br>
+    May kasalukuyang target at maaaring susunod na target.
+  </p>
+
+  <p>
+    Ang trabaho ng civic scrutiny ay suriin kung makatwiran ang boundary—hindi automatic burahin ang boundary dahil may grupong nasa labas nito.
+  </p>
+
+  <h2>MAY ISA PANG PANGANIB: KAPAG ANG POLICY AY NAGING PALIGSAHAN SA ATENSIYON</h2>
+
+  <p>
+    Legitimate ang collective advocacy.
+  </p>
+
+  <p>
+    Sa democracy, kailangan talagang marinig ang mga sektor.
+  </p>
+
+  <p>
+    Pero may problema kapag ang bawat grupo ay natututong kailangang sumakay agad sa issue na mainit dahil baka iyon lang ang pagkakataong mapansin.
+  </p>
+
+  <p>
+    <strong>Policy attention itself is limited.</strong>
+  </p>
+
+  <p>
+    May cognitive limits ang tao sa dami ng impormasyong kayang sabay-sabay na bigyan ng pansin, at maging sa political at organizational decision-making, kailangang mag-prioritize kung aling issues ang papasok at mananatili sa agenda.
+  </p>
+
+  <p>
+    Kaya hindi kayang tutukan nang sabay-sabay ng publiko, media at policymakers ang bawat issue nang parehong intensity.
+  </p>
+
+  <p>
+    Research on agenda setting and bounded rationality specifically examines these limits on attention and information processing at kung paano nakaaapekto ang mga ito sa issue prioritization sa political organizations at policy systems.
+  </p>
+
+  <p>
+    Research sa political agenda-setting has also found relationships among public attention, media attention at legislators' issue attention.
+  </p>
+
+  <p>
+    Isang <em>American Political Science Review</em> study using data from the 113th U.S. Congress found that legislators were more likely to follow than lead changes in public discussion of issues.
+  </p>
+
+  <p>
+    Natuklasan din nitong mas responsive ang legislators sa kanilang supporters kaysa sa general public, at nanatili ang result kahit kinontrol ang agenda-setting effects ng media.
+  </p>
+
+  <p>
+    Mahalaga ring tandaan na observational ang analysis na iyon at hindi nito pinatutunayan na bawat shift sa legislative attention ay direktang sanhi ng public o media attention.
+  </p>
+
+  <p>
+    May ibang research din na nakitang maaaring mauna ang media attention bago parliamentary attention sa ilang institutional settings. Sa isang study ng public agencies, halimbawa, media attention for public agencies preceded parliamentary attention, bagaman nakadepende rin ang relationship sa uri at sentiment ng coverage at sa political context.
+  </p>
+
+  <p>
+    Pero malaking caution:
+    Hindi ito ebidensiya na ang isang particular na senador o mambabatas sa Pilipinas ay naghain ng bill dahil lang gusto niya ng publicity.
+  </p>
+
+  <p>
+    Hindi natin dapat imbentuhin ang motibo kung wala tayong ebidensiya.
+  </p>
+
+  <p>
+    Ang defensible na punto ay mas simple:
+    Kapag ang isang issue ay mas visible, mas salient, mas organized o mas malakas ang public attention, maaari itong magkaroon ng advantage sa competition for political attention.
+  </p>
+
+  <p>
+    Kaya delikado kung ang sukatan natin ng deserving ay magiging:<br>
+    Sino ang trending?<br>
+    Sino ang pinakamaingay?<br>
+    Sino ang may pinakamalaking organized constituency?<br>
+    Sino ang palaging nasa media?
+  </p>
+
+  <p>
+    Dahil:<br>
+    <strong>Visibility is not the same as need.</strong><br>
+    <strong>Ingay is not the same as urgency.</strong><br>
+    <strong>Publicity is not the same as policy merit.</strong>
+  </p>
+
+  <p>
+    At kung lahat ng sektor ay matututong ang paraan para mapansin ay makisingit sa bawat mainit na proposal ng iba, lalo nating ginagawang paligsahan sa atensiyon ang policymaking.
+  </p>
+
+  <h2>HINDI KO SINASABING “MAGHINTAY LANG KAYO”</h2>
+
+  <p>
+    Ito ang loophole na kailangang malinaw.
+  </p>
+
+  <p>
+    Hindi ito argumento para sabihan ang isang sektor:
+  </p>
+
+  <p>
+    “Tumahimik muna kayo.”<br>
+    “Hindi pa ninyo turn.”<br>
+    “Hintayin ninyo kung kailan kayo mapapansin.”
+  </p>
+
+  <p>
+    Kung may totoong injustice ngayon, ipaglaban ngayon.<br>
+    Kung may discriminatory classification, kuwestiyunin ngayon.<br>
+    Kung may salary inequity, ilabas ang data ngayon.<br>
+    Kung may workload na hindi naaayon sa compensation, patunayan ngayon.<br>
+    Kung unfair ang exclusion, hamunin ngayon.
+  </p>
+
+  <p>
+    Pero gawin ninyo iyon dahil may sarili kayong matibay na kaso.
+  </p>
+
+  <p>
+    Hindi dahil may magandang nangyari sa iba.<br>
+    Hindi dahil may ibang sektor na nasa headline.<br>
+    Hindi dahil may ibang grupo na mukhang mauuna.
+  </p>
+
+  <p>
+    At lalong hindi dahil ang tingin ninyo sa fairness ay:
+  </p>
+
+  <p><strong>“Kung mayroon sila, dapat mayroon din kami.”</strong></p>
+
+  <p>
+    Minsan tama iyon.<br>
+    Minsan hindi.
+  </p>
+
+  <p>
+    Ebidensiya ang magpapasya—hindi ang comparison lang.
+    <strong>Matutong matuwa nang hindi agad isinisingit ang sarili.</strong>
+  </p>
+
+  <p>
+    Ito siguro ang pinakamahirap.
+  </p>
+
+  <p>
+    May magandang proposal para sa iba?
+  </p>
+
+  <p><strong>“Maganda iyan para sa kanila.”</strong></p>
+
+  <p>
+    Hindi kayo nawalan ng dignidad.<br>
+    Hindi nabawasan ang halaga ng trabaho ninyo.<br>
+    Hindi ninyo isinuko ang sariling laban.
+  </p>
+
+  <p>
+    Pagkatapos:
+  </p>
+
+  <p><strong>“May lehitimo rin kaming concern. Ito ang data, ito ang batayan, at ito ang hinihiling namin.”</strong></p>
+
+  <p>
+    Iyan ang mature na advocacy.
+  </p>
+
+  <p>
+    Hindi tahimik.<br>
+    Hindi sunud-sunuran.<br>
+    Hindi nagpapabaya sa sariling interes.
+  </p>
+
+  <p>
+    Pero hindi rin kailangang gawing kaagaw ang bawat grupong may magandang nangyayari.
+  </p>
+
+  <p>
+    Dahil ang tunay na solidarity ay hindi:
+  </p>
+
+  <p><strong>“Dapat kasama kami sa lahat.”</strong></p>
+
+  <p>
+    Minsan ang solidarity ay:
+  </p>
+
+  <p><strong>“Deserve ninyo iyan. Ipaglalaban din namin ang deserve namin.”</strong></p>
+
+  <p>
+    Magkaiba iyon.
+  </p>
+
+            <h2>ANG PINAKABOTTOM LINE</h2>
+
+  <p>
+    May karapatan kayong magtanong ng:
+  </p>
+
+  <p><strong>“Paano naman kami?”</strong></p>
+
+  <p>
+    Pero ang tanong ay simula lamang.
+    Hindi iyon argumento sa sarili nito.
+  </p>
+
+  <p>
+    Kung gusto ninyong patunayang unfair ang hindi pagsama sa inyo, kailangang ipakita kung bakit.
+  </p>
+
+  <p>
+    May comparable work ba?<br>
+    May parehong relevant circumstances ba?<br>
+    May mas malaking need ba?<br>
+    May arbitrary exclusion ba?<br>
+    May disparity bang walang makatwirang policy justification?<br>
+    May sapat bang fiscal basis para sa hinihinging expansion?
+  </p>
+
+  <p>
+    Doon ninyo patibayin ang laban.
+  </p>
+
+  <p>
+    Dahil sa public policy:<br>
+    Hindi lahat ng hindi pareho ay diskriminasyon.<br>
+    Hindi lahat ng hindi sabay ay pang-iiwan.<br>
+    Hindi lahat ng benepisyo para sa iba ay pagbalewala sa inyo.
+  </p>
+
+  <p>
+    At hindi kailangang bawat may magandang balita para sa ibang sektor ay agawan agad ng mikropono para sabihing:
+  </p>
+
+  <p><strong>“Paano naman kami?”</strong></p>
+
+  <p>
+    Kung lehitimo ang claim ninyo, ipaglaban ninyo sa sarili nitong merito.
+  </p>
+
+  <p>
+    Pero matuto ring kilalanin kapag may ibang grupong may lehitimong laban.
+  </p>
+
+  <p>
+    Dahil minsan, hindi kayo kinakawawa.<br>
+    Hindi kayo kinakalimutan.<br>
+    Hindi kayo leftover.
+  </p>
+
+  <p>
+    Hindi lang talaga kayo ang sentro ng bawat policy, bawat benepisyo, at bawat pag-usad.
+  </p>
+
+  <p>
+    At ang tunay na fairness ay hindi iyong walang puwedeng mauna hangga't hindi lahat kasabay.
+  </p>
+
+  <p>
+    Ang tunay na fairness ay iyong bawat claim—kanino man galing—ay hinuhusgahan sa ebidensiya, pangangailangan, makatuwirang pagkakaiba, public interest at patas na pamantayan.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Smith, H. J., Pettigrew, T. F., Pippin, G. M., &amp; Bialosiewicz, S. — <em>Relative Deprivation: A Theoretical and Meta-Analytic Review</em>, Personality and Social Psychology Review, 2012.
+    </li>
+
+    <li>
+      Garcia, S. M., Tor, A., &amp; Schiff, T. M. — <em>The Psychology of Competition: A Social Comparison Perspective</em>, Perspectives on Psychological Science, 2013.
+    </li>
+
+    <li>
+      Davidai, S. &amp; Tepper, S. J. — <em>The Psychology of Zero-Sum Beliefs</em>, Nature Reviews Psychology, 2023.
+    </li>
+
+    <li>
+      Różycka-Tran, J., Boski, P., &amp; Wojciszke, B. — <em>Belief in a Zero-Sum Game as a Social Axiom: A 37-Nation Study</em>, Journal of Cross-Cultural Psychology, Vol. 46, Issue 4, 2015, SAGE Publications.
+    </li>
+
+    <li>
+      Deutsch, M. — <em>Equity, Equality, and Need: What Determines Which Value Will Be Used as the Basis of Distributive Justice?</em>, Journal of Social Issues, 1975.
+    </li>
+
+    <li>
+      1987 Constitution of the Republic of the Philippines — Article III, Section 1; Article IX-B; Article XIV, Section 5.
+    </li>
+
+    <li>
+      Supreme Court of the Philippines — <em>Migrante International, et al. v. Social Security System, et al.</em>, G.R. No. 248680, November 5, 2024 — Equal Protection Clause, reasonable classification, and applicable levels of scrutiny.
+    </li>
+
+    <li>
+      Republic Act No. 4670 — <em>Magna Carta for Public School Teachers.</em>
+    </li>
+
+    <li>
+      Republic Act No. 11466 — <em>Salary Standardization Law of 2019.</em>
+    </li>
+
+    <li>
+      Senate Bill No. 335, 20th Congress — <em>Dagdag Suweldo Para sa mga Guro Act</em>, Sen. JV Ejercito. Filed July 9, 2025; Senate LIS status: Pending in the Committee as of August 11, 2025.
+    </li>
+
+    <li>
+      Senate Bill No. 211, 20th Congress — <em>Dagdag Sahod for Public Basic Education Teachers and Employees Act</em>, Sen. Risa Hontiveros.
+    </li>
+
+    <li>
+      Senate Bill No. 1606, 20th Congress — <em>Additional Allowances for Public Basic Education Personnel Act</em>, Sen. Joel Villanueva.
+    </li>
+
+    <li>
+      Jones, B. D. &amp; McGee, Z. A. — <em>Agenda Setting and Bounded Rationality</em>, The Oxford Handbook of Behavioral Political Science, Oxford University Press, 2018.
+    </li>
+
+    <li>
+      Barberá, P., Casas, A., Nagler, J., Egan, P. J., Bonneau, R., Jost, J. T., &amp; Tucker, J. A. — <em>Who Leads? Who Follows? Measuring Issue Attention and Agenda Setting by Legislators and the Mass Public Using Social Media Data</em>, American Political Science Review, Vol. 113, Issue 4, 2019.
+    </li>
+
+    <li>
+      Boon, J., Wynen, J., Daelemans, W., Lemmens, J., &amp; Verhoest, K. — <em>Agencies on the Parliamentary Radar: Exploring the Relations Between Media Attention and Parliamentary Attention for Public Agencies Using Machine Learning Methods</em>, Public Administration, Vol. 102, Issue 3, 2024, pp. 1026–1044.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
