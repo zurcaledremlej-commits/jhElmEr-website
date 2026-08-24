@@ -1,1 +1,2487 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Fact-based na paliwanag kung kailan lehitimong caricature ang exaggeration at satire, at kung kailan nagiging body shaming ang paggamit sa irrelevant na physical condition bilang pangunahing punchline."
+  >
+
+  <title>CARICATURE BA—O BODY SHAMING NA TINAWAG LANG NA ART? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          CARICATURE BA—O BODY SHAMING NA TINAWAG LANG NA ART?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-caricature.png"
+            alt="Simbolikong paglalarawan ng hangganan sa pagitan ng caricature bilang political satire at body shaming, gamit ang exaggerated drawing, basag na maskara, timbangan ng katarungan, at salamin bilang sagisag ng artistic freedom, human dignity, at pananagutan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Malaki ang ilong.
+            Sobra ang tenga.
+            Pinahaba ang baba.
+            Pinalaki ang ulo.
+          </p>
+
+          <p>
+            Ginawang katawa-tawa ang ekspresyon.
+          </p>
+
+          <p>
+            Ganyan talaga ang caricature.
+            Hindi portrait ang caricature. Hindi nito trabaho na kopyahin nang eksakto ang mukha ng isang tao.
+          </p>
+
+          <p>
+            Sa kasaysayan ng sining, bahagi mismo ng caricature ang exaggeration at distortion. Mula pa sa mga lumang European caricature hanggang modern political cartoons, ginagamit ang pagpapalaki o pagbaluktot ng features para makapaghatid ng personal, social o political meaning.
+          </p>
+
+          <p>
+            Ayon mismo sa Metropolitan Museum of Art, sa pinakapayak na anyo nito, ang caricature ay nagdi-distort ng physical characteristics at maaaring pagsamahin sa satire upang maghatid ng mensahe. Ang Library of Congress naman ay nagtuturo na gumagamit ang political cartoons ng caricature, exaggeration, symbols at irony upang gumawa ng isang punto.
+          </p>
+
+          <p>
+            Kaya kailangang malinaw agad:
+            Hindi lahat ng pagpapapangit sa drawing ay body shaming.
+          </p>
+
+          <p>
+            Pero hindi rin puwedeng lahat ng panghahamak sa katawan ay hugasan sa isang salita:
+          </p>
+
+          <blockquote>
+            <p>
+              “Caricature lang ’yan.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil may pagkakaiba ang:
+            Paggamit sa anyo para magpahayag ng punto at paggamit sa anyo mismo bilang punchline.
+          </p>
+
+          <p>
+            Doon nagsisimula ang totoong usapan.
+          </p>
+
+          <h2>
+            OO, PUWEDENG MAGING BRUTAL ANG CARICATURE
+          </h2>
+
+          <p>
+            Political satire is not supposed to be a beauty contest.
+          </p>
+
+          <p>
+            Puwedeng gawing buwaya ang corrupt.
+            Puwedeng palakihin nang sobra ang bulsa para katawanin ang kasakiman.
+            Puwedeng gawing puppet ang isang lider para ipakita ang kontrol ng ibang puwersa.
+            Puwedeng pahabain ang ilong bilang simbolo ng pagsisinungaling.
+            Puwedeng gawing napakalaking korona ang ulo para ilarawan ang kayabangan.
+            Puwedeng maging mapanakit, nakakainsulto, sarcastic at uncomfortable ang satire.
+          </p>
+
+          <p>
+            Sa katunayan, matagal nang ginagamit ang caricature hindi lamang para magpatawa kundi para umatake sa corruption, injustice, hypocrisy at abuso sa kapangyarihan.
+          </p>
+
+          <p>
+            Iyan ang dahilan kung bakit napakahalaga ng political cartoon sa isang malayang lipunan.
+          </p>
+
+          <p>
+            Ang Pulitzer Prize-winning cartoonist na si Herb Block ay gumamit ng mga cartoon upang punahin ang corruption, inequality, injustice at abuse of power. Pero may mahalagang distinction din siyang ginawa: para sa kanya, hindi sapat na basta paglaruan ang mukha ng isang public figure—mas mahalaga ang kabuuang punto ng cartoon, at ang fairness nito ay nakasalalay kung ang ipinapahayag ay nakaugat sa actual statements, actions o inactions ng taong pinupuna.
+          </p>
+
+          <p>
+            Napakagandang pamantayan niyan.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi:
+            </p>
+
+            <p>
+              “Na-exaggerate ba ang mukha?”
+            </p>
+
+            <p>
+              Dahil natural iyon sa caricature.
+            </p>
+
+            <p>
+              Ang tanong ay:
+            </p>
+
+            <p>
+              “Para saan ang exaggeration?”
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO BA TALAGA ANG PINUPUNA?
+          </h2>
+
+          <p>
+            Ito ang sentro ng distinction.
+          </p>
+
+          <p>
+            Kung gumawa ka ng caricature ng isang politiko at pinalaki mo ang kanyang bulsa dahil may punto ka tungkol sa corruption—ang corruption ang target.
+            Kung ginawa mo siyang puppet dahil pinupuna mo ang political dependence niya—ang political conduct ang target.
+            Kung ginawa mong Pinocchio ang ilong dahil may partikular kang sinasabing kasinungalingan—ang statement o conduct ang target.
+          </p>
+
+          <p>
+            May relationship ang visual distortion sa criticism.
+          </p>
+
+          <p>
+            Pero paano kung ang pinakanakakatawang bahagi ng drawing ay:
+            ang kanyang tabinging mukha,
+            ang hugis ng kanyang bibig,
+            ang kanyang timbang,
+            ang kanyang height,
+            ang kanyang peklat,
+            ang kanyang baldness,
+            ang kanyang deformity,
+            o isang physical condition na wala namang substantive connection sa political issue?
+          </p>
+
+          <p>
+            Doon kailangang itanong:
+            Ano ang argumento?
+          </p>
+
+          <blockquote>
+            <p>
+              “Nakakatawa kasi ganito ang mukha niya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi na public conduct ang pangunahing target.
+          </p>
+
+          <p>
+            Ang katawan na mismo ang target.
+          </p>
+
+          <p>
+            At kahit tawagin mong caricature ang medium—hindi binabago ng pangalan ng medium kung ano ang aktuwal mong ginawang punchline.
+          </p>
+
+          <h2>
+            SUBUKAN ANG PINAKASIMPLENG TEST
+          </h2>
+
+          <p>
+            Alisin mo ang physical condition sa drawing.
+          </p>
+
+          <p>
+            May substantive criticism pa bang natitira?
+          </p>
+
+          <p>
+            Kung oo—posibleng bahagi lamang ng visual language ng satire ang distortion.
+            Pero kung nang alisin mo ang physical condition ay nawala na rin ang buong joke—malaking babala iyon.
+          </p>
+
+          <p>
+            Dahil baka hindi talaga:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ginagamit ko ang mukha para punahin ang kanyang ginawa.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ginagamit ko ang kanyang kondisyon para pagtawanan siya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaibang bagay iyon.
+          </p>
+
+          <h2>
+            AT HINDI LANG ITO USAPIN NG “MASYADONG SENSITIVE”
+          </h2>
+
+          <p>
+            Dito pumapasok ang research.
+          </p>
+
+          <p>
+            Madalas kasi kapag may tumutuligsa sa body shaming, mabilis ang sagot:
+          </p>
+
+          <blockquote>
+            <p>“Biro lang.”</p>
+            <p>“Sensitive naman.”</p>
+            <p>“Huwag masyadong seryoso.”</p>
+          </blockquote>
+
+          <p>
+            Pero hindi lamang personal na pagiging sensitive ang pinag-uusapan sa appearance-based stigma.
+          </p>
+
+          <p>
+            Sa isang meta-analysis ng appearance-related teasing, pinagsama ang maraming studies tungkol sa panunukso sa timbang at itsura.
+          </p>
+
+          <p>
+            Sa 50 effect sizes na may kabuuang 10,618 participants, nakita ang moderate effect size na .39 sa relationship ng weight-related teasing at body dissatisfaction. May significant associations din ang appearance-related teasing sa body dissatisfaction, at ang weight teasing sa restrictive eating at bulimic behaviors.
+          </p>
+
+          <p>
+            Sa isa pang systematic review at meta-analysis tungkol sa kabataan, 40 eligible studies ang pinag-aralan. Nakita ang statistically significant moderate association, r=.32, sa pagitan ng weight stigma at poorer mental-health outcomes sa children at adolescents.
+          </p>
+
+          <p>
+            Pero mahalagang sabihin din ang limitasyon.
+          </p>
+
+          <p>
+            Ayon mismo sa researchers, generally fair to poor ang quality ng mga pag-aaral sa review, at marami ang walang validated measurement ng weight stigma. Kaya mahalagang basahin ang resultang iyon bilang evidence ng consistent association—hindi bilang patunay na weight stigma lamang ang sanhi ng bawat mental-health outcome sa bawat indibidwal.
+          </p>
+
+          <p>
+            Iyan ang tamang pagbasa sa research.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na kapag may isang insulto, automatic na magkakaroon ng mental-health disorder ang isang tao.
+          </p>
+
+          <p>
+            Hindi ganoon gumagana ang ebidensiya.
+          </p>
+
+          <blockquote>
+            <p>
+              Association is not automatic individual causation.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero malinaw ang mas malaking punto:
+          </p>
+
+          <p>
+            Hindi gawa-gawa lamang ang relationship ng appearance-based ridicule, stigma at psychological harm na nakikita sa research.
+          </p>
+
+          <h2>
+            MAS DIREKTA PA ITO KAPAG MUKHA ANG PINAG-UUSAPAN
+          </h2>
+
+          <p>
+            May research field mismo tungkol sa facial difference at visible difference.
+          </p>
+
+          <p>
+            Ang visible difference ay maaaring congenital o acquired—halimbawa, scars, burns, skin conditions, craniofacial conditions at iba pang kondisyon na kapansin-pansing nakaaapekto sa appearance.
+          </p>
+
+          <p>
+            Isang 2022 review sa journal na Body Image ang nagbigay-diin na ang facial difference ay hindi lamang personal experience.
+            Social experience din ito.
+          </p>
+
+          <p>
+            Tinalakay ng review ang apat na anyo ng stigma:
+            public stigma,
+            self-stigma,
+            stigma by association,
+            at structural stigma.
+          </p>
+
+          <p>
+            Ibig sabihin, ang problema ay hindi lamang kung ano ang pakiramdam ng isang tao tungkol sa kanyang sariling mukha.
+          </p>
+
+          <p>
+            Kasama rito kung paano siya tinitingnan, tinatrato at hinuhusgahan ng lipunan.
+          </p>
+
+          <p>
+            Sa research tungkol sa visible differences, naiulat din ang mga karanasang gaya ng staring, name-calling, unsolicited questions at ibang negative social encounters. Ang ilang taong may visible differences ay nakararanas ng appearance-related distress, social anxiety at isolation.
+          </p>
+
+          <p>
+            Kaya kapag ginawang punchline ang facial difference, hindi sapat na sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Isang tao lang naman ang binibiro ko.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil maaaring may mas malawak na mensaheng nai-reinforce kaysa sa intensiyon ng gumawa.
+          </p>
+
+                            <h2>
+            ISANG TAO ANG TARGET—PERO HINDI LANG SIYA ANG NAKAKAKITA
+          </h2>
+
+          <p>
+            Ito ang socio-cultural layer na madalas hindi napapansin.
+          </p>
+
+          <p>
+            Isipin natin:
+            May isang makapangyarihang politiko.
+            Galit ka sa kanya.
+            May physical condition siya.
+            Ginawa mong punchline ang condition na iyon.
+          </p>
+
+          <p>
+            Maaari mong sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Siya ang target ko. Politiko siya. Deserve niyang tirahin.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero may ibang taong nakakakita ng post na maaaring may katulad na condition—na hindi politiko, walang kapangyarihan, walang kinalaman sa issue, at walang ginawang mali sa iyo.
+          </p>
+
+          <p>
+            Ano ang maaaring ma-reinforce na mensahe?
+          </p>
+
+          <p>
+            Na ang ganitong mukha ay puwedeng gamitin bilang insulto.
+            Na ang ganitong katawan ay puwedeng gawing ridicule material.
+            Na ang ganitong kondisyon ay maaaring maging madaling sandata kapag gusto nating ipahiya ang isang taong kinamumuhian natin.
+          </p>
+
+          <p>
+            Iyan ang posibleng collateral target ng body-based ridicule.
+          </p>
+
+          <p>
+            Maaaring isang public figure ang pangalan sa cartoon.
+            Pero ang stereotype na ginagamit bilang insulto ay hindi kinakailangang nakakulong sa pangalan niya.
+          </p>
+
+          <p>
+            Kapag ginagamit nating insult material ang isang katangiang shared ng maraming tao, maaari nating ma-reinforce ang social message na ang katangiang iyon ay nakakababa ng tingin sa isang tao.
+          </p>
+
+          <p>
+            Research on facial difference specifically points to the role of public attitudes, social interaction at broader structures in maintaining stigma.
+          </p>
+
+          <p>
+            May research din na nagbababala tungkol sa media portrayals ng visible differences. Ang scars at ibang visible differences, halimbawa, ay matagal nang ginagamit sa media bilang visual shorthand para sa pagiging villain, dangerous, bitter o victim—mga portrayal na maaaring mag-reinforce ng negative assumptions tungkol sa itsura.
+          </p>
+
+          <p>
+            Kaya may paradox dito:
+            Puwede kang “punching up” sa politiko—pero “punching down” sa condition.
+          </p>
+
+          <p>
+            Ang taong gusto mong banatan ay makapangyarihan.
+            Pero ang weapon na pinili mong gamitin ay isang physical characteristic na mayroon ding maraming ordinaryong taong walang kapangyarihan.
+          </p>
+
+          <p>
+            Iyan ang dahilan kung bakit hindi sapat ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Eh public figure naman.”
+            </p>
+          </blockquote>
+
+          <h2>
+            PUBLIC FIGURE SIYA—SO ANO?
+          </h2>
+
+          <p>
+            Oo.
+          </p>
+
+          <p>
+            Napakahalagang sabihin ito nang malinaw:
+            Mas malawak ang puwang para punahin ang public officials at public figures.
+          </p>
+
+          <p>
+            At dapat lang.
+          </p>
+
+          <p>
+            Ang kapangyarihan ay dapat puwedeng siyasatin.
+            Ang polisiya ay dapat puwedeng durugin sa criticism.
+            Ang hypocrisy ay dapat puwedeng ilantad.
+            Ang statements ay dapat puwedeng kontrahin.
+            Ang corruption ay dapat puwedeng imbestigahan.
+            Ang incompetence ay dapat puwedeng tawagin sa pangalan.
+            Ang political satire ay hindi dapat gawing sterile dahil lang nasaktan ang isang opisyal.
+          </p>
+
+          <p>
+            Sa ilalim ng Article III, Section 4 ng 1987 Constitution:
+          </p>
+
+          <blockquote>
+            <p>
+              “No law shall be passed abridging the freedom of speech, of expression, or of the press…”
+            </p>
+          </blockquote>
+
+          <p>
+            Freedom of expression is deeply protected precisely because open discussion of public affairs is essential to democracy.
+          </p>
+
+          <p>
+            Sa Philippine jurisprudence, kinilala rin ang malaking latitude ng criticism sa public officials at public figures.
+          </p>
+
+          <p>
+            Sa <em>Daquer v. People</em>, nilinaw ng Supreme Court na sa criminal libel cases kung saan public figure—particularly a public officer—ang complainant, actual malice must be proved by the prosecution.
+          </p>
+
+          <p>
+            Ang actual malice dito ay hindi simpleng galit o masamang tono.
+            Ito ay knowledge na false ang defamatory statement o reckless disregard kung false ba ito o hindi.
+          </p>
+
+          <p>
+            Pero hindi rin puwedeng i-convert ang public-figure doctrine sa ideyang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Public figure siya, kaya lahat ng personal na katangian niya ay fair game.”
+            </p>
+          </blockquote>
+
+          <p>
+            May jurisprudence mismo na pumipigil sa shortcut na iyan.
+          </p>
+
+          <h2>
+            PUBLIC FIGURE ANG TAO—PERO HINDI LAHAT NG TUNGKOL SA KANYA AY PUBLIC ISSUE
+          </h2>
+
+          <p>
+            Sa <em>Nova Communications, Inc. v. Canoy</em>, public figure si Atty. Reuben Canoy at ang underlying discussion ay may kaugnayan sa isang matter of public interest.
+          </p>
+
+          <p>
+            Pero ginamitan siya ng mga mapanirang bansag tungkol sa kanyang diumano'y mental condition.
+          </p>
+
+          <p>
+            Hindi tinanggap ng Supreme Court ang argumento na sapat nang public figure ang tao para maituring na fair commentary ang ganoong personal attack.
+          </p>
+
+          <p>
+            Binigyang-diin ng Korte na ang defamatory remarks tungkol sa kanyang mental condition ay irrelevant sa public issue na pinag-uusapan at nakadirekta sa kanya bilang private individual, hindi sa kanyang public capacity.
+          </p>
+
+          <p>
+            At malinaw ang prinsipyong binanggit ng Court:
+            Ang isang topic ay hindi nagiging matter of public interest dahil lamang public officer o public figure ang taong involved.
+          </p>
+
+          <p>
+            Ang pagpasok sa public office ay hindi rin katumbas ng kompletong pagsuko ng karapatan sa privacy.
+          </p>
+
+          <p>
+            Napakalaking distinction nito.
+          </p>
+
+          <p>
+            Public scrutiny of conduct ay hindi automatic na public ownership of every personal or medical condition.
+          </p>
+
+          <p>
+            Hindi nangangahulugang eksaktong pareho ang mental-condition remarks sa Canoy at bawat physical caricature.
+          </p>
+
+          <p>
+            Magkaiba ang facts at medium.
+          </p>
+
+          <p>
+            Pero napakahalaga ng underlying doctrine:
+            Ang pagiging public figure ay hindi magic switch na ginagawang relevant sa public interest ang lahat ng personal na katangian ng tao.
+          </p>
+
+                            <h2>
+            HINDI WAIVER NG PAGKATAO ANG PAGIGING PUBLIC FIGURE
+          </h2>
+
+          <p>
+            Kapag tumakbo ka sa public office, inaasahan mong:
+            pupunahin ang trabaho mo,
+            huhusgahan ang desisyon mo,
+            susuriin ang record mo,
+            kukwestiyunin ang motives mo,
+            at pagtatawanan ang political absurdities mo.
+          </p>
+
+          <p>
+            Parte iyon ng buhay pampubliko.
+          </p>
+
+          <p>
+            Pero walang ballot na nagsasabing:
+          </p>
+
+          <blockquote>
+            <p>
+              “I hereby waive my right to human dignity regarding every physical condition I possess.”
+            </p>
+          </blockquote>
+
+          <p>
+            Public accountability should expand scrutiny of conduct.
+          </p>
+
+          <p>
+            Hindi nito kailangang gawing public ammunition ang lahat ng biological o medical characteristic.
+          </p>
+
+          <p>
+            Kung mali ang ginawa—punahin ang mali.
+            Kung nagsinungaling—ilatag ang kasinungalingan.
+            Kung corrupt—ilabas ang ebidensiya.
+            Kung hypocrite—ipakita ang contradiction.
+            Kung incompetent—ipakita ang resulta.
+          </p>
+
+          <p>
+            Napakaraming substantive target.
+          </p>
+
+          <p>
+            Kung sa dami ng puwedeng punahin ay bumagsak pa rin ang argumento mo sa:
+          </p>
+
+          <blockquote>
+            <p>
+              “Tingnan ninyo ang mukha niya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Baka hindi masyadong mataas ang antas ng political criticism na ipinagmamalaki natin.
+          </p>
+
+          <h2>
+            PERO HUWAG DIN NATING PATAYIN ANG ARTISTIC FREEDOM
+          </h2>
+
+          <p>
+            Mahalaga rin itong sabihin.
+          </p>
+
+          <p>
+            Hindi dapat maging resulta ng usapang ito ang mindset na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Kapag may na-offend, ipagbawal agad.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dangerous din iyon.
+          </p>
+
+          <p>
+            Ang freedom of expression ay hindi lang para sa expression na maganda, mabait o komportable.
+          </p>
+
+          <p>
+            Kung ganoon lang, hindi na kailangan ng constitutional protection.
+          </p>
+
+          <p>
+            Political art often exists precisely to offend power, disturb complacency at gawing uncomfortable ang publiko.
+          </p>
+
+          <p>
+            At ang caricature, by nature, ay distortion.
+          </p>
+
+          <p>
+            Kung gagawin nating rule na bawal exaggerate ang physical features—pinatay na natin mismo ang malaking bahagi ng caricature.
+          </p>
+
+          <p>
+            Kaya hindi ang simpleng distortion ang linya.
+          </p>
+
+          <p>
+            Ang mas matalinong tanong ay:
+            Ano ang function ng distortion sa mensahe?
+            Gumagawa ba ito ng political point?
+            O physical condition lang ang mismong joke?
+          </p>
+
+          <h2>
+            FREE SPEECH DOES NOT MEAN FREEDOM FROM CRITICISM
+          </h2>
+
+          <p>
+            Isa pang maling mindset:
+          </p>
+
+          <blockquote>
+            <p>
+              “Freedom of expression ko ito. Wala kayong karapatang kondenahin.”
+            </p>
+          </blockquote>
+
+          <p>
+            Mali.
+          </p>
+
+          <p>
+            Ang constitutional protection ng free speech ay principally protection laban sa government abridgment ng expression.
+            Hindi ito certificate na immune ka na sa reaction ng ibang tao.
+          </p>
+
+          <p>
+            May kalayaan kang gumawa ng artwork.
+          </p>
+
+          <p>
+            May kalayaan ding sabihin ng ibang tao:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mali ang ginawa mo.”
+            </p>
+          </blockquote>
+
+          <p>
+            May kalayaan silang kontrahin ang message.
+            I-criticize ang ethics.
+            Tumigil sa pagsuporta.
+            Humingi ng accountability.
+          </p>
+
+          <p>
+            At kung may applicable law at sapat ang elements, gamitin ang legal process.
+          </p>
+
+          <blockquote>
+            <p>
+              COUNTER-SPEECH IS ALSO SPEECH.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi censorship ang bawat criticism sa isang artist.
+          </p>
+
+          <p>
+            Hindi suppression ng art ang pagsabing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Lumampas ito.”
+            </p>
+          </blockquote>
+
+          <p>
+            Mas precise na sabihin:
+            Artistic freedom includes protection against censorship—pero hindi ito immunity mula sa criticism o lawful accountability.
+          </p>
+
+          <p>
+            At hindi kailangang sirain ang freedom of expression para ipagtanggol ang human dignity.
+          </p>
+
+          <p>
+            Parehong mahalaga ang dalawa.
+          </p>
+
+          <h2>
+            BODY SHAMING BA? HINDI IBIG SABIHIN KRIMEN AGAD
+          </h2>
+
+          <p>
+            Dito naman kailangang iwasan ang kabilang extreme.
+          </p>
+
+          <p>
+            Kapag may offensive comment tungkol sa katawan, hindi automatic na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Body shaming—kulong agad.”
+            </p>
+          </blockquote>
+
+          <p>
+            Walang simpleng legal formula na:
+          </p>
+
+          <blockquote>
+            <p>
+              Body shaming = Automatic crime.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa Pilipinas, kailangang tukuyin kung anong specific law ang maaaring applicable at kung kumpleto ang legal elements nito.
+          </p>
+
+          <p>
+            Maaaring purely offensive o unethical ang isang act pero hindi umabot sa criminal liability.
+            Maaaring may civil remedy pero walang criminal offense.
+            Maaaring may criminal issue lamang dahil may ibang specific circumstance—halimbawa disability, defamation, harassment o ibang element na sakop ng isang particular law.
+          </p>
+
+          <p>
+            Kaya dalawang maling shortcut ang dapat iwasan:
+          </p>
+
+          <blockquote>
+            <p>
+              “Na-offend = Illegal.”
+            </p>
+          </blockquote>
+
+          <p>
+            at
+          </p>
+
+          <blockquote>
+            <p>
+              “Art = Impossible magkaroon ng liability.”
+            </p>
+          </blockquote>
+
+          <p>
+            Parehong mali.
+          </p>
+
+                            <h2>
+            KAPAG DISABILITY O IMPAIRMENT MISMO ANG GINAWANG MOCKERY, MAY MAS ESPESIPIKONG BATAS
+          </h2>
+
+          <p>
+            Dito mahalaga ang Republic Act No. 9442, na nag-amyenda sa Magna Carta for Persons with Disability.
+          </p>
+
+          <p>
+            May specific provisions ito laban sa verbal at non-verbal ridicule at vilification ng persons with disability.
+          </p>
+
+          <p>
+            Sa Section 39, ang public ridicule ay tumutukoy sa paggawa ng katatawanan, contemptuous imitation o mockery sa persons with disability, sa salita, sulat o kilos, dahil sa kanilang impairment.
+          </p>
+
+          <p>
+            Ipinagbabawal naman ng Section 40 ang acts of ridicule laban sa PWD na maaaring manakot o magresulta sa pagkawala ng self-esteem.
+          </p>
+
+          <p>
+            Ang Sections 41 at 42 naman ay tumutukoy sa vilification—kabilang ang abusive statements at public activity na nag-i-incite ng hatred, serious contempt o severe ridicule laban sa PWD.
+          </p>
+
+          <p>
+            Pero kailangan pa ring maging precise.
+          </p>
+
+          <p>
+            Hindi lahat ng physical difference ay automatic na disability sa ilalim ng batas.
+            Hindi lahat ng caricature ng PWD ay automatic violation.
+          </p>
+
+          <p>
+            At hindi sapat ang label na “body shaming” para sabihing guilty na ang tao.
+          </p>
+
+          <p>
+            Kailangang tingnan kung covered ang tao, ano ang nature ng impairment, bakit ginawa ang ridicule, ano ang context, at kung satisfied ang statutory elements.
+          </p>
+
+          <p>
+            Korte ang nagdedetermina ng legal liability—hindi comment section.
+          </p>
+
+          <p>
+            Pero malinaw din ang kabilang punto:
+            Kung impairment mismo ang object ng mockery, hindi puwedeng basta isara ang legal discussion sa:
+          </p>
+
+          <blockquote>
+            <p>
+              “Drawing lang naman.”
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY CIVIL LAW DIN NA DIREKTANG NAGSASALITA TUNGKOL SA PAGHIHIYA DAHIL SA PHYSICAL DEFECT
+          </h2>
+
+          <p>
+            Ito ang isang legal provision na napaka-relevant pero bihirang mabanggit sa ordinaryong discussion.
+          </p>
+
+          <p>
+            Article 26 ng Civil Code.
+          </p>
+
+          <p>
+            Sinasabi nito na bawat tao ay dapat gumalang sa dignity, personality, privacy at peace of mind ng ibang tao.
+          </p>
+
+          <p>
+            At tahasan nitong inililista bilang maaaring magbigay ng cause of action ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Vexing or humiliating another” dahil sa kanyang religious beliefs, lowly station in life, place of birth, physical defect, o ibang personal condition.
+            </p>
+          </blockquote>
+
+          <p>
+            At napakahalaga ng kasunod na principle:
+            Ang mga ganitong acts ay maaaring magkaroon ng civil consequences kahit hindi sila bumuo ng criminal offense.
+          </p>
+
+          <p>
+            Ito ang dahilan kung bakit mali ang mentality na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Kung hindi naman krimen, okay lang.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Magkaiba ang:
+            criminal liability,
+            civil accountability,
+            social accountability,
+            at moral responsibility.
+          </p>
+
+          <p>
+            Ang kawalan ng criminal conviction ay hindi certification ng magandang asal.
+          </p>
+
+          <h2>
+            AT OO—PUWEDE RING PUMASOK ANG DEFAMATION LAW, DEPENDE SA CONTEXT
+          </h2>
+
+          <p>
+            Sa Article 353 ng Revised Penal Code, ang libel ay maaaring may kinalaman sa public and malicious imputation ng crime, vice, defect—real or imaginary—o ibang act, omission, condition, status o circumstance na maaaring magdala ng dishonor, discredit o contempt.
+          </p>
+
+          <p>
+            At sa Article 355, hindi lamang written words ang maaaring medium.
+            Kasama rin ang painting at iba pang enumerated o similar traditional means.
+          </p>
+
+          <p>
+            Ibig sabihin:
+            Hindi nagiging legally invisible ang isang potentially defamatory imputation dahil drawing ang ginamit imbes na sentence.
+          </p>
+
+          <p>
+            Pero may importanteng precision kapag online ang publication.
+          </p>
+
+          <p>
+            Kung ang allegedly libelous material ay ipinost sa Facebook, website o ibang computer-based platform, pumapasok ang Section 4(c)(4) ng Republic Act No. 10175 o Cybercrime Prevention Act, na sumasaklaw sa libel committed through a computer system or similar future means.
+          </p>
+
+          <p>
+            At noong April 8, 2026, sa <em>Causing v. People</em>, nilinaw ng Supreme Court En Banc na ang Article 355 mismo ay hindi naglista ng computer systems o ICT bilang means of publication. Ang RA 10175 ang kumikilala sa cyberspace at computer system bilang paraan ng pag-commit ng libel na defined sa Article 353 in relation to Article 355.
+          </p>
+
+          <p>
+            Kaya kung online caricature ang pinag-uusapan, mas legally precise ang framework na:
+          </p>
+
+          <blockquote>
+            <p>
+              Articles 353 at 355 + RA 10175
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi Article 355 lamang.
+          </p>
+
+          <p>
+            Pero muli:
+            Hindi bawat offensive caricature ay libel o cyberlibel.
+          </p>
+
+          <p>
+            May elements ang defamation.
+            May defenses.
+            May distinction sa statement of fact at opinion.
+            May privileged communication.
+            May public-interest doctrine.
+            At may special constitutional considerations kapag public officials at public figures ang involved.
+          </p>
+
+          <p>
+            Kaya hindi maaaring gawing automatic verdict ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Pangit ang drawing—libel na.”
+            </p>
+          </blockquote>
+
+          <p>
+            Gaya rin ng hindi maaaring gawing automatic defense ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Drawing ito—safe na.”
+            </p>
+          </blockquote>
+
+                            <h2>
+            “WALA NAMAN AKONG INTENTION NA MANAKIT.”
+          </h2>
+
+          <p>
+            Posible.
+          </p>
+
+          <p>
+            At dapat ding isaalang-alang ang intent sa ethical at legal analysis depende sa context at applicable law.
+          </p>
+
+          <p>
+            May pagkakaiba ang:
+            hindi naisip na consequence,
+            reckless joke,
+            deliberate insult,
+            at organized harassment.
+          </p>
+
+          <p>
+            Pero hindi rin magic eraser ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi ko naman intention.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag may isang taong nagsabing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi ko intensiyong pagtawanan ang physical condition niya,”
+            </p>
+          </blockquote>
+
+          <p>
+            Reasonable ring itanong:
+            Kung hindi iyon ang pinupuntirya—bakit iyon mismo ang pinakamatingkad na source ng humor?
+          </p>
+
+          <p>
+            Intent matters.
+            Pero effect, context at design choice matter too.
+          </p>
+
+          <p>
+            Kung natapakan mo ang paa ng tao nang hindi sinasadya, hindi ibig sabihin na masama kang tao.
+          </p>
+
+          <p>
+            Pero hindi rin magiging makatwiran ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi ko sinadya, kaya hindi ako hihingi ng sorry.”
+            </p>
+          </blockquote>
+
+          <p>
+            Minsan ang mas mature na artistic response ay hindi:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi ninyo naiintindihan ang art.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “May puntong gusto akong sabihin, pero mali ang naging target ng paraan ko.”
+            </p>
+          </blockquote>
+
+          <p>
+            Accountability is not the death of art.
+            Puwede rin itong bahagi ng pagiging responsable bilang artist.
+          </p>
+
+          <h2>
+            MAY ISANG MAS MALALIM NA PROBLEMA: INIUUGNAY NATIN ANG ITSURA SA MORAL VALUE
+          </h2>
+
+          <p>
+            Matagal nang ginagamit sa culture ang katawan bilang shortcut para sabihin kung sino ang “masama.”
+          </p>
+
+          <blockquote>
+            <p>
+              Peklat = villain.<br>
+              Deformity = frightening.<br>
+              Mataba = greedy.<br>
+              Payat = weak.<br>
+              Kalbo = ridiculous.<br>
+              Hindi symmetrical ang mukha = comic relief.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lahat ng paggamit nito ay may parehong context o intent.
+            Pero kapag paulit-ulit na ginagamit ang isang visible difference bilang shorthand para sa pagiging katawa-tawa, masama o inferior—maaari itong mag-reinforce ng umiiral nang social stigma.
+          </p>
+
+          <p>
+            Ito ang dahilan kung bakit mahalaga ang representation.
+          </p>
+
+          <p>
+            Hindi lamang dahil ayaw nating may masaktan.
+            Kundi dahil ang kultura ay nakikilahok din sa paghubog kung anong klase ng katawan ang nakikita nating normal, respectable, desirable o katanggap-tanggap gawing katatawanan.
+          </p>
+
+          <p>
+            At ang memes, drawings, pelikula, biro at viral content ay maaaring makadagdag sa cultural language na iyon.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na kailangang takot na ang artist gumuhit.
+          </p>
+
+          <p>
+            Ibig sabihin:
+            Mas malaki ang kapangyarihan ng art kaysa sa “drawing lang ’yan.”
+          </p>
+
+          <p>
+            Kung kaya ng art na magmulat—kaya rin nitong mag-reinforce ng stereotype.
+            Kung kaya nitong hamunin ang kapangyarihan—maaari rin itong makatulong sa pagpapatibay ng stigma.
+          </p>
+
+          <p>
+            At dahil may kapangyarihan ang art—makatuwiran ding suriin ang pinipiling target ng artist.
+          </p>
+
+          <h2>
+            HINDI PAREHO ANG “OFFENSIVE” AT “MALI”
+          </h2>
+
+          <p>
+            Mahalaga rin ito.
+          </p>
+
+          <p>
+            May satire na offensive pero may mahalagang punto.
+            May political cartoon na nakakagalit pero legitimate criticism.
+            May artwork na distasteful para sa ilan pero hindi ibig sabihin na dapat itong ipagbawal.
+            May jokes na harsh pero ang target ay hypocrisy, ideology o abuso.
+          </p>
+
+          <p>
+            Hindi natin dapat gawing standard ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Nasaktan ako, therefore mali.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi rin sapat ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Offensive talaga ang satire, therefore kahit ano puwede.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ang pagiging offensive ay hindi automatic proof ng wrongdoing.
+            At hindi rin automatic defense.
+          </p>
+
+          <p>
+            Kailangan pa ring itanong:
+            Ano ang punto?
+            Ano ang target?
+            Ano ang context?
+            Ano ang connection ng physical feature sa criticism?
+            May public-interest value ba ang ginagawang punchline?
+          </p>
+
+          <p>
+            Diyan mas nagiging matino ang usapan.
+          </p>
+
+                            <h2>
+            HINDI MAGKAPAREHO ANG LEGALITY AT DECENCY
+          </h2>
+
+          <p>
+            Ito ang isang distinction na dapat laging dala.
+          </p>
+
+          <p>
+            May mga bagay na legal—pero basura pa ring asal.
+            May mga bagay na offensive—pero constitutionally protected.
+            May mga bagay na unethical—pero hindi criminal.
+            May mga bagay na maaaring magkaroon ng civil liability—kahit walang criminal conviction.
+            At may mga bagay na malinaw na masama ang dating—pero hindi sapat ang facts para sabihing may nilabag na batas.
+          </p>
+
+          <p>
+            Kaya napakababang moral standard ng:
+          </p>
+
+          <blockquote>
+            <p>
+              “May batas bang nagsasabing bawal?”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lahat ng tamang asal ay kailangang nakasulat sa Revised Penal Code.
+            At hindi lahat ng maling asal ay dapat kriminalisahin.
+          </p>
+
+          <p>
+            May malaking espasyo sa pagitan ng:
+            Dapat ikulong at dapat kondenahin.
+          </p>
+
+          <p>
+            Ang isang mature na lipunan ay kayang gumawa ng distinction na iyon.
+          </p>
+
+          <h2>
+            GUSTO MONG MAGING SAVAGE?
+          </h2>
+
+          <p>
+            Sige.
+          </p>
+
+          <p>
+            Maging savage sa argumento.
+          </p>
+
+          <p>
+            Gusto mong maging brutal?
+            Maging brutal sa hypocrisy.
+          </p>
+
+          <p>
+            Gusto mong makasakit ang political cartoon?
+          </p>
+
+          <p>
+            Ipakita kung gaano kasakit ang corruption sa ordinaryong tao.
+            I-drawing ang greed.
+            I-expose ang incompetence.
+            I-mock ang absurd policy.
+            Ipakita ang contradictions.
+            I-satirize ang propaganda.
+            Ipakita ang abuso.
+            I-illustrate ang consequences.
+          </p>
+
+          <p>
+            Napakalawak ng mundo ng political satire.
+          </p>
+
+          <p>
+            Hindi natin kailangang maging mabait sa maling ginagawa ng makapangyarihan.
+          </p>
+
+          <p>
+            Pero kung ang pinakamatalas mong political argument ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Tingnan ninyo ang mukha niya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi iyon pinnacle ng fearless political art.
+            Napakadaling insulto niyan.
+          </p>
+
+          <p>
+            Hindi tapang ang pagtira sa bagay na hindi naman pinili ng tao at walang kinalaman sa issue.
+            Mas matapang ang artist na kayang wasakin ang argumento ng makapangyarihan—nang hindi kailangang gawing collateral damage ang dignidad ng mga taong may kaparehong kondisyon.
+          </p>
+
+          <h2>
+            AT DITO LUMALABAS ANG KAMPIHAN
+          </h2>
+
+          <p>
+            Ito ang pinakamadaling fidelity test.
+          </p>
+
+          <p>
+            Kapag political enemy natin ang target:
+          </p>
+
+          <blockquote>
+            <p>
+              “Caricature lang ’yan.”<br>
+              “Satire lang.”<br>
+              “Freedom of expression.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag political ally natin ang ginawan:
+          </p>
+
+          <blockquote>
+            <p>
+              “Body shaming!”<br>
+              “Walang respeto!”<br>
+              “Dapat managot!”
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi prinsipyo iyon.
+            Kampihan iyon.
+          </p>
+
+          <p>
+            Kung mali para sa taong gusto natin—dapat kaya nating suriin sa parehong pamantayan kapag taong ayaw natin.
+            Kung ipinagtatanggol natin ang freedom of expression ng kakampi natin—dapat handa rin tayong kilalanin ang freedom of expression ng kalaban natin.
+            At kung ipinagtatanggol natin ang dignity ng taong kakampi natin laban sa appearance-based ridicule—hindi dapat mawala ang dignity principle dahil lamang masama ang tingin natin sa taong nasa kabilang panig.
+          </p>
+
+          <p>
+            Palitan mo ang pangalan.
+            Palitan mo ang partido.
+            Palitan mo ang kulay.
+          </p>
+
+          <p>
+            Pareho pa rin ba ang standard mo?
+            Kung hindi—hindi art, law o dignity ang sinusunod mo.
+            Kampihan ang sinusunod mo.
+          </p>
+
+          <h2>
+            ITO ANG LINYANG DAPAT MALINAW
+          </h2>
+
+          <p>
+            Ang caricature ay may karapatang mag-exaggerate.
+            Ang satire ay may karapatang mang-asar.
+            Ang political speech ay may karapatang maging matalim.
+            Ang art ay hindi obligadong maging komportable.
+          </p>
+
+          <p>
+            Pero wala ring rule na nagsasabing:
+            Kapag tinawag mong “art,” bawal na itong suriin, kondenahin o panagutin kung may applicable law.
+          </p>
+
+          <p>
+            Artistic freedom includes protection against censorship.
+            Hindi ito immunity laban sa criticism o lawful accountability.
+          </p>
+
+          <p>
+            At ang human dignity ay hindi dahilan para gawing sterile ang political criticism.
+          </p>
+
+          <p>
+            Hindi natin kailangang pumili sa dalawa.
+            Puwede nating ipagtanggol ang karapatan ng artist na gumawa ng brutal na political satire—habang kinokondena rin ang paggamit sa disability, impairment o irrelevant physical condition bilang madaling punchline.
+          </p>
+
+          <p>
+            Iyan ang mas consistent na prinsipyo.
+          </p>
+
+          <h2>
+            REAL TALK
+          </h2>
+
+          <p>
+            Punahin ang ginawa.
+            Kontrahin ang sinabi.
+            Kwestiyunin ang polisiya.
+            Ilantad ang kasinungalingan.
+            I-draw ang corruption.
+            Satirahin ang abuso.
+            Durugin ang hypocrisy.
+          </p>
+
+          <p>
+            Walang problema.
+          </p>
+
+          <p>
+            Pero kapag ang physical condition na walang kinalaman sa pagkakamali ang kailangan mong gawing katawa-tawa para magkaroon ng impact ang criticism—huwag agad magtago sa likod ng:
+          </p>
+
+          <blockquote>
+            <p>
+              “Caricature ’yan.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang tunay na caricature ay hindi nawawalan ng pagiging art kapag may punto.
+            At ang body shaming ay hindi nagiging mas matalino dahil ginamitan ng lapis.
+          </p>
+
+          <p>
+            Ang malayang sining ay may karapatang pumuna sa kapangyarihan.
+            Pero hindi ibig sabihin niyon na lahat ng paraan ng panghahamak ay dapat nating tawaging mahusay na satire.
+          </p>
+
+          <p>
+            Kung kayang tumayo ng criticism mo sa ebidensiya, kilos, polisiya at pananagutan—hindi mo kailangang gawing argument ang mukha ng tao.
+          </p>
+
+          <p>
+            At kapag inalis ang kanyang physical condition ay wala nang natitirang political point—baka panahon nang tanungin:
+          </p>
+
+          <blockquote>
+            <p>
+              Caricature ba talaga ang ipinagtatanggol natin—o body shaming na binigyan lang natin ng mas magandang pangalan?
+            </p>
+          </blockquote>
+                  
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              1987 Constitution of the Republic of the Philippines — Article III, Section 4, Freedom of Speech, Expression and Press.
+            </li>
+
+            <li>
+              Republic Act No. 9442 — amendments to the Magna Carta for Persons with Disability; Sections 39–42 on public ridicule and vilification against persons with disability.
+            </li>
+
+            <li>
+              Republic Act No. 386 / Civil Code of the Philippines — Article 26 on dignity, personality, privacy, peace of mind, and vexing or humiliating another because of physical defect or other personal condition.
+            </li>
+
+            <li>
+              Revised Penal Code, Articles 353 and 355 — definition of libel and libel committed through writing, printing, painting and other specified or similar traditional means.
+            </li>
+
+            <li>
+              Republic Act No. 10175 / Cybercrime Prevention Act of 2012 — Section 4(c)(4), libel committed through a computer system or similar means.
+            </li>
+
+            <li>
+              <em>Causing v. People</em>, G.R. No. 258524, April 8, 2026 — Supreme Court En Banc clarification that Article 355 itself does not recognize computer systems or ICT as a means of publication; RA 10175 recognizes publication through cyberspace for libel defined under the Revised Penal Code.
+            </li>
+
+            <li>
+              <em>Nova Communications, Inc. v. Canoy</em>, G.R. No. 193276, June 26, 2019 — public-figure status does not automatically make every personal matter a legitimate matter of public interest; defamatory remarks irrelevant to public conduct may remain actionable, and public office does not mean complete abandonment of privacy.
+            </li>
+
+            <li>
+              <em>Daquer v. People</em>, G.R. No. 206015, June 30, 2021 — actual-malice standard in criminal libel cases involving public figures, particularly public officers.
+            </li>
+
+            <li>
+              <em>Labargan v. People</em>, G.R. No. 246824, December 6, 2023 — criticism involving public officers, official duties and actual malice.
+            </li>
+
+            <li>
+              <em>Borjal v. Court of Appeals</em>, G.R. No. 126466, January 14, 1999 — fair comment, public interest and constitutional protection of robust public debate.
+            </li>
+
+            <li>
+              Metropolitan Museum of Art — <em>Infinite Jest: Caricature and Satire from Leonardo to Levine</em> — history and function of caricature, exaggeration and satire.
+            </li>
+
+            <li>
+              Library of Congress — <em>Herb Block, "The Cartoon"</em> / <em>Political Cartoons and Public Debates</em> — caricature, exaggeration, symbolism and the relationship of cartoon criticism to statements, actions and inactions.
+            </li>
+
+            <li>
+              Rasset, Mange, Montalan &amp; Stutterheim, <em>Body Image</em>, 2022 — "Towards a better understanding of the social stigma of facial difference" — public stigma, self-stigma, stigma by association and structural stigma involving facial difference.
+            </li>
+
+            <li>
+              Norman &amp; Moss, <em>PeerJ</em>, 2015 — "Psychosocial interventions for adults with visible differences: a systematic review" — negative social encounters and psychosocial difficulties experienced by some people with visible differences.
+            </li>
+
+            <li>
+              Menzel et al., <em>Body Image</em>, 2010 — "Appearance-related teasing, body dissatisfaction, and disordered eating: A meta-analysis" — 50 effect sizes involving 10,618 participants yielded a moderate effect size of .39 between weight teasing and body dissatisfaction; additional associations were found for appearance teasing and disordered-eating outcomes.
+            </li>
+
+            <li>
+              Warnick et al., <em>Journal of Pediatric Psychology</em>, 2022 — "Weight Stigma and Mental Health in Youth: A Systematic Review and Meta-Analysis" — 40-study review finding a moderate association between weight stigma and poorer mental-health outcomes while noting that the underlying study quality was generally fair to poor.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
