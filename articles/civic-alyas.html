@@ -1,1 +1,2466 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa paggamit ng alyas sa public transactions, audit trail, confidentiality, at public accountability."
+>
+
+  <title>MAY PIRMA, MAY RESIBO—PERO SINO TALAGA ANG TUMANGGAP? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    MAY PIRMA, MAY RESIBO—PERO SINO TALAGA ANG TUMANGGAP?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-alyas.png"
+      alt="Simbolikong acknowledgment receipt na may nakasulat na 'Recipient: ALYAS' na sumasagisag sa usapin ng audit trail, public accountability, at paggamit ng alias sa public-fund transactions."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+  Kapag may resibo at may pirma, madaling isipin na kumpleto na ang transaksyon.
+</p>
+
+<p>
+  May dokumento.<br>
+  May pangalan.<br>
+  May halagang nakasulat.<br>
+  May taong diumano’y tumanggap.
+</p>
+
+<p>
+  Pero kapag pera ng bayan ang pinag-uusapan, hindi sapat na may papel na nagsasabing may tumanggap.
+</p>
+
+<p>
+  Mas mahalagang tanungin:<br>
+  Matutukoy at mapapatunayan ba kung sino talaga ang taong nasa likod ng pangalan at pirma?
+</p>
+
+<p>
+  Dahil kung ang nakalagay ay alyas o codename, hindi naman ibig sabihin na peke agad ang tao o transaksyon.
+</p>
+
+<p>
+  Pero hindi rin puwedeng matapos ang usapan sa:
+</p>
+
+<blockquote>
+  <p>“May pirma naman.”</p>
+</blockquote>
+
+<p>
+  O
+</p>
+
+<blockquote>
+  <p>“Kilala naman namin kung sino iyan.”</p>
+</blockquote>
+
+<p>
+  Sa public transaction, ang tunay na sukatan ay kung may sapat na audit trail para maiugnay ang perang inilabas sa aktuwal na transaction, sa totoong recipient, at sa taong maaaring panagutin kapag may mali.
+</p>
+
+<p>
+  At dito nagiging mahalaga ang isang bagay na ordinaryong-ordinaryo sa buhay natin pero nag-iiba ang bigat kapag government money na ang pinag-uusapan: Ang paggamit ng alyas.
+</p>
+
+<p>
+  Normal sa ordinaryong buhay ang palayaw.
+</p>
+
+<p>
+  May “Boy,” “Jun,” “Bong,” “Bebeng,” screen name, stage name, codename at kung anu-anong bansag na minsan ay mas kilala pa kaysa tunay na pangalan ng tao.
+</p>
+
+<p>
+  Walang masama roon sa simpleng pakikisalamuha. Pero ibang usapan kapag public transaction na ang pinag-uusapan—lalo na kung pera ng bayan ang inilabas.
+</p>
+
+<p>
+  Dahil sa government transaction, ang pangalan sa isang dokumento ay hindi simpleng tawag lamang.
+</p>
+
+<p>
+  Bahagi ito ng audit trail.
+</p>
+
+<p>
+  Isa ito sa mga nag-uugnay sa:<br>
+  Pera → Transaksyon → Dokumento → Tumanggap → Pirma → Pananagutan.
+</p>
+
+<p>
+  Kaya kapag alyas ang nakalagay sa dokumentong nagsasabing may isang taong tumanggap ng public money, hindi sapat na tanungin:
+</p>
+
+<blockquote>
+  <p>“Bawal ba ang alyas?”</p>
+</blockquote>
+
+<p>
+  Mas mahalagang tanungin:
+</p>
+
+<blockquote>
+  <p>“Kaya ba ng sistema na patunayan kung may totoong tao at totoong transaksyon sa likod ng alyas?”</p>
+</blockquote>
+
+<h2>
+  Ano ba Talaga ang Sinasabi ng Konstitusyon?
+</h2>
+
+<p>
+  Walang nakasulat sa 1987 Constitution na:
+</p>
+
+<blockquote>
+  <p>“Bawal gumamit ng alias sa lahat ng government transactions.”</p>
+</blockquote>
+
+<p>
+  Mahalagang linawin iyan.
+</p>
+
+<p>
+  Hindi kailangang imbentuhin ang isang constitutional prohibition para maging mabigat ang usapin.
+</p>
+
+<p>
+  Ang malinaw na sinasabi ng Konstitusyon ay mas malawak.
+</p>
+
+<p>
+  Sa Article IX-D, Section 2, binibigyan ang Commission on Audit o COA ng kapangyarihan, awtoridad at tungkuling siyasatin, i-audit at i-settle ang accounts na may kinalaman sa revenues, receipts, expenditures at paggamit ng funds at property ng gobyerno.
+</p>
+
+<p>
+  May kapangyarihan din ang COA na tukuyin ang saklaw ng audit, magtakda ng audit methods at gumawa ng accounting and auditing rules para maiwasan o ma-disallow ang irregular, unnecessary, excessive, extravagant o unconscionable expenditures.
+</p>
+
+<p>
+  Sa Article XI, Section 1, malinaw din:
+</p>
+
+<blockquote>
+  <p>“Public office is a public trust.”</p>
+</blockquote>
+
+<p>
+  Ang public officers at employees ay kailangang accountable sa mamamayan.
+</p>
+
+<p>
+  At kinikilala rin ng Konstitusyon ang right to information on matters of public concern at ang policy of full public disclosure sa government transactions involving public interest—bagama’t hindi absolute ang mga ito at maaaring magkaroon ng lawful restrictions para sa sensitibong impormasyon.
+</p>
+
+<p>
+  Ibig sabihin:<br>
+  May mga impormasyong maaaring lehitimong hindi ipaalam sa lahat.<br>
+  Pero hindi nito binubura ang constitutional responsibility na bantayan at i-account ang paggamit ng pera ng bayan.
+</p>
+
+<h2>
+  Kapag Public Fund, Hindi Sapat ang “May Papel Naman”
+</h2>
+
+<p>
+  Mas malinaw itong inilalatag sa Presidential Decree No. 1445 o Government Auditing Code of the Philippines.
+</p>
+
+<p>
+  Isa sa fundamental principles nito:<br>
+  Claims against government funds shall be supported with complete documentation.
+</p>
+
+<p>
+  Kasama rin sa prinsipyo ng batas na ang government funds ay gamitin lamang para sa public purpose, may approval ng proper officials ang disbursement, sundin ang financial laws at regulations, at may fiscal responsibility ang mga taong may authority sa financial affairs at transactions ng government agency.
+</p>
+
+<p>
+  Mahalaga ang dalawang salitang iyon:<br>
+  Complete documentation.
+</p>
+
+<p>
+  Hindi lamang documentation.<br>
+  Hindi lamang papel.<br>
+  Hindi lamang resibo.<br>
+  Hindi lamang pirma.
+</p>
+
+<p>
+  Dahil posible namang magkaroon ng dokumentong kumpleto ang mga required field pero kulang ang ebidensyang nagpapatunay na tunay ang nangyaring transaksyon.
+</p>
+
+<p>
+  Halimbawa:<br>
+  May ₱100,000 na public money.<br>
+  May acknowledgment receipt.
+</p>
+
+<p>
+  Recipient:
+</p>
+
+<blockquote>
+  <p>“Alyas.”</p>
+</blockquote>
+
+<p>
+  May pirma sa ibaba.
+</p>
+
+<p>
+  Sa papel, mukhang may transaction. Pero kung seryosong audit at accountability ang pag-uusapan, natural na may mas malalalim na tanong:
+</p>
+
+<p>
+  Sino ang nasa likod ng “Alyas”?<br>
+  May totoong tao bang nasa likod ng pangalang iyon?<br>
+  Kung kailangan siyang i-verify sa ilalim ng isang lawful audit o investigation, may paraan bang matukoy kung sino siya?<br>
+  Siya ba talaga ang pumirma?<br>
+  Siya ba talaga ang tumanggap?<br>
+  May ebidensya bang aktuwal na nangyari ang transaction?<br>
+  May legal at authorized purpose ba ang pagbabayad?<br>
+  At may matutukoy bang accountable person kung mapatunayang hindi totoo ang nasa dokumento?
+</p>
+
+<p>
+  Dahil ang existence ng papel ay hindi kapareho ng proof ng existence ng transaction.
+</p>
+
+          <h2>
+  Hindi Rin Tamang Sabihing “Alias = Automatic Crime”
+</h2>
+
+<p>
+  Dito kailangan ding maging patas sa batas.
+</p>
+
+<p>
+  May Commonwealth Act No. 142, as amended by Republic Act No. 6085, na nagreregulate sa paggamit ng aliases.
+</p>
+
+<p>
+  Pero hindi nangangahulugan na anumang isang beses na paggamit ng ibang pangalan ay automatic criminal violation.
+</p>
+
+<p>
+  Sa <em>Ursua v. Court of Appeals</em>, ipinaliwanag ng Supreme Court ang “alias” sa konteksto ng batas bilang pangalang ginagamit o intended gamitin ng isang tao publicly and habitually, karaniwang sa business transactions, bilang dagdag sa kanyang tunay na pangalan.
+</p>
+
+<p>
+  Ang prinsipyong iyon ay kinilala rin sa <em>People v. Estrada</em>, kung saan binigyang-diin na para pumasok sa illegal use of alias sa ilalim ng CA 142, mahalaga ang public and habitual use.
+</p>
+
+<p>
+  Kaya hindi seryosong legal analysis ang simpleng:
+</p>
+
+<blockquote>
+  <p>“May alyas, therefore illegal agad.”</p>
+</blockquote>
+
+<p>
+  Pero dito pumapasok ang malaking distinction.
+</p>
+
+<p>
+  Magkaibang tanong ang:
+</p>
+
+<blockquote>
+  <p>“Criminal violation ba ng Anti-Alias Law ang paggamit niya ng pangalang ito?”</p>
+</blockquote>
+
+<p>
+  At:
+</p>
+
+<blockquote>
+  <p>“Sapat ba ang identity at documentation para ma-audit nang maayos ang public money?”</p>
+</blockquote>
+
+<p>
+  Maaaring hindi umabot sa criminal violation ng Anti-Alias Law ang isang paggamit ng ibang pangalan. Pero hindi ibig sabihin noon na automatic nang sapat ang dokumento para sa public accountability.
+</p>
+
+<h2>
+  Ang Alyas ay Hindi Automatic na Pekeng Identity
+</h2>
+
+<p>
+  Pero mahalaga ring linawin na ang paggamit ng alias o codename ay hindi automatic proof na:
+</p>
+
+<p>
+  Peke ang tao.<br>
+  Peke ang transaction.<br>
+  O ninakaw ang pera.
+</p>
+
+<p>
+  Maaaring may tunay na tao sa likod ng codename. Maaaring may lehitimong dahilan kung bakit kailangang protektahan ang kanyang tunay na pangalan.
+</p>
+
+<p>
+  Lalo na sa intelligence at confidential operations, maaaring malagay sa panganib ang source, informant o operative kapag basta inilantad sa publiko ang tunay na identity.
+</p>
+
+<p>
+  Kaya ang tamang issue ay hindi:
+</p>
+
+<blockquote>
+  <p>“Dapat bang ilagay sa public record ang tunay na pangalan ng lahat?”</p>
+</blockquote>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang mas matinong tanong ay:
+</p>
+
+<blockquote>
+  <p>“Kung hindi puwedeng ilantad sa publiko ang totoong pangalan, may secure at verifiable na paraan ba para ma-establish ng awtorisadong sistema kung may totoong tao sa likod nito kapag legitimong kailangan?”</p>
+</blockquote>
+
+<p>
+  Malaking pagkakaiba iyon.
+</p>
+
+<h2>
+  Kapag Buong Pangalan ang Nakasulat, Totoo na ba ang Tao?
+</h2>
+
+<p>
+  Hindi rin.
+</p>
+
+<p>
+  At mahalaga itong distinction dahil hindi lahat ng alias ay mukhang:
+</p>
+
+<blockquote>
+  <p>“AGENT X,” “EAGLE,” “SOURCE 17” o isang obvious na codename.</p>
+</blockquote>
+
+<p>
+  Ang isang alias ay maaaring magmukhang ordinaryong first name + surname.
+</p>
+
+<p>
+  May aktuwal na Supreme Court example nito.
+</p>
+
+<p>
+  Sa <em>Pequero v. People</em>, ang registered name ng isang lalaki ay Pedro Pequero y Nollora, pero ginagamit niya publicly ang pangalang “Atty. Epafrodito Nollora.”
+</p>
+
+<p>
+  Buong pangalan.<br>
+  Mukhang ordinaryong real-world identity.<br>
+  Pero hindi iyon ang kanyang registered name.
+</p>
+
+<p>
+  Ginamit niya ito sa pakikitungo sa clients, pagpirma ng legal documents at pagharap bilang abogado. Inaffirm ng Supreme Court ang kanyang conviction para sa illegal use of alias at use of fictitious name.
+</p>
+
+<p>
+  Ipinapakita nito ang isang simpleng prinsipyo:
+</p>
+
+<p>
+  Hindi sa pagkakabuo ng pangalan malalaman kung alias ito.
+</p>
+
+<p>
+  Hindi porke may first name at surname ay verified identity na.
+</p>
+
+<p>
+  Ang tanong ay:<br>
+  Kaninong pangalan ito?
+</p>
+
+<p>
+  At:<br>
+  May totoong tao bang mapapatunayang nasa likod nito?
+</p>
+
+<p>
+  Pero may isa pang legal precision na mahalaga.
+</p>
+
+<p>
+  Ang “alias” at “fictitious name” ay hindi interchangeable legal terms.
+</p>
+
+<p>
+  At ang “fictitious name” sa Article 178 ng Revised Penal Code ay hindi rin simpleng synonym ng:
+</p>
+
+<blockquote>
+  <p>“Taong hindi umiiral.”</p>
+</blockquote>
+
+<p>
+  Sa <em>Pequero</em>, halimbawa, totoong pangalan ng isang totoong abogado ang “Epafrodito Nollora”—pero matagal nang patay ang tunay na abogado at ginamit ng ibang tao ang identity niya. Kinilala pa rin iyon ng Supreme Court bilang use of a fictitious name sa context ng Article 178.
+</p>
+
+<p>
+  Kaya sa public-fund discussion, mas maingat na gamitin ang distinction:
+</p>
+
+<p>
+  Alias — may underlying real person na gumagamit o iniuugnay sa ibang pangalan.<br>
+  Alleged Fictitious Recipient — kinukuwestiyon kung ang identity na nasa dokumento ay tunay na tumutukoy sa isang actual recipient.
+</p>
+
+<p>
+  Hindi automatic criminal finding ang pangalawa. Kailangan pa rin itong patunayan.
+</p>
+
+          <h2>
+  Kung Sinasabing “Alyas Lang Iyan”—Alyas Kanino?
+</h2>
+
+<p>
+  Dito nagiging mahalaga ang verification.
+</p>
+
+<p>
+  Kung may full name sa acknowledgment receipt at sinabi:
+</p>
+
+<blockquote>
+  <p>“Alyas lang iyan.”</p>
+</blockquote>
+
+<p>
+  Hindi pa natatapos ang tanong.
+</p>
+
+<p>
+  Ang logical na kasunod ay:
+</p>
+
+<blockquote>
+  <p>“Alyas kanino?”</p>
+</blockquote>
+
+<p>
+  Dahil kung totoong alias iyon, may underlying real person dapat na maaaring ma-link sa pangalang ginamit—kahit hindi kailangang malaman ng publiko kung sino siya.
+</p>
+
+<p>
+  Iyan ang malaking pagkakaiba ng:<br>
+  Protected identity at identity na walang verifiable link sa isang real person.
+</p>
+
+<p>
+  At dito relevant ang kasalukuyang usapin tungkol sa ilang acknowledgment receipts ng confidential funds ng Office of the Vice President at Department of Education.
+</p>
+
+<p>
+  Kabilang sa mga pangalang kinukuwestiyon ng House prosecution ang “Mary Grace Piattos” at “Milky Secuya.”
+</p>
+
+<p>
+  Noong Agosto 2026, sinabi ng House prosecution na balak nitong magpresenta ng Philippine Statistics Authority witness tungkol sa mga pangalan na hindi nakita sa civil-registry searches, kabilang ang Piattos at Secuya. Layunin ng prosecution na gamitin iyon bilang ebidensya para suportahan ang alegasyong fictitious ang ilang recipients.
+</p>
+
+<p>
+  Kasabay nito, inaasahang ihaharap din ang NBI forensic document examiners.
+</p>
+
+<p>
+  Sa naunang forensic examination ng 36 original acknowledgment receipts, iniulat na may mga grupo ng receipts na magkakaiba ang pangalan ng supposed recipients pero ang handwriting o signatures ay attributable sa iilang writers lamang.
+</p>
+
+<p>
+  Mabigat na red flag iyon.
+</p>
+
+<p>
+  Pero mahalagang huwag agad magbigay ng konklusyon.
+</p>
+
+<p>
+  Ang walang matching PSA record ay hindi, by itself, absolute proof na walang taong umiiral.
+</p>
+
+<p>
+  Mismong PSA ang nagpapaliwanag na ang Negative Certification of Birth ay nagpapatunay na walang birth record na makikita sa Civil Registry System database as of the date of issuance.
+</p>
+
+<p>
+  May proseso rin ng electronic endorsement para sa civil-registry documents na nasa Local Civil Registry Office ngunit hindi pa nakikita sa PSA Civil Registry System.
+</p>
+
+<p>
+  Kaya ang mas eksaktong interpretation ay:
+</p>
+
+<blockquote>
+  <p>No PSA match = Evidence / Red Flag.</p>
+</blockquote>
+
+<p>
+  Hindi automatic:
+</p>
+
+<blockquote>
+  <p>No PSA match = Proof na walang totoong tao sa likod ng pangalan.</p>
+</blockquote>
+
+<p>
+  Pero nagbabago ang bigat kapag nagko-converge ang maraming independent indicators.
+</p>
+
+<p>
+  Halimbawa:<br>
+  Walang matching civil-registry record;<br>
+  Walang maipakitang secure documentary link sa isang tunay na tao;<br>
+  Hindi ma-establish kung sino ang underlying individual sa likod ng claimed alias;<br>
+  May questionable handwriting o signatures;<br>
+  May iba’t ibang pangalan pero indikasyong iilang writers lamang ang pumirma;<br>
+  At walang ibang independent evidence na kayang i-connect ang pangalan sa aktuwal na recipient at transaction.
+</p>
+
+<p>
+  Kapag nagsama-sama ang ganitong ebidensya, mas lumalakas ang factual basis para imbestigahan kung:
+</p>
+
+<blockquote>
+  <p>Lehitimong confidential alias ba talaga ito—o pangalang nasa papel lang?</p>
+</blockquote>
+
+<p>
+  Pero hanggang hindi napapatunayan sa tamang proceeding, allegation at evidentiary question pa rin iyon.
+</p>
+
+<p>
+  Mismong House prosecution has acknowledged na nasa kanila ang burden na patunayan ang allegations laban kay Vice President Sara Duterte.
+</p>
+
+<p>
+  Iyan ang tamang standard.
+</p>
+
+<p>
+  Hindi:
+</p>
+
+<blockquote>
+  <p>“Walang PSA record, guilty na.”</p>
+</blockquote>
+
+<p>
+  At hindi rin:
+</p>
+
+<blockquote>
+  <p>“Alyas daw, kaya wala nang kailangang patunayan.”</p>
+</blockquote>
+
+<p>
+  Ang tamang tanong:
+</p>
+
+<blockquote>
+  <p>Ano ang kabuuang ebidensya na nag-uugnay sa pangalan, sa totoong tao, sa pera, at sa aktuwal na transaksyon?</p>
+</blockquote>
+
+<h2>
+  At Paano Naman ang Pirma?
+</h2>
+
+<p>
+  Dito madalas nagiging misleading ang simpleng argumento na:
+</p>
+
+<blockquote>
+  <p>“Kung alyas ang pangalan, alyas din ang signature.”</p>
+</blockquote>
+
+<p>
+  Hindi ganoon kasimple.
+</p>
+
+<p>
+  Ang signature ay hindi kailangang malinaw na nakasulat ang buong legal name.
+</p>
+
+<p>
+  Maraming lehitimong pirma ang stylized.
+</p>
+
+<p>
+  May initials.<br>
+  May loops.<br>
+  May marks.<br>
+  May pirma na halos imposible nang basahin bilang ordinaryong pangalan.
+</p>
+
+<p>
+  Kaya hindi dahil hindi tugma sa spelling ng legal name ang itsura ng pirma ay peke na ito.
+</p>
+
+<p>
+  Ang mas mahalagang konsepto ay Attribution at Authentication.
+</p>
+
+<p>
+  Kanino ina-attribute ang pirma?<br>
+  At mayroon bang genuine handwriting o signature specimens na maaaring gamiting reference kapag kinuwestiyon ang authenticity nito?
+</p>
+
+<p>
+  Sa Rule 132, Section 22 ng Rules on Evidence, maaaring patunayan ang handwriting sa pamamagitan ng witness na may sapat na pagkakilala rito, o sa pamamagitan ng comparison sa writings na admitted, treated, o proved genuine.
+</p>
+
+<p>
+  Kinilala rin ng Supreme Court na ang questioned signature ay maaaring ikumpara sa authentic at genuine signatures ng taong sinasabing gumawa nito.
+</p>
+
+<p>
+  At dito kailangan ang isang mahalagang distinction.
+</p>
+
+<p>
+  Hindi kailangan na public o nakasulat sa buong legal name ang identity bago magkaroon ng anumang meaningful signature comparison.
+</p>
+
+<p>
+  Halimbawa, kahit isang alias ang nasa records, kung may mga signature specimens na independently admitted, treated o proved genuine bilang signatures ng parehong signer, maaari pa ring ikumpara ang questioned signature sa mga iyon.
+</p>
+
+<p>
+  Maaaring makatulong ang comparison upang malaman kung consistent ba ito sa genuine specimens o kung may indicators ng forgery.
+</p>
+
+<p>
+  Pero may hangganan ang kayang patunayan ng signature comparison.
+</p>
+
+<p>
+  Kahit mapatunayan mong consistent ang questioned signature sa genuine specimens na inuugnay sa isang alias, hindi nito mag-isa pinatutunayan kung sino ang tunay na tao sa likod ng alias sa totoong mundo.
+</p>
+
+<p>
+  Magkaibang verification questions ang:
+</p>
+
+<blockquote>
+  <p>“Iisang genuine signer ba ang pinagmulan ng mga pirmang ito?”</p>
+</blockquote>
+
+<p>
+  At:
+</p>
+
+<blockquote>
+  <p>“Sino talaga ang taong iyon?”</p>
+</blockquote>
+
+<p>
+  Kaya ang problema ay hindi:<br>
+  Alias = Fake signature.
+</p>
+
+<p>
+  At hindi rin tama ang:<br>
+  Walang legal name = Imposibleng ikumpara ang pirma.
+</p>
+
+<p>
+  Ang mas eksaktong punto ay:
+</p>
+
+<p>
+  Maaaring ma-authenticate o maikumpara ang signature relative sa genuine specimens, pero ang signature comparison alone ay hindi kapalit ng independent mechanism para ma-establish ang real-world identity ng taong nasa likod ng alias kapag kinakailangan iyon para sa accountability.
+</p>
+
+<p>
+  Dahil ang pirma ay maaaring makatulong sa tanong na:
+</p>
+
+<blockquote>
+  <p>“Ito ba ang genuine signature ng claimed signer?”</p>
+</blockquote>
+
+<p>
+  Pero hindi nito mag-isa sinasagot ang hiwalay na tanong na:
+</p>
+
+<blockquote>
+  <p>“Sino talaga ang claimed signer na iyon?”</p>
+</blockquote>
+
+<h2>
+  Confidential Funds: Dito Mas Komplikado ang Usapan
+</h2>
+
+<p>
+  Hindi pareho ang ordinaryong government expense at confidential/intelligence expenditure.
+</p>
+
+<p>
+  May special rules para rito.
+</p>
+
+<p>
+  Ayon mismo sa COA, ang liquidation ng Confidential and Intelligence Funds ay ina-audit ng specialized Intelligence and Confidential Fund Audit Unit, at ang paggamit at liquidation ng mga pondong ito ay governed ng special guidelines kabilang ang COA-DBM-DILG-GCG-DND Joint Circular No. 2015-01.
+</p>
+
+<p>
+  Kaya maling sabihin na:
+</p>
+
+<blockquote>
+  <p>“Confidential fund iyan, kaya hindi ina-audit.”</p>
+</blockquote>
+
+<p>
+  Ina-audit.
+</p>
+
+<p>
+  Pero dito lumilitaw ang mas importanteng issue.
+</p>
+
+<p>
+  Noong Agosto 2026, sa public proceeding kung saan tinanong ang dating COA auditor tungkol sa paggamit ng aliases sa acknowledgment receipts ng confidential funds, ipinaliwanag niyang silent ang Joint Circular No. 2015-01 sa paggamit ng aliases.
+</p>
+
+<p>
+  Ayon sa testimony, ang paggamit ng alias sa ilalim ng circular ay:<br>
+  <strong>Neither expressly allowed nor prohibited.</strong>
+</p>
+
+<p>
+  Ipinaliwanag din niyang ang audit na kanyang tinatalakay ay compliance audit—ang focus ay kung sumusunod ang submitted documents sa requirements ng circular at applicable regulations—at hindi bahagi ng audit process na kanyang inilarawan ang pag-check kung alias o tunay na pangalan ang nakalagay sa acknowledgment receipt.
+</p>
+
+<p>
+  Napakahalaga nito.
+</p>
+
+<p>
+  Pero may equally importanteng qualification:
+</p>
+
+<p>
+  Ang regular ICFAU compliance audit ay hindi kabuuan ng lahat ng audit powers at mechanisms ng COA.
+</p>
+
+<p>
+  May hiwalay na fraud-audit mechanism ang Commission on Audit.
+</p>
+
+<p>
+  May Fraud Audit Office ang COA, at ang fraud-audit function ay nakatuon sa allegations o indications ng fraud at sa mas malalim na examination na iba sa ordinaryong compliance checking.
+</p>
+
+<p>
+  At noong August 12, 2026, iniulat na pinag-aaralan mismo ng COA kung magsasagawa ng fraud audit sa questioned confidential-fund transactions ng OVP at DepEd.
+</p>
+
+<p>
+  Kaya hindi tama ang conclusion na:
+</p>
+
+<blockquote>
+  <p>“Dahil hindi independently vine-verify ang aliases sa regular compliance audit, wala nang paraan o kapangyarihan ang COA para magsagawa ng mas malalim na verification.”</p>
+</blockquote>
+
+<p>
+  Hindi iyon ang ipinapakita ng existing audit structure.
+</p>
+
+<p>
+  Ang mas eksaktong distinction ay:
+</p>
+
+<p>
+  Sa regular compliance audit na inilarawan sa testimony, hindi bahagi ng ordinaryong process ang independent verification kung alias o tunay na pangalan ang nasa receipt. Pero may hiwalay at mas malalim na fraud-audit mechanism na maaaring pumasok kapag may sapat na dahilan para siyasatin ang posibleng fraud o irregularity.
+</p>
+
+<p>
+  At dito lalong luminaw ang tunay na policy question.
+</p>
+
+<p>
+  Hindi:
+</p>
+
+<blockquote>
+  <p>“Walang kapangyarihan ang COA.”</p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>“Sapat ba ang regular confidential-fund compliance framework para sa identity-related fraud risk—at kailan dapat mag-trigger ang mas malalim na verification o fraud audit?”</p>
+</blockquote>
+
+<p>
+  Iyan ang mas mahirap ngunit mas tamang tanong.
+</p>
+
+          <h2>
+  Current Rule at Accountability / Reform Question — Huwag Paghaluin
+</h2>
+
+<p>
+  Ito ang kailangang malinaw.
+</p>
+
+<h3>
+  Current Rule
+</h3>
+
+<p>
+  May special audit system para sa confidential at intelligence funds.
+</p>
+
+<p>
+  May documentary requirements.
+</p>
+
+<p>
+  May regular COA compliance audit.
+</p>
+
+<p>
+  Ayon sa August 2026 testimony, silent ang Joint Circular No. 2015-01 sa aliases at hindi bahagi ng regular compliance audit na inilarawan ng witness ang independent verification kung alias o genuine name ang nasa acknowledgment receipt.
+</p>
+
+<p>
+  Pero hindi roon nagtatapos ang institutional authority ng COA.
+</p>
+
+<p>
+  May hiwalay na fraud-audit mechanism para sa mas malalim na investigation ng suspected fraud.
+</p>
+
+<h3>
+  Accountability / Reform Question
+</h3>
+
+<p>
+  Kung maaaring lumusot sa ordinary compliance stage ang isang codename o complete-looking alternate name nang hindi independently tine-test ang tunay na identity sa likod nito, sapat ba ang existing safeguards para makita ang pagkakaiba ng:
+</p>
+
+<p>
+  Totoong confidential recipient at recipient identity na gawa lamang sa dokumento?
+</p>
+
+<p>
+  At kung ang sagot ay kailangan ng deeper examination:
+</p>
+
+<p>
+  Ano ang objective trigger para hindi lamang discretionary o case-to-case ang paglipat mula compliance audit patungo sa mas malalim na fraud verification?
+</p>
+
+<p>
+  Hindi ibig sabihin na fictitious agad ang bawat alias.
+</p>
+
+<p>
+  Hindi rin ibig sabihin na kailangan ng fraud audit sa bawat confidential transaction.
+</p>
+
+<p>
+  Ang ibig sabihin:
+</p>
+
+<p>
+  Ang control system ay dapat may kakayahang makita kung kailan hindi na sapat ang pag-check ng papel at kailangan nang i-verify ang nasa likod ng papel.
+</p>
+
+<p>
+  Dahil iyon mismo ang silbi ng layered audit control.
+</p>
+
+<h2>
+  Confidentiality ay Hindi Pareho sa Identitylessness
+</h2>
+
+<p>
+  Ito marahil ang pinakamahalagang distinction sa buong usapan.
+</p>
+
+<p>
+  Ang Confidentiality ay maaaring mangahulugan:
+</p>
+
+<p>
+  May tunay na identity ang tao.<br>
+  Mayroong awtorisadong mechanism para ma-establish iyon.<br>
+  Pero limitado kung sino ang maaaring magkaroon ng access dahil sensitibo ang impormasyon.
+</p>
+
+<p>
+  Ang Identitylessness naman ay ibang bagay:
+</p>
+
+<p>
+  Walang reliable institutional mechanism na makapag-establish kung sino talaga ang nasa likod ng pangalan kapag may sapat at legal na dahilan para sa mas malalim na verification.
+</p>
+
+<p>
+  Ang una ay maaaring kailangan para sa seguridad.
+</p>
+
+<p>
+  Ang pangalawa ay maaaring maging problema para sa accountability.
+</p>
+
+<p>
+  Kaya hindi kailangang pumili sa pagitan ng:
+</p>
+
+<blockquote>
+  <p>“Ilantad sa publiko ang informant”</p>
+</blockquote>
+
+<p>
+  At
+</p>
+
+<blockquote>
+  <p>“Walang paraan para mapatunayan kung sino talaga siya.”</p>
+</blockquote>
+
+<p>
+  May ikatlong posibilidad:
+</p>
+
+<blockquote>
+  <p>Protektado sa publiko, pero verifiable sa awtorisadong sistema kapag legitimong kailangan.</p>
+</blockquote>
+
+<h2>
+  May Magandang Comparison sa Anti-Money Laundering System
+</h2>
+
+<p>
+  Hindi AMLA ang batas na directly governing confidential-fund liquidation.
+</p>
+
+<p>
+  Mahalagang sabihin iyan para walang false equivalence.
+</p>
+
+<p>
+  Pero magandang control-system analogy ang Anti-Money Laundering framework.
+</p>
+
+<p>
+  Ang basic principle nito ay identity verification:
+</p>
+
+<p>
+  Hindi kailangang gawing public sa lahat ang sensitibong customer information, pero kailangang magkaroon ang authorized institution ng mechanism para ma-establish ang true identity at maiwasan ang anonymous o fictitious account structures.
+</p>
+
+<p>
+  Ang lesson dito ay hindi:
+</p>
+
+<blockquote>
+  <p>“I-apply natin diretso ang banking law sa confidential funds.”</p>
+</blockquote>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang lesson ay tungkol sa control design:
+</p>
+
+<p>
+  May mga sitwasyong hindi kailangang public ang identity—pero kailangang may awtorisadong sistema na kayang mag-establish kung sino talaga ang tao.
+</p>
+
+<p>
+  Privacy at confidentiality do not necessarily require pagkawala ng identity verification.
+</p>
+
+<p>
+  Magkaiba iyon.
+</p>
+
+<h2>
+  Bakit Mahalaga ang Verification at Internal Controls?
+</h2>
+
+<p>
+  Dahil ang fraud ay hindi laging nangyayari dahil walang papel.
+</p>
+
+<p>
+  Minsan, nangyayari ito sa pamamagitan mismo ng papel.
+</p>
+
+<p>
+  Fake invoice.<br>
+  Ghost employee.<br>
+  Fictitious supplier.<br>
+  Fabricated receipt.<br>
+  Altered document.<br>
+  False acknowledgment.<br>
+  Fraudulent signature.
+</p>
+
+<p>
+  Kaya ang mahusay na financial control ay hindi tumitigil sa:
+</p>
+
+<blockquote>
+  <p>“May dokumento ba?”</p>
+</blockquote>
+
+<p>
+  Ang susunod na tanong ay:
+</p>
+
+<blockquote>
+  <p>“Mapagkakatiwalaan ba ang dokumentong ito?”</p>
+</blockquote>
+
+<p>
+  Sa <em>Occupational Fraud 2026: A Report to the Nations</em> ng Association of Certified Fraud Examiners, sinuri ang 2,402 occupational-fraud cases mula sa 143 countries and territories.
+</p>
+
+<p>
+  Mahigit US$3.4 billion ang combined losses ng mga kasong iyon.
+</p>
+
+<p>
+  Ang median loss ay US$104,000 per case.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na pareho ang bawat private-sector fraud case sa Philippine government expenditure.
+</p>
+
+<p>
+  Ang mahalagang lesson ay mas simple:
+</p>
+
+<blockquote>
+  <p>Documentation without effective internal controls does not eliminate fraud risk.</p>
+</blockquote>
+
+<p>
+  Ang prinsipyo:
+</p>
+
+<p>
+  Hindi sapat ang recordkeeping kung walang meaningful verification mechanisms.
+</p>
+
+<p>
+  Dahil ang pekeng transaction ay maaari ring magkaroon ng mukhang maayos na record.
+</p>
+
+          <h2>
+  “Kilala Naman Namin Siya” ay Hindi Matibay na Audit Control
+</h2>
+
+<p>
+  Isipin ang paliwanag na:
+</p>
+
+<blockquote>
+  <p>“Alyas lang iyan pero alam namin kung sino talaga siya.”</p>
+</blockquote>
+
+<p>
+  Posibleng totoo iyon.
+</p>
+
+<p>
+  Pero may problema kung iyon lamang ang safeguard.
+</p>
+
+<p>
+  Paano kapag nagretiro ang taong nakakakilala?<br>
+  Paano kapag namatay?<br>
+  Paano kapag nagkaroon ng investigation makalipas ang limang taon?<br>
+  Paano kapag itinanggi ng recipient na siya iyon?<br>
+  Paano kung ang accountable officer mismo ang iniimbestigahan?<br>
+  Paano kung nagkakasalungatan na ang testimonya ng mga taong sangkot?
+</p>
+
+<p>
+  Ang isang matinong audit system ay hindi dapat nakasalalay lamang sa:
+</p>
+
+<p>
+  Personal memory,<br>
+  Verbal assurance,<br>
+  Tiwala sa opisyal,<br>
+  O “kilala ko iyan.”
+</p>
+
+<p>
+  Dahil ang institutional accountability ay kailangang mabuhay kahit wala na sa puwesto ang taong gumawa ng transaction.
+</p>
+
+<p>
+  Iyan ang dahilan kung bakit mahalaga ang records.
+</p>
+
+<blockquote>
+  <p>Personal knowledge dies with the person.<br>Institutional records are supposed to survive the person.</p>
+</blockquote>
+
+<h2>
+  Hindi Ito Argumento para Isapubliko ang Lahat
+</h2>
+
+<p>
+  Mahalagang ulitin.
+</p>
+
+<p>
+  Hindi kailangan ilantad sa publiko ang pangalan ng confidential source kung may legitimate security reason para protektahan siya.
+</p>
+
+<p>
+  Hindi rin absolute ang constitutional right to information.
+</p>
+
+<p>
+  May lehitimong secrets ang Estado.<br>
+  May intelligence operations.<br>
+  May confidential sources.<br>
+  May information na kapag ibinunyag ay maaaring makasira sa investigation, national security o kaligtasan ng tao.
+</p>
+
+<p>
+  Pero ang secrecy ay dapat may hangganan.
+</p>
+
+<p>
+  Secrecy from the public is not automatically the same as secrecy from every form of accountability.
+</p>
+
+<p>
+  Kung ang public disclosure ay delikado, maaaring limitahan ang disclosure.
+</p>
+
+<p>
+  Pero ibang tanong kung walang reliable mechanism ang authorized accountability system para lumalim kapag may sapat na red flags o dahilan para mag-verify.
+</p>
+
+<p>
+  Doon dapat magsimula ang policy debate.
+</p>
+
+<h2>
+  Ano ang Dapat Hanapin sa Isang Matibay na System?
+</h2>
+
+<p>
+  Hindi natin kailangang mag-imbento dito ng specific procedure at ituring na kasalukuyang requirement iyon ng batas.
+</p>
+
+<p>
+  Pero malinaw ang control objective.
+</p>
+
+<p>
+  Kung kailangang gumamit ng alias o codename para sa legitimate confidentiality, dapat may mekanismong kayang magbigay ng reasonable assurance na:
+</p>
+
+<p>
+  May totoong tao sa likod ng alias;<br>
+  Hindi basta gawa-gawang recipient ang pangalan;<br>
+  Ang taong iyon ang aktuwal na tumanggap o naging party sa transaction;<br>
+  Ang signature o acknowledgment ay attributable sa isang genuine signer;<br>
+  May paraan para ma-establish ang tunay na identity sa isang lawful deeper investigation o authorized audit kapag kinakailangan;<br>
+  At may malinaw na accountable officials sa chain ng authorization at disbursement.
+</p>
+
+<p>
+  Kung paano eksaktong gagawin iyon habang pinoprotektahan ang security ng source ay maaaring pagdebatehan at i-design ng COA, Congress at relevant security institutions.
+</p>
+
+<p>
+  Puwedeng pag-usapan ang sealed records.<br>
+  Restricted-access identity verification.<br>
+  Controlled cross-reference systems.<br>
+  Independent certification.<br>
+  Cryptographic or digital verification.<br>
+  O ibang safeguards na hindi naglalantad sa public ng sensitibong identity.
+</p>
+
+<p>
+  Pero ang underlying principle ay simple:
+</p>
+
+<blockquote>
+  <p>Ang confidentiality control ay dapat protektahan ang tunay na tao—hindi gawing imposibleng malaman kung may tunay na tao nga ba kapag may legitimong dahilan para mag-verify.</p>
+</blockquote>
+
+<h2>
+  Kung Personal Mong Pera, Ikaw ang Bahala
+</h2>
+
+<p>
+  Kung ₱500 ang sarili mong pera at ibinigay mo sa isang taong kilala mo lamang bilang “Boy,” personal risk mo iyon.
+</p>
+
+<p>
+  Pero kapag ₱500,000, ₱5 milyon o ₱50 milyon ang pera ng bayan, ibang standard ang dapat umiral.
+</p>
+
+<p>
+  Dahil hindi pera ng opisyal iyon.<br>
+  Hindi pera ng auditor.<br>
+  Hindi pera ng ahensya.<br>
+  Pera ng publiko iyon.
+</p>
+
+<p>
+  Kaya hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>“Kilala naman namin siya.”</p>
+</blockquote>
+
+<p>
+  Hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>“Confidential kasi.”</p>
+</blockquote>
+
+<p>
+  Hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>“May acknowledgment receipt naman.”</p>
+</blockquote>
+
+<p>
+  Hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>“May pirma naman.”</p>
+</blockquote>
+
+<p>
+  Hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>“Buong pangalan naman ang nakasulat.”</p>
+</blockquote>
+
+<p>
+  At hindi rin patas sabihing:
+</p>
+
+<blockquote>
+  <p>“Alyas iyan, kaya peke agad.”</p>
+</blockquote>
+
+<p>
+  Ang tamang tanong ay mas mahirap at mas objective:
+</p>
+
+<blockquote>
+  <p>Kaya ba ng sistema na patunayan ang totoong transaksyon nang hindi kailangang ilantad sa publiko ang impormasyong lehitimong dapat manatiling confidential?</p>
+</blockquote>
+
+<p>
+  At kung may red flags:
+</p>
+
+<blockquote>
+  <p>May malinaw bang daan mula sa ordinary compliance check papunta sa mas malalim na verification?</p>
+</blockquote>
+
+<p>
+  Diyan dapat masukat ang quality ng audit control.
+</p>
+
+          <h2>
+  Ang Audit ay Hindi Pagbibilang Lang ng Papel
+</h2>
+
+<p>
+  Sa huli, ang public audit ay hindi dapat maging simpleng checklist kung ilang dokumento ang naisumite.
+</p>
+
+<p>
+  Dahil kahit fictitious transaction ay maaaring gawan ng papel.
+</p>
+
+<p>
+  At kahit kumpletong first name at surname ay maaaring maging alias, borrowed identity, o pangalang kailangan pang patunayang konektado sa isang totoong recipient.
+</p>
+
+<p>
+  Ang halaga ng audit ay nasa kakayahan ng buong accountability system nitong magbigay ng reasonable assurance na ang dokumentasyon ay may koneksyon sa aktuwal na nangyari—at magkaroon ng mas malalim na examination kapag may sapat na dahilan para magduda.
+</p>
+
+<p>
+  May pera.<br>
+  May lawful public purpose.<br>
+  May totoong transaction.<br>
+  May totoong recipient.<br>
+  May authentic o attributable acknowledgment.<br>
+  May authorization.<br>
+  May trail.<br>
+  At may taong maaaring panagutin kapag may mali.
+</p>
+
+<p>
+  Kaya ang tunay na issue sa paggamit ng alias sa public-fund transaction ay hindi lamang:
+</p>
+
+<blockquote>
+  <p>“Legal ba ang alyas?”</p>
+</blockquote>
+
+<p>
+  At hindi rin:
+</p>
+
+<blockquote>
+  <p>“Mukha bang totoong pangalan ang nakasulat?”</p>
+</blockquote>
+
+<p>
+  Mas malaki ang tanong:
+</p>
+
+<blockquote>
+  <p>“Kapag may pangalan sa papel—alias man, codename, o kumpletong first name at surname—sapat ba ang sistema para patunayan kung may totoong tao at totoong transaksyon sa likod nito?”</p>
+</blockquote>
+
+<p>
+  Kung mayroon at secure itong naa-audit, maaaring maprotektahan ang confidentiality nang hindi isinusuko ang accountability.
+</p>
+
+<p>
+  Pero kung wala—kung may complete-looking name, may signature, may acknowledgment receipt, pero walang reliable na tulay papunta sa totoong taong sinasabing tumanggap, at ang natitirang assurance ay:
+</p>
+
+<blockquote>
+  <p>“May tao naman talaga diyan—alyas lang iyan, maniwala kayo sa amin,”</p>
+</blockquote>
+
+<p>
+  Hindi na lamang pangalan ang problema.
+</p>
+
+<p>
+  Audit trail na ang nakataya.
+</p>
+
+<p>
+  Dahil maaaring may mga bagay na kailangang manatiling lihim sa publiko.
+</p>
+
+<p>
+  Pero kapag pera ng publiko ang ginastos, may isang bagay na hindi dapat mawala sa mismong accountability system:
+</p>
+
+<blockquote>
+  <p>Ang kakayahang patunayan, kapag legitimong kailangan, kung may totoong tao at totoong transaksyon ba talaga sa likod ng perang inilabas.</p>
+</blockquote>
+
+<p>
+  Dahil kung hindi kayang sagutin iyon—ano nga ba talaga ang ina-audit natin:
+</p>
+
+<blockquote>
+  <p>Ang totoong transaksyon, o ang papel lang na nagsasabing may transaksyon?</p>
+</blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Philippine Constitution — Article II, Sections 27–28; Article III, Section 7; Article IX-D, Sections 2–3; Article XI, Section 1.
+    </li>
+
+    <li>
+      Presidential Decree No. 1445 — Government Auditing Code of the Philippines — fundamental principles on public purpose, fiscal responsibility, proper authorization, and complete documentation.
+    </li>
+
+    <li>
+      Commonwealth Act No. 142, as amended by Republic Act No. 6085 — regulation of aliases.
+    </li>
+
+    <li>
+      <em>Ursua v. Court of Appeals</em>, G.R. No. 112170 (1996), and <em>People v. Estrada</em>, G.R. No. 164368 (2009) — public and habitual use in the legal concept of alias under CA 142.
+    </li>
+
+    <li>
+      <em>Pequero v. People</em>, G.R. No. 263676, August 7, 2024 — Supreme Court case demonstrating that an alias may take the form of an ordinary complete name; conviction for illegal use of alias and use of fictitious name affirmed.
+    </li>
+
+    <li>
+      2019 Amendments to the Rules on Evidence, Rule 132, Section 22, and Supreme Court jurisprudence on proof and comparison of questioned handwriting and signatures.
+    </li>
+
+    <li>
+      Hafemann, Sabourin &amp; Oliveira, <em>Offline Handwritten Signature Verification — Literature Review</em> — technical literature on distinguishing genuine signatures of a claimed signer from forgeries.
+    </li>
+
+    <li>
+      COA-DBM-DILG-GCG-DND Joint Circular No. 2015-01 — guidelines on entitlement, release, use, reporting, and audit of Confidential and/or Intelligence Funds.
+    </li>
+
+    <li>
+      Commission on Audit — materials on Confidential and Intelligence Fund audit and Fraud Audit — specialized compliance audit and separate fraud-audit mechanisms.
+    </li>
+
+    <li>
+      August 2026 COA testimony on confidential-fund aliases — Joint Circular described as silent on aliases; regular audit described as compliance-based and not including validation of whether names on acknowledgment receipts were aliases or genuine names.
+    </li>
+
+    <li>
+      Philippine Statistics Authority, Public Advisory on Negative Certification of Birth, May 4, 2026 — a negative certification establishes that no birth record exists in the CRS database as of its issuance; PSA also maintains endorsement procedures for civil-registry records not yet available in CRS.
+    </li>
+
+    <li>
+      House of Representatives, August 21, 2026 — prosecution announced plans to present PSA witnesses concerning names including “Mary Grace Piattos” and “Milky Secuya,” alongside NBI forensic-document testimony.
+    </li>
+
+    <li>
+      National Bureau of Investigation forensic-document findings, reported in 2026 — examination of original acknowledgment receipts found groups bearing different recipient names with handwriting/signatures attributed to a smaller number of writers.
+    </li>
+
+    <li>
+      Republic Act No. 9160, as amended, and implementing AML rules — used only as a comparative control-system example on true-identity verification, not as governing law for confidential-fund liquidation.
+    </li>
+
+    <li>
+      Association of Certified Fraud Examiners, <em>Occupational Fraud 2026: A Report to the Nations</em> — 2,402 cases across 143 countries and territories, more than US$3.4 billion in reported losses, and US$104,000 median loss per case.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
