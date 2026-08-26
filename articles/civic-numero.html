@@ -1,1 +1,1427 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+ <meta
+  name="description"
+  content="May mga pagkakataong ang legal na resulta ay nakabatay sa bilang ng boto. Pero hindi roon awtomatikong nagtatapos ang pagsusuri ng mamamayan sa ebidensiya, proseso, at pananagutan."
+>
+
+<title>NUMERO LANG BA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  NUMERO LANG BA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+     <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-numero.png"
+      alt="Simbolikong timbangan ng legal na resulta at ebidensiya sa impeachment, na nagpapakita ng pagkakaiba ng botohan, constitutional threshold, at pagsusuri ng mamamayan."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May mga pagkakataong natatapos ang isang kaso sa botohan, pero hindi lang doon dapat natatapos ang mga tanong ng publiko.
+  </p>
+
+  <blockquote>
+    <p>
+      NUMERO LANG BA?
+    </p>
+  </blockquote>
+
+  <p>
+    Sa isang demokrasya, mahalaga ang botohan. May mga prosesong ang legal na resulta ay talagang nakasalalay sa kinakailangang bilang ng boto.
+  </p>
+
+  <p>
+    Pero may mahalagang pagkakaiba sa pagitan ng legal na resulta ng botohan, pagsusuri sa mismong ebidensiya, at paghusga ng publiko sa mga kumikilos sa loob ng prosesong iyon.
+  </p>
+
+  <p>
+    Kapag pinaghalo ang tatlo, madaling isipin na kung ano ang sinabi ng numero ay iyon na rin ang huling sagot sa lahat ng tanong.
+  </p>
+
+  <p>
+    Hindi ganoon kasimple.
+  </p>
+
+  <h2>
+    Ang Boto ang Nagtatakda ng Legal na Resulta
+  </h2>
+
+  <p>
+    Sa impeachment, malinaw ang constitutional framework.
+  </p>
+
+  <p>
+    Ang Senado ang may kapangyarihang litisin at pasyahan ang impeachment case. At ayon sa 1987 Constitution, walang maaaring ma-convict nang walang concurrence ng <em>two-thirds of all the Members of the Senate</em>.
+  </p>
+
+  <p>
+    Sa Senado na may 24 na miyembro, ang karaniwang aplikasyon nito ay 16 boto para sa conviction.
+  </p>
+
+  <p>
+    Kaya kahit halimbawa ay mas marami ang bumoto ng guilty kaysa not guilty—13 laban sa 8, halimbawa—hindi sapat ang simpleng majority kung hindi naabot ang kinakailangang constitutional threshold.
+  </p>
+
+  <p>
+    Iyan ang legal na epekto ng numero.
+  </p>
+
+  <p>
+    Hindi puwedeng palitan ng personal na opinyon ng publiko ang boto na hinihingi ng Konstitusyon.
+  </p>
+
+  <p>
+    Pero hindi rin ibig sabihin na kapag natapos na ang legal na bilang, wala nang ibang lehitimong tanong na maaaring itanong ng mamamayan.
+  </p>
+
+  <h2>
+    Pero Kahit ang “16” ay May Kasalukuyang Konstitusyonal na Debate
+  </h2>
+
+  <p>
+    May isa pang mahalagang usaping lumitaw sa kasalukuyang impeachment trial.
+  </p>
+
+  <p>
+    Itinaas ng isang private prosecutor ang tanong kung ang “16 votes” ba ay dapat ituring na permanenteng fixed number sa lahat ng sitwasyon.
+  </p>
+
+  <p>
+    May dahilan kung bakit maaaring itanong iyon.
+  </p>
+
+  <p>
+    Hindi kasi literal na nakasulat sa Konstitusyon ang numerong 16. Ang eksaktong pamantayan nito ay <em>two-thirds of all the Members of the Senate</em>.
+  </p>
+
+  <p>
+    Ang 16 ay resulta ng pagkuha ng two-thirds ng 24-member Senate.
+  </p>
+
+  <p>
+    Mula rito, itinatanong ngayon: Paano kung magkaroon ng tunay na pagbabago sa kabuuang membership ng Senado—halimbawa, dahil sa pagkamatay o ibang pangyayaring nagdulot ng aktuwal na pagkawala ng mga miyembro? Mananatili pa rin bang 16 ang kinakailangan, o dapat bang muling tukuyin kung ano ang ibig sabihin ng “all the Members”?
+  </p>
+
+  <p>
+    Lehitimong constitutional question iyon.
+  </p>
+
+  <p>
+    Pero mahalaga rin ang kabilang panig ng argumento.
+  </p>
+
+  <p>
+    Ang simpleng pagliban ng isang senador ay hindi awtomatikong nangangahulugang hindi na siya miyembro ng Senado.
+  </p>
+
+  <p>
+    Magkaiba ang absent, unable to attend, vacant seat, at isang sitwasyong aktuwal na nagbago ang legal membership ng institusyon.
+  </p>
+
+  <p>
+    Kaya hindi sapat na sabihing, halimbawa, “21 lang ang dumalo, kaya two-thirds na lang ng 21 ang kailangan.”
+  </p>
+
+  <p>
+    Hindi iyon ang malinaw na sinasabi ng Konstitusyon.
+  </p>
+
+  <p>
+    Ang ginagamit nitong denominator ay “all the Members of the Senate,” hindi “all senators present.”
+  </p>
+
+  <p>
+    At ang umiiral na Senate impeachment rules ay gumagamit din ng <em>two-thirds of all the Members</em> sa final vote.
+  </p>
+
+  <p>
+    Kaya hangga't walang authoritative constitutional determination na nagbabago sa aplikasyon nito sa isang partikular na sitwasyon, hindi dapat basta palitan ang 16 dahil lamang may mga senador na absent.
+  </p>
+
+  <p>
+    Mahalagang pag-usapan ang argumentong ito—pero bilang constitutional question, hindi bilang settled rule.
+  </p>
+
+  <h2>
+    Legal na Resulta ≠ Lahat ng Katotohanan Tungkol sa Kaso
+  </h2>
+
+  <p>
+    Dito pumapasok ang mas malaking punto.
+  </p>
+
+  <p>
+    Maaaring malinaw ang legal na resulta ng botohan, pero ibang tanong kung ano ang ipinakita ng mga ebidensiyang inilatag sa publiko.
+  </p>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <p>
+    Maaaring hindi umabot sa constitutional threshold ang boto para sa conviction.
+  </p>
+
+  <p>
+    Iyon ang legal na resulta.
+  </p>
+
+  <p>
+    Pero maaaring tanungin pa rin ng mamamayan:
+  </p>
+
+  <ul>
+    <li>Ano mismo ang ebidensiyang iniharap?</li>
+    <li>Ano ang napatunayan at ano ang hindi?</li>
+    <li>May dokumentong sumusuporta ba sa alegasyon?</li>
+    <li>Nasagot ba nang maayos ang ebidensiya?</li>
+    <li>May contradiction ba?</li>
+    <li>May paliwanag bang makatwiran?</li>
+    <li>May claim bang hindi napatunayan?</li>
+    <li>At kapag pinagsama-sama ang lahat ng iyon, ano ang makatwirang conclusion na kayang suportahan ng ebidensiya?</li>
+  </ul>
+
+  <p>
+    Hindi binabago ng mga tanong na iyan ang legal na resulta ng impeachment. Pero mahalaga ang mga iyon sa political judgment ng mamamayan.
+  </p>
+
+            <h2>
+    Hindi Rin Puwedeng Basta Sabihing “Political ang Boto”
+  </h2>
+
+  <p>
+    May isa pang kailangang bantayan.
+  </p>
+
+  <p>
+    Kapag hindi natin gusto ang resulta, madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Politika lang iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin patas na awtomatikong ipalagay na ang bawat senador na bumoto nang taliwas sa sariling assessment natin ay kumilos dahil sa political interest.
+  </p>
+
+  <p>
+    Maaaring magkaiba ang kanilang pagsusuri sa ebidensiya.
+    Maaaring magkaiba ang kanilang interpretasyon sa Konstitusyon o batas.
+    Maaaring may institutional considerations.
+  </p>
+
+  <p>
+    At posible ring pagdebatehan kung may political alignment o ibang salik na nakaimpluwensiya sa isang boto.
+  </p>
+
+  <p>
+    Pero ang motibo ay hindi dapat basta imbentuhin.
+  </p>
+
+  <p>
+    Kung sasabihing political accommodation, personal interest, pressure, o partisan alignment ang dahilan ng isang boto, kailangan din iyong suportahan ng ebidensiya.
+  </p>
+
+  <p>
+    Parehong prinsipyo.
+  </p>
+
+  <p>
+    Huwag humingi ng ebidensiya sa kabilang panig habang haka-haka naman ang ginagamit laban dito.
+  </p>
+
+  <h2>
+    Mas Nakikita na ng Publiko ang Proseso
+  </h2>
+
+  <p>
+    May malaking pagkakaiba ang panahon ngayon.
+  </p>
+
+  <p>
+    Hindi na lamang reporter sa loob ng gusali o ilang taong nakahawak sa official records ang maaaring makaalam sa nangyayari.
+  </p>
+
+  <p>
+    May livestream.
+    May official transcripts at legislative records.
+    May video recordings.
+    May malawak na news coverage.
+    May independent fact-checking.
+    May legal analysis mula sa magkakaibang pananaw.
+    At may social media na kayang magdala ng isang testimony, dokumento, argumento, o contradiction sa milyon-milyong tao sa loob lamang ng ilang oras.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng nakikita online ay tama.
+  </p>
+
+  <p>
+    Sa katunayan, mas maraming impormasyon ay nangangahulugan ding mas maraming posibilidad ng misinformation, selective clips, misleading captions, at content na inalis sa konteksto.
+  </p>
+
+  <p>
+    Kaya mas malawak na access ay hindi kapalit ng critical thinking.
+    Mas malawak na access ang dahilan kung bakit mas kailangan ang critical thinking.
+  </p>
+
+  <h2>
+    Ang Problema Kapag Numero na Lang ang Tinitingnan
+  </h2>
+
+  <p>
+    Dito nagiging delikado ang kampihan.
+  </p>
+
+  <p>
+    Kapag pabor sa atin ang resulta:
+  </p>
+
+  <blockquote>
+    <p>
+      “13 lang? Kulang ’yan.”<br>
+      “16 ang kailangan. Tapos ang usapan.”<br>
+      “Mas marami ang ganitong boto. Ibig sabihin tama kami.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag hindi pabor ang numero, biglang ibang sukatan ang ginagamit.
+  </p>
+
+  <p>
+    Iyan ang panganib ng confirmation bias at motivated reasoning.
+  </p>
+
+  <p>
+    Hindi na natin sinusuri ang impormasyon para malaman kung tama ang pinaniniwalaan natin.
+  </p>
+
+  <p>
+    Pinipili natin ang impormasyon na makatutulong para mapanatili ang pinaniniwalaan na natin.
+  </p>
+
+  <p>
+    At kapag ganoon, kahit gaano karaming livestream, transcript, dokumento at paliwanag ang maging available, walang saysay ang access kung validation lamang ang hinahanap.
+  </p>
+
+  <h2>
+    Hindi Natatapos sa Impeachment ang Paghusga ng Mamamayan
+  </h2>
+
+  <p>
+    Ito marahil ang pinakamahalagang distinction.
+  </p>
+
+  <p>
+    May kapangyarihan ang impeachment court na magbigay ng legal na resulta sa impeachment.
+    Pero hindi nito inaagaw sa mamamayan ang tungkuling mag-isip.
+  </p>
+
+  <p>
+    Kapag natapos ang isang impeachment case, hindi nawawala ang nakita, narinig at natutuhan ng publiko mula sa proseso.
+  </p>
+
+  <p>
+    Maaaring hindi sapat ang boto para sa constitutional conviction.
+    Maaaring sapat.
+  </p>
+
+  <p>
+    Anuman ang resulta, maaari pa ring suriin ng mamamayan kung ano ang ipinakita ng ebidensiya tungkol sa integridad, judgment, accountability at fitness for public office ng mga taong sangkot.
+  </p>
+
+  <p>
+    At may lugar kung saan may direktang kapangyarihan ang mamamayan na gamitin ang sariling political judgment:
+    Ang balota.
+  </p>
+
+  <p>
+    Sa susunod na eleksyon, hindi obligadong itanong lamang ng botante:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang nanalo sa botohan sa Senado?”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari rin niyang itanong:
+  </p>
+
+  <ul>
+    <li>Ano ang nakita ko sa ebidensiya?</li>
+    <li>Sino ang nagpaliwanag nang maayos?</li>
+    <li>Sino ang umiwas sa tanong?</li>
+    <li>Sino ang naging consistent?</li>
+    <li>At ano ang ipinakita ng buong prosesong ito tungkol sa mga taong pinagkakatiwalaan kong humawak ng kapangyarihan?</li>
+  </ul>
+
+  <p>
+    Iyan ay hindi pagbalewala sa constitutional process.
+    Iyan mismo ang bahagi ng democratic accountability.
+  </p>
+
+            <h2>
+    Hindi Lahat ng Hatol ay Iisa ang Ginagampanang Papel
+  </h2>
+
+  <p>
+    Ang botohan ang nagtatakda ng legal na resulta ng impeachment ayon sa constitutional rules.
+    Ang ebidensiya ang dapat suriin kapag bumubuo tayo ng sariling factual assessment.
+  </p>
+
+  <p>
+    At kung may alegasyon na political interest ang nakaimpluwensiya sa isang senador, hiwalay iyong claim na kailangan ding patunayan.
+  </p>
+
+  <p>
+    Tatlong magkaibang tanong.
+    Tatlong magkaibang pamantayan.
+  </p>
+
+  <p>
+    Kaya kapag lumabas na ang numero, huwag itong balewalain.
+    Unawain kung ano ang legal na ibig sabihin nito.
+  </p>
+
+  <p>
+    Pero huwag din itong gawing kapalit ng sariling pagsusuri.
+  </p>
+
+  <p>
+    Dahil sa demokrasya, may mga pagkakataong ang numero ang nagtatapos sa isang legal na proseso—pero hindi nito awtomatikong tinatapos ang pagsusuri ng mamamayan sa ebidensiya, sa mga kumilos sa proseso, at sa kung sino ang muli niyang pagkakatiwalaan sa susunod na halalan.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              1987 Constitution of the Philippines, Article XI, Section 3 — impeachment powers and two-thirds requirement for conviction.
+            </li>
+
+            <li>
+              Rules of the Senate / Rules of Procedure on Impeachment Trials — final voting on each Article of Impeachment.
+            </li>
+
+            <li>
+              Senate of the Philippines — official records, journals, transcripts and impeachment proceedings.
+            </li>
+
+            <li>
+              Contemporary reporting on the constitutional debate over whether the 16-vote figure remains fixed if the actual membership of the Senate changes.
+            </li>
+
+            <li>
+              Research literature on confirmation bias and motivated reasoning in cognitive psychology and political behavior.
+            </li>
+
+            <li>
+              Literature on democratic accountability, transparency, political information and public scrutiny.
+            </li>
+
+          </ul>
+
+                </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
