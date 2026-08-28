@@ -1,1 +1,2695 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Ano ba talaga ang binibili ng concert ticket? Isang fact-based na paliwanag tungkol sa ticket, copyright, performers' rights, Fair Use, media coverage, at responsableng content creation."
+>
+
+<title>NAGBAYAD KA PARA MANOOD—HINDI PARA GAWING CONTENT ANG BUONG SHOW | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    NAGBAYAD KA PARA MANOOD—HINDI PARA GAWING CONTENT ANG BUONG SHOW
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-ticket.png"
+      alt="Simbolikong paglalarawan ng concert ticket, smartphone recording, at hangganan ng copyright, performers' rights, at responsableng content creation."
+    >
+
+  </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May ticket ka.<br>
+    Nakapasok ka sa concert.<br>
+    Ikaw ang kumuha ng video gamit ang sarili mong cellphone.
+  </p>
+
+  <p>
+    Pero ibig bang sabihin noon na puwede mo nang i-upload ang buong kanta, sunod-sunod na performances, o halos buong show sa sarili mong page?
+  </p>
+
+  <p>
+    Diyan nagkakagulo ang usapan.
+  </p>
+
+  <p>
+    Dahil sa panahon ng social media, parang natural na bahagi na ng concert ang pagkuha ng photos at videos. May favorite moment na ipo-post sa Story. May short clip sa Reel o TikTok. May reaction, review, recap, fan cam at event coverage pagkatapos ng show.
+  </p>
+
+  <p>
+    At may halaga rin iyon.
+  </p>
+
+  <p>
+    Nakakatulong ang audience posts at content creators para mapag-usapan ang isang event, makilala ang isang artist, makadiskubre ng bagong kanta ang ibang tao, at mapalawak ang audience ng isang performance.
+  </p>
+
+  <p>
+    Pero may mahalagang linya sa pagitan ng:<br>
+    Pagbabahagi ng experience at pagbibigay sa publiko ng mismong performance na pinuntahan mong panoorin.
+  </p>
+
+  <p>
+    Dahil hindi lahat ng kayang i-record ay automatic na puwedeng i-distribute. At hindi rin lahat ng paggamit ng concert footage ay automatic na bawal.
+  </p>
+
+  <p>
+    Dito pumapasok ang mga salitang madalas nating naririnig pero madalas ding napagpapalit-palit: Ticket, permission to record, permission to upload, copyright, performers’ rights, media accreditation, Fair Use, CTTO, monetization at responsible content creation.
+  </p>
+
+  <p>
+    Naging mas konkretong halimbawa nito ang naging usapan matapos manawagan si Ice Seguerra na huwag i-upload nang buo o halos buo ang performances mula sa <em>Sessionistas: The Playlist</em> concert.
+  </p>
+
+  <p>
+    Sa kaniyang pahayag, hindi naman niya tinututulan ang photos, reactions at short highlights. Ang concern niya ay full performances, buong kanta, malalaking bahagi ng show, o halos buong concert na inilalagay online.
+  </p>
+
+  <p>
+    Sa kabilang panig, sa public response na kumalat, isang content creator naman ang nagtanong kung bakit hindi umano malinaw bago ang event kung ano lamang ang maaaring i-upload, lalo na kung binigyan siya ng ticket para mag-cover. Binanggit din niya na hindi original song ni Ice ang ilang performances at nakakatulong naman umano ang views at positive comments.
+  </p>
+
+  <p>
+    At dito mahalagang huwag agad pumili ng kampo. Dahil may punto na kailangang suriin sa magkabilang panig.
+  </p>
+
+  <p>
+    Ang tunay na tanong ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>“Artist ba ang tama o vlogger?”</p>
+  </blockquote>
+
+  <p>
+    Mas mahalagang itanong:
+  </p>
+
+  <ul>
+    <li>Ano ba talaga ang saklaw ng karapatang ibinibigay ng isang paid ticket?</li>
+    <li>Hanggang saan ang karapatan ng audience na mag-record at mag-post?</li>
+    <li>Ano ang maaaring saklaw ng isang invitation na “mag-cover” ng event?</li>
+    <li>Kailan maaaring pumasok ang Fair Use?</li>
+    <li>May silbi ba talaga ang “CTTO” at “No Copyright Infringement Intended”?</li>
+  </ul>
+
+  <p>
+    At higit sa lahat: Saan nagtatapos ang legitimate concert coverage—at saan nagsisimula ang pagre-republish ng mismong show ng ibang tao?
+  </p>
+
+  <p>
+    Para masagot iyon nang patas, kailangang paghiwa-hiwalayin muna ang mga karapatang madalas nating tinatratong parang iisa lamang.
+  </p>
+
+  <h2>
+    Ang Ticket ay Access—Hindi Automatic na Copyright License
+  </h2>
+
+  <p>
+    Kapag bumili ka ng concert ticket, ang pinakapayak na binibili mo ay admission sa event at karapatang panoorin ang show, subject sa applicable ticket at venue conditions.
+  </p>
+
+  <p>
+    Hindi automatic na kasama roon ang copyright o blanket authority na i-record, reproduce at i-upload sa publiko ang buong production.
+  </p>
+
+  <p>
+    Mahalaga rito ang isang basic principle ng Intellectual Property Code: Magkaiba ang pagmamay-ari ng bagay o access na binili mo at ang intellectual-property rights na nakapaloob dito.
+  </p>
+
+  <p>
+    Sa amended Section 180.2 ng RA 8293, ang copyright ay hindi basta itinuturing na nailipat o na-license <em>inter vivos</em>, buo man o bahagi lamang, kung walang written indication na iyon ang intensiyon.
+  </p>
+
+  <p>
+    Sa Section 181 naman, malinaw na hiwalay ang copyright sa pagmamay-ari ng physical copy o material object.
+  </p>
+
+  <p>
+    Isipin sa ordinaryong halimbawa.
+  </p>
+
+  <p>
+    Bumili ka ng libro.<br>
+    Iyo ang librong hawak mo.<br>
+    Hindi dahil doon ay nabili mo rin ang karapatang i-scan ang buong libro at i-upload para mabasa ng publiko.
+  </p>
+
+  <p>
+    Bumili ka ng legal na kopya ng pelikula.<br>
+    Iyo ang kopya.<br>
+    Hindi ibig sabihin na puwede mo nang gawing public stream iyon sa sarili mong page.
+  </p>
+
+  <p>
+    Ganoon din ang basic distinction sa concert. Binayaran mo ang access sa live experience. Hindi dahil doon ay automatic nang nalipat sa iyo ang karapatang mag-distribute ng performance.
+  </p>
+
+  <p>
+    Pero may technical guard na mahalagang tandaan: Ang written-indication rule ng Section 180.2 ay partikular na tungkol sa assignment o licensing ng copyright.
+  </p>
+
+  <p>
+    Hindi nito, mag-isa, sinasabing lahat ng posibleng permission—venue permission, media accreditation, consent ng performer, contractual accommodation o ibang related-right authorization—ay kailangang pare-parehong nasa written copyright license.
+  </p>
+
+  <p>
+    Sa ibang permission, kailangang tingnan kung anong right ang pinag-uusapan, sino ang may authority, ano ang agreement, at anong batas o rules ang applicable.
+  </p>
+
+  <h2>
+    May Limang Magkakaibang Gawain na Madalas Nating Tawaging “Nag-video Lang”
+  </h2>
+
+  <p>
+    Mahalaga ang paghiwalayin ang limang ito:
+  </p>
+
+  <ul>
+    <li>Pumasok sa event.</li>
+    <li>Nag-record.</li>
+    <li>Nag-upload.</li>
+    <li>Nag-livestream.</li>
+    <li>Nag-monetize.</li>
+  </ul>
+
+  <p>
+    Hindi iisang legal question ang lima.
+  </p>
+
+  <p>
+    Ang ticket primarily concerns admission. Ang recording concerns fixation o pagkuha ng performance sa isang medium, kasama ang applicable event rules at performers’ rights. Ang pag-upload ay nagdadagdag ng ibang layer dahil maaari nang pumasok ang reproduction, making available at communication to the public. Ang livestream ay hindi na lamang pagpreserba ng memory; ipinapadala mo na sa ibang tao habang nangyayari ang event ang performance na pinuntahan ng ibang audience para mapanood nang live. Ang monetization concerns the commercial character o economic benefit ng paggamit, na maaaring maging relevant sa Fair Use analysis pero hindi, mag-isa, automatic na nagpapasya kung legal o infringing ang content.
+  </p>
+
+  <p>
+    Mahalaga iyon sa ilang legal analyses, partikular sa purpose and character ng paggamit.
+  </p>
+
+  <p>
+    Pero huwag itong gawing maling shortcut:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi monetized ≠ automatic legal.<br><br>
+      Monetized ≠ automatic infringement.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang commercial character ay isang factor sa Fair Use analysis. Hindi iyon ang buong test.
+  </p>
+
+            <h2>
+    “Ako Naman ang Kumuha ng Video Gamit ang Cellphone Ko.”
+  </h2>
+
+  <p>
+    Totoo.
+  </p>
+
+  <p>
+    Ikaw ang nag-operate ng camera.
+  </p>
+
+  <p>
+    At maaari kang magkaroon ng sariling rights sa original elements na ikaw mismo ang lumikha—halimbawa, sarili mong commentary, narration, editing o ibang original creative contribution, depende sa circumstances.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na lahat ng nasa loob ng frame ay naging intellectual property mo rin.
+  </p>
+
+  <p>
+    Sa isang concert, maaaring magkapatong-patong ang rights.
+  </p>
+
+  <ul>
+    <li>Maaaring may copyright ang songwriter o composer sa musical composition.</li>
+    <li>Maaaring may publisher o collective management organization na nag-aadminister ng ilang rights.</li>
+    <li>May related rights ang performer sa performance.</li>
+    <li>Maaaring may producer o production company na may sarili ring rights o contractual authority.</li>
+    <li>At maaaring may iba't ibang licenses at agreements sa pagitan ng artist, songwriter, producer, broadcaster, distributor at iba pang parties.</li>
+  </ul>
+
+  <p>
+    Kaya hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>“Ako naman ang nag-video.”</p>
+  </blockquote>
+
+  <p>
+    Ang pagiging gumawa ng cellphone recording ay hindi automatic na nangangahulugang ikaw na rin ang may-ari ng lahat ng intellectual-property rights na makikita at maririnig sa recording.
+  </p>
+
+  <h2>
+    “Hindi Naman Original Song Niya ang Kinanta.”
+  </h2>
+
+  <p>
+    Ito rin ang argumentong kailangang himayin.
+  </p>
+
+  <p>
+    Tama na maaaring hindi pag-aari ng singer ang copyright sa mismong kanta.
+  </p>
+
+  <p>
+    Kung cover song ang kinanta, maaaring ibang tao ang composer o songwriter at maaaring ibang entity ang nag-aadminister ng publishing rights.
+  </p>
+
+  <p>
+    Pero hindi rito nagtatapos ang usapan.
+  </p>
+
+  <p>
+    Magkaiba ang copyright sa musical composition at ang rights sa mismong performance.
+  </p>
+
+  <p>
+    At dito mahalagang tingnan hindi lamang ang lumang shorthand tungkol sa Section 203 o Section 205.1, kundi ang kasalukuyang Philippine framework para sa audiovisual performers.
+  </p>
+
+  <p>
+    Noong 2026, inilabas ng Intellectual Property Office of the Philippines ang Memorandum Circular No. 2026-006 — <em>Philippine Regulations Implementing the Beijing Treaty on Audiovisual Performances</em>, na nakalista ngayon mismo sa copyright rules ng IPOPHL. Nag-take effect ang regulations noong March 21, 2026.
+  </p>
+
+  <p>
+    Direkta itong relevant sa panahon ng cellphone videos, streaming at social-media uploads.
+  </p>
+
+  <p>
+    Para sa unfixed o live performance, kinikilala ng regulations ang performers’ rights na mag-authorize ng:
+  </p>
+
+  <ul>
+    <li>Broadcasting at communication to the public ng kanilang live performance.</li>
+    <li>Fixation o pagre-record ng live performance.</li>
+  </ul>
+
+  <p>
+    Kapag ang performance naman ay na-fix na sa audiovisual recording, kinikilala ang hiwalay na economic rights kabilang ang:
+  </p>
+
+  <ul>
+    <li>Reproduction.</li>
+    <li>Distribution.</li>
+    <li>Rental.</li>
+    <li>Making available to the public.</li>
+    <li>Broadcasting at communication to the public.</li>
+  </ul>
+
+  <p>
+    Particularly relevant sa social media ang <em>making available</em> right.
+  </p>
+
+  <p>
+    Iyan ang sitwasyong inilalagay ang recorded performance online upang mapanood ng publiko sa lugar at oras na sila ang pumipili—ang ordinaryong setup ng on-demand internet viewing.
+  </p>
+
+  <p>
+    Kaya hindi tama ang shortcut na:
+  </p>
+
+  <blockquote>
+    <p>“Cover song naman, kaya wala nang rights ang performer.”</p>
+  </blockquote>
+
+  <p>
+    Ang songwriter's rights sa kanta at ang performer's rights sa performance ay magkaibang layer.
+  </p>
+
+  <h2>
+    Pero Hindi Rin Ibig Sabihin na ang Performer Lang ang May Lahat ng Rights
+  </h2>
+
+  <p>
+    Ito ang kabilang mahalagang guardrail.
+  </p>
+
+  <p>
+    Ang current 2026 BTAP framework ay hindi nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>“Performer ang nasa stage, kaya sa kaniya na ang lahat ng rights sa buong concert production.”</p>
+  </blockquote>
+
+  <p>
+    Sa katunayan, expressly kinikilala ng regulations na separate and distinct ang rights ng author, audiovisual performer at producer.
+  </p>
+
+  <p>
+    At mahalaga: Ang authorization mula sa isang rights-holder ay hindi, dahil lamang doon, authorization na rin mula sa iba.
+  </p>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <ul>
+    <li>Maaaring may permission ka mula sa performer para sa isang particular use.</li>
+    <li>Hindi ibig sabihin noon na automatic nang resolved ang copyright ng songwriter o ibang right-holder.</li>
+    <li>O maaaring may authority ang producer sa ilang paggamit ng audiovisual production.</li>
+    <li>Hindi rin ibig sabihin na nawala na lahat ng rights o interests ng performer.</li>
+  </ul>
+
+  <p>
+    May provisions din ang 2026 regulations tungkol sa transfers, remuneration at contracts. Kaya maaaring magbago kung sino ang maaaring mag-exercise ng particular economic right depende sa agreements at applicable rules.
+  </p>
+
+  <p>
+    Ito ang mas current at mas eksaktong takeaway kaysa sa simpleng pagbasa na:
+  </p>
+
+  <blockquote>
+    <p>“Kapag pumayag nang ma-record ang performer, wala na siyang rights pagkatapos.”</p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon.
+  </p>
+
+  <p>
+    Ang authorization na i-fix ang live performance ay hindi nangangahulugang naging free-for-all na ang recorded performance.
+  </p>
+
+  <p>
+    Kapag may audiovisual fixation na, may specific rights pa ring pumapasok tungkol sa reproduction, distribution, making available, broadcasting at communication to the public—subject sa transfers, contracts, statutory limitations at Fair Use.
+  </p>
+
+  <p>
+    Kaya ang pinakaimportanteng lesson:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi dahil cover song ay libre na ang performance.<br><br>
+      Pero hindi rin dahil performer ang nasa stage ay automatic na sa kaniya lamang ang lahat ng rights sa buong production.
+    </p>
+  </blockquote>
+
+  <p>
+    Concert rights can be layered.
+  </p>
+
+            <h2>
+    Eh Kung Personal Recording Lang at Hindi Ko Naman In-upload?
+  </h2>
+
+  <p>
+    Dito kailangan ang isa pang mahalagang distinction.
+  </p>
+
+  <p>
+    Madalas marinig na:
+  </p>
+
+  <blockquote>
+    <p>“Okay lang basta personal use.”</p>
+  </blockquote>
+
+  <p>
+    May historical dahilan kung bakit lumalabas ang ganitong paliwanag. Ang dating wording ng Section 212 ng original RA 8293 ay may express reference sa paggamit ng natural person exclusively for personal purposes.
+  </p>
+
+  <p>
+    Pero binago na ang Section 212 ng RA 10372.
+  </p>
+
+  <p>
+    Ang current Section 212 ay hindi na simpleng blanket personal-purpose exemption. Sa halip, ina-apply nito <em>mutatis mutandis</em> ang copyright limitations sa Chapter VIII sa related rights covered by that chapter.
+  </p>
+
+  <p>
+    May provision naman sa Section 187 tungkol sa private reproduction.
+  </p>
+
+  <p>
+    Pero mas makitid iyon kaysa sa karaniwang internet claim na:
+  </p>
+
+  <blockquote>
+    <p>“Personal lang naman, kaya puwede.”</p>
+  </blockquote>
+
+  <p>
+    Section 187 allows the private reproduction of a published work, in a single copy, by a natural person, exclusively for research and private study, subject pa sa statutory limitations.
+  </p>
+
+  <p>
+    At may isa pang mahalagang qualification: Hindi automatic na ang mismong live performance na pinapanood mo sa concert ay isang “published work” para sa Section 187.
+  </p>
+
+  <p>
+    May specific definition ang Code sa “published works,” kabilang ang requirement na ang work ay ginawang available sa public with the author's consent in a manner allowing members of the public to access it from a place and time individually chosen by them, subject to the statutory definition.
+  </p>
+
+  <p>
+    Maaaring published na ang musical composition na kinakanta. Maaaring may ibang copyrighted works sa production na published na rin. Pero hindi sumusunod mula roon na ang particular live performance mismo ay automatic nang sakop ng Section 187 private-reproduction exception.
+  </p>
+
+  <p>
+    Kaya hindi safe bilang blanket legal rule ang:
+  </p>
+
+  <blockquote>
+    <p>“May automatic right akong i-record ang buong live concert basta itatago ko lang sa cellphone.”</p>
+  </blockquote>
+
+  <p>
+    Iba pa rito ang ticket conditions at venue rules.
+  </p>
+
+  <ul>
+    <li>Maaaring payagan ng organizer ang personal phone recording.</li>
+    <li>Maaaring photos lamang.</li>
+    <li>Maaaring short clips.</li>
+    <li>Maaaring bawal ang professional recording equipment.</li>
+    <li>Maaaring bawal lahat ng recording.</li>
+  </ul>
+
+  <p>
+    Kaya ang mas eksaktong prinsipyo ay: Ang personal recording at public uploading ay magkaibang antas ng paggamit—pero hindi ibig sabihin na lahat ng personal recording ay automatic na statutory right kahit ano pa ang event rules at circumstances.
+  </p>
+
+  <h2>
+    Dito May Valid Point ang Content Creator Side: Ano Ba Talaga ang Ibig Sabihin ng “Come Cover Our Event”?
+  </h2>
+
+  <p>
+    Kung ordinaryong ticket holder ka, isang bagay iyon. Kung inimbitahan kang vlogger, influencer, press, photographer o media partner para mag-cover, may dagdag na contractual at professional layer.
+  </p>
+
+  <p>
+    Kapag sinabi sa iyo:
+  </p>
+
+  <blockquote>
+    <p>“Come and cover our event.”</p>
+  </blockquote>
+
+  <p>
+    Reasonable na itanong:
+  </p>
+
+  <ul>
+    <li>Ano ang saklaw ng “cover”?</li>
+    <li>Photos?</li>
+    <li>Short clips?</li>
+    <li>One full song?</li>
+    <li>Thirty seconds bawat kanta?</li>
+    <li>Edited highlights?</li>
+    <li>Interviews?</li>
+    <li>Backstage footage?</li>
+    <li>YouTube recap?</li>
+    <li>TikTok?</li>
+    <li>Livestream?</li>
+    <li>Monetized content?</li>
+    <li>Full performances?</li>
+  </ul>
+
+  <p>
+    Kung walang malinaw na media guidelines, puwedeng magkaroon ng totoong misunderstanding.
+  </p>
+
+  <p>
+    At dito may responsibilidad din ang organizer.
+  </p>
+
+  <p>
+    Kung may special restriction para sa invited creators, mas maayos kung malinaw iyon bago pa ang event.
+  </p>
+
+  <ul>
+    <li>Kung bawal ang full song, sabihin.</li>
+    <li>Kung short clips lang, sabihin.</li>
+    <li>Kung walang livestream, sabihin.</li>
+    <li>Kung official media lamang ang maaaring kumuha ng full-performance footage, sabihin.</li>
+    <li>Kung may embargo, sabihin.</li>
+    <li>Kung may monetization restriction, sabihin.</li>
+  </ul>
+
+  <p>
+    Clarity protects everybody.
+  </p>
+
+  <h2>
+    Pero “Hindi Ninyo Sinabing Bawal” ay Hindi Rin Automatic na “Binigyan Ninyo Ako ng License.”
+  </h2>
+
+  <p>
+    Ito ang kabilang kalahati ng argumento.
+  </p>
+
+  <p>
+    Sa Civil Code, ang valid contracts ay may force of law between the parties at kailangang sundin in good faith. Pinapayagan din ang parties na magtakda ng lawful terms and conditions.
+  </p>
+
+  <p>
+    Kaya kung may media invitation, accreditation sheet, email, message o agreement, mahalaga kung ano talaga ang napagkasunduan.
+  </p>
+
+  <p>
+    Pero kailangang maging precise rito.
+  </p>
+
+  <p>
+    May dalawang tanong na maaaring mag-overlap pero hindi identical:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang permission o expectation sa ilalim ng media arrangement?”<br><br>
+      at<br><br>
+      “May copyright license ba para sa particular copyrighted material?”
+    </p>
+  </blockquote>
+
+  <p>
+    Para sa assignment o licensing ng copyright, Section 180.2 expressly requires a written indication of that intention.
+  </p>
+
+  <p>
+    Pero huwag natin itong i-overextend.
+  </p>
+
+  <p>
+    Hindi Section 180.2, mag-isa, ang rule para sa lahat ng uri ng consent o authorization na maaaring pumasok sa isang event. Maaaring may ibang contractual permissions, performers’ rights, producer rights, venue rules o related-right arrangements na may sarili nilang legal treatment.
+  </p>
+
+  <p>
+    Kaya ang mas tamang statement ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi sinabi na bawal” ay maaaring mahalaga sa contractual expectations at fairness—pero hindi iyon, by itself, automatic proof na nabigyan ka ng unlimited copyright license o lahat ng permissions na maaaring kailanganin.
+    </p>
+  </blockquote>
+
+  <p>
+    Sa kabilang panig, kung may actual permission ang creator mula sa taong may authority na ibigay ang particular right na kailangan, mahalaga rin iyon at hindi maaaring basta balewalain.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit sa isang actual dispute, mahalagang makita ang:
+  </p>
+
+  <ul>
+    <li>Mismong invitation.</li>
+    <li>Media accreditation terms.</li>
+    <li>Messages.</li>
+    <li>Ticket at venue conditions.</li>
+    <li>Kung ano talaga ang in-upload.</li>
+    <li>Kung sino ang nagbigay ng permission at anong right ang kaya niyang i-authorize.</li>
+  </ul>
+
+  <p>
+    Hindi sapat ang screenshot war.
+  </p>
+
+            <h2>
+    Paano Naman ang “Fair Use”?
+  </h2>
+
+  <p>
+    Ito marahil ang pinakaginagamit—at pinaka-misused—na copyright phrase sa social media.
+  </p>
+
+  <p>
+    May totoong Fair Use doctrine sa Pilipinas.
+  </p>
+
+  <p>
+    Hindi ito imbento. Hindi rin ito magic words na nagpapalegal sa kahit anong copyrighted material.
+  </p>
+
+  <p>
+    Sa Section 185 ng Intellectual Property Code, maaaring maging Fair Use ang paggamit para sa criticism, comment, news reporting, teaching, scholarship, research at similar purposes.
+  </p>
+
+  <p>
+    Pero kailangang timbangin ang apat na pangunahing factors:
+  </p>
+
+  <ul>
+    <li>Purpose and character ng paggamit.</li>
+    <li>Nature ng copyrighted work.</li>
+    <li>Amount at substantiality ng ginamit.</li>
+    <li>Effect sa potential market o value ng copyrighted work.</li>
+  </ul>
+
+  <p>
+    Hindi isang factor lang ang tinitingnan.
+  </p>
+
+  <p>
+    At hindi rin sapat ang sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Educational purposes.”<br>
+      “For entertainment only.”<br>
+      “For awareness.”<br>
+      “Fair Use.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang actual use ang susuriin—hindi ang label sa caption.
+  </p>
+
+  <p>
+    Mahalaga rin na ang 2026 BTAP Regulations mismo ay kumikilala na ang performers’ rights ay subject sa applicable limitations and exceptions, kabilang ang Fair Use.
+  </p>
+
+  <p>
+    Kaya ang performers’ rights ay protected—pero hindi rin absolute.
+  </p>
+
+  <h2>
+    Mas Malakas ang Fair-Use Argument Kapag May Sarili Kang Purpose
+  </h2>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <ul>
+    <li>Nag-review ka ng concert at gumamit ng limited clip para maipakita kung bakit mo pinuri o pinuna ang arrangement.</li>
+    <li>Nag-report ka tungkol sa isang newsworthy incident sa performance at ipinakita lamang ang bahaging kailangan upang maunawaan ang report.</li>
+    <li>Gumawa ka ng critique tungkol sa production design at gumamit ng excerpts habang may substantial analysis.</li>
+    <li>Nagkumpara ka ng dalawang interpretations ng kanta at gumamit lamang ng material na reasonably kailangan sa commentary.</li>
+  </ul>
+
+  <p>
+    May totoong Fair Use question sa mga ganiyang paggamit.
+  </p>
+
+  <p>
+    Mas malinaw kasi na ang purpose ng content mo ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>“Panoorin ninyo rito ang performance.”</p>
+  </blockquote>
+
+  <p>
+    May sariling comment, criticism, information, analysis o ibang function.
+  </p>
+
+  <p>
+    Sa 2025 Supreme Court case na <em>FILSCAP v. Wolfpac Communications</em>, tinimbang ng Court ang paggamit ng short musical samples sa isang pre-listening function. Hindi lamang haba ng clip ang pinagbatayan; tiningnan din ang purpose, nature, amount at market effect.
+  </p>
+
+  <p>
+    Kaya napakahalaga ng lesson:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi dahil naging Fair Use ang short clip sa isang particular case ay may universal “20-second rule” na para sa lahat.
+    </p>
+  </blockquote>
+
+  <p>
+    Wala.
+  </p>
+
+  <p>
+    Ibang facts, ibang analysis.
+  </p>
+
+  <h2>
+    Walang Magic “15 Seconds,” “30 Seconds” o “One Minute” Rule
+  </h2>
+
+  <p>
+    Walang simpleng Philippine copyright rule na:
+  </p>
+
+  <blockquote>
+    <p>Below 30 seconds = legal.</p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon gumagana ang Fair Use.
+  </p>
+
+  <p>
+    Shorter use can help sa amount-and-substantiality analysis. Pero hindi automatic.
+  </p>
+
+  <p>
+    At hindi lamang haba ang issue.
+  </p>
+
+  <p>
+    Kaya hindi pinakamagandang tanong ang:
+  </p>
+
+  <blockquote>
+    <p>“Ilang segundo ang puwede?”</p>
+  </blockquote>
+
+  <p>
+    Mas magandang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit ko kailangang gamitin ang footage na ito—at gaano lamang karami ang reasonably kailangan para sa sarili kong purpose?”
+    </p>
+  </blockquote>
+
+  <h2>
+    Full Song Ba = Automatic Infringement?
+  </h2>
+
+  <p>
+    Hindi rin natin kailangang gumawa ng bagong maling absolute rule.
+  </p>
+
+  <p>
+    Ang Fair Use ay case-specific. May statutory copyright limitations din.
+  </p>
+
+  <p>
+    Kaya hindi intellectually honest ang:
+  </p>
+
+  <blockquote>
+    <p>“Kapag buong kanta, automatic guilty.”</p>
+  </blockquote>
+
+  <p>
+    Pero sa ordinaryong concert-vlogging situation, habang lumalaki ang bahaging kinopya at habang mas nagiging kapareho ng purpose ng original performance ang upload, mas humihina ang Fair Use argument.
+  </p>
+
+  <p>
+    Kung ang video ay essentially:
+  </p>
+
+  <blockquote>
+    <p>“Narito ang buong kanta para mapanood ninyo.”</p>
+  </blockquote>
+
+  <p>
+    at halos wala namang criticism, analysis, reporting o ibang independent purpose—mas mahirap ipaliwanag kung ano ang bagong function na naiiba sa original performance.
+  </p>
+
+  <p>
+    Mas humihirap pa kapag:
+  </p>
+
+  <ul>
+    <li>Buong kanta pagkatapos ng buong kanta.</li>
+    <li>Buong segment.</li>
+    <li>O halos buong concert.</li>
+  </ul>
+
+  <p>
+    At dito nagiging mahalaga ang potential-market factor.
+  </p>
+
+  <h2>
+    “Tapos na Naman ang Concert. Ano Pang Market ang Maaapektuhan?”
+  </h2>
+
+  <p>
+    Ang “market” sa Fair Use analysis ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>“May ticket pa bang hindi nabenta ngayong gabi?”</p>
+  </blockquote>
+
+  <p>
+    Maaaring may potential value pa ang material sa:
+  </p>
+
+  <ul>
+    <li>Official concert videos.</li>
+    <li>Future streaming.</li>
+    <li>Licensed clips.</li>
+    <li>Broadcast.</li>
+    <li>Documentary o concert-film releases.</li>
+    <li>Promotional packages.</li>
+    <li>Digital archives.</li>
+    <li>At iba pang authorized exploitation.</li>
+  </ul>
+
+  <p>
+    Hindi ibig sabihin na automatic na may proven market harm sa bawat fan upload. Kailangan pa ring tingnan ang facts.
+  </p>
+
+  <p>
+    Pero hindi rin sapat ang:
+  </p>
+
+  <blockquote>
+    <p>“Tapos na ang concert kaya wala nang puwedeng maapektuhan.”</p>
+  </blockquote>
+
+  <p>
+    Section 185 expressly asks about the potential market or value ng copyrighted work.
+  </p>
+
+            <h2>
+    “Pero Hindi Naman Monetized ang Video Ko.”
+  </h2>
+
+  <p>
+    Relevant.
+  </p>
+
+  <p>
+    Pero hindi decisive.
+  </p>
+
+  <p>
+    Ang commercial nature ay bahagi ng first Fair Use factor.
+  </p>
+
+  <p>
+    Mas maaaring bumigat laban sa uploader kung ginagamit ang copyrighted performance para kumita, mag-generate ng traffic, subscribers, ads, sponsorships o ibang commercial value.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na kailangan munang kumita bago magkaroon ng copyright issue. At hindi rin ibig sabihin na kapag monetized ay automatic infringement.
+  </p>
+
+  <p>
+    Again:
+  </p>
+
+  <blockquote>
+    <p>Factor—not magic switch.</p>
+  </blockquote>
+
+  <h2>
+    “CTTO Naman.”
+  </h2>
+
+  <p>
+    Isa pa itong malaking internet myth.
+  </p>
+
+  <p>
+    CTTO — Credits to the Owner — is not permission.
+  </p>
+
+  <p>
+    Hindi rin permission ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “No Copyright Infringement Intended.”<br>
+      “For entertainment purposes only.”<br>
+      “All rights belong to their respective owners.”
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin permission ang simpleng pag-tag sa artist.
+  </p>
+
+  <p>
+    IPOPHL has publicly explained that attribution or disclaimers such as these do not, by themselves, legalize otherwise unauthorized use.
+  </p>
+
+  <p>
+    Magkakaiba kasi ang tatlong tanong:
+  </p>
+
+  <ul>
+    <li><strong>CREDIT:</strong> “Kanino galing?”</li>
+    <li><strong>PERMISSION:</strong> “May authorization ka ba?”</li>
+    <li><strong>FAIR USE:</strong> “Kahit walang permission, pasok ba ang actual use sa legal limitation o exception?”</li>
+  </ul>
+
+  <p>
+    Hindi sila interchangeable.
+  </p>
+
+  <h2>
+    Pero Totoo Ba na Nakakatulong ang Vloggers at Fan Content sa Artists?
+  </h2>
+
+  <p>
+    Oo.
+  </p>
+
+  <p>
+    At hindi natin kailangang itanggi iyon para lamang ipagtanggol ang copyright.
+  </p>
+
+  <p>
+    May empirical support na malaki talaga ang papel ng social media at user-generated content sa music discovery.
+  </p>
+
+  <p>
+    Sa Deloitte's 2024 <em>Digital Media Trends</em> research, 82% ng Gen Z at 70% ng millennials surveyed ang nagsabing nakakadiskubre sila ng bagong artists o music sa social media o user-generated video sites.
+  </p>
+
+  <p>
+    U.S. consumer data ito—hindi Philippine national statistic—kaya hindi dapat ituring na eksaktong ganoon din ang percentages dito.
+  </p>
+
+  <p>
+    Pero valid ang mas malawak na point: Creators, fan posts at UGC can help music discovery, conversation and fandom.
+  </p>
+
+  <p>
+    May tunay na promotional value ang creator ecosystem. Pero kailangan ding lagyan ng research guard ang claim na iyan.
+  </p>
+
+  <p>
+    Hindi sinukat ng Deloitte finding kung legal o beneficial sa artist ang pag-upload ng buong concert o full performance.
+  </p>
+
+  <p>
+    Ang finding ay tungkol sa social media at UGC bilang channel ng music discovery.
+  </p>
+
+  <p>
+    Hindi iyon study na nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>“Full-concert uploads improve an artist's business.”</p>
+  </blockquote>
+
+  <p>
+    At lalong hindi iyon legal permission.
+  </p>
+
+  <blockquote>
+    <p>
+      UGC can help discovery.<br><br>
+      Hindi automatic na any amount of UGC is beneficial or authorized.
+    </p>
+  </blockquote>
+
+  <h2>
+    Exposure ay Value—Pero Hindi Ito Automatic na Bayad sa Rights
+  </h2>
+
+  <p>
+    Imagine na may photographer na kumuha ng mahusay na larawan. Kinuha mo ang picture at ginamit sa sarili mong page.
+  </p>
+
+  <p>
+    Pag nagreklamo siya, sinabi mo:
+  </p>
+
+  <blockquote>
+    <p>“Pero ang daming nakakita sa picture mo dahil sa akin.”</p>
+  </blockquote>
+
+  <p>
+    Possible na totoo.
+  </p>
+
+  <p>
+    Pero hindi mo puwedeng unilateral na ideklarang iyon na ang kapalit para sa anumang permission na kailangan mo.
+  </p>
+
+  <p>
+    Ganoon din sa music at performance.
+  </p>
+
+  <p>
+    Ang rights-holder ang may pangunahing kapangyarihang magdesisyon kung:
+  </p>
+
+  <ul>
+    <li>Ibibigay nang libre.</li>
+    <li>Ili-license.</li>
+    <li>Gagawing official upload.</li>
+    <li>Ibebenta.</li>
+    <li>Ipopost later.</li>
+    <li>O hindi muna ilalabas ang material—subject, siyempre, sa Fair Use at iba pang legal limitations.</li>
+  </ul>
+
+  <blockquote>
+    <p>
+      Exposure can have value.<br><br>
+      But:<br><br>
+      Exposure is not a self-issued license.
+    </p>
+  </blockquote>
+
+  <h2>
+    Pero Huwag Din Nating Gawing Kalaban ang Bawat Cellphone sa Concert
+  </h2>
+
+  <p>
+    Dito naman kailangang maging realistic ang artists at organizers.
+  </p>
+
+  <p>
+    Hindi na hiwalay sa modern live-event culture ang smartphones. Photos, clips, reactions at social sharing are part of how many people remember at participate sa experiences.
+  </p>
+
+  <p>
+    At interestingly, hindi simpleng:
+  </p>
+
+  <blockquote>
+    <p>“Kapag nag-picture ka, hindi mo na na-enjoy ang moment.”</p>
+  </blockquote>
+
+  <p>
+    Sa research nina Kristin Diehl, Gal Zauberman at Alixandra Barasch—across three field at six laboratory experiments—photo-taking often increased enjoyment of positive experiences kapag napapataas nito ang engagement ng participant.
+  </p>
+
+  <p>
+    Pero humihina o nawawala ang benefit kapag ang photo-taking mismo ay nakaka-interfere sa experience.
+  </p>
+
+  <p>
+    Kaya walang scientific basis para gawing blanket statement na:
+  </p>
+
+  <blockquote>
+    <p>“Ang taong nagpi-picture ay hindi na present sa experience.”</p>
+  </blockquote>
+
+  <p>
+    Human behavior is more complicated than that.
+  </p>
+
+            <h2>
+    Minsan, Mula sa “Nanonood Ako” Nagiging “Gumagawa Ako ng Content Habang Nanonood”
+  </h2>
+
+  <p>
+    May kabilang research din.
+  </p>
+
+  <p>
+    Sa work nina Barasch, Zauberman at Diehl tungkol sa intention to share, nakita na kapag ang pagkuha ng photos ay ginagawa nang iniisip na agad ang pag-share sa ibang tao, maaaring pumasok ang self-presentational concerns at bumaba ang engagement at enjoyment kumpara sa pagkuha para sa sariling memory.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na nangyayari ito sa lahat ng content creators. Hindi rin ibig sabihin na masama ang pag-share.
+  </p>
+
+  <p>
+    Pero magandang behavioral reminder ang distinction:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gusto kong maalala ang moment na ito.”<br><br>
+      versus<br><br>
+      “Kailangan kong makakuha ng content dito para sa audience ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa pangalawa, may posibilidad na ang event ay hindi na lamang experience. Nagiging raw material din ito para sa sariling online output.
+  </p>
+
+  <p>
+    Doon lalo nagiging mahalaga ang professional boundaries.
+  </p>
+
+  <p>
+    Pero mahalaga ring huwag i-overclaim ang research.
+  </p>
+
+  <p>
+    Ang photo-taking studies na ito ay studies tungkol sa documentation, engagement, sharing intention at enjoyment. Hindi sila direct experiments tungkol sa pag-upload ng buong concert, at hindi nila pinatutunayang legal o illegal ang full-performance upload.
+  </p>
+
+  <blockquote>
+    <p>
+      Behavioral evidence sila.<br><br>
+      Hindi substitute sa copyright law.
+    </p>
+  </blockquote>
+
+  <h2>
+    At May Isa Pang Side na Madalas Nating Nakakalimutan: Ang Ibang Nagbayad Din ng Ticket
+  </h2>
+
+  <p>
+    Hindi lamang ito:
+  </p>
+
+  <blockquote>
+    <p>Artist vs Vlogger.</p>
+  </blockquote>
+
+  <p>
+    May kapwa audience.
+  </p>
+
+  <p>
+    Isipin ang taong nasa likod mo. Nagbayad din siya para makita ang stage. Kung ilang segundo kang nag-video, maaaring halos walang epekto.
+  </p>
+
+  <p>
+    Pero kung buong kanta pagkatapos ng buong kanta ay nakataas ang cellphone, tablet o camera; kung hinaharangan ang view; kung maliwanag ang screen; kung may sariling narration habang kumakanta ang artist; kung may livestream interaction—iba na ang practical effect.
+  </p>
+
+  <p>
+    Kaya may tanong na hiwalay pa sa copyright:
+  </p>
+
+  <blockquote>
+    <p>
+      Kahit puwedeng gawin ang isang bagay, considerate ba ang paraan ng paggawa mo nito sa ibang taong bumili rin ng live experience?
+    </p>
+  </blockquote>
+
+  <p>
+    Rights and etiquette are not identical.
+  </p>
+
+  <p>
+    Minsan maaaring walang copyright problem ang isang act pero nakakaistorbo sa kapwa audience. At minsan maaaring napakaayos ng etiquette mo pero mayroon pa ring separate copyright issue sa ginawa mong upload pagkatapos.
+  </p>
+
+  <h2>
+    Ano ang Responsableng Content Creator Standard?
+  </h2>
+
+  <p>
+    Hindi kailangang tumigil sa concert coverage. Hindi kailangang matakot sa bawat segundo ng footage. Hindi rin kailangang mawala ang reviews, reactions, fan cams at event content.
+  </p>
+
+  <p>
+    Pero magandang professional rule ang:
+  </p>
+
+  <blockquote>
+    <p>
+      Cover the event.<br><br>
+      Do not automatically turn the event itself into your content product.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung ang pangunahing value ng post mo ay:
+  </p>
+
+  <ul>
+    <li>Sarili mong reaction.</li>
+    <li>Review.</li>
+    <li>Analysis.</li>
+    <li>Interview.</li>
+    <li>Storytelling.</li>
+    <li>Commentary.</li>
+    <li>Editing.</li>
+    <li>Context.</li>
+    <li>Experience.</li>
+  </ul>
+
+  <p>
+    Mas malinaw na gumagawa ka ng sariling content tungkol sa event.
+  </p>
+
+  <p>
+    Pero kung ang pangunahing dahilan kung bakit pupunta ang viewer sa page mo ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Dito ko mapapanood nang buo ang performance na ginawa ng ibang tao,”
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan nang itanong kung documentation pa ba iyon—o republication na nangangailangan ng authority o legal basis.
+  </p>
+
+  <p>
+    At kung invited creator ka at hindi malinaw ang permission:
+  </p>
+
+  <blockquote>
+    <p>Ask before uploading the questionable part.</p>
+  </blockquote>
+
+  <p>
+    Isang written clarification bago mag-post ay mas madaling ayusin kaysa dispute pagkatapos.
+  </p>
+
+  <h2>
+    Ano Naman ang Responsableng Artist at Organizer Standard?
+  </h2>
+
+  <p>
+    Hindi rin sapat ang:
+  </p>
+
+  <blockquote>
+    <p>“Dapat alam na nila iyon.”</p>
+  </blockquote>
+
+  <p>
+    Kung actively nag-iinvite kayo ng:
+  </p>
+
+  <ul>
+    <li>Vloggers.</li>
+    <li>Influencers.</li>
+    <li>Photographers.</li>
+    <li>Press.</li>
+    <li>Media pages.</li>
+    <li>At content creators.</li>
+  </ul>
+
+  <p>
+    Professional din na magkaroon ng malinaw na media policy.
+  </p>
+
+  <p>
+    Ideally, bago ang event alam na nila:
+  </p>
+
+  <ul>
+    <li>Photography allowed ba?</li>
+    <li>Video allowed ba?</li>
+    <li>May clip restriction ba?</li>
+    <li>Full songs prohibited ba?</li>
+    <li>Livestream prohibited ba?</li>
+    <li>Professional cameras require accreditation ba?</li>
+    <li>Ano ang puwedeng gawin sa complimentary ticket?</li>
+    <li>Puwede bang gamitin sa YouTube?</li>
+    <li>Puwede bang i-monetize?</li>
+    <li>May embargo ba?</li>
+    <li>May footage bang official media only?</li>
+    <li>May supplied clips ba na puwedeng gamitin ng creators?</li>
+  </ul>
+
+  <p>
+    Hindi nito binubura ang copyright law. Ginagawa lamang nitong mas maliit ang lugar para sa misunderstanding.
+  </p>
+
+  <blockquote>
+    <p>
+      Clear boundaries are easier to respect than invisible boundaries.
+    </p>
+  </blockquote>
+
+            <h2>
+    Ano Kung Walang Rule na Nakasulat sa Ticket?
+  </h2>
+
+  <p>
+    Hindi rin ito simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang nakasulat, therefore puwede lahat.”
+    </p>
+  </blockquote>
+
+  <p>
+    May iba't ibang source ng rights at obligations.
+  </p>
+
+  <ul>
+    <li>Copyright law.</li>
+    <li>Performers’ rights.</li>
+    <li>Current audiovisual-performance regulations.</li>
+    <li>Ticket agreement.</li>
+    <li>Venue rules.</li>
+    <li>Media accreditation.</li>
+    <li>Separate permission.</li>
+    <li>Producer contracts.</li>
+    <li>Fair Use at ibang statutory limitations.</li>
+  </ul>
+
+  <p>
+    Kaya walang isang maliit na sentence sa ticket na kayang palitan ang buong legal framework.
+  </p>
+
+  <p>
+    At sa kabilang side, kung gusto ng organizer na magpatupad ng particular contractual restriction laban sa invited media, mas mahusay kung malinaw at maagang communicated iyon.
+  </p>
+
+  <blockquote>
+    <p>
+      The law and good professional practice should complement each other—not be excuses for poor communication.
+    </p>
+  </blockquote>
+
+  <h2>
+    Kaya sa Naging Ice Seguerra–Content Creator Issue, Sino ang Tama?
+  </h2>
+
+  <p>
+    Dito kailangang pigilan ang temptation na gawing courtroom ang comment section.
+  </p>
+
+  <p>
+    Base lamang sa public posts at screenshots, hindi natin alam ang lahat ng facts na kailangan para magbigay ng definitive legal judgment sa particular uploader.
+  </p>
+
+  <p>
+    Kailangang malaman:
+  </p>
+
+  <ul>
+    <li>Ano talaga ang in-upload?</li>
+    <li>Isang buong kanta?</li>
+    <li>Maraming kanta?</li>
+    <li>Halos buong concert?</li>
+    <li>May commentary ba?</li>
+    <li>May editing ba?</li>
+    <li>Ano ang purpose ng upload?</li>
+    <li>Ano ang actual media invitation?</li>
+    <li>May written guidelines ba?</li>
+    <li>May permission ba?</li>
+    <li>Kanino nanggaling?</li>
+    <li>May authority ba ang nagbigay para sa particular rights na involved?</li>
+    <li>Ano ang applicable ticket at venue terms?</li>
+    <li>Sino ang may hawak ng relevant copyright, performers’ rights, producer rights o contractual rights?</li>
+  </ul>
+
+  <p>
+    Iyan ang factual questions na mahalaga sa tunay na legal assessment.
+  </p>
+
+  <p>
+    Kaya ang civic explainer na ito ay hindi verdict sa isang partikular na tao.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang tamang general boundary para sa ating lahat?
+    </p>
+  </blockquote>
+
+  <h2>
+    Dito Mas Malakas ang Artist / Rights-Holder Side
+  </h2>
+
+  <p>
+    Kapag ang argumento ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nagbayad ako ng ticket kaya puwede kong i-upload ang buong concert.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mahina iyon.
+  </p>
+
+  <blockquote>
+    <p>
+      Ticket does not automatically equal distribution license.
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag:
+  </p>
+
+  <blockquote>
+    <p>
+      “Cover song naman kaya walang rights ang performer.”
+    </p>
+  </blockquote>
+
+  <p>
+    Incomplete iyon. Separate ang composition rights, performers’ rights at maaari pang may producer at contractual rights.
+  </p>
+
+  <p>
+    Kapag:
+  </p>
+
+  <blockquote>
+    <p>“CTTO naman.”</p>
+  </blockquote>
+
+  <p>
+    Hindi iyon permission.
+  </p>
+
+  <p>
+    Kapag:
+  </p>
+
+  <blockquote>
+    <p>“Hindi monetized.”</p>
+  </blockquote>
+
+  <p>
+    Hindi iyon automatic defense.
+  </p>
+
+  <p>
+    Kapag:
+  </p>
+
+  <blockquote>
+    <p>“Fair Use” ang nilagay kong disclaimer.</p>
+  </blockquote>
+
+  <p>
+    Hindi label ang Fair Use; legal analysis iyon.
+  </p>
+
+  <p>
+    Kapag:
+  </p>
+
+  <blockquote>
+    <p>“Exposure naman ang kapalit.”</p>
+  </blockquote>
+
+  <p>
+    Hindi unilateral na uploader ang nagtatakda kung sapat na kabayaran o authorization ang exposure.
+  </p>
+
+  <h2>
+    Dito Naman May Valid Point ang Content Creator Side
+  </h2>
+
+  <p>
+    Kung invited ka specifically to cover an event, reasonable na umasa kang may malinaw na information tungkol sa coverage expectations.
+  </p>
+
+  <p>
+    Kung maraming content creators ang inaanyayahan dahil gusto rin ng organizer ng online visibility, hindi rin magandang professional practice na malabo kung ano ang pinapayagan.
+  </p>
+
+  <p>
+    At ang creator ecosystem ay hindi simpleng “nakikisakay” lamang sa artists.
+  </p>
+
+  <p>
+    May totoong value ang creators at UGC sa discovery, virality, conversation at fandom.
+  </p>
+
+  <p>
+    Pero mahalagang eksakto ang claim:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang evidence na may promotional value ang UGC ay hindi evidence na ang full-performance upload specifically ay beneficial, authorized o Fair Use.
+    </p>
+  </blockquote>
+
+  <p>
+    Magkaibang tanong iyon.
+  </p>
+
+  <p>
+    At Fair Use itself is a genuine limitation on exclusive copyright and performers’ rights.
+  </p>
+
+  <p>
+    Kaya hindi rin tama ang opposite extreme na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Artist ang may rights, therefore bawal nang gumamit ng kahit isang segundo nang walang permission.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin iyan ang batas.
+  </p>
+
+            <h2>
+    Ang Pinaka-Makatarungang Balance
+  </h2>
+
+  <p>
+    Hindi kailangan pumili sa pagitan ng dalawang extreme:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nagbayad ako ng ticket, kaya akin na ang anumang ma-record ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    at:
+  </p>
+
+  <blockquote>
+    <p>
+      “Artist ang nasa stage, kaya wala nang legitimate space para sa audience, journalism, criticism, review o Fair Use.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong kulang.
+  </p>
+
+  <p>
+    Mas maayos ang linya:
+  </p>
+
+  <ul>
+    <li>Ang ticket ay access sa experience—hindi automatic na license para ipamahagi ang show.</li>
+
+    <li>Ang content creator ay may karapatang magkuwento, mag-review, magkomento, mag-report at gumamit ng material sa mga paraang pinapayagan ng batas—pero hindi dahil may camera at followers ay sa kaniya na ang performance.</li>
+
+    <li>Ang artist at iba pang rights-holders ay may karapatang protektahan ang kanilang mga gawa at performance—pero hindi absolute ang mga karapatang iyon, at may Fair Use at iba pang legal limitations.</li>
+
+    <li>Ang organizer na nag-iinvite ng content creators ay dapat magbigay ng malinaw na coverage rules—pero ang kawalan ng rules ay hindi automatic na unlimited copyright o related-rights license.</li>
+
+    <li>At ang audience ay hindi lang consumer na may cellphone—bahagi siya ng isang shared live experience kung saan may interes din ang ibang nagbayad na makapanood nang maayos.</li>
+  </ul>
+
+  <p>
+    Sa modernong mundo, hindi na realistic ang simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag kayong mag-post.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin sustainable ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag kaya kong i-record, kaya ko ring i-upload.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas responsableng social-media culture ay marunong magdistinguish sa pagitan ng:
+  </p>
+
+  <ul>
+    <li>Pagdodokumento at pagre-republish.</li>
+    <li>Pagko-cover at pagbibigay ng substitute sa mismong show.</li>
+    <li>Promotion at permission.</li>
+    <li>Credit at authorization.</li>
+    <li>Fair Use at simpleng paggamit ng salitang “Fair Use”.</li>
+    <li>Pagmamay-ari ng ticket versus pagmamay-ari o pagkakaroon ng lisensiya sa rights.</li>
+  </ul>
+
+  <p>
+    Ibahagi ang experience. Ikuwento kung ano ang nagustuhan mo. Mag-post ng memories. Gumawa ng review. Magbigay ng criticism. Gumawa ng original content tungkol sa event. At gumamit ng Fair Use kapag ang actual facts at purpose ay talagang pumapasok doon.
+  </p>
+
+  <p>
+    Pero huwag gawing automatic na sariling content library ang buong performance ng ibang tao dahil lamang:
+  </p>
+
+  <ul>
+    <li>May ticket ka.</li>
+    <li>Ikaw ang may hawak ng cellphone.</li>
+    <li>Marami kang followers.</li>
+    <li>Maganda ang intention mo.</li>
+    <li>Nakakatulong ang exposure.</li>
+    <li>Hindi monetized.</li>
+    <li>O may nakalagay na CTTO.</li>
+  </ul>
+
+  <p>
+    At sa kabilang side:
+  </p>
+
+  <p>
+    Kung gusto ng artists at organizers ang tulong ng creators sa modern social-media ecosystem, gawin ding malinaw ang boundaries at permissions na inaasahan ninyong susundin.
+  </p>
+
+  <p>
+    Hindi kailangang magkalaban ang artist at content creator.
+  </p>
+
+  <p>
+    Pareho silang creators. Pareho silang maaaring magkaroon ng rights. Pareho silang maaaring makinabang sa social media. At pareho silang may responsibilidad na huwag gawing dahilan ang sariling interes para balewalain ang lehitimong karapatan ng kabilang panig.
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag malinaw ang permission, tama ang attribution, proportionate ang ginagamit na material, may tunay na sariling purpose ang content, at may respeto sa artist, producer, creator at kapwa audience—doon nagtatagpo ang copyright protection at responsible content creation.
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Republic Act No. 8293 — Intellectual Property Code of the Philippines, including Sections 171, 181, 185, 187 and provisions on performers’ and related rights.
+    </li>
+
+    <li>
+      Republic Act No. 10372 — amendments to the Intellectual Property Code, including Section 180.2, Fair Use provisions, audiovisual performers’ rights and current Section 212.
+    </li>
+
+    <li>
+      Intellectual Property Office of the Philippines (IPOPHL), Memorandum Circular No. 2026-006 — Philippine Regulations Implementing the Beijing Treaty on Audiovisual Performances (BTAP).
+    </li>
+
+    <li>
+      World Intellectual Property Organization (WIPO) — Beijing Treaty on Audiovisual Performances, including rights over unfixed performances and reproduction, distribution, rental and making available of audiovisual fixations.
+    </li>
+
+    <li>
+      Quisumbing Torres — analysis of the 2026 Philippine BTAP Regulations, including economic rights, remuneration, limitations and the separate rights of authors, performers and producers.
+    </li>
+
+    <li>
+      Cruz Marcelo &amp; Tenefrancia — analysis of IPOPHL MC No. 2026-006, its March 21, 2026 effectivity and audiovisual performers’ rights.
+    </li>
+
+    <li>
+      Diehl, K., Zauberman, G., &amp; Barasch, A. — <em>How Taking Photos Increases Enjoyment of Experiences</em>, Journal of Personality and Social Psychology, 2016.
+    </li>
+
+    <li>
+      Barasch, A., Zauberman, G., &amp; Diehl, K. — <em>How the Intention to Share Can Undermine Enjoyment: Photo-Taking Goals and Evaluation of Experiences</em>, Journal of Consumer Research, 2018.
+    </li>
+
+    <li>
+      Deloitte — <em>User-generated Video Content Fuels Music Discovery and Fandom Among Younger People</em>, Digital Media Trends 2024.
+    </li>
+
+  </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
