@@ -1,1 +1,2454 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa pagkakaiba ng tunay na charity at public stunt, ang papel ng camera, publicity, dignity ng beneficiary, at ang tamang batayan sa pagsusuri ng pagtulong sa panahon ng social media."
+>
+
+<title>TULONG BA—O PUBLIC STUNT? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    TULONG BA—O PUBLIC STUNT?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-public-stunt.png"
+      alt="Simbolikong paglalarawan ng charity, social media, camera, publicity, dignidad ng beneficiary, at public scrutiny."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May panahon na kapag may namigay ng pagkain, gamot, pera o relief goods, ang unang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nakatulong ba?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ngayon, may dagdag nang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung walang camera, gagawin pa rin kaya ito?”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dahil masama ang mag-video ng pagtulong.
+  </p>
+
+  <p>
+    Sa panahon ng livestream, vlog, reels, TikTok, Facebook at YouTube, halos normal na ang documentation. Maaari itong magsilbing transparency, makapagpakita kung saan napunta ang donations, makahikayat ng volunteers, makapagpalaganap ng advocacy, at makapag-udyok sa iba na tumulong.
+  </p>
+
+  <p>
+    Pero may isa pang realidad: Ang atensyon ay may halaga na rin.
+  </p>
+
+  <p>
+    Ang views ay maaaring maging followers. Ang followers ay maaaring maging influence. Ang influence ay maaaring maging sponsorship, advertising, endorsement, negosyo, access at public image.
+  </p>
+
+  <p>
+    Kaya sa panahon ng social media, hindi na sapat ang simpleng tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “May natulungan ba?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahalagang itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang camera ba ang sumusunod sa pagtulong—o ang pagtulong ang inaaayos para sa camera?
+    </p>
+  </blockquote>
+
+  <h2>
+    HINDI LAHAT NG NAKA-CAMERA AY PEKE
+  </h2>
+
+  <p>
+    Ito muna ang pinakamahalagang linawin.
+  </p>
+
+  <blockquote>
+    <p>
+      May camera = publicity stunt.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi scientific test iyan.
+  </p>
+
+  <p>
+    Matagal nang ipinapakita ng research na maaaring maraming dahilan ang isang tao sa paggawa ng mabuti.
+  </p>
+
+  <p>
+    Maaaring tunay siyang nagmamalasakit. Maaaring masarap din sa pakiramdam ang makatulong. Maaaring gusto rin niyang makita ang sarili bilang mabuting tao. At maaaring mahalaga rin sa kanya kung paano siya nakikita ng ibang tao.
+  </p>
+
+  <p>
+    Sa behavioral economics, tinatawag na <strong>image motivation</strong> ang kagustuhang makita at tingnan nang mabuti ng iba. Sa experiment nina Dan Ariely, Anat Bracha at Stephan Meier, ipinakita nilang mahalagang bahagi ng prosocial behavior ang ganitong reputational motivation at nakadepende ito sa visibility ng ginagawa.
+  </p>
+
+  <p>
+    Sina Roland Bénabou at Jean Tirole naman ay naglatag ng mas malawak na model kung saan maaaring magsabay ang altruism, self-respect, material incentives at concern sa social reputation sa paggawa ng mabuti.
+  </p>
+
+  <p>
+    Kaya hindi realistic na dalawang panig lamang ang tingnan natin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tunay na mabuting tao.”
+    </p>
+
+    <p>
+      o
+    </p>
+
+    <p>
+      “Pekeng tumutulong para sumikat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa totoong buhay, maaaring mixed ang motives. At hindi awtomatikong nawawalan ng halaga ang tulong dahil may magandang publicity ding nakuha ang tumulong.
+  </p>
+
+  <p>
+    Kung nakapagpakain ka ng isang libong tao at gumanda rin ang reputasyon mo dahil doon, hindi biglang mawawala ang pagkaing natanggap nila.
+  </p>
+
+  <p>
+    Pero mayroon ding kabilang katotohanan:
+  </p>
+
+  <p>
+    Ang pagkakaroon ng totoong beneficiary ay hindi automatic na patunay na beneficiary ang pangunahing inuuna ng buong operasyon.
+  </p>
+
+  <p>
+    Maaaring totoong may natulungan. At maaaring may malakas ding personal, commercial o reputational interest.
+  </p>
+
+  <p>
+    Sabay na maaaring totoo ang dalawa.
+  </p>
+
+  <h2>
+    ANG PHILANTHROPY AY HINDI NANGANGAILANGAN NG “PURE MOTIVE”
+  </h2>
+
+  <p>
+    Mahalaga ring linawin kung ano ba talaga ang philanthropy.
+  </p>
+
+  <p>
+    Sa malawak na academic definition, ang philanthropy ay voluntary contribution ng pera, resources o ibang bagay para sa broadly public purposes.
+  </p>
+
+  <p>
+    At mahalagang detalye: Kahit sa scholarly definition, hindi kinakailangang walang anumang personal benefit ang donor. Maaari siyang makaramdam ng satisfaction, magkaroon ng recognition, gumanda ang reputation, o magkaroon pa ng material benefits nang hindi awtomatikong nawawala ang pagiging philanthropic ng ginawa.
+  </p>
+
+  <p>
+    Kaya napakataas—at halos imposibleng standard—ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung tunay ang pagtulong, dapat wala kang kahit anong mapala.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang tamang sukatan.
+  </p>
+
+  <p>
+    Ang mas makabuluhang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag nagkaroon ng conflict sa pagitan ng personal benefit ng giver at kapakanan ng beneficiary—sino ang inuuna?
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan nagsisimulang luminaw ang pagkakaiba.
+  </p>
+
+            <h2>
+    MAY EBIDENSIYANG NAKAAAPEKTO ANG ONLINE AUDIENCE SA PROSOCIAL INTENTIONS AT IMPRESSION MANAGEMENT
+  </h2>
+
+  <p>
+    Hindi na rin sapat na sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Social media lang naman iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    May research mismo tungkol sa kung paano maaaring makaapekto ang pag-iisip natin sa ating online audience sa prosocial intentions.
+  </p>
+
+  <p>
+    Sa dalawang controlled experiments nina Laura Lavertu, Ben Marder, Antonia Erz at Robert Angell sa context ng charity fundraising, nakita na kapag mas naging salient—o mas nasa isip ng participants—ang kanilang online audience tulad ng Facebook friends o followers, nagpakita sila ng mas mataas na intention na gumawa ng prosocial action offline, gaya ng mas mataas na likelihood na mag-donate.
+  </p>
+
+  <p>
+    Sa experiments, ang relationship na ito ay mediated ng mas mataas na public self-awareness at extrinsic motivation, at mas malakas ang observed effect sa mas intensive social-media users. Tinawag ito ng researchers na “extended warming effect.”
+  </p>
+
+  <p>
+    Mahalaga ang eksaktong interpretation nito.
+  </p>
+
+  <p>
+    Hindi pinatunayan ng dalawang experiments na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag iniisip mo ang followers mo, fake na ang pagtulong mo.”
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin nito pinatutunayang lahat ng actual charitable behavior sa totoong mundo ay kontrolado ng online audience.
+  </p>
+
+  <p>
+    Ang ipinapakita nito ay mas limitado pero mahalaga: May experimental evidence na ang pagiging salient ng online audience ay maaaring makaapekto sa prosocial intentions at impression-management dynamics.
+  </p>
+
+  <p>
+    Ibig sabihin, sa social-media era, hindi na purely hypothetical ang posibilidad na kasama sa social behavior ng tao ang awareness na:
+  </p>
+
+  <blockquote>
+    <p>
+      “May audience na makakakita sa akin.”
+    </p>
+  </blockquote>
+
+  <h2>
+    MAY SOCIAL POWER ANG INFLUENCER—PERO HUWAG DIN I-OVERSTATE ANG RESEARCH
+  </h2>
+
+  <p>
+    May isa pang layer kapag influencer ang gumagawa.
+  </p>
+
+  <p>
+    Sa 2024 research nina Chen Lou, Xuan Zhou at Qinyue Xu tungkol sa social-media influencers at cause-related marketing, gumamit ang researchers ng qualitative approach at in-depth interviews.
+  </p>
+
+  <p>
+    Tinukoy nila ang ilang factors na maaaring makatulong sa receptivity ng followers sa prosocial messages na ipinapakalat ng influencers—kabilang ang source credibility, parasocial relationship, wishful identification, influencer–cause fit, follower–cause fit at consistency ng causes na sinusuportahan.
+  </p>
+
+  <p>
+    Mahalaga ang qualifier na “maaaring makatulong.”
+  </p>
+
+  <p>
+    Hindi ito controlled causal experiment na nagpapatunay na ang bawat factor ay awtomatikong nagdudulot ng charitable behavior.
+  </p>
+
+  <p>
+    Pero useful ang finding dahil ipinapakita nitong ang influencer–audience relationship na mahalaga sa commercial marketing ay relevant din sa pag-unawa kung paano tumatanggap ang followers ng cause-related messages.
+  </p>
+
+  <p>
+    Ibig sabihin, ang parehong social influence na ginagamit para magpakilala ng produkto ay maaari ring gamitin para:
+  </p>
+
+  <ul>
+    <li>magpalaganap ng advocacy,</li>
+    <li>maghanap ng volunteers,</li>
+    <li>mag-promote ng fundraising,</li>
+    <li>o magdala ng attention sa isang social cause.</li>
+  </ul>
+
+  <p>
+    Magandang bagay iyon kapag ginagamit nang maayos.
+  </p>
+
+  <p>
+    Pero dahil pareho ring umiikot sa attention, credibility, personal connection at audience relationship ang marketing at advocacy, kailangan nating maging maingat sa paghihiwalay ng:
+  </p>
+
+  <blockquote>
+    <p>
+      Charity, advocacy, marketing at content strategy.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dahil masama ang isa.
+  </p>
+
+  <p>
+    Kundi dahil hindi sila pare-pareho.
+  </p>
+
+  <h2>
+    SA PILIPINAS, MALAKI TALAGA ANG POWER NG SOCIAL MEDIA
+  </h2>
+
+  <p>
+    Hindi maliit ang environment na pinag-uusapan natin.
+  </p>
+
+  <p>
+    Ayon sa Digital 2026 Philippines report ng DataReportal, may tinatayang 98 million internet users sa Pilipinas sa pagtatapos ng 2025.
+  </p>
+
+  <p>
+    May tinatayang 95.8 million social-media user identities naman noong October 2025, katumbas ng humigit-kumulang 81.9% ng populasyon.
+  </p>
+
+  <p>
+    May mahalagang caveat dito:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang “social-media user identities” ay hindi nangangahulugang 95.8 million unique individual Filipinos.
+    </p>
+  </blockquote>
+
+  <p>
+    Mismong DataReportal ang nagbababala na maaaring may overlap o ibang methodological limitations sa pagbilang ng accounts at identities.
+  </p>
+
+  <p>
+    Pero kahit may ganitong limitation, malinaw pa rin ang scale: Napakalaking bahagi ng public attention sa Pilipinas ang dumadaan sa digital platforms.
+  </p>
+
+  <p>
+    Kaya ang viral charity content ay hindi simpleng personal video. Maaari itong makita ng milyon-milyon.
+  </p>
+
+  <p>
+    At sa creator economy, ang malaking visibility ay maaaring magkaroon ng downstream value:
+  </p>
+
+  <ul>
+    <li>mas maraming followers,</li>
+    <li>mas malaking reach,</li>
+    <li>mas mataas na engagement,</li>
+    <li>mas malakas na personal brand,</li>
+    <li>mas maraming sponsorship opportunities,</li>
+    <li>at mas malaking commercial influence.</li>
+  </ul>
+
+  <p>
+    Hindi ibig sabihin nitong bawat viral charity video ay negosyo.
+  </p>
+
+  <p>
+    Ang ibig sabihin lang: Hindi na natin maaaring ipagpalagay na walang economic o reputational value ang publicity dahil walang direktang bayad na nakikita sa mismong video.
+  </p>
+
+            <h2>
+    PERO HINDI RIN MASAMA ANG PUBLICITY SA CHARITY
+  </h2>
+
+  <p>
+    Dito kailangang pantay ang pagsusuri.
+  </p>
+
+  <p>
+    Kung may ebidensiyang nakaiimpluwensiya ang visibility sa giver, mayroon ding ebidensiya na makatutulong ang visibility para dumami ang nagbibigay.
+  </p>
+
+  <p>
+    Isang malaking meta-review tungkol sa charitable giving ang nagsuri ng 21 systematic reviews, 1,339 primary studies at mahigit 2.13 million participants.
+  </p>
+
+  <p>
+    Kabilang sa pinakamatibay na strategies na nakita para mapataas ang charitable donations ang:
+  </p>
+
+  <ul>
+    <li>pagbibigay-diin sa individual beneficiaries,</li>
+    <li>pagpapakita ng impact ng donation,</li>
+    <li>at pagpapataas ng visibility ng giving.</li>
+  </ul>
+
+  <p>
+    Kaya mali rin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung totoong charity, huwag nang i-post.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung iyon ang magiging standard, mawawala rin ang maraming lehitimong:
+  </p>
+
+  <ul>
+    <li>disaster appeals,</li>
+    <li>blood-donation campaigns,</li>
+    <li>community fundraisers,</li>
+    <li>medical fund drives,</li>
+    <li>volunteer recruitment,</li>
+    <li>foundation campaigns,</li>
+    <li>at humanitarian advocacy.</li>
+  </ul>
+
+  <p>
+    Minsan, kailangan talagang makita ang pangangailangan para dumami ang tumulong.
+  </p>
+
+  <p>
+    Ang problema ay hindi ang pagiging visible ng pagtulong. Ang problema ay kapag ang pangangailangan ng tao ay kailangang umayon sa kung ano ang mas magandang makita, ma-share, o pagkakitaan.
+  </p>
+
+  <p>
+    Ang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang ginagawa natin sa visibility?
+    </p>
+  </blockquote>
+
+  <h2>
+    SA PILIPINAS, HINDI BAGO ANG PAGTUTULUNGAN—BAGO LANG ANG ALGORITHM
+  </h2>
+
+  <p>
+    Malalim ang social at cultural foundation ng pagtulong sa Pilipinas.
+  </p>
+
+  <p>
+    Sa Sikolohiyang Pilipino, mahalagang konsepto ang kapwa—ang pagkilala sa shared identity ng sarili at iba, sa halip na simpleng tingnan ang ibang tao bilang hiwalay na “other.”
+  </p>
+
+  <p>
+    Ang foundational work nina Rogelia Pe-Pua at Elizabeth Protacio-Marcelino tungkol sa Sikolohiyang Pilipino ay naglalarawan dito bilang psychology na nagmumula sa mismong karanasan, pag-iisip, kultura at wika ng mga Pilipino; sentral sa tradisyong ito ang indigenous Filipino concepts at ang pag-unawa sa social relationships mula sa sariling cultural context.
+  </p>
+
+  <p>
+    Kaya hindi nakapagtatakang malakas ang traditions ng:
+  </p>
+
+  <ul>
+    <li>Bayanihan,</li>
+    <li>pakikipagkapwa,</li>
+    <li>malasakit,</li>
+    <li>kusang abot,</li>
+    <li>at direktang pagtulong.</li>
+  </ul>
+
+  <p>
+    At makikita ito maging sa pinakabagong national giving data.
+  </p>
+
+  <p>
+    Sa World Giving Report donor data para sa 2025, 78% ng Filipinos surveyed ang nagbigay ng pera sa kahit isang paraan, kumpara sa 61% global average at 68% Asian average.
+  </p>
+
+  <p>
+    54% ang direktang nagbigay sa isang tao o pamilyang nangangailangan.<br>
+    34% ang nagbigay sa charity.<br>
+    45% ang nagbigay sa religious organization o religious cause.
+  </p>
+
+  <p>
+    Sa halaga naman ng lahat ng donations na iniulat, 45% ang direktang napunta sa people in need, 24% sa charities at 31% sa religious giving.
+  </p>
+
+  <p>
+    At tinatayang 1.5% ng income ang average total proportion na naibigay sa tatlong routes na iyon.
+  </p>
+
+  <p>
+    Hindi ina-add ang 54%, 34% at 45% bilang magkakahiwalay na tao dahil maaaring gumamit ang isang respondent ng higit sa isang paraan ng pagbibigay.
+  </p>
+
+  <p>
+    Pero malinaw ang isang bagay: Malaking bahagi talaga ng Filipino giving ang direktang tao-sa-taong pagtulong.
+  </p>
+
+  <p>
+    May isa pang relevant na numero.
+  </p>
+
+  <p>
+    Sa mga Pilipinong nagbigay sa charity noong 2025, 26% ang nagsabing sa social media nila unang nalaman ang huling charity na sinuportahan nila—mula man sa sariling posts ng charity o pagtalakay dito ng ibang tao.
+  </p>
+
+  <p>
+    Diyan nagtatagpo ang dalawang realidad:
+  </p>
+
+  <blockquote>
+    <p>
+      Malakas ang kultura natin ng pagbibigay.<br>
+      At malakas din ang social-media ecosystem natin.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya napakalaki ng potential ng digital influence para sa kabutihan. Pero napakalaki rin ng dahilan para magkaroon tayo ng mas malinaw na ethical standards.
+  </p>
+
+  <h2>
+    ANG PANGANIB KAPAG ANG PAGHIHIRAP ANG NAGING CONTENT FORMULA
+  </h2>
+
+  <p>
+    May dahilan kung bakit malakas sa audience ang konkretong kuwento ng isang tao.
+  </p>
+
+  <p>
+    May tinatawag sa behavioral research na identifiable victim effect—ang posibilidad na maging mas responsive ang tao kapag isang specific at identifiable beneficiary ang nasa harap niya kaysa puro anonymous statistics lamang.
+  </p>
+
+  <p>
+    Pero kailangan ding maging eksakto rito.
+  </p>
+
+  <p>
+    Sa meta-analysis nina Seyoung Lee at Thomas Feeley ng 41 effects mula sa 22 experiments, statistically significant ngunit maliit ang overall effect: humigit-kumulang r = .05.
+  </p>
+
+  <p>
+    At sa isang 2023 reanalysis at replication work, itinuro ng researchers na maaari pang mas mahina ang phenomenon kaysa sa unang estimate kapag mas mahigpit na isinasaalang-alang ang publication bias at ang results ng pinakamalalaking studies.
+  </p>
+
+  <p>
+    Kaya hindi tama na sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag may mukha at kuwento ang beneficiary, automatic na mas maraming magdo-donate.”
+    </p>
+  </blockquote>
+
+  <p>
+    At lalong hindi natin kayang sabihin mula sa research na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pinipili na ng social-media algorithms ang viral beneficiaries kaysa sa pinaka-nangangailangan at doon na talaga napupunta ang aid.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon established fact ng mga studies na ito.
+  </p>
+
+  <p>
+    Ang mas defensible na conclusion ay: May ebidensiya—bagama't modest at hindi universally consistent—na maaaring makaapekto sa helping response ang pagiging specific at identifiable ng beneficiary.
+  </p>
+
+  <p>
+    Kapag pinagsama ito sa isang digital environment na nakikipagkompetensiya para sa attention, reasonable itong pagmulan ng concern tungkol sa visibility bias, pero hindi ito proof na ganoon ang aktuwal na allocation ng tulong sa bawat platform o charity operation.
+  </p>
+
+  <p>
+    Ito ay risk na dapat bantayan, hindi settled fact na dapat ipagpalagay.
+  </p>
+
+  <p>
+    At dito mahalaga ang civic question.
+  </p>
+
+  <p>
+    Kapag ang content system ay nagbibigay ng mas malaking reward sa:
+  </p>
+
+  <ul>
+    <li>mas dramatic na kuwento,</li>
+    <li>mas malakas na reaction,</li>
+    <li>mas emotional na footage,</li>
+    <li>mas madaling i-share na eksena—</li>
+  </ul>
+
+  <p>
+    may incentive na maaaring umusbong na gawing mas visible ang ganitong klase ng suffering.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayang iyon ang motive ng bawat creator.
+  </p>
+
+  <p>
+    Pero sapat itong dahilan para itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang beneficiary ba ang pinipili dahil siya ang higit na nangangailangan—o dahil siya ang mas madaling gawing compelling content?
+    </p>
+  </blockquote>
+
+            <h2>
+    ANG MAHIRAP AY HINDI PROP
+  </h2>
+
+  <p>
+    Kahit nangangailangan ang isang tao, hindi nawawala ang dignity niya.
+  </p>
+
+  <p>
+    May privacy pa rin siya.
+  </p>
+
+  <p>
+    May karapatan pa rin siyang:
+  </p>
+
+  <ul>
+    <li>hindi ipakita ang mukha,</li>
+    <li>hindi umiyak sa camera,</li>
+    <li>hindi magsalaysay ng trauma,</li>
+    <li>hindi ngumiti,</li>
+    <li>hindi gumawa ng dramatic reaction,</li>
+    <li>at hindi gawing permanenteng internet content ang isa sa pinakamahirap na araw ng buhay niya.</li>
+  </ul>
+
+  <p>
+    Malinaw ang International Committee of the Red Cross sa ethical content-gathering involving vulnerable people: Kailangang truthful, accurate at respectful ang portrayal, protektado ang dignity, iwasang gawing helpless object ang tao, at seryosong isaalang-alang ang informed consent at maaaring epekto ng publication.
+  </p>
+
+  <p>
+    Mahalaga rin ang isang specific principle sa kanilang guidelines:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang aid na matatanggap ng tao ay hindi dapat maapektuhan ng pagpayag o pagtanggi niyang makunan.
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangang malinaw sa taong kinukunan na ang pagtanggi niya ay walang epekto sa services o assistance na matatanggap niya.
+  </p>
+
+  <p>
+    Napakahalaga niyan.
+  </p>
+
+  <p>
+    Dahil may power imbalance sa charity.
+  </p>
+
+  <p>
+    Kung gutom ang tao at ikaw ang may hawak ng pagkain, hindi kapareho ng ordinaryong consent ang sitwasyon.
+  </p>
+
+  <p>
+    Kung kailangan niya ng gamot at ikaw ang donor, maaaring mas mahirap para sa kanyang sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayokong makunan.”
+    </p>
+  </blockquote>
+
+  <p>
+    May research din tungkol sa experience mismo ng charity recipients.
+  </p>
+
+  <p>
+    Sa isang Australian ethnographic study, gumamit ang researchers ng in-depth interviews sa 24 volunteers at 57 charity recipients, kasama ang observation ng actual provision at receipt ng charity.
+  </p>
+
+  <p>
+    Nakita nilang maaaring makaranas ng shame ang recipients kapag nararamdaman nilang hinuhusgahan sila o ipinoposisyon bilang passive receivers lamang. Nakita rin na maaaring mabawasan ang ganitong shame kapag mas reciprocal at respectful ang interaction sa pagitan ng giver at recipient.
+  </p>
+
+  <p>
+    Mahalagang sabihin ang Australian context dahil hindi natin dapat ipakita na Philippine sample ang findings.
+  </p>
+
+  <p>
+    Pero relevant ang mas malawak na ethical lesson: Ang paraan ng pagbibigay ay maaaring makaapekto rin sa dignity at experience ng taong tumatanggap.
+  </p>
+
+  <p>
+    Dito mahalagang bumalik sa konsepto ng kapwa.
+  </p>
+
+  <blockquote>
+    <p>
+      Kung kapwa ang nasa harap mo, hindi siya background character sa kuwento ng kabutihan mo.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi siya trophy ng generosity.<br>
+    Hindi siya proof na mabuti kang tao.
+  </p>
+
+  <p>
+    Tao siyang tinutulungan mo dahil kapwa mo siya.
+  </p>
+
+  <h2>
+    PATI “UTANG NA LOOB” KAILANGANG INGATAN
+  </h2>
+
+  <p>
+    Malakas din sa kulturang Pilipino ang pasasalamat at utang na loob.
+  </p>
+
+  <p>
+    Pero mas maingat na tingnan ito kaysa simpleng sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Utang na loob = obligasyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa qualitative research nina Teresita Rungduin at mga kasama tungkol sa Filipino understanding ng utang na loob at gratitude, lumitaw ang pagkilala o acknowledgment, pagtutumbas o reciprocity, at panlipunang gampanin o social responsibility bilang mga kahulugang iniuugnay sa utang na loob.
+  </p>
+
+  <p>
+    Sa gratitude naman, lumitaw ang pasasalamat at pagtutumbas, kaya may overlap ngunit hindi rin simpleng identical ang dalawang konsepto.
+  </p>
+
+  <p>
+    Ibig sabihin, may tunay na social at relational dimension ang utang na loob.
+  </p>
+
+  <p>
+    Hindi ito automatic na negatibo. Pero may kabilang risk kapag na-misuse.
+  </p>
+
+  <p>
+    Sa 2025 qualitative study nina Rey Marco Casiño, Liandro Serrano at Maria Isabel Granada, inilalarawan ang utang na loob bilang isang value na maaaring magpatibay ng social connections, ngunit maaari ring mauwi sa emotional pressure at overwhelming social obligation kapag mali ang paggamit o naging sapilitang expectation sa recipient.
+  </p>
+
+  <p>
+    Kaya hindi magandang sukatan ng charity ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tingnan mo kung gaano siya nagpapasalamat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi obligasyon ng taong natulungan na gumawa ng magandang reaction para mapatunayan ang generosity ng donor.
+  </p>
+
+  <p>
+    At hindi dapat gawing implied kapalit ng tulong ang:
+  </p>
+
+  <ul>
+    <li>loyalty,</li>
+    <li>public gratitude,</li>
+    <li>political support,</li>
+    <li>endorsement,</li>
+    <li>o magandang content.</li>
+  </ul>
+
+  <p>
+    Ang pagtulong ay hindi dapat gawing kontrata para bumili ng pagkakautang ng loob.
+  </p>
+
+  <h2>
+    GIVEAWAY AY HINDI AUTOMATIC NA CHARITY—PERO HINDI RIN LAGING BLACK-AND-WHITE
+  </h2>
+
+  <p>
+    Isa rin itong mahalagang distinction sa panahon ng influencers.
+  </p>
+
+  <p>
+    May libreng bagay. Pero hindi lahat ng libreng bagay ay philanthropy.
+  </p>
+
+  <p>
+    Kung ang pamimigay ng cellphone, cash, gadget, grocery o ibang premyo ay nakatali sa:
+  </p>
+
+  <ul>
+    <li>pag-follow,</li>
+    <li>pag-like,</li>
+    <li>pag-share,</li>
+    <li>pag-subscribe,</li>
+    <li>pag-register,</li>
+    <li>pag-download,</li>
+    <li>pag-tag ng kaibigan,</li>
+    <li>pag-promote ng sponsor,</li>
+    <li>o pag-engage sa produkto o serbisyo—</li>
+  </ul>
+
+  <p>
+    may exchange of attention o promotional behavior nang kasama.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na masama ang giveaway. At maaaring totoong may taong nakinabang. Pero kapag bahagi ng mechanics ang engagement o promotion, hindi na sapat na tawagin itong “pure charity” dahil lamang libre ang natanggap.
+  </p>
+
+  <p>
+    Maaaring mas accurate itong ilarawan bilang:
+  </p>
+
+  <ul>
+    <li>promotional giveaway na may tunay na benefit sa recipients,</li>
+    <li>o depende sa design, charitable activity na mayroon ding promotional component.</li>
+  </ul>
+
+  <p>
+    Hindi kailangang piliting ipasok ang lahat sa dalawang kategorya. Puwedeng may charitable benefit at marketing objective nang sabay.
+  </p>
+
+  <p>
+    Ang academic understanding ng philanthropy ay nakasentro sa voluntary contribution para sa broadly public purposes at naiiba sa ordinaryong market exchange, bagama't maaari pa ring magkaroon ng psychological, reputational o material secondary benefits ang giver.
+  </p>
+
+  <p>
+    Kaya ang mas tamang distinction ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Giveaway ≠ Automatic charity.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      May promotion = imposibleng may charitable component.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas mahalagang tingnan ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang primary design ng activity?<br>
+      Sino ang pangunahing pinaglilingkuran nito?<br>
+      Public need ba?<br>
+      Marketing objective ba?<br>
+      O kombinasyon ng dalawa?
+    </p>
+  </blockquote>
+
+            <h2>
+    KAILAN NAGSISIMULANG MAGMUKHANG PUBLIC STUNT?
+  </h2>
+
+  <p>
+    Dito kailangan nating maging maingat sa salita.
+  </p>
+
+  <p>
+    Ang “public stunt” ay hindi medical o scientific diagnosis na makikita sa isang laboratory test.
+  </p>
+
+  <p>
+    Public-language description ito para sa isang public action na pinaghihinalaang mas nakatuon sa spectacle, attention o image kaysa sa substantive purpose na ipinapakita nito.
+  </p>
+
+  <p>
+    At mahalagang guardrail: Ang mga susunod na tanong ay practical framework para sa public scrutiny—hindi validated scientific diagnostic checklist.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na kapag “bumagsak” ang isang tao sa isa o dalawa sa mga tanong na ito ay scientifically proven nang publicity stunt ang ginawa niya.
+  </p>
+
+  <p>
+    Walang Public Stunt Score na validated ng research.
+  </p>
+
+  <p>
+    Ang research ay sumusuporta sa existence ng mga underlying phenomena tulad ng:
+  </p>
+
+  <ul>
+    <li>image motivation,</li>
+    <li>reputational incentives,</li>
+    <li>audience salience,</li>
+    <li>impression management,</li>
+    <li>beneficiary dignity,</li>
+    <li>at reputation management.</li>
+  </ul>
+
+  <p>
+    Pero ang pagsusuri sa isang aktuwal na event ay kailangan pa ring gawin ayon sa facts at context ng mismong pangyayari.
+  </p>
+
+  <p>
+    Kaya sa halip na hulaan:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sincere ba siya?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas useful ang tanong na ito:
+  </p>
+
+  <blockquote>
+    <p>
+      Kung walang camera, logical pa rin ba ang setup?
+    </p>
+  </blockquote>
+
+  <p>
+    Kung iyon pa rin ang pinakaligtas, pinakamabilis at pinakamabisang paraan ng distribution, mahina ang argumentong staged lang iyon para sa camera.
+  </p>
+
+  <p>
+    Pero kung may malinaw na mas ligtas, mas maayos at equally practical na paraan at pinili ang mas dramatic na setup nang walang operational reason, legitimate nang itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Bakit kailangang mas cinematic ang pagtulong kaysa kinakailangan?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pa rin automatic proof iyon ng motive. Pero legitimate evidence iyon na dapat isama sa pagsusuri.
+  </p>
+
+  <p>
+    May option bang tumanggap nang hindi nagpapakita?<br>
+    Kung ayaw ipakita ng beneficiary ang mukha niya, pareho pa rin ba ang matatanggap niya?<br>
+    Kung ayaw niyang magkuwento ng trauma?<br>
+    Kung ayaw niyang umiyak?<br>
+    Kung ayaw niyang magpasalamat sa camera?
+  </p>
+
+  <p>
+    Kapag ang tulong ay nakadepende sa performance ng recipient, malaking ethical red flag iyon.
+  </p>
+
+  <p>
+    Sino ang sentro ng content?<br>
+    Ang beneficiary at kanyang pangangailangan ba?<br>
+    O ang giver at ang kanyang pagiging “hero”?
+  </p>
+
+  <p>
+    Hindi kailangang mawala ang donor sa frame. Pero kung ang tao sa kahirapan ay nagiging visual evidence lamang upang patunayan ang kabutihan ng giver, kailangang suriin ang balance.
+  </p>
+
+  <p>
+    May continuity ba?<br>
+    Isang viral operation lamang ba?<br>
+    O may consistent na pagtulong bago pa magkaroon ng malaking audience, habang walang controversy, at pagkatapos mawala ang trending issue?
+  </p>
+
+  <p>
+    Hindi nito mapatutunayan ang pure motive. Pero ang long-term pattern ay mas informative tungkol sa commitment kaysa isang isolated viral moment.
+  </p>
+
+  <p>
+    May follow-through ba?<br>
+    May handing-over photo pero walang malinaw na impact pagkatapos?<br>
+    O may continuing support, partnership, monitoring, rehabilitation, livelihood, education, medical assistance o institutional program?
+  </p>
+
+  <p>
+    Sa totoong philanthropy, madalas mas boring ang pinakamahalagang trabaho:
+  </p>
+
+  <ul>
+    <li>logistics,</li>
+    <li>accounting,</li>
+    <li>coordination,</li>
+    <li>follow-up,</li>
+    <li>assessment,</li>
+    <li>maintenance.</li>
+  </ul>
+
+  <p>
+    Hindi lahat niyan viral. Pero doon kadalasang makikita ang tunay na impact.
+  </p>
+
+  <p>
+    Ano ang nangyayari kapag walang reputational reward?<br>
+    Kapag wala nang cameras, wala nang headline at wala nang trending topic—may ginagawa pa rin ba?
+  </p>
+
+  <p>
+    Hindi requirement na lahat ng charity ay permanent. At hindi absence ng long-term program ang automatic proof na stunt ang isang one-time relief effort. Pero mahalagang bahagi ng pattern ang consistency kapag ina-assess ang long-term philanthropic commitment.
+  </p>
+
+  <h2>
+    MAY ISA PANG RED FLAG: CHARITY BILANG PAMBURA
+  </h2>
+
+  <p>
+    May pagkakataong matapos mapuna ang isang tao, kumpanya o organisasyon sa isang issue, inilalabas o dini-display ang kanilang charitable activities.
+  </p>
+
+  <p>
+    Dito kailangang magkahiwalay ang dalawang usapin.
+  </p>
+
+  <p>
+    Kung nakatulong sila:<br>
+    Credit iyon sa pagtulong.
+  </p>
+
+  <p>
+    Kung may hiwalay na accountability issue:<br>
+    Kailangan pa rin iyong sagutin ayon sa sariling facts at evidence.
+  </p>
+
+  <p>
+    Hindi valid na reasoning ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi puwedeng mali ang ginawa niya dahil marami naman siyang natutulungan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Puwedeng parehong totoo na:<br>
+    Marami siyang natulungan at may ibang ginawa siyang kailangang panagutan.
+  </p>
+
+  <p>
+    May empirical parallel dito sa corporate research.
+  </p>
+
+  <p>
+    Sa 2026 study nina Camelia Vasilescu at Tomasz Wisniewski sa publicly listed companies sa United Kingdom, nakita na pagkatapos ng media controversies, firms appeared to engage more actively in philanthropic activity—consistent sa tinatawag na bolstering o reputation-repair strategy.
+  </p>
+
+  <p>
+    Pero sa reputation measure na ginamit ng researchers, hindi napatunayang effective ang increased charitable giving sa pagbawi ng reputation; isa sa kanilang explanations ay maaari itong makita bilang superficial virtue signaling kung hindi nito tinutugunan ang underlying ethical problem.
+  </p>
+
+  <p>
+    Pero napakahalaga ng boundary: Corporations ang pinag-aralan dito, hindi individual influencers, celebrities o ordinaryong tao.
+  </p>
+
+  <p>
+    Hindi puwedeng gamitin ang research na ito bilang patunay na kapag may taong tumulong pagkatapos ng controversy, reputation repair na agad ang motive niya.
+  </p>
+
+  <p>
+    Ang ipinapakita lamang nito ay:
+  </p>
+
+  <blockquote>
+    <p>
+      May documented phenomenon kung saan maaaring gamitin ang philanthropy bilang reputational strategy.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung nangyari iyon sa isang particular na tao, kailangan pa rin ng sariling ebidensiya.
+  </p>
+
+  <h2>
+    HANGGANG SAAN LANG ANG KAYANG SABIHIN NG RESEARCH?
+  </h2>
+
+  <p>
+    Ito ang pinakamahalagang guardrail laban sa overclaiming.
+  </p>
+
+  <p>
+    Walang study na kayang tumingin sa isang 30-second viral video at scientifically sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Fake ang malasakit ng taong ito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi natin nakikita ang isip ng tao.
+  </p>
+
+  <p>
+    Hindi rin pare-pareho ang:
+  </p>
+
+  <ul>
+    <li>influencer,</li>
+    <li>corporation,</li>
+    <li>politician,</li>
+    <li>foundation,</li>
+    <li>volunteer,</li>
+    <li>at private donor.</li>
+  </ul>
+
+  <p>
+    Ang research sa corporations ay hindi automatic evidence tungkol sa celebrity. Ang controlled social-media experiment ay hindi automatic evidence tungkol sa motive ng isang particular creator. Ang qualitative influencer research ay hindi causal proof ng individual behavior. Ang image-motivation research ay hindi nangangahulugang bawat public good deed ay ginagawa para sa image. Ang identifiable-victim research ay hindi proof na algorithms systematically redirect aid toward viral people. At ang pagkakaroon ng commercial benefit ay hindi nangangahulugang walang tunay na malasakit.
+  </p>
+
+  <p>
+    Ang kayang sabihin ng research ay mas limitado ngunit mas useful:
+  </p>
+
+  <ul>
+    <li>May reputational motives na maaaring maging bahagi ng prosocial behavior.</li>
+    <li>May experimental evidence na audience salience can influence prosocial intentions and impression-management processes.</li>
+    <li>May social at commercial power ang influencer–follower relationship, at may qualitative evidence tungkol sa factors na maaaring makaapekto sa receptivity sa cause-related messaging.</li>
+    <li>Maaaring mapataas ng visibility ang charitable giving.</li>
+    <li>May ethical risks kapag vulnerable beneficiaries ang ginawang content.</li>
+    <li>May modest evidence para sa identifiable-victim effect, pero hindi ito universal o napakalaking effect.</li>
+    <li>At may corporate evidence na maaaring gamitin ang philanthropy bilang bahagi ng reputation-management strategy.</li>
+  </ul>
+
+  <p>
+    Pagkatapos noon, ang assessment sa isang actual na kaso ay kailangang nakabatay sa:
+  </p>
+
+  <blockquote>
+    <p>
+      Facts, context, logistics, pattern, incentives at observable decisions.<br>
+      Hindi sa mind-reading.
+    </p>
+  </blockquote>
+
+            <h2>
+    KAYA HUWAG CAMERA ANG HUSGAHAN—TINGNAN KUNG ANO ANG BINAGO NG CAMERA
+  </h2>
+
+  <p>
+    Ito marahil ang pinakamadaling practical test.
+  </p>
+
+  <p>
+    May camera pero maayos ang distribution?<br>
+    Walang problema.
+  </p>
+
+  <p>
+    May livestream para makita ng donors kung saan napunta ang resources?<br>
+    Maaaring magandang transparency iyon.
+  </p>
+
+  <p>
+    May influencer na ginamit ang malaking audience para makalikom ng pera, volunteers o supplies?<br>
+    Maaaring malaking social benefit iyon.
+  </p>
+
+  <p>
+    May pangalan at logo ang donor?<br>
+    Hindi automatic na public stunt iyon.
+  </p>
+
+  <p>
+    Kumita rin ng magandang reputation ang tumulong?<br>
+    Hindi automatic na fake iyon.
+  </p>
+
+  <p>
+    Ang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang binago ng camera?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ba sa camera ay naging:
+  </p>
+
+  <ul>
+    <li>mas delikado ang setup,</li>
+    <li>mas exposed ang beneficiary,</li>
+    <li>mas humiliating ang portrayal,</li>
+    <li>mas theatrical ang eksena,</li>
+    <li>mas mahalaga ang reaction kaysa pangangailangan,</li>
+    <li>mas mahalaga ang branding kaysa efficiency,</li>
+    <li>o naging kondisyon ng pagtulong ang engagement, publicity o performance?</li>
+  </ul>
+
+  <p>
+    Kung wala namang ganitong distortion, mahina ang basehan para sabihing stunt lamang.
+  </p>
+
+  <p>
+    Pero kung ang normal, ligtas, dignified at efficient na paraan ng pagtulong ay kailangang baguhin para magkaroon ng mas magandang eksena—doon lumalakas ang tanong.
+  </p>
+
+  <p>
+    Hindi iyon automatic scientific verdict.
+  </p>
+
+  <p>
+    Pero iyon ang uri ng observable fact na mas may saysay timbangin kaysa simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “May camera, kaya fake.”
+    </p>
+  </blockquote>
+
+  <h2>
+    ANG PINAKAMAHALAGANG SUKATAN AY HINDI KUNG MAY NAKUKUHA RING PAKINABANG ANG GIVER
+  </h2>
+
+  <p>
+    Maaaring dumami ang followers niya.<br>
+    Maaaring gumanda ang reputation niya.<br>
+    Maaaring magkaroon siya ng sponsors.<br>
+    Maaaring dumami ang views.<br>
+    Maaaring makaramdam siya ng satisfaction.<br>
+    At maaari pa ring totoong charity ang ginawa.
+  </p>
+
+  <p>
+    Hindi kailangang zero ang personal benefit para magkaroon ng social good.
+  </p>
+
+  <p>
+    Ang mas mahalagang sukatan ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag nagbanggaan ang benefit ng giver at kapakanan ng beneficiary—alin ang nanaig?
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag kailangang pumili sa pagitan ng:<br>
+    Mas magandang footage at mas ligtas na distribution—ano ang pinili?
+  </p>
+
+  <p>
+    Sa pagitan ng:<br>
+    Mas emotional na video at dignity ng beneficiary—ano ang pinili?
+  </p>
+
+  <p>
+    Sa pagitan ng:<br>
+    Mas maraming engagement at privacy ng recipient—ano ang pinili?
+  </p>
+
+  <p>
+    Sa pagitan ng:<br>
+    Mas magandang public image at pagharap sa hiwalay na accountability issue—ano ang pinili?
+  </p>
+
+  <p>
+    Diyan mas nakikita ang priorities.
+  </p>
+
+  <p>
+    Ang tunay na philanthropic commitment ay mas nakikita sa pattern kaysa sa isang viral moment.
+  </p>
+
+  <p>
+    Hindi pagiging tahimik ang sukatan.<br>
+    Hindi rin pagiging sikat.
+  </p>
+
+  <p>
+    Mas meaningful tingnan ang:
+  </p>
+
+  <ul>
+    <li>Continuity — nagpapatuloy ba sa paglipas ng panahon?</li>
+    <li>Cause commitment — may malinaw bang issue o community na sinusuportahan?</li>
+    <li>Personal investment — oras, resources, expertise o sariling pera ba ang inilalagay?</li>
+    <li>Beneficiary-first decisions — safety, dignity at actual need ba ang priority?</li>
+    <li>Follow-through — ano ang nangyayari pagkatapos ng photo opportunity?</li>
+    <li>Transparency — malinaw ba kung saan galing at saan napunta ang resources?</li>
+    <li>Impact — ano ang aktuwal na nabago?</li>
+    <li>Institutional partnership — nakikipagtulungan ba sa mga taong may sapat na logistics at expertise kung kailangan?</li>
+  </ul>
+
+  <p>
+    Hindi isa sa mga ito ang magic proof ng sincerity. Pero kapag pinagsama ang pattern sa paglipas ng panahon, mas marami tayong observable information kaysa sa paghuhusga mula sa isang viral clip.
+  </p>
+
+  <p>
+    At higit sa lahat:
+  </p>
+
+  <blockquote>
+    <p>
+      Ginagawa ba ang pagtulong bilang serbisyo sa tao—o ginagamit ang tao bilang serbisyo sa image?
+    </p>
+  </blockquote>
+
+  <h2>
+    HINDI KAILANGANG ALAMIN ANG NASA PUSO PARA MAGING MAPANURI
+  </h2>
+
+  <p>
+    Hindi natin trabaho ang magdeklara kung sino ang tunay na mabait at sino ang nagpapanggap. Hindi rin kailangang maging cynical sa bawat taong may camera.
+  </p>
+
+  <p>
+    Kung ganoon ang gagawin natin, maaaring pati legitimate advocacy at fundraising ay mawalan ng tiwala.
+  </p>
+
+  <p>
+    Pero hindi rin dapat maging naive.
+  </p>
+
+  <p>
+    Sa mundong ang attention ay puwedeng gawing pera, influence at power, reasonable lamang na tingnan hindi lang ang tulong na ibinigay, kundi pati ang sistemang nakapaligid sa pagbibigay nito.
+  </p>
+
+  <p>
+    Sino ang may control?<br>
+    Sino ang may benefit?<br>
+    Sino ang may risk?<br>
+    Sino ang exposed?<br>
+    Sino ang may choice?<br>
+    At sino talaga ang inuuna kapag kailangang pumili?
+  </p>
+
+  <p>
+    Dahil maaaring may camera ang tunay na malasakit.<br>
+    Maaaring magkaroon ng publicity ang tunay na charity.<br>
+    Maaaring makinabang din ang isang totoong philanthropist sa magandang reputation.<br>
+    At maaaring may totoong natulungan kahit may self-interest ang giver.
+  </p>
+
+  <p>
+    Pero may linyang hindi dapat mawala:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang tao ang dahilan ng pagtulong—hindi materyal para sa content.<br>
+      Camera ay hindi patunay na peke ang tulong.<br>
+      Views ay hindi rin patunay na tunay ang malasakit.<br>
+      Publicity ay puwedeng resulta ng pagtulong.<br>
+      Self-interest ay hindi automatic na nagpapawalang-halaga sa charity.<br>
+      Promotion ay hindi automatic na nagbubura sa lahat ng charitable benefit—pero hindi rin lahat ng promotional giveaway ay dapat tawaging pure charity.<br>
+      At kapag ang kapakanan ng tinutulungan ang isinasakripisyo para sa publicity, doon nagiging makatwiran ang mas mabigat na tanong.
+    </p>
+  </blockquote>
+
+  <p>
+    Sa huli, baka ito lang ang pinakamadaling tandaan:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag ang camera ang sumusunod sa pagtulong, maaaring dokumentasyon iyon.<br>
+      Kapag ang pagtulong ang kailangang sumunod sa camera, doon nagsisimula ang public stunt.
+    </p>
+  </blockquote>
+
+</div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Mga Batayan / Sources
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Ariely, D., Bracha, A. &amp; Meier, S. (2009), <em>Doing Good or Doing Well? Image Motivation and Monetary Incentives in Behaving Prosocially</em>, <em>American Economic Review</em>. Experimental research tungkol sa image motivation, visibility at prosocial behavior.
+    </li>
+
+    <li>
+      Bénabou, R. &amp; Tirole, J. (2006), <em>Incentives and Prosocial Behavior</em>, <em>American Economic Review</em>. Theoretical framework tungkol sa altruism, self-respect, incentives at social reputation.
+    </li>
+
+    <li>
+      Lavertu, L., Marder, B., Erz, A. &amp; Angell, R. (2020), <em>The Extended Warming Effect of Social Media</em>, <em>Computers in Human Behavior</em>. Dalawang controlled experiments sa charity-fundraising context tungkol sa online-audience salience, public self-awareness, extrinsic motivation at prosocial intentions.
+    </li>
+
+    <li>
+      Lou, C., Zhou, X. &amp; Xu, Q. (2024), <em>Social Media Influencers Helping the World? Uncovering Their Advantages and Tipping Factors in Cause-Related Marketing</em>, <em>International Journal of Advertising</em>. Qualitative study gamit ang in-depth interviews; tinukoy ang factors na maaaring makatulong sa follower receptivity gaya ng credibility, parasocial relationship, wishful identification at influencer–cause fit.
+    </li>
+
+    <li>
+      Saeri, A. K. et al., <em>What Works to Increase Charitable Donations? A Meta-Review with Meta-Meta-Analysis</em>, <em>VOLUNTAS</em>. Meta-review ng 21 systematic reviews, 1,339 primary studies at mahigit 2.13 million participants.
+    </li>
+
+    <li>
+      Lee, S. &amp; Feeley, T. H. (2016), <em>The Identifiable Victim Effect: A Meta-Analytic Review</em>, <em>Social Influence</em>. Meta-analysis ng 41 effects mula sa 22 experiments; statistically significant ngunit modest ang overall identifiable-victim effect.
+    </li>
+
+    <li>
+      <em>Revisiting and Rethinking the Identifiable Victim Effect</em> (2023), <em>Collabra: Psychology</em>. Replication at reanalysis na nagbigay ng karagdagang caution tungkol sa laki at robustness ng identifiable-victim effect, kabilang ang publication-bias concerns.
+    </li>
+
+    <li>
+      Pe-Pua, R. &amp; Protacio-Marcelino, E. A. (2000), <em>Sikolohiyang Pilipino: A Legacy of Virgilio G. Enriquez</em>, <em>Asian Journal of Social Psychology</em>. Foundational academic discussion ng Sikolohiyang Pilipino at indigenous Filipino socio-cultural framework.
+    </li>
+
+    <li>
+      Rungduin, T. T., Rungduin, D. C., Aninacion, J. G., Catindig, R. B. Jr. &amp; Gallogo, L. S. (2016), <em>The Filipino Character Strength of Utang na Loob: Exploring Contextual Associations with Gratitude</em>, <em>International Journal of Research Studies in Psychology</em>. Qualitative Filipino research tungkol sa pagkilala, reciprocity, social responsibility at relasyon ng utang na loob sa gratitude.
+    </li>
+
+    <li>
+      Casiño, R. M. Z., Serrano, L. L. &amp; Granada, M. I. D. (2025), <em>Revisiting the Filipino Value Utang na Loob: Contextual Perceptions, Implications and Inputs to Sustaining the Filipino Psychology Discussions</em>, <em>International Journal of Education and Humanities</em>. Qualitative study tungkol sa goodwill, social connection at risk ng emotional pressure kapag na-misuse ang utang na loob.
+    </li>
+
+    <li>
+      <em>Charities Aid Foundation, World Giving Report — Philippines Donor Insights</em>, 2025 donor data. Philippine statistics sa direct giving, charitable giving, religious giving, donations as a share of income at role ng social media sa charity discovery.
+    </li>
+
+    <li>
+      <em>DataReportal, Digital 2026: The Philippines</em>. Philippine internet at social-media user-identity estimates, kasama ang methodological caveats.
+    </li>
+
+    <li>
+      <em>International Committee of the Red Cross, Ethical Content-Gathering for Public Communications</em> (2024). Humanitarian communication guidance tungkol sa dignity, informed consent, vulnerable people, privacy at pagtiyak na hindi nakadepende ang aid sa pagpayag na makunan.
+    </li>
+
+    <li>
+      <em>Charity and Shame: Towards Reciprocity</em>, <em>Social Problems</em>. Australian ethnographic research gamit ang interviews sa 24 volunteers at 57 recipients tungkol sa dignity, shame at provider–recipient relationships.
+    </li>
+
+    <li>
+      Vasilescu, C. &amp; Wisniewski, T. P. (2026), <em>Using Charitable Donations to Rebuild Corporate Reputation Following Controversies</em>, <em>Journal of Management &amp; Organization</em>. Corporate research tungkol sa philanthropy bilang possible post-controversy reputation strategy; hindi direct evidence tungkol sa motive ng individual influencers.
+    </li>
+
+    <li>
+      <em>Stanford Encyclopedia of Philosophy, Philanthropy</em> (2024). Academic overview ng philanthropy bilang voluntary contribution for broadly public purposes at paglilinaw na psychological, reputational o material secondary benefits do not by themselves negate philanthropy.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
