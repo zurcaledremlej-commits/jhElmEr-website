@@ -1,1 +1,2850 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Basahin ang Civic Explainer ng jhElmEr tungkol sa kahalagahan ng internal accountability, professional standards, at kung bakit ang tunay na depensa sa isang propesyon ay nagsisimula sa loob mismo nito."
+  >
+
+  <title>BAKIT KAILANGANG IBA PA ANG UNANG PUMUNA? | jhElmEr</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  BAKIT KAILANGANG IBA PA ANG UNANG PUMUNA?
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-unang-pumuna.png"
+      alt="Simbolikong paglalarawan ng professional accountability, peer correction, at internal standards bilang paalala na ang tunay na depensa sa isang propesyon ay nagsisimula sa loob mismo nito."
+    >
+
+  </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    Kapag may isang miyembro ng isang propesyon o sektor na gumawa ng mali, madalas hindi naman kulang sa boses ang mga tao sa loob.
+  </p>
+
+  <p>
+    May mga pulis na handang magsabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag ninyong lahatin. Maraming matitinong pulis.”
+    </p>
+  </blockquote>
+
+  <p>
+    May mga gurong mabilis ding magsabi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman lahat ng teacher ganyan. Marami kaming maayos.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ganoon din sa engineer, contractor, abogado, doktor, opisyal, empleyado, media practitioner, negosyante at iba pang hanay.
+  </p>
+
+  <p>
+    At tama naman:
+    <br>
+    Hindi lahat.
+  </p>
+
+  <p>
+    Pero kung marami talaga ang matitino, may mas simpleng tanong:
+    <br>
+    Bakit kailangang ibang tao pa ang maunang pumuna sa maling ginagawa ng kahanay ninyo?
+  </p>
+
+  <p>
+    Kung may abusadong pulis, bakit kailangan pang civilian ang unang mag-ingay bago marinig ang malakas na boses mula sa kapwa pulis?
+    Kung may gurong gumagawa ng taliwas sa ethics at standards ng profession, bakit kailangan pang magulang, estudyante o outsider ang unang kumuwestiyon bago marinig ang matitino sa loob?
+    Kung may engineer, contractor, abogado, doktor o anumang professional na gumagawa ng mali, bakit may mga pagkakataong saka lamang nagiging napakalakas ng collective voice kapag ang pumupuna ay galing na sa labas?
+  </p>
+
+  <p>
+    At doon nagiging kapansin-pansin ang contradiction.
+    Kapag sariling hanay ang kailangang ituwid, mahina o hindi visible ang resistance.
+  </p>
+
+  <p>
+    Pero kapag outsider na ang pumuna:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag ninyo kaming lahatin.”
+      <br>
+      “Sinisira ninyo ang profession namin.”
+      <br>
+      “Hindi naman kami lahat ganyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung ganoon pala kalaking bagay na madamay ang pangalan ng buong sektor, hindi ba mas dapat na ang mga matitino sa loob mismo ang unang nagtatanggol sa pangalan nito—sa pamamagitan ng pagharap sa maling ginagawa ng sarili nilang kahanay?
+  </p>
+
+  <p>
+    Dahil may dalawang paraan para protektahan ang isang propesyon.
+  </p>
+
+  <p>
+    Puwede mong protektahan ang reputasyon nito laban sa criticism.
+    <br>
+    O puwede mong protektahan ang standards nito laban sa misconduct.
+  </p>
+
+  <p>
+    At kapag ang una ang palaging mas mabilis kaysa ikalawa, doon kailangang itanong:
+    <br>
+    Ano ba talaga ang ipinagtatanggol—ang integridad ng profession, o ang comfort ng pagiging magkakahanay?
+  </p>
+
+  <p>
+    Hindi simpleng usapin ng “hindi naman lahat” ang problema rito.
+  </p>
+
+  <p>
+    Ang mas malalim na usapin ay kung bakit may mga pagkakataong mas madaling maging defensive laban sa taong pumupuna kaysa maging critical sa sariling taong gumagawa ng mali.
+  </p>
+
+  <p>
+    At may paliwanag ang psychology, organizational behavior, kultura at professional ethics kung bakit nangyayari iyon.
+  </p>
+
+  <h2>
+    BAKIT MAS MASAKIT KAPAG TAGA-LABAS ANG PUMUNA?
+  </h2>
+
+  <p>
+    May pangalan sa social psychology ang isang bahagi ng ganitong reaksiyon:
+    <br>
+    <strong>Intergroup Sensitivity Effect.</strong>
+  </p>
+
+  <p>
+    Sa research nina Matthew Hornsey at Armin Imani, tatlong experiments ang tumingin sa criticism na nagmumula sa loob at labas ng isang grupo.
+  </p>
+
+  <p>
+    Lumabas na mas defensive ang pagtanggap sa criticism kapag outsider ang nagsabi kumpara kapag kapwa miyembro ng grupo ang pumuna. Mahalaga rin kung nakikita bang constructive ang intensiyon ng critic.
+  </p>
+
+  <p>
+    Sa madaling salita, posible ang ganitong human reaction.
+  </p>
+
+  <p>
+    Kapag kapwa pulis ang nagsabing may problema sa kapulisan:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gusto niyang ayusin ang organisasyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag civilian:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit mo kami inaatake?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag kapwa teacher ang pumuna sa maling ginagawa ng isang guro:
+  </p>
+
+  <blockquote>
+    <p>
+      “Concern siya sa profession.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag magulang, estudyante o outsider:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sinisiraan na naman ang mga guro.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ibig sabihin nito na automatic na tama ang outsider.
+    Hindi rin lahat ng criticism ay fair, informed o constructive.
+  </p>
+
+  <p>
+    Pero ipinapakita ng research ang isang importanteng tendency na kailangang bantayan:
+    Minsan, nag-iiba ang pagtanggap natin sa criticism depende kung “atin” o “kanila” ang nagsasalita.
+  </p>
+
+  <p>
+    At kapag hindi tayo maingat, puwedeng malipat ang tanong mula sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tama ba ang criticism?”
+    </p>
+  </blockquote>
+
+  <p>
+    papunta sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ka para punahin kami?”
+    </p>
+  </blockquote>
+
+  <p>
+    Doon nagiging delikado ang group defensiveness.
+    Dahil puwedeng mas pagtuunan ng pansin ang critic kaysa ang mismong misconduct.
+  </p>
+
+  <h2>
+    PERO HINDI “NATURAL LANG NA IPAGTANGGOL ANG KAHANAY” ANG BUONG KWENTO
+  </h2>
+
+  <p>
+    May kabaligtarang phenomenon din sa social psychology.
+    Tinatawag itong <strong>Black Sheep Effect.</strong>
+  </p>
+
+  <p>
+    Sa classic research nina José Marques, Vincent Yzerbyt at Jacques-Philippe Leyens, nakita na ang judgments sa ingroup members ay maaaring maging mas extreme kaysa sa comparable outgroup members—kabilang ang mas negatibong pagtingin sa negatively evaluated member ng sariling grupo.
+  </p>
+
+  <p>
+    Bakit mahalaga iyon?
+  </p>
+
+  <p>
+    Dahil binabasag nito ang palusot na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Siyempre, kapwa namin kaya ipagtatanggol namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang tanging posibleng loyalty.
+  </p>
+
+  <p>
+    May isa pang klase:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kasama ka namin, kaya mas inaasahan naming hindi mo sisirain ang pamantayang dala nating lahat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung mahalaga sa iyo ang dangal ng propesyon, posible ring mas maging seryoso ang reaksiyon mo sa sariling kahanay na sumisira rito.
+  </p>
+
+  <p>
+    Dahil hindi outsider ang nagdala ng pangalan ng grupo sa alanganin.
+    Miyembro mismo ng grupo.
+  </p>
+
+  <p>
+    Kaya may dalawang magkaibang paraan ng “pagmamahal sa sariling hanay.”
+  </p>
+
+  <p>
+    Ang una:
+    <br>
+    Ipagtanggol ang miyembro dahil kahanay.
+  </p>
+
+  <p>
+    Ang ikalawa:
+    <br>
+    Ipagtanggol ang pamantayan kahit kahanay ang kailangang punahin.
+  </p>
+
+  <p>
+    At sa usapin ng professional integrity, mas mahalaga ang ikalawa.
+  </p>
+
+  <p>
+    Mahalagang linawin din ito:
+    Ang Intergroup Sensitivity Effect at Black Sheep Effect ay general research sa psychology ng group identity at group evaluation. Hindi ito studies na partikular na ginawa sa Philippine police, teachers o iba pang profession na ginagamit nating halimbawa rito.
+  </p>
+
+  <p>
+    Ginagamit sila bilang psychological lens para maunawaan ang posibleng group dynamics—hindi bilang patunay na automatic na ganito ang bawat pulis, guro o professional.
+  </p>
+
+    <h2>
+    PERO BAKIT MAY MGA MATITINONG TAO NA HINDI PA RIN NAGSASALITA?
+  </h2>
+
+  <p>
+    Dito kailangang maging patas.
+  </p>
+
+  <p>
+    Hindi lahat ng tahimik ay kunsintidor.
+    <br>
+    Hindi lahat ng hindi nakikita sa social media ay walang ginawa.
+    <br>
+    At hindi lahat ng taong nasa loob ay may kapangyarihang magsalita nang walang kapalit.
+  </p>
+
+  <p>
+    Matagal nang pinag-aaralan sa organizational behavior ang organizational silence—ang sitwasyong nagpipigil ang mga empleyado ng impormasyon tungkol sa problema dahil nabubuo ang perception na delikado, walang saysay o hindi wise ang pagsasalita.
+  </p>
+
+  <p>
+    Sa framework nina Elizabeth Morrison at Frances Milliken, may organizational conditions na maaaring lumikha ng shared perception na hindi ligtas o hindi makabuluhang magsalita tungkol sa problems.
+  </p>
+
+  <p>
+    Puwedeng junior employee ka.
+    <br>
+    Puwedeng subordinate ka ng mismong taong nirereklamo.
+    <br>
+    Puwedeng matakot kang mawalan ng trabaho, promotion, assignment o magandang standing.
+    <br>
+    Puwedeng ma-ostracize ka ng mga kasama.
+    <br>
+    Puwedeng hindi mo alam ang buong facts.
+    <br>
+    Puwedeng bawal mong ilabas sa publiko ang confidential information.
+    <br>
+    Puwedeng dumaan ka na pala sa internal reporting mechanism na hindi naman nakikita ng publiko.
+    <br>
+    Puwedeng hindi mo alam kung ligtas ang grievance system.
+    <br>
+    Puwedeng naniniwala kang walang mangyayari kahit magsalita ka.
+  </p>
+
+  <p>
+    Kaya mali ang simplistic na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tahimik ka, ibig sabihin kasabwat ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon kasimple ang tunay na workplace at institutional dynamics.
+  </p>
+
+  <p>
+    Pero may ibang pattern na mas mahirap ipagtanggol:
+    <br>
+    Mahina ang boses laban sa sariling misconduct—pero napakalakas ng boses laban sa outsider na pumuna rito.
+  </p>
+
+  <p>
+    Doon pumapasok ang tanong:
+    <br>
+    Kung may tapang kang magsalita para protektahan ang pangalan ng grupo, may tapang ka rin bang suportahan ang accountability kapag pangalan ng grupo ang mismong sinisira ng kahanay mo?
+  </p>
+
+  <h2>
+    “MARAMI NAMAN KAMING NAKAKAALAM—BAKIT AKO ANG KIKILOS?”
+  </h2>
+
+  <p>
+    May isa pang human-behavior mechanism na mahalaga rito:
+    <br>
+    <strong>Diffusion of responsibility.</strong>
+  </p>
+
+  <p>
+    Kapag maraming taong puwedeng kumilos, minsan bumababa ang pakiramdam ng bawat isa na siya ang kailangang gumawa.
+  </p>
+
+  <p>
+    Makikita ito sa isang 2019 whistleblowing experiment nina Lawrence Choo, Veronika Grimm, Gergely Horváth at Kohei Nitta.
+  </p>
+
+  <p>
+    Sa experimental conditions kung saan pivotal ang isang insider, malapit sa 60% ang nag-whistleblow. Sa isang condition kung saan may isa pang insider na maaari ring magsiwalat at altruistic motives ang relevant, bumaba sa 20% ang share ng potential whistleblowers.
+  </p>
+
+  <p>
+    Hindi ito literal na kopya ng tunay na police station, school o corporate office.
+    Pero experimental evidence ito kung paano maaaring humina ang personal sense of responsibility kapag may ibang taong puwede ring kumilos.
+  </p>
+
+  <p>
+    Sa ordinaryong buhay, puwedeng maging:
+  </p>
+
+  <blockquote>
+    <p>
+      “May supervisor naman.”
+      <br>
+      “May ibang teacher naman.”
+      <br>
+      “May ibang pulis naman.”
+      <br>
+      “May HR naman.”
+      <br>
+      “May ethics committee naman.”
+      <br>
+      “May ibang nakakita rin naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hanggang sa lahat ay naghihintayan.
+  </p>
+
+  <p>
+    At iyong “iilan” na gumagawa ng mali ay patuloy na nakakakilos sa gitna ng sinasabing “maraming matitino.”
+  </p>
+
+  <p>
+    Dito pumapasok ang isang uncomfortable question:
+    <br>
+    Ano ang silbi ng dami ng matitino kung walang sapat na resistance mula sa marami laban sa mali ng iilan?
+  </p>
+
+  <p>
+    Hindi ibig sabihin na bawat isa ay kailangang maging whistleblower.
+    Pero kung lahat ay naghihintay na iba ang gumawa, ang dami ng matitino ay maaaring manatiling number lang, hindi protective force laban sa misconduct.
+  </p>
+
+  <h2>
+    PAKIKISAMA AT HIYA: MAGANDANG KAUGALIAN—PERO PUWEDENG MAGING PROBLEMA KAPAG MALI ANG GAMIT
+  </h2>
+
+  <p>
+    Sa kontekstong Pilipino, may dagdag na cultural layer.
+  </p>
+
+  <p>
+    Pamilyar tayo sa pakikisama.
+    <br>
+    Sa hiya.
+    <br>
+    Sa pag-iwas sa gulo.
+    <br>
+    Sa pagpapahalaga sa relasyon at samahan.
+  </p>
+
+  <p>
+    Pero kailangang maingat dito.
+  </p>
+
+  <p>
+    Hindi tama ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganyan talaga ang Pilipino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin masama sa sarili nito ang pakikisama o hiya.
+  </p>
+
+  <p>
+    Ang pakikisama ay maaaring magpalakas ng cooperation at social harmony.
+    Ang hiya ay maaari ring may constructive side—conscientiousness, moral accountability at sensitivity sa epekto ng kilos sa ibang tao.
+  </p>
+
+  <p>
+    Pero puwede silang maging inhibiting kapag ang desire na mapanatili ang samahan ay nagsisimulang pumigil sa pagsasalita laban sa mali.
+  </p>
+
+  <p>
+    Sa isang 2026 descriptive-correlational study sa Filipino Generation Z nurses sa Quezon City, pinag-aralan ang interplay ng hiya, pakikisama at professional engagement.
+  </p>
+
+  <p>
+    Sa particular na operationalization ng researchers, ang pakikisama ay tiningnan sa conflict-avoidance dimension nito—kabilang ang withholding of dissent—at lumitaw ang negative relationship nito sa professional engagement. Ang hiya naman ay nagpakita ng parehong constructive at constraining dimensions.
+  </p>
+
+  <p>
+    Mahalagang qualifier:
+    <br>
+    Partikular na population at setting iyon, at correlational ang design.
+  </p>
+
+  <p>
+    Hindi iyon sapat para sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganito ang lahat ng Pilipino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin nito pinatutunayang ang pakikisama mismo ang sanhi ng bawat workplace silence.
+  </p>
+
+  <p>
+    Pero nagbibigay ito ng isang relevant Philippine lens sa tanong na, ano ang nangyayari kapag ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayokong mapahiya ang kasama ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    ay naging mas malakas kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kailangan nating itama ang mali.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag ang pakikisama ay naging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag na nating palakihin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang hiya ay naging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nakakahiya naman kung tayo pa ang magsasalita.”
+    </p>
+  </blockquote>
+
+  <p>
+    At ang loyalty ay naging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sarili nating tao ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan puwedeng tumawid ang magandang social value papunta sa konsintihan.
+  </p>
+
+  <p>
+    Hindi pakikisama ang problema.
+    <br>
+    Pakikisama na ginagamit para protektahan ang mali ang problema.
+  </p>
+
+    <h2>
+    KAPAG ANG MALI AY PAULIT-ULIT NA NAI-JUSTIFY, PUWEDE ITONG MAGMUKHANG NORMAL
+  </h2>
+
+  <p>
+    Hindi rin lahat ng problema ay simpleng “bad apple.”
+  </p>
+
+  <p>
+    May pagkakataong organizational culture mismo ang nakatutulong para maging mas madaling i-justify o i-normalize ang unethical behavior.
+  </p>
+
+  <p>
+    Sa research nina Roberta Fida at mga kasama tungkol sa organizational moral disengagement, apat na empirical studies ang isinagawa.
+  </p>
+
+  <p>
+    Ang pinakamalaking study ay may 3,050 workers mula sa 113 organizations. Nakita ng researchers na kapag mas nakikita ng members na morally disengaged ang kanilang organization, mas nauugnay ito sa unethical pro-organizational behavior at silence tungkol sa problematic activities.
+  </p>
+
+  <p>
+    Sa simpleng salita:
+    <br>
+    Puwedeng may kultura kung saan unti-unting natututuhan ng tao kung paano gawing katanggap-tanggap sa sarili ang bagay na alam naman niyang mali.
+  </p>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Lahat naman gumagawa niyan.”
+      <br>
+      “Maliit na bagay lang.”
+      <br>
+      “Para naman sa grupo.”
+      <br>
+      “Sumunod lang ako.”
+      <br>
+      “Mas malala naman ang ginagawa ng iba.”
+      <br>
+      “Huwag nating sirain ang pangalan ng organisasyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag paulit-ulit na ginagamit ang ganitong justification, nagbabago ang environment.
+  </p>
+
+  <p>
+    Hindi na kailangan ng memo na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kunsintihin ninyo ang mali.”
+    </p>
+  </blockquote>
+
+  <p>
+    Minsan sapat nang makita ng mga tao na:
+    <br>
+    Ang nagsasalita ang napapahamak.
+    <br>
+    Ang tahimik ang ligtas.
+    <br>
+    Ang nagtatanong ang tinatawag na traydor.
+    <br>
+    Ang nagtatanggol sa grupo ang tinatawag na loyal.
+  </p>
+
+  <p>
+    At iyong gumagawa ng mali ay natututong:
+    <br>
+    May sasalo naman sa akin.
+  </p>
+
+  <p>
+    Doon nagiging mas malaki ang problema kaysa sa iisang pasaway.
+  </p>
+
+  <p>
+    Dahil kapag ang mali ay pinapayagang maging routine, ang usapin ay hindi na lamang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang masamang tao?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tanong na rin ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Anong klaseng kultura ang nagpapahintulot sa maling ito na magpatuloy?”
+    </p>
+  </blockquote>
+
+  <h2>
+    ANG PROPESYON AY HINDI SAMAHAN NA ANG UNANG TUNGKULIN AY IPAGTANGGOL ANG KAHANAY
+  </h2>
+
+  <p>
+    Dito lalong bumibigat ang argumento.
+  </p>
+
+  <p>
+    Dahil ang tanong na:
+    <br>
+    “Bakit hindi mismong mga matitino sa loob ang unang gumawa ng paraan laban sa mali?” ay hindi lamang moral challenge mula sa publiko.
+  </p>
+
+  <p>
+    Sa iba't ibang propesyon, may mismong ethical rules at institutional mechanisms para sa correction, reporting, investigation at discipline ng misconduct.
+  </p>
+
+  <p>
+    Hindi pare-pareho ang exact duty sa lahat ng professions.
+    Hindi rin ibig sabihin na bawat professional ay obligadong mag-publicly condemn sa bawat issue.
+  </p>
+
+  <p>
+    Pero malinaw ang common principle:
+    <br>
+    Ang professional loyalty ay hindi lisensiya para gawing ligtas ang misconduct ng kapwa professional.
+  </p>
+
+  <h2>
+    SA PULISYA, HINDI LANG “HUWAG GUMAWA NG MALI”—MAY DUTY RING LABANAN AT I-REPORT ANG MGA PAGLABAG
+  </h2>
+
+  <p>
+    Napakalinaw ng halimbawa sa PNP Ethical Doctrine.
+  </p>
+
+  <p>
+    Sa Section 5-4, isinama ng PNP Ethical Doctrine ang United Nations Code of Conduct for Law Enforcement Officials, na adopted sa UN General Assembly Resolution 34/169 noong 1979.
+  </p>
+
+  <p>
+    Ang paragraphs (g) at (h) ng PNP Ethical Doctrine ay tumutugma sa Articles 7 at 8 ng UN Code.
+  </p>
+
+  <p>
+    Sa Article 7, hindi lamang ipinagbabawal sa law-enforcement officials ang corruption.
+    <br>
+    Inaatasan din silang rigorously oppose and combat such acts.
+  </p>
+
+  <p>
+    Sa Article 8 naman, kailangang igalang ng law-enforcement officials ang batas at ang Code at, to the best of their capability, prevent and rigorously oppose violations nito.
+  </p>
+
+  <p>
+    Mas direkta pa:
+    <br>
+    Kapag may reason silang maniwalang may violation ng Code na nangyari o malapit nang mangyari, kailangang i-report ang matter sa superior authorities at, kung kinakailangan, sa ibang appropriate authorities o bodies na may reviewing o remedial power.
+  </p>
+
+  <p>
+    At hindi doon nagtatapos.
+  </p>
+
+  <p>
+    Sa mismong PNP-specific adherence provisions, Section 6.16 says PNP members are “morally and duty bound” to advise fellow members to adhere to the Doctrine at umiwas sa paglabag sa PNP Code of Professional Conduct and Ethical Standards.
+  </p>
+
+  <p>
+    Sa Section 6.17 naman, sa partikular na sitwasyong ang erring PNP member ay napatunayang incorrigible, proper report shall be made to the appropriate authority.
+  </p>
+
+  <p>
+    Mahalagang hindi paghalu-haluin ang scope ng mga ito.
+  </p>
+
+  <p>
+    Hindi natin sinasabing Section 6.17 alone creates a blanket reporting duty sa bawat allegation.
+  </p>
+
+  <p>
+    Mas malawak ang reporting language na nakapaloob sa Section 5-4(h)/UN Code Article 8; ang Section 6.17 naman ay may sarili nitong specific “incorrigible” circumstance.
+  </p>
+
+  <p>
+    Pero kapag pinagsama ang mga provisions, malinaw ang ethical direction:
+    <br>
+    Oppose corruption.
+    <br>
+    Prevent and oppose violations.
+    <br>
+    Report covered violations through appropriate authorities.
+    <br>
+    Advise fellow members against violating professional standards.
+  </p>
+
+  <p>
+    Kaya kung may abusadong o tiwaling pulis, hindi anti-police ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nasaan ang matitinong pulis sa pagpigil at pagpapanagot sa sarili nilang pasaway?”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa sariling ethical framework na ginagamit ng PNP, may lugar mismo para sa internal resistance, peer correction at reporting.
+  </p>
+
+  <p>
+    Kaya kapag may outsider nang pumuna at saka ang pinakamalakas na collective response ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag ninyong lahatin ang pulis.”
+    </p>
+  </blockquote>
+
+  <p>
+    may kasunod na tanong:
+    <br>
+    Bago pa ninyo kinailangang ipagtanggol ang pangalan ng pulisya, gumagana ba ang sariling ethical resistance ninyo laban sa kapwa pulis na sumisira rito?
+  </p>
+
+  <p>
+    Dahil ang pinakamalakas na patunay na maraming matitinong pulis ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi kami lahat ganyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas malakas kung nakikita na:
+    <br>
+    Ang matitinong pulis mismo ay hindi nagbibigay ng komportableng espasyo sa abusado at tiwali sa kanilang hanay.
+  </p>
+
+  <h2>
+    SA MGA GURONG SAKOP NG CODE, MAGKASAMA ANG PROFESSIONAL SOLIDARITY AT ACCOUNTABILITY
+  </h2>
+
+  <p>
+    Ganito rin sa Code of Ethics for Professional Teachers, Resolution No. 435, Series of 1997.
+  </p>
+
+  <p>
+    Pero kailangan munang maging precise sa scope.
+  </p>
+
+  <p>
+    Sa Article I, Section 2, ang Code ay sumasaklaw sa public at private school teachers sa preschool, primary, elementary at secondary levels—academic, vocational, special, technical o non-formal—at kasama rin sa definition ang ilang vocational teachers at persons performing supervisory o administrative functions sa mga nasabing levels, full-time man o part-time.
+  </p>
+
+  <p>
+    Kaya ang mga provisions na ito ay hindi dapat basta i-claim bilang universal rule para sa lahat ng taong maaaring tawaging “teacher” sa anumang educational setting.
+  </p>
+
+  <p>
+    Sa mga gurong sakop ng Code, kapansin-pansin ang balance.
+  </p>
+
+  <p>
+    Article V, Section 1 recognizes professional loyalty, mutual confidence, cooperation at support among colleagues, lalo na kapag best interest ng learners, school o profession ang nakataya.
+  </p>
+
+  <p>
+    Ibig sabihin, kinikilala mismo ng Code ang halaga ng professional solidarity.
+  </p>
+
+  <p>
+    Pero hindi doon nagtatapos.
+  </p>
+
+  <p>
+    Sa Article V, Section 5, responsibility ng bawat covered teacher na seek correctives para sa maaaring unprofessional at unethical conduct ng associate.
+  </p>
+
+  <p>
+    At napakahalaga ng kasunod na safeguard:
+    <br>
+    Ang corrective action na tinutukoy doon ay maaari lamang gawin kung may “incontrovertible evidence” para sa naturang conduct.
+  </p>
+
+  <p>
+    Sa Section 6 naman, maaaring mag-submit ang teacher sa proper authorities ng justifiable criticism laban sa associate, preferably in writing, nang hindi nilalabag ang rights ng taong concerned.
+  </p>
+
+  <p>
+    Napakahalaga ng pagkakasamang ito.
+  </p>
+
+  <p>
+    Hindi sinasabi ng Code:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapwa teacher, kaya huwag nang pakialaman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “May narinig kang allegation, kaya kondenahin agad.”
+    </p>
+  </blockquote>
+
+  <p>
+    May professional loyalty.
+    <br>
+    May cooperation.
+    <br>
+    Pero mayroon ding corrective responsibility.
+    <br>
+    May evidentiary threshold.
+    <br>
+    May proper authority.
+    <br>
+    May protection sa rights ng taong concerned.
+  </p>
+
+  <p>
+    Kaya hindi magkalaban ang:
+    <br>
+    Professional solidarity at Professional accountability.
+  </p>
+
+  <p>
+    Ang healthy solidarity ay hindi nangangahulugang pagtatakip sa mali.
+    <br>
+    At ang accountability ay hindi nangangahulugang abandonment ng due process.
+  </p>
+
+  <p>
+    Kaya kung may covered teacher na gumagawa ng bagay na taliwas sa professional standards, hindi kailangang outsider lamang ang may concern.
+    Mismong Code of Ethics ang kumikilala na may lugar para sa corrective action at justifiable criticism mula sa loob, basta sinusunod ang safeguards nito.
+  </p>
+
+    <h2>
+    HINDI LANG PULIS AT GURO—GANITO ANG MAS MALAWAK NA LOGIC NG PROFESSIONAL REGULATION
+  </h2>
+
+  <p>
+    Sa ilalim ng RA 8981 o PRC Modernization Act of 2000, kabilang sa responsibilidad ng Professional Regulation Commission ang enhancement at maintenance ng professional and occupational standards and ethics.
+  </p>
+
+  <p>
+    Ang Professional Regulatory Boards naman ay may authority sa ilalim ng kanilang regulatory framework na mag-monitor ng professions, magpanatili ng professional, ethical at technical standards, at mag-hear o investigate ng alleged violations ng kanilang laws, rules at Codes of Ethics, kasama ang disciplinary mechanisms ayon sa applicable law at due process.
+  </p>
+
+  <p>
+    Ibig sabihin, sa maraming regulated professions, ang Code of Ethics ay hindi motivational poster sa pader.
+  </p>
+
+  <p>
+    Hindi iyon dekorasyon sa oath-taking.
+    <br>
+    Hindi iyon magandang salita lang na binabasa kapag bagong licensed.
+    <br>
+    Bahagi iyon ng standards ng professional practice.
+  </p>
+
+  <p>
+    Pero hindi pare-pareho ang rules ng bawat profession.
+  </p>
+
+  <p>
+    May sariling ethical rules ang teachers.
+    <br>
+    May sariling standards ang engineers, nurses, physicians, accountants, architects at iba pang regulated professionals.
+  </p>
+
+  <p>
+    Ang legal profession naman ay nasa ilalim ng regulatory authority ng Supreme Court, hindi simpleng PRC framework.
+    Ang contractors ay mayroon ding sariling licensing, procurement, contractual at regulatory rules na hindi dapat basta ipaghalo sa professional codes ng PRC.
+  </p>
+
+  <p>
+    Kaya hindi natin sinasabing may iisang universal reporting duty na eksaktong pareho para sa lahat.
+  </p>
+
+  <p>
+    Ang sinasabi natin:
+    <br>
+    Sa professional life, may standards na mas mataas sa personal na pakikisama.
+  </p>
+
+  <h2>
+    SA ENGINEERING, HINDI LANG REPUTASYON ANG DAPAT PROTEKTAHAN—PATI ANG DANGAL NG PRACTICE
+  </h2>
+
+  <p>
+    Sa PRC-hosted Code of Ethics for Civil Engineers, kabilang sa ethical framework ang pag-iwas sa conduct na nagdadala ng discredit sa honor o dignity ng engineering profession.
+  </p>
+
+  <p>
+    Kasabay nito, pinoprotektahan din ang professional reputation ng kapwa engineer laban sa false o malicious injury.
+  </p>
+
+  <p>
+    Napakagandang balance nito.
+  </p>
+
+  <p>
+    Protektahan ang engineer laban sa maling at malisyosong paninira.
+    <br>
+    Pero protektahan din ang engineering profession laban sa unprofessional conduct.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi kailangang pumili sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ipagtanggol ang engineer.”
+    </p>
+  </blockquote>
+
+  <p>
+    at:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ipagtanggol ang standards ng engineering.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag may misconduct at may sapat na basehan, ang accountability mismo ang maaaring maging tunay na pagtatanggol sa profession.
+  </p>
+
+  <h2>
+    SA LEGAL PROFESSION, MAY DUTY TO REPORT—PERO HINDI BLANK CHECK PARA MAG-AKUSA
+  </h2>
+
+  <p>
+    Ganito rin ang balance sa legal profession.
+  </p>
+
+  <p>
+    Sa Code of Professional Responsibility and Accountability, Canon II, Section 12, may specific duty ang lawyer na i-report ang covered dishonest, deceitful o misleading conduct na related sa matter na hawak niya sa harap ng court, tribunal o government agency.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin nito na puwedeng basta mag-akusa nang walang basehan.
+  </p>
+
+  <p>
+    May hiwalay ding professional protection laban sa accusations na walang factual o legal basis.
+  </p>
+
+  <p>
+    Kaya ang professional accountability ay hindi tsismis.
+    <br>
+    Hindi witch hunt.
+    <br>
+    Hindi trial by social media.
+  </p>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Narinig ko lang, kaya guilty na.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tamang prinsipyo ay:
+    <br>
+    May factual basis.
+    <br>
+    May applicable duty.
+    <br>
+    May tamang authority.
+    <br>
+    May due process.
+  </p>
+
+  <p>
+    Iyan ang mature na accountability.
+  </p>
+
+  <p>
+    Hindi blind loyalty.
+    <br>
+    Pero hindi rin blind accusation.
+  </p>
+
+  <h2>
+    SA PUBLIC SERVICE, MAS LALONG HINDI PUWEDENG PERSONAL LOYALTY ANG MAS MATAAS
+  </h2>
+
+  <p>
+    Kapag government personnel ang pinag-uusapan, may constitutional layer pa.
+  </p>
+
+  <p>
+    Article XI, Section 1 ng 1987 Constitution:
+    <br>
+    Public office is a public trust.
+  </p>
+
+  <p>
+    Public officers and employees must be accountable to the people at all times at maglingkod nang may responsibility, integrity, loyalty at efficiency.
+  </p>
+
+  <p>
+    Sa RA 6713, mas malinaw pa ang hierarchy ng loyalty.
+  </p>
+
+  <p>
+    Public officials and employees must uphold public interest over personal interest at pairalin ang professionalism, justness at sincerity sa public service.
+  </p>
+
+  <p>
+    Kaya kung public servant ang pinag-uusapan, ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kasamahan ko kasi.”
+    </p>
+  </blockquote>
+
+  <p>
+    ay hindi sapat na ethical justification.
+  </p>
+
+  <p>
+    Dahil may mas mataas na obligasyon kaysa pakikisama sa kasamahan:
+    <br>
+    Ang serbisyo sa publiko.
+  </p>
+
+  <p>
+    May mas mataas na standard kaysa proteksiyon sa pangalan ng opisina:
+    <br>
+    Public accountability.
+  </p>
+
+  <h2>
+    PERO HINDI IBIG SABIHIN NA LAHAT AY DAPAT MAG-FACEBOOK POST NG “KINOKONDENA KO SI GANITO”
+  </h2>
+
+  <p>
+    Ito ang kailangang malinaw para hindi ma-strawman ang argumento.
+  </p>
+
+  <p>
+    Public condemnation is not the same as accountability.
+  </p>
+
+  <p>
+    Hindi obligadong bawat pulis gumawa ng public statement sa bawat police controversy.
+  </p>
+
+  <p>
+    Hindi obligadong bawat guro mag-post tungkol sa bawat teacher na nasangkot sa reklamo.
+    <br>
+    Hindi obligadong bawat engineer, lawyer, nurse o professional maglabas ng social-media condemnation sa bawat allegation laban sa kahanay.
+    <br>
+    At hindi magandang sistema kung social media ang kapalit ng investigation at due process.
+  </p>
+
+  <p>
+    Maraming anyo ang accountability:
+    <br>
+    Internal correction.
+    <br>
+    Pagpapaalala sa professional standards.
+    <br>
+    Reporting sa supervisor o appropriate authority kapag warranted o required.
+    <br>
+    Administrative complaint.
+    <br>
+    Ethics complaint.
+    <br>
+    Professional disciplinary proceeding.
+    <br>
+    Refusal na makisali sa cover-up.
+    <br>
+    Preservation at turnover ng evidence.
+    <br>
+    Cooperation sa legitimate investigation.
+    <br>
+    Pagwawasto ng institutional practice.
+    <br>
+    Paglalagay ng safeguards para hindi maulit.
+    <br>
+    Kung nararapat at may sapat na factual basis, maaari ring magkaroon ng public criticism o condemnation.
+  </p>
+
+  <p>
+    Kaya ang tanong ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nag-post ka ba?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas importanteng tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag may credible misconduct sa loob, mayroon bang gumaganang kultura at mekanismo para harapin ito?”
+    </p>
+  </blockquote>
+
+  <p>
+    O:
+  </p>
+
+  <blockquote>
+    <p>
+      "Mas mabilis ba ang machinery ng depensa sa reputasyon kaysa machinery ng accountability?"
+    </p>
+  </blockquote>
+
+    <h2>
+    HINDI RIN LAHAT NG AKUSASYON AY DAPAT PANIWALAAN
+  </h2>
+
+  <p>
+    Mahalagang sabihin ito nang malinaw.
+  </p>
+
+  <p>
+    Accountability is not mob justice.
+  </p>
+
+  <p>
+    Hindi porke may nag-akusa ay guilty na.
+    <br>
+    Hindi porke trending ay totoo.
+    <br>
+    Hindi porke outsider ang nagsalita ay tama.
+    <br>
+    Hindi porke insider ang nagsalita ay credible na agad.
+  </p>
+
+  <p>
+    Kailangang tingnan ang:
+    <br>
+    Evidence.
+    <br>
+    Context.
+    <br>
+    Applicable professional rules.
+    <br>
+    Law.
+    <br>
+    Process.
+    <br>
+    Rights ng inaakusahan.
+    <br>
+    At seriousness ng allegation.
+  </p>
+
+  <p>
+    Mismong professional codes na tinalakay natin ay nagpapakita ng balance.
+  </p>
+
+  <p>
+    Sa Teachers’ Code, hindi basta “may hinala” ang threshold na nakalagay sa Section 5 para sa corrective action na tinutukoy doon.
+    <br>
+    “Incontrovertible evidence” ang mismong wording ng Code.
+  </p>
+
+  <p>
+    Sa Section 6 naman, justifiable criticism ang maaaring dalhin sa proper authorities habang iginagalang ang rights ng associate.
+  </p>
+
+  <p>
+    Kaya hindi natin hinihingi ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Maniwala sa lahat ng paratang.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang hinihingi natin ay:
+    <br>
+    Huwag ding gamitin ang pagiging magkakahanay bilang dahilan para huwag nang tingnan ang ebidensiya.
+  </p>
+
+  <h2>
+    DITO TALAGA NAKIKITA KUNG ANO ANG PINOPROTEKTAHAN MO
+  </h2>
+
+  <p>
+    Kapag may kahanay na nasangkot sa mali, may dalawang bagay na maaaring malagay sa alanganin:
+    <br>
+    Ang standards ng profession.
+  </p>
+
+  <p>
+    At:
+    <br>
+    Ang image ng profession.
+  </p>
+
+  <p>
+    Kung standards ang pinakamahalaga, ito ang mga unang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Totoo ba? Ano ang ebidensiya? Anong rule ang nilabag? Paano ito dapat imbestigahan? Ano ang tamang accountability?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung image ang unang concern:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit ninyo kami dinadamay?”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan nakikita ang difference.
+  </p>
+
+  <p>
+    Dahil posible namang sabay mong sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi lahat ng miyembro ay ganyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    at:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pero kung may credible evidence laban sa kahanay naming ito, dapat itong dumaan sa tamang pagsusuri at panagutin kung mapatunayan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Walang contradiction doon.
+  </p>
+
+  <p>
+    Sa katunayan, iyan ang mas malakas na depensa sa sektor.
+  </p>
+
+  <p>
+    Hindi mo ipinagtatanggol ang profession sa pamamagitan ng denial.
+    <br>
+    Ipinapakita mong may kakayahan itong lumaban sa sariling misconduct.
+  </p>
+
+  <h2>
+    MAY LOYALTY NA MARANGAL—AT MAY LOYALTY NA NABUBULOK
+  </h2>
+
+  <p>
+    Mahalaga ang professional solidarity.
+  </p>
+
+  <p>
+    Dapat ipagtanggol ang kahanay na maling inaakusahan.
+    <br>
+    Dapat tutulan ang unfair generalization.
+    <br>
+    Dapat igalang ang due process.
+    <br>
+    Dapat hindi sirain ang career at pangalan ng tao dahil lamang sa rumor.
+    <br>
+    Dapat suportahan ang taong gumagawa ng tama.
+  </p>
+
+  <p>
+    Iyan ang marangal na loyalty.
+  </p>
+
+  <p>
+    Pero may loyalty na nagiging problema, iyong may credible issue pero ang reflex ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Atin ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyong mas galit sa nagsiwalat kaysa sa posibleng gumawa ng mali.
+    <br>
+    Iyong mas mabilis maghalungkat ng motive ng critic kaysa tumingin sa evidence.
+  </p>
+
+  <p>
+    Iyong “solidarity” ay naging ibang salita para sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag nating ilabas ang problema.”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyong sinasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Protektahan natin ang pangalan ng profession.”
+    </p>
+  </blockquote>
+
+  <p>
+    pero ang aktuwal na epekto ay:
+    <br>
+    Protektahan ang professional na posibleng sumisira sa pangalan nito laban sa tamang pagsusuri.
+  </p>
+
+  <p>
+    Kapag umabot doon, hindi na iyon healthy solidarity.
+    <br>
+    Pagkonsinte na iyon na nakasuot ng uniform ng loyalty.
+  </p>
+
+  <h2>
+    HINDI OUTSIDER ANG UNANG SUMISIRA SA PANGALAN NINYO
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahirap lunukin.
+  </p>
+
+  <p>
+    Kapag may pulis na napatunayang nangotong, hindi ang civilian na pumuna ang unang naglagay sa pangalan ng pulisya sa alanganin.
+    <br>
+    Iyong pangongotong.
+  </p>
+
+  <p>
+    Kapag may teacher na gumawa ng napatunayang unethical conduct, hindi ang parent na nagreklamo ang unang naglagay sa teaching profession sa alanganin.
+    <br>
+    Iyong unethical conduct.
+  </p>
+
+  <p>
+    Kapag may engineer na sadyang lumabag sa professional standards, hindi ang nagtanong tungkol sa proyekto ang unang sumira sa dignity ng engineering profession.
+    <br>
+    Iyong paglabag.
+  </p>
+
+  <p>
+    Kapag may abogado na gumawa ng dishonest conduct, hindi ang legitimate complainant ang unang problema.
+    <br>
+    Iyong dishonest conduct.
+  </p>
+
+  <p>
+    Maaaring mali ang critic.
+    <br>
+    Maaaring unfair.
+    <br>
+    Maaaring malicious.
+    <br>
+    Maaaring may agenda.
+  </p>
+
+  <p>
+    At kapag ganoon:
+    <br>
+    Sagutin gamit ang facts.
+  </p>
+
+  <p>
+    Pero kung totoo ang criticism, huwag ilipat ang usapan mula sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang ginawa ng kahanay namin?”
+    </p>
+  </blockquote>
+
+  <p>
+    papunta sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit ninyo kami pinupuna?”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil hindi nawawala ang misconduct dahil nasaktan ang collective identity.
+  </p>
+
+    <h2>
+    KUNG MARAMI TALAGA ANG MATITINO, DAPAT MAY EPEKTO ANG DAMI NILA
+  </h2>
+
+  <p>
+    Ito ang pinakasentro ng buong usapan.
+  </p>
+
+  <p>
+    Paulit-ulit nating naririnig:
+  </p>
+
+  <blockquote>
+    <p>
+      “Iilan lang naman ang masama.”
+      <br>
+      “Mas marami ang matino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sige.
+  </p>
+
+  <p>
+    Magandang bagay kung totoo.
+  </p>
+
+  <p>
+    Pero may kasunod na tanong:
+    <br>
+    Ano ang epekto ng maraming matino sa kakayahan ng iilang mali na magpatuloy?
+  </p>
+
+  <p>
+    Dahil ang pagiging matino ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ako nangongotong.”
+      <br>
+      “Hindi ako nandadaya.”
+      <br>
+      “Hindi ako unethical.”
+      <br>
+      “Hindi ako gumagawa niyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mahalaga iyon.
+  </p>
+
+  <p>
+    Pero sa isang professional culture, may mas malaking tanong:
+    <br>
+    Kapag may gumagawa nito sa tabi mo, gaano kahirap para sa maling iyon na maging normal?
+  </p>
+
+  <p>
+    Kung maraming matitinong pulis, dapat sila ang pinakamalaking internal obstacle sa abusadong at tiwaling pulis.
+    <br>
+    Kung maraming matitinong guro, dapat sila ang pinakamalaking professional resistance sa gurong sumisira sa standards ng pagtuturo.
+    <br>
+    Kung maraming matitinong engineer, dapat mahirap i-normalize ang kapabayaan, falsification o unethical practice sa gitna nila.
+    <br>
+    Kung maraming matitinong abogado, dapat ang legal profession mismo ay may resistance laban sa dishonesty.
+    <br>
+    Kung maraming matinong professionals sa anumang regulated field, dapat may epekto iyon sa ethical climate ng kanilang profession.
+  </p>
+
+  <p>
+    Hindi dahil lahat ay kailangang maging public crusader.
+    <br>
+    Hindi dahil lahat ay may personal na responsibility sa kasalanan ng iba.
+    <br>
+    Hindi dahil lahat ay kailangang mag-post.
+  </p>
+
+  <p>
+    Kundi dahil:
+    <br>
+    Ang culture ng isang sector ay hindi lamang binubuo ng ginagawa ng masasamang miyembro nito.
+  </p>
+
+  <p>
+    Binubuo rin ito ng:
+    <br>
+    Kung ano ang pinapayagan, pinapalampas, kino-correct, nire-report, iniimbestigahan at hindi kinukunsinti ng mga matitino.
+  </p>
+
+  <h2>
+    “HINDI NAMAN LAHAT” AY VALID—PERO HINDI IYON ANG HULING SAGOT
+  </h2>
+
+  <p>
+    Totoo:
+    <br>
+    Hindi lahat ng pulis ay abusado.
+    <br>
+    Hindi lahat ng guro ay unethical.
+    <br>
+    Hindi lahat ng engineer ay pabaya.
+    <br>
+    Hindi lahat ng contractor ay mandaraya.
+    <br>
+    Hindi lahat ng abogado ay dishonest.
+    <br>
+    Hindi lahat ng miyembro ng anumang profession ay pare-pareho.
+    <br>
+    At hindi dapat parusahan ang inosente dahil sa kasalanan ng iba.
+  </p>
+
+  <p>
+    Pero kung ang sector mismo ang nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Marami naman kaming matitino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang pinakamalakas na paraan para patunayan iyon ay hindi lamang sa salita.
+    <br>
+    Ipakita kung ano ang ginagawa ng maraming matino kapag may iilang sumisira sa standards.
+  </p>
+
+  <p>
+    Dahil kung maraming matino pero madaling makalusot ang mali—may problema sa system.
+  </p>
+
+  <p>
+    Kung maraming matino pero lahat ay naghihintayan—may problema sa culture.
+    <br>
+    Kung maraming matino pero mas mabilis silang magkakaisa laban sa outsider na pumuna kaysa suportahan ang tamang pagsusuri sa credible misconduct ng kahanay—may problema sa priorities.
+  </p>
+
+  <p>
+    At kung ang sagot sa criticism ay laging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Huwag ninyo kaming lahatin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi natin makita ang parehong commitment sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi namin kukunsintihin ang ganitong gawain sa hanay namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Huwag magtaka kung bakit nagtatanong ang publiko.
+  </p>
+
+  <h2>
+    ANG TUNAY NA PAGTATANGGOL SA PROPESYON AY HINDI PAGHARANG SA ACCOUNTABILITY
+  </h2>
+
+  <p>
+    Hindi kailangang sirain ang isang profession para panagutin ang isang professional.
+    <br>
+    Hindi kailangang insultuhin ang lahat para punahin ang isa.
+    <br>
+    Hindi kailangang maniwala sa lahat ng accusation.
+    <br>
+    At hindi kailangang gawing public spectacle ang bawat internal problem.
+  </p>
+
+  <p>
+    Pero may masamang epekto kapag naging reflex ang:
+  </p>
+
+  <blockquote>
+    <p>
+      Protect the group first.
+      <br>
+      Ask questions later.
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang professional reputation ay hindi napoprotektahan sa pagtatago ng misconduct.
+  </p>
+
+  <p>
+    Napoprotektahan ito kapag alam ng publiko na:
+    <br>
+    May standards.
+    <br>
+    May correction.
+    <br>
+    May reporting mechanism.
+    <br>
+    May investigation.
+    <br>
+    May due process.
+    <br>
+    May discipline kapag napatunayan.
+    <br>
+    At may mga taong nasa loob na handang panindigan ang standards kahit kapwa nila ang kailangang harapin.
+  </p>
+
+  <p>
+    Iyan ang institution na karapat-dapat pagkatiwalaan.
+  </p>
+
+  <p>
+    Hindi institution na walang nagkakamali.
+    <br>
+    Walang ganoon.
+  </p>
+
+  <p>
+    Kundi institution na hindi ginagawang komportable ang pagkakamali, abuso at katiwalian.
+  </p>
+
+  <h2>
+    KAYA SA SUSUNOD NA SABIHING “MARAMI NAMAN KAMING MATITINO…”
+  </h2>
+
+  <p>
+    Magandang marinig.
+  </p>
+
+  <p>
+    Pero mas mahalagang mapatunayan.
+  </p>
+
+  <p>
+    Hindi lang dapat sila marinig kapag may outsider nang pumupuna.
+  </p>
+
+  <p>
+    Sa peer correction.
+    <br>
+    Sa refusal na makisali.
+    <br>
+    Sa tamang reporting.
+    <br>
+    Sa pagprotekta sa ebidensiya.
+    <br>
+    Sa pagtutol sa cover-up.
+    <br>
+    Sa support sa fair investigation.
+    <br>
+    Sa paggiit ng professional standards.
+    <br>
+    Sa pagrespeto sa due process.
+    <br>
+    Kung kinakailangan, sa malinaw na pagkondena sa napatunayang mali—basta may sapat na factual basis.
+  </p>
+
+  <p>
+    Dahil ang pagiging matino ay hindi medalya na inilalabas kapag nadadamay ang pangalan ng sector.
+    <br>
+    Pamantayan iyon na dapat gumagana kahit sariling kahanay ang kailangang ituwid.
+  </p>
+
+  <p>
+    Hindi kailangang lahat ay whistleblower.
+    <br>
+    Hindi lahat ay may parehong impormasyon.
+    <br>
+    Hindi lahat ay may parehong kapangyarihan.
+    <br>
+    Hindi lahat ay ligtas magsalita publicly.
+  </p>
+
+  <p>
+    Pero kung ang isang sector ay may sapat na collective strength para ipagtanggol ang sarili kapag pinupuna—dapat may sapat din itong ethical strength para protektahan ang sarili laban sa maling nanggagaling mismo sa loob.
+  </p>
+
+  <p>
+    Dahil ang pinakamabisang depensa laban sa paglalahat ay hindi paulit-ulit na pagsigaw ng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman lahat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang pinakamabisang depensa ay:
+    <br>
+    Patunayang ang maraming matino ay hindi nagiging ligtas na kanlungan ng iilang gumagawa ng mali.
+  </p>
+
+  <p>
+    Kung marami talaga ang matino—dapat ang maraming matino ang unang pader laban sa mali, hindi ang huling depensa ng kahanay na gumawa nito.
+  </p>
+
+</div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Matthew J. Hornsey &amp; Armin Imani — <em>Criticizing Groups from the Inside and the Outside: An Identity Perspective on the Intergroup Sensitivity Effect</em>, <em>Personality and Social Psychology Bulletin</em>, 2004.
+            </li>
+
+            <li>
+              José M. Marques, Vincent Y. Yzerbyt &amp; Jacques-Philippe Leyens — <em>The “Black Sheep Effect”: Extremity of Judgments Towards Ingroup Members as a Function of Group Identification</em>, <em>European Journal of Social Psychology</em>, 1988.
+            </li>
+
+            <li>
+              Elizabeth W. Morrison &amp; Frances J. Milliken — <em>Organizational Silence: A Barrier to Change and Development in a Pluralistic World</em>, <em>Academy of Management Review</em>, 2000.
+            </li>
+
+            <li>
+              Lawrence Choo, Veronika Grimm, Gergely Horváth &amp; Kohei Nitta — <em>Whistleblowing and Diffusion of Responsibility: An Experiment</em>, <em>European Economic Review</em>, 2019.
+            </li>
+
+            <li>
+              Roberta Fida et al. — <em>The Suspension of Morality in Organisations: Conceptualising Organisational Moral Disengagement and Testing Its Role in Relation to Unethical Behaviours and Silence</em>, <em>Human Relations</em>, Vol. 78, 2025; first published online November 2024.
+            </li>
+
+            <li>
+              Angelika B. Avila et al. — <em>A Cultural Values Model of Pakikipag-ugnayan: Examining Hiya, Pakikisama, and Pakikipag-ugnayan among Filipino Generation Z Nurses</em>, <em>Acta Medica Philippina</em>, 2026.
+            </li>
+
+            <li>
+              Philippine National Police — <em>PNP Ethical Doctrine</em>, PNPM-D-0-4-14, including Section 5-4(g)-(h) and Sections 6.16–6.17.
+            </li>
+
+            <li>
+              United Nations — <em>Code of Conduct for Law Enforcement Officials</em>, General Assembly Resolution 34/169, particularly Articles 7–8 on corruption, prevention/opposition to violations, and reporting.
+            </li>
+
+            <li>
+              Professional Regulation Commission, Board for Professional Teachers — <em>Resolution No. 435, Series of 1997, Code of Ethics for Professional Teachers</em>, particularly Article I on scope and Article V, Sections 1, 5 and 6.
+            </li>
+
+            <li>
+              1987 Constitution of the Republic of the Philippines — <em>Article XI, Section 1: Accountability of Public Officers</em>.
+            </li>
+
+            <li>
+              Republic Act No. 6713 — <em>Code of Conduct and Ethical Standards for Public Officials and Employees</em>.
+            </li>
+
+            <li>
+              Republic Act No. 8981 — <em>PRC Modernization Act of 2000</em>.
+            </li>
+
+            <li>
+              Professional Regulation Commission — <em>Code of Ethics for Civil Engineers</em>.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>A.M. No. 22-09-01-SC, Code of Professional Responsibility and Accountability</em>.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
