@@ -1,1 +1,2108 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="KARMA IS REAL—PERO SINO ANG UNANG NAGBABAYAD? Isang fact-based na pagsusuri kung bakit madalas buong lipunan ang unang nagdurusa sa korapsyon, vote buying, patronage, at iba pang maling sistemang pampubliko bago pa man managot ang tunay na may sala."
+>
+
+<title>KARMA IS REAL—PERO SINO ANG UNANG NAGBABAYAD? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    KARMA IS REAL—PERO SINO ANG UNANG NAGBABAYAD?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-karma.png"
+      alt="Simbolikong paglalarawan ng korapsyon at iba pang maling sistemang pampubliko kung saan habang nakikinabang ang iilan, ang ordinaryong mamamayan ang unang nagdurusa sa baha, sirang serbisyo, at iba pang kolektibong consequence ng mga maling desisyon."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    “Karma is real.”
+  </p>
+
+  <p>
+    Kaya kapag may nababalitang korapsyon, pang-aabuso o pagnanakaw sa kaban ng bayan, madalas nating marinig:
+  </p>
+
+  <blockquote>
+    <p>
+      “Makakarma rin ang mga iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Posible.
+  </p>
+
+  <p>
+    Pero may mas hindi komportableng tanong:<br>
+    Sino ang unang nagbabayad habang hinihintay natin ang “karma” ng mga kurap?
+  </p>
+
+  <p>
+    Kapag ninakaw ang pondong para sana sa imprastraktura, hindi naman opisyal agad ang lumulusong sa baha.<br>
+    Kapag bumagsak ang kalidad ng serbisyo publiko, hindi naman contractor agad ang magtitiis sa kulang, sira o mahinang pasilidad ng ospital.<br>
+    Kapag mali ang lider na nailuklok, hindi naman botanteng nagbenta lang ng boto ang tanging maaapektuhan.<br>
+    Kapag napabayaan ang basura at nagbara ang kanal, hindi lang naman ang nagtapon ang babahain.<br>
+    At kapag hinayaan nating maging normal ang mali dahil “hindi naman ako apektado,” hindi naman nagtatanong ang problema kung sino ang nagsalita, sino ang nanahimik, sino ang bumoto nang tama at sino ang nagkamali bago ito dumating sa ating pintuan.
+  </p>
+
+  <p>
+    Diyan nagiging mas komplikado ang usapin ng “karma.”
+  </p>
+
+  <p>
+    Hindi bilang patunay na may supernatural force na awtomatikong nagpaparusa sa bawat tao.<br>
+    Kundi bilang simpleng katotohanan ng buhay sa isang lipunan:<br>
+    May mga desisyong personal ang paggawa pero pampubliko ang epekto.
+  </p>
+
+  <h2>
+    ANG BOTO AY PERSONAL. ANG RESULTA NITO, HINDI.
+  </h2>
+
+  <p>
+    Isang tao lang ang nagmamarka ng balota.<br>
+    Pero kapag nanalo ang kandidato, hindi isang tao lang ang pamumunuan niya.
+  </p>
+
+  <p>
+    Kasama ang bumoto sa kanya.<br>
+    Kasama ang bumoto sa kalaban.<br>
+    Kasama ang hindi bumoto.<br>
+    Kasama maging ang mga batang wala pang karapatang bumoto.
+  </p>
+
+  <p>
+    Kaya may problema sa katwirang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Boto ko naman ito. Desisyon ko ito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Oo, desisyon mo.<br>
+    Pero ang epekto ng desisyong iyon ay hindi lang sa iyo.
+  </p>
+
+  <p>
+    At dito nagiging kritikal ang vote buying.
+  </p>
+
+  <p>
+    Sa ilalim mismo ng Section 261 ng Omnibus Election Code, parehong kinikilala bilang election offense ang vote-buying at vote-selling kapag umiiral ang mga elementong itinakda ng batas.
+  </p>
+
+  <p>
+    Pero mas malalim pa sa kriminal na usapin ang civic consequence nito.
+  </p>
+
+  <p>
+    Ang Philippine research sa clientelism ay nagpapakitang hindi ito laging simpleng eksenang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Binigyan ng pera, kaya ibinenta ang boto.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa pag-aaral nina Nico Ravanilla at Allen Hicken sa 900 voters sa isang Philippine city, mas natatarget ng electoral inducements ang mahihirap na botante. Mahalaga rin ang family at informal social networks, habang ang access sa formal organizations gaya ng workers’ associations ay nakatutulong upang mabawasan ang takot ng ilang botante na maparusahan kapag hindi nila “sinuklian” ng boto ang natanggap nilang tulong.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi pera lang ang gumagana.
+  </p>
+
+  <p>
+    May relasyon.<br>
+    May dependency.<br>
+    May pressure.<br>
+    May pakiramdam na may kailangang suklian.<br>
+    May takot na baka mawalan ng access sa tulong.
+  </p>
+
+  <p>
+    At kapag paulit-ulit itong nangyari, ang eleksiyon ay puwedeng unti-unting lumipat mula sa tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang may pinakamagandang polisiya?”
+    </p>
+  </blockquote>
+
+  <p>
+    patungo sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang tumulong sa amin?”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan lumalakas ang patronage.
+  </p>
+
+  <p>
+    At may tunay itong public cost.
+  </p>
+
+  <p>
+    Sa isang pag-aaral gamit ang Philippine local-government data, iniugnay ni World Bank economist Stuti Khemani ang mas mataas na reported vote buying sa mas mababang investment ng municipalities sa broadly delivered basic health services para sa mga ina at bata, at sa mas mataas na proportion ng severely underweight children.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na bawat vote-buying incident ay awtomatikong sanhi ng ganitong resulta.
+  </p>
+
+  <p>
+    Ang mahalagang finding ay ang pattern na maaaring umusbong kapag mas kapaki-pakinabang sa pulitiko ang targeted favors kaysa sa mahusay na serbisyong para sa lahat.
+  </p>
+
+  <p>
+    At doon makikita ang vicious cycle:<br>
+    Kapag mahina ang universal public service, mas nangangailangan ang tao ng personal na tulong.<br>
+    Kapag mas nangangailangan ng personal na tulong, mas lumalakas ang patron.<br>
+    Kapag mas lumalakas ang patron, mas nagiging mahalaga ang personal na loyalty.<br>
+    At kapag loyalty ang puhunan sa eleksiyon, mas humihina ang pressure na gumawa ng serbisyong hindi mo kailangang ipakiusap kaninuman.
+  </p>
+
+  <p>
+    Hindi na serbisyo ang sentro. Relasyon na sa makapangyarihan.
+  </p>
+
+  <h2>
+    AYUDA AY HINDI PERSONAL NA REGALO NG PULITIKO
+  </h2>
+
+  <p>
+    Dito pumapasok ang isang sensitibong Filipino concept:<br>
+    Utang na loob.
+  </p>
+
+  <p>
+    Maganda ang utang na loob kapag tunay na personal na kabutihan ang sinuklian natin ng pasasalamat.
+  </p>
+
+  <p>
+    Hindi masamang marunong tumanaw ng kabutihan.<br>
+    At hindi rin tama na sisihin ang kulturang Pilipino mismo na para bang likas tayong corrupt dahil mayroon tayong utang na loob, hiya o pakikisama.
+  </p>
+
+  <p>
+    Sa isang Ateneo scholarly paper, binigyang-diin ni Jacklyn Cleofas na ang utang na loob ay maaaring isang virtue, ngunit kailangan itong nakatali sa katarungan upang hindi ito maging daan sa nepotism, patronage politics, corruption o iba pang injustice.
+  </p>
+
+  <p>
+    Iyan ang mahalagang distinction.
+  </p>
+
+  <p>
+    Hindi problema ang pasasalamat.<br>
+    Ang problema ay kapag ginawang political currency ang pasasalamat.
+  </p>
+
+  <p>
+    Kapag ang ayuda, medical assistance, scholarship, relief goods o ibang government benefit ay galing sa public program at pondo ng bayan, hindi iyon personal na regalo na kailangang bayaran ng political loyalty.
+  </p>
+
+  <p>
+    Trabaho ng gobyerno ang maglingkod.
+  </p>
+
+  <p>
+    Kapag kwalipikado ang mamamayan sa ilalim ng isang public program, ang tulong o serbisyo ay dapat iproseso ayon sa mga patakaran at public purpose ng programa—hindi bilang personal na pabor ng opisyal.
+  </p>
+
+  <p>
+    At hindi lang ito moral expectation.<br>
+    Nasa mismong pundasyon ng ating batas ang prinsipyo.
+  </p>
+
+  <p>
+    Sinasabi ng Article XI, Section 1 ng 1987 Constitution na public office is a public trust. Ang mga public officer at employee ay kailangang maging accountable sa mamamayan at maglingkod nang may responsibility, integrity, loyalty at efficiency.
+  </p>
+
+  <p>
+    Mas direkta pa ang Republic Act No. 6713 o Code of Conduct and Ethical Standards for Public Officials and Employees.
+  </p>
+
+  <p>
+    Sa Section 4, obligasyon ng public officials at employees na unahin ang public interest kaysa personal interest at gamitin nang mahusay, matapat at matipid ang resources at kapangyarihan ng kanilang opisina.
+  </p>
+
+  <p>
+    Sa parehong section, inaatasan silang magsikap na pigilan ang maling perception na ang public officials ay mga tagapamigay o “peddlers of undue patronage.”
+  </p>
+
+  <p>
+    Mahalaga iyon.
+  </p>
+
+  <p>
+    Dahil kung mismong public service ay ginagawang paraan upang makabuo ng personal na political debt, nababaligtad ang tunay na relasyon ng gobyerno at mamamayan.
+  </p>
+
+  <p>
+    Hindi dapat:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tumulong sa akin ang pulitiko, kaya may utang akong boto.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ginawa ng gobyerno ang tungkulin nitong pondohan at ihatid ang serbisyong pampubliko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag ang serbisyong pampubliko ay ipinresentang parang personal na kabutihan ng isang opisyal, madaling mabuo ang maling equation:<br>
+    Tumulong siya sa akin = May utang akong boto sa kanya.
+  </p>
+
+  <p>
+    At kapag iyon ang naging normal, serbisyo ng estado ang nagiging puhunan ng personalidad.
+  </p>
+
+            <h2>
+    HINDI LANG ANG GINAWA NATIN ANG MAY EPEKTO. PATI ANG HINDI NATIN GINAWA.
+  </h2>
+
+  <p>
+    Ito ang mas mahirap tanggapin.
+  </p>
+
+  <p>
+    May nakita kang vote buying.
+  </p>
+
+  <blockquote>
+    <p>
+      “Binalewala mo lang.”
+    </p>
+  </blockquote>
+
+  <p>
+    May nakitang pang-aabuso.
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayokong makialam.”
+    </p>
+  </blockquote>
+
+  <p>
+    May nalalamang katiwalian.
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman ako involved.”
+    </p>
+  </blockquote>
+
+  <p>
+    May maling ginagawa sa trabaho.
+  </p>
+
+  <blockquote>
+    <p>
+      “Trabaho lang. Sumusunod lang ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    May basurang itinapon sa kanal.
+  </p>
+
+  <blockquote>
+    <p>
+      “Isa lang naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    May problemang nangyayari sa paligid.
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman kami apektado.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa bawat pagkakataon, napakadaling isipin na ang hindi pagkilos ay neutral.<br>
+    Pero sa human behavior, hindi palaging ganoon.
+  </p>
+
+  <p>
+    Isang major meta-analysis sa <em>Psychological Bulletin</em> na sumuri sa mahigit 7,700 participants at 105 independent effect sizes ang nagkumpirma sa tinatawag na <em>bystander effect</em>: sa pangkalahatan, ang presensiya ng ibang tao ay maaaring magpababa sa posibilidad na isang indibidwal ang kumilos o tumulong.
+  </p>
+
+  <p>
+    Isa sa mga mekanismong matagal nang pinag-aaralan dito ang <em>diffusion of responsibility</em>—kapag maraming maaaring gumawa, mas madaling isipin ng bawat isa na may ibang gagawa.
+  </p>
+
+  <p>
+    Parang:<br>
+    May ibang magrereklamo.<br>
+    May ibang magrereport.<br>
+    Trabaho naman ng gobyerno iyan.<br>
+    Baka may nakapansin na.<br>
+    Hindi ako ang dapat mauna.<br>
+    Hanggang sa lahat naghihintay.<br>
+    At walang gumagawa.
+  </p>
+
+  <h2>
+    PERO HINDI RIN TAMA ANG “TAHIMIK = KASABWAT.”
+  </h2>
+
+  <p>
+    Mahalagang linawin ito.
+  </p>
+
+  <p>
+    Hindi lahat ng taong hindi nagsalita ay kunsintidor.
+  </p>
+
+  <p>
+    May empleyadong natatakot mawalan ng trabaho.<br>
+    May witness na natatakot sa retaliation.<br>
+    May ordinaryong mamamayang walang ebidensiya.<br>
+    May taong walang ligtas na reporting channel.<br>
+    May subordinate na hawak ng makapangyarihang superior.<br>
+    May taong may pamilya at seguridad na kailangang isipin.
+  </p>
+
+  <p>
+    Research on reporting and whistleblowing shows that hindi iisang dahilan lamang ang nakaaapekto sa desisyong magsumbong o manahimik.
+  </p>
+
+  <p>
+    Sa isang 2021 systematic review, 9,136 records ang natukoy at 217 studies ang isinama sa pagsusuri. Lumitaw ang maraming magkakaugnay na factors—kabilang ang personal at organizational factors, perceived costs and benefits, expected outcomes, katangian ng offense, reporting process, wrongdoer at social factors.
+  </p>
+
+  <p>
+    Ibig sabihin, ang pananahimik ay maaaring maimpluwensiyahan ng social pressure, organizational environment, perceived consequences, protections, relationships at iba pang kondisyon—hindi lang simpleng kawalan ng prinsipyo.
+  </p>
+
+  <p>
+    May mas specific ding halimbawa tungkol sa epekto ng social norms.
+  </p>
+
+  <p>
+    Sa isang 2025 experiment, 77.55% privately supported whistleblowing, ngunit 45.92% ang nagkamali ng akala tungkol sa tingin ng majority. Kapag inakala nilang ang social norm ay pabor sa pananahimik, bumaba nang mahigit 30% ang reporting behavior kahit personally supportive sila ng whistleblowing.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung hindi ka nagsalita, kasabwat ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas makatwiran ang:<br>
+    Ano ang alam mo?<br>
+    Ano ang kapangyarihan mo?<br>
+    Ano ang tungkulin mo?<br>
+    May ligtas at makatwirang paraan ka bang kumilos?<br>
+    At ano ang ginawa mo sa pagkakataong mayroon ka?
+  </p>
+
+  <p>
+    Magkaiba ang taong pinatahimik ng makatotohanang panganib at ang taong may kakayahan at ligtas na pagkakataong kumilos pero piniling dumikit sa mali dahil convenient ang katahimikan.
+  </p>
+
+  <p>
+    Ang civic responsibility ay dapat nakabatay rin sa role, knowledge, power at realistic capacity to act.
+  </p>
+
+  <h2>
+    MAY PSYCHOLOGY DIN ANG “HINDI NAMAN AKO ANG GUMAWA.”
+  </h2>
+
+  <p>
+    Tinatawag sa psychology ang isang mahalagang proseso na <em>moral disengagement</em>.
+  </p>
+
+  <p>
+    Ito ang iba't ibang paraan kung paano natin napapahina ang sariling moral restraint upang hindi gaanong mabigat sa konsensiya ang isang maling gawain.
+  </p>
+
+  <p>
+    Maaaring maliitin ang pinsala.<br>
+    Maaaring ilipat sa iba ang responsibilidad.<br>
+    Maaaring sabihin na lahat naman ay gumagawa.<br>
+    Maaaring gawing normal ang dating mali.<br>
+    Maaaring i-frame ang sarili bilang maliit na bahagi lamang ng mas malaking sistema.
+  </p>
+
+  <p>
+    Isang meta-analysis sa <em>Journal of Applied Psychology</em> tungkol sa moral disengagement sa workplace found consistent relationships between moral disengagement and misconduct, habang ipinakita rin nitong may malaking papel ang environment at organizational context sa pag-enable nito.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng nagsabing “wala naman akong magagawa” ay morally disengaged.
+  </p>
+
+  <p>
+    Ang punto:<br>
+    May kakayahan ang isip nating gumawa ng dahilan para maging komportable tayo sa isang sistemang alam nating may mali.
+  </p>
+
+  <p>
+    May kaugnay ding research tradition na tinatawag na <em>system justification</em>—ang tendency ng mga tao, depende sa sitwasyon, na bigyang-katwiran o depensahan ang umiiral na sistema.
+  </p>
+
+  <p>
+    Research reviews point to factors gaya ng threat, dependence, perceived inescapability at confidence in the system bilang mga kondisyong maaaring magpalakas sa pagtatanggol sa status quo o motivated ignorance sa mga problemang kailangang harapin.
+  </p>
+
+  <p>
+    Kaya mapanganib ang apat na salitang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Normal naman na iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil maraming maling sistema ang hindi nagsimula bilang normal.
+  </p>
+
+  <p>
+    Naging normal lang dahil paulit-ulit na nangyari at paulit-ulit ding pinalampas.
+  </p>
+
+            <h2>
+    HINDI LANG ANG GINAWA NATIN ANG MAY EPEKTO. PATI ANG HINDI NATIN GINAWA.
+  </h2>
+
+  <p>
+    Ito ang mas mahirap tanggapin.
+  </p>
+
+  <p>
+    May nakita kang vote buying.
+  </p>
+
+  <blockquote>
+    <p>
+      “Binalewala mo lang.”
+    </p>
+  </blockquote>
+
+  <p>
+    May nakitang pang-aabuso.
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayokong makialam.”
+    </p>
+  </blockquote>
+
+  <p>
+    May nalalamang katiwalian.
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman ako involved.”
+    </p>
+  </blockquote>
+
+  <p>
+    May maling ginagawa sa trabaho.
+  </p>
+
+  <blockquote>
+    <p>
+      “Trabaho lang. Sumusunod lang ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    May basurang itinapon sa kanal.
+  </p>
+
+  <blockquote>
+    <p>
+      “Isa lang naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    May problemang nangyayari sa paligid.
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman kami apektado.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa bawat pagkakataon, napakadaling isipin na ang hindi pagkilos ay neutral.<br>
+    Pero sa human behavior, hindi palaging ganoon.
+  </p>
+
+  <p>
+    Isang major meta-analysis sa <em>Psychological Bulletin</em> na sumuri sa mahigit 7,700 participants at 105 independent effect sizes ang nagkumpirma sa tinatawag na <em>bystander effect</em>: sa pangkalahatan, ang presensiya ng ibang tao ay maaaring magpababa sa posibilidad na isang indibidwal ang kumilos o tumulong.
+  </p>
+
+  <p>
+    Isa sa mga mekanismong matagal nang pinag-aaralan dito ang <em>diffusion of responsibility</em>—kapag maraming maaaring gumawa, mas madaling isipin ng bawat isa na may ibang gagawa.
+  </p>
+
+  <p>
+    Parang:<br>
+    May ibang magrereklamo.<br>
+    May ibang magrereport.<br>
+    Trabaho naman ng gobyerno iyan.<br>
+    Baka may nakapansin na.<br>
+    Hindi ako ang dapat mauna.<br>
+    Hanggang sa lahat naghihintay.<br>
+    At walang gumagawa.
+  </p>
+
+  <h2>
+    PERO HINDI RIN TAMA ANG “TAHIMIK = KASABWAT.”
+  </h2>
+
+  <p>
+    Mahalagang linawin ito.
+  </p>
+
+  <p>
+    Hindi lahat ng taong hindi nagsalita ay kunsintidor.
+  </p>
+
+  <p>
+    May empleyadong natatakot mawalan ng trabaho.<br>
+    May witness na natatakot sa retaliation.<br>
+    May ordinaryong mamamayang walang ebidensiya.<br>
+    May taong walang ligtas na reporting channel.<br>
+    May subordinate na hawak ng makapangyarihang superior.<br>
+    May taong may pamilya at seguridad na kailangang isipin.
+  </p>
+
+  <p>
+    Research on reporting and whistleblowing shows that hindi iisang dahilan lamang ang nakaaapekto sa desisyong magsumbong o manahimik.
+  </p>
+
+  <p>
+    Sa isang 2021 systematic review, 9,136 records ang natukoy at 217 studies ang isinama sa pagsusuri. Lumitaw ang maraming magkakaugnay na factors—kabilang ang personal at organizational factors, perceived costs and benefits, expected outcomes, katangian ng offense, reporting process, wrongdoer at social factors.
+  </p>
+
+  <p>
+    Ibig sabihin, ang pananahimik ay maaaring maimpluwensiyahan ng social pressure, organizational environment, perceived consequences, protections, relationships at iba pang kondisyon—hindi lang simpleng kawalan ng prinsipyo.
+  </p>
+
+  <p>
+    May mas specific ding halimbawa tungkol sa epekto ng social norms.
+  </p>
+
+  <p>
+    Sa isang 2025 experiment, 77.55% privately supported whistleblowing, ngunit 45.92% ang nagkamali ng akala tungkol sa tingin ng majority. Kapag inakala nilang ang social norm ay pabor sa pananahimik, bumaba nang mahigit 30% ang reporting behavior kahit personally supportive sila ng whistleblowing.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung hindi ka nagsalita, kasabwat ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas makatwiran ang:<br>
+    Ano ang alam mo?<br>
+    Ano ang kapangyarihan mo?<br>
+    Ano ang tungkulin mo?<br>
+    May ligtas at makatwirang paraan ka bang kumilos?<br>
+    At ano ang ginawa mo sa pagkakataong mayroon ka?
+  </p>
+
+  <p>
+    Magkaiba ang taong pinatahimik ng makatotohanang panganib at ang taong may kakayahan at ligtas na pagkakataong kumilos pero piniling dumikit sa mali dahil convenient ang katahimikan.
+  </p>
+
+  <p>
+    Ang civic responsibility ay dapat nakabatay rin sa role, knowledge, power at realistic capacity to act.
+  </p>
+
+  <h2>
+    MAY PSYCHOLOGY DIN ANG “HINDI NAMAN AKO ANG GUMAWA.”
+  </h2>
+
+  <p>
+    Tinatawag sa psychology ang isang mahalagang proseso na <em>moral disengagement</em>.
+  </p>
+
+  <p>
+    Ito ang iba't ibang paraan kung paano natin napapahina ang sariling moral restraint upang hindi gaanong mabigat sa konsensiya ang isang maling gawain.
+  </p>
+
+  <p>
+    Maaaring maliitin ang pinsala.<br>
+    Maaaring ilipat sa iba ang responsibilidad.<br>
+    Maaaring sabihin na lahat naman ay gumagawa.<br>
+    Maaaring gawing normal ang dating mali.<br>
+    Maaaring i-frame ang sarili bilang maliit na bahagi lamang ng mas malaking sistema.
+  </p>
+
+  <p>
+    Isang meta-analysis sa <em>Journal of Applied Psychology</em> tungkol sa moral disengagement sa workplace found consistent relationships between moral disengagement and misconduct, habang ipinakita rin nitong may malaking papel ang environment at organizational context sa pag-enable nito.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng nagsabing “wala naman akong magagawa” ay morally disengaged.
+  </p>
+
+  <p>
+    Ang punto:<br>
+    May kakayahan ang isip nating gumawa ng dahilan para maging komportable tayo sa isang sistemang alam nating may mali.
+  </p>
+
+  <p>
+    May kaugnay ding research tradition na tinatawag na <em>system justification</em>—ang tendency ng mga tao, depende sa sitwasyon, na bigyang-katwiran o depensahan ang umiiral na sistema.
+  </p>
+
+  <p>
+    Research reviews point to factors gaya ng threat, dependence, perceived inescapability at confidence in the system bilang mga kondisyong maaaring magpalakas sa pagtatanggol sa status quo o motivated ignorance sa mga problemang kailangang harapin.
+  </p>
+
+  <p>
+    Kaya mapanganib ang apat na salitang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Normal naman na iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil maraming maling sistema ang hindi nagsimula bilang normal.
+  </p>
+
+  <p>
+    Naging normal lang dahil paulit-ulit na nangyari at paulit-ulit ding pinalampas.
+  </p>
+
+  <h2>
+    ISANG BASURA LANG. ISANG BOTO LANG. ISANG PABOR LANG. ISANG PANANAHIMIK LANG.
+  </h2>
+
+  <p>
+    Dito pumapasok ang collective consequence.
+  </p>
+
+  <p>
+    Ang isang pirasong basura ay maliit.<br>
+    Pero ang libo-libong “isa lang naman” ay hindi na maliit.
+  </p>
+
+  <p>
+    Sa loob ng unang anim na buwan ng 2025 lamang, iniulat ng DENR-NCR na 872,625 sacks ng solid waste ang kanilang naalis mula sa Metro Manila waterways bilang bahagi ng efforts na panatilihing malaya ang daluyan ng tubig at mabawasan ang flood risk.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na basura lamang ang sanhi ng baha.
+  </p>
+
+  <p>
+    Mahalagang huwag tayong mahulog sa ganoong oversimplification.
+  </p>
+
+  <p>
+    Ang flood risk ay produkto ng maraming magkakaugnay na factors—kabilang ang rainfall, river systems, drainage capacity, pumping infrastructure, urban development, maintenance, obstruction ng waterways at solid waste.
+  </p>
+
+  <p>
+    Sa Metro Manila Flood Management framework mismo, kasama sa mga intervention ang river-flood management, urban drainage improvements, modernization ng pumping stations, flood forecasting, institutional improvements at solid-waste management.
+  </p>
+
+  <p>
+    Kaya parehong mali ang dalawang extreme:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gobyerno lang ang may kasalanan, kaya wala nang obligasyon ang mamamayan.”
+    </p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>
+      “Basura lang ng mamamayan ang dahilan, kaya huwag sisihin ang gobyerno.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong may responsibility—but not equal responsibility.
+  </p>
+
+  <p>
+    Obligasyon ng gobyerno ang maayos na drainage, flood-control engineering, watershed at land-use planning, waste systems, maintenance, procurement integrity, enforcement at disaster preparedness.<br>
+    Obligasyon naman ng mamamayan na huwag dagdagan ang problemang kaya niyang iwasan.
+  </p>
+
+  <p>
+    Hindi puwedeng gamiting excuse ang citizen discipline upang takasan ang government accountability.<br>
+    Pero hindi rin puwedeng gamiting excuse ang government failure upang sabihing walang epekto ang sariling kilos.
+  </p>
+
+  <h2>
+    AT KUNG MAY KORAPSYON SA FLOOD CONTROL?
+  </h2>
+
+  <p>
+    Doon lalong lumilinaw ang pagkakaiba ng shared consequence at equal guilt.
+  </p>
+
+  <p>
+    Kung may opisyal na sadyang nagnakaw ng pera ng proyekto, mas mabigat ang pananagutan niya.<br>
+    Kung may contractor o pribadong taong sadyang nakipagsabwatan, may sarili rin siyang pananagutan.
+  </p>
+
+  <p>
+    Sa Philippine jurisprudence, kinikilala na ang private persons ay maaaring managot sa mga naaangkop na paglabag sa Anti-Graft and Corrupt Practices Act kapag napatunayang nakipagsabwatan sila sa public officers.
+  </p>
+
+  <p>
+    Sa <em>Villanueva v. People</em>, G.R. No. 218652, February 23, 2022, muling pinagtibay ng Supreme Court ang settled rule na maaaring managot ang private person kasama ng public officials sa pertinent offenses sa ilalim ng Section 3 ng R.A. 3019 kapag napatunayan ang conspiracy. Sa kasong iyon, inuphold ng Court ang liability ng private businessman matapos nitong makita ang kanyang pakikipagsabwatan sa mga public officials.
+  </p>
+
+  <p>
+    Hindi ipinagpapalagay ang conspiracy.<br>
+    Kailangan itong patunayan ayon sa batas.
+  </p>
+
+  <p>
+    Kung may government employee na may legal duty at sadyang nag-cover up, iba rin ang bigat.<br>
+    Kung may botanteng tumanggap kapalit ng boto, mayroon ding sariling legal at civic responsibility.<br>
+    Kung may ordinaryong mamamayang walang alam sa anumang anomalya at biglang binaha, wala tayong batayan para sabihing deserve niya iyon.
+  </p>
+
+  <p>
+    Iyan ang napakahalagang distinction:<br>
+    Puwedeng pare-parehong tamaan ng consequence ang mga tao nang hindi sila pare-parehong responsable sa paglikha nito.
+  </p>
+
+  <blockquote>
+    <p>
+      Shared consequence does not mean shared guilt.
+    </p>
+  </blockquote>
+
+  <h2>
+    DITO RIN KAILANGANG INGATAN ANG SALITANG “KARMA.”
+  </h2>
+
+  <p>
+    Interesting ang mismong psychology research tungkol sa karma.
+  </p>
+
+  <p>
+    Sa isang large cross-cultural research program na may kabuuang 8,996 participants mula Canada, India at United States, nakita na ang belief in karma ay distinct bagaman related sa just-world beliefs, religion at ibang beliefs tungkol sa moral causation.
+  </p>
+
+  <p>
+    Nauugnay rin ito sa paraan kung paano ipinapaliwanag ng tao ang misfortune.
+  </p>
+
+  <p>
+    May positive side.
+  </p>
+
+  <p>
+    Sa apat na preregistered experiments na may kabuuang 3,591 participants, ang pagpapaalala tungkol sa karma ay nakapagpababa ng selfish behavior at nakapagpalapit sa fairer behavior sa mga participants na naniniwala rito.
+  </p>
+
+  <p>
+    Pero may dark side din.
+  </p>
+
+  <p>
+    Sa tatlong preregistered cross-cultural studies na may 6,049 participants mula India, Singapore at United States, natuklasan na ang karmic belief ay maaari ring maiugnay sa system-justifying beliefs at sa paraan ng paghusga kung sino ang “deserving” tulungan.
+  </p>
+
+  <p>
+    Kapag ang misfortune ay iniuugnay sa personal na kasalanan ng biktima, maaaring mabago ang willingness na tumulong—isang dahilan kung bakit kailangang bantayan ang victim-blaming sa paggamit ng konsepto ng karma.
+  </p>
+
+  <p>
+    Kaya mapanganib sabihin sa isang nasalanta:
+  </p>
+
+  <blockquote>
+    <p>
+      “Karma mo iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi natin alam iyon.<br>
+    Hindi science ang makapagsasabi na binaha ang isang pamilya dahil may moral debt silang kailangang bayaran.<br>
+    At lalo namang hindi makatwiran na ang inosenteng bata, matandang walang kinalaman, o pamilyang bumoto at kumilos nang tama ay sabihing karapat-dapat sa pinsala dahil may ibang taong nagkamali.
+  </p>
+
+  <p>
+    <strong>Karma should never become an excuse for victim-blaming.</strong>
+  </p>
+
+  <p>
+    Mas makatotohanang tingnan ang “karma” dito bilang metaphor para sa consequences:<br>
+    May mga ginagawa ang isang lipunan na bumubuo ng kondisyon.<br>
+    At kapag nabuo na ang kondisyon, maraming tao ang maaaring tamaan nito.
+  </p>
+
+            <h2>
+    KAYA OO—MAY “KARMA” PATI ANG WALANG GINAWA, PERO MAY KONTEKSTO.
+  </h2>
+
+  <p>
+    Hindi dahil may mahiwagang listahan na nagtatalaga ng kaparusahan sa bawat taong nanahimik.<br>
+    Kundi dahil ang <em>inaction</em> ay maaaring magkaroon ng social consequence kapag ang pagkilos sana ay may makatwirang posibilidad na makapigil, makapagreport, makapagtuwid o makapagpanagot.
+  </p>
+
+  <p>
+    Kung may nakita kang vote buying at may ligtas kang paraan para i-document o ireport ngunit pinili mong huwag dahil “bahala sila,” may pananagutan ka rin sa pagpili mong manahimik—dahil ang hindi pagkilos ay nakadaragdag sa kondisyong nagpapahintulot na magpatuloy ang maling practice.<br>
+    Kung nakakita ka ng pang-aabuso sa loob ng organisasyon at ikaw mismo ang may tungkuling aksyunan iyon ngunit sadyang nagbulag-bulagan, hindi neutral ang omission.<br>
+    Kung may negosyo ka at alam mong anomalous ang transaction ngunit nakipagsabwatan ka dahil kikita ka, hindi ka outsider.<br>
+    Kung botante ka at paulit-ulit mong ginawang sukatan ang personal na pabor kaysa public performance, may civic consequence iyon.<br>
+    Kung may hawak kang basura at pinili mong itapon sa kanal dahil “maliit lang,” maliit ang kilos—pero bahagi ka ng accumulation.
+  </p>
+
+  <p>
+    Pero kung wala kang alam, wala kang kapangyarihan, wala kang ligtas na paraan, o ikaw mismo ang biktima ng coercion, hindi makatarungang ipataw sa iyo ang parehong bigat.
+  </p>
+
+  <blockquote>
+    <p>
+      Responsibility follows participation, knowledge, duty, power and capacity.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pare-pareho.
+  </p>
+
+  <h2>
+    KAYA “KARMA AY PARA SA LAHAT”—PERO MAY MAS TAMANG PAGKAKASABI.
+  </h2>
+
+  <p>
+    Sa isang magkakaugnay na lipunan:<br>
+    Ang consequence ay maaaring umabot sa lahat.<br>
+    Pero ang pananagutan ay magkakaiba ang bigat.
+  </p>
+
+  <p>
+    Pinakamabigat sa sadyang nagnakaw, nang-abuso at gumamit ng kapangyarihan.<br>
+    Mabigat sa sadyang nakipagsabwatan at kumita.<br>
+    May pananagutan ang aktibong nakilahok sa vote buying, bribery o iba pang maling sistema.<br>
+    May civic responsibility ang taong may makatwirang pagkakataong kumilos ngunit piniling maging indifferent dahil akala niya hindi siya maaapektuhan.<br>
+    At may mga taong halos walang kasalanan ngunit sila pa rin ang unang tatamaan.
+  </p>
+
+  <p>
+    Iyan ang masakit na katotohanan sa public failure:<br>
+    Hindi nito kailangang malaman kung sino ang may kasalanan bago ito maningil.
+  </p>
+
+  <p>
+    Kapag nagbara ang daluyan, umaapaw ang tubig.<br>
+    Kapag mahina ang health system, nagkukulang ang serbisyo.<br>
+    Kapag nakasanayan ang patronage, humihina ang accountability.<br>
+    Kapag normal ang vote buying, maaaring matabunan ng targeted favors ang policy at performance bilang batayan ng political support.<br>
+    Kapag normal ang cover-up, lumalakas ang impunity.<br>
+    Kapag lahat naghihintay na may ibang kikilos, maaaring walang kumilos.
+  </p>
+
+  <p>
+    Kaya bago natin hintayin ang “karma” ng mga kurap…
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang ginagawa natin para hindi buong bayan ang unang magbayad?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil hindi sapat ang umasa na balang araw ay may masamang mangyayari sa masamang tao.
+  </p>
+
+  <p>
+    May korte para sa pananagutan.<br>
+    May eleksiyon para sa pagpili.<br>
+    May audit at imbestigasyon para sa public funds.<br>
+    May reporting channels para sa violations.<br>
+    May media at civil society para sa scrutiny.<br>
+    May private sector na dapat tumangging makipagsabwatan.<br>
+    May public officials at employees na dapat tumupad sa tungkulin.<br>
+    At may ordinaryong mamamayan na kailangang magsimula sa mga bagay na kaya niyang kontrolin—sa boto, sa basura, sa pagrespeto sa ebidensiya, sa pagtanggi sa vote buying, sa hindi pagtrato sa ayuda bilang personal na utang na loob, at sa hindi pagkibit-balikat sa maling malinaw niyang nakikita.
+  </p>
+
+  <p>
+    Hindi natin kontrolado ang lahat.<br>
+    Pero hindi rin ibig sabihin na wala tayong kontrol sa kahit ano.
+  </p>
+
+  <p>
+    At baka iyon ang pinakamahalagang real talk tungkol sa “karma” sa politika at lipunan:
+  </p>
+
+  <p>
+    Ang pagboto ay isang araw lang—pero taon ang consequence ng boto.<br>
+    Ang pagtanggap ng lagay ay maaaring isang transaction lang—pero serbisyo publiko ang nawawala.<br>
+    Ang basurang hawak ay maaaring isang piraso lang—pero kapag nagsama-sama ang mga ito, bumabara.<br>
+    Ang pananahimik ay maaaring personal na desisyon—pero kapag naging kultura, puwede itong maging proteksiyon ng maling sistema.
+  </p>
+
+  <p>
+    Kaya habang hinihintay nating “makarma” ang mga kurap, baka hindi natin napapansing matagal nang may naniningil.
+  </p>
+
+  <p>
+    Sa baha.<br>
+    Sa sirang serbisyo.<br>
+    Sa perang nasayang.<br>
+    Sa pagkakataong nawala.<br>
+    Sa sistemang paulit-ulit nating nirereklamo pero minsan ay tayo rin ang nakatutulong panatilihin—sa ginawa natin, sinuportahan natin, kinunsinti natin, o sa mga pagkakataong kaya sana nating kumilos ngunit pinili nating huwag.
+  </p>
+
+  <p>
+    Hindi pare-pareho ang kasalanan.<br>
+    Hindi pare-pareho ang pananagutan.<br>
+    Pero sa isang lipunan, puwedeng pare-pareho tayong tamaan ng resulta.
+  </p>
+
+  <p>
+    Kaya ang mas mahalagang tanong ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kailan kaya sila kakarmahin?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang ginagawa natin ngayon para hindi tayo—at ang mga taong walang kinalaman—ang unang magbayad?”
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <em>1987 Constitution of the Republic of the Philippines</em>, Article XI, Section 1 — Accountability of Public Officers / “Public office is a public trust.”
+            </li>
+
+            <li>
+              <em>Republic Act No. 6713</em>, Section 4 — Code of Conduct and Ethical Standards for Public Officials and Employees.
+            </li>
+
+            <li>
+              <em>Batas Pambansa Blg. 881 (Omnibus Election Code)</em>, Section 261(a) — Vote-Buying and Vote-Selling.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>Villanueva v. People</em>, G.R. No. 218652, February 23, 2022.
+            </li>
+
+            <li>
+              Nico Ravanilla &amp; Allen Hicken — <em>Poverty, Social Networks, and Clientelism</em>, <em>World Development</em>, Vol. 162, 2023.
+            </li>
+
+            <li>
+              Stuti Khemani — <em>Buying Votes versus Supplying Public Services: Political Incentives to Under-Invest in Pro-Poor Policies</em>, <em>Journal of Development Economics</em>, Vol. 117, 2015.
+            </li>
+
+            <li>
+              Jacklyn A. Cleofas — <em>Towards a Practical and Empirically Grounded Account of Útang-na-loób as a Filipino Virtue</em>, <em>Kritika Kultura</em>, Nos. 33/34, 2019.
+            </li>
+
+            <li>
+              Peter Fischer et al. — <em>The Bystander-Effect: A Meta-Analytic Review on Bystander Intervention in Dangerous and Non-Dangerous Emergencies</em>, <em>Psychological Bulletin</em>, 137(4), 2011.
+            </li>
+
+            <li>
+              Adam R. Nicholls et al. — <em>Snitches Get Stitches and End Up in Ditches: A Systematic Review of the Factors Associated With Whistleblowing Intentions</em>, <em>Frontiers in Psychology</em>, Vol. 12, 2021.
+            </li>
+
+            <li>
+              Behnud Mir Djawadi, Sabrina Plaß &amp; Sabrina Loer — <em>I Don’t Believe That You Believe What I Believe: An Experiment on Misperceptions of Social Norms and Whistleblowing</em>, <em>European Economic Review</em>, Vol. 180, 2025.
+            </li>
+
+            <li>
+              Babatunde Tunde Ogunfowora et al. — <em>A Meta-Analytic Investigation of the Antecedents, Theoretical Correlates, and Consequences of Moral Disengagement at Work</em>, <em>Journal of Applied Psychology</em>, 107(5), 2022.
+            </li>
+
+            <li>
+              Justin P. Friesen et al. — <em>System Justification: Experimental Evidence, Its Contextual Nature, and Implications for Social Change</em>, <em>British Journal of Social Psychology</em>, 58(2), 2019.
+            </li>
+
+            <li>
+              Cindel J. M. White, Ara Norenzayan &amp; Mark Schaller — <em>The Content and Correlates of Belief in Karma Across Cultures</em>, <em>Personality and Social Psychology Bulletin</em>, 45(8), 2019.
+            </li>
+
+            <li>
+              Cindel J. M. White, John Michael Kelly, Azim F. Shariff &amp; Ara Norenzayan — <em>Supernatural Norm Enforcement: Thinking about Karma and God Reduces Selfishness among Believers</em>, <em>Journal of Experimental Social Psychology</em>, Vol. 84, 2019.
+            </li>
+
+            <li>
+              Cindel J. M. White &amp; Aiyana K. Willard — <em>How Karma Harms and Helps Generosity Toward Those in Need</em>, <em>Personality and Social Psychology Bulletin</em>, 52(6), 2026.
+            </li>
+
+            <li>
+              Department of Environment and Natural Resources – National Capital Region (DENR-NCR) — <em>DENR-NCR Clears 870,000 Sacks of Waste from Metro Manila Waterways to Prevent Flooding</em>.
+            </li>
+
+            <li>
+              World Bank — <em>Metro Manila Flood Management Project / Managing Floods for Inclusive and Resilient Development in Metro Manila</em>.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
