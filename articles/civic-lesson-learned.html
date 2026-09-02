@@ -1,1 +1,2003 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang 'Lesson Learned Ba—Kung Walang Binago?' ng jhElmEr—isang fact-based na Civic Explainer tungkol sa tunay na kahulugan ng lesson learned, pagbabago ng asal, boto, civic responsibility, patronage politics, accountability, at kung bakit hindi sapat ang pag-amin sa pagkakamali kung walang nagbabago sa susunod na desisyon."
+>
+
+<title>LESSON LEARNED BA—KUNG WALANG BINAGO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    LESSON LEARNED BA—KUNG WALANG BINAGO?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+     <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-lesson-learned.png"
+      alt="Simbolikong paglalarawan ng paulit-ulit na problema, pananagutan, pagboto, at tunay na kahulugan ng lesson learned na nasusukat sa pagbabago ng desisyon, asal, at pagkilos."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May malaking pagkakaiba ang nakaranas, nakaunawa, at talagang natuto.
+  </p>
+
+  <p>
+    Puwede tayong makaranas ng parehong problema taon-taon.
+    Puwede nating malaman kung ano ang mali.
+    Puwede tayong magalit, magreklamo, manisi, mag-post, mag-demand ng accountability at sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sana may matutunan tayo rito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero may mas mahirap na tanong:
+    Ano ang nabago pagkatapos?
+  </p>
+
+  <p>
+    Dahil kung pagkatapos ng lahat ay pareho pa rin ang pagpili, pareho pa rin ang ugali, pareho pa rin ang sistemang kinukunsinti at pareho pa rin ang ginagawa natin—lesson learned ba talaga iyon? O lesson na paulit-ulit lang nating nararanasan?
+  </p>
+
+  <h2>
+    MAY NAKITA SIYANG PROBLEMA—AT MAY GINAWA SIYA
+  </h2>
+
+  <p>
+    May magandang totoong halimbawa rito ang kuwento ni Gary Dabasol ng Matalom, Leyte.
+  </p>
+
+  <p>
+    Noong 2020, iniulat ng Philippine News Agency na sa loob ng walong taon ay nakapagtanim siya ng humigit-kumulang 10,000 mangroves sa coastal area sa likod ng kanyang bahay sa Barangay Punong.
+  </p>
+
+  <p>
+    Nangamba siya sa malalaking alon lalo na kapag may bagyo, kaya nangolekta siya ng mga punla sa kanilang coastline at patuloy na nagtanim.
+  </p>
+
+  <p>
+    Bukod sa coastal protection, nakita rin niya ang posibilidad na makatulong ang mangrove area bilang habitat at breeding ground ng mga isda at iba pang lamang-dagat.
+  </p>
+
+  <p>
+    Hindi kailangang gawing superhero si Tatay Gary.
+    At hindi rin kailangang palakihin ang kuwento na para bang kayang pigilan ng mangroves ang anumang bagyo o solusyunan ng isang tao ang buong problema sa disaster risk.
+  </p>
+
+  <p>
+    Hindi iyon ang pinakamahalagang bahagi ng kuwento.
+    Ang mahalaga ay ang paraan ng pag-iisip niya pagkatapos makita ang problema.
+  </p>
+
+  <p>
+    May problema.<br>
+    May bagay siyang naunawaan mula rito.<br>
+    Nag-isip siya kung ano ang kaya niyang gawin.<br>
+    At pagkatapos—ginawa niya.
+  </p>
+
+  <p>
+    Hindi natapos sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Grabe talaga.”<br>
+      “Dapat may gumawa.”<br>
+      “Lesson learned.”<br>
+      “Next time na lang.”
+    </p>
+  </blockquote>
+
+  <p>
+    May maliit siyang saklaw.
+    Ginamit niya iyon.
+    At ang maliit na pagkilos na inulit nang matagal ay umabot sa humigit-kumulang 10,000 mangrove na naitanim.
+  </p>
+
+  <p>
+    Diyan nagsisimula ang mas malaking usapin.
+  </p>
+
+  <h2>
+    ANG TUNAY NA “LESSON LEARNED” AY MAY NAGBABAGO SA SUSUNOD
+  </h2>
+
+  <p>
+    Isipin natin ang karaniwang siklo kapag may malaking problema.
+  </p>
+
+  <p>
+    May sakuna.<br>
+    May galit.<br>
+    May sisihan.<br>
+    May viral posts.<br>
+    May imbestigasyon.<br>
+    May sigaw na “dapat managot.”<br>
+    Pagkatapos, unti-unting humuhupa ang atensiyon.<br>
+    Bumababa ang tubig.<br>
+    Nawawala sa headlines ang issue.<br>
+    May bagong pinag-uusapan.
+  </p>
+
+  <p>
+    At kung walang nagbago sa mga desisyon, sistema at kilos na nakatulong upang manatili ang problema—babalik lamang tayo sa parehong eksena.
+  </p>
+
+  <p>
+    Hindi mali ang magreklamo.
+    Hindi mali ang magalit.
+    Hindi mali ang pumuna sa gobyerno.
+  </p>
+
+  <p>
+    Sa isang demokrasya, mahalaga ang public scrutiny, criticism at demand for accountability.
+  </p>
+
+  <p>
+    Pero ang reklamo ay simula lamang ng civic response.
+    Hindi iyon ang katapusan.
+  </p>
+
+  <p>
+    Dahil kung tunay nating sinasabing may natutunan tayo, dapat may makitang epekto ang natutunan sa susunod nating desisyon.
+  </p>
+
+  <h2>
+    KAPAG BAHA ANG USAPAN, HUWAG DIN NATIN PASIMPLEHIN
+  </h2>
+
+  <p>
+    Mahalagang linawin:
+    Hindi lahat ng baha ay simpleng resulta ng korapsyon.
+  </p>
+
+  <p>
+    Ang flood risk ay maaaring manggaling sa kombinasyon ng matinding ulan at bagyo, rapid urbanization at pagbabago sa land use, encroachment sa flood-prone areas at waterways, kakulangan o limitasyon ng drainage at pumping systems, at solid waste na bumabara sa daluyan ng tubig.
+  </p>
+
+  <p>
+    Sa Metro Manila Flood Management work ng World Bank, kabilang sa mga problemang tinutugunan ang river at lake flooding, extreme rainfall, urban drainage, lumang o underperforming pumping stations, waterways at solid waste na nakaaapekto sa operasyon ng pumping systems.
+  </p>
+
+  <p>
+    May hiwalay ding assessment ang Asian Development Bank na tumukoy sa rapid urbanization, encroachment sa flood-prone areas, climatic changes at land-use changes bilang mga salik na nagpapataas ng flood risk at flood-related losses.
+  </p>
+
+  <p>
+    Kaya hindi masusing pagsusuri ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bumaha? Siguradong korapsyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin masusing pagsusuri ang kabaligtaran:
+  </p>
+
+  <blockquote>
+    <p>
+      “Natural disaster lang iyan, walang kinalaman ang kalidad ng pamamahala.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil kapag may public infrastructure, procurement, maintenance at government spending na sangkot, mahalaga kung maayos ba ang paggamit ng pera.
+  </p>
+
+  <p>
+    Sa isang kilalang cross-country IMF working paper nina Vito Tanzi at Hamid Davoodi, nakita ang association ng mas mataas na corruption sa mas mababang spending para sa operations and maintenance, mas mababang kalidad ng public infrastructure, at mas mababang productivity ng public investment.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayan na anumang sirang proyekto ay awtomatikong bunga ng corruption.
+    Ang ipinapakita nito ay kung paano maaaring pahinain ng corruption ang kalidad at value ng public investment sa mas malawak na sistema.
+  </p>
+
+  <p>
+    Kaya kapag may napatunayang anomalya, ghost project, substandard construction, diversion ng pondo o procurement abuse—hindi iyon abstract na problema lamang.
+  </p>
+
+  <p>
+    Ang nawawalang pera ay serbisyong nabawasan o hindi naibigay.
+    Ang mahinang proyekto ay mas mahinang proteksiyon.
+    Ang maintenance na hindi ginawa ay problemang pinabayaang bumalik at lumala.
+  </p>
+
+  <p>
+    Doon dapat managot ang may kapangyarihan.
+    Pero mayroon pang isang bahagi ng usapan na madalas nating ayaw tingnan.
+  </p>
+
+<h2>
+  KUNG GALIT TAYO SA KORAPSIYON, MAY NABABAGO BA SA PARAAN NATIN NG PAGPILI?
+</h2>
+
+<p>
+  Madaling sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Nakakasawa na ang mga kurap.”
+  </p>
+</blockquote>
+
+<p>
+  Mas mahirap ang tanong:
+  Kapag eleksiyon na, nagbago ba ang pamantayan natin?
+  Mas sinusuri ba natin ang record?
+  Mas mahalaga na ba ang competence kaysa kasikatan?
+  Mas mahalaga na ba ang integridad kaysa apelyido?
+  Mas kaya na ba nating hindi ipagtanggol ang kandidatong sinuportahan natin kapag may malinaw nang ebidensiyang mali ang ginawa niya?
+</p>
+
+<p>
+  O bumabalik pa rin tayo sa:
+</p>
+
+<blockquote>
+  <p>
+    “Marami naman siyang naitulong.”<br>
+    “Kilala namin ang pamilya.”<br>
+    “Mabait iyan sa amin.”<br>
+    “Siya ang nagbibigay.”<br>
+    “May utang na loob kami.”<br>
+    “Sayang ang ibibigay.”
+  </p>
+</blockquote>
+
+<p>
+  Dito pumapasok ang mahirap na realidad ng clientelism at patronage politics.
+</p>
+
+<p>
+  At hindi sapat na ipaliwanag ito sa simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “Bakit kasi nagpapabili ang mga botante?”
+  </p>
+</blockquote>
+
+<h2>
+  HINDI LANG “KATANGAHAN” ANG PATRONAGE—MAY SOCIAL AT ECONOMIC SYSTEM SA LIKOD NITO
+</h2>
+
+<p>
+  Sa isang 2023 study nina Nico Ravanilla at Allen Hicken, gumamit ang researchers ng data mula sa 900 voters sa isang lungsod sa Pilipinas at sinuri ang family-based networks, electoral handouts at voting behavior.
+</p>
+
+<p>
+  Nakita nilang mas disproportionately targeted ng campaigns ang poorer voters.
+</p>
+
+<p>
+  Sa mga mahihirap na botante, mahalaga rin ang family ties sa politicians sa targeting.
+</p>
+
+<p>
+  Nakita rin na ang access sa formal networks gaya ng workers’ associations ay maaaring makabawas sa takot ng ilang botante na maparusahan kapag hindi sila nag-reciprocate sa patron.
+</p>
+
+<p>
+  Mahalaga ang limitasyon:
+  Isang Philippine city ang study—hindi ito national estimate ng lahat ng Pilipino.
+</p>
+
+<p>
+  Pero may isa pang mahalagang katotohanan.
+  Ang vote buying at patronage ay hindi lang simpleng dalawang tao na nagpapalitan ng pera at boto.
+</p>
+
+<p>
+  Maaari itong makabit sa:<br>
+  kahirapan,<br>
+  dependency,<br>
+  family networks,<br>
+  access sa tulong,<br>
+  takot mawalan ng pabor,<br>
+  social obligation,<br>
+  at kawalan ng ibang mapagkukunan kapag may pangangailangan.
+</p>
+
+<p>
+  Kaya kung gusto nating maintindihan kung bakit matibay ang patronage politics, kailangan nating makita hindi lamang ang maling desisyon ng botante kundi pati ang sistemang nagpapadali at nagpapalakas sa maling desisyong iyon.
+</p>
+
+<p>
+  Pero may kabilang katotohanan din.
+  Ang pagkakaroon ng pressure ay hindi nangangahulugang wala nang personal agency ang tao.
+  Ang paliwanag kung bakit mahirap gumawa ng tama ay hindi awtomatikong dahilan para sabihing wala nang pananagutan sa piniling gawin.
+</p>
+
+<p>
+  Parehong kailangang makita.
+</p>
+
+<p>
+  May isa pang Philippine field experiment na nagpapakita kung gaano kalaki ang pagitan ng prinsipyo at aktuwal na behavior kapag may immediate incentive.
+</p>
+
+<p>
+  Sa randomized experiment nina Allen Hicken, Stephen Leider, Nico Ravanilla at Dean Yang sa Sorsogon City, inimbitahan ang ilang botante na mangakong hindi nila ibebenta ang kanilang boto.
+</p>
+
+<p>
+  Sa city-council race, kung saan mas maliit ang vote-buying payments, bumaba nang 10.9 percentage points ang vote-switching na ginamit ng researchers bilang proxy para sa vote-selling.
+</p>
+
+<p>
+  Pero sa mas mataas ang stakes na mayor at vice-mayor races, kung saan mas malaki ang payments, close to zero at statistically insignificant ang effects.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na pera lang ang dahilan ng vote-selling.
+  At hindi rin direktang naobserbahan ng researchers ang laman ng secret ballot.
+</p>
+
+<p>
+  Pero malinaw ang behavioral lesson:
+  Ang alam nating tama ay hindi awtomatikong naisasalin sa kilos—lalo na kapag mas malakas ang tukso, pressure o agarang pakinabang.
+</p>
+
+<p>
+  Kaya mahalagang hindi lang palakasin ang prinsipyo.
+  Kailangan ding bawasan ang mga kondisyon at sistemang paulit-ulit na nagtutulak sa taong isuko iyon.
+</p>
+
+<h2>
+  ANG “UTANG NA LOOB” AY HINDI DAPAT GAWING POLITICAL CONTRACT
+</h2>
+
+<p>
+  Mahalaga ring huwag gawing kontrabida ang kulturang Pilipino mismo.
+</p>
+
+<p>
+  Sa mas malawak na Sikolohiyang Pilipino, ang utang na loob ay hindi simpleng kahinaan o bulag na obligasyon.
+</p>
+
+<p>
+  Inilalagay ito sa loob ng relational Filipino value system kung saan mahalaga ang kapwa, pakikipag-ugnayan at pagkilala sa kabutihang natanggap.
+</p>
+
+<p>
+  Mas direkta pa rito ang isang pag-aaral ni Roberto E. Javier Jr. na inilathala sa Diwa E-Journal.
+</p>
+
+<p>
+  Sa 2015 survey ng 218 college at graduate-level students, lumitaw ang utang na loob bilang ugnayang nagmumula sa kabutihan at kusang-loob at naipapakita sa respeto, pasasalamat at pagtulong.
+</p>
+
+<p>
+  Pero mahalaga rin ang isang nuance sa mismong literature:
+  Kapag may malaking agwat ng kapangyarihan sa pagitan ng tumulong at tinulungan, maaaring magamit ang utang na loob bilang panghawak ng makapangyarihan sa taong nangangailangan.
+</p>
+
+<p>
+  Kaya hindi ang pasasalamat ang problema.
+  Ang problema ay kapag ang pasasalamat ay ginawang obligasyong pampulitika.
+</p>
+
+<p>
+  Kapag ang serbisyong pinondohan ng taumbayan ay ipinresentang personal na regalo ng politiko.
+  Kapag ang ayuda ay ginawang dahilan upang magkaroon ng permanenteng political debt.
+</p>
+
+<p>
+  Kapag ang:
+  <br><br>
+  “Tinulungan niya kami” ay naging sapat nang dahilan para hindi na tingnan ang competence, record, corruption issues o fitness for public office.
+</p>
+
+<p>
+  Dapat malinaw:
+  Ang pasasalamat ay personal.
+  Ang boto ay pananagutang pampubliko.
+</p>
+
+<p>
+  Puwede kang magpasalamat sa taong tumulong sa iyo.
+  Pero hindi nangangahulugang pag-aari na niya ang political judgment mo.
+  At lalong hindi dapat maging personal na utang na loob ang perang galing mismo sa buwis at public funds.
+</p>
+
+<blockquote>
+  <p>
+    Ang boto ay hindi resibo ng ayuda.
+  </p>
+</blockquote>
+
+          <h2>
+  ALAM NATING MALI—BAKIT INUULIT PA RIN NATIN?
+</h2>
+
+<p>
+  Dito naman pumapasok ang psychology ng human behavior.
+</p>
+
+<p>
+  May isang problemang matagal nang pinag-aaralan sa psychology na tinatawag na intention–behavior gap.
+</p>
+
+<p>
+  Maraming tao ang totoong may intensiyong gumawa ng tama pero hindi iyon palaging nauuwi sa aktuwal na pagbabago.
+</p>
+
+<p>
+  Sa meta-analysis nina Thomas Webb at Paschal Sheeran ng 47 experimental tests, ang interventions ay nakalikha ng medium-to-large improvement sa intentions, pero mas maliit ang naging pagbabago sa actual behavior.
+</p>
+
+<p>
+  Sa simpleng salita:
+  Mas madaling baguhin ang sinasabi nating gagawin kaysa ang ginagawa talaga natin.
+</p>
+
+<p>
+  Familiar ito.
+</p>
+
+<blockquote>
+  <p>
+    “Hindi na ako magpapadala sa fake news.”
+  </p>
+</blockquote>
+
+<p>
+  Pero share agad sa susunod na nakakagalit na post.
+</p>
+
+<blockquote>
+  <p>
+    “Hindi na ako boboto dahil sa pangalan.”
+  </p>
+</blockquote>
+
+<p>
+  Pero balik sa pamilyar na apelyido sa balota.
+</p>
+
+<blockquote>
+  <p>
+    “Hindi na ako magpapadala sa ayuda.”
+  </p>
+</blockquote>
+
+<p>
+  Pero pagdating ng election season, bumalik ang dating pressure.
+</p>
+
+<blockquote>
+  <p>
+    “Next time magiging mapanuri na ako.”
+  </p>
+</blockquote>
+
+<p>
+  Pero walang ginawang bagong paraan para magsuri.
+</p>
+
+<p>
+  Iyon ang problema sa lesson learned na nasa isip lang.
+</p>
+
+<h2>
+  KAILANGAN ANG ARAL AY MAY KATUMBAS NA KONKRETONG KILOS
+</h2>
+
+<p>
+  May isa pang body of behavioral research tungkol sa tinatawag na implementation intentions.
+</p>
+
+<p>
+  Hindi lamang:
+</p>
+
+<blockquote>
+  <p>
+    “Gagawin ko ang tama.”
+  </p>
+</blockquote>
+
+<p>
+  Kundi mas konkreto:
+  Kapag nangyari ang sitwasyong ito, ito ang gagawin ko.
+</p>
+
+<p>
+  Sa meta-analysis nina Peter Gollwitzer at Paschal Sheeran ng 94 independent tests, nagkaroon ng medium-to-large positive effect ang implementation intentions sa goal attainment sa mga behavior na kanilang sinuri.
+</p>
+
+<p>
+  Hindi iyon election study.
+  At hindi dapat ituring na automatic na recipe para ayusin ang Philippine politics.
+</p>
+
+<p>
+  Pero may malinaw na behavioral lesson:
+  Mas madaling manatiling intensiyon ang isang prinsipyo kapag wala itong konkretong paraan ng pagsasabuhay.
+</p>
+
+<p>
+  Kaya ang:
+</p>
+
+<blockquote>
+  <p>
+    “Magiging matalinong botante ako”
+  </p>
+</blockquote>
+
+<p>
+  ay mas mahina kaysa:
+</p>
+
+<blockquote>
+  <p>
+    “Bago ako pumili, iche-check ko ang record, qualifications, major controversies at credible evidence tungkol sa kandidato.”
+  </p>
+</blockquote>
+
+<p>
+  Ang:
+</p>
+
+<blockquote>
+  <p>
+    “Ayaw ko sa korapsyon”
+  </p>
+</blockquote>
+
+<p>
+  ay mas mahina kaysa:
+</p>
+
+<blockquote>
+  <p>
+    “Kapag kandidatong sinuportahan ko ang napatunayang gumawa ng mali, hindi ko siya ipagtatanggol dahil kakampi ko siya.”
+  </p>
+</blockquote>
+
+<p>
+  Ang:
+</p>
+
+<blockquote>
+  <p>
+    “Ayaw ko sa fake news”
+  </p>
+</blockquote>
+
+<p>
+  ay mas mahina kaysa:
+</p>
+
+<blockquote>
+  <p>
+    “Kapag claim na nakakagalit o pabor sa paniniwala ko ang nakita ko, iche-check ko muna bago i-share.”
+  </p>
+</blockquote>
+
+<p>
+  Ang:
+</p>
+
+<blockquote>
+  <p>
+    “May dapat gumawa tungkol dito”
+  </p>
+</blockquote>
+
+<p>
+  ay mas mahina kaysa:
+</p>
+
+<blockquote>
+  <p>
+    “Ano ang bahagi nito na kaya kong gawin sa sarili kong saklaw?”
+  </p>
+</blockquote>
+
+<p>
+  Diyan nagiging behavior ang prinsipyo.
+</p>
+
+<h2>
+  PATI ANG “GROWTH MINDSET,” MADALAS DIN NATING NAPAPASIMPLE
+</h2>
+
+<p>
+  Madaling gawing inspirational slogan ang growth mindset:
+</p>
+
+<blockquote>
+  <p>
+    “Believe in yourself.”<br>
+    “Positive mindset lang.”<br>
+    “Kung gusto, may paraan.”
+  </p>
+</blockquote>
+
+<p>
+  Pero hindi ganyan kasimple ang research.
+</p>
+
+<p>
+  Sa dalawang malalaking meta-analysis nina Victoria Sisk at mga kasama, ang una ay sumaklaw sa 273 effects at 365,915 participants, at ang ikalawa sa 43 intervention effects at 57,155 participants.
+</p>
+
+<p>
+  Ang overall relationships at intervention effects sa academic achievement ay mahina, bagaman may ilang groups na maaaring mas makinabang.
+</p>
+
+<p>
+  Mahalagang tandaan:
+  Academic growth-mindset research ito, hindi research tungkol sa pagboto o Philippine civic behavior.
+</p>
+
+<p>
+  Kaya hindi natin dapat gamitin iyon bilang “proof” na mindset lang ang sagot sa problema ng bansa.
+</p>
+
+<p>
+  Ang mas kapaki-pakinabang na lesson ay mas simple:
+  Hindi sapat ang paniniwalang puwedeng gumanda ang resulta kung hindi mo binabago ang strategy kapag hindi gumagana ang dati.
+</p>
+
+<p>
+  Kung taon-taon mong nakikita ang parehong problema pero ang response mo ay eksaktong pareho—hindi iyon growth.
+  Repetition iyon.
+</p>
+
+<h2>
+  “ANO NAMAN ANG MAGAGAWA KO? ISA LANG AKO.”
+</h2>
+
+<p>
+  Ito marahil ang isa sa pinakamalakas na dahilan kung bakit maraming tao ang hanggang reklamo na lamang.
+</p>
+
+<p>
+  Ano naman daw ang epekto ng isang tao?
+</p>
+
+<p>
+  May konsepto sa political psychology na political efficacy—ang pakiramdam na kaya mong umunawa, makilahok at magkaroon ng saysay sa political process.
+</p>
+
+<p>
+  Sa isang meta-analysis nina Jennifer Oser at mga kasama ng 48 studies, 51,860 respondents mula sa 28 bansa, positibong associated ang political efficacy sa parehong online at offline political participation.
+</p>
+
+<p>
+  Association ito.
+</p>
+
+<p>
+  Hindi simpleng proof na:
+</p>
+
+<blockquote>
+  <p>
+    “Maniwala ka lang na may magagawa ka at magiging active citizen ka.”
+  </p>
+</blockquote>
+
+<p>
+  Pero malinaw na magkaugnay ang pakiramdam na may saysay ang participation at ang aktuwal na pakikilahok.
+</p>
+
+<p>
+  May kaugnay ding konsepto na collective efficacy.
+</p>
+
+<p>
+  Sa landmark study nina Robert Sampson, Stephen Raudenbush at Felton Earls sa 8,782 residents ng 343 Chicago neighborhoods, inilalarawan ang collective efficacy bilang social cohesion na sinamahan ng willingness na kumilos para sa common good.
+</p>
+
+<p>
+  Mas mataas na collective efficacy was associated with lower neighborhood violence kahit kinontrol ang ilang ibang factors.
+</p>
+
+<p>
+  Hindi Pilipinas ang Chicago.
+  At hindi election ang violence.
+  Kaya hindi dapat sabihing direktang pinatutunayan nitong gaganda ang Pilipinas kapag “lahat kumilos.”
+</p>
+
+<p>
+  Pero mahalaga ang prinsipyo:
+  Ang common good ay hindi nabubuo sa mabuting intensiyon lang. Kailangan ng sapat na taong handang kumilos.
+</p>
+
+<p>
+  Diyan bumabalik ang halaga ng ginawa ni Tatay Gary.
+  Hindi dahil ang isang tao ay kayang solusyunan ang buong bansa.
+</p>
+
+<p>
+  Kundi dahil ipinakita niya ang kabaligtaran ng:
+</p>
+
+<blockquote>
+  <p>
+    “Wala rin namang mangyayari kung ako lang.”
+  </p>
+</blockquote>
+
+          <h2>
+  MALIIT ANG ISANG KILOS—PERO GANOON DIN NABUBUO ANG MALAKING SISTEMA
+</h2>
+
+<p>
+  Isang boto lang.
+  Isang basurang itinapon lang.
+  Isang maliit na lagay lang.
+  Isang beses lang na pinalampas.
+  Isang fake post lang na shinare.
+  Isang maling kandidatong ipinagtanggol dahil kakampi.
+  Isang pagkakataong tumahimik kahit may kaya namang gawin.
+</p>
+
+<p>
+  Kapag tiningnan nang paisa-isa, maliit.
+</p>
+
+<p>
+  Pero ang malalaking sistema ay hindi naman laging nabubuo sa isang napakalaking desisyon.
+  Madalas, produkto rin sila ng maraming maliliit na desisyong paulit-ulit na ginawa, tinanggap, kinunsinti o hindi pinansin.
+</p>
+
+<p>
+  At iyon din ang dahilan kung bakit hindi walang saysay ang maliit na mabuting kilos.
+</p>
+
+<p>
+  Isang taong tumatanggi sa vote buying ay hindi agad makasisira sa political machinery.
+  Isang taong nagve-verify bago mag-share ay hindi agad matatapos ang disinformation.
+  Isang taong nagrereport ng kahina-hinalang proyekto ay hindi agad matatapos ang corruption.
+  Isang taong maayos magtapon ng basura ay hindi agad lilinis ang buong ilog.
+  Isang Tatay Gary ay hindi kayang gawing ligtas sa lahat ng bagyo ang buong Leyte.
+</p>
+
+<p>
+  Pero kung ang lahat ng tao ay maghihintay hanggang kaya nilang solusyunan ang buong problema bago sila gumawa ng kahit isang bahagi ng solusyon—walang magsisimula.
+</p>
+
+<h2>
+  HINDI IBIG SABIHIN NITO NA MAMAMAYAN ANG SISIHIN SA LAHAT
+</h2>
+
+<p>
+  Dito kailangang maging malinaw.
+</p>
+
+<p>
+  May mga responsibilidad na nasa gobyerno dahil gobyerno ang may legal authority, public funds, technical agencies at institutional power.
+</p>
+
+<p>
+  Hindi mapapalitan ng personal discipline ang flood-control infrastructure.
+  Hindi mapapalitan ng bayanihan ang competent public administration.
+  Hindi mapapalitan ng private initiative ang procurement transparency, law enforcement, engineering standards, watershed management, disaster planning, prosecution at institutional accountability.
+</p>
+
+<p>
+  At kapag may opisyal na napatunayang nangurakot o nagpabaya, ang pananagutan niya ay hindi nababawasan dahil may mamamayan ding maling nagawa.
+  Pero hindi rin sumusunod dito na walang pananagutan ang ordinaryong mamamayan sa mga desisyong siya naman ang may kontrol.
+</p>
+
+<p>
+  Magkaiba ang pananagutan—hindi sila magkalaban.
+</p>
+
+<p>
+  May pananagutan ang opisyal sa kapangyarihang ipinagkatiwala sa kanya.
+  May pananagutan ang botante sa kapangyarihang hawak niya sa balota.
+  May pananagutan ang mamamayan sa kaya niyang gawin o iwasang gawin sa sarili niyang saklaw.
+</p>
+
+<p>
+  Hindi kailangang pumili kung sino lang ang dapat managot.
+</p>
+
+<h2>
+  KAYA ANG TANONG AY HINDI LANG “SINO ANG MAY KASALANAN?”
+</h2>
+
+<p>
+  Kailangang malaman kung sino ang responsable.
+  Kailangang imbestigahan ang anomalya.
+  Kailangang panagutin ang napatunayang gumawa ng mali.
+</p>
+
+<p>
+  Pero pagkatapos noon, may isa pang tanong na dapat hindi nawawala:
+  Ano ang babaguhin natin dahil alam na natin ito?
+</p>
+
+<p>
+  Kung corruption ang paulit-ulit nating nakikitang problema—mas magiging mapanuri ba tayo sa iboboto?
+  Kung vote buying ang problema—ipagpapalit pa rin ba natin ang ilang taong kapangyarihan sa ilang araw na pakinabang?
+  Kung patronage politics ang problema—matututo ba tayong paghiwalayin ang public service sa personal na utang na loob?
+  Kung incompetence ang problema—competence na ba ang hahanapin bago charisma at popularity?
+  Kung disinformation ang problema—magve-verify na ba bago mag-share?
+  Kung partisan loyalty ang problema—kaya ba nating punahin ang mali kahit sariling kandidato o sariling kampo?
+  Kung kulang ang accountability—maniningil pa rin ba tayo kapag hindi na trending ang issue?
+  At kung may bahagi ng isang problema na kaya nating bawasan o ayusin sa sarili nating barangay, trabaho, pamilya o komunidad—gagawin ba natin?
+</p>
+
+<p>
+  Diyan nasusukat kung talagang may natutunan.
+</p>
+
+<p>
+  Hindi sa lakas ng sigaw habang sariwa pa ang problema.
+  Kundi sa pagbabagong nananatili kapag tahimik na ulit ang paligid.
+</p>
+
+<h2>
+  HINDI NATATAPOS ANG ARAL SA “LESSON LEARNED”
+</h2>
+
+<p>
+  May nakita si Tatay Gary na problema.
+</p>
+
+<p>
+  Hindi niya kayang ayusin ang lahat.
+  Hindi niya hinintay na maging makapangyarihan muna siya.
+  Hindi niya hinintay na siguradong mababago niya ang buong lugar.
+</p>
+
+<p>
+  Sa kaya niyang saklaw, nag-isip siya ng paraan.
+  At ginawa niya.
+</p>
+
+<p>
+  Hindi natin kailangang literal na gayahin ang pagtatanim niya ng mangrove.
+  Ang kailangang gayahin ay ang lohika ng pagkilos.
+</p>
+
+<p>
+  Mula problema—tungo sa pag-unawa.
+  Mula pag-unawa—tungo sa desisyon.
+  Mula desisyon—tungo sa aktuwal na pagbabago.
+  At mula pagbabago—tungo sa tuloy-tuloy na pagkilos.
+</p>
+
+<p>
+  Dahil ang tunay na lesson learned ay may ebidensiya.
+</p>
+
+<p>
+  May nabago sa susunod mong pagpili.
+  May nabago sa susunod mong boto.
+  May nabago sa susunod mong asal.
+  May nabago sa susunod mong gagawin.
+</p>
+
+<p>
+  Kung taon-taon pareho ang problema, pareho ang reklamo, pareho ang galit, pareho ang political behavior at pareho ang maling kinukunsinti—baka hindi tayo paulit-ulit na tinuturuan ng problema.
+  Baka paulit-ulit lang nating tinatanggihan ang aral.
+</p>
+
+          <h2>
+  ANG BANSANG PURO “LESSON LEARNED” PERO WALANG BINABAGO SA BOTO, ASAL AT KILOS AY BANSANG PAULIT-ULIT LANG NATUTUTO SA PAREHONG SAKIT.
+</h2>
+
+<p>
+  Si Tatay Gary, sa maliit niyang paraan, ipinakita ang kabaligtaran.
+</p>
+
+<p>
+  May nakita siyang problema.
+  May natutunan siya.
+  Nag-isip siya ng kaya niyang gawin.
+  At ginawa niya.
+</p>
+
+<p>
+  Hindi natin kailangang baguhin mag-isa ang buong Pilipinas.
+</p>
+
+<p>
+  Pero may malaking pagkakaiba ang taong nagsasabing:
+</p>
+
+<blockquote>
+  <p>
+    “May dapat magbago.”
+  </p>
+</blockquote>
+
+<p>
+  at ang taong nagtatanong:
+</p>
+
+<blockquote>
+  <p>
+    “Ano ang kaya kong simulang baguhin—at gagawin ko ba?”
+  </p>
+</blockquote>
+
+<p>
+  Dahil maaaring maliit ang isang boto.
+  Maliit ang isang pagtanggi sa vote buying.
+  Maliit ang isang report.
+  Maliit ang isang pagtutuwid.
+  Maliit ang isang punlang itinanim.
+</p>
+
+<p>
+  Pero ang malaking problema ay madalas ding binubuo ng napakaraming maliliit na desisyong ginawa, kinunsinti, o pinabayaang maulit.
+</p>
+
+<p>
+  At ganoon din maaaring magsimula ang pagbabago.
+</p>
+          
+</div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Philippine News Agency — Roel Amazona, <em>Sexagenarian in Leyte Plants 10K Mangroves</em>, 2020.
+    </li>
+
+    <li>
+      World Bank — <em>Project Highlights: Metro Manila Flood Management</em>.
+    </li>
+
+    <li>
+      Asian Development Bank — <em>Building Disaster-Resilient Communities in Flood-Prone Areas</em>.
+    </li>
+
+    <li>
+      Vito Tanzi &amp; Hamid Davoodi — <em>Corruption, Public Investment, and Growth</em>, IMF Working Paper No. 97/139, 1997.
+    </li>
+
+    <li>
+      Nico Ravanilla &amp; Allen Hicken — <em>Poverty, Social Networks, and Clientelism</em>, World Development, 2023.
+    </li>
+
+    <li>
+      Allen Hicken, Stephen Leider, Nico Ravanilla &amp; Dean Yang — <em>Temptation in Vote-Selling: Evidence from a Field Experiment in the Philippines</em>, Journal of Development Economics, 2018.
+    </li>
+
+    <li>
+      Rogelia Pe-Pua &amp; Elizabeth A. Protacio-Marcelino — <em>Sikolohiyang Pilipino (Filipino Psychology): A Legacy of Virgilio G. Enriquez</em>, Asian Journal of Social Psychology, 2000.
+    </li>
+
+    <li>
+      Roberto E. Javier Jr. — <em>Parang Pag-ibig, Ibinibigay Nang Walang Kapalit! Utang na Loob—Ugnayan, Unawa, at Ugali</em>, Diwa E-Journal, 2017.
+    </li>
+
+    <li>
+      Thomas L. Webb &amp; Paschal Sheeran — <em>Does Changing Behavioral Intentions Engender Behavior Change? A Meta-Analysis of the Experimental Evidence</em>, Psychological Bulletin, 2006.
+    </li>
+
+    <li>
+      Peter M. Gollwitzer &amp; Paschal Sheeran — <em>Implementation Intentions and Goal Achievement: A Meta-analysis of Effects and Processes</em>, Advances in Experimental Social Psychology, 2006.
+    </li>
+
+    <li>
+      Victoria F. Sisk, Alexander P. Burgoyne, Jingze Sun, Jennifer L. Butler &amp; Brooke N. Macnamara — <em>To What Extent and Under Which Circumstances Are Growth Mind-Sets Important to Academic Achievement? Two Meta-Analyses</em>, Psychological Science, 2018.
+    </li>
+
+    <li>
+      Jennifer Oser, Amit Grinson, Shelley Boulianne &amp; Eran Halperin — <em>How Political Efficacy Relates to Online and Offline Political Participation: A Multilevel Meta-analysis</em>, Political Communication, 2022.
+    </li>
+
+    <li>
+      Robert J. Sampson, Stephen W. Raudenbush &amp; Felton Earls — <em>Neighborhoods and Violent Crime: A Multilevel Study of Collective Efficacy</em>, <em>Science</em>, 1997.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
