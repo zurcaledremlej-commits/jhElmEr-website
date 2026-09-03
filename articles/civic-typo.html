@@ -1,1 +1,2391 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa pagkakaiba ng typo, factual error, material error, at kasinungalingan—at kung bakit hindi sapat ang simpleng pagkakamali upang agad husgahan ang integridad at kredibilidad ng isang tao."
+>
+
+<title>NAGKA-TYPO LANG—SINUNGALING NA AGAD? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+ 
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    NAGKA-TYPO LANG—<br>SINUNGALING NA AGAD?
+  </h1>
+
+      </header>
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-typo.png"
+      alt="Simbolikong paglalarawan ng paghusga sa kredibilidad batay sa isang typo o simpleng pagkakamali, na inihahambing sa mas mabigat na usapin ng sinadyang kasinungalingan."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May isang maling letra.
+  </p>
+
+  <p>
+    Isang numerong nagkapalit ng puwesto.<br>
+    Isang petsang napindot nang mali.<br>
+    Isang detalye na hindi agad napansin—pero kalaunan ay itinama.
+  </p>
+
+  <p>
+    Sa ordinaryong pagsusulat, ilan sa mga ito ay maaaring typo, slip, o oversight.
+  </p>
+
+  <p>
+    Pero kung honest mistake ba talaga, simpleng kapabayaan, o sinadyang panlilinlang, hindi iyon dapat hulaan mula sa error lamang.
+    Kailangang tingnan ang context at ebidensiya.
+  </p>
+
+  <p>
+    Dahil sa social media, minsan isang screenshot lang ang kailangan para maging mas mabigat agad ang hatol:
+  </p>
+
+  <p>
+    “Nahuli.”<br>
+    “Gawa-gawa.”<br>
+    “Fake.”<br>
+    “Sinungaling.”
+  </p>
+
+  <p>
+    At doon nagsisimula ang mas mahalagang problema.
+  </p>
+
+  <p>
+    Hindi dahil dapat palampasin ang mali.<br>
+    Dapat itong itama.<br>
+    Dapat itong ma-fact-check.<br>
+    At kung may kapabayaan, dapat itong punahin.
+  </p>
+
+  <p>
+    Pero may malaking pagkakaiba ang pagsasabing:
+  </p>
+
+  <blockquote>
+    <p>“Mali ang detalyeng ito.”</p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>“Nagsisinungaling ang taong ito.”</p>
+  </blockquote>
+
+  <p>
+    Ang una ay conclusion tungkol sa accuracy ng isang impormasyon.
+    Ang pangalawa ay mas mabigat na hatol tungkol sa state of mind, integridad, at credibility ng tao.
+  </p>
+
+  <p>
+    At hindi porke’t napatunayan ang una ay awtomatikong napatunayan na rin ang pangalawa.
+  </p>
+
+  <p>
+    Dahil ang tao ay puwedeng maging mali nang hindi sadyang nanlilinlang.
+  </p>
+
+  <p>
+    Puwedeng magkamali dahil sa memorya.<br>
+    Puwedeng magkamali sa pag-type.<br>
+    Puwedeng makaligtaan ang isang detalye.<br>
+    Puwedeng maging careless.<br>
+    At oo—puwede ring sadyang gumawa ng kasinungalingan.
+  </p>
+
+  <p>
+    Pero hindi magkakapareho ang mga iyon.
+  </p>
+
+  <p>
+    Kaya bago natin gawing sukatan ng buong pagkatao at credibility ang isang pagkakamali, may mas mahalagang itanong muna:
+    Ano ba talaga ang nangyari—human error, kapabayaan, o sinadyang panlilinlang?
+  </p>
+
+  <p>
+    Diyan kailangang magsimula ang matinong pagsusuri.
+  </p>
+
+  <h2>
+    HINDI LAHAT NG “MALI” AY MAGKAKAPAREHO
+  </h2>
+
+  <p>
+    Dito madalas nagsisimula ang kalituhan.
+  </p>
+
+  <p>
+    Sa public discussion, madaling pagsama-samahin ang:<br>
+    typo<br>
+    factual error<br>
+    material error<br>
+    at fabrication
+  </p>
+
+  <p>
+    na para bang pare-pareho lamang ang ibig sabihin.
+  </p>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    At hindi rin laging mutually exclusive ang mga label na ito. Halimbawa, ang isang typo ay maaari ring magresulta sa maling factual detail.
+  </p>
+
+  <p>
+    Ang mahalaga ay maintindihan kung saan nanggaling ang error at gaano kalaki ang epekto nito sa pangunahing claim.
+  </p>
+
+  <h2>
+    TYPOGRAPHICAL O TRANSCRIPTION ERROR
+  </h2>
+
+  <p>
+    Maaaring tama ang impormasyong gustong isulat ng tao pero nagkamali siya sa execution.
+  </p>
+
+  <p>
+    Halimbawa:<br>
+    654 → 564
+  </p>
+
+  <p>
+    Nagpalit ang puwesto ng dalawang digit.
+  </p>
+
+  <p>
+    O kaya:<br>
+    2025 → 2026
+  </p>
+
+  <p>
+    dahil maling key ang napindot.
+  </p>
+
+  <p>
+    Mali ang nakasulat.
+    Kailangang itama.
+  </p>
+
+  <p>
+    Pero mula sa typo lamang, wala ka pang sapat na basehan para sabihing sinadya ang maling impormasyon.
+  </p>
+
+  <h2>
+    FACTUAL ERROR
+  </h2>
+
+  <p>
+    Ito naman ay statement na objectively mali.
+  </p>
+
+  <p>
+    Maaaring maling date.<br>
+    Maling pangalan.<br>
+    Maling lugar.<br>
+    Maling statistics.<br>
+    Maling interpretation ng isang record.
+  </p>
+
+  <p>
+    At maaaring hindi typo ang dahilan. Posibleng ang taong nagsabi nito ay naniniwala ring tama ang maling impormasyon.
+  </p>
+
+  <p>
+    Mali pa rin.
+    Kailangang i-correct.
+  </p>
+
+  <p>
+    Pero narito ang mahalagang distinction:
+    Ang false statement ay hindi automatic na deliberate lie.
+  </p>
+
+  <p>
+    Sa karaniwang paggamit ng konsepto ng lying, mahalaga hindi lamang kung mali ang statement kundi pati kung alam o pinaniniwalaan ng nagsasalita na mali ang sinasabi niya at sinasadya niyang paniwalain ang iba na totoo ito.
+  </p>
+
+  <p>
+    May debate sa philosophy tungkol sa eksaktong definition ng lying.
+  </p>
+
+  <p>
+    Pero para sa practical civic discussion natin, malinaw ang mahalagang punto:
+    Factual Falsity at Deliberate Dishonesty ay hindi interchangeable.
+  </p>
+
+  <h2>
+    MATERIAL O SUBSTANTIVE ERROR
+  </h2>
+
+  <p>
+    Dito tumataas ang bigat.
+  </p>
+
+  <p>
+    Material ang error kapag tumatama na ito sa sentro ng claim at maaaring baguhin ang conclusion.
+  </p>
+
+  <p>
+    Hindi pareho ang maling spelling ng pangalan at maling identity ng taong inaakusahan.
+    Hindi pareho ang isang maliit na discrepancy sa oras at maling oras na nagpapatunay na physically impossible palang naroon ang isang tao.
+    Hindi pareho ang transposed reference number at dokumentong gawa-gawa mula umpisa.
+  </p>
+
+  <p>
+    Isang practical question ang maaaring gamitin:
+    Kung itama ang maling detalye, nananatili pa rin ba ang pangunahing claim?
+  </p>
+
+  <p>
+    Kung oo, maaaring peripheral lamang ang error.
+    Kung bumabagsak ang pangunahing claim kapag itinama iyon, mas material ang problema at mas seryosong scrutiny ang kailangan.
+  </p>
+
+  <p>
+    Hindi ito universal legal formula ng “materiality.”
+    Isa itong practical reasoning tool para hindi natin pagpantayin ang maliit na error at error na sumisira sa pundasyon ng claim.
+  </p>
+
+  <h2>
+    FABRICATION AT DELIBERATE DECEPTION
+  </h2>
+
+  <p>
+    Magkaugnay sila, pero hindi sila eksaktong pareho.
+  </p>
+
+  <p>
+    Fabrication ang paggawa o pag-imbento ng impormasyon o ebidensiyang hindi totoo.
+  </p>
+
+  <p>
+    Halimbawa:<br>
+    invented event,<br>
+    fabricated document,<br>
+    ginawang quote na hindi naman sinabi,<br>
+    o ebidensiyang nilikha para suportahan ang isang pangyayaring hindi nangyari.
+    Mas malawak naman ang deliberate deception.
+  </p>
+
+  <p>
+    Hindi kailangang puro gawa-gawang impormasyon ang gamitin.
+    Maaari ring mangyari ang deception sa sadyang pagbabago, pagtatago, pagputol, o paggamit ng totoong impormasyon sa paraang nilalayong lumikha ng maling paniniwala.
+  </p>
+
+  <p>
+    Dito hindi na simpleng:
+  </p>
+
+  <blockquote>
+    <p>“Nagkamali ako.”</p>
+  </blockquote>
+
+  <p>
+    Ang usapan na ay kung may conscious effort to mislead.
+    At doon legitimate nang pag-usapan ang integrity at credibility mismo.
+  </p>
+
+            <h2>
+    MAY SCIENTIFIC DISTINCTION DIN ANG HUMAN ERROR AT INTENTIONAL ACTION
+  </h2>
+
+  <p>
+    Hindi bagong palusot ang konsepto ng human error.
+  </p>
+
+  <p>
+    Matagal na itong pinag-aaralan sa psychology, aviation, medicine, engineering at safety science.
+  </p>
+
+  <p>
+    Sa influential framework ni psychologist James Reason, pinag-iiba ang slips, lapses, mistakes, at violations.
+  </p>
+
+  <p>
+    Ang slip ay problema sa execution: alam mo ang gusto mong gawin, pero iba ang aktuwal mong nagawa.
+    Ang lapse ay karaniwang may kaugnayan sa memory failure o omission.
+    Ang mistake ay error sa mismong judgment, plan o problem-solving process.
+    Samantalang ang violation ay intentional deviation mula sa rule o procedure—bagama't hindi rin nangangahulugang lahat ng violation ay panlilinlang o malicious behavior.
+  </p>
+
+  <p>
+    Napakahalaga nito.
+  </p>
+
+  <p>
+    Dalawang tao ang maaaring parehong maglabas ng maling impormasyon.
+  </p>
+
+  <p>
+    Pero maaaring ang isa ay:<br>
+    nagkamali sa execution
+  </p>
+
+  <p>
+    samantalang ang isa ay:<br>
+    alam na mali pero sadyang ginamit ang maling impormasyon.
+  </p>
+
+  <p>
+    Parehong mali ang output.
+    Hindi pareho ang behavior sa likod nito.
+  </p>
+
+  <p>
+    At hindi natin puwedeng tukuyin ang intensyon mula sa error lamang.
+  </p>
+
+  <h2>
+    KAHIT IKAW MISMO ANG SUMULAT, PUWEDE MONG HINDI MAKITA ANG SARILI MONG TYPO
+  </h2>
+
+  <p>
+    Madalas marinig:
+  </p>
+
+  <blockquote>
+    <p>“Paano niya hindi napansin? Siya naman ang nagsulat.”</p>
+  </blockquote>
+
+  <p>
+    Pero hindi perfect scanner ang utak ng tao.
+  </p>
+
+  <p>
+    Sa proofreading research nina Maura Pilotti at Martin Chodorow, pinag-aralan kung paano nakakaapekto ang familiarity sa text sa error detection. Ang sobrang pagiging familiar sa sariling isinulat ay maaaring maging problema dahil alam na ng writer kung ano ang gustong sabihin ng text, kaya nagiging mas predictable ito at maaaring hindi agad mapansin ang mismong error na nasa harap niya.
+  </p>
+
+  <p>
+    Iyan din ang practical reason kung bakit may editors, proofreaders, second readers at multiple review stages sa professional writing.
+  </p>
+
+  <p>
+    Hindi dahil incompetent ang bawat writer na gumagamit nito.
+    Kundi dahil ang proofreading ay isang paraan upang bawasan ang risk ng human error.
+  </p>
+
+  <p>
+    At iyon ang mahalagang writing principle:
+    Ang proofreading ay risk reduction—hindi guarantee ng perfection.
+  </p>
+
+  <p>
+    Habang mas mataas ang consequence ng isang dokumento, mas mataas din dapat ang level ng verification.
+  </p>
+
+  <p>
+    Pero kahit mahusay ang proseso, hindi nagiging infallible ang taong gumagawa nito.
+  </p>
+
+  <h2>
+    PERO HUWAG DIN NATING GAMITING MAGIC WORD ANG “TYPO LANG”
+  </h2>
+
+  <p>
+    Dito naman kailangang maging fair.
+  </p>
+
+  <p>
+    Hindi lahat ng error ay inosente.
+    At hindi lahat ng error ay dapat ipagkibit-balikat.
+  </p>
+
+  <p>
+    May research na nagpapakitang nakakaapekto talaga ang writing errors sa perception ng credibility.
+  </p>
+
+  <p>
+    Sa 2017 experiment nina Dena, Jeffrey at Anthony Cox, nakita na maaaring maapektuhan ng typographical errors ang tingin ng ilang readers sa trustworthiness ng online reviewer. Importante rin ang nuance: hindi pare-pareho ang reaction ng lahat ng readers; nakadepende rin ito sa kanilang general tendency to trust.
+  </p>
+
+  <p>
+    Sa 2022 experiment nina Witchel at mga kasama, 100 English-speaking participants ang nag-rate ng maiikling health-forum-style texts. Kumpara sa error-free versions, ang texts na may dalawang spelling errors ay nakatanggap ng humigit-kumulang 5.91-point penalty, habang ang may limang errors ay humigit-kumulang 13.5 points sa kanilang 0–100 trustworthiness measure. Context-specific ang experiment, kaya hindi iyon universal formula para sa lahat ng Facebook post—pero malinaw na ang errors ay maaaring maging credibility cue sa readers.
+  </p>
+
+  <p>
+    May logic iyon.
+  </p>
+
+  <p>
+    Kung paulit-ulit kang mali sa impormasyong madaling i-check, natural na magtanong ang tao:
+  </p>
+
+  <blockquote>
+    <p>“Nag-double-check ba ito?”</p>
+  </blockquote>
+
+  <p>
+    Kaya reasonable ang:
+  </p>
+
+  <blockquote>
+    <p>“Nagkamali siya. Dapat sana mas naging maingat.”</p>
+  </blockquote>
+
+  <p>
+    Pero ibang conclusion na ang:
+  </p>
+
+  <blockquote>
+    <p>“Nagkamali siya. Ibig sabihin, sinadya niyang magsinungaling.”</p>
+  </blockquote>
+
+  <p>
+    Ang una ay maaaring criticism sa accuracy, competence o carelessness.
+    Ang pangalawa ay accusation sa integrity at intent.
+  </p>
+
+  <p>
+    Mas mabigat ang pangalawa.
+    Kaya mas mabigat din dapat ang ebidensiya.
+  </p>
+
+  <h2>
+    CREDIBILITY AY HINDI ISANG BAGAY LANG
+  </h2>
+
+  <p>
+    Matagal nang pinag-aaralan sa communication research kung paano nakakaapekto ang credibility ng source sa pagtanggap ng impormasyon.
+  </p>
+
+  <p>
+    Ang classic work nina Carl Hovland at Walter Weiss ay isa sa foundational studies sa source credibility.
+  </p>
+
+  <p>
+    Sa mas modernong trust research, mahalaga ring paghiwalayin ang iba't ibang dimensions ng trustworthiness.
+  </p>
+
+  <p>
+    Sa meta-analysis nina Jason Colquitt, Brent Scott at Jeffery LePine, na nagsama ng 132 independent samples, pinag-iba ang ability, benevolence, at integrity bilang dimensions ng trustworthiness at inihiwalay ang mga ito sa mismong konsepto ng trust.
+  </p>
+
+  <p>
+    Kaya mahalagang hindi natin pinagpapalit ang:<br>
+    Competence at Integrity.
+  </p>
+
+  <p>
+    Puwedeng magkamali ang competent na tao.
+    Puwedeng maging careless ang otherwise honest na tao.
+    Puwedeng technically competent ang taong dishonest.
+    At puwedeng sincere ang isang tao pero mali ang information niya dahil mali rin ang source na pinaniwalaan niya.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>“May error ba?”</p>
+  </blockquote>
+
+  <p>
+    Dapat ding itanong:<br>
+    Anong klaseng error?<br>
+    Gaano kabigat?<br>
+    Gaano kadalas?<br>
+    Peripheral ba o material?<br>
+    May corroboration ba?<br>
+    Ano ang pattern?<br>
+    At ano ang ginawa niya nang malaman niyang may mali?
+  </p>
+
+            <h2>
+    MAY GANITONG DISTINCTION MISMO SA PHILIPPINE JURISPRUDENCE
+  </h2>
+
+  <p>
+    Dito nagiging interesting ang usapin.
+  </p>
+
+  <p>
+    Hindi dahil ang rules sa courtroom ay automatic na rules para sa Facebook.
+    Hindi iyon ang ibig sabihin.
+  </p>
+
+  <p>
+    Pero magandang makita na kahit sa environment kung saan ang credibility ay maaaring makaapekto sa guilt, innocence at liberty ng tao, hindi ginagamit ng Supreme Court ang simplistic rule na:
+  </p>
+
+  <blockquote>
+    <p>“May isang inconsistency = wala nang credibility.”</p>
+  </blockquote>
+
+  <p>
+    Sa Philippine jurisprudence, paulit-ulit na kinikilala ang distinction sa pagitan ng minor inconsistencies at contradictions na tumatama sa mahahalagang bahagi ng testimony.
+  </p>
+
+  <p>
+    Sa People v. Alcantara, kinilala ng Court na ang truthful witness ay hindi inaasahang magkaroon ng completely error-free recollection; maaaring magkaroon ng minor inconsistencies dahil sa circumstances ng pangyayari, lapse of time, at limitations ng human memory.
+  </p>
+
+  <p>
+    Sa People v. Delima, muling lumitaw ang principle na hindi basta decisive ang minor inconsistencies kung hindi naman tumatama ang mga ito sa significant facts na mahalaga sa mismong kaso.
+  </p>
+
+  <p>
+    Pero mahalagang huwag ding baluktutin ang doctrine.
+  </p>
+
+  <p>
+    Hindi sinasabi ng jurisprudence na:
+  </p>
+
+  <blockquote>
+    <p>“Kapag may inconsistency, mas credible ka.”</p>
+  </blockquote>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    May halimbawa rin na nagpapakita ng kabilang panig.
+  </p>
+
+  <p>
+    Sa Rabanal v. People, ang serious discrepancies na tumama sa mahahalagang detalye ng identification at participation ng accused ay naging mahalaga sa assessment ng credibility at reasonable doubt.
+  </p>
+
+  <p>
+    Kaya maging ang jurisprudence ay nagtuturo ng parehong mahalagang prinsipyo:
+    Materiality matters.
+  </p>
+
+  <p>
+    May pagkakaiba ang maliit na discrepancy at contradiction na sumisira mismo sa pundasyon ng claim.
+  </p>
+
+  <h2>
+    “MAY ISANG MALI, KAYA LAHAT MALI” — HINDI RIN IYAN AUTOMATIC RULE SA BATAS
+  </h2>
+
+  <p>
+    May lumang maxim:
+    <em>falsus in uno, falsus in omnibus</em>—roughly, false in one thing, false in everything.
+  </p>
+
+  <p>
+    Madaling gawing social-media philosophy:
+  </p>
+
+  <blockquote>
+    <p>“Nahuli kong mali sa isang bagay, kaya hindi na ako maniniwala sa kahit ano.”</p>
+  </blockquote>
+
+  <p>
+    Pero maging ang Philippine Supreme Court ay hindi gumagamit nito bilang mandatory rule.
+  </p>
+
+  <p>
+    Sa People v. De la Cruz, sinabi ng Court na ang <em>falsus in uno, falsus in omnibus</em> ay hindi mandatory.
+  </p>
+
+  <p>
+    Mahalagang tingnan kung ang false testimony ay tungkol sa material point at kung may conscious and deliberate intention to falsify.
+  </p>
+
+  <p>
+    Kinilala rin ng Court na hindi dapat awtomatikong itapon ang believable parts ng testimony kapag may sufficient corroboration, o kapag ang errors ay maaaring magmula sa innocent mistakes sa halip na deliberate effort to pervert the truth.
+  </p>
+
+  <p>
+    Napakalaking civic lesson niyan.
+  </p>
+
+  <p>
+    Pero malinaw ang guardrail:
+    Doctrine ito sa judicial assessment ng witness testimony. Hindi ito batas na direktang nagdedesisyon kung credible ang isang Facebook post.
+  </p>
+
+  <p>
+    Ang halaga nito rito ay ang principle of reasoning:
+    Kahit ang korte ay hindi basta nagsasabing—isang mali = lahat kasinungalingan.
+  </p>
+
+  <p>
+    Tinitingnan ang materiality, intent, corroboration at totality of evidence.
+  </p>
+
+  <h2>
+    MAY LEGAL DISTINCTION DIN SA PAGIGING MALI AT SA KNOWINGLY O RECKLESSLY FALSE
+  </h2>
+
+  <p>
+    May isa pang legal concept na kailangang gamitin nang napakaingat:
+    Actual Malice.
+  </p>
+
+  <p>
+    Una sa lahat:
+    Hindi ito legal test para malaman kung “honest mistake” ang typo ng isang tao.
+  </p>
+
+  <p>
+    Ang actual malice ay isang doctrine sa defamation/libel law, tungkol sa state of mind ng publisher sa applicable contexts.
+  </p>
+
+  <p>
+    Sa Philippine jurisprudence involving public officers o public figures sa relevant libel context, ang actual malice ay tumutukoy sa publication ng defamatory statement na alam ng publisher na mali, o ginawa nang may reckless disregard kung mali ba ito o hindi.
+  </p>
+
+  <p>
+    Sa Disini v. Secretary of Justice, ipinaliwanag ng Supreme Court na ang reckless-disregard standard ay nangangailangan ng high degree of awareness of probable falsity at sapat na basis upang sabihing may serious doubts ang publisher sa katotohanan ng statement.
+  </p>
+
+  <p>
+    Mahalaga rin:
+    Sa legal context na iyon, sinabi ng Korte na gross o kahit extreme negligence alone is not sufficient to establish actual malice.
+  </p>
+
+  <p>
+    Sa Orillo v. People, binigyang-diin naman ng Korte na mahalaga sa libel analysis kung private person ba ang complainant o public officer/public figure, dahil magkaiba ang applicable presumptions at standards.
+  </p>
+
+  <p>
+    Kaya huwag baluktutin ang section na ito para sabihing:
+  </p>
+
+  <blockquote>
+    <p>“Kapag negligence lang, walang legal responsibility.”</p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang sinasabi.
+    At hindi rin actual malice ang universal standard para sa lahat ng maling statement.
+  </p>
+
+  <p>
+    Ang civic lesson lamang dito ay:
+    Maging ang batas ay may dahilan para paghiwalayin ang simpleng falsity, negligence, at knowingly o recklessly false publication sa mga legal context kung saan relevant ang distinction.
+  </p>
+
+  <p>
+    In short:
+    Wrong at deliberately false ay hindi automatic na iisang legal o moral category.
+  </p>
+
+  <h2>
+    MAS MATAAS BA ANG STANDARD KAPAG ABOGADO, DOKTOR, JOURNALIST O IBANG PROFESSIONAL?
+  </h2>
+
+  <p>
+    Oo.
+  </p>
+
+  <p>
+    Pero kailangan ding proportionate.
+  </p>
+
+  <p>
+    May dahilan kung bakit mas mataas ang expectation natin sa professions na nakasalalay sa precision.
+  </p>
+
+  <p>
+    Isang maling decimal sa dosage ay maaaring makapinsala.
+    Isang maling amount sa financial report ay maaaring makapanlinlang.
+    Isang maling legal citation ay maaaring makaapekto sa argument.
+    Isang maling measurement sa engineering plan ay maaaring maging safety issue.
+    Isang maling attribution sa journalism ay maaaring makasira ng pangalan.
+  </p>
+
+  <p>
+    Dahil may <strong>professional, ethical, o legal standards of care and accuracy—depende sa propesyon at context—</strong> mas mataas ang consequence ng ilang pagkakamali.
+  </p>
+
+  <p>
+    Dito hindi sapat minsan ang:
+  </p>
+
+  <blockquote>
+    <p>“Typo lang naman.”</p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin ibig sabihin nito na kapag lawyer ka, doktor ka, engineer ka o journalist ka:
+    Bawal ka nang magkaroon ng ordinaryong human typo sa lahat ng pagkakataon.
+  </p>
+
+  <p>
+    May malaking difference ang:<br>
+    casual personal post at sworn affidavit.
+  </p>
+
+  <p>
+    Ang:<br>
+    Facebook caption at medical prescription.
+  </p>
+
+  <p>
+    Ang:<br>
+    personal anecdote at official investigative report.
+  </p>
+
+  <p>
+    Accuracy matters in all of them.
+    Pero hindi pareho ang required verification, consequence, professional duty, at reasonable expectation of precision.
+  </p>
+
+  <p>
+    Professional competence does not create human infallibility.
+  </p>
+
+            <h2>
+    ANG ISANG HONEST MISTAKE AY MAAARING MAGPAHINA NG CONFIDENCE—PERO HINDI AUTOMATIC NA SUMIRA NG INTEGRITY
+  </h2>
+
+  <p>
+    Ito ang nuance na madalas nawawala.
+  </p>
+
+  <p>
+    Kapag nagkamali ang isang tao, puwedeng magkaroon ng credibility cost.
+  </p>
+
+  <p>
+    Natural iyon.
+  </p>
+
+  <p>
+    Maaari kang mapaisip:
+  </p>
+
+  <blockquote>
+    <p>“Mas magiging maingat akong i-verify ang susunod niyang claim.”</p>
+  </blockquote>
+
+  <p>
+    Fair iyon.
+  </p>
+
+  <p>
+    Pero may magkaibang antas ng paghuhusga ang:
+  </p>
+
+  <blockquote>
+    <p>“Mas magiging maingat akong mag-verify.”</p>
+  </blockquote>
+
+  <p>at</p>
+
+  <blockquote>
+    <p>“Sinungaling na ang taong ito.”</p>
+  </blockquote>
+
+  <p>
+    Ang una ay healthy skepticism.
+    Ang pangalawa ay character judgment.
+  </p>
+
+  <p>
+    At habang lumalaki ang accusation, dapat lumalaki rin ang kalidad ng ebidensiya.
+  </p>
+
+  <h2>
+    ANG PAG-AMIN SA MALI AY HINDI LAGING KABAWASAN SA CREDIBILITY
+  </h2>
+
+  <p>
+    Minsan, maaari pa itong makatulong sa trust repair.
+  </p>
+
+  <p>
+    Pero kailangang precise rito.
+  </p>
+
+  <p>
+    Sa dalawang studies nina Kim, Ferrin, Cooper at Dirks, nakita na ang effectiveness ng apology o denial ay nakadepende rin sa uri ng alleged trust violation. Sa kanilang experiments, apology worked better sa competence-related violations kaysa sa integrity-related violations sa importanteng conditions na kanilang sinuri.
+  </p>
+
+  <p>
+    Sa isang later systematic review at meta-analysis nina Yuan, Dong at Li, na nagsama ng 18 papers, 36 effect sizes at 4,731 participants, nakitang may positive overall effect ang apology sa trust repair (d = 0.44), at mas malakas ang repair effect nito sa competence-based kaysa integrity-based violations.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na:
+  </p>
+
+  <blockquote>
+    <p>“Basta nag-sorry, credible na ulit.”</p>
+  </blockquote>
+
+  <p>
+    At hindi rin ibig sabihin na bawat competence mistake ay madaling patawarin.
+  </p>
+
+  <p>
+    Ang mas maingat na lesson:
+    Iba ang psychological meaning ng “nagkamali ako” sa “alam kong mali pero niloko kita.”
+  </p>
+
+  <p>
+    Kaya ang correction ay hindi automatic confession ng dishonesty.
+  </p>
+
+  <p>
+    Minsan, ang willingness na magsabi ng:
+  </p>
+
+  <blockquote>
+    <p>“Mali ako rito. Ito ang tama.”</p>
+  </blockquote>
+
+  <p>
+    ay compatible pa nga sa responsible truth-seeking.
+  </p>
+
+  <p>
+    Ang mas malaking warning sign ay kapag demonstrably mali na ang statement pero patuloy pa ring ipinipilit dahil mas mahalaga ang ego o narrative kaysa correction.
+  </p>
+
+  <h2>
+    KAILAN TALAGA NAGIGING MALAKING CREDIBILITY ISSUE?
+  </h2>
+
+  <p>
+    Hindi simpleng bilang ng typo ang sagot.
+    Mas mahalaga ang pattern at context.
+  </p>
+
+  <p>
+    Kung may isang peripheral typo pero consistent ang pangunahing facts at may corroboration:
+    mahina itong standalone evidence ng dishonesty.
+  </p>
+
+  <p>
+    Kung paulit-ulit ang factual errors sa madaling ma-verify na impormasyon:
+    nagiging reliability problem.
+  </p>
+
+  <p>
+    Kung material ang error at bumabagsak ang central claim kapag itinama:
+    seryosong credibility concern.
+  </p>
+
+  <p>
+    Kung pabago-bago ang explanation depende sa bagong evidence:
+    mas lumalakas ang dahilan para magtanong.
+  </p>
+
+  <p>
+    Kung alam nang mali pero patuloy na ipinipilit:
+    hindi na simpleng honest mistake ang usapan.
+  </p>
+
+  <p>
+    Kung may ginawang fabricated evidence o panibagong falsehood para takpan ang una:
+    integrity issue na iyon.
+  </p>
+
+  <p>
+    Kaya hindi dapat itanong lang:
+  </p>
+
+  <blockquote>
+    <p>“Mali ba?”</p>
+  </blockquote>
+
+  <p>
+    Dapat ding itanong:<br>
+    Material ba?<br>
+    Isolated ba o pattern?<br>
+    Corroborated ba ang core claim?<br>
+    Ano ang response nang maituro ang error?<br>
+    May sapat bang evidence ng deliberate deception?
+  </p>
+
+  <h2>
+    BAKIT NAMAN MABILIS TAYONG HUMATOL SA ISANG MALI?
+  </h2>
+
+  <p>
+    Dahil hindi neutral ang human mind.
+  </p>
+
+  <p>
+    Sa major psychological review nina Baumeister, Bratslavsky, Finkenauer at Vohs, maraming findings mula sa iba't ibang areas ang nagpakitang negative information at experiences ay kadalasang may mas malakas na epekto kaysa comparable positive information—ang tinatawag na negativity bias. Kabilang sa kanilang synthesis ang finding na bad impressions can form more quickly at maging mas resistant sa disconfirmation kaysa good impressions.
+  </p>
+
+  <p>
+    Kaya posible ang ganitong reaction:<br>
+    Sampung tama.<br>
+    Isang mali.
+  </p>
+
+  <p>
+    Ang maaalala:<br>
+    yung mali.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na huwag pansinin ang error.
+    Ang ibig sabihin, maging aware tayo na may psychological tendency na maging disproportionately powerful ang negative information sa judgment.
+  </p>
+
+  <p>
+    At kapag may existing bias na tayo pabor o laban sa isang tao, mas madaling piliin ang interpretation na komportable sa dati na nating paniniwala.
+  </p>
+
+  <p>
+    Doon pumapasok ang civic discipline:
+  </p>
+
+  <blockquote>
+    <p>Fact before feeling.</p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>Feeling, tapos humanap ng fact na babagay.</p>
+  </blockquote>
+
+            <h2>
+    SA ILANG SOCIAL-MEDIA ENVIRONMENTS, MAS REWARDING ANG MATINDING HATOL
+  </h2>
+
+  <p>
+    Hindi lahat ng platform at hindi lahat ng community ay pare-pareho.
+    Pero may evidence na sa ilang social-media environments, ang social feedback at network norms ay maaaring mag-reinforce ng outrage expression.
+  </p>
+
+  <p>
+    Sa research nina Brady at mga kasama, dalawang observational studies sa Twitter ang sumaklaw sa 7,331 users at 12.7 million tweets, kasama ang dalawang preregistered behavioral experiments na may kabuuang 240 participants.
+  </p>
+
+  <p>
+    Nakita nilang ang positive social feedback sa outrage expression ay associated sa mas mataas na likelihood ng future outrage expressions, habang nakakaimpluwensiya rin ang expressive norms ng social network.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na fake ang bawat outrage.
+    Maraming galit ang legitimate.
+  </p>
+
+  <p>
+    At hindi rin puwedeng i-generalize ang Twitter findings sa bawat platform, bawat kultura at bawat online dispute.
+  </p>
+
+  <p>
+    Pero may useful warning, sa ilang online environments, maaaring mas rewarding ang:
+  </p>
+
+  <blockquote>
+    <p>“Sinungaling!”</p>
+  </blockquote>
+
+  <p>
+    kaysa:
+  </p>
+
+  <blockquote>
+    <p>“May inconsistency rito. Alamin muna natin kung typo, material error, negligence o deliberate fabrication.”</p>
+  </blockquote>
+
+  <p>
+    Mas mabilis ang una.
+    Mas emotional.
+    Mas madaling ikalat.
+  </p>
+
+  <p>
+    Pero hindi dahil mas viral ang accusation ay mas mataas na ang quality ng evidence.
+  </p>
+
+  <h2>
+    AT KAPAG NAUNA ANG MALING IMPRESYON, HINDI LAGING NABUBURA NG CORRECTION
+  </h2>
+
+  <p>
+    May dahilan kung bakit dangerous ang premature verdict.
+  </p>
+
+  <p>
+    Sa misinformation research, may tinatawag na continued influence effect.
+  </p>
+
+  <p>
+    Sa meta-analysis nina Walter at Tukachinsky, 32 studies na may kabuuang 6,527 participants ang pinagsama. Sa average, nakakatulong ang corrections pero hindi nila palaging tuluyang nabubura ang influence ng naunang misinformation.
+  </p>
+
+  <p>
+    May kaugnay ding phenomenon na illusory truth effect—ang tendency na ang repeated information ay maaaring mas magmukhang totoo dahil sa familiarity.
+  </p>
+
+  <p>
+    Sa 2026 systematic review at meta-analysis nina Ye at mga kasama, 182 studies, 366 effect sizes at 31,184 participants ang sinuri. Matapos i-correct para sa small-study effects, nakakita sila ng maliit ngunit robust overall illusory-truth effect (g = 0.37), kasabay ng substantial heterogeneity at maraming boundary conditions.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi ito simpleng:
+  </p>
+
+  <blockquote>
+    <p>“Kapag inulit, maniniwala lahat.”</p>
+  </blockquote>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Pero sapat ang evidence para sabihing repetition itself can influence perceived truth under many conditions.
+  </p>
+
+  <p>
+    Kaya isipin, isang accusation ang paulit-ulit na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Fake.”<br>
+      “Sinungaling.”<br>
+      “Nahuli.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pagkatapos dumating ang correction.
+    Hindi guaranteed na pantay ang epekto ng correction at ng naunang viral impression.
+  </p>
+
+  <p>
+    Kaya may civic responsibility sa magkabilang direksiyon:
+  </p>
+
+  <p>
+    May responsibilidad ang taong naglalabas ng claim.
+    Pero may responsibilidad din ang taong naglalabas ng accusation tungkol sa claim.
+  </p>
+
+  <h2>
+    MAY FILIPINO SOCIO-CULTURAL LAYER DIN ANG GANITONG PUBLIC JUDGMENT
+  </h2>
+
+  <p>
+    Sa Sikolohiyang Pilipino, mahalaga ang konsepto ng kapwa at ang mga relational concepts gaya ng hiya, pakikisama at pakikiramdam.
+  </p>
+
+  <p>
+    Sa work nina Rogelia Pe-Pua at Elizabeth Protacio-Marcelino tungkol sa legacy ni Virgilio Enriquez, inilalarawan ang Sikolohiyang Pilipino bilang psychology grounded sa Filipino experience, culture at language, sa halip na basta mag-import ng Western concepts nang walang local context.
+  </p>
+
+  <p>
+    Mahalagang huwag itong gawing stereotype.
+  </p>
+
+  <p>
+    Hindi ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>“Ganito lahat ng Pilipino.”</p>
+  </blockquote>
+
+  <p>At hindi simpleng:</p>
+
+  <blockquote>
+    <p>“Hiya = kahinaan.”</p>
+  </blockquote>
+
+  <p>o</p>
+
+  <blockquote>
+    <p>“Pakikisama = pagsunod lang.”</p>
+  </blockquote>
+
+  <p>
+    Mas relational at mas komplikado ang mga konseptong ito.
+  </p>
+
+  <p>
+    Bilang application ng ganitong relational framework, may mahalagang tanong sa public discourse:
+    Kapag ang correction ay naging public humiliation, posible bang lumipat ang usapan mula sa—
+    “Ano ang totoo?”
+  </p>
+
+  <p>
+    patungo sa—
+    “Sino ang mapapahiya?”<br>
+    “Sino ang mananalo?”<br>
+    “Sino ang kakampi?”
+  </p>
+
+  <p>
+    Kapag identity, camp, pride at humiliation na ang nangingibabaw, mas madaling maging defensive ang usapan at mas mahirap bumalik sa facts.
+  </p>
+
+  <p>
+    Kaya may dalawang bagay na puwedeng sabay:
+  </p>
+
+  <blockquote>
+    <p>“Matapang sa fact-checking.”</p>
+  </blockquote>
+
+  <p>at</p>
+
+  <blockquote>
+    <p>“Maingat sa character assassination.”</p>
+  </blockquote>
+
+  <p>
+    Hindi kailangan ang humiliation para magkaroon ng accountability.
+    At hindi rin kailangan ang pakikisama para palampasin ang maling impormasyon.
+  </p>
+
+  <h2>
+    FACT-CHECKING AY HINDI PAGHAHANAP NG PINAKAMABILIS NA LABEL
+  </h2>
+
+  <p>
+    Kapag mali ang number:<br>
+    Itama ang number.
+  </p>
+
+  <p>
+    Kapag mali ang date:<br>
+    Itama ang date.
+  </p>
+
+  <p>
+    Kapag may contradiction:<br>
+    Ipakita ang contradiction.
+  </p>
+
+  <p>
+    Kapag may corroborating evidence:<br>
+    Isama iyon.
+  </p>
+
+  <p>
+    Kapag may material inconsistency:<br>
+    Ipaliwanag kung bakit material.
+  </p>
+
+  <p>
+    Kapag may evidence ng fabrication:<br>
+    Ilatag ang evidence.
+  </p>
+
+  <p>
+    Doon nagiging seryoso ang fact-checking.
+  </p>
+
+  <p>
+    Hindi sa:
+  </p>
+
+  <blockquote>
+    <p>“May typo. Sinungaling.”</p>
+  </blockquote>
+
+  <p>
+    Hindi rin sa:
+  </p>
+
+  <blockquote>
+    <p>“Tao lang naman. Palampasin na.”</p>
+  </blockquote>
+
+  <p>
+    Parehong mahina ang dalawang extreme.
+  </p>
+
+  <p>
+    Ang evidence-based position ay:
+    Huwag palampasin ang mali—pero huwag ding mag-imbento ng intent na hindi pa napapatunayan.
+  </p>
+
+  <h2>
+    CREDIBILITY IS A RECORD—NOT A PERFECTION SCORE
+  </h2>
+
+  <p>
+    Hindi credible ang tao dahil never siyang nagkamali.
+    Walang ganung tao.
+  </p>
+
+  <p>
+    Mas makabuluhang tingnan ang kabuuang pattern:<br>
+    Gaano siya kadalas nagve-verify?<br>
+    Gaano kalaki ang errors?<br>
+    Peripheral ba o material?<br>
+    Isolated ba o habitual?<br>
+    May supporting evidence ba?<br>
+    Kapag mali, kino-correct ba?<br>
+    Transparent ba siya sa uncertainty?<br>
+    Inaamin ba niya kapag hindi niya alam?<br>
+    Binabago ba niya ang claim kapag binago ng evidence ang picture?<br>
+    O binabago niya ang evidence para maisalba ang claim?
+  </p>
+
+  <p>
+    Diyan mas nasusukat ang credibility.
+  </p>
+
+  <p>
+    Dahil ang taong marunong magsabi ng—“Mali ako rito. Ito ang tama.”—ay hindi automatic na mas unreliable kaysa sa taong hindi kailanman umaamin ng mali.
+  </p>
+
+  <p>
+    At ang taong mukhang laging tama dahil ayaw kailanman umamin ng pagkakamali ay hindi rin automatic na mas credible.
+  </p>
+
+  <p>
+    Credibility is not perfection.
+    It is a pattern of relationship with truth.
+  </p>
+
+            <h2>
+    KAYA SA SUSUNOD NA MAY MAKITA TAYONG PAGKAKAMALI…
+  </h2>
+
+  <p>
+    Huwag agad itanong:
+  </p>
+
+  <blockquote>
+    <p>“Sinungaling ba siya?”</p>
+  </blockquote>
+
+  <p>
+    Unahin:<br>
+    Ano talaga ang mali?<br>
+    Typo ba?<br>
+    Factual error ba?<br>
+    Material ba sa pangunahing claim?<br>
+    May corroboration ba?<br>
+    Isolated ba o pattern?<br>
+    Na-correct ba nang maayos?<br>
+    At may sapat bang ebidensiya na sinadya ang deception?
+  </p>
+
+  <p>
+    Dahil malinaw ang pagkakaiba ng:<br>
+    Human imperfection, carelessness, unreliability, at dishonesty.
+  </p>
+
+  <p>
+    Hindi sila interchangeable.
+  </p>
+
+  <p>
+    Ang typo ay kailangang itama.<br>
+    Ang carelessness ay maaaring punahin.<br>
+    Ang repeated unreliability ay dapat kuwestiyunin.<br>
+    Ang material contradiction ay dapat imbestigahan.<br>
+    At ang deliberate deception ay dapat panagutin.
+  </p>
+
+  <p>
+    Pero bago tawaging sinungaling ang isang tao, dapat higit ang hawak nating ebidensiya kaysa sa simpleng:
+  </p>
+
+  <blockquote>
+    <p>“May nakita akong mali.”</p>
+  </blockquote>
+
+  <p>
+    Dahil ang credibility ay hindi nasusukat sa kawalan ng human imperfection.
+    Mas nasusukat ito sa relasyon ng tao sa katotohanan kapag siya mismo ang napatunayang nagkamali.
+  </p>
+
+  <p>
+    At kung bawat honest mistake ay gagawin nating automatic evidence ng dishonesty, hindi natin pinapalakas ang kultura ng accountability.
+    Tinuturuan lang natin ang mga tao na mas matakot umamin ng mali.
+  </p>
+
+  <p>
+    Samantalang sa isang lipunang tunay na naghahanap ng katotohanan, dapat malinaw ang dalawang standard:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang mali, itama.<br>
+      Ang kasinungalingan, patunayan.
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Supreme Court of the Philippines — <em>People v. De la Cruz</em>, G.R. No. L-30912, April 30, 1980. <em>Falsus in uno, falsus in omnibus</em> is not mandatory; materiality, conscious and deliberate falsification, corroboration at innocent mistakes are relevant to credibility assessment.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>People v. Delima</em>, G.R. No. 222645, June 27, 2018. Minor inconsistencies must be distinguished from inconsistencies concerning significant facts material to the case.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>People v. Alcantara</em>, G.R. No. 157669, April 14, 2004. Addresses witness credibility, minor inconsistencies, circumstances surrounding recollection, and limitations affecting testimony.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>Rabanal v. People</em>, G.R. No. 160858, February 28, 2006. Demonstrates the opposite side of the materiality principle: serious discrepancies in crucial evidence can meaningfully undermine credibility and reasonable certainty.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>Disini v. Secretary of Justice</em>, G.R. No. 203335 et al., February 11, 2014. Discusses actual malice, knowledge of falsity, reckless disregard, serious doubts as to truth, and why negligence alone is not identical to actual malice in the applicable libel context.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>Orillo v. People</em>, G.R. No. 206905, January 30, 2023. Discusses the distinction between private persons and public officers/public figures and the role of actual malice in applicable Philippine libel cases.
+            </li>
+
+            <li>
+              Reason, James — <em>Human Error</em>. Cambridge University Press, 1990. Foundational work on human error mechanisms and distinctions among different forms of error and intentional deviations.
+            </li>
+
+            <li>
+              Pilotti, Maura &amp; Chodorow, Martin — “Does Familiarity with Text Breed Complacency or Vigilance?” <em>Journal of Research in Reading</em>, 2012. Research on familiarity with text and proofreading/error detection.
+            </li>
+
+            <li>
+              Hovland, Carl I. &amp; Weiss, Walter — “The Influence of Source Credibility on Communication Effectiveness.” <em>Public Opinion Quarterly</em>, 1951. Foundational source-credibility research.
+            </li>
+
+            <li>
+              Colquitt, Jason A., Scott, Brent A. &amp; LePine, Jeffery A. — “Trust, Trustworthiness, and Trust Propensity.” <em>Journal of Applied Psychology</em>, 2007. Meta-analysis of 132 independent samples distinguishing trust, trust propensity and dimensions of trustworthiness such as ability, benevolence and integrity.
+            </li>
+
+            <li>
+              Cox, Dena, Cox, Jeffrey G. &amp; Cox, Anthony D. — “To Err is Human? How Typographical and Orthographical Errors Affect Perceptions of Online Reviewers.” <em>Computers in Human Behavior</em>, 2017. Examines how textual errors can affect perceived reviewer credibility and how effects vary with general trust.
+            </li>
+
+            <li>
+              Witchel, Harry J. et al. — “Spelling Errors in Brief Computer-Mediated Texts Implicitly Lead to Linearly Additive Penalties in Trustworthiness.” <em>Frontiers in Psychology</em>, 2022. Experiment with 100 participants examining trustworthiness penalties from spelling errors in a specific online-health-text context.
+            </li>
+
+            <li>
+              Kim, Peter H., Ferrin, Donald L., Cooper, Cecily D. &amp; Dirks, Kurt T. — “Removing the Shadow of Suspicion.” <em>Journal of Applied Psychology</em>, 2004. Two studies examining apology versus denial after competence- and integrity-based trust violations.
+            </li>
+
+            <li>
+              Yuan, Bo, Dong, Yue &amp; Li, Weiqiang — “The Trust Repair Effect of Apology: A Systematic Review and Meta-analysis.” <em>Advances in Psychological Science</em>, 2017. 18 papers, 36 effect sizes, 4,731 participants; found an overall positive apology effect on trust repair and stronger effects for competence-based than integrity-based violations.
+            </li>
+
+            <li>
+              Baumeister, Roy F., Bratslavsky, Ellen, Finkenauer, Catrin &amp; Vohs, Kathleen D. — “Bad Is Stronger Than Good.” <em>Review of General Psychology</em>, 2001. Major review on the disproportionate psychological impact of negative information and experiences.
+            </li>
+
+            <li>
+              Brady, William J. et al. — “How Social Learning Amplifies Moral Outrage Expression in Online Social Networks.” <em>Science Advances</em>, 2021. Two observational Twitter studies covering 7,331 users and 12.7 million tweets, plus two behavioral experiments involving 240 participants.
+            </li>
+
+            <li>
+              Walter, Nathan &amp; Tukachinsky, Riva — “A Meta-Analytic Examination of the Continued Influence of Misinformation in the Face of Correction.” <em>Communication Research</em>, 2020. Meta-analysis of 32 studies involving 6,527 participants.
+            </li>
+
+            <li>
+              Ye, Steeven et al. — “Systematic Review and Meta-analysis of the Evidence for an Illusory Truth Effect and Its Determinants.” <em>Nature Communications</em>, 2026. 182 studies, 366 effect sizes and 31,184 participants.
+            </li>
+
+            <li>
+              Pe-Pua, Rogelia &amp; Protacio-Marcelino, Elizabeth A. — “Sikolohiyang Pilipino (Filipino Psychology): A Legacy of Virgilio G. Enriquez.” <em>Asian Journal of Social Psychology</em>, 2000. Foundational discussion of Sikolohiyang Pilipino and indigenous Filipino psychological concepts and frameworks.
+            </li>
+
+          </ul>
+
+        </section>
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
