@@ -1,1 +1,2876 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa limited procedural immunity ng impeachable officers, presidential immunity, impeachment, at criminal prosecution sa ilalim ng Konstitusyon at umiiral na jurisprudence."
+>
+
+<title>IMPEACHABLE OFFICIAL—IMMUNE BA HABANG NASA PWESTO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+<header class="article-header">
+
+  <h1 class="article-title">
+    IMPEACHABLE OFFICIAL—IMMUNE BA HABANG NASA PWESTO?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-immunity.png"
+      alt="Simbolikong paglalarawan ng usapin sa limited procedural immunity ng isang impeachable officer, kasama ang mga simbolo ng Konstitusyon, hustisya, at pananagutan."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May arrest warrant laban sa sitting Vice President.
+    May impeachment trial din laban sa kanya.
+  </p>
+
+  <p>
+    At mula rito, dalawang magkasalungat na claim ang mabilis kumalat:
+  </p>
+
+  <blockquote>
+    <p>
+      “Immune ang Vice President dahil impeachable official siya.”
+    </p>
+
+    <p>
+      at
+    </p>
+
+    <p>
+      “Presidente lang ang may immunity. Walang immunity ang Vice President.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong may legal principle na pinanggagalingan.
+    Pero kapag ginawa nating absolute ang alinman sa dalawa, nawawala ang pinakamahalagang distinction.
+  </p>
+
+  <p>
+    Dahil hindi lang ito tanong na:
+  </p>
+
+  <h2>
+    MAY IMMUNITY BA O WALA?
+  </h2>
+
+  <p>
+    Ang mas tamang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>ANONG URI NG IMMUNITY?</p>
+    <p>PARA KANINO?</p>
+    <p>LABAN SA ANONG PROCEEDING?</p>
+    <p>HANGGANG SAAN?</p>
+    <p>AT KAILAN ITO NATATAPOS?</p>
+  </blockquote>
+
+  <p>
+    Diyan kailangang magsimula ang paglilinaw.
+  </p>
+
+  <h2>
+    ANO MISMO ANG NAKASULAT SA KONSTITUSYON?
+  </h2>
+
+  <p>
+    Article XI, Section 2 ng 1987 Constitution ang nagtatakda kung sino ang mga impeachable officers:
+  </p>
+
+  <ul>
+    <li>President</li>
+    <li>Vice-President</li>
+    <li>Members of the Supreme Court</li>
+    <li>Members of the Constitutional Commissions—COMELEC, Commission on Audit at Civil Service Commission</li>
+    <li>Ombudsman</li>
+  </ul>
+
+  <p>
+    Exclusive ang listahang ito.
+    Hindi kasama rito ang senators, congressmen, Cabinet secretaries, governors, mayors at iba pang ordinaryong public officials. Iba ang constitutional at legal rules na maaaring umiral para sa kanila.
+  </p>
+
+  <p>
+    Pero may isang mahalagang bagay na HINDI literal na nakasulat sa Section 2:
+  </p>
+
+  <blockquote>
+    <p>
+      Walang sentence doon na nagsasabing:
+    </p>
+
+    <p>
+      “All impeachable officers are immune from criminal prosecution while in office.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi puwedeng tumalon agad mula:
+  </p>
+
+  <blockquote>
+    <p>IMPEACHABLE OFFICER</p>
+
+    <p>papunta sa:</p>
+
+    <p>AUTOMATIC AT ABSOLUTE IMMUNITY FROM EVERY CASE.</p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang literal na text ng Constitution.
+  </p>
+
+  <h2>
+    PERO HINDI RIN DOON NAGTATAPOS ANG BATAS
+  </h2>
+
+  <p>
+    Hindi lang constitutional text ang bumubuo sa legal framework.
+  </p>
+
+  <p>
+    May jurisprudence—mga desisyon ng Supreme Court na nagpapaliwanag kung paano gumagana ang Constitution sa aktwal na mga kaso.
+  </p>
+
+  <p>
+    At dito nagiging mas komplikado ang usapin.
+  </p>
+
+  <p>
+    Dahil sa Philippine jurisprudence, may dalawang konseptong kailangang paghiwalayin:
+  </p>
+
+  <blockquote>
+    <p>
+      PRESIDENTIAL IMMUNITY at LIMITED PROCEDURAL IMMUNITY NG IMPEACHABLE OFFICERS.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi sila pareho.
+  </p>
+
+  <h2>
+    IBA ANG PRESIDENTIAL IMMUNITY
+  </h2>
+
+  <p>
+    Matagal nang established sa Philippine jurisprudence na ang sitting President ay may immunity from suit habang aktuwal na nanunungkulan.
+  </p>
+
+  <p>
+    Hindi ito simpleng personal privilege para sabihin na nasa ibabaw siya ng batas.
+  </p>
+
+  <p>
+    Ang rationale nito ay institutional:
+    Hindi dapat ma-paralyze o ma-distract ang Chief Executive sa pagganap ng constitutional duties dahil sa lawsuits habang hawak niya ang presidency.
+  </p>
+
+  <p>
+    At temporary protection ito.
+    Hindi permanenteng paglilinis ng liability.
+  </p>
+
+  <p>
+    Kapag wala na sa office, hindi awtomatikong nawawala ang posibleng pananagutan para sa mga ginawa habang incumbent.
+  </p>
+
+  <p>
+    Kaya kung ang ibig sabihin ng statement na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Presidente lang ang may presidential immunity”
+    </p>
+  </blockquote>
+
+  <p>
+    ay iyong traditional immunity attached specifically to the sitting President—may legal basis iyon.
+  </p>
+
+  <p>
+    Pero kapag ang kasunod na conclusion ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kaya walang anumang procedural protection ang Vice President at ibang impeachable officers,”
+    </p>
+  </blockquote>
+
+  <p>
+    doon nagiging incomplete ang statement.
+  </p>
+
+  <h2>
+    MAY “LIMITED PROCEDURAL IMMUNITY” ANG IMPEACHABLE OFFICERS
+  </h2>
+
+  <p>
+    Ito ang critical development na madalas nawawala sa public debate.
+  </p>
+
+  <p>
+    Sa July 25, 2025 decision ng Supreme Court sa <em>Duterte v. House of Representatives</em>, may sariling section ang majority decision na pinamagatang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Limited procedural immunity for impeachable public officers exists to prevent disruption of government functions, preserve the balance and separation of powers, and safeguard institutional independence.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ito terminology lamang ng defense lawyer o political commentator.
+    Nasa majority decision mismo.
+  </p>
+
+  <p>
+    At sinabi rin ng Korte na impeachable officers are <strong>NOT IMMUNE FROM LIABILITY</strong> for wrongdoing during their tenure.
+  </p>
+
+  <p>
+    Pero may procedural protection na kinikilala habang incumbent.
+  </p>
+
+  <p>
+    Tinawag mismo ng Korte ang immunity na:
+  </p>
+
+  <blockquote>
+    <p>
+      “merely procedural, not absolute.”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang mahalagang distinction:
+    <strong>HINDI IMMUNITY FROM LIABILITY.</strong>
+  </p>
+
+  <p>
+    May kinikilalang:
+  </p>
+
+  <blockquote>
+    <p>
+      LIMITED PROTECTION SA PROSESO HABANG INCUMBENT.
+    </p>
+  </blockquote>
+
+            <h2>
+    BAKIT MAY GANITONG PROTECTION?
+  </h2>
+
+  <p>
+    Hindi lang dahil mataas ang posisyon ng mga opisyal na ito.
+  </p>
+
+  <p>
+    Ang constitutional concern ay ang independence ng mismong institutions.
+  </p>
+
+  <p>
+    Isipin ang Supreme Court Justice.
+  </p>
+
+  <p>
+    Kung ang bawat litigant na natalo sa isang major case ay maaaring gumamit ng ordinaryong proceedings para ma-pressure, ma-disable o matanggal ang Justice, maaaring gamitin mismo ang legal system para maimpluwensiyahan ang Judiciary.
+  </p>
+
+  <p>
+    Ganito rin ang institutional danger para sa Ombudsman na nag-iimbestiga ng makapangyarihang opisyal.
+  </p>
+
+  <p>
+    O COMELEC commissioner na humahawak ng sensitibong election controversy.
+    O COA commissioner na naglalabas ng findings laban sa powerful institutions.
+  </p>
+
+  <p>
+    Kaya ang protection ay hindi simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mataas ang posisyon mo, kaya huwag kang galawin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang constitutional purpose ay:
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI DAPAT MADALING GAMITING POLITICAL WEAPON ANG ORDINARYONG PROSESO PARA PARALISAHIN ANG ISANG INDEPENDENT CONSTITUTIONAL OFFICE.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang separation-of-powers at institutional-independence side ng doctrine.
+  </p>
+
+  <h2>
+    PERO MAY MAHALAGANG SERENO EXCEPTION
+  </h2>
+
+  <p>
+    Dito kailangang maging precise.
+  </p>
+
+  <p>
+    Madaling sabihin na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Impeachable official siya, kaya impeachment lang ang tanging paraan para mawala siya sa office.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag ginawa itong absolute, may legal loophole.
+  </p>
+
+  <p>
+    Sa <em>Republic v. Sereno</em>, kinilala ng Supreme Court majority na <em>quo warranto</em> at impeachment ay dalawang magkaibang proceedings.
+  </p>
+
+  <p>
+    Ang impeachment ay tumitingin sa culpability o wrongdoing ng isang taong legal na may hawak ng office.
+  </p>
+
+  <p>
+    Ang <em>quo warranto</em> naman ay maaaring magtanong:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY LEGAL RIGHT O QUALIFICATION BA TALAGA ANG TAONG ITO NA HAWAKAN ANG OFFICE?
+    </p>
+  </blockquote>
+
+  <p>
+    Sa Sereno majority, kinilala ng Court na hindi awtomatikong ipinagbabawal ng Article XI, Section 2 ang <em>quo warranto</em> kapag ang issue ay ang mismong legal title, eligibility o qualification ng official sa office.
+  </p>
+
+  <p>
+    Ibig sabihin:
+    Kung legally installed ang official at ang allegation ay misconduct habang nasa office, impeachment ang constitutional accountability mechanism para sa impeachable wrongdoing.
+  </p>
+
+  <p>
+    Pero kung ang issue ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “May legal title ba talaga siya sa office in the first place?”
+    </p>
+  </blockquote>
+
+  <p>
+    maaaring ibang proceeding gaya ng <em>quo warranto</em> ang pumasok.
+  </p>
+
+  <p>
+    Kaya ang mas accurate na principle ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang kahit anong paraan maliban sa impeachment para mawala ang impeachable official.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas tama:
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI MAAARING GAWING SUBSTITUTE SA IMPEACHMENT ANG ORDINARYONG PROCEEDING PARA PARUSAHAN O ALISIN ANG ISANG VALIDLY INSTALLED IMPEACHABLE OFFICER DAHIL SA IMPEACHABLE WRONGDOING.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kinilala ng Sereno doctrine na hiwalay ang <em>quo warranto</em> kapag ang mismong legal title o qualification sa office ang kinukuwestiyon.
+  </p>
+
+  <p>
+    Mahalaga ang distinction:
+  </p>
+
+  <blockquote>
+    <p>
+      CULPABILITY at TITLE TO OFFICE ay magkaibang constitutional questions.
+    </p>
+  </blockquote>
+
+  <h2>
+    HINDI RIN PWEDE ANG QUO WARRANTO BILANG BACKDOOR IMPEACHMENT
+  </h2>
+
+  <p>
+    May isa pang mahalagang limitasyon din.
+  </p>
+
+  <p>
+    Hindi porke may <em>quo warranto</em> doctrine ay puwede nang i-repackage bilang “qualification issue” ang anumang wrongdoing ng official habang incumbent.
+  </p>
+
+  <p>
+    Kung ang tunay na issue ay misconduct ng isang validly installed official habang nasa pwesto, hindi dapat basta tawaging title defect iyon para lamang maiwasan ang impeachment framework.
+  </p>
+
+  <p>
+    Kaya dalawang shortcut ang kailangang bantayan:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi dapat gamitin ang ordinaryong proceeding bilang disguised impeachment.
+    </p>
+
+    <p>
+      Pero hindi rin dapat gamitin ang salitang “impeachable” para gawing immune ang isang tunay na legal challenge sa title o qualification sa office.
+    </p>
+  </blockquote>
+
+  <h2>
+    MAY MAS LUMANG FORMULATION DIN SA SERENO
+  </h2>
+
+  <p>
+    Sa Sereno, binalikan ng Court ang earlier jurisprudence tungkol sa protection ng impeachable officers.
+  </p>
+
+  <p>
+    Isa sa mga naunang jurisprudential formulations na binalikan ng Korte:
+  </p>
+
+  <blockquote>
+    <p>
+      Habang incumbent, ang impeachable officer ay hindi maaaring criminally prosecuted para sa isang offense na <strong>CARRIES WITH IT THE PENALTY OF REMOVAL FROM OFFICE.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    At kung ang isang requirement gaya ng membership sa Philippine Bar ay constitutional qualification para manatili sa office, hindi rin dapat gamitin ang ibang proceeding para indirectly makuha ang effect ng removal na nakalaan sa constitutional process.
+  </p>
+
+  <p>
+    Dito makikita ang original constitutional concern:
+  </p>
+
+  <blockquote>
+    <p>
+      HUWAG GUMAMIT NG IBANG PROCEEDING PARA MAKUHA ANG MISMONG EFFECT NA NAKALAAN SA IMPEACHMENT.
+    </p>
+  </blockquote>
+
+  <h2>
+    MAY ISA PANG DOCTRINE: “SAME OFFENSES”
+  </h2>
+
+  <p>
+    Sa <em>Office of the Ombudsman v. Court of Appeals and Mojica</em>, lumitaw naman ang principle tungkol sa criminal prosecution ng impeachable officer para sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “same offenses which constitute grounds for impeachment.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang procedural protection na iyon ay nakaugnay sa patuloy na incumbency.
+  </p>
+
+  <p>
+    Kapag wala na ang official sa protected office dahil sa removal, resignation o iba pang pagtatapos ng tenure, nawawala ang pangunahing bar na iyon.
+  </p>
+
+  <p>
+    Mahalaga:
+    Mismong <em>Duterte v. House</em> (2025) majority ang muling nagbanggit sa “same offenses which constitute grounds for impeachment” principle.
+  </p>
+
+  <p>
+    Dito nagmumula ang seryosong legal argument na maaaring gamitin ng kampo ng isang incumbent impeachable officer.
+  </p>
+
+  <p>
+    Pero dito rin lumilitaw ang malalaking tanong na hindi pa simpleng nasasagot.
+  </p>
+
+            <h2>
+    “SAME OFFENSE” BA O “SAME ACT”?
+  </h2>
+
+  <p>
+    Hindi pareho ang dalawang bagay.
+  </p>
+
+  <p>
+    Maaaring isang statement o conduct ang gamitin sa impeachment bilang factual basis para sa:
+  </p>
+
+  <ul>
+    <li>betrayal of public trust</li>
+    <li>other high crimes</li>
+  </ul>
+
+  <p>
+    Pero ang parehong conduct ay maaari ring maging factual basis ng isang specific offense sa Revised Penal Code.
+  </p>
+
+  <p>
+    Tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag pareho ang underlying facts pero magkaiba ang legal characterization—“SAME OFFENSE” pa rin ba iyon? O kailangan mismong parehong legal offense ang nasa impeachment at regular criminal court?
+    </p>
+  </blockquote>
+
+  <p>
+    Napakahalagang distinction niyan.
+  </p>
+
+  <p>
+    At hindi dapat ipalagay na mayroon nang universal Supreme Court answer para sa lahat ng possible situations.
+  </p>
+
+  <h2>
+    AT ANONG STAGE NG CRIMINAL PROCESS ANG SAKOP?
+  </h2>
+
+  <p>
+    Isa pa itong malaking boundary question.
+  </p>
+
+  <p>
+    Kapag sinabing may procedural protection laban sa criminal prosecution, alin dito ang sakop?
+  </p>
+
+  <ul>
+    <li>Investigation?</li>
+    <li>Preliminary investigation?</li>
+    <li>Pag-file ng Information?</li>
+    <li>Issuance ng warrant?</li>
+    <li>Arrest?</li>
+    <li>Arraignment?</li>
+    <li>Trial?</li>
+    <li>Conviction?</li>
+    <li>Pagpapatupad ng imprisonment o ibang criminal penalty?</li>
+  </ul>
+
+  <p>
+    Hindi pare-pareho ang constitutional effect ng mga stage na iyan.
+  </p>
+
+  <p>
+    Maaaring may investigation na hindi naman nagtatanggal o nagdi-disable sa official.
+  </p>
+
+  <p>
+    Samantalang ang imprisonment o ibang consequence ay maaaring gawing practically impossible ang pagpapatuloy niya sa constitutional duties.
+  </p>
+
+  <p>
+    Kaya ang tunay na tanong ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAY KASO BA?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      SAAN EKSAKTONG STAGE NAGIGING CONSTITUTIONALLY PROBLEMATIC ANG ORDINARYONG CRIMINAL PROCESS LABAN SA ISANG INCUMBENT IMPEACHABLE OFFICER?
+    </p>
+  </blockquote>
+
+  <h2>
+    MAS MALAWAK ANG LANGUAGE NG 2025 SUPREME COURT DECISION
+  </h2>
+
+  <p>
+    Dito lalong naging mahalaga ang 2025 ruling.
+  </p>
+
+  <p>
+    Sa <em>Duterte v. House</em>, hindi lang inulit ng majority ang mas lumang “penalty of removal” formulation.
+  </p>
+
+  <p>
+    Sinabi nitong impeachable officers are not immune from liability, ngunit may limited procedural protection habang tenure nila ang pinag-uusapan.
+  </p>
+
+  <p>
+    At naglagay mismo ang Court ng standalone discussion tungkol sa:
+  </p>
+
+  <blockquote>
+    <p>
+      LIMITED PROCEDURAL IMMUNITY FOR IMPEACHABLE PUBLIC OFFICERS.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi accurate na sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Imbento lang ng mga abogado ni Sara ang limited procedural immunity.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    May actual Supreme Court majority text na pinanggagalingan iyon.
+  </p>
+
+  <p>
+    Pero hindi rin doon dapat tumigil ang analysis.
+  </p>
+
+  <h2>
+    MAY DOCTRINE NA—PERO HINDI PA SQUARELY NASAGOT ANG PRESENT CRIMINAL CASE
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang guardrails.
+  </p>
+
+  <p>
+    Ang <em>Duterte v. House</em> noong 2025 ay <strong>IMPEACHMENT CASE.</strong>
+  </p>
+
+  <p>
+    Ang pangunahing controversy doon ay ang constitutionality ng impeachment proceedings laban sa Vice President.
+  </p>
+
+  <p>
+    Hindi ang specific question presented doon ay:
+  </p>
+
+  <blockquote>
+    <p>
+      May jurisdiction ba ang isang RTC para litisin ang incumbent Vice President sa tatlong counts ng grave threats?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin direktang issue doon kung:
+  </p>
+
+  <ul>
+    <li>maaari bang mag-file ng Information;</li>
+    <li>mag-issue ng warrant;</li>
+    <li>arestuhin ang Vice President;</li>
+    <li>i-arraign siya;</li>
+    <li>ituloy ang criminal trial;</li>
+    <li>o ipatupad ang criminal penalty habang incumbent.</li>
+  </ul>
+
+  <p>
+    Kaya kailangang paghiwalayin ang dalawang proposition:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY SUPREME COURT MAJORITY DOCTRINE NA KUMIKILALA SA LIMITED PROCEDURAL IMMUNITY.
+    </p>
+  </blockquote>
+
+  <p>
+    Totoo iyon.
+  </p>
+
+  <p>
+    Pero:
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI PA SQUARELY NAPAGPASIYAHAN NG SUPREME COURT ANG EXACT APPLICATION AT BOUNDARIES NITO SA KASALUKUYANG GRAVE-THREATS INFORMATION, WARRANT, ARREST, ARRAIGNMENT AT TRIAL SEQUENCE.
+    </p>
+  </blockquote>
+
+  <p>
+    Totoo rin iyon.
+  </p>
+
+  <p>
+    Hindi kailangang tawaging “obiter dictum” ang immunity discussion para sabihin ito.
+  </p>
+
+  <p>
+    Pero hindi rin dapat gamitin ang 2025 ruling bilang shortcut para ideklara na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nadesisyunan na ng Supreme Court na unconstitutional ang present warrant.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pa iyon ang specific controversy na hinarap ng Court.
+  </p>
+
+  <p>
+    Iyan ang mahalagang <strong>PRECEDENTIAL-REACH DISTINCTION.</strong>
+  </p>
+
+            <h2>
+    ANO NAMAN ANG NANGYARI NOONG JANUARY 2026?
+  </h2>
+
+  <p>
+    Noong January 28, 2026, dineny ng Supreme Court with finality ang Motion for Reconsideration sa 2025 impeachment controversy.
+  </p>
+
+  <p>
+    Ibig sabihin, naging final ang disposition ng case na iyon.
+  </p>
+
+  <p>
+    Pero hindi ito bagong Supreme Court case tungkol sa kasalukuyang grave-threats prosecution.
+  </p>
+
+  <p>
+    Hindi nito independently sinagot ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Maaari bang mag-issue ng arrest warrant laban sa incumbent Vice President sa grave threats case?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya maaaring sabay na totoo ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      FINAL NA ANG 2025 IMPEACHMENT RULING.
+    </p>
+
+    <p>
+      Pero:
+    </p>
+
+    <p>
+      HINDI PA FINAL SUPREME COURT PRECEDENT ANG SPECIFIC APPLICATION NG LIMITED PROCEDURAL IMMUNITY SA PRESENT CRIMINAL CASE.
+    </p>
+  </blockquote>
+
+  <h2>
+    HUWAG DING PAGHALUIN ANG 2025 AT 2026 IMPEACHMENT PROCEEDINGS
+  </h2>
+
+  <p>
+    Ang impeachment proceeding na naging subject ng 2025 Supreme Court case ay hindi kapareho ng kasalukuyang 2026 impeachment proceeding.
+  </p>
+
+  <p>
+    Ang naunang proceeding ang naging subject ng Supreme Court ruling at ng January 2026 final resolution.
+    Samantalang noong 2026 ay may bagong impeachment proceeding na umusad sa House at Senate.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      2025 SC IMPEACHMENT CASE ay hindi kapareho ng 2026 IMPEACHMENT PROCEEDING.
+    </p>
+  </blockquote>
+
+  <p>
+    Magkaugnay ang legal history.
+    Pero hindi sila iisang proceeding.
+  </p>
+
+  <p>
+    Mahalaga ang distinction iyan para hindi magmukhang ang kasalukuyang impeachment trial ay iyong mismong proceeding na na-nullify na ng Supreme Court.
+  </p>
+
+  <h2>
+    CURRENT CASE CONTEXT AS OF SEPTEMBER 5, 2026
+  </h2>
+
+  <p>
+    Noong August 2026, nag-file ang Department of Justice ng <strong>TATLONG COUNTS NG GRAVE THREATS</strong> laban kay Vice President Sara Duterte.
+  </p>
+
+  <p>
+    Ang charges ay identified bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      Grave Threats in relation to Section 6 of Republic Act No. 10175, o Cybercrime Prevention Act.
+    </p>
+  </blockquote>
+
+  <p>
+    Nagmula ang kaso sa kanyang November 2024 remarks kaugnay kina President Ferdinand Marcos Jr., First Lady Liza Araneta-Marcos at then-House Speaker Martin Romualdez.
+  </p>
+
+  <p>
+    Ang parehong alleged threats ay bahagi rin ng Article IV ng kasalukuyang impeachment case.
+  </p>
+
+  <p>
+    Kaya malinaw na may factual overlap.
+  </p>
+
+  <p>
+    Pero tandaan:
+  </p>
+
+  <blockquote>
+    <p>
+      PAG-FILE NG CRIMINAL CASE ≠ CONVICTION.
+    </p>
+
+    <p>
+      At:
+    </p>
+
+    <p>
+      IMPEACHMENT CHARGE ≠ CRIMINAL CONVICTION.
+    </p>
+  </blockquote>
+
+  <h2>
+    DITO PUMAPASOK ANG SERENO “PENALTY OF REMOVAL” QUESTION
+  </h2>
+
+  <p>
+    Ito ang isang application question na hindi dapat lampasan.
+  </p>
+
+  <p>
+    Ang older jurisprudential formulation na binalikan sa Sereno ay tumutukoy sa criminal prosecution ng impeachable officer para sa offense na:
+  </p>
+
+  <blockquote>
+    <p>
+      CARRIES WITH IT THE PENALTY OF REMOVAL FROM OFFICE.
+    </p>
+  </blockquote>
+
+  <p>
+    Samantalang ang kasalukuyang Informations laban kay Vice President Duterte ay grave threats in relation to Section 6 of RA 10175.
+  </p>
+
+  <p>
+    Kaya isang lehitimong legal question ang:
+  </p>
+
+  <blockquote>
+    <p>
+      PASOK BA ANG PRESENT GRAVE-THREATS CASE SA PRECISE OLDER SERENO FORMULATION?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dapat automatic ang sagot.
+  </p>
+
+  <p>
+    Hindi sapat na sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sereno says may immunity, therefore bawal ang grave-threats case.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin sapat na sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ito presidential immunity, therefore walang constitutional issue.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang mas bagong 2025 <em>Duterte</em> decision ay gumamit ng mas malawak na language tungkol sa <strong>LIMITED PROCEDURAL IMMUNITY</strong> at procedural protection from suit.
+  </p>
+
+  <p>
+    Kaya maaaring kailangang linawin ng higher courts kung ang protection ay limitado sa cases na may removal consequence—o kung mas malawak ang application nito sa criminal prosecution mismo sa covered circumstances.
+  </p>
+
+  <p>
+    Iyan ang isa sa pinakamahalagang doctrinal gaps sa kasalukuyang usapin.
+  </p>
+
+            <h2>
+    ANO ANG GINAWA NG DEPENSA?
+  </h2>
+
+  <p>
+    Nag-challenge ang kampo ni Duterte sa criminal case at sa issuance ng warrant.
+  </p>
+
+  <p>
+    Central sa kanilang argumento ang claim na bilang incumbent Vice President at impeachable officer, mayroon siyang <strong>LIMITED PROCEDURAL IMMUNITY</strong> habang nasa office.
+  </p>
+
+  <p>
+    Nagkaroon ng oral arguments sa QC RTC Branch 98 tungkol sa jurisdictional at immunity issues.
+  </p>
+
+  <p>
+    Hindi simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Vice President ako, kaya hindi ninyo ako puwedeng kasuhan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas substantial na constitutional argument ay:
+  </p>
+
+  <blockquote>
+    <p>
+      May special procedural protection ang incumbent impeachable officer, lalo na kung ang alleged conduct na subject ng criminal prosecution ay bahagi rin ng impeachment proceedings.
+    </p>
+  </blockquote>
+
+  <p>
+    May jurisprudential authorities silang puwedeng sandalan para sa argument na iyan.
+    Pero hindi ibig sabihin na automatically tama na ang application nila.
+  </p>
+
+  <h2>
+    ANO NAMAN ANG POSISYON NG DOJ?
+  </h2>
+
+  <p>
+    Kabaligtaran ang posisyon ng prosecution.
+  </p>
+
+  <p>
+    Ipinaninindigan ng DOJ na ang traditional <strong>PRESIDENTIAL IMMUNITY</strong> ay nakaugnay sa President bilang Chief Executive at hindi dapat awtomatikong gawing kapareho nito ang position ng Vice President.
+  </p>
+
+  <p>
+    Para sa prosecution, maaaring magpatuloy ang criminal process.
+    At sa puntong ito, iyan ang position na tinanggap ng trial court sa immediate case.
+  </p>
+
+  <p>
+    Kaya hindi ito simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “ABOGADO ANG NAGSABI, KAYA TAMA.”
+    </p>
+
+    <p>
+      O:
+    </p>
+
+    <p>
+      “MAY IBANG ABOGADONG SUMALUNGAT, KAYA MALI.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang dapat timbangin ay:
+  </p>
+
+  <blockquote>
+    <p>CONSTITUTIONAL TEXT,</p>
+    <p>JURISPRUDENCE,</p>
+    <p>NATURE NG PROCEEDINGS,</p>
+    <p>AT EXACT SCOPE NG MGA NAUNANG RULING.</p>
+  </blockquote>
+
+  <h2>
+    ANO ANG SINABI NG QC RTC?
+  </h2>
+
+  <p>
+    Noong September 4, 2026, tinanggihan ng Quezon City RTC Branch 98 ang challenge ng kampo ni Duterte na pigilan o i-quash ang criminal proceedings at warrant.
+  </p>
+
+  <p>
+    Matapos ang evaluation ng records at arguments ng magkabilang panig, sinabi ng court na may probable cause para i-hold siya for trial sa lahat ng tatlong counts.
+  </p>
+
+  <p>
+    Nag-issue ito ng warrant of arrest.
+    Nag-set din ang court ng bail na ₱120,000 bawat count.
+  </p>
+
+  <p>
+    Iyan ang kasalukuyang operative legal reality sa trial-court level:
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI TINANGGAP NG RTC ANG IMMUNITY-BASED JURISDICTIONAL CHALLENGE BILANG SAPAT PARA IPATIGIL ANG KASO.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kailangang idagdag agad:
+  </p>
+
+  <blockquote>
+    <p>
+      RTC RULING ITO.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pa ito final Supreme Court ruling na nagbibigay ng nationwide constitutional definition sa buong sakop ng limited procedural immunity.
+  </p>
+
+  <p>
+    Kaya mali ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May warrant na, therefore resolved na ang constitutional doctrine.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon gumagana ang precedent.
+  </p>
+
+  <h2>
+    PROBABLE CAUSE AY HINDI GUILTY
+  </h2>
+
+  <p>
+    Napakahalagang ihiwalay ito sa political discussion.
+  </p>
+
+  <p>
+    Kapag nakakita ang judge ng probable cause para mag-issue ng warrant, hindi ibig sabihin na napatunayan nang guilty beyond reasonable doubt ang accused.
+  </p>
+
+  <p>
+    Ibig sabihin lamang:
+    Sa stage na iyon, nakita ng court ang sapat na legal basis para maharap siya sa trial sa charges.
+  </p>
+
+  <p>
+    Sa criminal trial pa kailangang mapatunayan ng prosecution ang elements ng offense ayon sa required criminal standard.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      ARREST WARRANT ≠ CONVICTION.
+    </p>
+
+    <p>
+      At:
+    </p>
+
+    <p>
+      PROBABLE CAUSE ≠ PROOF BEYOND REASONABLE DOUBT.
+    </p>
+  </blockquote>
+
+  <h2>
+    OVERLAPPING BA ANG CRIMINAL CASE AT IMPEACHMENT?
+  </h2>
+
+  <p>
+    Sa underlying facts, <strong>OO.</strong>
+  </p>
+
+  <p>
+    Ang alleged threats na nasa grave-threats criminal case ay bahagi rin ng Article IV ng impeachment proceeding.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na iisang proceeding sila.
+    Magkaiba ang legal purpose.
+  </p>
+
+            <h2>
+    IMPEACHMENT AY HINDI CRIMINAL TRIAL
+  </h2>
+
+  <p>
+    Ang impeachment ay pangunahing nagtatanong:
+  </p>
+
+  <blockquote>
+    <p>
+      KARAPAT-DAPAT PA BANG MANATILI SA CONSTITUTIONAL OFFICE ANG TAONG ITO?
+    </p>
+  </blockquote>
+
+  <p>
+    Ang possible judgment ay removal from office at possible disqualification.
+  </p>
+
+  <p>
+    Ang criminal court naman ay nagtatanong:
+  </p>
+
+  <blockquote>
+    <p>
+      NAPATUNAYAN BA ANG ELEMENTS NG ISANG SPECIFIC CRIMINAL OFFENSE AYON SA BATAS?
+    </p>
+  </blockquote>
+
+  <p>
+    At maaari itong humantong sa criminal punishment.
+  </p>
+
+  <p>
+    Article XI, Section 3(7) mismo ang nagsasabing ang judgment sa impeachment ay limitado sa removal at possible disqualification.
+  </p>
+
+  <p>
+    Pero ang convicted party ay maaari pa ring maging liable at subject sa:
+  </p>
+
+  <blockquote>
+    <p>PROSECUTION,</p>
+    <p>TRIAL,</p>
+    <p>AND PUNISHMENT ACCORDING TO LAW.</p>
+  </blockquote>
+
+  <p>
+    Ibig sabihin:
+    Hindi substitute sa criminal justice system ang impeachment.
+  </p>
+
+  <p>
+    At ang criminal process naman ay hindi dapat gamiting shortcut para makuha ang constitutionally reserved effect ng impeachment kung sakop ng constitutional protection ang sitwasyon.
+  </p>
+
+  <p>
+    Iyan ang tension.
+  </p>
+
+  <h2>
+    HINDI RIN AUTOMATIC NA DOUBLE JEOPARDY
+  </h2>
+
+  <p>
+    Hindi ordinaryong criminal prosecution ang impeachment.
+    Magkaiba ang purpose, tribunal, proseso at sanction.
+  </p>
+
+  <p>
+    Kaya hindi automatic na double jeopardy ang pagkakaroon ng impeachment proceeding at criminal case na may factual overlap.
+  </p>
+
+  <p>
+    Ang Constitution mismo ay kumikilala na maaaring magkaroon ng separate criminal accountability pagkatapos o bukod sa impeachment consequences.
+  </p>
+
+  <p>
+    Ang mas mahirap na constitutional question ay:
+  </p>
+
+  <blockquote>
+    <p>
+      KAILAN PUWEDENG SIMULAN O IPAGPATULOY ANG CRIMINAL PROCESS HABANG INCUMBENT PA ANG IMPEACHABLE OFFICER?
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan pumapasok ang limited procedural immunity.
+  </p>
+
+  <h2>
+    KAILANGAN BA MUNANG MA-CONVICT SA IMPEACHMENT BAGO MAKASUHAN?
+  </h2>
+
+  <p>
+    Hindi rin dapat gawing universal slogan ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Impeachment muna bago kahit anong criminal case.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang jurisprudence ay nakadepende sa incumbency, nature ng proceeding, offense, at constitutional effect nito.
+  </p>
+
+  <p>
+    Kapag wala na ang official sa protected office dahil natapos ang term, nag-resign, natanggal o natapos ang protected incumbency, nawawala ang pangunahing institutional rationale para sa procedural protection.
+  </p>
+
+  <p>
+    Kaya ang doctrine ay hindi permanenteng pardon.
+  </p>
+
+  <p>
+    Hindi rin ito:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag hindi ka na-impeach, forever ka nang hindi maaaring kasuhan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang pinag-uusapan ay ang:
+  </p>
+
+  <blockquote>
+    <p>
+      TIMING at PROCEDURE habang incumbent.
+    </p>
+  </blockquote>
+
+  <h2>
+    BAKIT “LIMITED” ANG PINAKAMAHALAGANG SALITA?
+  </h2>
+
+  <p>
+    Dahil kung absolute immunity from liability ito, maaari nitong burahin ang accountability.
+  </p>
+
+  <p>
+    Pero iyon mismo ang hindi sinasabi ng jurisprudence.
+  </p>
+
+  <p>
+    Ang protection ay procedural.
+  </p>
+
+  <p>
+    Kaya ang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      PAANO AT KAILAN DAPAT IPATUPAD ANG PANANAGUTAN NANG HINDI GINAGAMIT ANG ORDINARYONG PROSESO PARA SIRAIN ANG CONSTITUTIONAL INDEPENDENCE NG OFFICE?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAY PANANAGUTAN BA O WALA?”
+    </p>
+  </blockquote>
+
+  <h2>
+    MAY DALAWANG PANGANIB KAPAG MALI ANG PAGLAGAY NG HANGGANAN
+  </h2>
+
+  <p>
+    Kung <strong>MASYADONG MAKITID</strong> ang protection, madaling gamiting harassment tool ang ordinaryong kaso.
+  </p>
+
+  <p>
+    Supreme Court Justice na may unpopular decision.
+    COMELEC commissioner na humahawak ng politically explosive election controversy.
+    COA commissioner na nag-audit ng powerful institution.
+    Ombudsman na nag-iimbestiga ng makapangyarihang tao.
+  </p>
+
+  <p>
+    Kung sapat lamang ang pag-file ng kaso para ma-disable sila, maaaring gamitin ang justice system mismo laban sa constitutional independence.
+  </p>
+
+  <p>
+    Iyan ang dahilan kung bakit may protection.
+  </p>
+
+            <h2>
+    PERO MAY ISA PANG PANGANIB
+  </h2>
+
+  <p>
+    Kung <strong>MASYADONG MALAWAK</strong> naman ang immunity, maaari itong maging temporary shield laban sa tunay na accountability.
+  </p>
+
+  <p>
+    Paano kung may credible evidence ng serious crime?
+    Paano kung politically impossible ang impeachment?
+  </p>
+
+  <p>
+    Kung ang interpretation ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang criminal process na maaaring umusad hanggang matapos ang termino,”
+    </p>
+  </blockquote>
+
+  <p>
+    maaaring ilang taon ang lumipas bago makaharap sa ordinaryong justice system ang official.
+  </p>
+
+  <p>
+    Kaya ang constitutional problem ay hindi simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      IMMUNITY VS ACCOUNTABILITY.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang kailangang balansehin ay:
+  </p>
+
+  <blockquote>
+    <p>
+      INSTITUTIONAL INDEPENDENCE at ACCOUNTABILITY UNDER LAW.
+    </p>
+  </blockquote>
+
+  <h2>
+    PAANO KUNG WALANG PENDING IMPEACHMENT?
+  </h2>
+
+  <p>
+    Isa pa itong mahalagang boundary.
+  </p>
+
+  <p>
+    Kung may alleged serious crime ang isang impeachable officer pero walang impeachment complaint—automatic bang naka-hold ang criminal case dahil incumbent siya?
+  </p>
+
+  <p>
+    Kung oo, napakalawak ng immunity.
+    Kung hindi, ano ang trigger ng protection?
+    At paano kung may impeachment case pero ibang act o ibang offense naman ang criminal prosecution?
+    Sakop pa rin ba?
+  </p>
+
+  <p>
+    Kaya mahalagang hindi palitan ang precise jurisprudential language na:
+  </p>
+
+  <blockquote>
+    <p>
+      “same offenses which constitute grounds for impeachment”
+    </p>
+  </blockquote>
+
+  <p>
+    ng mas malawak na slogan na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kahit anong criminal case laban sa impeachable official ay bawal.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pa iyon established.
+  </p>
+
+  <h2>
+    PAANO KUNG HINDI NAMAN MAGRERESULTA SA PAGKATANGGAL SA PWESTO ANG CRIMINAL CASE?
+  </h2>
+
+  <p>
+    Ito rin ang dahilan kung bakit mahalaga ang Sereno penalty/removal question.
+  </p>
+
+  <p>
+    Kung ang historical rationale ay pigilan ang indirect removal outside impeachment, paano kung ang charged offense mismo ay hindi nagdadala ng removal consequence?
+  </p>
+
+  <p>
+    Sapat ba ang fact na may criminal prosecution?
+    O kailangan ng actual o practical threat sa continuation ng constitutional office?
+  </p>
+
+  <p>
+    Sa kabilang banda, kung ang 2025 language tungkol sa protection from suit ay mas malawak, gaano kalawak iyon?
+  </p>
+
+  <p>
+    Iyan ang exact doctrinal boundary na hindi pa dapat gawing settled fact sa social media.
+  </p>
+
+  <h2>
+    ANO ANG POSIBLENG IMPACT SA LAHAT NG IMPEACHABLE OFFICIALS?
+  </h2>
+
+  <p>
+    Hindi lang ito tungkol kay Sara Duterte.
+  </p>
+
+  <p>
+    Anumang authoritative Supreme Court ruling sa scope ng doctrine ay maaaring makaapekto sa:
+  </p>
+
+  <blockquote>
+    <p>future Presidents</p>
+    <p>future Vice Presidents</p>
+    <p>Supreme Court Justices</p>
+    <p>COMELEC Commissioners</p>
+    <p>COA Commissioners</p>
+    <p>Civil Service Commissioners</p>
+    <p>at Ombudsman.</p>
+  </blockquote>
+
+  <p>
+    Kaya delikado ang paggawa ng constitutional principle ayon lamang sa kung sino ang gusto o ayaw nating official ngayon.
+  </p>
+
+  <p>
+    Ang rule na gusto nating gamitin laban sa kalaban ngayon ay maaaring gamitin bukas laban sa kakampi natin.
+  </p>
+
+  <p>
+    At ang immunity na gusto nating ibigay sa kakampi ngayon ay maaari ring maging shield ng taong ayaw natin sa hinaharap.
+  </p>
+
+  <h2>
+    DOCTRINE ANG PINAG-UUSAPAN—HINDI PERSONALIDAD.
+  </h2>
+
+  <h2>
+    KAYA MALI ANG DALAWANG EXTREME
+  </h2>
+
+  <p>
+    <strong>“VICE PRESIDENT SIYA, KAYA IMMUNE SIYA SA CRIMINAL PROSECUTION. PERIOD.”</strong>
+  </p>
+
+  <p>
+    Overbroad.
+    Hindi established na may identical blanket presidential immunity ang Vice President.
+  </p>
+
+  <p>
+    Pero mali rin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “PRESIDENTE LANG ANG IMMUNE, KAYA WALANG ANUMANG PROCEDURAL IMMUNITY ANG VP. PERIOD.”
+    </p>
+  </blockquote>
+
+  <p>
+    Incomplete.
+    May actual Supreme Court majority jurisprudence na kumikilala sa <strong>LIMITED PROCEDURAL IMMUNITY</strong> ng impeachable public officers.
+  </p>
+
+  <h2>
+    AT MALI RIN ANG “UNCONSTITUTIONAL ANG WARRANT. TAPOS.”
+  </h2>
+
+  <p>
+    May legitimate constitutional argument laban sa prosecution.
+  </p>
+
+  <p>
+    Pero hindi pa squarely nadesisyunan ng Supreme Court na sakop ng limited procedural immunity ang specific Information, probable-cause determination, arrest warrant, arrest, arraignment at trial sa present grave-threats case.
+  </p>
+
+  <p>
+    Sa kasalukuyan, ang QC RTC Branch 98 ay nag-rule laban sa defense position at pinayagang umusad ang criminal case.
+  </p>
+
+  <p>
+    Kaya ang categorical declaration na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Unconstitutional ito. Madness ito.”
+    </p>
+  </blockquote>
+
+  <p>
+    ay lumalampas sa kung ano pa lamang ang definitively settled ng highest court sa exact fact pattern na ito.
+  </p>
+
+            <h2>
+    PERO MALI RIN ANG “MAY WARRANT NA, KAYA WALANG IMMUNITY”
+  </h2>
+
+  <p>
+    Hindi rin sapat iyon.
+  </p>
+
+  <p>
+    Ang trial-court order ay hindi nagbubura sa Supreme Court jurisprudence tungkol sa limited procedural immunity.
+    At hindi rin nito awtomatikong sinasagot ang constitutional questions na maaaring iakyat sa higher courts.
+  </p>
+
+  <p>
+    Ang accurate na sabihin ngayon:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY OPERATIVE RTC RULING NA PINAPAYAGANG UMUSAD ANG CRIMINAL CASE.
+    </p>
+  </blockquote>
+
+  <p>
+    At:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY EXISTING SUPREME COURT DOCTRINE TUNGKOL SA LIMITED PROCEDURAL IMMUNITY NA ANG EXACT APPLICATION SA PRESENT CRIMINAL CASE AY HINDI PA SQUARELY NASASAGOT NG SUPREME COURT.
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong puwedeng totoo.
+  </p>
+
+  <h2>
+    ANG PINAKAMAHALAGANG DISTINCTION
+  </h2>
+
+  <blockquote>
+    <p>
+      PRESIDENTIAL IMMUNITY ay hindi kapareho ng LIMITED PROCEDURAL IMMUNITY NG IMPEACHABLE OFFICERS.
+    </p>
+
+    <p>
+      Ang LIMITED PROCEDURAL IMMUNITY ay hindi kapareho ng IMMUNITY FROM LIABILITY.
+    </p>
+
+    <p>
+      Ang IMPEACHMENT FOR WRONGDOING ay hindi kapareho ng QUO WARRANTO CHALLENGE SA LEGAL TITLE O QUALIFICATION.
+    </p>
+
+    <p>
+      Ang SAME ACT ay hindi awtomatikong SAME OFFENSE.
+    </p>
+
+    <p>
+      Ang IMPEACHMENT ay hindi kapareho ng CRIMINAL PROSECUTION.
+    </p>
+
+    <p>
+      At ang PROBABLE CAUSE PARA SA WARRANT ay hindi kapareho ng PROOF BEYOND REASONABLE DOUBT PARA SA CONVICTION.
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag pinagsama-sama ang mga ito na parang iisang konsepto, madaling bumuo ng narrative na mukhang legal pero kulang ang legal distinctions.
+  </p>
+
+  <h2>
+    ANO ANG ALAM NATIN NGAYON?
+  </h2>
+
+  <blockquote>
+    <p>
+      May established presidential immunity ang sitting President.
+    </p>
+
+    <p>
+      May exclusive constitutional class ng impeachable officers.
+    </p>
+
+    <p>
+      May Supreme Court majority jurisprudence na kumikilala sa LIMITED PROCEDURAL IMMUNITY ng impeachable public officers.
+    </p>
+
+    <p>
+      May older jurisprudence tungkol sa offenses carrying a removal consequence at sa “same offenses which constitute grounds for impeachment.”
+    </p>
+
+    <p>
+      May Sereno doctrine na kumikilala sa distinction ng impeachment at quo warranto kapag ang issue ay legal title o qualification sa office.
+    </p>
+
+    <p>
+      May 2025 Supreme Court majority opinion na gumamit ng broader procedural-immunity language.
+    </p>
+
+    <p>
+      Final na ang disposition ng 2025 impeachment controversy pagkatapos ng January 2026 resolution.
+    </p>
+
+    <p>
+      Pero hindi iyon Supreme Court ruling sa specific 2026 grave-threats criminal case at arrest warrant.
+    </p>
+
+    <p>
+      May 2026 impeachment proceeding na hiwalay sa naunang proceeding.
+    </p>
+
+    <p>
+      At may operative RTC ruling na nakakita ng probable cause sa tatlong grave-threats counts at nag-issue ng warrant.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang legal landscape sa kasalukuyan.
+  </p>
+
+  <h2>
+    ANO ANG HINDI PA NATIN DAPAT ITURING NA SETTLED?
+  </h2>
+
+  <blockquote>
+    <p>
+      Kung lahat ba ng criminal prosecutions laban sa incumbent impeachable officers ay temporarily barred.
+    </p>
+
+    <p>
+      Kung kailangan bang SAME LEGAL OFFENSE o sapat ang same underlying conduct.
+    </p>
+
+    <p>
+      Kung kailangan bang may pending impeachment bago pumasok ang procedural protection.
+    </p>
+
+    <p>
+      Kung filing of Information pa lang ba ay barred na.
+    </p>
+
+    <p>
+      Kung warrant at arrest ay barred.
+    </p>
+
+    <p>
+      Kung arraignment ay barred.
+    </p>
+
+    <p>
+      Kung trial ang constitutional stopping point.
+    </p>
+
+    <p>
+      Kung ang limited immunity ay naka-depende sa offense na may removal consequence.
+    </p>
+
+    <p>
+      Kung paano eksaktong babasahin nang magkasama ang older Sereno formulation at ang broader 2025 Duterte language.
+    </p>
+
+    <p>
+      At kung saan eksaktong iguguhit ang linya sa pagitan ng institutional independence at criminal accountability.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang mga tanong na kailangan pang maging mas malinaw sa jurisprudence.
+  </p>
+
+  <h2>
+    HINDI PERSONALIDAD ANG DAPAT MAGDIKTA NG PRINSIPYO
+  </h2>
+
+  <p>
+    Kung supporter ka ni Sara Duterte, hindi ibig sabihin na kailangan mong tanggapin ang pinakamalawak na possible interpretation ng immunity.
+    Kung critic ka niya, hindi rin ibig sabihin na puwede nang burahin ang actual Supreme Court doctrine dahil inconvenient ito sa criminal prosecution.
+  </p>
+
+  <p>
+    Dahil ang Constitution ay hindi dapat binabasa ayon sa kulay ng taong kasalukuyang nakaupo.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANONG RULE ANG HANDA NATING IPATUPAD NANG PAREHO KAHIT SINO PA ANG NASA PWESTO?
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan nasusukat ang rule of law.
+  </p>
+
+  <h2>
+    IMMUNITY AY HINDI IMPUNITY
+  </h2>
+
+  <p>
+    May dahilan kung bakit pinoprotektahan ng constitutional system ang independence ng pinakamataas na offices.
+  </p>
+
+  <p>
+    Hindi dapat madaling gamitin ang harassment, retaliatory cases o procedural shortcuts para paralisahin ang isang constitutional institution.
+  </p>
+
+  <p>
+    Pero may dahilan din kung bakit Article XI mismo ay nagsisimula sa prinsipyo na:
+  </p>
+
+  <blockquote>
+    <p>
+      PUBLIC OFFICE IS A PUBLIC TRUST.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ginawa ang mataas na posisyon para maging lugar na hindi kayang abutin ng pananagutan.
+  </p>
+
+  <p>
+    Kaya ang tamang constitutional balance ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      PROTECTION O ACCOUNTABILITY.
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan ang dalawa.
+  </p>
+
+            <blockquote>
+    <p>
+      PROTECTION LABAN SA PAG-ABUSO NG PROSESO.
+    </p>
+
+    <p>
+      At:
+    </p>
+
+    <p>
+      ACCOUNTABILITY KAPAG MAY PAGLABAG SA BATAS.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tunay na tanong ay kung saan eksaktong nagtatapos ang una at nagsisimula ang ikalawa.
+  </p>
+
+  <p>
+    Sa limited procedural immunity ng impeachable officers, may mga linya nang naiguhit ang Constitution at Supreme Court.
+    Pero hindi pa kumpleto ang mapa sa present criminal-prosecution setting.
+  </p>
+
+  <p>
+    Kaya habang wala pang square Supreme Court ruling sa exact boundary na ito, parehong misleading ang dalawang absolute:
+  </p>
+
+  <blockquote>
+    <p>
+      “IMMUNE SIYA, KAYA BAWAL ANG KASO.”
+    </p>
+
+    <p>
+      at
+    </p>
+
+    <p>
+      “MAY WARRANT NA, KAYA WALA SIYANG ANUMANG IMMUNITY.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahirap ang tunay na sagot.
+    Pero mas mahalaga rin.
+  </p>
+
+  <p>
+    Dahil sa ilalim ng rule of law, hindi lamang resulta ang mahalaga.
+    <strong>PATI ANG TAMANG PROSESO KUNG PAANO MAKAKARATING SA RESULTA.</strong>
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / Legal Basis
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              1987 Constitution, Article XI, Sections 1, 2 and 3 — Public office as a public trust; impeachable officers; impeachment process; effect of impeachment judgment; separate prosecution, trial and punishment.
+            </li>
+
+            <li>
+              Duterte v. House of Representatives, G.R. Nos. 278353 &amp; 278359, July 25, 2025 — Limited procedural immunity; liability vs procedural protection; institutional independence; separation of powers; discussion of prior jurisprudence on impeachable officers.
+            </li>
+
+            <li>
+              Duterte v. House of Representatives, Resolution, January 28, 2026 — Final disposition of the 2025 impeachment controversy after denial of the Motion for Reconsideration with finality.
+            </li>
+
+            <li>
+              Republic v. Sereno, G.R. No. 237428 — Distinction between impeachment and quo warranto; title or qualification to office vs wrongdoing while validly occupying office; discussion of earlier removal-related immunity jurisprudence.
+            </li>
+
+            <li>
+              Office of the Ombudsman v. Court of Appeals and Mojica, G.R. No. 146486 — “Same offenses which constitute grounds for impeachment” principle and its relationship to continued incumbency.
+            </li>
+
+            <li>
+              Estrada v. Desierto and related presidential-immunity jurisprudence — Presidential immunity during incumbency and post-tenure criminal accountability.
+            </li>
+
+            <li>
+              De Lima v. Duterte, G.R. No. 227635 — Reaffirmation of presidential immunity under Philippine jurisprudence.
+            </li>
+
+            <li>
+              Revised Penal Code, Article 282 — Grave Threats.
+            </li>
+
+            <li>
+              Republic Act No. 10175, Section 6 — Cybercrime Prevention Act provision covering crimes committed through information and communications technology.
+            </li>
+
+            <li>
+              2026 Articles of Impeachment and House/Senate impeachment records — Current impeachment proceeding and Article IV concerning the alleged threats.
+            </li>
+
+            <li>
+              Quezon City RTC Branch 98 proceedings, September 2026 — Three grave-threats counts; immunity and jurisdiction challenge; probable-cause determination; arrest warrant; bail set at ₱120,000 per count.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
