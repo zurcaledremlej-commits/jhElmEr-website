@@ -1,1 +1,3074 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa Hostile Witness—kung bakit hindi awtomatikong sinungaling, kalaban, o failed strategy ang isang witness na dineklarang hostile, at kung paano ito tunay na gumagana sa ilalim ng Philippine Rules on Evidence."
+>
+
+<title>HOSTILE WITNESS—BAKIT MO TATAWAGIN BILANG TESTIGO KUNG “HOSTILE” SA IYO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    HOSTILE WITNESS—BAKIT MO TATAWAGIN BILANG TESTIGO KUNG “HOSTILE” SA IYO?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-hostile-witness.png"
+      alt="Simbolikong paglalarawan ng isang hostile witness sa witness stand upang ipakita na ang pagiging declared hostile ay procedural classification at hindi awtomatikong nangangahulugang sinungaling o kalaban."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    Kung ang ordinaryong kahulugan ng salitang
+    <strong>“hostile”</strong> ang pagbabasehan, parang may mali
+    agad sa strategy: Kung kontra sa iyo ang isang witness,
+    bakit ikaw pa mismo ang tatawag sa kanya bilang testigo?
+    Hindi ba dapat ang witness na ipipresent mo ay iyong
+    makatutulong sa gusto mong patunayan? At kung kailangan
+    pang ideklarang “hostile” ang sarili mong witness, hindi
+    ba parang senyales iyon na pumalpak ang plano—o baka siya
+    pa mismo ang makasira sa argumentong gusto mong
+    ma-establish?
+  </p>
+
+  <p>
+    Makatuwiran ang mga tanong na iyan.
+  </p>
+
+  <p>
+    Ang problema, iba ang ordinaryong kahulugan ng
+    <strong>“hostile”</strong> sa legal meaning ng
+    <strong>“hostile witness.”</strong>
+  </p>
+
+  <p>
+    Sa courtroom, hindi ito simpleng label para sa taong
+    kalaban mo, galit sa iyo, ayaw sa iyo, o nagsabi ng hindi
+    pabor sa iyo.
+  </p>
+
+  <p>
+    Hindi rin ito automatic na tawag sa sinungaling. At hindi
+    ito hatol na maling witness ang ipinresent.
+  </p>
+
+  <p>
+    Ang <strong>HOSTILE WITNESS</strong> ay isang procedural
+    classification—isang legal na pagkilala na may sapat na
+    dahilan para hindi tratuhin ang witness bilang ordinaryong
+    cooperative witness ng party na tumawag sa kanya.
+  </p>
+
+  <p>
+    Dito mahalagang alisin muna ang isang maling shortcut.
+  </p>
+
+  <h2>
+    HINDI “HOSTILE” DAHIL HINDI MO NAGUSTUHAN ANG SAGOT
+  </h2>
+
+  <p>
+    Sa ilalim ng <strong>Rule 132, Section 13</strong> ng
+    <strong>2019 Amendments to the Revised Rules on
+    Evidence</strong>, hindi puwedeng basta tawagin ng abogado
+    ang sarili niyang witness na hostile.
+  </p>
+
+  <p>
+    Kailangan munang ideklara siya ng court matapos magkaroon
+    ng adequate showing ng alinman sa tatlong bagay:
+    <strong>adverse interest;</strong>
+    <strong>unjustified reluctance to testify;</strong> o
+    <strong>having misled the party into calling him or her to
+    the witness stand.</strong>
+  </p>
+
+  <p>
+    Ibig sabihin, may legal threshold.
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi sapat ang:
+      <br><br>
+      “Hindi siya pumabor sa amin.”
+      <br><br>
+      Hindi sapat ang:
+      <br><br>
+      “Iba ang sinabi niya sa inaasahan namin.”
+      <br><br>
+      Hindi sapat ang:
+      <br><br>
+      “Parang defensive siya.”
+      <br><br>
+      At lalong hindi sapat ang:
+      <br><br>
+      “Mukhang kakampi siya ng kabila.”
+    </p>
+  </blockquote>
+
+  <p>
+    Court ang kailangang magpasya kung may sapat na basehan
+    para sa classification.
+  </p>
+
+  <p>
+    Hindi abogado lamang.
+    <br>
+    Hindi commentator.
+    <br>
+    Hindi social media.
+  </p>
+
+  <p>
+    At hindi audience na nakatingin lamang sa kilos o mukha ng
+    witness.
+  </p>
+
+  <h2>
+    MAY IMPORTANTENG SCOPE ANG RULE NA ITO
+  </h2>
+
+  <p>
+    Ang explainer na ito ay pangunahing nakabatay sa
+    Philippine Rules on Evidence governing judicial
+    proceedings.
+  </p>
+
+  <p>
+    Mismong <strong>Rule 128, Section 2</strong> ang
+    nagsasabing ang rules of evidence ay pareho sa courts,
+    trials, at hearings except as otherwise provided by law or
+    by the Rules themselves.
+  </p>
+
+  <p>
+    Mahalaga ang qualifier na iyon.
+  </p>
+
+  <p>
+    Dahil maaaring marinig din ang terminong
+    <strong>“hostile witness”</strong> sa special proceedings,
+    administrative bodies, legislative inquiries, impeachment
+    proceedings, o ibang tribunals na maaaring may sarili o
+    modified na procedural rules.
+  </p>
+
+  <p>
+    Kaya hindi dapat ipalagay na eksaktong pareho ang Rule 132
+    mechanics sa bawat forum dahil lang pareho ang terminong
+    ginamit.
+  </p>
+
+  <p>
+    Kapag special proceeding ang pinag-uusapan, kailangang
+    tingnan din ang mismong batas, rules, resolutions, o
+    governing procedure ng forum.
+  </p>
+
+  <p>
+    Pero sa ordinary Philippine evidence law, malinaw ang
+    framework:
+    <strong>court declaration + adequate showing + specific
+    procedural consequences.</strong>
+  </p>
+
+  <h2>
+    TATLONG MAGKAIBANG DAAN PAPUNTA SA “HOSTILE”
+  </h2>
+
+  <p>
+    Mahalagang himayin ang tatlong grounds dahil hindi
+    pare-pareho ang ibig sabihin ng mga ito.
+  </p>
+
+  <h3>
+    ADVERSE INTEREST
+  </h3>
+
+  <p>
+    Ito ang sitwasyon kung saan may interest ang witness na
+    salungat o maaaring humila sa kanya palayo sa position ng
+    party na tumawag sa kanya.
+  </p>
+
+  <p>
+    Hindi kailangang literal na galit siya sa party. Hindi rin
+    kailangan na miyembro siya ng kabilang panig.
+  </p>
+
+  <p>
+    Ang mahalaga ay may interest na maaaring makaapekto sa
+    normal na assumption na cooperative siyang witness.
+  </p>
+
+  <p>
+    Halimbawa, depende sa facts ng isang kaso, maaaring may
+    economic, professional, organizational, relational,
+    reputational, o legal interest na kailangang timbangin ng
+    court.
+  </p>
+
+  <p>
+    Pero mahalagang guardrail:
+    Hindi sapat ang haka-haka na
+    <strong>“baka may loyalty siya.”</strong>
+  </p>
+
+  <p>
+    Ang Rule ay gumagamit ng salitang
+    <strong>adequate showing.</strong>
+    May kailangang maipakitang factual basis bago ibigay ang
+    procedural consequence ng hostile declaration.
+  </p>
+
+  <h3>
+    UNJUSTIFIED RELUCTANCE TO TESTIFY
+  </h3>
+
+  <p>
+    Ito naman ay tungkol sa witness na walang sapat na
+    justification ngunit nagpapakita ng reluctance na magbigay
+    ng testimony.
+  </p>
+
+  <p>
+    Napakahalaga ng salitang
+    <strong>unjustified.</strong>
+  </p>
+
+  <p>
+    Dahil hindi lahat ng pag-aatubili ay hostility. Hindi
+    lahat ng takot ay pagsisinungaling. Hindi lahat ng
+    hesitation ay pagtatago.
+  </p>
+
+  <p>
+    At hindi lahat ng witness na uncomfortable sa courtroom ay
+    laban na agad sa party na tumawag sa kanya.
+  </p>
+
+  <p>
+    Sa Philippine jurisprudence, matagal nang kinikilala na
+    maaaring mag-atubili ang witnesses na makisangkot dahil sa
+    fear of reprisal.
+  </p>
+
+  <p>
+    Sa <strong>People v. Dorio</strong>, muling kinilala ng
+    Supreme Court na ang natural reluctance na masangkot sa
+    criminal investigation at ang takot sa retaliation ay
+    maaaring makatwirang paliwanag sa delayed disclosure at
+    hindi, kung iyon lang ang pagbabatayan, sumisira sa
+    credibility ng witness.
+  </p>
+
+  <p>
+    Kaya kailangan pa ring tingnan kung bakit reluctant ang
+    witness.
+  </p>
+
+  <p>
+    Ibang usapan ang taong takot para sa sariling buhay o
+    pamilya. Ibang usapan ang witness na nahihirapang
+    maalala. Ibang usapan ang taong traumatized,
+    intimidated, o nangangamba sa consequences ng
+    pagtestify.
+  </p>
+
+  <p>
+    At ibang usapan naman ang witness na sadyang umiiwas sa
+    malinaw at relevant na mga tanong nang walang
+    makatwirang dahilan.
+  </p>
+
+  <p>
+    Hindi dapat pagsamahin ang lahat sa isang label.
+  </p>
+
+    <h3>
+    MISLED THE PARTY INTO CALLING THE WITNESS
+  </h3>
+
+  <p>
+    Ito ang ground na kailangang maging partikular ang
+    pagbasa.
+  </p>
+
+  <p>
+    Ang wording ng Rule ay hindi lamang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nagkamali ang party sa inaasahan nitong testimony.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang sinasabi nito ay:
+    <strong>the witness has misled the party into calling him
+    or her to the witness stand.</strong>
+  </p>
+
+  <p>
+    Ibig sabihin, kailangang may sapat na basehan para
+    maiugnay sa witness mismo ang misleading circumstance na
+    naging dahilan kung bakit siya tinawag.
+  </p>
+
+  <p>
+    Halimbawa, maaaring sa sariling prior statement,
+    representation, o conduct ng witness ay nabigyan ang party
+    ng makatwirang dahilan para paniwalaang may partikular
+    siyang relevant testimony—pagkatapos ay lumitaw sa witness
+    stand ang materially different situation.
+  </p>
+
+  <p>
+    Pero hindi ito pareho sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nagulat kami sa sagot.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi bawat surprise testimony ay hostile testimony.
+    Hindi bawat pagkakamali ng lawyer sa pag-assess ng witness
+    ay nangangahulugang nilinlang siya ng witness. Hindi bawat
+    inconsistency ay automatic proof ng deception.
+  </p>
+
+  <p>
+    At hindi bawat pagbabago sa memory ay panlilinlang.
+  </p>
+
+  <p>
+    Again:
+    <strong>adequate showing + declaration by the court.</strong>
+  </p>
+
+  <p>
+    Kung sapat lang ang hindi inaasahang sagot, bawat witness
+    na sumalungat sa theory ng sariling side ay maaaring
+    i-convert agad into hostile witness.
+  </p>
+
+  <p>
+    Hindi iyon ang sistema.
+  </p>
+
+  <h2>
+    BAKIT MAY GANITONG CLASSIFICATION?
+  </h2>
+
+  <p>
+    Dahil may basic rule sa courtroom.
+  </p>
+
+  <p>
+    Normally, kapag ikaw ang nagpresent ng witness, hindi mo
+    basta maaaring tratuhin siya na para bang witness siya ng
+    kalaban.
+  </p>
+
+  <p>
+    May historical rationale dito na kinilala mismo ng
+    Supreme Court.
+  </p>
+
+  <p>
+    Ang traditional theory ay kapag isang party ang
+    nagpresent ng witness, para bang inilalagay niya ang
+    witness sa harap ng court bilang taong karapat-dapat
+    pakinggan.
+  </p>
+
+  <p>
+    Kaya hindi makatarungan kung puwede niyang gamitin ang
+    testimony kapag pabor sa kanya, tapos bigla niyang
+    sisirain ang credibility ng parehong witness kapag hindi
+    niya nagustuhan ang sagot.
+  </p>
+
+  <blockquote>
+    <p>
+      Kung walang restriction, maaaring mangyari ang ganitong
+      laro:
+      <br><br>
+      Kapag pabor ang testimony—credible ang witness.
+      <br><br>
+      Kapag pumalpak—sisiraan ang sariling witness.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya may general rule against impeaching your own witness.
+  </p>
+
+  <p>
+    Pero may exception kapag may sapat na dahilan para
+    sabihing hindi ordinaryong cooperative witness ang taong
+    iyon.
+  </p>
+
+  <p>
+    Diyan pumapasok ang hostile-witness classification.
+  </p>
+
+  <h2>
+    ANG WITNESS AY SOURCE OF EVIDENCE—HINDI MIYEMBRO NG TEAM
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang correction sa public
+    understanding.
+  </p>
+
+  <p>
+    Sa courtroom, ang witness ay hindi basketball player na
+    kailangang naka-jersey ng isang side.
+  </p>
+
+  <p>
+    Hindi requirement na gusto niya ang party na tumawag sa
+    kanya. Hindi requirement na sang-ayon siya sa legal theory
+    ng abogado.
+  </p>
+
+  <p>
+    Hindi rin dapat ang purpose ng testimony ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Patunayan mong tama ang side namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mahalaga ay kung mayroon siyang relevant personal
+    knowledge sa facts.
+  </p>
+
+  <p>
+    Maaaring siya ang:
+    <br>
+    nakakita;
+    <br>
+    nakarinig;
+    <br>
+    nakipag-usap;
+    <br>
+    pumirma;
+    <br>
+    tumanggap;
+    <br>
+    nagbigay;
+    <br>
+    nag-approve;
+    <br>
+    nag-record;
+    <br>
+    nagproseso;
+    <br>
+    o direktang naging bahagi ng isang relevant event.
+  </p>
+
+  <p>
+    At maaaring hindi siya komportable sa implications ng
+    nalalaman niya.
+  </p>
+
+  <p>
+    Maaari ring may sariling interest siya. Pero hindi
+    nawawala dahil doon ang firsthand knowledge niya.
+  </p>
+
+  <p>
+    Kaya ang mas tamang tanong ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit ka kumuha ng witness na hindi kakampi?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “May relevant fact bang ang taong ito mismo ang may
+      direct knowledge?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung oo, maaaring rational pa ring tawagin siya.
+  </p>
+
+  <h2>
+    ANG PHILIPPINE REALITY: HINDI LIBRE ANG PAGIGING WITNESS
+  </h2>
+
+  <p>
+    Mahalagang huwag pag-usapan ang witness behavior na para
+    bang nasa laboratory lang ang tao.
+  </p>
+
+  <p>
+    Sa totoong buhay, ang pagtestify ay maaaring may personal
+    na kapalit.
+  </p>
+
+  <p>
+    Takot.
+    <br>
+    Trabaho.
+    <br>
+    Relasyon.
+    <br>
+    Reputasyon.
+    <br>
+    Kaligtasan.
+    <br>
+    Pamilya.
+    <br>
+    Komunidad.
+  </p>
+
+  <p>
+    At minsan, kabuhayan.
+  </p>
+
+  <p>
+    Hindi theoretical lamang ang problemang ito sa Pilipinas.
+  </p>
+
+  <p>
+    Mismong <strong>Republic Act No. 6981</strong>, o
+    <strong>Witness Protection, Security and Benefit Act</strong>,
+    ay nilikha upang magkaroon ng protection at benefits para
+    sa qualified witnesses na humaharap sa seryosong panganib
+    dahil sa kanilang testimony.
+  </p>
+
+  <p>
+    Kasama sa statutory framework ang protection laban sa
+    threats at harassment, secure housing o relocation sa
+    qualifying circumstances, financial assistance, at
+    employment-related protection.
+  </p>
+
+  <p>
+    Sa Philippine jurisprudence, kinikilala rin ang realidad
+    ng fear of reprisal bilang posibleng dahilan ng
+    reluctance o delayed reporting.
+  </p>
+
+  <p>
+    Iyan ang dahilan kung bakit delikadong gawing simpleng
+    character judgment ang reluctance:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayaw magsalita? May tinatago.”
+    </p>
+  </blockquote>
+
+  <p>
+    Possible.
+  </p>
+
+  <p>
+    Pero hindi iyon ang tanging explanation.
+  </p>
+
+    <h2>
+    MAY SOCIO-CULTURAL PRESSURE DIN—PERO HUWAG GAWING STEREOTYPE
+  </h2>
+
+  <p>
+    May isa pang layer na kailangang kilalanin nang maingat.
+  </p>
+
+  <p>
+    Ang <strong>Sikolohiyang Pilipino</strong> ay matagal
+    nang nagtutulak na unawain ang Filipino behavior mula sa
+    sariling socio-cultural realities at indigenous concepts,
+    sa halip na basta ipilit ang imported assumptions tungkol
+    sa tao at interpersonal behavior. Ang foundational work
+    nina Rogelia Pe-Pua at Elizabeth Protacio-Marcelino ay
+    naglatag ng ganitong culturally grounded framework.
+  </p>
+
+  <p>
+    Sa mas specific na Philippine research, patuloy ding
+    pinag-aaralan ang mga konseptong gaya ng
+    <em>hiya</em> at <em>pakikisama</em> bilang
+    multidimensional interpersonal values. Halimbawa, isang
+    2026 Philippine study sa Generation Z nurses ay tumingin
+    sa <em>hiya</em> bilang maaaring may elements ng
+    self-restraint, social responsibility at sensitivity to
+    criticism, habang ang <em>pakikisama</em> ay maaaring
+    makatulong sa harmony ngunit, kapag sobra, maaari ring
+    makaapekto sa assertiveness at open communication.
+  </p>
+
+  <p>
+    Pero napakahalaga ng limitasyon:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi witness study ang research na iyon.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi nito pinatutunayan na ang
+    <em>hiya</em> o <em>pakikisama</em> ang dahilan kung bakit
+    reluctant, inconsistent, o hostile ang isang particular
+    witness.
+  </p>
+
+  <p>
+    At lalong hindi ibig sabihin na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pilipino kasi, kaya pakikisama.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon scientific analysis.
+    Stereotype iyon.
+  </p>
+
+  <p>
+    Mas tama:
+  </p>
+
+  <p>
+    Sa ilang sitwasyon, maaaring magkaroon ng tension ang
+    isang tao sa pagitan ng pagsasabi ng alam niya at ng
+    magiging epekto nito sa trabaho, relationship,
+    hierarchy, family, group, o community.
+  </p>
+
+  <p>
+    Pero para maiugnay iyon sa isang actual witness,
+    kailangan pa ring tingnan ang actual facts:
+    <br>
+    Ano ang relationship?
+    <br>
+    May dependency ba?
+    <br>
+    May threat ba?
+    <br>
+    May hierarchy ba?
+    <br>
+    May pressure?
+    <br>
+    May conflict of interest?
+    <br>
+    May prior conduct?
+    <br>
+    May documentary support?
+  </p>
+
+  <p>
+    Socio-cultural concepts can help explain possible human
+    pressures.
+  </p>
+
+  <p>
+    Hindi sila automatic diagnosis ng individual witness.
+  </p>
+
+  <h2>
+    ANO ANG NAGBABAGO KAPAG DECLARED HOSTILE?
+  </h2>
+
+  <p>
+    Dito madalas napapasimple ang explanation sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Puwede nang leading questions.”
+    </p>
+  </blockquote>
+
+  <p>
+    Tama iyon—pero kulang.
+    Mas malawak ang procedural effect.
+  </p>
+
+  <h3>
+    PUWEDE ANG LEADING QUESTIONS
+  </h3>
+
+  <p>
+    Sa <strong>Rule 132, Section 10</strong>, generally hindi
+    pinapayagan ang leading questions sa ordinary direct
+    examination, subject sa recognized exceptions.
+  </p>
+
+  <p>
+    Ang leading question ay tanong na nagsa-suggest sa witness
+    ng sagot na gustong makuha ng nagtatanong.
+  </p>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <blockquote>
+    <p>
+      Ordinary direct examination:
+      <br><br>
+      “Ano ang nakita mo pagkatapos mong pumasok sa opisina?”
+      <br><br>
+      Leading form:
+      <br><br>
+      “Pagpasok mo sa opisina, nakita mong pinirmahan niya ang
+      dokumento, tama?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag properly classified bilang unwilling o hostile
+    witness, pinapayagan ang leading questions.
+  </p>
+
+  <p>
+    May practical reason iyon.
+  </p>
+
+  <p>
+    Kung cooperative ang witness, maaaring hayaan siyang
+    magbigay ng sariling narrative. Pero kung may legally
+    established reason para hindi siya asahang cooperative,
+    maaaring kailanganing gawing mas specific at controlled
+    ang questioning.
+  </p>
+
+  <h3>
+    PERO LEADING QUESTION AY HINDI LISENSIYA PARA MAGLAGAY NG SAGOT SA BIBIG NG WITNESS
+  </h3>
+
+  <p>
+    Napakahalagang distinction:
+  </p>
+
+  <blockquote>
+    <p>
+      LEADING ≠ MISLEADING.
+    </p>
+  </blockquote>
+
+  <p>
+    Kahit hostile ang witness, bawal pa rin ang misleading
+    question.
+  </p>
+
+  <p>
+    Under Rule 132, ang misleading question ay iyong
+    nag-a-assume na true ang isang fact na hindi pa
+    na-testify o salungat sa naunang testimony ng witness.
+  </p>
+
+  <p>
+    Ibig sabihin:
+    <br>
+    Puwedeng mas pointed ang tanong.
+    <br>
+    Hindi puwedeng imbentuhin ang factual premise.
+    <br>
+    Puwedeng kontrolado ang examination.
+    <br>
+    Hindi puwedeng gawing script ang testimony.
+  </p>
+
+  <p>
+    At hindi rin puwedeng abusuhin ang witness.
+  </p>
+
+  <p>
+    Mismong Rule 132 recognizes the witness's right to be
+    protected from irrelevant, improper, or insulting
+    questions at harsh or insulting demeanor.
+  </p>
+
+  <p>
+    Kaya mali rin ang cinematic image na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hostile witness? Sige, durugin sa witness stand.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang ibig sabihin ng rule.
+  </p>
+
+  <p>
+    Procedural flexibility iyon.
+    Hindi license for humiliation.
+  </p>
+
+  <h3>
+    HINDI LANG LEADING QUESTIONS ANG EFFECT—PUWEDE RING I-IMPEACH ANG SARILING WITNESS
+  </h3>
+
+  <p>
+    Ito ang mahalagang technical point na madalas nawawala sa
+    simpleng explanation.
+  </p>
+
+  <p>
+    Normally, hindi puwedeng basta i-impeach ng party ang
+    sarili niyang witness. Pero kapag properly declared
+    unwilling o hostile, maaari na siyang i-impeach ng party
+    na nagpresent sa kanya
+    <strong>as if he or she had been called by the adverse
+    party</strong>—except by evidence of bad character.
+  </p>
+
+  <p>
+    Maaari rin siyang i-impeach at i-cross-examine ng adverse
+    party.
+  </p>
+
+  <p>
+    Pero may mahalagang limitation:
+  </p>
+
+  <p>
+    Sa hostile/unwilling witness covered by Section 13, ang
+    cross-examination ng adverse party ay limited sa subject
+    matter ng examination-in-chief.
+  </p>
+
+  <p>
+    Mahalaga iyon dahil ang ordinary cross-examination rule
+    generally permits inquiry into relevant matters under the
+    broader framework of Rule 132.
+  </p>
+
+  <p>
+    Sa hostile-witness provision, mismong Section 13 ang
+    naglalagay ng specific limitation sa cross-examination na
+    ito.
+  </p>
+
+  <p>
+    Kaya ang hostile declaration ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Permission to ask leading questions.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas accurate:
+  </p>
+
+  <p>
+    Binabago nito ang procedural relationship sa pagitan ng
+    witness at ng party na tumawag sa kanya—kasama ang paraan
+    ng questioning, impeachment, at saklaw ng examination.
+  </p>
+
+    <h2>
+    ANO NAMAN ANG “IMPEACH THE WITNESS”?
+  </h2>
+
+  <p>
+    Isa pang legal term na madaling magdulot ng
+    kalituhan dahil mas pamilyar sa marami ang salitang
+    “impeachment” sa ibang konteksto.
+  </p>
+
+  <p>
+    Kapag sinabing <strong>“impeach the witness,”</strong>
+    hindi ito political impeachment ng public official.
+  </p>
+
+  <p>
+    Sa evidence law, ang impeachment of a witness ay
+    pag-challenge sa credibility o reliability ng kanyang
+    testimony gamit ang mga paraang pinapayagan ng Rules.
+  </p>
+
+  <p>
+    Isang mahalagang halimbawa ang
+    <strong>prior inconsistent statement.</strong>
+  </p>
+
+  <blockquote>
+    <p>
+      Ngayon:
+      <br><br>
+      “Hindi ko sinabi iyon.”
+      <br><br>
+      Pero dati:
+      <br><br>
+      “Ako mismo ang nagbigay ng instruction.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi sapat na ihagis lang sa publiko ang dalawang
+    statement at sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sinungaling!”
+    </p>
+  </blockquote>
+
+  <p>
+    May procedure.
+  </p>
+
+  <p>
+    Under <strong>Rule 132, Section 14</strong>, bago
+    gamitin ang prior inconsistent statement para
+    i-impeach ang witness, kailangang maiharap sa kanya
+    ang statement at relevant circumstances at bigyan
+    siyang pagkakataong kumpirmahin, itanggi, o
+    ipaliwanag ito.
+  </p>
+
+  <p>
+    Kung written ang statement, kailangang ipakita iyon
+    sa witness bago siya tanungin tungkol dito.
+  </p>
+
+  <p>
+    At may isa pang nuance:
+  </p>
+
+  <p>
+    Hindi lahat ng prior inconsistent statement ay
+    automatic substantive proof ng katotohanan ng laman
+    nito.
+  </p>
+
+  <p>
+    Ang admissibility at purpose nito ay maaari pang
+    depende sa ibang Rules, kabilang ang hearsay rules.
+  </p>
+
+  <p>
+    Sa amended Rules, halimbawa, ang qualifying prior
+    inconsistent statement na given under oath sa trial,
+    hearing, other proceeding, o deposition ay maaaring
+    hindi ituring na hearsay kapag ang declarant ay
+    testifying at subject sa cross-examination tungkol
+    dito.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      HOSTILE STATUS DOES NOT ERASE THE RULES OF
+      EVIDENCE.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi nito ginagawang admissible ang lahat.
+    Hindi nito ginagawang totoo ang lahat ng prior
+    statement.
+  </p>
+
+  <p>
+    At hindi nito binibigyan ang abogado ng unlimited
+    power laban sa witness.
+  </p>
+
+  <h2>
+    COURT ANG GATEKEEPER—HINDI “RESCUE BUTTON” ANG HOSTILE DECLARATION
+  </h2>
+
+  <p>
+    Ito ang isang napakahalagang safeguard.
+  </p>
+
+  <p>
+    Imagine kung walang court approval.
+  </p>
+
+  <p>
+    Tinawag ng abogado ang witness.
+    Hindi nagustuhan ang sagot.
+  </p>
+
+  <p>
+    Sabihin lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Your Honor, hostile na siya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pagkatapos, puwede nang baguhin ang paraan ng
+    questioning at i-impeach ang sariling witness.
+  </p>
+
+  <p>
+    Kung ganoon kadali, mawawala ang saysay ng rule
+    against impeaching one's own witness.
+  </p>
+
+  <p>
+    Kaya hindi self-declared ang hostility.
+  </p>
+
+  <p>
+    The Rule requires:
+  </p>
+
+  <blockquote>
+    <p>
+      DECLARATION BY THE COURT at ADEQUATE SHOWING.
+    </p>
+  </blockquote>
+
+  <p>
+    Magandang historical illustration ang
+    <strong>People v. Andrada.</strong>
+  </p>
+
+  <p>
+    Doon, nagpresent ang prosecution ng witness upang
+    makatulong sana sa pagkakakilanlan ng nagdeliver ng
+    illegal drugs.
+  </p>
+
+  <p>
+    Pero ang witness ay hindi itinuro ang accused at
+    nagbigay pa ng testimony na nakasira sa prosecution
+    theory.
+  </p>
+
+  <p>
+    Hindi naipakita na properly qualified o declared
+    siyang hostile sa ilalim ng applicable rule.
+  </p>
+
+  <p>
+    Tinawag ng Supreme Court ang presentation ng witness
+    bilang isang <em>“telling blow”</em> sa prosecution
+    case.
+  </p>
+
+  <p>
+    Ang lesson:
+  </p>
+
+  <p>
+    Hindi puwedeng gawing hostile retroactively ang
+    witness dahil lang nakapagpahina sa kaso mo ang
+    kanyang sagot.
+  </p>
+
+  <p>
+    Ang hostile-witness rule ay legal mechanism.
+    Hindi damage-control label.
+  </p>
+
+  <h2>
+    KAYA BAKIT MO PA TATAWAGIN KUNG RISKY?
+  </h2>
+
+  <p>
+    Dito pumapasok ang tunay na legal strategy.
+  </p>
+
+  <p>
+    Bago tumawag ng potentially adverse o difficult
+    witness, hindi lang ang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pabor ba siya sa amin?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahalaga ang mga tanong na:
+    <br>
+    Gaano kahalaga ang personal knowledge niya?
+    <br>
+    May fact bang siya mismo ang pinakamalapit o tanging
+    direct source?
+    <br>
+    May document bang kailangan ang authentication,
+    explanation, custody, o context niya?
+    <br>
+    May prior statement ba siya?
+    <br>
+    Gaano ka-consistent ang prior accounts?
+    <br>
+    May independent documents o ibang witnesses bang
+    makapag-corroborate?
+    <br>
+    Ano ang pinakamalalang sagot na maaari niyang
+    ibigay?
+    <br>
+    Kung itanggi niya ang expected fact, ano ang
+    fallback evidence?
+    <br>
+    Mas malaki ba ang probative value ng makukuha kaysa
+    sa risk na makasira siya sa theory?
+  </p>
+
+  <p>
+    At pinakaimportante:
+  </p>
+
+  <blockquote>
+    <p>
+      Kailangan ba talaga siya?
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang legal-strategy calculus.
+  </p>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hostile siya, huwag na.”
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hostile naman, kaya safe na siyang tawagin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Neither is correct.
+  </p>
+
+    <h2>
+    MINSAN, HINDI MO KAILANGANG MAKUHA ANG “CONCLUSION” NG WITNESS
+  </h2>
+
+  <p>
+    Ito ang isa pang strategy point na madaling hindi
+    mapansin.
+  </p>
+
+  <p>
+    Halimbawa, maaaring ayaw sabihin ng witness:
+  </p>
+
+  <blockquote>
+    <p>
+      “Oo, may irregularity.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero maaaring ma-establish mula sa kanya ang factual
+    building blocks:
+  </p>
+
+  <blockquote>
+    <p>
+      “Oo, ako ang pumirma.”
+      <br>
+      “Oo, iyon ang petsa.”
+      <br>
+      “Oo, iyon ang amount.”
+      <br>
+      “Oo, iyon ang instruction.”
+      <br>
+      “Oo, wala ang dokumentong iyon sa file noong araw na
+      iyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi kailangang ang witness mismo ang magbigay ng
+    legal o moral conclusion.
+  </p>
+
+  <p>
+    Ang trabaho ng counsel ay magpresent ng admissible
+    facts.
+    Ang trabaho ng fact-finder ay timbangin ang buong
+    evidence.
+  </p>
+
+  <p>
+    Kaya possible na reluctant o adverse ang witness pero
+    mahalaga pa rin ang specific factual admissions niya.
+  </p>
+
+  <h2>
+    PERO PUWEDE TALAGANG MAG-BACKFIRE
+  </h2>
+
+  <p>
+    Hindi magic weapon ang hostile classification.
+    Hindi nito kino-control ang sagot ng witness.
+    Hindi nito ginagawang predictable ang testimony.
+    Hindi rin nito ginagarantiya na lahat ng inconsistency
+    ay mapapaliwanag pabor sa party na tumawag.
+  </p>
+
+  <p>
+    Puwedeng mangyari na:
+    <br>
+    i-deny niya ang crucial fact;
+    <br>
+    magbigay siya ng explanation na pabor sa kabilang side;
+    <br>
+    sirain niya ang isang important inference;
+    <br>
+    mag-open siya ng bagong issue;
+    <br>
+    o kumpirmahin niya ang isang bagay na ayaw sana ng
+    party na mailagay sa record.
+  </p>
+
+  <p>
+    Kaya calculated risk ang pagtawag sa difficult witness.
+  </p>
+
+  <p>
+    At dito mahalaga ang corroboration.
+  </p>
+
+  <p>
+    Kung ang buong theory ng isang side ay nakasalalay
+    lamang sa pag-asang sasabihin ng reluctant witness ang
+    inaasahang linya, mahina ang strategic position.
+  </p>
+
+  <p>
+    Mas matatag kapag ang testimony ay bahagi lamang ng
+    mas malawak na evidentiary structure:
+    <br>
+    documents;
+    <br>
+    records;
+    <br>
+    physical evidence;
+    <br>
+    other witnesses;
+    <br>
+    objective timelines;
+    <br>
+    communications;
+    <br>
+    at iba pang independent corroboration.
+  </p>
+
+  <h2>
+    HINDI RIN LAHAT NG UNCOOPERATIVE WITNESS AY SINUNGALING
+  </h2>
+
+  <p>
+    May support din dito mula sa witness-cooperation
+    research.
+  </p>
+
+  <p>
+    Sa isang 2020 experimental study involving
+    136 mock witnesses, ang mga participants na
+    inutusang maging uncooperative ay nag-disclose ng mas
+    kaunting impormasyon.
+  </p>
+
+  <p>
+    Ang epekto sa accuracy ay mas maliit kaysa epekto sa
+    dami ng information na ibinigay.
+  </p>
+
+  <p>
+    Nang baguhin ang instruction mula uncooperative
+    patungong cooperative sa second interview,
+    nagkaroon ng limited increase sa information
+    disclosure nang walang corresponding loss of accuracy.
+  </p>
+
+  <p>
+    Hindi ito Philippine courtroom study.
+  </p>
+
+  <p>
+    At hindi nito dini-define ang legal meaning ng
+    “hostile” sa Rule 132.
+  </p>
+
+  <p>
+    Pero mahalaga ang insight:
+  </p>
+
+  <blockquote>
+    <p>
+      Cooperation at truthfulness are not the same
+      variable.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang isang taong ayaw makipag-cooperate ay maaaring
+    mag-withhold ng information.
+    Pero hindi automatic na lahat ng ibinibigay niyang
+    information ay kasinungalingan.
+  </p>
+
+  <p>
+    At ang isang taong cooperative ay hindi rin automatic
+    na accurate ang memory.
+  </p>
+
+  <h2>
+    KAYA DELIKADO ANG “MUKHA NAMANG NAGSISINUNGALING”
+  </h2>
+
+  <p>
+    Madaling gumawa ng credibility judgment mula sa body
+    language:
+    <br>
+    Hindi tumitingin sa mata.
+    <br>
+    Pawis.
+    <br>
+    Nanginginig.
+    <br>
+    Mabilis sumagot.
+    <br>
+    Mabagal sumagot.
+    <br>
+    Defensive.
+    <br>
+    Galit.
+    <br>
+    Kalmado “masyado.”
+  </p>
+
+  <p>
+    Pero mahina ang scientific support sa paggamit ng mga
+    ganitong cues bilang simpleng lie detector.
+  </p>
+
+  <p>
+    Isang major meta-analysis nina Bond at DePaulo ang
+    nagsuri ng 206 research documents involving
+    24,483 evaluators.
+  </p>
+
+  <p>
+    Ang average accuracy ng tao sa paghiwalay ng lies at
+    truths nang walang special aids ay nasa
+    humigit-kumulang 54% lamang.
+  </p>
+
+  <p>
+    Sa isang 2025 study naman na gumamit ng
+    36 video-recorded eyewitness testimonies at
+    680 individual statements, walang reliable
+    association na nakita sa examined nonverbal cues at
+    actual statement accuracy.
+  </p>
+
+  <p>
+    Pero kailangan ding linawin ang kabilang punto.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na legally irrelevant na ang
+    demeanor sa lahat ng pagkakataon.
+  </p>
+
+  <p>
+    Sa civil cases, <strong>Rule 133, Section 1</strong>
+    expressly includes the witnesses' manner of testifying
+    among the circumstances the court may consider in
+    determining the preponderance or superior weight of
+    evidence.
+  </p>
+
+  <p>
+    At mas broadly, Philippine jurisprudence recognizes
+    the special position of trial courts dahil sila mismo
+    ang nakakarinig at nakakakita sa witness habang
+    nagte-testify at naoobserbahan ang demeanor at
+    deportment na hindi ganap na nakikita sa written
+    transcript.
+  </p>
+
+  <p>
+    Pero may malaking difference sa pagitan ng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Demeanor can be part of judicial credibility
+      assessment”
+      <br><br>
+      at
+      <br><br>
+      “May particular body-language cue na reliable lie
+      detector.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pareho iyon.
+  </p>
+
+  <p>
+    Kaya hindi dapat gawing shortcut ang:
+    <br>
+    Nervous = liar.
+    <br>
+    Hindi makatingin sa mata = liar.
+    <br>
+    Calm = truthful.
+    <br>
+    Hostile = dishonest.
+  </p>
+
+  <p>
+    Ang demeanor ay maaaring bahagi ng kabuuang
+    assessment.
+    Hindi ito scientific switch na nagsasabing TRUE o
+    FALSE.
+  </p>
+
+    <h2>
+    PATI ANG PARAAN NG PAGTATANONG, MAY EPEKTO
+  </h2>
+
+  <p>
+    Hindi rin neutral recorder ang human memory.
+  </p>
+
+  <p>
+    Sa isang controlled study tungkol sa lawyer
+    questioning, ang confusing questions—kabilang ang
+    negatives, double negatives, multiple questions,
+    complex syntax at iba pang mahirap na forms—ay
+    nagpababa sa accuracy ng participant-witnesses
+    kumpara sa mas simpleng equivalent questions.
+  </p>
+
+  <p>
+    Pero hindi rin scientifically accurate ang
+    simplistic claim na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Leading question = unreliable answer.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa dalawang experiments published in 2023,
+    nag-iba ang effects depende sa klase ng question at
+    witness confidence.
+  </p>
+
+  <p>
+    Ang negative at double-negative questions ay minsang
+    nagpahina ng accuracy, habang ang leading at
+    leading-with-feedback questions ay hindi uniformly
+    nagbaba ng accuracy at sa ilang experimental
+    conditions ay nag-improve pa.
+  </p>
+
+  <p>
+    Ang lesson ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Leading questions are harmless.”
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Leading questions automatically corrupt
+      testimony.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang lesson:
+  </p>
+
+  <blockquote>
+    <p>
+      Context matters.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya may rules.
+    <br>
+    Kaya may objections.
+    <br>
+    Kaya may judicial control.
+    <br>
+    Kaya tinitingnan ang actual answer at buong
+    record—hindi lamang ang form ng isang tanong.
+  </p>
+
+  <h2>
+    HOSTILE WITNESS ≠ ADVERSE PARTY WITNESS
+  </h2>
+
+  <p>
+    Magkaiba rin ang dalawang classification na ito.
+  </p>
+
+  <p>
+    Ang hostile or unwilling witness ay isang witness na
+    kailangang ideklara ng court bilang ganoon
+    pagkatapos ng adequate showing ng grounds sa
+    <strong>Rule 132, Section 13.</strong>
+  </p>
+
+  <p>
+    Ang adverse-party witness naman ay may hiwalay na
+    category sa Rules—halimbawa, mismong adverse party
+    o qualifying officer, director, o managing agent ng
+    isang adverse corporation, partnership, o
+    association.
+  </p>
+
+  <p>
+    Mismong Rule 132 ang naghihiwalay sa mga category na
+    ito at nagbibigay ng special rules sa kanilang
+    examination.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      HOSTILE WITNESS ≠ ADVERSE PARTY WITNESS
+    </p>
+  </blockquote>
+
+  <p>
+    kahit may pagkakataong magkapareho ang ilan sa
+    procedural treatment.
+  </p>
+
+  <h2>
+    HINDI RIN “HOSTILE” DAHIL LANG SUMALUNGAT SA IYO
+  </h2>
+
+  <p>
+    Halimbawa:
+  </p>
+
+  <p>
+    Tinawag mo ang isang eyewitness.
+  </p>
+
+  <p>
+    Tinanong mo:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sino ang unang pumasok sa intersection?”
+    </p>
+  </blockquote>
+
+  <p>
+    Sumagot siya:
+  </p>
+
+  <blockquote>
+    <p>
+      “Yung sasakyan ng side ninyo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Masama iyon sa position mo.
+    Pero maaaring perfectly cooperative at truthful ang
+    witness.
+  </p>
+
+  <p>
+    Hindi dahil unfavorable ang sagot ay hostile na
+    siya.
+  </p>
+
+  <p>
+    Ito ang isa sa pinakamahalagang distinction:
+  </p>
+
+  <blockquote>
+    <p>
+      UNFAVORABLE TESTIMONY ≠ AUTOMATIC NA HOSTILE
+      WITNESS.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung sapat lang ang unfavorable answer para maging
+    hostile, magiging meaningless ang classification.
+    Bawat witness na hindi nagbigay ng gustong sagot ay
+    puwedeng i-label.
+  </p>
+
+  <p>
+    Kaya may court gatekeeping.
+  </p>
+
+  <h2>
+    AT HINDI RIN AUTOMATIC NA MABABA ANG VALUE NG TESTIMONY DAHIL “HOSTILE”
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang final corrections.
+  </p>
+
+  <p>
+    Walang automatic na:
+  </p>
+
+  <blockquote>
+    <p>
+      HOSTILE DISCOUNT sa testimony.
+    </p>
+  </blockquote>
+
+  <p>
+    At wala ring:
+  </p>
+
+  <blockquote>
+    <p>
+      HOSTILE PREMIUM.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dahil hostile ang witness ay automatically
+    unreliable ang lahat ng sinabi niya.
+    Hindi rin dahil may admission siyang potentially
+    damaging sa sarili niyang interest ay automatic nang
+    conclusive ang sagot.
+  </p>
+
+  <p>
+    Ang actual evidentiary value ay kailangang timbangin
+    kasama ng buong record.
+  </p>
+
+  <p>
+    Sa civil cases, halimbawa, Rule 133 expressly
+    directs attention not merely to witness labels or
+    numbers, but to circumstances such as the witness's
+    means and opportunity of knowing the facts, nature
+    and probability of the testimony, interest or want
+    of interest, manner of testifying, at personal
+    credibility.
+  </p>
+
+  <p>
+    Iyan ang mas tamang mindset sa pagsusuri ng witness
+    evidence:
+    <br>
+    Paano niya nalaman?
+    <br>
+    Direkta ba niyang nakita o narinig?
+    <br>
+    Consistent ba?
+    <br>
+    May dokumentong sumusuporta?
+    <br>
+    May ibang witness na nagco-corroborate?
+    <br>
+    May contradiction ba?
+    <br>
+    May interest o bias ba?
+    <br>
+    May reasonable explanation ba sa inconsistency?
+    <br>
+    Relevant at admissible ba ang evidence?
+  </p>
+
+  <p>
+    At pagkatapos:
+  </p>
+
+  <blockquote>
+    <p>
+      Ano ang bigat ng kabuuan?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hostile kasi—huwag paniwalaan.”
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hostile kaya siguradong may ibinubunyag.”
+    </p>
+  </blockquote>
+
+    <h2>
+    REAL TALK: ANG KORTE AY HINDI PALIGSAHAN NG PINAKAMARAMING “KAKAMPI”
+  </h2>
+
+  <p>
+    May tendency tayong tingnan ang witnesses na parang
+    political endorsements.
+  </p>
+
+  <blockquote>
+    <p>
+      Witness ng prosecution = laban sa accused.
+      <br>
+      Witness ng defense = kakampi ng accused.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi ganyan kasimple ang evidentiary system.
+  </p>
+
+  <p>
+    Maaaring ang witness na tinawag ng isang side ay may
+    testimony na helpful sa isang issue pero harmful sa
+    isa pa.
+    Maaaring cooperative siya pero inaccurate ang memory.
+    Maaaring reluctant siya pero tama ang ilang factual
+    details.
+    Maaaring may adverse interest siya pero supported ng
+    documents ang isang admission niya.
+    Maaaring inconsistent siya sa peripheral details pero
+    consistent sa central fact.
+    Maaaring confident siya pero mali.
+  </p>
+
+  <p>
+    At maaaring nervous siya pero tama.
+  </p>
+
+  <p>
+    Ang witness ay hindi dapat sukatin sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kanino siya kampi?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahalagang sukatin sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang alam niya, paano niya nalaman, ano ang
+      sinabi niya, at ano ang sumusuporta o
+      sumasalungat dito?”
+    </p>
+  </blockquote>
+
+  <h2>
+    KAYA KAPAG NARINIG MO ULIT ANG “HOSTILE WITNESS,” HUWAG AGAD MAG-CONCLUDE
+  </h2>
+
+  <p>
+    Huwag agad:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kalaban siya ng party na tumawag.”
+      <br><br>
+      “Nahuling nagsisinungaling.”
+      <br><br>
+      “Maling witness ang pinili.”
+      <br><br>
+      “Sablay ang legal strategy.”
+      <br><br>
+      “Hostile siya, kaya siguradong may tinatago.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas matinong itanong:
+    <br>
+    SINO ANG NAGDECLARE NA HOSTILE?
+    <br>
+    ANO ANG LEGAL GROUND?
+    <br>
+    ADVERSE INTEREST BA?
+    <br>
+    UNJUSTIFIED RELUCTANCE BA?
+    <br>
+    O ANG WITNESS MISMO BA AY MAY CONDUCT O
+    REPRESENTATION NA NAG-MISLEAD SA PARTY KAYA SIYA
+    NATAWAG?
+    <br>
+    ANO ANG FACTUAL BASIS NG DECLARATION?
+    <br>
+    ANO ANG RELEVANT PERSONAL KNOWLEDGE NG WITNESS?
+    <br>
+    ANO ANG ACTUAL NA SINABI NIYA—HINDI LANG ANG LABEL
+    SA KANYA?
+    <br>
+    MAY PRIOR INCONSISTENT STATEMENT BA AT MAAYOS BA
+    ITONG NA-CONFRONT?
+    <br>
+    MAY DOCUMENTS O INDEPENDENT CORROBORATION BA?
+    <br>
+    ANO ANG NAGING EPEKTO NG HOSTILE STATUS SA
+    QUESTIONING, IMPEACHMENT AT CROSS-EXAMINATION?
+    <br>
+    AT ANONG RULES ANG TALAGANG GOVERNING SA PARTICULAR
+    NA COURT O FORUM?
+  </p>
+
+  <p>
+    At pinakaimportante:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG BIGAT NG TESTIMONY KAPAG TININGNAN KASAMA
+      NG BUONG EBIDENSIYA?
+    </p>
+  </blockquote>
+
+  <p>
+    Doon nagsisimula ang mas matinong pagsusuri.
+  </p>
+
+  <p>
+    Dahil ang <strong>HOSTILE WITNESS</strong> ay hindi
+    verdict sa katotohanan.
+  </p>
+
+  <p>
+    Hindi ito character assassination.
+    Hindi ito synonym ng liar.
+    Hindi rin ito automatic admission na mali ang
+    strategy.
+  </p>
+
+  <p>
+    Ito ay procedural classification na nagbibigay ng
+    ibang paraan ng examination at impeachment kapag may
+    sapat na legal basis para hindi tratuhing ordinaryong
+    cooperative witness ang taong tinawag.
+  </p>
+
+  <p>
+    Ang witness na tinawag mo ay hindi kailangang maging
+    kakampi mo.
+    Ang mahalaga ay kung mayroon siyang relevant na
+    nalalaman na kailangang mailagay sa record.
+  </p>
+
+  <blockquote>
+    <p>
+      HOSTILE WITNESS ≠ AUTOMATIC NA SINUNGALING.
+      <br>
+      HOSTILE WITNESS ≠ AUTOMATIC NA KALABAN.
+      <br>
+      UNFAVORABLE TESTIMONY ≠ AUTOMATIC NA HOSTILE
+      WITNESS.
+      <br>
+      HOSTILE WITNESS ≠ AUTOMATIC NA FAILED STRATEGY.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang “HOSTILE” ay nagsasabi ng procedural status ng
+    witness at kung paano siya maaaring i-examine at
+    i-impeach—hindi kung ano na agad ang dapat paniwalaan
+    tungkol sa katotohanan ng kanyang testimony.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Legal Basis, Research and References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              2019 Amendments to the Revised Rules on
+              Evidence, A.M. No. 19-08-15-SC — Rule 128,
+              particularly Sec. 2; Rule 132, particularly
+              Secs. 3, 10, 13 and 14; Rule 133. Effective
+              May 1, 2020.
+            </li>
+
+            <li>
+              Gomez v. Gomez-Samson,
+              G.R. No. 156284 — rationale behind the
+              general rule against impeaching one's own
+              witness and hostile-witness treatment.
+            </li>
+
+            <li>
+              People v. Andrada,
+              G.R. No. 100985,
+              September 17, 1993 — illustration of the
+              danger of presenting a witness whose
+              testimony damages the presenting party when
+              the requirements for hostile classification
+              are not established.
+            </li>
+
+            <li>
+              Republic Act No. 6981,
+              Witness Protection, Security and Benefit Act
+              — statutory framework addressing security,
+              threats and practical risks facing qualified
+              witnesses.
+            </li>
+
+            <li>
+              People v. Dorio,
+              G.R. No. 130660 — Philippine jurisprudence
+              recognizing fear of reprisal and natural
+              reluctance to become involved in criminal
+              investigations as circumstances that do not
+              automatically destroy witness credibility.
+            </li>
+
+            <li>
+              Harry L. Go, et al. v. People,
+              G.R. No. 185527 — discussion of testimonial
+              examination, confrontation,
+              cross-examination and the trial judge's
+              opportunity to observe witness deportment.
+            </li>
+
+            <li>
+              Pe-Pua, R. &amp;
+              Protacio-Marcelino, E.A. (2000),
+              <em>Sikolohiyang Pilipino (Filipino
+              Psychology): A Legacy of Virgilio G.
+              Enriquez</em>,
+              Asian Journal of Social Psychology,
+              3, 49–71.
+            </li>
+
+            <li>
+              Avila et al. (2026),
+              <em>Acta Medica Philippina</em> —
+              Philippine empirical study examining
+              <em>hiya</em>, <em>pakikisama</em> and
+              interpersonal/professional engagement;
+              useful as socio-cultural context but not
+              evidence of the behavior of any particular
+              courtroom witness.
+            </li>
+
+            <li>
+              De La Fuente Vilar et al. (2020),
+              <em>Legal and Criminological Psychology</em>
+              — experimental study involving 136 mock
+              witnesses on cooperation, information
+              disclosure and accuracy.
+            </li>
+
+            <li>
+              Bond &amp; DePaulo (2006),
+              <em>Personality and Social Psychology
+              Review</em> — meta-analysis involving
+              206 research documents and 24,483
+              evaluators on human lie-truth judgments.
+            </li>
+
+            <li>
+              Raver, Lindholm &amp; Alm (2025),
+              <em>Scientific Reports</em> — research
+              using 36 recorded eyewitness testimonies
+              and 680 statements examining nonverbal
+              cues, statement accuracy and perceived
+              credibility.
+            </li>
+
+            <li>
+              Kebbell &amp; Johnson (2000),
+              <em>Law and Human Behavior</em> —
+              experimental research on confusing lawyer
+              questions and witness accuracy.
+            </li>
+
+            <li>
+              Wade &amp; Spearing (2023),
+              <em>Memory</em> — experimental research
+              showing that the effects of
+              cross-examination-style questioning vary
+              by question type and witness factors
+              rather than following a simple
+              “leading question = inaccurate testimony”
+              formula.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
