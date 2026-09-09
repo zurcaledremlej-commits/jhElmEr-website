@@ -1,1 +1,2548 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Fact-based na paliwanag kung ano ang poverty porn, kailan nagiging exploitation ang pagdodokumento ng kahirapan, at bakit mahalaga ang dignidad, informed consent, agency, at tamang representasyon sa pagtulong."
+>
+
+<title>POVERTY PORN—TINUTULUNGAN BA O GINAGAMIT? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  POVERTY PORN—TINUTULUNGAN BA O GINAGAMIT?
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-poverty-porn.png"
+      alt="Poster ng POVERTY PORN—TINUTULUNGAN BA O GINAGAMIT? na nagpapakita ng tensyon sa pagitan ng tunay na pagtulong at paggamit sa kahirapan bilang content, na may simbolismo ng camera, social media, at dignidad ng mga taong nasa kahinaan."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May taong gutom.<br>
+    May pamilyang nasalanta.<br>
+    May batang umiiyak.<br>
+    May bahay na nawasak.<br>
+    May dumating na may dalang pagkain, pera o relief goods.
+  </p>
+
+  <p>
+    At may camera na nakatutok.
+  </p>
+
+  <p>
+    Sa unang tingin, simple lang ang kuwento:<br>
+    May nangangailangan. May tumulong.
+  </p>
+
+  <p>
+    Pero kapag ang eksena ay kinunan, in-edit, nilagyan ng dramatic framing, ginawang thumbnail, ipinost sa napakalaking audience, at posibleng naging source ng views, followers, donations, sponsorships, political goodwill o kita, may mas mahirap nang tanong:
+    <strong>ANG TAONG NASA HARAP BA NG CAMERA ANG TUNAY NA SENTRO NG PAGTULONG—O ANG KANYANG PAGHIHIRAP ANG NAGING SENTRO NG CONTENT?</strong>
+  </p>
+
+  <p>
+    Hindi agad masama dahil may camera.<br>
+    Hindi agad exploitation dahil may post.
+  </p>
+
+  <p>
+    At hindi rin nawawala ang halaga ng tulong dahil may nakinabang ding reputasyon o audience ang nagbigay.
+  </p>
+
+  <p>
+    Pero may hangganan sa pagitan ng <strong>PAGPAPAKITA NG PAGHIHIRAP PARA MAS MAINTINDIHAN ANG PROBLEMA</strong> at <strong>PAGGAMIT SA PAGHIHIRAP PARA GAWING MAS MAKAPANGYARIHAN ANG KUWENTO, PANGALAN O NEGOSYO NG IBANG TAO.</strong>
+  </p>
+
+  <p>
+    Diyan pumapasok ang usapin ng poverty porn.
+  </p>
+
+  <h2>
+    ANO BA TALAGA ANG “POVERTY PORN”?
+  </h2>
+
+  <p>
+    Hindi literal na pornograpiya ang ibig sabihin nito.
+  </p>
+
+  <p>
+    Ginagamit ang terminong “poverty porn” bilang kritika sa paraan ng pagpapakita ng kahirapan, gutom, trauma o matinding vulnerability kapag ang paghihirap ng tao ay ginagawang pangunahing instrumento para makakuha ng awa, shock, guilt, donations, attention o public approval.
+  </p>
+
+  <p>
+    Sa humanitarian communication, matagal nang pinupuna ang imagery na inilalagay ang mahihirap sa kanilang pinakamasakit at pinakawalang-kapangyarihang sandali para mas maging compelling ang appeal.
+  </p>
+
+  <p>
+    Recent empirical research mismo ang gumagamit na ngayon ng konseptong ito upang suriin ang ethics at epekto ng ganitong representations.
+  </p>
+
+  <p>
+    Pero mahalagang guardrail:<br>
+    <strong>HINDI LAHAT NG MALUNGKOT NA LARAWAN AY POVERTY PORN.</strong>
+  </p>
+
+  <p>
+    Hindi lahat ng video ng pagtulong ay exploitation.<br>
+    Hindi lahat ng influencer na nagdo-document ng charity ay nagpapanggap.
+  </p>
+
+  <p>
+    At hindi porke kumita ang isang video ay awtomatikong masama na ang pagtulong.
+  </p>
+
+  <blockquote>
+    <p>
+      Ang issue ay hindi simpleng:<br><br>
+      “MAY CAMERA BA?”<br><br>
+      Ang mas mahalagang tanong ay:<br>
+      <strong>ANO ANG GINAWA NG CAMERA SA DIGNIDAD, CONTEXT AT PAGKATAO NG TAONG NASA HARAP NITO?</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    BAKIT MALAKAS ANG ISANG MUKHA AT ISANG KUWENTO?
+  </h2>
+
+  <p>
+    May psychological reason kung bakit mas madaling kumapit sa atin ang kuwento ng isang partikular na tao kaysa sa malaking numero.
+  </p>
+
+  <p>
+    Tinatawag itong identifiable victim effect—ang tendency na mas madaling magkaroon ng helping response kapag konkretong tao ang nakikita natin kaysa anonymous statistics lamang.
+  </p>
+
+  <p>
+    Sa meta-analysis ng 41 studies, nakita ang statistically significant pero modest identifiable-victim effect.
+  </p>
+
+  <p>
+    Mas naging consistent ito sa ilang specific conditions, gaya ng photographed child na naghihirap, mababa ang perceived responsibility sa kanyang sitwasyon, at may kasamang monetary request.
+  </p>
+
+  <p>
+    Sa isang malaking field experiment sa India na may humigit-kumulang 185,000 prospective donors, nakaapekto rin sa donation behavior ang ilang framing strategies na konektado sa sympathy at identifiable victims.
+  </p>
+
+  <p>
+    Ibig sabihin, may totoong behavioral reason kung bakit paulit-ulit nating nakikita sa fundraising at online charity content ang:<br>
+    isang mukha,<br>
+    isang bata,<br>
+    isang pamilya,<br>
+    isang personal na kuwento,<br>
+    at isang emotional moment.
+  </p>
+
+  <p>
+    Mas madaling gawing personal ang problemang maaaring maging abstract kapag statistics lang ang nakikita.
+  </p>
+
+  <p>
+    Pero dito mahalaga ang limit.
+  </p>
+
+  <p>
+    <strong>HINDI IBIG SABIHIN NG RESEARCH NA BASTA MAGPAKITA KA NG MAS KAWAWANG MUKHA AY SIGURADONG MAS MARAMING PERA, VIEWS O TULONG.</strong>
+  </p>
+
+  <p>
+    Modest at context-dependent ang overall effect.
+  </p>
+
+  <p>
+    May mga pag-aaral ding nagpapakitang ang sobrang negative emotional imagery ay hindi awtomatikong nagpapataas ng donation at maaari pang magpataas ng perception na minamanipula ang audience.
+  </p>
+
+  <p>
+    Sa isang series of charity-advertising studies, sad facial expressions increased sympathy pero sabay ding nagpapataas ng perceived manipulative intent.
+  </p>
+
+  <p>
+    Sa kabuuan, hindi automatic na tumaas ang donation.
+  </p>
+
+  <blockquote>
+    <p>
+      Kaya ang science mismo ay mas nuanced kaysa sa simpleng formula na:<br><br>
+      <strong>“MAS KAWAWA = MAS EFFECTIVE.”</strong><br><br>
+      Minsan gumagana.<br>
+      Minsan hindi.<br><br>
+      Minsan nakakakuha ng sympathy.<br>
+      Minsan nagmumukhang manipulation.
+    </p>
+  </blockquote>
+
+  <h2>
+    KAPAG ANG EMOSYON AY NAGING CURRENCY NG ATTENTION
+  </h2>
+
+  <p>
+    Mas lumalaki ang issue kapag dinala ito sa social media.
+  </p>
+
+  <p>
+    Ang social media ay hindi neutral na bulletin board lamang.
+  </p>
+
+  <p>
+    Bahagi ng economics nito ang pagkuha at pagpapanatili ng human attention.
+  </p>
+
+  <p>
+    Major psychological research tungkol sa social media describes the capture and monetization of attention bilang mahalagang bahagi ng platform environment, habang morally at emotionally evocative content ay maaaring maging epektibong paraan para makakuha ng engagement.
+  </p>
+
+  <p>
+    Sa analysis ng mahigit 4,000 Facebook posts, nakita ring may specific emotions—kabilang ang anger at sadness—na nauugnay sa sharing behavior kahit kinokontrol ang ibang factors.
+  </p>
+
+  <p>
+    Hindi lahat ng emotion ay pareho ang epekto.<br>
+    At hindi rin ibig sabihin nito na sadness automatically causes virality.
+  </p>
+
+  <p>
+    Pero malinaw na may papel ang emotion sa kung anong content ang pinapansin at ipinapasa-pasa online.
+  </p>
+
+  <p>
+    May isa pang layer:<br>
+    Ang social feedback mismo ay maaaring magturo sa users kung anong behavior ang “rewarded.”
+  </p>
+
+  <p>
+    Sa observational studies na sumuri sa 7,331 Twitter users at 12.7 million tweets, kasama ang behavioral experiments, nakita na ang positive social feedback sa certain emotionally charged expressions ay nauugnay sa mas mataas na posibilidad na ulitin ang ganoong expression.
+  </p>
+
+  <p>
+    Hindi poverty content ang partikular na pinag-aralan doon.
+  </p>
+
+  <p>
+    Kaya hindi tama na sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “NAPATUNAYAN NA ANG LIKES ANG SANHI NG POVERTY PORN.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang ipinakita ng research.
+  </p>
+
+  <p>
+    Pero ipinapakita nito ang isang mas malawak na behavioral mechanism:
+    <strong>KAPAG PAULIT-ULIT NA NIRE-REWARD NG ATTENTION ANG ISANG KLASE NG CONTENT, MAAARING MATUTUNAN NG CREATOR KUNG ANONG FORMAT ANG MAS EPEKTIBONG ULITIN.</strong>
+  </p>
+
+  <p>
+    May evidence din na engagement-based ranking can favor emotionally charged material.
+  </p>
+
+  <p>
+    Sa isang 2025 audit ng Twitter ranking, engagement-based ranking amplified negative emotional content gaya ng anger, sadness at anxiety kumpara sa reverse-chronological baseline.
+  </p>
+
+  <p>
+    Political content ang pangunahing context ng study—hindi charity videos.
+  </p>
+
+  <p>
+    Kaya hindi natin puwedeng gamitin iyon para sabihing bawat social-media algorithm ay sadyang nagpapalaganap ng poverty porn.
+  </p>
+
+  <p>
+    Pero nagbibigay ito ng mahalagang context kung bakit sa attention economy, may structural incentive para gumawa ng content na mabilis pumukaw ng emotion.
+  </p>
+
+  <h2>
+    HINDI LANG VIEWS—MAY ECONOMIC INCENTIVE DIN
+  </h2>
+
+  <p>
+    Kapag creator ang pinag-uusapan, hindi na lang psychological reward ang possible incentive.
+  </p>
+
+  <p>
+    May advertising revenue.<br>
+    May sponsorship.<br>
+    May brand deals.<br>
+    May audience growth.<br>
+    May followers.<br>
+    May donations.<br>
+    May political capital.<br>
+    May future commercial opportunities.
+  </p>
+
+  <p>
+    Research sa economics of social media shows that incentives can affect what content gets produced, habang algorithms at advertising systems influence kung paano ito nade-distribute at nakokonsumo.
+  </p>
+
+  <p>
+    Pero dito kailangang maging maingat.
+  </p>
+
+  <p>
+    <strong>WALA TAYONG SAPAT NA BASEHAN PARA SABIHING POVERTY CONTENT AUTOMATICALLY PRODUCES MORE INCOME KAYSA IBANG CONTENT.</strong>
+  </p>
+
+  <p>
+    At lalong hindi puwedeng makakita lang tayo ng monetized video at sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “GINAWA NIYA IYAN PARA SA PERA.”
+    </p>
+  </blockquote>
+
+  <p>
+    Motive iyon.<br>
+    Kailangan ng evidence.
+  </p>
+
+  <p>
+    Pero iba ang motive sa incentive.
+  </p>
+
+  <p>
+    Posibleng sincere ang unang pagtulong.<br>
+    Posibleng sincere pa rin ang pangalawa.
+  </p>
+
+  <p>
+    Pero kung paulit-ulit na napapansin ng creator na ang videos na may pinakamatinding emotional suffering ang nakakakuha ng pinakamalaking audience response, mayroon nang economic at behavioral incentive na gumawa pa ng kaparehong format.
+  </p>
+
+  <p>
+    Doon kailangang bantayan kung ang tao ay unti-unting nagiging <strong>RAW MATERIAL NG CONTENT SYSTEM.</strong>
+  </p>
+
+  <h2>
+    KAPAG ANG PAGHIHIRAP ANG NAGING CONTENT ASSET
+  </h2>
+
+  <p>
+    May content na ang tao ang subject.<br>
+    At may content na ang pagdurusa ng tao ang produkto.
+  </p>
+
+  <p>
+    Magkaiba iyon.
+  </p>
+
+  <p>
+    Sa unang sitwasyon, ipinapakita ang isang tao para maintindihan ang kanyang kondisyon, pangangailangan, pagsisikap at mas malawak na problema.
+  </p>
+
+  <p>
+    Sa pangalawa, kailangang manatiling:<br>
+    mas gutom,<br>
+    mas umiiyak,<br>
+    mas wasak,<br>
+    mas helpless,<br>
+    mas nakakagulat,
+  </p>
+
+  <p>
+    dahil iyon ang nagbibigay ng emotional value sa content.
+  </p>
+
+  <p>
+    Ito rin ang dahilan kung bakit hindi sapat ang depensang:
+  </p>
+
+  <blockquote>
+    <p>
+      “TOTOO NAMAN ANG IPINAKITA.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa isang 2024 research program na binubuo ng anim na preregistered studies tungkol sa ethical judgments sa poverty portrayals, mas bothered ang participants sa fabricated o staged poverty images kaysa sa extreme pero totoong depictions.
+  </p>
+
+  <p>
+    Mahalagang insight iyon.
+  </p>
+
+  <p>
+    Dahil maaaring <strong>FACTUALLY TRUE</strong> ang isang frame pero <strong>INCOMPLETE</strong> ang kuwento.
+  </p>
+
+  <p>
+    Totoong umiiyak siya.<br>
+    Pero baka hindi siya umiiyak buong araw.
+  </p>
+
+  <p>
+    Totoong nasalanta siya.<br>
+    Pero baka hindi siya helpless.
+  </p>
+
+  <p>
+    Totoong naghihirap siya.<br>
+    Pero baka may ginagawa siyang paraan para makabangon.
+  </p>
+
+  <p>
+    Totoong kailangan niya ng tulong.<br>
+    Pero baka hindi iyon ang buong identity niya.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>ANG KATOTOHANAN NG ISANG FRAME AY HINDI AWTOMATIKONG NANGANGAHULUGANG KUMPLETO ANG KATOTOHANANG IPINAPAKITA NITO.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    OVER-VICTIMIZING—KAPAG BINURA ANG AGENCY PARA MAS MAGING “KAWAWA”
+  </h2>
+
+  <p>
+    Dito pumapasok ang puntong madalas hindi napapansin.
+  </p>
+
+  <p>
+    Posibleng maging biktima ang isang tao nang hindi siya totally helpless.<br>
+    Posibleng nangangailangan siya pero may ginagawa rin siyang paraan.<br>
+    Posibleng nasalanta siya pero may kakayahang magdesisyon.<br>
+    Posibleng mahirap siya pero hindi ibig sabihin na wala siyang skill, diskarte, pride, trabaho, pangarap o sariling pananagutan.
+  </p>
+
+  <p>
+    Pero kapag ang narrative ay nangangailangan ng mas matinding awa, maaaring mabura ang lahat ng iyon.
+  </p>
+
+  <p>
+    May experimental evidence na relevant dito.
+  </p>
+
+  <p>
+    Sa isang pag-aaral tungkol sa poverty-porn imagery at perceptions of agency, ang mga participants na nakakita ng negative portrayals ng mga taong nasa kahirapan ay nagbigay ng mas mababang ratings sa agency ng mga taong ipinakita.
+  </p>
+
+  <p>
+    Ibig sabihin, ang paraan ng portrayal ay maaaring makaapekto hindi lamang sa awa—kundi pati sa tingin natin kung may kakayahan bang kumilos ang taong nasa larawan.
+  </p>
+
+  <p>
+    Ito rin mismo ang iniiwasan ng modern humanitarian communication standards.
+  </p>
+
+  <p>
+    Ang ICRC ethical-content guidance ay malinaw na nagbababala laban sa pag-equate ng vulnerability sa helplessness.
+  </p>
+
+  <p>
+    Inirerekomenda nitong ipakita rin ang resilience, courage, coping at empowerment, at iwasang gawing object ang tao sa pamamagitan ng pagkulong sa kanya sa bagay lamang na nagpapakita ng kanyang vulnerability.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na pagtatakpan ang paghihirap.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>IPAKITA ANG HIRAP NANG HINDI BINUBURA ANG TAO.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    ANG BIKTIMA AY HINDI CHARACTER LANG SA KUWENTO NG “TAGAPAGLIGTAS”
+  </h2>
+
+  <p>
+    Kapag binawasan ang agency ng recipient, may isa pang epekto.<br>
+    Mas lumalaki ang role ng giver.
+  </p>
+
+  <p>
+    Kung ang nasa isang side ay portrayed as:<br>
+    walang kakayahan,<br>
+    walang solusyon,<br>
+    walang boses,<br>
+    at naghihintay lamang ng tulong,
+  </p>
+
+  <p>
+    mas madaling maging sentro ang nasa kabilang side bilang:<br>
+    rescuer,<br>
+    provider,<br>
+    hero,<br>
+    o tanging dahilan kung bakit may pag-asa.
+  </p>
+
+  <p>
+    Dito nabubuo ang savior narrative.
+  </p>
+
+  <p>
+    May Philippine research ding nagsisimulang tingnan ito sa social-media context.
+  </p>
+
+  <p>
+    Isang 2025 DLSU Senior High School Research Congress paper ang nagsuri ng 10 charity episodes ng isang malaking Filipino YouTube program na bawat isa ay may higit 200,000 views.
+  </p>
+
+  <p>
+    Nakakita ang researchers ng patterns na tinawag nilang sensationalism, savior complex, narrative manipulation, stereotyping at unexpected advertising, habang sinusuri rin ang commercialization at commodification ng struggles ng mga taong tampok sa content.
+  </p>
+
+  <p>
+    Pero mahalaga ang limit:<br>
+    <strong>SAMPUNG EPISODES LAMANG IYON MULA SA ISANG PARTICULAR CHANNEL.</strong>
+  </p>
+
+  <p>
+    Hindi iyon ebidensiya na lahat ng Filipino charity vloggers ay pareho.<br>
+    Hindi rin iyon national survey.
+  </p>
+
+  <p>
+    Kaya mas tama itong gamitin bilang Philippine case example, hindi universal proof.
+  </p>
+
+  <p>
+    Pero tugma ito sa mas malawak na concern:
+    <strong>Kapag ang poor person ay naging supporting character lamang para lalong lumiwanag ang heroism ng giver, nawawala ang balance ng kuwento.</strong>
+  </p>
+
+            <h2>
+    AGENCY AY HINDI VICTIM-BLAMING
+  </h2>
+
+  <p>
+    Dito kailangan ang pinakamalinaw na guardrail.
+  </p>
+
+  <p>
+    Kapag sinabi nating hindi dapat gawing totally helpless ang mahirap, hindi ibig sabihin na:
+  </p>
+
+  <blockquote>
+    <p>
+      “KASALANAN NIYA NAMAN KUNG BAKIT SIYA MAHIRAP.”
+    </p>
+  </blockquote>
+
+  <p>
+    Isa rin iyang oversimplification.
+  </p>
+
+  <p>
+    Matagal nang ipinapakita ng social-psychology research na ang paraan ng pag-attribute natin sa sanhi ng poverty—personal ba, structural ba, situational ba—ay may epekto sa sympathy, blame at willingness nating tumulong.
+  </p>
+
+  <p>
+    Research has repeatedly distinguished between individualistic explanations gaya ng personal choices o perceived effort, at structural explanations gaya ng labor conditions, inequality, access to opportunities at broader social conditions.
+  </p>
+
+  <p>
+    Ang sobrang paglalagay ng blame sa individual ay nauugnay sa mas kaunting sympathy at support, habang situational o structural explanations can increase concern about inequality.
+  </p>
+
+  <p>
+    Pero hindi rin kailangang pumunta sa kabilang extreme at sabihing walang personal agency ang sinuman.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>ANG BUHAY NG TAO AY BUNGA NG INTERACTION NG PERSONAL CHOICES AT MGA KONDISYONG HINDI NIYA KONTROLADO.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    May mga pagkakataong may maling decision ang tao.<br>
+    May mga pagkakataong wala siyang realistic na magandang option.<br>
+    May mga pagkakataong systemic ang pangunahing dahilan.
+  </p>
+
+  <p>
+    At may mga pagkakataong sabay-sabay ang lahat ng iyon.
+  </p>
+
+  <p>
+    Kaya mali ang dalawang simplification:
+  </p>
+
+  <blockquote>
+    <p>
+      “KASALANAN LAHAT NG MAHIRAP ANG KAHIRAPAN NILA.”<br><br>
+      at<br><br>
+      “WALANG KAHIT ANONG AGENCY O CONTRIBUTION ANG MAHIRAP SA ANUMANG NANGYAYARI SA BUHAY NIYA.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong binabawasan ang complexity ng tao.
+  </p>
+
+  <h2>
+    HINDI ABSTRACT ANG POVERTY SA PILIPINAS
+  </h2>
+
+  <p>
+    Sa official 2025 poverty estimates ng Philippine Statistics Authority, 9.7% ng mga Pilipino—humigit-kumulang 11.08 million people—ang classified as poor batay sa official income poverty threshold.
+  </p>
+
+  <p>
+    Sa family level, 6.4%, o humigit-kumulang 1.90 million families, ang classified as poor.
+  </p>
+
+  <p>
+    Mahalagang tandaan na income-based statistical measure ito.<br>
+    Hindi nito nasusukat ang bawat dimension ng deprivation, vulnerability o quality of life.
+  </p>
+
+  <p>
+    Pero sapat itong paalala:
+  </p>
+
+  <p>
+    Kapag pinag-uusapan natin ang poverty content, hindi maliit na niche ng internet ang pinag-uusapan natin.
+  </p>
+
+  <p>
+    Millions of Filipinos ang nasa socioeconomic situations na maaaring gawing subject ng camera, charity campaign, political narrative o viral content.
+  </p>
+
+  <p>
+    Kaya hindi maliit ang usapin ng representation.
+  </p>
+
+  <h2>
+    SA KALAMIDAD, MAS LALONG NAGIGING VISIBLE ANG POVERTY PORN
+  </h2>
+
+  <p>
+    Pinakamadaling makita ang problemang ito tuwing may:<br>
+    bagyo,<br>
+    baha,<br>
+    sunog,<br>
+    lindol,<br>
+    landslide,<br>
+    malawakang evacuation,<br>
+    o anumang disaster.
+  </p>
+
+  <p>
+    Kapag may kalamidad, sabay-sabay na tumataas ang:<br>
+    public attention,<br>
+    media coverage,<br>
+    relief operations,<br>
+    political visibility,<br>
+    fundraising,<br>
+    at social-media activity.
+  </p>
+
+  <p>
+    Doon mas madalas makita ang:<br>
+    batang nakatayo sa baha,<br>
+    pamilyang nasa bubong,<br>
+    matandang umiiyak,<br>
+    wasak na bahay,<br>
+    putikang evacuee,<br>
+    o pamilyang walang makain.
+  </p>
+
+  <p>
+    Hindi masama na makita ang mga larawang iyon.
+  </p>
+
+  <p>
+    Sa katunayan, disaster communication can improve situational awareness, mobilize help at maipakita ang lawak ng damage.
+  </p>
+
+  <p>
+    Pero may research ding nagpapakitang may relasyon ang paraan ng victim framing at emotion sa likelihood na ma-share ang disaster content.
+  </p>
+
+  <p>
+    Sa isang experiment involving 631 participants, emotional reactions such as sadness were connected to sharing intentions, pero hindi lumabas ang simpleng formula na:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAS MALUNGKOT = MAS SHAREABLE.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas komplikado ang interaction ng sadness, enjoyment at message framing.
+  </p>
+
+  <p>
+    Mahalagang limit iyon.
+  </p>
+
+  <p>
+    Hindi kailangang gawing OA ang disaster victim para magkaroon ng public attention.
+  </p>
+
+  <p>
+    At hindi rin science ang depensang:
+  </p>
+
+  <blockquote>
+    <p>
+      “GANITO KASI ANG GUSTONG MAKITA NG TAO.”
+    </p>
+  </blockquote>
+
+  <h2>
+    ANG DISASTER VICTIM AY HINDI “HOPELESS OBJECT”
+  </h2>
+
+  <p>
+    Matagal nang malinaw ang humanitarian standard dito.
+  </p>
+
+  <p>
+    Sa Code of Conduct ng International Red Cross and Red Crescent Movement at NGOs in Disaster Relief, isa sa core principles ang pagkilala sa disaster victims bilang dignified human beings—not hopeless objects.
+  </p>
+
+  <p>
+    Hindi ito simpleng magandang slogan.<br>
+    May practical implication ito.
+  </p>
+
+  <p>
+    Kung ang pamilya ay nawalan ng bahay, puwedeng ipakita ang pagkawala nang hindi sila ginagawang props.<br>
+    Kung ang isang tao ay umiiyak, maaaring relevant iyon sa kuwento—pero hindi ibig sabihin na kailangang ulit-ulitin, i-zoom, gawing thumbnail at gamitin bilang emotional hook sa bawat edit.<br>
+    Kung mahina sila sa sandaling iyon, hindi ibig sabihin na iyon na ang buong identity nila.
+  </p>
+
+  <p>
+    Kaya ang ICRC mismo ay nagrerekomendang ang humanitarian imagery ay hindi puro struggle.
+  </p>
+
+  <p>
+    Dapat may lugar din ang resilience at paraan kung paano nagko-cope ang mga tao.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>Ito ang malaking difference ng:<br><br>
+      PAGPAPAKITA NG VULNERABILITY<br>
+      at<br>
+      PAGKUKULONG SA TAO SA VULNERABILITY NIYA.</strong>
+    </p>
+  </blockquote>
+
+            <h2>
+    KAPAG ANG PUBLIC SERVICE AY NAGMUMUKHANG PERSONAL NA REGALO
+  </h2>
+
+  <p>
+    May partikular na panganib kapag politician ang giver.
+  </p>
+
+  <p>
+    Kung sariling pera ng isang tao ang ginamit niya, puwedeng personal generosity iyon.
+  </p>
+
+  <p>
+    Pero kapag government program, public relief goods, taxpayer-funded assistance o serbisyo ng ahensiya ang ipinapamahagi, ibang usapan na iyon.
+  </p>
+
+  <p>
+    Hindi personal na pag-aari ng opisyal ang public resources.<br>
+    At hindi nawawala ang karapatan ng mamamayan sa dignidad dahil tumanggap siya ng serbisyong pinopondohan ng publiko.
+  </p>
+
+  <p>
+    May Philippine research na matagal nang nagdodokumento ng patron-client relationships sa politika at targeted material inducements, lalo na sa low-income communities.
+  </p>
+
+  <p>
+    Sa pag-aaral naman ng COVID-19 aid distribution sa Metro Manila at adjacent provinces, nakita ng researchers kung paano maaaring makialam ang patron-clientelist dynamics sa distribution ng ayuda kapag mahina ang institutional targeting at malaki ang discretion sa local implementation.
+  </p>
+
+  <p>
+    At sa isang 2026 comparative study tungkol sa disaster communication governance sa Philippines at Vietnam, Philippine interview evidence specifically described cases ng state-provided relief goods na nilalagyan ng pangalan o larawan ng politicians bilang bahagi ng mas malawak na analysis ng patronage at crisis visibility.
+  </p>
+
+  <p>
+    Qualitative evidence iyon.<br>
+    Hindi nationwide count.
+  </p>
+
+  <p>
+    Kaya hindi nito pinatutunayang lahat ng relief operations ay ganito.
+  </p>
+
+  <p>
+    Pero documented example ito ng paraan kung paano maaaring ma-personalize ang public assistance.
+  </p>
+
+  <p>
+    Dito nagkakaroon ng overlap ang poverty porn at patronage.
+  </p>
+
+  <p>
+    Kapag public assistance ay na-frame bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      “BINIGYAN KITA.”
+    </p>
+  </blockquote>
+
+  <p>
+    sa halip na:
+  </p>
+
+  <blockquote>
+    <p>
+      “ITO ANG SERBISYONG IPINAGKAKALOOB NG INSTITUSYONG PINAGLILINGKURAN KO.”
+    </p>
+  </blockquote>
+
+  <p>
+    mas madaling maging personal ang political gratitude.
+  </p>
+
+  <h2>
+    UTANG NA LOOB—MABUTING VALUE, PERO PUWEDENG ABUSUHIN
+  </h2>
+
+  <p>
+    Mahalaga rin ang socio-cultural context.
+  </p>
+
+  <p>
+    May malalim na lugar ang utang na loob sa kulturang Pilipino.
+  </p>
+
+  <p>
+    Hindi ito inherently masama.
+  </p>
+
+  <p>
+    Maaari itong kumatawan sa gratitude, reciprocity, loyalty at pagkilala sa kabutihang ginawa ng ibang tao.
+  </p>
+
+  <p>
+    Pero may philosophical at socio-cultural scholarship na nagtuturo ring kailangang maihiwalay ang morally desirable na utang na loob sa mga anyong pumapasok na sa patronage politics, lifelong servitude, corruption at injustice.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>MAY PAGKAKAIBA ANG PASASALAMAT AT PAGKAKAUTANG NG POLITICAL LOYALTY.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag personal na charity ng politician ang ginawang malaking public spectacle habang ang recipient ay inilalarawang helpless, maaaring magkaroon ng dalawang sabay na mensahe:
+  </p>
+
+  <blockquote>
+    <p>
+      “KAWAWA KA.”<br><br>
+      at<br><br>
+      “AKO ANG TUMULONG SA IYO.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung paulit-ulit itong nangyayari, mas madaling mabuo ang relationship na ang serbisyo at tulong ay nakakabit sa pangalan ng benefactor—hindi sa institutional responsibility o karapatan ng citizen.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na awtomatikong nabibili ang boto ng isang relief pack.
+  </p>
+
+  <p>
+    Research mismo shows that vote-buying offers do not always succeed in changing voter preference.
+  </p>
+
+  <p>
+    Pero hindi rin nangangahulugang walang epekto ang patronage.
+  </p>
+
+  <p>
+    Ang mahalaga ay huwag gawing automatic causal claim ang isang cultural value.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>UTANG NA LOOB CAN BE GENUINE GRATITUDE.<br>
+      PERO MAAARI RIN ITONG GAMITIN BILANG POLITICAL LEVERAGE KAPAG ANG TULONG AY SADYANG GINAWANG PERSONAL DEBT.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    CONSENT BA TALAGA KUNG KAILANGAN MO ANG TULONG?
+  </h2>
+
+  <p>
+    Isa pa itong mahirap na bahagi.
+  </p>
+
+  <p>
+    Madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “PUMAYAG NAMAN SIYANG MA-VIDEO.”
+    </p>
+  </blockquote>
+
+  <p>
+    At posibleng totoo iyon.
+  </p>
+
+  <p>
+    Pero ang ethical consent ay mas malalim kaysa sa simpleng pagkuha ng “oo.”
+  </p>
+
+  <p>
+    Isipin ang power imbalance.
+  </p>
+
+  <p>
+    Ang isang side ay may:<br>
+    camera,<br>
+    pera,<br>
+    sasakyan,<br>
+    platform,<br>
+    followers,<br>
+    at kakayahang magbigay.
+  </p>
+
+  <p>
+    Ang kabilang side ay maaaring:<br>
+    gutom,<br>
+    nasalanta,<br>
+    walang bahay,<br>
+    may sakit,<br>
+    o umaasa sa relief goods.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na invalid agad ang consent niya.
+  </p>
+
+  <p>
+    Pero kailangan itanong:<br>
+    Alam ba niya kung saan mapapanood ang video?<br>
+    Alam ba niyang puwedeng milyon ang makakita?<br>
+    Alam ba niyang maaaring kumita ang content?<br>
+    Alam ba niyang puwedeng manatili iyon online nang maraming taon?<br>
+    Puwede ba siyang tumanggi sa camera nang hindi niya iniisip na baka hindi siya matulungan?<br>
+    At kailangan ba talagang makita ang kanyang mukha para ma-document ang tulong?
+  </p>
+
+  <p>
+    Ang 2024 Core Humanitarian Standard emphasizes that communications representing people and communities should have informed consent at maging accurate, respectful, ethical at dignity-preserving.
+  </p>
+
+  <p>
+    Kinikilala rin nito ang power imbalance sa pagitan ng aid providers at crisis-affected communities.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na pareho ang legal o institutional obligations ng humanitarian organization at random content creator.
+  </p>
+
+  <p>
+    Pero magandang ethical benchmark iyon.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>ANG PAGTANGGAP NG TULONG AY HINDI DAPAT NAKASALALAY SA PAGPAYAG NA MAKUNAN.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    MAS SENSITIBO KAPAG BATA ANG NASA CAMERA
+  </h2>
+
+  <p>
+    Mas mataas pa ang responsibility kapag bata ang subject.
+  </p>
+
+  <p>
+    Ang bata ay maaaring umiyak ngayon dahil gutom siya.<br>
+    Pero ang video na iyon ay maaaring manatili online hanggang teenager o adult na siya.
+  </p>
+
+  <p>
+    May digital footprint ang isang vulnerable moment na maaaring hindi niya lubos na naiintindihan noong kinunan siya.
+  </p>
+
+  <p>
+    UNICEF guidelines emphasize dignity, privacy, confidentiality, best interests at protection from harm kapag bata ang subject.
+  </p>
+
+  <p>
+    Pinapayuhan din nitong iwasan ang questions o portrayals na maaaring magdulot ng humiliation o mag-reactivate ng trauma, at bigyan ng accurate context ang kuwento ng bata.
+  </p>
+
+  <p>
+    Kaya hindi magandang ethical defense ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “WALA NAMANG REKLAMO IYONG BATA.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang protection ng bata ay hindi dapat nakasalalay lamang sa kakayahan niyang maintindihan ang long-term consequences ng public exposure.
+  </p>
+
+            <h2>
+    KAPAG NAGING BUSINESS MODEL ANG PAGIGING “KAWAWA”
+  </h2>
+
+  <p>
+    Ito ang pinakamabigat na form ng problema.
+  </p>
+
+  <p>
+    Isang charity video.
+  </p>
+
+  <p>
+    Tapos isa pa.<br>
+    Tapos isa pa.
+  </p>
+
+  <p>
+    Parehong structure:<br>
+    Humanap ng taong naghihirap.<br>
+    Ipakita nang detalyado ang kanyang sitwasyon.<br>
+    Buuin ang emotional tension.<br>
+    Magbigay ng tulong.<br>
+    Hintayin ang iyak.<br>
+    Kunin ang reaction.<br>
+    Ilagay sa thumbnail.<br>
+    I-upload.<br>
+    Monetize.<br>
+    Then repeat.
+  </p>
+
+  <p>
+    Hindi nangangahulugan na fake ang tulong.<br>
+    Hindi rin ibig sabihin na hindi nakikinabang ang beneficiaries.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>MAY TAONG TOTOONG NATULUNGAN.<br>
+      AT MAY IBANG TAONG TOTOONG NAKINABANG SA COMMERCIALIZATION NG PAGHIHIRAP NIYA.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi mutually exclusive ang dalawang iyon.
+  </p>
+
+  <p>
+    Sa emerging empirical literature tungkol sa poverty porn at humanitarian communication, pinag-aaralan na ang relationship ng imagery, donor engagement, advertising framing, affect at savior dynamics.
+  </p>
+
+  <p>
+    Pero researchers themselves acknowledge na limitado pa ang empirical literature at kailangan pa ng more studies, different populations at longitudinal work.
+  </p>
+
+  <p>
+    Iyan ang scientific honesty na kailangang panatilihin.
+  </p>
+
+  <p>
+    Hindi pa kayang sabihin ng existing research:
+  </p>
+
+  <blockquote>
+    <p>
+      “ITO ANG EKSAKTONG FORMULA NG POVERTY PORN SA TIKTOK, FACEBOOK AT YOUTUBE SA PILIPINAS.”
+    </p>
+  </blockquote>
+
+  <p>
+    Wala pang ganoong comprehensive evidence.
+  </p>
+
+  <p>
+    Pero sapat na ang ebidensiya para seryosohin ang:<br>
+    representation,<br>
+    agency,<br>
+    emotional manipulation,<br>
+    attention incentives,<br>
+    power imbalance,<br>
+    consent,<br>
+    savior framing,<br>
+    at commodification.
+  </p>
+
+  <h2>
+    AT HINDI RIN TOTOO NA MAS GRABE ANG IMAGE, MAS MAGANDA ANG RESULTA
+  </h2>
+
+  <p>
+    Extreme suffering can attract attention.<br>
+    Pero puwede rin itong mag-backfire.
+  </p>
+
+  <p>
+    May charity-advertising studies na nakakita na sad imagery can evoke sympathy while simultaneously making viewers perceive manipulative intent.
+  </p>
+
+  <p>
+    Sa recent poverty-porn research, hindi rin lumabas na ang pinaka-emotional na frame ang automatic winner.
+  </p>
+
+  <p>
+    Sa isang eye-tracking study at donor survey, informational framing performed strongly in important engagement measures, at itinuro mismo ng researchers ang limitations at need for more research.
+  </p>
+
+  <p>
+    Sa isang 2026 study involving 1,990 U.S. residents evaluating 186 real humanitarian images, positive portrayals of children tended to receive higher ethical ratings, habang images showing malnutrition lowered ethical evaluations.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na dapat gawing masaya ang lahat ng larawan.
+  </p>
+
+  <p>
+    Ang disaster ay disaster.<br>
+    Ang gutom ay gutom.
+  </p>
+
+  <p>
+    Hindi kailangan ng fake smile.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>HINDI KAILANGANG GAWING PINAKAKAWAWA ANG TAO PARA MAGKAROON NG MAKAPANGYARIHANG HUMANITARIAN COMMUNICATION.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    POVERTY PORN BA AGAD KAPAG MAY TULONG AT CAMERA?
+  </h2>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Mas makatarungan ang pagsusuri kapag tiningnan ang buong pattern.
+  </p>
+
+  <p>
+    Tanungin:
+  </p>
+
+  <p>
+    <strong>KAILANGAN BA TALAGA ANG MUKHA?</strong><br>
+    Kung maipapakita naman ang problema nang hindi inilalantad ang identity, bakit kailangang kita ang recipient?
+  </p>
+
+  <p>
+    <strong>RELEVANT BA ANG PERSONAL NA DETALYE?</strong><br>
+    O inilabas lamang ang trauma, utang, sakit, family conflict at kahihiyan para lumakas ang emotional hook?
+  </p>
+
+  <p>
+    <strong>ACCURATE BA ANG CONTEXT?</strong><br>
+    O pinili lamang ang pinakamasakit na limang minuto para iyon ang maging buong identity ng tao?
+  </p>
+
+  <p>
+    <strong>MAY AGENCY BA ANG RECIPIENT?</strong><br>
+    Nakikita ba siyang gumagawa, nagsisikap, nagsasalita at nagdedesisyon?<br>
+    O nakaupo lang siyang “kawawa” habang ang giver ang gumagawa ng lahat?
+  </p>
+
+  <p>
+    <strong>SINO ANG BIDA SA EDIT?</strong><br>
+    Ang problema at solusyon ba?<br>
+    O ang giver?
+  </p>
+
+  <p>
+    <strong>ANO ANG NANGYARI PAGKATAPOS?</strong><br>
+    May follow-through ba?<br>
+    May long-term improvement ba?<br>
+    O natapos ang interes sa recipient nang matapos ang viral episode?
+  </p>
+
+  <p>
+    <strong>KUNG WALANG CAMERA, GAGAWIN PA RIN BA ANG TULONG?</strong><br>
+    Hindi nito mapapatunayan ang motive, pero mahalagang tanong ito sa pattern.
+  </p>
+
+  <p>
+    <strong>MAY CHOICE BANG TUMANGGI SA EXPOSURE?</strong><br>
+    Partikular kapag relief, pera o emergency assistance ang kailangan.
+  </p>
+
+  <p>
+    At higit sa lahat:
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>KUNG AALISIN ANG PAGHIHIRAP SA VIDEO, MAY CONTENT PA BANG NATITIRA?</strong><br><br>
+      Kung wala, baka kailangang itanong kung ang tunay na commodity ay hindi na ang kuwento—kundi ang suffering mismo.
+    </p>
+  </blockquote>
+
+  <h2>
+    IBA ITO SA “TULONG BA—O PUBLIC STUNT?”
+  </h2>
+
+  <p>
+    Magkadikit sila.<br>
+    Pero hindi sila pareho.
+  </p>
+
+  <p>
+    Sa <strong>PUBLIC STUNT</strong>, pangunahing tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG PAGTULONG BA AY MAY TOTOONG COMMITMENT—O PANGUNAHING GINAGAMIT PARA SA IMAGE-BUILDING?
+    </p>
+  </blockquote>
+
+  <p>
+    Sa <strong>POVERTY PORN</strong>, ibang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG GINAWA SA MISMONG KAHIRAPAN AT VULNERABILITY NG RECIPIENT?
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring public stunt ang isang politician photo-op pero hindi poverty porn kung hindi naman degraded o over-victimized ang mga taong kasama.
+  </p>
+
+  <p>
+    At maaaring sincere ang charity pero magkaroon pa rin ng poverty-porn problem kung ang recipients ay ipinapakita nang unnecessarily humiliating, one-dimensional at helpless para mas makapangyarihan ang fundraising content.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang intention lamang.
+  </p>
+
+  <p>
+    Puwedeng mabuti ang intention pero mali ang representation.<br>
+    At puwedeng may tunay na tulong pero may tunay ding exploitation.
+  </p>
+
+            <h2>
+    ANG PINAKAMAHIRAP NA TANONG: SINO BA TALAGA ANG NAKINABANG?
+  </h2>
+
+  <p>
+    Hindi ito zero-sum.
+  </p>
+
+  <p>
+    Posibleng may recipient na nakatanggap ng ₱10,000.<br>
+    Posibleng kumita rin ang creator.<br>
+    Posibleng lumaki ang followers.<br>
+    Posibleng dumami ang sponsors.<br>
+    Posibleng may ibang donors na na-inspire.<br>
+    Posibleng maraming good outcomes ang sabay-sabay.
+  </p>
+
+  <p>
+    Kaya hindi makatarungang sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “KUMITA SIYA, KAYA FAKE ANG TULONG.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAY NATULUNGAN NAMAN, KAYA WALA NANG ETHICAL ISSUE.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang pagtulong ay hindi immunity sa scrutiny.
+  </p>
+
+  <p>
+    Kung may totoong natulungan, kilalanin iyon.<br>
+    Kung may public benefit, kilalanin iyon.
+  </p>
+
+  <p>
+    Pero maaari pa ring itanong kung:<br>
+    kailangan bang ilantad ang dignity,<br>
+    kailangan bang gawing helpless ang tao,<br>
+    kailangan bang palakihin ang drama,<br>
+    at kailangan bang maging permanent online content ang pinakamasakit na araw ng buhay niya.
+  </p>
+
+  <h2>
+    ANG MAS RESPONSABLENG DIREKSYON
+  </h2>
+
+  <p>
+    Hindi kailangang alisin ang camera.<br>
+    Hindi kailangang itago ang poverty.<br>
+    Hindi kailangang gawing sterile ang disaster reporting.
+  </p>
+
+  <p>
+    At hindi kailangang tumigil ang creators sa charity content.
+  </p>
+
+  <p>
+    Ang mas makatarungang direction ay:
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>DOCUMENT—WITHOUT DEHUMANIZING.</strong><br>
+      Ipakita ang problema nang hindi ginagawang object ang tao.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>GIVE CONTEXT—NOT JUST TEARS.</strong><br>
+      Ipaliwanag kung bakit nangyari ang problema, hindi lang kung gaano kasakit tingnan.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>SHOW AGENCY—NOT ONLY HELPLESSNESS.</strong><br>
+      Ipakita rin kung ano ang ginagawa ng tao, pamilya o komunidad para makabangon.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>GET MEANINGFUL CONSENT.</strong><br>
+      Hindi lang “okay lang ba?” habang nakatutok na ang camera at hawak mo ang relief goods.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>PROTECT CHILDREN.</strong><br>
+      Hindi lahat ng magandang emotional footage ay dapat i-upload.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>SEPARATE PUBLIC SERVICE FROM PERSONAL FAVOR.</strong><br>
+      Kapag government assistance ang ibinibigay, huwag gawing personal na utang ng citizen ang serbisyong galing sa public institution.
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>HUWAG GAWING MAS KAWAWA ANG TAO KAYSA SA TOTOONG KALAGAYAN NIYA PARA LAMANG MAS GUMANDA ANG KUWENTO NG TUMUTULONG.</strong>
+    </p>
+  </blockquote>
+
+  <h2>
+    SA HULI
+  </h2>
+
+  <p>
+    Hindi ang camera ang tunay na problema.<br>
+    Hindi ang pagtulong.<br>
+    Hindi ang pagpo-post.<br>
+    Hindi rin ang pagkakaroon ng emotion.
+  </p>
+
+  <p>
+    Ang tanong ay kung ANO ANG GINAGAWA NATIN SA PAGKATAO NG TAONG MAHINA ANG POSISYON KAPAG ITINAPAT NATIN SA KANYA ANG CAMERA.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>MAY MALAKING PAGKAKAIBA ANG PAGPAPAKITA NG KAHIRAPAN AT PAGGAMIT SA KAHIRAPAN.</strong>
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>MAY MALAKING PAGKAKAIBA ANG PAGKILALA SA BIKTIMA AT PAGKULONG SA KANYA SA PAGIGING KAWAWA.</strong>
+    </p>
+  </blockquote>
+
+  <blockquote>
+    <p>
+      <strong>MAY MALAKING PAGKAKAIBA ANG PAGDODOKUMENTO NG TULONG AT PAGGAWA SA TAO BILANG PRODUKTO NG TULONG.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring kailangan ng isang taong mahirap ang pera mo ngayon.<br>
+    Maaaring kailangan ng isang nasalanta ang relief goods mo ngayon.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin noon na kailangan din niyang ibigay sa iyo ang kanyang:<br>
+    mukha,<br>
+    luha,<br>
+    trauma,<br>
+    kahihiyan,<br>
+    at buong personal na kuwento
+  </p>
+
+  <p>
+    para magkaroon siya ng karapatang tulungan.
+  </p>
+
+  <blockquote>
+    <p>
+      <strong>ANG MAHIRAP AY HINDI CONTENT CATEGORY.<br>
+      ANG BIKTIMA AY HINDI EMOTIONAL PROP.<br>
+      ANG KALAMIDAD AY HINDI STAGE PARA SA PERSONAL BRANDING.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    At kapag ang PAGHIHIRAP NG TAO ang paulit-ulit na ginagawang RAW MATERIAL para sa VIEWS, PERA, POLITICAL CAPITAL o PAGPAPABANGO NG PANGALAN—hindi na sapat ang depensang:
+  </p>
+
+  <blockquote>
+    <p>
+      “NAKATULONG NAMAN.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang tunay na pagtulong ay hindi lamang nagtatanong kung ANO ANG NAIBIGAY.<br>
+    Tinatanong din nito kung ANO ANG KINUHANG KAPALIT.
+  </p>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Philippine Statistics Authority — <em>2025 Official Poverty Statistics / "Proportion of Poor Families Reduced to 6.4 Percent in 2025"</em> (2026).
+    </li>
+
+    <li>
+      Lee, S. &amp; Feeley, T. H. — <em>"The Identifiable Victim Effect: A Meta-Analytic Review,"</em> <em>Social Influence</em> (2016).
+    </li>
+
+    <li>
+      <em>"Do Sympathy Biases Induce Charitable Giving? The Effects of Advertising Content,"</em> <em>Marketing Science</em> — large field experiment involving approximately 185,000 prospective donors in India.
+    </li>
+
+    <li>
+      Van Bavel, J. J. et al. — <em>"Social Media and Morality,"</em> <em>Annual Review of Psychology</em> (2024).
+    </li>
+
+    <li>
+      Brady, W. J. et al. — <em>"How Social Learning Amplifies Moral Outrage Expression in Online Social Networks,"</em> <em>Science Advances</em> (2021).
+    </li>
+
+    <li>
+      <em>"Emotional Content and Sharing on Facebook: A Theory Cage Match"</em> — analysis of more than 4,000 Facebook posts.
+    </li>
+
+    <li>
+      <em>"Engagement, User Satisfaction, and the Amplification of Divisive Content on Social Media,"</em> <em>PNAS Nexus</em> (2025).
+    </li>
+
+    <li>
+      Aridor, G., Jiménez-Durán, R., Levy, R. &amp; Song, L. — <em>"The Economics of Social Media,"</em> <em>Journal of Economic Literature</em> (2024).
+    </li>
+
+    <li>
+      Duncan, S. M., Levine, E. E. &amp; Small, D. A. — <em>"Ethical Judgments of Poverty Depictions in the Context of Charity Advertising,"</em> <em>Cognition</em> (2024).
+    </li>
+
+    <li>
+      Shabbir, H. et al. — <em>"Poverty Porn as Humanitarian Business: The Effects of Framing, Affect Intensity, and Spokesperson Characteristics,"</em> <em>Business &amp; Society</em>.
+    </li>
+
+    <li>
+      Clough, E., Hardacre, J. &amp; Muggleton, E. — <em>"Poverty Porn and Perceptions of Agency: An Experimental Assessment."</em>
+    </li>
+
+    <li>
+      Kang et al. — <em>"The Impact of Facial Emotional Expression on the Effectiveness of Charitable Advertisements: The Role of Sympathy and Manipulative Intent,"</em> <em>Journal of Behavioral Decision Making</em> (2022).
+    </li>
+
+    <li>
+      Lu, H. &amp; Yuan, S. — <em>"What Motivates Information Sharing About Disaster Victims on Social Media?"</em> <em>International Journal of Disaster Risk Reduction</em> (2021).
+    </li>
+
+    <li>
+      International Federation of Red Cross and Red Crescent Societies — <em>Code of Conduct for the International Red Cross and Red Crescent Movement and NGOs in Disaster Relief.</em>
+    </li>
+
+    <li>
+      International Committee of the Red Cross — <em>Ethical Content-Gathering for Public Communications</em> (2024).
+    </li>
+
+    <li>
+      <em>Core Humanitarian Standard on Quality and Accountability</em> — 2024 Edition.
+    </li>
+
+    <li>
+      UNICEF — <em>Ethical Guidelines / Guidelines for Journalists Reporting on Children.</em>
+    </li>
+
+    <li>
+      Cozzarelli, C., Wilkinson, A. V. &amp; Tagler, M. J. — <em>"Attitudes Toward the Poor and Attributions for Poverty,"</em> <em>Journal of Social Issues</em>.
+    </li>
+
+    <li>
+      Piff, P. K. et al. — <em>"Shifting Attributions for Poverty Motivates Opposition to Inequality and Enhances Egalitarianism,"</em> <em>Nature Human Behaviour</em> (2020).
+    </li>
+
+    <li>
+      Cleofas, J. A. — <em>"Towards a Practical and Empirically Grounded Account of Útang-na-Loób as a Filipino Virtue,"</em> <em>Kritika Kultura</em> (2019).
+    </li>
+
+    <li>
+      <em>"COVID-19 and Aid Distribution in the Philippines: A Patron-Clientelist Explanation"</em> (2023).
+    </li>
+
+    <li>
+      <em>"The Political Determinants of Disaster Communication Governance in Diverse Regimes: Comparative Evidence From Typhoon Response in the Philippines and Vietnam"</em> (2026).
+    </li>
+
+    <li>
+      Canare, T., Mendoza, R. U. &amp; Lopez, M. A. — <em>"An Empirical Analysis of Vote Buying Among the Poor: Evidence from Elections in the Philippines"</em> (2018).
+    </li>
+
+    <li>
+      Canare, T. &amp; Mendoza, R. U. — <em>"Access to Information and Other Correlates of Vote Buying and Selling Behaviour"</em> (2022).
+    </li>
+
+    <li>
+      Bautista, C. A. C. et al. — <em>"Savior Complex, Stereotyping, Sensationalism of the Filipino Poor: Critical Media Analysis of Raffy Tulfo in Action's Charity Episodes,"</em> <em>DLSU Senior High School Research Congress</em> (2025).
+    </li>
+
+    <li>
+      <em>"What Does Ethical Imagery Look Like?"</em> <em>International Journal of Consumer Studies</em> (2026) — study involving 1,990 U.S. residents evaluating 186 humanitarian images.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
