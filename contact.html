@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Makipag-ugnayan sa jhElmEr para sa feedback, factual corrections, content concerns, collaboration inquiries, at iba pang lehitimong mensahe."
+  >
+
+  <title>Contact | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="main.css?v=3">
+
+  <style>
+    /* ===================================
+       CONTACT PAGE
+       =================================== */
+
+    .inner-page {
+      min-height: 100vh;
+      background: #090a0c;
+    }
+
+    /* ===================================
+       CONTACT HERO
+       =================================== */
+
+    .contact-hero .hero-content {
+      max-width: 940px;
+    }
+
+    .contact-hero h1 {
+      max-width: 900px;
+    }
+
+    .contact-hero .headline-first {
+      display: block;
+    }
+
+    .contact-hero .hero-description {
+      max-width: 760px;
+    }
+
+    /* ===================================
+       SHARED SECTION LAYOUT
+       =================================== */
+
+    .contact-section {
+      padding: 90px 7%;
+
+      border-top:
+        1px solid rgba(245, 241, 232, 0.1);
+    }
+
+    .contact-section-inner {
+      width: 100%;
+      max-width: 1380px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      margin-bottom: 18px;
+
+      color: #d5ad36;
+
+      font-size: 0.7rem;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      max-width: 880px;
+      margin-bottom: 28px;
+
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(2.8rem, 5vw, 5.3rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 760px;
+
+      color: #aaa69f;
+
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    .section-copy p + p {
+      margin-top: 19px;
+    }
+
+    /* ===================================
+       INTRO
+       =================================== */
+
+    .contact-intro-section {
+      background:
+        radial-gradient(
+          circle at 90% 15%,
+          rgba(213, 173, 54, 0.07),
+          transparent 30%
+        ),
+        rgba(245, 241, 232, 0.012);
+    }
+
+    .contact-intro-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 0.9fr)
+        minmax(320px, 0.6fr);
+
+      gap: 70px;
+      align-items: start;
+    }
+
+    .contact-statement {
+      position: relative;
+
+      padding: 38px 0 0 35px;
+
+      border-left:
+        1px solid rgba(213, 173, 54, 0.55);
+    }
+
+    .contact-statement::before {
+      content: "";
+
+      position: absolute;
+      top: 0;
+      left: -5px;
+
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .contact-statement p {
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(2rem, 3.6vw, 3.7rem);
+      font-weight: 700;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+
+    /* ===================================
+       CONTACT CHANNELS
+       =================================== */
+
+    .channels-section {
+      background: #090a0c;
+    }
+
+    .channels-heading {
+      margin-bottom: 42px;
+    }
+
+    .contact-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 26px;
+    }
+
+    .contact-card {
+      position: relative;
+
+      min-height: 330px;
+      padding: 34px 30px 31px;
+
+      display: flex;
+      flex-direction: column;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(245, 241, 232, 0.13);
+
+      background:
+        rgba(245, 241, 232, 0.025);
+
+      transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        background 0.28s ease;
+    }
+
+    .contact-card::after {
+      content: "";
+
+      position: absolute;
+      right: -95px;
+      bottom: -95px;
+
+      width: 160px;
+      height: 160px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.17);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+
+      transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-6px);
+
+      border-color:
+        rgba(213, 173, 54, 0.58);
+
+      background:
+        rgba(245, 241, 232, 0.04);
+    }
+
+    .contact-card:hover::after {
+      transform: scale(1.18);
+
+      border-color:
+        rgba(213, 173, 54, 0.36);
+    }
+
+    .contact-number {
+      margin-bottom: 45px;
+
+      color: rgba(213, 173, 54, 0.46);
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .contact-title {
+      margin-bottom: 14px;
+
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .contact-description {
+      margin-bottom: 26px;
+
+      color: #aaa69f;
+
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .contact-link {
+      position: relative;
+      z-index: 2;
+
+      margin-top: auto;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      width: fit-content;
+      max-width: 100%;
+
+      color: #f5f1e8;
+      text-decoration: none;
+
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+
+      overflow-wrap: anywhere;
+
+      transition: color 0.22s ease;
+    }
+
+    .contact-link::after {
+      content: "→";
+
+      flex-shrink: 0;
+
+      color: #d5ad36;
+      font-size: 1rem;
+
+      transition: transform 0.22s ease;
+    }
+
+    .contact-link:hover,
+    .contact-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+    }
+
+    .contact-link:hover::after,
+    .contact-link:focus-visible::after {
+      transform: translateX(4px);
+    }
+
+    /* ===================================
+       CORRECTIONS
+       =================================== */
+
+    .corrections-section {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(245, 241, 232, 0.012),
+          rgba(213, 173, 54, 0.025)
+        );
+    }
+
+    .corrections-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(280px, 0.55fr)
+        minmax(0, 1fr);
+
+      gap: 78px;
+      align-items: start;
+    }
+
+    .corrections-intro {
+      position: sticky;
+      top: 140px;
+    }
+
+    .corrections-list {
+      border-top:
+        1px solid rgba(245, 241, 232, 0.13);
+    }
+
+    .correction-item {
+      padding: 30px 0;
+
+      display: grid;
+
+      grid-template-columns:
+        70px minmax(0, 1fr);
+
+      gap: 23px;
+      align-items: start;
+
+      border-bottom:
+        1px solid rgba(245, 241, 232, 0.13);
+    }
+
+    .correction-number {
+      color: rgba(213, 173, 54, 0.55);
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 1.35rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .correction-content h3 {
+      margin-bottom: 9px;
+
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .correction-content p {
+      max-width: 680px;
+
+      color: #aaa69f;
+
+      font-size: 0.9rem;
+      line-height: 1.75;
+    }
+
+    /* ===================================
+       RESPONSE NOTE
+       =================================== */
+
+    .response-section {
+      background: #090a0c;
+    }
+
+    .response-card {
+      padding: 58px;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 0.7fr)
+        minmax(0, 1fr);
+
+      gap: 64px;
+      align-items: center;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.32);
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(213, 173, 54, 0.07),
+          rgba(245, 241, 232, 0.018)
+        );
+    }
+
+    .response-title {
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(2.7rem, 4.5vw, 4.7rem);
+      font-weight: 800;
+      line-height: 0.94;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+
+    .response-copy {
+      color: #aaa69f;
+
+      font-size: 0.96rem;
+      line-height: 1.85;
+    }
+
+    .response-copy strong {
+      color: #f5f1e8;
+      font-weight: 700;
+    }
+
+    /* ===================================
+       PRIVACY / SAFETY NOTE
+       =================================== */
+
+    .privacy-section {
+      padding-top: 110px;
+      padding-bottom: 110px;
+
+      text-align: center;
+
+      background:
+        radial-gradient(
+          circle at 50% 45%,
+          rgba(213, 173, 54, 0.08),
+          transparent 38%
+        );
+    }
+
+    .privacy-content {
+      max-width: 930px;
+      margin: 0 auto;
+    }
+
+    .privacy-mark {
+      margin-bottom: 27px;
+
+      color: #d5ad36;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 3.4rem;
+      font-weight: 800;
+      line-height: 0.7;
+    }
+
+    .privacy-statement {
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: clamp(2rem, 4.3vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.06;
+      letter-spacing: -0.018em;
+    }
+
+    .privacy-copy {
+      max-width: 720px;
+      margin: 27px auto 0;
+
+      color: #aaa69f;
+
+      font-size: 0.92rem;
+      line-height: 1.8;
+    }
+
+    .privacy-line {
+      width: 75px;
+      height: 1px;
+      margin: 38px auto 0;
+
+      background: #d5ad36;
+    }
+
+    /* ===================================
+       FOOTER
+       =================================== */
+
+    .inner-footer {
+      padding: 34px 7%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+
+      border-top:
+        1px solid rgba(245, 241, 232, 0.12);
+    }
+
+    .footer-brand {
+      color: #f5f1e8;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-line {
+      color: rgba(245, 241, 232, 0.45);
+
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ===================================
+       TABLET
+       =================================== */
+
+    @media (max-width: 1050px) {
+      .contact-intro-layout {
+        grid-template-columns:
+          minmax(0, 1fr)
+          minmax(280px, 0.58fr);
+
+        gap: 48px;
+      }
+
+      .contact-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .corrections-layout {
+        grid-template-columns:
+          minmax(240px, 0.48fr)
+          minmax(0, 1fr);
+
+        gap: 50px;
+      }
+
+      .response-card {
+        gap: 42px;
+        padding: 45px;
+      }
+    }
+
+    /* ===================================
+       MOBILE
+       =================================== */
+
+    @media (max-width: 850px) {
+      .contact-section {
+        padding: 72px 34px;
+      }
+
+      .contact-intro-layout,
+      .corrections-layout,
+      .response-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-intro-layout {
+        gap: 45px;
+      }
+
+      .contact-statement {
+        padding-top: 30px;
+        padding-left: 25px;
+      }
+
+      .channels-heading {
+        margin-bottom: 32px;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .contact-card {
+        min-height: 300px;
+      }
+
+      .contact-number {
+        margin-bottom: 38px;
+      }
+
+      .corrections-layout {
+        gap: 36px;
+      }
+
+      .corrections-intro {
+        position: static;
+      }
+
+      .correction-item {
+        grid-template-columns:
+          52px minmax(0, 1fr);
+
+        gap: 17px;
+      }
+
+      .response-card {
+        padding: 39px 27px;
+        gap: 30px;
+      }
+
+      .privacy-section {
+        padding-top: 90px;
+        padding-bottom: 90px;
+      }
+
+      .privacy-mark {
+        font-size: 2.8rem;
+      }
+
+      .inner-footer {
+        padding: 29px 34px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    /* ===================================
+       SMALL MOBILE
+       =================================== */
+
+    @media (max-width: 430px) {
+      .contact-section {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+
+      .contact-card {
+        padding: 30px 24px 27px;
+      }
+
+      .correction-item {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .response-card {
+        padding: 34px 23px;
+      }
+
+      .inner-footer {
+        padding-right: 24px;
+        padding-left: 24px;
+      }
+    }
+
+    /* ===================================
+       REDUCED MOTION
+       =================================== */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="inner-page">
+
+  <!-- ===================================
+       HEADER
+       =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="music.html">
+        Music
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a
+        class="active"
+        href="contact.html"
+        aria-current="page"
+      >
+        Contact
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       BACK TO HOME
+       =================================== -->
+
+  <div
+    class="back-navigation"
+    role="navigation"
+    aria-label="Back navigation"
+  >
+
+    <div class="back-navigation-inner">
+
+      <a
+        href="index.html"
+        class="back-navigation-link"
+        aria-label="Bumalik sa Home"
+      >
+
+        <span
+          class="back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span class="back-text">
+          Home
+        </span>
+
+      </a>
+
+    </div>
+
+  </div>
+
+  <main>
+
+    <!-- ===================================
+         CONTACT HERO
+         =================================== -->
+
+    <section class="hero contact-hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">
+          Feedback • Corrections • Inquiries
+        </p>
+
+        <h1>
+          <span class="headline-first">
+            CONTACT
+          </span>
+        </h1>
+
+        <p class="hero-description">
+          May tanong, feedback, factual correction, content concern,
+          collaboration inquiry, o iba pang lehitimong mensahe tungkol
+          sa jhElmEr? Narito ang mga opisyal na paraan upang
+          makipag-ugnayan.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CONTACT INTRO
+         =================================== -->
+
+    <section class="contact-section contact-intro-section">
+
+      <div class="contact-section-inner contact-intro-layout">
+
+        <div>
+
+          <p class="section-label">
+            Makipag-ugnayan
+          </p>
+
+          <h2 class="section-title">
+            Bukas sa Maayos na Pakikipag-usap
+          </h2>
+
+          <div class="section-copy">
+
+            <p>
+              Ang jhElmEr ay isang independent civic at creative
+              platform. Bukas ang mga contact channel na ito para sa
+              mga mensaheng may kaugnayan sa website, published
+              content, factual corrections, feedback, collaborations,
+              at iba pang lehitimong inquiry.
+            </p>
+
+            <p>
+              Kung ang mensahe ay tungkol sa isang partikular na
+              article, slogan, music release, o ibang published
+              material, makatutulong kung isasama ang title o link
+              nito upang mas madaling matukoy at masuri ang iyong
+              concern.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="contact-statement">
+
+          <p>
+            Malinaw na mensahe. Maayos na usapan. Tamang channel.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         CONTACT CHANNELS
+         =================================== -->
+
+    <section class="contact-section channels-section">
+
+      <div class="contact-section-inner">
+
+        <div class="channels-heading">
+
+          <p class="section-label">
+            Official Contact Channels
+          </p>
+
+          <h2 class="section-title">
+            Piliin ang Paraang Pinakamadali Para sa Iyo
+          </h2>
+
+          <p class="section-copy">
+            Para sa mas detalyadong inquiry o factual correction,
+            email ang pangunahing contact channel. Maaari ring
+            makipag-ugnayan sa pamamagitan ng official Facebook at
+            TikTok profiles ng jhElmEr.
+          </p>
+
+        </div>
+
+        <div class="contact-grid">
+
+          <!-- EMAIL -->
+
+          <article class="contact-card">
+
+            <p class="contact-number">
+              01
+            </p>
+
+            <h3 class="contact-title">
+              Email
+            </h3>
+
+            <p class="contact-description">
+              Para sa detailed inquiries, factual corrections,
+              content concerns, collaboration proposals, at iba pang
+              mensaheng nangangailangan ng malinaw na context.
+            </p>
+
+            <a
+              class="contact-link"
+              href="mailto:zurcaledremlej@gmail.com"
+            >
+              zurcaledremlej@gmail.com
+            </a>
+
+          </article>
+
+          <!-- FACEBOOK -->
+
+          <article class="contact-card">
+
+            <p class="contact-number">
+              02
+            </p>
+
+            <h3 class="contact-title">
+              Facebook
+            </h3>
+
+            <p class="contact-description">
+              Bisitahin ang Facebook profile ng jhElmEr para sa
+              published content, updates, at social media
+              communication.
+            </p>
+
+            <a
+              class="contact-link"
+              href="https://www.facebook.com/jelmer03/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              facebook.com/jelmer03
+            </a>
+
+          </article>
+
+          <!-- TIKTOK -->
+
+          <article class="contact-card">
+
+            <p class="contact-number">
+              03
+            </p>
+
+            <h3 class="contact-title">
+              TikTok
+            </h3>
+
+            <p class="contact-description">
+              Sundan ang official TikTok profile ng jhElmEr para sa
+              short-form content, explainers, slogans, at iba pang
+              published material.
+            </p>
+
+            <a
+              class="contact-link"
+              href="https://www.tiktok.com/@jh3lm3r"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              tiktok.com/@jh3lm3r
+            </a>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         FACTUAL CORRECTIONS
+         =================================== -->
+
+    <section class="contact-section corrections-section">
+
+      <div class="contact-section-inner corrections-layout">
+
+        <div class="corrections-intro">
+
+          <p class="section-label">
+            Factual Corrections
+          </p>
+
+          <h2 class="section-title">
+            May Nakita Kang Kailangang Suriin?
+          </h2>
+
+          <p class="section-copy">
+            Mahalaga ang maayos na pagtukoy sa concern upang
+            mapabilis ang verification at correction process.
+          </p>
+
+        </div>
+
+        <div class="corrections-list">
+
+          <article class="correction-item">
+
+            <p class="correction-number">
+              01
+            </p>
+
+            <div class="correction-content">
+
+              <h3>
+                Tukuyin ang Content
+              </h3>
+
+              <p>
+                Isama ang title o link ng article, post, slogan,
+                music page, o ibang published material na
+                tinutukoy ng mensahe.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="correction-item">
+
+            <p class="correction-number">
+              02
+            </p>
+
+            <div class="correction-content">
+
+              <h3>
+                Tukuyin ang Concern
+              </h3>
+
+              <p>
+                Ipaliwanag nang malinaw kung aling pahayag,
+                detalye, source, interpretation, o bahagi ng
+                content ang sa tingin mo ay kailangang suriin.
+              </p>
+
+            </div>
+
+          </article>
+
+          <article class="correction-item">
+
+            <p class="correction-number">
+              03
+            </p>
+
+            <div class="correction-content">
+
+              <h3>
+                Magbigay ng Batayan
+              </h3>
+
+              <p>
+                Kung mayroon, magbigay ng mapapatunayang source,
+                dokumento, official reference, o ibang impormasyon
+                na makatutulong sa independent verification ng
+                concern.
+              </p>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         RESPONSE EXPECTATIONS
+         =================================== -->
+
+    <section class="contact-section response-section">
+
+      <div class="contact-section-inner">
+
+        <article class="response-card">
+
+          <h2 class="response-title">
+            Tungkol sa Mga Mensahe
+          </h2>
+
+          <p class="response-copy">
+            Binabasa at sinusuri ang mga lehitimong mensaheng
+            natatanggap, ngunit <strong>hindi garantisado ang
+            agarang sagot o tugon sa bawat inquiry</strong>.
+            Ang spam, automated messages, abusive communication,
+            at mga mensaheng walang malinaw na kaugnayan sa
+            website o content ay maaaring hindi tugunan.
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================
+         PRIVACY / SAFETY
+         =================================== -->
+
+    <section class="contact-section privacy-section">
+
+      <div class="contact-section-inner privacy-content">
+
+        <p
+          class="privacy-mark"
+          aria-hidden="true"
+        >
+          !
+        </p>
+
+        <p class="privacy-statement">
+          Huwag Magpadala ng Sensitibong Personal na Impormasyon.
+        </p>
+
+        <p class="privacy-copy">
+          Para sa iyong seguridad, huwag magpadala sa pamamagitan
+          ng mga contact channel na ito ng passwords, banking o
+          payment credentials, government identification numbers,
+          authentication codes, o iba pang sensitibong personal
+          information na hindi kailangan upang maipaliwanag ang
+          iyong concern.
+        </p>
+
+        <div
+          class="privacy-line"
+          aria-hidden="true"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================
+       FOOTER
+       =================================== -->
+
+  <footer class="inner-footer">
+
+    <p class="footer-brand">
+      © 2026 jhElmEr
+    </p>
+
+    <p class="footer-line">
+      Truth Over Noise
+    </p>
+
+  </footer>
+
+  <!-- ===================================
+       PAGE SCRIPT
+       =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mainNav.classList.remove("is-open");
+          menuToggle.classList.remove("is-open");
+
+          menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuToggle.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
+        });
+      });
+    }
+  </script>
+
+</body>
+
+</html>
