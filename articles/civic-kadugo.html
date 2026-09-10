@@ -1,1 +1,2618 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+articles/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html sa loob din ng
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template at lahat ng published Civic
+Explainer articles ay nasa loob ng /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+  name="description"
+  content="Isang fact-based na paliwanag kung bakit minsan mas masakit ang panghihila pababa kapag nanggagaling sa kapamilya, kamag-anak, kaibigan, o kababayan, at kung paano ito nauugnay sa social comparison, envy, zero-sum thinking, at mga pag-aaral sa psychology at Sikolohiyang Pilipino."
+>
+
+<title>KADUGO MO, KABABAYAN MO—PERO BAKIT SILA PA ANG UNANG HUMIHILA PABABA? | jhElmEr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogans.html">
+  Text Slogans
+</a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+<a href="../contact.html">
+  Contact
+</a>
+
+<a href="../privacy-policy.html">
+  Privacy Policy
+</a>
+       
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    KADUGO MO, KABABAYAN MO—PERO BAKIT SILA PA ANG UNANG HUMIHILA PABABA?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-kadugo.png"
+      alt="Simbolikong paglalarawan ng isang taong pilit umaakyat habang hinihila pababa ng maraming kamay, bilang representasyon ng social comparison, inggit, at panghihila mula sa mga taong inaasahang magiging kakampi."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    May mga laban sa buhay na inaasahan mong manggagaling sa labas.
+  </p>
+
+  <p>
+    Sa kompetensya.<br>
+    Sa trabaho.<br>
+    Sa mga taong hindi ka kilala.<br>
+    Sa mga taong walang dahilan para maniwala sa iyo.
+  </p>
+
+  <p>
+    Pero mas masakit kapag natuklasan mong minsan, hindi estranghero ang unang nagdududa sa iyo—kundi iyong taong akala mo ay unang matutuwa kapag umaangat ka.
+  </p>
+
+  <p>
+    Kapamilya.<br>
+    Kamag-anak.<br>
+    Kaibigan.<br>
+    Katrabaho.<br>
+    Kababayan.
+  </p>
+
+  <p>
+    Minsan, sila pa ang unang magsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi para sa ’yo ’yan.”<br>
+      “Baka mapahiya ka lang.”<br>
+      “Ang taas naman ng pangarap mo.”<br>
+      “Magkano ba talaga kinikita mo?”<br>
+      “Akala mo kung sino ka na.”<br>
+      “At least ako…”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag hindi ka nagtagumpay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sabi ko na nga ba.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag nagtagumpay ka:
+  </p>
+
+  <blockquote>
+    <p>
+      “Swerte lang ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    At dito nagiging mas komplikado ang usapan.
+  </p>
+
+  <p>
+    Dahil madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit lang ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Madaling tawagin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Crab mentality.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kung ganoon lang kasimple ang sagot, hindi nito maipapaliwanag kung bakit minsan mas personal ang tagumpay ng kapatid kaysa celebrity, kung bakit mas masakit malampasan ng dating kaklase kaysa ng isang taong hindi mo kilala, kung bakit puwedeng maging kakampi ang kapwa Pilipino abroad pero sa ibang sitwasyon ay maging competitor, at kung bakit may mga taong nai-inspire sa tagumpay ng iba samantalang may iba namang gustong sirain iyon.
+  </p>
+
+  <p>
+    Diyan pumapasok ang mas malalim na usapin ng social comparison, envy, similarity, threatened self-worth, perceived scarcity, zero-sum thinking, family dynamics, group identity at kultura.
+  </p>
+
+  <p>
+    At kailangan agad ang isang mahalagang guardrail:<br>
+    Hindi lahat ng kapamilya ay humihila pababa.<br>
+    Hindi lahat ng kababayan ay inggit.<br>
+    Hindi lahat ng kumokontra ay kalaban.<br>
+    At walang ebidensiyang nagpapatunay na likas o uniquely Pilipino ang ganitong ugali.
+  </p>
+
+  <p>
+    Ang pinag-uusapan natin ay isang human behavior pattern na maaaring lumitaw sa pamilya, barkada, trabaho, komunidad at migrant communities—Pilipino man o hindi.
+  </p>
+
+  <p>
+    Pero kapag nangyari ito sa taong inaasahan mong kakampi, mas malalim ang tama.
+  </p>
+
+  <p>
+    At may psychology kung bakit.
+  </p>
+
+  <h2>
+    BAKIT BA NATIN IKINUKUMPARA ANG SARILI NATIN SA IBANG TAO?
+  </h2>
+
+  <p>
+    Matagal nang pinag-aaralan sa psychology ang social comparison—ang tendency nating gamitin ang ibang tao bilang reference point para malaman kung nasaan tayo.
+  </p>
+
+  <p>
+    Magaling ba ako?<br>
+    Successful ba ako?<br>
+    Mababa ba ang sweldo ko?<br>
+    Maganda ba ang buhay ko?<br>
+    Nahuhuli ba ako?<br>
+    Umaangat ba ako?
+  </p>
+
+  <p>
+    Isang meta-analysis sa Psychological Bulletin ang nagsuri sa mahigit anim na dekada ng social-comparison research. Mula sa humigit-kumulang 1,200 papers na unang sinuri, 145 papers/publications ang nakapasa sa pinakamahigpit nilang methodological criteria.
+  </p>
+
+  <p>
+    Sa mga selection studies na kasama sa pagsusuri, mas karaniwang pinipili ng participants ang upward kaysa downward comparison target—ang taong mas mahusay, mas matagumpay o mas advantaged kaysa sa kanila.
+  </p>
+
+  <p>
+    Sa reaction studies naman, lumitaw ang general contrast effect na ang upward comparison ay maaaring magpalinaw sa agwat sa pagitan ng sarili at ng taong kinukumpara natin.
+  </p>
+
+  <p>
+    Hindi masama ang comparison mismo.
+    Minsan kailangan natin iyon.
+  </p>
+
+  <p>
+    Kung nakita mong umunlad ang dating kasamahan mo dahil nag-aral siya ng bagong skill, puwedeng isipin mong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung nagawa niya, baka kaya ko rin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero maaari ring ibang mensahe ang marinig ng ego:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung nagawa niya, bakit hindi ko nagawa?”
+    </p>
+  </blockquote>
+
+  <p>
+    Magkapareho ang nakitang tagumpay.
+    Magkaiba ang naging sagot.
+  </p>
+
+  <p>
+    Doon nagsisimulang maging komplikado ang comparison.
+  </p>
+
+  <h2>
+    BAKIT MAS PERSONAL KAPAG KAPATID, PINSAN, KAKLASE O KATRABAHO?
+  </h2>
+
+  <p>
+    Isipin mo ito.
+  </p>
+
+  <p>
+    May nabasa kang balita tungkol sa isang 25-year-old billionaire sa ibang bansa.
+  </p>
+
+  <p>
+    Maaaring mapahanga ka.<br>
+    Maaaring wala ka ring pakialam.
+  </p>
+
+  <p>
+    Pero ibang tama kapag iyong pinsan mong halos pareho mo ng edad, pareho kayong lumaki sa hirap, pareho kayong pinag-aral ng pamilya—at bigla siyang may sariling negosyo, bahay at maayos na buhay.
+  </p>
+
+  <p>
+    Bakit?<br>
+    Dahil mas comparable siya.
+  </p>
+
+  <blockquote>
+    <p>
+      “Eh iba naman kasi buhay niya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag halos pareho kayo ng pinanggalingan, mas malapit ang reference point.
+  </p>
+
+  <p>
+    May magandang workplace example dito.
+  </p>
+
+  <p>
+    Sa pag-aaral nina John Schaubroeck at Simon Lam sa mga empleyadong hindi napili para sa promotion, pinakamataas ang promotion envy sa mga taong mataas ang expectation na sila ang mapo-promote at nakikitang similar sa kanilang sarili ang taong nakakuha ng promotion.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi lang mahalaga kung sino ang nanalo.
+    Mahalaga rin kung gaano kalapit sa tingin mo ang taong iyon sa sarili mong posisyon.
+  </p>
+
+  <p>
+    Kaya minsan mas madaling tanggapin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Successful si Manny Pacquiao.”
+    </p>
+  </blockquote>
+
+  <p>
+    kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Successful iyong kaklase kong dati kong katabi sa likod.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas madaling tanggapin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mayaman iyong celebrity.”
+    </p>
+  </blockquote>
+
+  <p>
+    kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mas malaki na pala kinikita ng bunso kong kapatid.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi dahil automatic na masamang tao ang nakakaramdam nito.
+    Kundi dahil ang success ng malapit at comparable na tao ay maaaring magsilbing mas malinaw na salamin ng sariling kalagayan.
+  </p>
+
+  <p>
+    Research on siblings also shows that comparison inside the family is not trivial.
+  </p>
+
+  <p>
+    Sa isang three-year longitudinal study ng 388 European American families, ang paniniwala ng mga magulang tungkol sa relative academic ability ng magkapatid ay nakaugnay sa kalaunang differences sa academic performance, at ang relative performance ng magkapatid ay nakaugnay din sa pagbabago ng kanilang academic interests.
+  </p>
+
+  <p>
+    Hindi ito pag-aaral tungkol sa inggit, at hindi rin dapat i-generalize ang specific sample nito sa lahat ng kultura at pamilya.
+  </p>
+
+  <p>
+    Pero ipinapakita nitong ang “sino ang mas magaling sa magkapatid” comparison ay maaaring magkaroon ng totoong epekto sa development at self-positioning sa loob ng pamilya.
+  </p>
+
+  <p>
+    Kaya may dahilan kung bakit napakalakas ng mga label na paulit-ulit nating naririnig sa pamilya:
+  </p>
+
+  <blockquote>
+    <p>
+      “Siya iyong matalino.”<br>
+      “Siya iyong successful.”<br>
+      “Siya iyong walang direksyon.”<br>
+      “Siya iyong may pera.”<br>
+      “Siya iyong mahina.”<br>
+      “Siya iyong maaasahan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag matagal nang may nakatalagang role sa bawat isa, ang paglabas ng isang tao sa lumang kahon niya ay hindi lamang personal change.
+  </p>
+
+  <p>
+    Binabago rin niya ang dating hierarchy ng comparison.
+  </p>
+
+  <h2>
+    HINDI LAHAT NG INGGIT AY PANGHIHILA PABABA
+  </h2>
+
+  <p>
+    Dito kailangang maging precise.
+  </p>
+
+  <p>
+    Normal human emotion ang envy.
+  </p>
+
+  <p>
+    At hindi pare-pareho ang ginagawa ng tao rito.
+  </p>
+
+  <p>
+    May literature na nagdi-distinguish sa benign envy at malicious envy.
+  </p>
+
+  <p>
+    Sa benign envy, ang direksyon ay mas:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gusto kong umabot din doon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa malicious envy:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gusto kong mawala sa kanya iyong lamang niya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa isang multi-wave study ng 469 Facebook users sa Pakistan, social comparison was associated with both forms. Benign envy was linked to self-improvement intention, samantalang malicious envy was linked to negative gossiping.
+  </p>
+
+  <p>
+    Specific population at social-media context iyon, kaya hindi nito sinasabing ganoon ang magiging reaksyon ng lahat ng tao sa lahat ng sitwasyon.
+  </p>
+
+  <p>
+    Pero malinaw nitong ipinapakita ang isang mahalagang possibility: Ang parehong comparison ay maaaring mauwi sa pagnanais na gumaling—o sa pagnanais na pababain ang iba.
+  </p>
+
+  <p>
+    Kaya hindi ang simpleng pakiramdam na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Naiinggit ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    ang pinakamahalagang tanong.
+  </p>
+
+  <p>
+    Ang tanong ay:<br>
+    Ano ang ginagawa mo dahil naiinggit ka?<br>
+    Pinag-aaralan mo ba kung paano siya nagtagumpay?<br>
+    Gumagaling ka ba?<br>
+    Nagtatrabaho ka ba?<br>
+    Inaayos mo ba ang sarili mong buhay?
+  </p>
+
+  <p>
+    O—sinisiraan mo siya?<br>
+    Minamaliit mo ang achievement?<br>
+    Ipinagkakalat mo ang pagkakamali?<br>
+    Hinaharangan mo ang opportunity?<br>
+    Umaasa kang bumagsak siya para bumalik ang pakiramdam mong lamang ka?
+  </p>
+
+  <p>
+    Diyan naghihiwalay ang ordinaryong human emotion at destructive behavior.
+  </p>
+
+  <h2>
+    AT HINDI LANG ITO QUOTE SA SOCIAL MEDIA—MAY MEASURABLE ASSOCIATIONS ANG ENVY AT UNDERMINING
+  </h2>
+
+  <p>
+    Isa sa pinakamalakas na ebidensiyang kailangang makita rito ay isang meta-analysis ng workplace envy nina Miaomiao Li, Xiaofeng Xu at Ho Kwong Kwan.
+  </p>
+
+  <p>
+    Pinagsama nila ang 68 studies mula sa 51 sources, na may kabuuang 15,252 participants.
+  </p>
+
+  <p>
+    At ano ang nakita?
+  </p>
+
+  <p>
+    Workplace envy had significant positive relationships with:<br>
+    ostracism — corrected correlation ρ = .42<br>
+    counterproductive workplace behaviors — ρ = .39<br>
+    incivility — ρ = .35<br>
+    social undermining — ρ = .31<br>
+    at moral disengagement — ρ = .38.
+  </p>
+
+  <p>
+    Importanteng maintindihan ang numerong iyan.
+  </p>
+
+  <p>
+    Ang .42 ay hindi ibig sabihin na 42% ng naiinggit ay nang-oostracize.
+  </p>
+
+  <p>
+    Hindi ganyan binabasa ang correlation.
+  </p>
+
+  <p>
+    Ipinapakita nito ang statistical association sa pagitan ng dalawang variables—at hindi rin nito, mag-isa, pinatutunayang envy ang direktang sanhi ng bawat masamang behavior.
+  </p>
+
+  <p>
+    Pero malinaw ang mas ligtas na conclusion: Hindi imbento ang koneksyon ng envy sa exclusion, undermining at counterproductive behavior. May measurable pattern sa research.
+  </p>
+
+  <p>
+    Kaya iyong phenomenon na minsang nakikita natin sa totoong buhay—hindi ka direktang inaatake pero hindi ka ini-invite; may opportunity pero hindi ipinapaalam sa iyo; maganda ang ginawa mo pero hinahanapan ng maipipintas; may accomplishment ka pero binabawasan ang credit; may reputation ka pero kinakalat ang pinaka-negatibong bersyon ng kuwento—ay may mga behavior na kahawig ng mga konseptong matagal nang pinag-aaralan sa organizational psychology.
+  </p>
+
+  <p>
+    Pero muli: Hindi puwedeng makita lang natin ang isang negative comment at mag-diagnose agad na “inggit.”
+  </p>
+
+  <p>
+    Behavior pattern ang tinitingnan. Hindi mind-reading.
+  </p>
+
+  <h2>
+    MAY MGA OPPORTUNITY TALAGANG LIMITADO—KAYA HINDI LAHAT NG COMPETITION AY INSECURITY
+  </h2>
+
+  <p>
+    Ito ang mahalagang correction sa madalas nating marinig na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bakit ka nakikipagkompetensya? Hindi naman nauubos ang success.”
+    </p>
+  </blockquote>
+
+  <p>
+    Minsan—nauubos talaga ang resource.
+  </p>
+
+  <p>
+    Isang promotion.<br>
+    Tatlong job vacancy.<br>
+    Limitadong overtime.<br>
+    Isang scholarship slot.<br>
+    Limitadong project budget.<br>
+    Limitadong appointment.
+  </p>
+
+  <p>
+    Sa mga sitwasyong iyon, may tunay na competition.
+  </p>
+
+  <p>
+    Kung nakuha ng isa ang nag-iisang promotion, hindi na iyon mapupunta sa pangalawa.
+  </p>
+
+  <p>
+    Actual zero-sum iyon sa specific resource.
+  </p>
+
+  <p>
+    At hindi masama ang makipagkompetensya nang patas.
+  </p>
+
+  <p>
+    Hindi insecurity ang paghahanda nang mabuti.<br>
+    Hindi crab mentality ang pagnanais manalo.<br>
+    Hindi sabotage ang pagiging mas qualified.
+  </p>
+
+  <p>
+    Ang problema ay kapag ina-apply natin ang parehong mentality sa mga bagay na hindi naman zero-sum.
+  </p>
+
+  <h2>
+    ITO ANG ZERO-SUM BIAS: “KAPAG MAY NAKUHA SIYA, MAY NAWALA SA AKIN”
+  </h2>
+
+  <p>
+    May experimental research dito.
+  </p>
+
+  <p>
+    Tinawag ni psychologist Daniel Meegan ang phenomenon na zero-sum bias—ang tendency na makita ang isang sitwasyon bilang kompetisyon sa limitadong resource kahit hindi naman talaga limitado ang resource.
+  </p>
+
+  <p>
+    Sa tatlong experiments sa University of Guelph, ginamit niya ang grades bilang halimbawa.
+  </p>
+
+  <p>
+    Absolute grading ang sistema. Kung lahat ng estudyante ay gumawa ng excellent work, lahat ay maaaring makakuha ng mataas na grade.
+  </p>
+
+  <p>
+    Walang quota sa A.
+  </p>
+
+  <p>
+    Pero kapag ipinakita sa participants na maraming naunang estudyante ang nakakuha na ng mataas na grades, mas dumami ang prediction na mababa na ang makukuha ng susunod na estudyante—na para bang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Marami nang nakakuha ng A, baka ubos na.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kahit malinaw na hindi nauubos ang A sa sistemang iyon.
+  </p>
+
+  <p>
+    At nang ipaalala sa participants na walang limit ang high grades, humina ang bias.
+  </p>
+
+  <p>
+    Iyan ang mahalagang eye-opener.
+  </p>
+
+  <p>
+    May pagkakataong tunay na limitado ang pie.
+    Pero may pagkakataon ding tayo ang nag-iimbento ng pie.
+  </p>
+
+  <p>
+    Kapag umasenso ang negosyo ng pinsan mo, hindi automatic na nabawasan ang pera mo.<br>
+    Kapag gumanda ang career ng kapatid mo, hindi automatic na nawala ang career mo.<br>
+    Kapag nakabili ng bahay ang kaibigan mo, hindi naman inagaw ang bahay na para sana sa iyo.<br>
+    Kapag sumikat ang gawa ng kababayan mo, hindi ibig sabihin na ubos na ang espasyo para sa gawa mo.<br>
+    Kapag nakapagtapos ang isang tao, hindi nabawasan ang diploma na maaari mong pagtrabahuhan.
+  </p>
+
+  <p>
+    Pero kapag zero-sum ang lens mo, ganito ang emotional translation:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag umangat siya, bumaba ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    At kapag iyon ang ginagamit mong sukatan ng sarili mong halaga—ang success ng ibang tao ay nagsisimulang magmukhang personal attack.
+  </p>
+
+    <h2>
+    KAYA MAY MGA TAONG KOMPORTABLE SA IYO—HANGGANG HINDI MO SILA NALALAMPASAN
+  </h2>
+
+  <p>
+    Ito ang masakit na bahagi.
+  </p>
+
+  <p>
+    May relasyon na tahimik at maayos habang stable ang hierarchy.
+  </p>
+
+  <p>
+    Ikaw ang mas mahirap.<br>
+    Ikaw ang hindi nakapagtapos.<br>
+    Ikaw ang walang trabaho.<br>
+    Ikaw ang laging humihingi.<br>
+    Ikaw ang “wala namang mararating.”
+  </p>
+
+  <p>
+    Walang threat.
+  </p>
+
+  <p>
+    Pero kapag unti-unting nagbago ang buhay mo—
+  </p>
+
+  <p>
+    nagkaroon ka ng negosyo,<br>
+    nakakuha ng magandang trabaho,<br>
+    nakabili ng bahay,<br>
+    gumanda ang kita,<br>
+    nakapag-abroad,<br>
+    nakilala ang ginagawa mo,<br>
+    o simpleng natuto kang manindigan at hindi na madaling maliitin—
+  </p>
+
+  <p>
+    maaaring nagbago rin ang comparison.
+  </p>
+
+  <p>
+    At minsan, doon nagbabago ang trato.
+  </p>
+
+  <p>
+    Hindi ito patunay na lahat ng nagbago ang trato ay naiinggit.
+    Maraming ibang posibleng dahilan.
+  </p>
+
+  <p>
+    Pero research gives us a credible mechanism kung bakit ang upward movement ng taong malapit, similar at personally relevant ay maaaring maging mas threatening kaysa tagumpay ng isang estranghero.
+  </p>
+
+  <p>
+    Kaya minsan, ang achievement mo ay hindi lang achievement sa paningin ng ibang tao.
+  </p>
+
+  <p>
+    Nagiging tanong ito sa sarili nilang buhay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pareho naman kaming nagsimula. Bakit siya nakaabot?”
+    </p>
+  </blockquote>
+
+  <p>
+    At may dalawang mature na sagot diyan:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang matututunan ko?”
+    </p>
+  </blockquote>
+
+  <p>
+    o
+  </p>
+
+  <blockquote>
+    <p>
+      “Masaya ako para sa kanya kahit iba ang timeline ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero may ikatlong sagot:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kailangan kong paliitin ang narating niya para hindi ko maramdaman ang agwat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Doon nagsisimula ang problema.
+  </p>
+
+  <h2>
+    AT MINSAN, ANG PANGHIHILA PABABA AY HINDI MUKHANG PANGHIHILA PABABA
+  </h2>
+
+  <p>
+    Hindi laging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayokong magtagumpay ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sobrang lantad niyan.
+  </p>
+
+  <p>
+    Mas madalas subtle.
+  </p>
+
+  <blockquote>
+    <p>
+      “Concern lang naman ako.”<br>
+      “Realistic lang ako.”<br>
+      “Binibiro ka lang.”<br>
+      “Pamilya naman tayo.”<br>
+      “Pinapayuhan ka lang namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    At kailangan ulit ng distinction:
+  </p>
+
+  <p>
+    May totoong concern.
+  </p>
+
+  <p>
+    Kung ilalagay mo lahat ng ipon mo sa obvious scam at pinigilan ka ng kapatid mo, hindi iyon panghihila pababa.
+    Kung may mali sa plano mo at sinabi ng kaibigan mo, hindi siya automatic na insecure.
+  </p>
+
+  <p>
+    Kung may valid criticism sa trabaho mo, hindi mo puwedeng ideklara:
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit lang kayo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan naman ang kabilang maling extreme.
+  </p>
+
+  <p>
+    Ang tanong ay nasa pattern.
+  </p>
+
+  <p>
+    Kapag mali ka, tinutulungan ka bang maitama—o ginagamit ang pagkakamali mo para ipahiya ka?<br>
+    Kapag successful ka, kaya ka bang batiin—o laging may kailangang dahilan kung bakit “hindi naman impressive”?<br>
+    Kapag may opportunity ka, binibigyan ka ba ng fair warning—o may aktibong attempt na harangan ka?<br>
+    Kapag bumagsak ka, tinutulungan ka bang makatayo—o tila may satisfaction sa “sabi ko na”?
+  </p>
+
+  <p>
+    Hindi disagreement ang problema.
+    Undermining ang problema.
+  </p>
+
+  <h2>
+    PERO KUNG PILIPINO ANG PAG-UUSAPAN, MAS KOMPLIKADO ITO KAYSA “CRAB MENTALITY”
+  </h2>
+
+  <p>
+    Dito kailangang lumalim ang usapan.
+  </p>
+
+  <p>
+    Sa Sikolohiyang Pilipino, mahalaga ang konsepto ng <em>kapwa</em>—hindi simpleng “other person,” kundi relational understanding ng sarili at ibang tao bilang magkakaugnay.
+  </p>
+
+  <p>
+    Sa scholarship nina Virgilio Enriquez at ng mga nagpatuloy sa Sikolohiyang Pilipino, <em>kapwa</em> is treated as a core concept in understanding Filipino social relations. Pe-Pua at Protacio-Marcelino emphasized na kailangang unawain ang Filipino psychology mula sa sariling historical, linguistic at socio-cultural context, hindi basta ipasok sa imported stereotypes.
+  </p>
+
+  <p>
+    Sa isang indigenous psychological investigation nina Jay Yacat at Ma. Cecilia Conaco—na iniulat bilang conference/symposium material sa <em>International Journal of Psychology</em> supplement—eight facilitated discussion sessions ang isinagawa sa 24 university students at 24 academic professionals mula sa apat na cultural groups sa Pilipinas.
+  </p>
+
+  <p>
+    Sa qualitative analysis, ang <em>pakikipagkapwa</em> was described through two core domains: openness to connections at openness to difference.
+  </p>
+
+  <p>
+    At may empirical evidence din na ang strong family orientation ay hindi puro burden.
+  </p>
+
+  <p>
+    Sa study nina Ronnel King at Fraide Ganotice sa 466 Filipino university students, higher family obligation was associated with better motivation, engagement and several well-being outcomes, particularly among students with stronger relational-interdependent self-construal.
+  </p>
+
+  <p>
+    Sa mas bagong Philippine study ni Liane Peña Alampay, collectivistic values among Filipino parents were also associated with expectations of familial obligations—another indication na relational at family responsibilities remain meaningful parts of Filipino family life.
+  </p>
+
+  <p>
+    Kaya mali na gawing simpleng diagnosis ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganyan talaga ang Pilipino. Crab mentality.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyan sapat.
+  </p>
+
+  <p>
+    Dahil may matibay ding Filipino traditions ng:<br>
+    pagtutulungan,<br>
+    pag-aaruga,<br>
+    family obligation,<br>
+    pakikipagkapwa,<br>
+    bayanihan,<br>
+    at pagsasakripisyo para sa pamilya.
+  </p>
+
+  <p>
+    Ang mas interesting na tanong ay:
+    Paano nagkakaroon ng rivalry, comparison at panghihila sa loob mismo ng kulturang malakas ang pagpapahalaga sa relasyon?
+  </p>
+
+  <p>
+    At dito makikita ang paradox.
+  </p>
+
+  <p>
+    Dahil ang pagiging malapit ay maaaring maging source ng malaking suporta—pero maaari rin nitong paramihin ang pagkakataon para sa comparison.
+  </p>
+
+  <p>
+    Alam ng kapamilya kung saan ka nagsimula.
+  </p>
+
+  <p>
+    Alam niya ang sweldo mo noon.<br>
+    Alam niya kung sino ang mas mataas ang grades.<br>
+    Alam niya kung sino ang unang nakapag-abroad.<br>
+    Alam niya kung kaninong anak ang nakapag-aral.<br>
+    Alam niya kung sino ang may bahay.<br>
+    Alam niya kung sino ang humihingi dati.
+  </p>
+
+  <p>
+    At kapag ang family relationship ay ginawang scoreboard—ang dating kapwa ay puwedeng tratuhing karibal.
+  </p>
+
+  <p>
+    Hindi dahil iyon ang kahulugan ng kapwa.
+    Kundi dahil natalo ng comparison ang relational value na dapat sana ang nangingibabaw.
+  </p>
+
+    <h2>
+    KAYA HUWAG GAMITIN ANG “PAMILYA” PARA I-EXEMPT ANG MASAMANG UGALI
+  </h2>
+
+  <p>
+    Ito rin ang kailangang marinig.
+  </p>
+
+  <p>
+    Minsan ginagamit natin ang closeness bilang dahilan para hindi pangalanan ang behavior.
+  </p>
+
+  <blockquote>
+    <p>
+      “Hayaan mo na, kapatid mo naman.”<br>
+      “Intindihin mo na, tiyahin mo naman.”<br>
+      “Pamilya pa rin ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Oo.
+  </p>
+
+  <p>
+    Pamilya.
+  </p>
+
+  <p>
+    Pero ang pagiging pamilya ay description ng relasyon—hindi certificate of character.
+  </p>
+
+  <p>
+    Puwedeng mahal mo ang tao at amining mali ang ginagawa niya.<br>
+    Puwedeng kamag-anak mo at kailangan mong maglagay ng boundary.<br>
+    Puwedeng may utang na loob ka at hindi ibig sabihing kailangan mong pahintulutang kontrolin ang buong buhay mo.<br>
+    Puwedeng pinayuhan ka nila noon at hindi ibig sabihing may perpetual veto power sila sa lahat ng desisyon mo.
+  </p>
+
+  <p>
+    At puwede ring ikaw ang problema.
+  </p>
+
+  <p>
+    Dahil kung bawat criticism ay tatawagin mong inggit—hindi na boundary iyon.
+    Ego na rin iyon.
+  </p>
+
+  <p>
+    Ang mature na tao ay kayang sabihin parehong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi kita hahayaang sirain ako dahil pamilya kita.”
+    </p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ko rin tatawaging paninira ang katotohanang ayaw ko lang marinig.”
+    </p>
+  </blockquote>
+
+  <h2>
+    PAANO NAMAN SA ABROAD—TOTOO BANG KAPWA PILIPINO PA ANG UNANG KALABAN?
+  </h2>
+
+  <p>
+    Maraming OFW ang may personal na kuwento tungkol dito.
+  </p>
+
+  <p>
+    May kababayang nag-gatekeep.<br>
+    May nang-bully sa bagong dating.<br>
+    May nanira sa employer.<br>
+    May nagdamot ng impormasyon.<br>
+    May tumingin sa bagong Pilipino bilang kaagaw sa overtime, promotion, employer favor o trabaho.
+  </p>
+
+  <p>
+    Hindi natin kailangang burahin ang mga karanasang iyon.
+  </p>
+
+  <p>
+    Nangyayari iyon.
+  </p>
+
+  <p>
+    Pero hindi rin natin puwedeng gawing national fact ang anecdote.
+  </p>
+
+  <p>
+    Wala tayong matibay na ebidensiya para sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mas madalas manira ang kapwa Pilipino kaysa ibang lahi.”
+    </p>
+  </blockquote>
+
+  <p>
+    At may empirical evidence din ng malakas na Filipino-to-Filipino support abroad.
+  </p>
+
+  <p>
+    Sa isang 2025 conference-journal report sa <em>European Journal of Public Health</em> supplement, gumamit ang researchers ng data na nakolekta mula November 2016 hanggang August 2017 sa migrant domestic workers sa Macao.
+  </p>
+
+  <p>
+    Kasama sa sample ang 1,330 Filipino female migrant domestic workers.
+  </p>
+
+  <p>
+    Sa Filipino group, 63.7% of reported network ties were described as close or very close, 64.9% were believed capable of providing financial support if needed, at 85.9% involved reciprocity in listening to one another’s problems.
+  </p>
+
+  <p>
+    Specific migrant population, location at time period iyon.
+  </p>
+
+  <p>
+    Hindi ito survey ng lahat ng OFW.
+    Hindi rin ito patunay na mas supportive ang Pilipino kaysa ibang nationality sa pangkalahatan.
+  </p>
+
+  <p>
+    Pero mahalaga itong counter-evidence sa blanket claim na ang kapwa Pilipino abroad ay natural na kaaway.
+  </p>
+
+  <p>
+    May isa pang qualitative case study sa Aotearoa-New Zealand tungkol sa Filipino migrant worker organizations.
+  </p>
+
+  <p>
+    Nakita nina Jon Gaviola, Sarah Beaven at Thomas Wilson na Filipino worker organizations could provide bonding social capital—networks and relationships that helped members with settlement, support, information, community connection at access to resources.
+  </p>
+
+  <p>
+    Kaya ang mas accurate na picture ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapwa Pilipino ang pinakamasama sa Pilipino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+    Ang co-ethnic network ay puwedeng maging source ng solidarity—at puwede ring maging arena ng competition, hierarchy at exclusion.
+  </p>
+
+  <p>
+    Parehong maaaring mangyari.
+  </p>
+
+  <h2>
+    AT DITO RIN NAIINTINDIHAN KUNG BAKIT MINSAN IBANG LAHI PA ANG NAGBIBIGAY NG OPPORTUNITY
+  </h2>
+
+  <p>
+    May concept sa migration research na bonding at bridging social capital.
+  </p>
+
+  <p>
+    Bonding ties are usually the connections within familiar or closely connected groups.<br>
+    Bridging ties connect people across different groups.
+  </p>
+
+  <p>
+    Sa migration context, co-ethnic networks can provide emotional support, settlement assistance, information and job leads.
+  </p>
+
+  <p>
+    Pero ties outside one’s ethnic group can sometimes provide different information, institutional knowledge at access sa ibang resources.
+  </p>
+
+  <p>
+    Research also cautions against the simplistic idea na ethnicity alone determines whether a connection is useful.
+  </p>
+
+  <p>
+    Ang mahalaga ay anong knowledge, position at resources ang nasa network.
+  </p>
+
+  <p>
+    Sa isang natural-experiment study of immigrants in Germany, being surrounded by a larger co-ethnic community by itself was not enough to improve labor-market entry.
+  </p>
+
+  <p>
+    Benefits appeared when migrants actually mobilized the resources embedded in those social contacts for job search.
+  </p>
+
+  <p>
+    Kaya kapag may Pilipinong nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ibang lahi pa ang tumulong sa akin.”
+    </p>
+  </blockquote>
+
+  <p>
+    posible at valid iyon.
+  </p>
+
+  <p>
+    Pero hindi ang tamang conclusion:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mas mabuti talaga ang ibang lahi kaysa Pilipino.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring ang nangyari ay nakahanap siya ng bridging relationship—isang taong may ibang information, ibang network, ibang position o simpleng mas magandang interpersonal fit.
+  </p>
+
+  <p>
+    Hindi kabutihan o kasamaan ang nakasulat sa passport.
+  </p>
+
+  <p>
+    Tao pa rin ang gumagawa ng choice kung susuporta, makikipagkompetensya nang patas, o maninira.
+  </p>
+
+    <h2>
+    ANG TOTOONG PROBLEMA AY KAPAG HINDI KA MAKARAMDAM NA PANALO HANGGA’T WALANG IBANG NATATALO
+  </h2>
+
+  <p>
+    Ito ang pinaka-core ng usapan.
+  </p>
+
+  <p>
+    Normal ang gusto mong umasenso.<br>
+    Normal ang gusto mong ma-promote.<br>
+    Normal ang gusto mong maging pinakamagaling.<br>
+    Normal ang competition.<br>
+    Normal maging disappointed kapag ibang tao ang nakakuha ng gusto mo.<br>
+    Normal maging insecure minsan.<br>
+    Normal makaramdam ng inggit.
+  </p>
+
+  <p>
+    Ang hindi dapat gawing normal ay iyong kailangan pang bumagsak ang ibang tao para gumaan ang pakiramdam mo sa sarili mo.
+  </p>
+
+  <p>
+    Kung kailangan mong siraan ang kapatid mo para ikaw pa rin ang mukhang successful—hindi achievement ang pinoprotektahan mo.<br>
+    <strong>RANKING.</strong>
+  </p>
+
+  <p>
+    Kung kailangan mong maliitin ang pinsan mo dahil nalampasan ka niya—hindi realidad ang ipinagtatanggol mo.<br>
+    <strong>EGO.</strong>
+  </p>
+
+  <p>
+    Kung kailangan mong itago ang opportunity sa bagong kababayan dahil baka maging mas mahusay siya kaysa sa iyo—hindi iyon pagiging “madiskarte.”<br>
+    <strong>GATEKEEPING IYON.</strong>
+  </p>
+
+  <p>
+    Kung kailangan mong ikalat ang pagkakamali ng katrabaho pero tahimik ka sa lahat ng nagawa niyang tama—hindi accountability ang habol mo.<br>
+    <strong>SELECTIVE DESTRUCTION IYON.</strong>
+  </p>
+
+  <p>
+    At kung ang tanging paraan para maramdaman mong mataas ka ay siguraduhing may taong nakaluhod sa tabi mo—hindi ka mataas.<br>
+    <strong>MAY PINIPIGILAN KA LANG TUMAYO.</strong>
+  </p>
+
+  <h2>
+    PERO HUWAG DIN GAWING “INGGIT” ANG SAGOT SA LAHAT
+  </h2>
+
+  <p>
+    Ito rin ang kailangan nating bantayan.
+  </p>
+
+  <p>
+    May mga taong ginagamit ang “inggit lang sila” bilang shield laban sa kahit anong criticism.
+  </p>
+
+  <p>
+    Maling business decision?
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit.”
+    </p>
+  </blockquote>
+
+  <p>
+    May nakitang problema sa ugali?
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit.”
+    </p>
+  </blockquote>
+
+  <p>
+    May correction sa trabaho?
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit.”
+    </p>
+  </blockquote>
+
+  <p>
+    May taong hindi bilib sa ginawa?
+  </p>
+
+  <blockquote>
+    <p>
+      “Inggit.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ganyan.
+    Hindi natin nababasa ang isip ng ibang tao.
+  </p>
+
+  <p>
+    At kung gusto nating maging evidence-based ang pagtingin sa behavior, kailangan nating ihiwalay ang:
+    disagreement sa sabotage,
+    criticism sa humiliation,
+    competition sa obstruction,
+    warning sa discouragement,
+    boundary sa rejection,
+    at accountability sa personal destruction.
+  </p>
+
+  <p>
+    Minsan, kailangan mong marinig ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mali ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Minsan naman, kailangan mong makita ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi na ito simpleng hindi pagsang-ayon. Paulit-ulit na akong binabawasan, hinaharangan at sinisira.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong puwedeng maging totoo.
+  </p>
+
+  <p>
+    Maturity ang marunong kumilala kung alin ang makatwirang puna at alin ang tunay na paninira.
+  </p>
+
+  <h2>
+    BAKIT CIVIC ISSUE ITO AT HINDI LANG “FAMILY DRAMA”?
+  </h2>
+
+  <p>
+    Dahil ang kultura ng panghihila pababa ay hindi natatapos sa hapag-kainan.
+  </p>
+
+  <p>
+    Dinadala natin ito sa:<br>
+    trabaho,<br>
+    negosyo,<br>
+    eskwelahan,<br>
+    organisasyon,<br>
+    barangay,<br>
+    propesyon,<br>
+    migrant communities,<br>
+    online spaces,<br>
+    at kahit sa public life.
+  </p>
+
+  <p>
+    Kapag mas mahalaga sa atin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi niya ako dapat malamangan.”
+    </p>
+  </blockquote>
+
+  <p>
+    kaysa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Paano tayo parehong magiging mas mahusay?”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi lang isang relasyon ang nasisira.
+  </p>
+
+  <p>
+    Nasisira ang trust.<br>
+    Nasisira ang cooperation.<br>
+    Nawawala ang knowledge-sharing.<br>
+    Natatakot ang mahusay na tao na magpakitang-gilas.<br>
+    Nagiging sikreto ang opportunity.<br>
+    Nagiging threat ang competence.<br>
+    Nagiging personal ang success.
+  </p>
+
+  <p>
+    At sa isang komunidad na ganito ang mentality, ang pinakamagaling ay hindi laging tinutulungan umangat.
+  </p>
+
+  <p>
+    Minsan, siya pa ang unang pinapababa para manatiling komportable ang hierarchy.
+  </p>
+
+  <p>
+    Kaya civic issue ito.
+  </p>
+
+  <p>
+    Dahil walang lipunang tunay na umaangat kung bawat maliit na grupo sa loob nito ay abala sa pagprotekta ng sariling lamang.
+  </p>
+
+  <p>
+    Hindi sapat ang “bayanihan” kapag may bagyo kung sa ordinaryong araw ay kinakalaban natin ang pag-unlad ng sarili nating kapwa.
+  </p>
+
+  <h2>
+    ANG DUGO AY RELASYON—HINDI GARANTIYA NG SUPORTA
+  </h2>
+
+  <p>
+    Ito marahil ang pinakamahirap tanggapin.
+  </p>
+
+  <p>
+    Hindi lahat ng kamag-anak ay magiging kakampi mo sa lahat ng pagkakataon.<br>
+    Hindi lahat ng tunay mong kakampi ay kamag-anak mo.
+  </p>
+
+  <p>
+    Hindi lahat ng kababayan ay tutulong.<br>
+    Hindi lahat ng dayuhan ay walang pakialam.
+  </p>
+
+  <p>
+    Ang surname ay hindi sukatan ng loyalty.
+    Ang passport ay hindi sukatan ng malasakit.
+  </p>
+
+  <p>
+    Ang tagal ng pagkakakilala ay hindi automatic na sukatan ng sincerity.
+    Kilos ang sukatan.
+  </p>
+
+  <p>
+    Kapag umaangat ka, kaya ba nilang maging masaya kahit wala silang nakuhang kapalit?<br>
+    Kapag mali ka, kaya ka ba nilang itama nang hindi ka sinisira?<br>
+    Kapag mas mahusay ka sa isang bagay, kaya ba nilang tanggapin nang hindi kailangang maliitin ka?<br>
+    Kapag sila ang mas mahusay, kaya mo rin bang suportahan nang hindi mo nararamdamdamang nalalamangan ka?
+  </p>
+
+  <p>
+    Dahil maaaring hindi natin kontrolado ang unang kirot ng comparison.
+    Pero responsable tayo sa susunod nating gagawin.
+  </p>
+
+  <h2>
+    AT PARA SA TAONG HINDI KAYANG MAKITANG UMAANGAT ANG SARILI NIYANG KAPWA
+  </h2>
+
+  <p>
+    Ito ang real talk.
+  </p>
+
+  <p>
+    Ang tagumpay ng kapatid mo ay hindi demotion mo.<br>
+    Ang bahay ng pinsan mo ay hindi ebidensiyang failure ka.<br>
+    Ang promotion ng kaibigan mo ay hindi automatic na insulto sa career mo.<br>
+    Ang galing ng katrabaho mo ay hindi pagnanakaw sa halaga mo.<br>
+    Ang magandang pagkakataong nakuha ng kababayan mo ay hindi laging opportunity na inagaw sa iyo.
+  </p>
+
+  <p>
+    May pagkakataong tunay na competitor mo siya.
+  </p>
+
+  <p>
+    Fine.
+  </p>
+
+  <p>
+    Lumaban nang patas.
+  </p>
+
+  <p>
+    Galingan mo.<br>
+    Maghanda ka.<br>
+    Mag-aral ka.<br>
+    Magtrabaho ka.
+  </p>
+
+  <p>
+    Patunayan mong ikaw ang mas qualified.
+  </p>
+
+  <p>
+    Pero kapag kailangan mong magsinungaling, manira, mag-gatekeep, mang-bully, manghamak, magtago ng impormasyon, o magdasal na bumagsak ang tao—hindi na excellence ang ipinaglalaban mo.
+    Takot na iyon sa patas na comparison.
+  </p>
+
+  <p>
+    At kung ang success ng ibang tao ay sapat para sirain ang tingin mo sa sarili mong halaga—hindi ang success nila ang pinakamalaking problema.
+    Iyong sukatan mo ng sarili mo.
+  </p>
+
+  <p>
+    May mga pagkakataong estranghero pa ang unang maniniwala sa iyo.<br>
+    May pagkakataong ibang lahi pa ang magbubukas ng pinto.<br>
+    May pagkakataong kaibigan ang magiging mas kapatid kaysa kadugo.
+  </p>
+
+  <p>
+    At may pagkakataong mismong pamilya at kababayan ang magiging pinakamatibay mong sandalan.
+  </p>
+
+  <p>
+    Walang contradiction doon.
+  </p>
+
+  <p>
+    Dahil ang kabutihan at insecurity ay hindi namamana sa apelyido.
+  </p>
+
+  <p>
+    Hindi rin nakatatak sa nationality.
+  </p>
+
+  <p>
+    Pinipili sila sa kilos.
+  </p>
+
+  <p>
+    Kaya hindi ang pinakamahalagang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kadugo ko ba siya?”
+    </p>
+  </blockquote>
+
+  <p>
+    o:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kababayan ko ba siya?”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas mahalagang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “Anong klaseng tao siya kapag hindi na siya ang lamang?”
+    </p>
+  </blockquote>
+
+  <p>
+    Doon nasusukat ang tunay na suporta.
+  </p>
+
+  <p>
+    Hindi kapag pareho kayong nasa ibaba.
+    Kundi kapag isa sa inyo ang nagsimulang umangat.
+  </p>
+
+  <p>
+    Dahil madaling sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapatid kita.”
+    </p>
+  </blockquote>
+
+  <p>
+    Madaling sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapwa Pilipino tayo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mahirap—ay makita ang taong malapit sa iyo na lumampas sa narating mo, at piliin pa ring sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sige. Mas galingan mo pa.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang taong tunay na secure sa sarili niyang halaga ay hindi kailangang putulin ang pakpak ng iba para patunayang kaya rin niyang lumipad.
+  </p>
+
+  <p>
+    At ang komunidad na tunay na may pagpapahalaga sa kapwa ay hindi iyong sabay-sabay lamang naghihirap.
+    Ito iyong kaya ring magpalakpakan kapag may isa sa kanilang nakakaahon.
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Gerber, J. P., Wheeler, L., &amp; Suls, J. (2018).
+      <em>A Social Comparison Theory Meta-Analysis 60+ Years On.</em>
+      <strong>Psychological Bulletin, 144</strong>(2), 177–197.
+      DOI: 10.1037/bul0000127.
+    </li>
+
+    <li>
+      Li, M., Xu, X., &amp; Kwan, H. K. (2023; first published online 2021).
+      <em>The antecedents and consequences of workplace envy: A meta-analytic review.</em>
+      <strong>Asia Pacific Journal of Management, 40</strong>, 1–35.
+      DOI: 10.1007/s10490-021-09772-y.
+    </li>
+
+    <li>
+      Schaubroeck, J., &amp; Lam, S. S. K. (2004).
+      <em>Comparing lots before and after: Promotion rejectees’ invidious reactions to promotees.</em>
+      <strong>Organizational Behavior and Human Decision Processes, 94</strong>(1), 33–47.
+      DOI: 10.1016/j.obhdp.2004.01.001.
+    </li>
+
+    <li>
+      Meegan, D. V. (2010).
+      <em>Zero-Sum Bias: Perceived Competition Despite Unlimited Resources.</em>
+      <strong>Frontiers in Psychology, 1</strong>, 191.
+      DOI: 10.3389/fpsyg.2010.00191.
+    </li>
+
+    <li>
+      Latif, K., Weng, Q., Pitafi, A. H., Ali, A., Siddiqui, A. W., Malik, M. Y., &amp; Latif, Z. (2021).
+      <em>Social comparison as a double-edged sword on social media: The role of envy type and online social identity.</em>
+      <strong>Telematics and Informatics, 56</strong>, 101470.
+      DOI: 10.1016/j.tele.2020.101470.
+    </li>
+
+    <li>
+      Jensen, A. C., &amp; McHale, S. M. (2015).
+      <em>What Makes Siblings Different? The Development of Sibling Differences in Academic Achievement and Interests.</em>
+      <strong>Journal of Family Psychology, 29</strong>(3), 469–478.
+      DOI: 10.1037/fam0000090.
+    </li>
+
+    <li>
+      Pe-Pua, R., &amp; Protacio-Marcelino, E. A. (2000).
+      <em>Sikolohiyang Pilipino (Filipino psychology): A legacy of Virgilio G. Enriquez.</em>
+      <strong>Asian Journal of Social Psychology, 3</strong>, 49–71.
+      DOI: 10.1111/1467-839X.00054.
+    </li>
+
+    <li>
+      Yacat, J. A., &amp; Conaco, M. C. G. (2016).
+      <em>Meanings of Pakikipagkapwa: An Indigenous Psychological Investigation of a Filipino Cultural Value.</em>
+      Conference/symposium material published in an <strong>International Journal of Psychology</strong> supplement.
+      DOI: 10.1002/ijop.12351.
+    </li>
+
+    <li>
+      King, R. B., &amp; Ganotice, F. A. (2015).
+      <em>Does family obligation matter for students’ motivation, engagement, and well-being?: It depends on your self-construal.</em>
+      <strong>Personality and Individual Differences, 86</strong>, 243–248.
+      DOI: 10.1016/j.paid.2015.06.027.
+    </li>
+
+    <li>
+      Alampay, L. P. (2024).
+      <em>Cultural Values, Parenting, and Child Adjustment in the Philippines.</em>
+      <strong>International Journal of Psychology, 59</strong>(4), 568–577.
+      DOI: 10.1002/ijop.13117.
+    </li>
+
+    <li>
+      Sumerlin, T., Li, Y., Chen, Z., Garabiles, M. R., et al. (2025).
+      <em>The social network characteristics of Filipino and Indonesian female migrant domestic workers in Macao, China.</em>
+      <strong>European Journal of Public Health, 35</strong>(Supplement 6), conference e-poster abstract.
+      Data collected November 2016–August 2017.
+    </li>
+
+    <li>
+      Gaviola, J. H., Beaven, S. J., &amp; Wilson, T. M. (2024).
+      <em>Filipino migrant worker organisations, social capital and disaster resilience: An Aotearoa-New Zealand case study.</em>
+      <strong>International Journal of Disaster Risk Reduction, 108</strong>, 104523.
+      DOI: 10.1016/j.ijdrr.2024.104523.
+    </li>
+
+    <li>
+      Gërxhani, K., &amp; Kosyakova, Y. (2022).
+      <em>The effect of co-ethnic social capital on immigrants’ labor market integration: a natural experiment.</em>
+      <strong>Comparative Migration Studies, 10</strong>, 15.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
