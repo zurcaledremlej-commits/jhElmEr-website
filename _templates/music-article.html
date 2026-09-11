@@ -37,6 +37,8 @@ PUBLISHING WORKFLOW
 
    • Browser page title
    • Meta description
+   • Canonical article URL
+   • Open Graph article URL
    • Cover image filename
    • Cover image alt text
    • MP3 filename
@@ -156,6 +158,13 @@ articles/articles/audio/filename.mp3
 Panatilihin ang eksaktong filename, capitalization,
 spacing, at original file extension.
 
+Ang canonical at Open Graph URL ng bawat published Music article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/music-hindi-tahimik.html
+
 ------------------------------------------------------
 MUSIC ARTICLE STRUCTURE
 ------------------------------------------------------
@@ -201,12 +210,22 @@ END OF DEVELOPER NOTES
     content="width=device-width, initial-scale=1.0"
   >
 
-  <meta
-    name="description"
-    content="Pakinggan ang original song ng jhElmEr at basahin ang kuwento, konteksto, at buong lyrics nito."
-  >
+<meta
+  name="description"
+  content="Pakinggan ang original song ng jhElmEr at basahin ang kuwento, konteksto, at buong lyrics nito."
+>
 
-  <title>Song Title | jhElmEr</title>
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
+>
+
+<title>Song Title | jhElmEr</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
