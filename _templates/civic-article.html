@@ -33,6 +33,8 @@ PUBLISHING WORKFLOW
 
    • Browser page title
    • Meta description
+   • Canonical article URL
+   • Open Graph article URL
    • Article title
    • Main image filename
    • Main image alt text
@@ -109,6 +111,13 @@ images/filename.jpg
 
 Panatilihin ang original image extension.
 
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
 ======================================================
 END OF DEVELOPER NOTES
 ======================================================
@@ -125,9 +134,19 @@ END OF DEVELOPER NOTES
     content="width=device-width, initial-scale=1.0"
   >
 
-  <meta
+    <meta
     name="description"
     content="Basahin ang Civic Explainer ng jhElmEr—isang malinaw, fact-based, at kontekstuwal na paliwanag sa isang mahalagang usaping panlipunan, legal, o pampamahalaan."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
   >
 
   <title>Article Title | jhElmEr</title>
