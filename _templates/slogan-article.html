@@ -33,6 +33,8 @@ PUBLISHING WORKFLOW
 
    • Browser page title
    • Meta description
+   • Canonical article URL
+   • Open Graph article URL
    • Article title
    • Poster image filename
    • Poster image alt text
@@ -109,6 +111,13 @@ images/filename.jpg
 
 Panatilihin ang original image extension.
 
+Ang canonical at Open Graph URL ng bawat published Text Slogan article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/slogan-red-tagging.html
+
 ------------------------------------------------------
 ARTICLE STRUCTURE
 ------------------------------------------------------
@@ -140,12 +149,22 @@ END OF DEVELOPER NOTES
     content="width=device-width, initial-scale=1.0"
   >
 
-  <meta
-    name="description"
-    content="Basahin ang Text Slogan ng jhElmEr—isang tahimik ngunit malinaw na pagninilay at paninindigan tungkol sa isang mahalagang usapin."
-  >
+<meta
+  name="description"
+  content="Basahin ang Text Slogan ng jhElmEr—isang tahimik ngunit malinaw na pagninilay at paninindigan tungkol sa isang mahalagang usapin."
+>
 
-  <title>Text Slogan Title | jhElmEr</title>
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/ARTICLE-FILENAME.html"
+>
+
+<title>Text Slogan Title | jhElmEr</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
 
