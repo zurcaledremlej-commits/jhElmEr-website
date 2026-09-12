@@ -1,1 +1,2258 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Fact-based Civic Explainer ni jhElmEr tungkol sa 'Sure Win' rhetoric, political confidence, future-certainty framing, election legitimacy, at kung bakit ebidensiya—hindi certainty—ang dapat magpasya sa resulta ng halalan."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-sure-win.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-sure-win.html"
+  >
+
+  <title>“SURE WIN” NA DAW—PREDICTION LANG BA, O MAY NARATIBO NANG BINUBUO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          “SURE WIN” NA DAW—PREDICTION LANG BA, O MAY NARATIBO NANG BINUBUO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/slogan-sure-win.png"
+            alt="Illustration ng 'Sure Win' political rhetoric at election narrative bago pa ang halalan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    May kakaibang nangyayari kapag ang isang eleksiyong hindi pa dumarating ay paulit-ulit nang ikinukuwento na parang alam na ang ending.
+  </p>
+
+  <p>
+    Hindi na lang:
+  </p>
+
+  <blockquote>
+    <p>“Sana manalo tayo.”</p>
+  </blockquote>
+
+  <p>
+    Hindi na lang:
+  </p>
+
+  <blockquote>
+    <p>“Malakas ang kandidato natin.”</p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Humanda kayo sa susunod na eleksiyon.”<br>
+      “Iiyak kayo.”<br>
+      “Sure win na ’yan.”<br>
+      “Talunin n’yo na lang sa eleksiyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Sa unang tingin, puwedeng ordinaryong yabang, confidence, biruan o rallying cry lang ang mga linyang iyan.
+  </p>
+
+  <p>
+    At minsan, ganoon lang talaga iyon.
+  </p>
+
+  <p>
+    Pero kapag paulit-ulit na ang mensahe, iisa ang tinutukoy na “pambato,” at ang possibility ay unti-unting ipinapahayag na parang certainty, hindi na lang simpleng tanong kung sino ang mananalo ang dapat pag-isipan.
+  </p>
+
+  <p><strong>Mas mahalagang itanong:</strong></p>
+
+  <blockquote>
+    <p>
+      Ano ang ginagawa ng ganitong paulit-ulit na certainty framing sa expectation ng supporters bago pa man bumoto ang bayan?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil may malaking pagkakaiba ang:
+  </p>
+
+  <blockquote>
+    <p>“Naniniwala akong mananalo ang kandidato ko.”</p>
+  </blockquote>
+
+  <p>at</p>
+
+  <blockquote>
+    <p>“Siguradong mananalo ang kandidato ko.”</p>
+  </blockquote>
+
+  <p>
+    At mas malaking pagkakaiba kapag umabot na sa:
+  </p>
+
+  <blockquote>
+    <p>“Kapag hindi siya nanalo, may ginawa ang kalaban.”</p>
+  </blockquote>
+
+  <p>
+    Diyan nagiging mahalagang pag-usapan hindi lang ang prediction—kundi kung may nabubuong naratibo na maaaring makaapekto sa paraan ng pagtanggap natin sa resulta kapag dumating na ang totoong eleksiyon.
+  </p>
+
+  <p>
+    Hindi dahil bawal maging kumpiyansa.
+  </p>
+
+  <p>
+    Kundi dahil sa demokrasya, hindi dapat ginagawang certainty ang isang resultang milyon-milyong botante pa ang magdedesisyon.
+  </p>
+
+  <h2>HINDI ANG CONFIDENCE ANG PROBLEMA</h2>
+
+  <p>
+    Normal sa politika ang optimism.
+    Normal ang campaign enthusiasm.
+    Normal ang supporters na sabihing malakas ang kandidato nila.
+  </p>
+
+  <p>
+    At walang sapat na basehan para sabihing ang bawat taong nagsasabing “sure win” ay may lihim nang plano na sumigaw ng dayaan kapag natalo.
+  </p>
+
+  <p>
+    Hindi natin puwedeng hulaan ang future motive ng tao nang walang ebidensiya.
+    Pero hindi rin ibig sabihin na walang psychological at political effect ang ganitong klase ng rhetoric.
+  </p>
+
+  <p>
+    Kapag paulit-ulit na inilalarawan ang isang uncertain future na parang settled fact, maaari itong magsilbing tinatawag natin dito na <strong>future-certainty framing</strong>—descriptive term ito sa explainer na ito, hindi pangalan ng isang formal psychological diagnosis.
+  </p>
+
+  <p>
+    Simple ang ginagawa ng framing:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi na tinatanong:<br><br>
+      “Sino kaya ang mananalo?”<br><br>
+      Unti-unting nagiging:<br><br>
+      “Kapag nanalo tayo…”<br><br>
+      Hanggang maging:<br><br>
+      “Pag tayo na ang nanalo…”<br><br>
+      At kalaunan:<br><br>
+      “Sure win na tayo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maliit ang pagbabago sa salita.
+    Pero malaki ang pagbabago sa ipinapalagay.
+  </p>
+
+  <p>
+    Mula sa possibility, nagiging expectation.
+    Mula sa expectation, maaaring maging psychological default.
+  </p>
+
+  <p>
+    At kapag naging default na ang panalo, ang pagkatalo ay hindi na simpleng alternative outcome.
+  </p>
+
+  <p>
+    Nagiging bagay itong kailangang ipaliwanag.
+  </p>
+
+  <h2>ANG FUTURE AY PUWEDENG I-FRAME BAGO PA ITO MANGYARI</h2>
+
+  <p>
+    Isa sa pinakamahalagang trabaho ng political communication ay hindi lang kumbinsihin ang tao kung ano ang nangyari.
+  </p>
+
+  <p>
+    Maaari rin nitong impluwensiyahan kung paano aasahan ng tao ang mangyayari.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit mahalaga sa kampanya ang mga salitang:
+    malakas, nangunguna, momentum, landslide, unbeatable, sure win.
+  </p>
+
+  <p>
+    Hindi lamang ito paglalarawan ng popularity.
+  </p>
+
+  <p>
+    Maaari rin itong maging signal:
+  </p>
+
+  <blockquote>
+    <p>
+      “Marami tayo.”<br>
+      “Tayo ang majority.”<br>
+      “Tayo ang papunta sa panalo.”
+    </p>
+  </blockquote>
+
+  <p>
+    At may totoong political-behavior research tungkol dito.
+  </p>
+
+  <p>
+    Sa political science, matagal nang pinag-aaralan ang <strong>bandwagon effect</strong>—ang posibilidad na ang perception na malakas o popular ang isang kandidato ay makaapekto mismo sa political behavior.
+  </p>
+
+  <p>
+    Isang 2023 study nina Granzier, Pons at Tricaud sa <em>American Economic Journal: Applied Economics</em> ang gumamit ng electoral data mula sa French two-round elections at nakakita ng coordination at bandwagon effects mula sa candidate rankings. Nakakita rin ang researchers ng kahalintulad na patterns sa data mula sa 19 pang bansa.
+  </p>
+
+  <p>
+    Ibig sabihin, ang perceived electoral position ay maaaring makaapekto hindi lamang sa ilang voters kundi pati sa strategic decisions ng political actors.
+  </p>
+
+  <p>
+    May survey-experimental evidence din mula Denmark na kapag ipinakitang tumataas ang support ng isang partido, maaaring gumalaw sa parehong direksiyon ang voting intention ng ilang respondents.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na basta sabihin mong “panalo tayo” ay susunod na agad ang lahat.
+  </p>
+
+  <p>
+    Karaniwang maliit at context-dependent ang bandwagon effects.
+  </p>
+
+  <p>
+    Pero sapat ang evidence para sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang perception ng popularity ay hindi politically irrelevant.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya may strategic value ang pagpapakitang:
+  </p>
+
+  <blockquote>
+    <p>“Kami ang papunta sa panalo.”</p>
+  </blockquote>
+
+  <p>
+    Dahil sa politika, ang perception ng lakas ay maaari ring makatulong gumawa ng totoong lakas.
+  </p>
+
+    <h2>PERO HINDI MAGIC SPELL ANG PAULIT-ULIT NA “SURE WIN”</h2>
+
+  <p>
+    Mahalagang huwag ding gawing OA ang psychology.
+  </p>
+
+  <p>
+    May kilalang <strong>illusory truth effect</strong>. Sa maraming experimental settings, ang impormasyong paulit-ulit nating naririnig ay maaaring maging mas familiar at, para sa maraming factual statements, mas mukhang totoo.
+  </p>
+
+  <p>
+    Isang 2026 systematic review at meta-analysis ang nagtipon ng 182 studies, 366 effect sizes at 31,184 participants mula 1977 hanggang 2025.
+  </p>
+
+  <p>
+    Nakakita ito ng statistically meaningful ngunit hindi napakalaking average illusory-truth effect, at malaki rin ang variation depende sa uri ng claim at sitwasyon.
+  </p>
+
+  <p>
+    Pero narito ang mahalagang scientific guardrail:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi ibig sabihin nito na kapag isang libong beses mong sinabi ang:<br><br>
+      “Sure win.”<br><br>
+      awtomatikong paniniwalaan na iyon ng lahat.
+    </p>
+  </blockquote>
+
+  <p>
+    Sa katunayan, isang 2026 study nina Riesthuis at Woods tungkol mismo sa social-political opinion statements, gamit ang dalawang preregistered experiments, ang hindi nakakita ng reliable meaningful repetition effect sa ganitong uri ng subjective political opinions.
+  </p>
+
+  <p>
+    Iyan ang dapat na klase ng paggamit natin sa research. Hindi tayo kukuha ng psychology term at gagawin itong magic explanation.
+  </p>
+
+  <p>
+    Ang mas eksaktong punto ay:
+  </p>
+
+  <blockquote>
+    <p>
+      Repetition can increase familiarity and, for many factual statements, perceived truth. But repetition alone does not guarantee persuasion—lalo na kapag subjective political opinion ang pinag-uusapan.
+    </p>
+  </blockquote>
+
+  <p>
+    Mas nagiging mahalaga ang interaction nito sa:
+    identity, group loyalty, perceived popularity, selective information at social reinforcement.
+  </p>
+
+  <h2>KAPAG ANG KANDIDATO AY HINDI NA LANG KANDIDATO—KUNDI “KAMPI NAMIN”</h2>
+
+  <p>
+    Dito pumapasok ang political identity.
+  </p>
+
+  <p>
+    Kapag malakas ang pagkakakilanlan natin sa isang political camp, hindi na laging neutral information-processing problem ang politika.
+  </p>
+
+  <p>
+    Nagiging:
+  </p>
+
+  <blockquote>
+    <p>“Kami laban sa kanila.”</p>
+  </blockquote>
+
+  <p>
+    Isang 2025 review sa <em>Annual Review of Psychology</em> ang nagbuod ng malawak na research sa partisan bias. May systematic tendencies ang political partisans na mas hanapin, paniwalaan at maalala ang impormasyong pabor sa sariling political side.
+  </p>
+
+  <p>
+    Matagal na rin itong nakikita sa research sa motivated reasoning at motivated skepticism.
+  </p>
+
+  <p>
+    Kapag pabor sa atin ang impormasyon, mas madali natin itong tanggapin.
+    Kapag laban sa atin, maaari tayong maging mas demanding sa ebidensiya.
+  </p>
+
+  <p>
+    Hindi dahil bobo ang tao.
+    Kundi dahil tao tayo.
+  </p>
+
+  <p>
+    May dating paniniwala, loyalty, emotion at identity na pumapasok sa pagproseso natin ng impormasyon.
+  </p>
+
+  <p>
+    Classic research nina Lord, Ross at Lepper noong 1979, at political research nina Taber at Lodge noong 2006, parehong nagpakitang maaaring magkaiba ang evaluation ng tao sa ebidensiyang pabor at laban sa dati niyang paniniwala.
+  </p>
+
+  <p>
+    At hindi rin awtomatikong nawawala ang motivated reasoning dahil politically informed o politically sophisticated ang isang tao.
+  </p>
+
+  <p>
+    Sa ilang research, malakas pa rin ang selective evaluation lalo na kapag matindi na ang prior political attitude.
+  </p>
+
+  <p>
+    Pero hindi rin tama ang simpleng conclusion na:
+  </p>
+
+  <blockquote>
+    <p>“Mas matalino = mas biased.”</p>
+  </blockquote>
+
+  <p>
+    Mas mixed at mas komplikado ang literature tungkol sa general cognitive ability.
+  </p>
+
+  <p>
+    Ang mas ligtas at mas suportadong punto:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang pagiging politically informed o sophisticated ay hindi automatic vaccine laban sa motivated reasoning.
+    </p>
+  </blockquote>
+
+  <h2>MAS MAHALAGA ITO SA KONTEKSTO NG PULITIKA SA PILIPINAS</h2>
+
+  <p>
+    Hindi eksaktong kapareho ng U.S. o Europe ang political psychology ng bawat bansa.
+  </p>
+
+  <p>
+    Kaya hindi dapat basta mag-import ng foreign research at sabihing eksaktong ganoon ang Filipino voter.
+  </p>
+
+  <p>
+    Pero may sariling Philippine evidence na nagbibigay ng mahalagang context.
+  </p>
+
+  <p>
+    Isang 2026 study nina Dean Dulay at Cleve Arguelles gamit ang nationally representative face-to-face survey data bago ang 2025 Senate elections—na may 1,894 adults sa isang survey at 2,413 registered voters likely to vote sa isa pa—ang naglarawan sa contemporary Philippine politics bilang may weakly institutionalized parties, personalistic competition at factional alignments.
+  </p>
+
+  <p>
+    Sa kanilang data, mas lumitaw ang regional at factional alignment kaysa malinaw na left-versus-right ideological division.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na walang policy-minded Filipino voter.
+    Hindi rin ibig sabihin na pare-pareho tayong bumoboto dahil sa personalidad.
+  </p>
+
+  <p>
+    Ang ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      May structural reason kung bakit napakalakas ng pangalan, pamilya, faction, geographic base at personal loyalty sa electoral politics natin.
+    </p>
+  </blockquote>
+
+  <p>
+    May hiwalay pang malaking study nina Cruz, Labonne at Querubín sa <em>American Economic Review</em> na gumamit ng family-network data mula sa mahigit 20 million individuals sa humigit-kumulang 15,000 Philippine villages.
+  </p>
+
+  <p>
+    Ipinakita ng research na ang mga kandidato ay disproportionately nagmumula sa mas central na pamilya sa local family networks, at ang family-network centrality ng mga kandidato ay may kaugnayan sa electoral advantage at political exchange kahit isinasaalang-alang ang wealth, historical elite status at previous electoral success.
+  </p>
+
+  <p>
+    Kaya mali ring isipin na ang political choice ay nangyayari lamang sa utak ng isang isolated individual.
+  </p>
+
+  <p>
+    Nangyayari ito sa loob ng:
+  </p>
+
+  <blockquote>
+    <p>
+      pamilya,<br>
+      barangay,<br>
+      barkada,<br>
+      regional identities,<br>
+      political networks,<br>
+      at mga grupong paulit-ulit nating kinakausap.
+    </p>
+  </blockquote>
+
+    <h2>SA SOCIAL MEDIA, HINDI LANG IMPORMASYON ANG KUMAKALAT—PATI PAKIRAMDAM KUNG SINO ANG “MARAMI”</h2>
+
+  <p>
+    Napakahalaga nito ngayon.
+  </p>
+
+  <p>
+    Kapag binuksan mo ang feed mo at sampu, dalawampu, limampung posts ang nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>“Sure win na.”</p>
+  </blockquote>
+
+  <p>
+    madaling magkaroon ng impression na:
+  </p>
+
+  <blockquote>
+    <p>“Ganito na yata talaga ang tingin ng karamihan.”</p>
+  </blockquote>
+
+  <p>
+    Pero hindi representative survey ang news feed.
+  </p>
+
+  <p>
+    Ang nakikita natin online ay produkto ng maraming bagay:
+    kung sino ang fina-follow natin,
+    kung aling groups ang sinalihan natin,
+    kung anong content ang ine-engage natin,
+    kung sino ang pinakamalakas mag-post,
+    at kung ano ang mas lumilitaw dahil nakakakuha ng interaction.
+  </p>
+
+  <p>
+    Kaya ang visibility ay hindi automatic majority.
+  </p>
+
+  <p>
+    Ang virality ay hindi boto.
+    Ang comment section ay hindi electorate.
+  </p>
+
+  <p>
+    At ang malakas na online fandom ay hindi kapalit ng actual election result.
+  </p>
+
+  <p>
+    Research nina Arugay at Baquisal tungkol sa 2022 Philippine elections found that social media played an important role sa production, transmission at reception ng political narratives na kaugnay ng mobilization at polarization.
+  </p>
+
+  <p>
+    Hiwalay dito, ang Philippine research nina Ong, Curato at mga kasama tungkol sa influence operations ay nagbigay-diin na mas malawak ang political influence activity kaysa simpleng pagpapakalat lamang ng literal na false information.
+  </p>
+
+  <p>
+    Maaaring kasama rito ang paggamit ng narratives, coordinated communication practices, identity at attention dynamics para impluwensiyahan kung paano nakikita at pinag-uusapan ng publiko ang politika.
+  </p>
+
+  <p>
+    Mahalaga ang distinction na iyon.
+  </p>
+
+  <p>
+    Dahil hindi kailangang fake news ang:
+  </p>
+
+  <blockquote>
+    <p>“Sure win tayo.”</p>
+  </blockquote>
+
+  <p>
+    Maaaring opinion lamang iyon.
+    Pero maaari pa ring magkaroon ng political function ang opinion kapag paulit-ulit nitong ipinapakita ang isang future bilang inevitable.
+  </p>
+
+  <p>
+    At hindi rin nito ibig sabihin na bawat ordinaryong supporter na nagsasabing “sure win” ay bahagi ng coordinated influence operation.
+  </p>
+
+  <p>
+    Ibang claim iyon at kailangan ng sariling ebidensiya.
+  </p>
+
+  <h2>DITO NABUBUO ANG MAS DELIKADONG POSSIBILITY: ANG “EXPECTED PANALO” AY MAGING BASELINE NG REALITY</h2>
+
+  <p>
+    Isipin natin ang dalawang supporter.
+  </p>
+
+  <p>
+    Ang una ay nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Sana manalo kami. Mukhang malakas kami. Tingnan natin sa eleksiyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang pangalawa ay matagal nang nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tapos na ’yan. Sure win kami. Wala nang makakatalo diyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag nanalo pareho ang kandidato nila, walang malaking psychological conflict.
+  </p>
+
+  <p>
+    Pero paano kapag natalo?
+  </p>
+
+  <p>
+    Para sa una:
+  </p>
+
+  <blockquote>
+    <p>“Mali pala ang expectation ko.”</p>
+  </blockquote>
+
+  <p>
+    Masakit, pero logically available ang explanation.
+  </p>
+
+  <p>
+    Para sa pangalawa:
+  </p>
+
+  <blockquote>
+    <p>“Kung sure win kami, bakit natalo?”</p>
+  </blockquote>
+
+  <p>
+    At kapag mas malakas ang identity investment sa original belief, mas attractive ang explanation na hindi nangangailangan ng pag-amin na mali ang prediction.
+  </p>
+
+  <p>
+    Dito pumapasok ang motivated reasoning.
+  </p>
+
+  <p>
+    Posibleng isipin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi naman siguro mali ang expectation namin.”<br>
+      “Baka may nangyari.”
+    </p>
+  </blockquote>
+
+  <p>
+    At kung mayroon nang political actors o online communities na nagbibigay ng fraud explanation, mas madaling mag-match ang explanation sa dating expectation.
+  </p>
+
+  <p>
+    Hindi ito garantiya.
+    Hindi lahat ng supporter ay gagawin ito.
+  </p>
+
+  <p>
+    At hindi nito pinatutunayang may intentional grand strategy mula sa simula.
+  </p>
+
+  <p>
+    Pero tugma ito sa isa sa pinakamatibay na findings sa election research:
+    Mas mababa karaniwan ang electoral confidence ng supporters ng natalong panig kaysa supporters ng nanalong panig.
+  </p>
+
+  <p>
+    Tinatawag itong <strong>winner–loser gap</strong> o <strong>winner effect</strong>.
+  </p>
+
+  <p>
+    Isang 2022 <em>Electoral Studies</em> study nina Reller, Anderson at Kousser, halimbawa, found an immediate decline in electoral trust among supporters of the losing side even in an election where the losing candidate did not claim voter fraud.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi kailangan ng fraud rhetoric para magkaroon ng psychological winner–loser effect.
+  </p>
+
+  <p>
+    Ang mismong pagkatalo ay maaari nang makaapekto sa perception ng process.
+  </p>
+
+  <p>
+    At isang broader 2024 review nina Kerr, King at Wahman sa <em>Public Opinion Quarterly</em> describes the difference between winners and losers in electoral trust as one of the most consistent findings sa literature tungkol sa public confidence in elections—bagama’t nag-iiba ang laki nito depende sa election quality, institutions, information environment at political context.
+  </p>
+
+  <p>
+    Ito ang kritikal:
+  </p>
+
+  <blockquote>
+    <p>
+      Kung may natural tendency na ngang mas bumaba ang tiwala ng losing side sa electoral process, ano pa kaya kapag bago pa ang election ay matagal nang ipinapahayag na “imposible tayong matalo”?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pa iyon proof ng magiging reaction.
+    Pero malinaw kung bakit dapat maging responsable ang political rhetoric.
+  </p>
+
+  <h2>MAS DELIKADO KAPAG MAY KASUNOD NANG “KAPAG NATALO, DINAYA”</h2>
+
+  <p>
+    Dito tayo dapat maging sobrang precise.
+  </p>
+
+  <p>
+    May malaking pagkakaiba ang:
+  </p>
+
+  <blockquote>
+    <p>“Sure win kami.”</p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>
+      “Sure win kami—kaya kapag natalo kami, siguradong may dayaan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang una ay maaaring exaggerated confidence.
+    Ang pangalawa ay pre-judgment ng legitimacy ng future result.
+  </p>
+
+  <p>
+    Dahil bago pa magkaroon ng:
+    ballots,
+    counting,
+    audit,
+    complaints,
+    documents,
+    witnesses,
+    technical findings,
+    o adjudication,
+  </p>
+
+  <p>
+    may conclusion na.
+  </p>
+
+  <p>
+    At may direct experimental evidence kung bakit delikado ang unsupported fraud rhetoric.
+  </p>
+
+  <p>
+    Sa isang nationwide U.S. survey experiment involving 4,283 respondents, exposure sa unsubstantiated voter-fraud claims significantly reduced confidence in election integrity.
+  </p>
+
+  <p>
+    Mas malakas ang effect sa mga partidistang politically receptive sa message.
+  </p>
+
+  <p>
+    At sa experiment na iyon, hindi nasukat na naibalik nang buo ng kasamang fact-checking ang nasirang confidence.
+  </p>
+
+  <p>
+    Hindi ito Philippine experiment, kaya hindi natin dapat sabihing eksaktong parehong effect size ang mangyayari rito.
+  </p>
+
+  <p>
+    Pero pinapakita nito ang mas general na mechanism:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang accusation mismo ay maaaring makaapekto sa trust—kahit bago pa napatutunayang totoo ang accusation.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi harmless entertainment ang walang-ebidensiyang:
+  </p>
+
+  <blockquote>
+    <p>“Kapag natalo tayo, niluto ’yan.”</p>
+  </blockquote>
+
+    <h2>PERO HINDI RIN DAPAT BALIGTARIN: HINDI LAHAT NG PAGKUWESTIYON SA ELEKSIYON AY CONSPIRACY</h2>
+
+  <p>
+    Napakahalagang sabihin ito.
+  </p>
+
+  <p>
+    Ang civic literacy ay hindi nangangahulugang:
+  </p>
+
+  <blockquote>
+    <p>“Bawal pagdudahan ang election result.”</p>
+  </blockquote>
+
+  <p>
+    Mali rin iyon.
+  </p>
+
+  <p>
+    Maaaring magkaroon ng tunay na:
+    irregularity,
+    procedural error,
+    vote-buying,
+    intimidation,
+    administrative failure,
+    illegal campaigning,
+    disinformation,
+    o iba pang paglabag sa election law.
+  </p>
+
+  <p>
+    At kapag may credible evidence, dapat itong siyasatin.
+  </p>
+
+  <p>
+    Ang matinong prinsipyo ay hindi:
+  </p>
+
+  <blockquote>
+    <p>“Lahat ng election ay perfect.”</p>
+  </blockquote>
+
+  <p>
+    At hindi rin:
+  </p>
+
+  <blockquote>
+    <p>“Natalo kami, kaya may dayaan.”</p>
+  </blockquote>
+
+  <p>
+    Ang tamang sequence ay:
+  </p>
+
+  <blockquote>
+    <p>
+      EBIDENSIYA → IMBESTIGASYON → DUE PROCESS → KONKLUSYON
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      KONKLUSYON → saka humanap ng anumang bagay na makakapagpatibay rito.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang malaking reasoning difference.
+  </p>
+
+  <h2>ANG PINAKAMALAKING RED FLAG AY KAPAG WALANG POSIBLENG RESULTANG MAKAPAGPAPATUNAY NA MALI ANG PANINIWALA</h2>
+
+  <p>
+    Subukan natin ang logic.
+    Kapag nanalo ang kandidato ko → patunay na tama akong malakas kami.
+  </p>
+
+  <p>
+    Okay.
+  </p>
+
+  <p>
+    Pero:
+    Kapag natalo ang kandidato ko → patunay na dinaya kami.
+  </p>
+
+  <p>
+    Ano ngayon ang posibleng outcome na makapagpapakita na mali pala ang original na:
+  </p>
+
+  <blockquote>
+    <p>“Sure win.” prediction?</p>
+  </blockquote>
+
+  <p>
+    Wala.
+    Panalo → tama ako.
+    Talo → tama pa rin ako dahil may conspiracy.
+  </p>
+
+  <p>
+    Diyan nagiging self-protecting o, sa extreme form, self-sealing ang reasoning.
+  </p>
+
+  <p>
+    May scholarly debate tungkol sa salitang self-sealing.
+  </p>
+
+  <p>
+    Hindi lahat ng conspiracy belief ay literal na immune sa ebidensiya.
+    Hindi rin patas na i-label agad na irrational ang lahat ng naghihinala sa coordinated wrongdoing.
+  </p>
+
+  <p>
+    Gaya ng binibigyang-diin sa contemporary philosophical research tungkol dito, kailangang suriin ang specific claim ayon sa specific evidence nito.
+  </p>
+
+  <p>
+    Pero may totoong reasoning problem kapag ang isang paniniwala ay inayos sa paraang:
+  </p>
+
+  <blockquote>
+    <p>
+      Kahit anong mangyari, iyon pa rin ang conclusion.
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil kapag wala nang conceivable evidence na puwedeng magpabago ng isip natin—hindi na natin sinusubukan kung tama ang belief.
+    Pinoprotektahan na lang natin ito.
+  </p>
+
+  <h2>KAYA MAY ISANG TANONG NA MAS MAHALAGA KAYSA “SINO ANG MANANALO?”</h2>
+
+  <p>
+    Ito:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ano ang magiging sapat na ebidensiya para tanggapin mong patas na natalo ang kandidato mo?”
+    </p>
+  </blockquote>
+
+  <p>
+    Napakalakas ng tanong na iyan.
+  </p>
+
+  <p>
+    Dahil hindi nito hinihinging kalimutan mo ang loyalty mo.
+  </p>
+
+  <p>
+    Hindi nito hinihinging suportahan mo ang kalaban.
+    Hindi nito hinihinging huwag kang magreklamo.
+  </p>
+
+  <p>
+    Ang hinihingi lang nito ay:
+    May kondisyon ba kung saan handa kang sabihing, “Mali pala ang prediction ko”?
+  </p>
+
+  <p>
+    Kung mayroon—may puwang pa ang evidence.
+  </p>
+
+  <p>
+    Kung wala—at ang tanging acceptable result ay:
+  </p>
+
+  <blockquote>
+    <p>PANALO KAMI</p>
+  </blockquote>
+
+  <p>
+    habang bawat pagkatalo ay automatic:
+  </p>
+
+  <blockquote>
+    <p>DINAYA KAMI</p>
+  </blockquote>
+
+  <p>
+    Ang problema ay hindi na kandidato.
+    Ang problema ay paraan ng pag-iisip.
+  </p>
+
+  <h2>AT IYAN ANG DAPAT BANTAYAN KAHIT ANONG KULAY</h2>
+
+  <p>
+    Kapag sariling kampo natin ang nagsabing:
+  </p>
+
+  <blockquote>
+    <p>“Sure win na.”</p>
+  </blockquote>
+
+  <p>
+    Madaling tawaging confidence.
+  </p>
+
+  <p>
+    Kapag kalaban ang nagsabi:
+    Madaling tawaging arrogance o propaganda.
+  </p>
+
+  <p>
+    Iyan mismo ang partisan trap.
+  </p>
+
+  <p>
+    Kung mali ang political behavior, mali ito kahit sino ang gumagawa.
+  </p>
+
+  <p>
+    Kung acceptable ang evidence standard, dapat pareho ito sa:
+    kandidato natin,
+    kandidato nila,
+    panalong gusto natin,
+    at panalong ayaw natin.
+  </p>
+
+  <p>
+    Dahil kung ang standard natin sa election legitimacy ay:
+  </p>
+
+  <blockquote>
+    <p>
+      “Legitimate kapag panalo kami, suspicious kapag talo kami,”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi na election integrity ang ipinagtatanggol natin.
+    Political preference na.
+  </p>
+
+    <h2>ANG MAS MATINONG POLITICAL CONFIDENCE AY MAY HUMILITY SA HARAP NG BOTO</h2>
+
+  <p>
+    Walang masama sa:
+  </p>
+
+  <blockquote>
+    <p>“Malakas ang kandidato namin.”</p>
+  </blockquote>
+
+  <p>
+    Walang masama sa:
+  </p>
+
+  <blockquote>
+    <p>“Naniniwala kaming mananalo kami.”</p>
+  </blockquote>
+
+  <p>
+    Walang masama sa:
+  </p>
+
+  <blockquote>
+    <p>“Humanda kayo sa susunod na eleksiyon.”</p>
+  </blockquote>
+
+  <p>
+    Pero may isang mahalagang salitang dapat manatili sa isip:
+  </p>
+
+  <blockquote>
+    <p>MAAARI.</p>
+  </blockquote>
+
+  <p>
+    Maaaring manalo.<br>
+    Maaaring matalo.<br>
+    Maaaring magbago ang public opinion.<br>
+    Maaaring magkaroon ng bagong kandidato.<br>
+    Maaaring magbago ang alliances.<br>
+    Maaaring magbago ang issues.<br>
+    Maaaring iba ang turnout kaysa inaasahan.
+  </p>
+
+  <p>
+    Kahit ang maayos na pre-election surveys ay time-bound measurements ng voter sentiment, hindi deterministic prophecy—isang puntong tahasang binibigyang-diin ng contemporary Philippine electoral research.
+  </p>
+
+  <p>
+    Kaya kung survey nga ay hindi crystal ball—mas lalong hindi crystal ball ang comment section.
+  </p>
+
+  <h2>REAL TALK</h2>
+
+  <p>
+    Suportahan mo ang kandidato mo.<br>
+    Ipagtanggol mo ang record niya kung kaya mong suportahan ng facts.<br>
+    Kumbinsihin mo ang ibang botante.<br>
+    Mangampanya ka.<br>
+    Magpakita ka ng confidence.
+  </p>
+
+  <p>
+    Pero huwag mong gawing ari-arian ng kandidato mo ang isang eleksiyong hindi pa nagaganap.
+  </p>
+
+  <p>
+    Dahil may napakalaking difference sa pagitan ng:
+  </p>
+
+  <blockquote>
+    <p>“Gusto naming manalo.”</p>
+  </blockquote>
+
+  <p>
+    at
+  </p>
+
+  <blockquote>
+    <p>“Kami na ang mananalo.”</p>
+  </blockquote>
+
+  <p>
+    At mas malaking difference sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kami na ang mananalo, kaya kapag hindi nangyari, may ginawa ang kalaban.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang una ay suporta.
+    Ang pangalawa ay prediction na ginawang certainty.
+    Ang pangatlo ay maaaring maging preloaded explanation para sa resultang hindi pa umiiral.
+  </p>
+
+  <p>
+    Hindi natin puwedeng sabihing siguradong hahantong doon ang bawat “sure win” rhetoric.
+  </p>
+
+  <p>
+    Pero mayroon tayong sapat na research para malaman kung bakit dapat itong bantayan:
+  </p>
+
+  <blockquote>
+    <p>
+      Perceived popularity can influence behavior.<br>
+      Political identity can bias information processing.<br>
+      Supporters of losing sides often become less trusting of electoral processes.
+    </p>
+  </blockquote>
+
+  <p>
+    At:
+  </p>
+
+  <blockquote>
+    <p>
+      Unsupported fraud allegations themselves can damage election confidence.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya ang responsableng supporter ay hindi iyong kulang sa tiwala sa kandidato niya.
+  </p>
+
+  <p>
+    Siya iyong may sapat na tiwala sa sariling paninindigan para sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gusto kong manalo kami—pero hahayaan kong ebidensiya at boto ng bayan ang magsabi kung nanalo talaga kami.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil sa demokrasya—HINDI DAPAT NAKASULAT ANG ENDING BAGO PA BUMOTO ANG BAYAN.
+  </p>
+
+  <p>
+    Hindi pag-aari ng kandidato ang susunod na eleksiyon.<br>
+    Hindi pag-aari ng pamilya.<br>
+    Hindi pag-aari ng partido.<br>
+    Hindi pag-aari ng fandom.<br>
+    Hindi pag-aari ng pinakamaingay na comment section.
+  </p>
+
+  <blockquote>
+    <p>PAG-AARI ITO NG MGA BOTANTENG BOBOTO.</p>
+  </blockquote>
+
+  <p>
+    At kung iba ang resulta sa gusto natin, hindi dapat ang unang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>“ANO ANG GINAWA NG KALABAN?”</p>
+  </blockquote>
+
+  <p>
+    Ang unang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>“ANO ANG EBIDENSIYA?”</p>
+  </blockquote>
+
+  <p>
+    Dahil ang pagkatalo ay hindi ebidensiya ng dayaan.
+    <strong>ANG DAYAAN ANG KAILANGANG PATUNAYAN NG EBIDENSIYA.</strong>
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Dulay, D. &amp; Arguelles, C. V. (2026). <em>The Contemporary Filipino Voter: Factionalism, Demographics, and Vote Choice.</em> <em>Journal of Current Southeast Asian Affairs.</em> — Philippine voter research on factionalism, regional alignment, personalistic politics, at the limits of treating surveys as deterministic forecasts.
+            </li>
+
+            <li>
+              Arugay, A. A. &amp; Baquisal, J. K. A. (2022). <em>Mobilized and Polarized: Social Media and Disinformation Narratives in the 2022 Philippine Elections.</em> <em>Pacific Affairs.</em> — Philippine evidence on social-media political narratives, mobilization, and polarization.
+            </li>
+
+            <li>
+              Ong, J. C., Curato, N. <em>et al.</em> (2022). <em>Parallel Public Spheres: Influence Operations in the 2022 Philippine Elections.</em> — Philippine research expanding the analysis beyond simple false-information claims toward broader influence operations, political narratives, and coordinated communication practices.
+            </li>
+
+            <li>
+              Cruz, C., Labonne, J. &amp; Querubín, P. (2017). <em>Politician Family Networks and Electoral Outcomes: Evidence from the Philippines.</em> <em>American Economic Review.</em> — Large-scale evidence on candidates’ family-network centrality, electoral advantage, and political exchange.
+            </li>
+
+            <li>
+              Granzier, R., Pons, V. &amp; Tricaud, C. (2023). <em>Coordination and Bandwagon Effects: How Past Rankings Shape the Behavior of Voters and Candidates.</em> <em>American Economic Journal: Applied Economics.</em> — Evidence on bandwagon and coordination effects in electoral behavior.
+            </li>
+
+            <li>
+              Dahlgaard, J. O. (2017). <em>How Election Polls Shape Voting Behaviour.</em> <em>Scandinavian Political Studies.</em> — Survey-experimental evidence on the effect of perceived electoral momentum.
+            </li>
+
+            <li>
+              Ye, S. <em>et al.</em> (2026). <em>Systematic Review and Meta-Analysis of the Evidence for an Illusory Truth Effect and Its Determinants.</em> <em>Nature Communications.</em> — Meta-analysis of 182 studies, 366 effect sizes, and 31,184 participants examining repetition and perceived truth.
+            </li>
+
+            <li>
+              Riesthuis, P. &amp; Woods, M. (2026). <em>Limits of the Illusory Truth Effect for Social-Political Opinions.</em> — Preregistered experiments providing an important guardrail against assuming that simple repetition automatically changes subjective political opinions.
+            </li>
+
+            <li>
+              Ditto, P. H. <em>et al.</em> (2025). <em>Partisan Bias in Political Judgment.</em> <em>Annual Review of Psychology.</em> — Review of partisan ingroup favoritism, selective belief, and political information processing.
+            </li>
+
+            <li>
+              Lord, C. G., Ross, L. &amp; Lepper, M. R. (1979). <em>Biased Assimilation and Attitude Polarization: The Effects of Prior Theories on Subsequently Considered Evidence.</em> <em>Journal of Personality and Social Psychology.</em> — Foundational evidence on differential evaluation of belief-confirming and belief-disconfirming information.
+            </li>
+
+            <li>
+              Taber, C. S. &amp; Lodge, M. (2006). <em>Motivated Skepticism in the Evaluation of Political Beliefs.</em> <em>American Journal of Political Science.</em> — Evidence on motivated reasoning, prior attitudes, and political sophistication.
+            </li>
+
+            <li>
+              Reller, C., Anderson, A. &amp; Kousser, T. (2022). <em>Are Elite Cues Necessary to Drive the “Winner Effect” on Trust in Elections?</em> <em>Electoral Studies.</em> — Evidence that losing itself can reduce electoral trust even without fraud allegations from the losing candidate.
+            </li>
+
+            <li>
+              Kerr, N., King, B. &amp; Wahman, M. (2024). <em>The Global Crisis of Trust in Elections.</em> <em>Public Opinion Quarterly.</em> — Review of electoral trust, including the widely observed winner–loser gap and the importance of political and institutional context.
+            </li>
+
+            <li>
+              Berlinski, N. <em>et al.</em> (2021/2023). <em>The Effects of Unsubstantiated Claims of Voter Fraud on Confidence in Elections.</em> <em>Journal of Experimental Political Science.</em> — Nationwide survey experiment showing that unsupported fraud allegations can reduce confidence in election integrity.
+            </li>
+
+            <li>
+              Hagen, K. (2026). <em>Are Conspiracy Theories Problematically Self-Sealing?</em> <em>Episteme.</em> — Philosophical analysis of self-sealing reasoning and the importance of evaluating conspiracy claims according to their specific evidence.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
