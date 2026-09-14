@@ -1,1 +1,1988 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Kapag nagbago ang sitwasyon, dapat ba pareho pa rin ang constitutional rule? Isang fact-based na paliwanag tungkol sa constitutional interpretation, flexibility, guardrails, at impeachment voting threshold."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-guardrails.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-guardrails.html"
+>
+
+<title>KAPAG NAGBAGO ANG SITWASYON—DAPAT BA PAREHO PA RIN ANG RULE? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    KAPAG NAGBAGO ANG SITWASYON—DAPAT BA PAREHO PA RIN ANG RULE?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-guardrails.png"
+      alt="Simbolikong timbangan ng batas na sumusukat sa balanse ng constitutional stability, flexibility, at guardrails sa gitna ng extraordinary circumstances."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May mga rule na kailangang matibay para hindi nababago depende sa kung sino ang makikinabang.
+  </p>
+
+  <p>
+    Pero may mas mahirap na tanong:
+    Paano kung nagbago ang mismong sitwasyon na pinaggagamitan ng rule—at wala namang malinaw na sagot ang nakasulat para sa bagong realidad?
+    Dapat bang ipilit pa rin ang parehong computation at parehong mekanismo dahil iyon ang literal na nakasulat?
+    O dapat bang may puwang ang Constitution para mag-adjust sa extraordinary circumstances—nang hindi ito nagiging goma na puwedeng baluktutin kapag convenient sa may kapangyarihan?
+  </p>
+
+  <p>
+    Hindi ito simpleng usapin ng pagiging “mahigpit” o “maluwag” sa Konstitusyon.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ay kung paano ito mananatiling matibay sa prinsipyo, pero hindi marupok kapag humarap sa sitwasyong hindi tahasang sinasagot ng mismong constitutional text.
+  </p>
+
+  <p>
+    At ngayon, may aktuwal tayong halimbawa kung saan sinusubok mismo ang problemang iyan.
+  </p>
+
+  <p>
+    Mainit ang tanong sa impeachment trial ni Vice President Sara Duterte:
+    Kung hindi lahat ng 24 senador ay aktuwal na nakikilahok sa proceedings, dapat bang 16 votes pa rin ang kailangan para magkaroon ng conviction?
+  </p>
+
+  <p>
+    Sa unang tingin, simple lang.
+  </p>
+
+  <blockquote>
+    <p>
+      “Nakasulat na sa Constitution. Sundin kung ano ang nakasulat.”
+    </p>
+  </blockquote>
+
+  <p>
+    May matibay na legal basis ang sagot na iyan.
+  </p>
+
+  <p>
+    Pero kapag sinilip nang mas malalim, hindi lang ito usapin ng arithmetic.
+    Usapin ito kung paano dapat gumana ang isang Konstitusyon kapag naharap ito sa sitwasyong hindi tahasang nililinaw ng mismong text.
+  </p>
+
+  <h2>
+    Ang Malinaw na Nakasulat sa Konstitusyon
+  </h2>
+
+  <p>
+    Article XI, Section 3(6) ng 1987 Constitution:
+  </p>
+
+  <blockquote>
+    <p>
+      “No person shall be convicted without the concurrence of two-thirds of all the Members of the Senate.”
+    </p>
+  </blockquote>
+
+  <p>
+    Samantala, Article VI, Section 2 says the Senate shall be composed of 24 Senators.
+  </p>
+
+  <p>
+    Kaya sa ordinaryong pagbasa:
+    24 senators × two-thirds = 16 votes.
+  </p>
+
+  <p>
+    Hindi rin basta procedural invention ang bilang na iyon.
+  </p>
+
+  <p>
+    Ang Senate Rules of Procedure on Impeachment Trials mismo ay nagsasabing kapag boboto na sa bawat Article of Impeachment, kailangan ang votes ng two-thirds of all the Members para magkaroon ng conviction.
+  </p>
+
+  <p>
+    Kaya malakas ang textual argument para sa tinatawag ngayong “hard 16.”
+  </p>
+
+  <blockquote>
+    <p>
+      “Mahihirapan kaming makakuha ng 16, kaya babaan na natin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung iyon lang ang dahilan, political convenience na iyon—not constitutional interpretation.
+  </p>
+
+  <h2>
+    Pero Ano Ba Talaga ang Ibig Sabihin ng “All the Members”?
+  </h2>
+
+  <p>
+    Dito nagsisimula ang totoong constitutional issue.
+  </p>
+
+  <p>
+    As of September 14, 2026, apat na senator-judges ang hindi regular na nakikilahok sa impeachment proceedings dahil sa magkakaibang sitwasyon.
+  </p>
+
+  <p>
+    Sina Senators Jinggoy Estrada at Rodante Marcoleta ay detained.
+  </p>
+
+  <p>
+    Si Senator Ronald “Bato” dela Rosa ay hindi dumadalo sa proceedings at, ayon sa public reporting, nagtatago habang may iniulat na ICC arrest warrant laban sa kanya.
+  </p>
+
+  <p>
+    Si Senator Loren Legarda ay nasa extended medical leave abroad.
+  </p>
+
+  <p>
+    Pero importanteng maging eksakto:
+    Hindi ibig sabihin nito na automatic nang hindi sila senators o legally disqualified silang bumoto.
+  </p>
+
+  <p>
+    Halimbawa, sinabi ng Senate leadership na ang mga senador na nasa custody ng Sandiganbayan ay kailangang humingi ng permiso sa korte kung nais nilang dumalo sa Senate sessions o impeachment proceedings.
+  </p>
+
+  <p>
+    Ibig sabihin, ang detention mismo ay hindi pa automatic na katumbas ng pagkawala ng Senate membership o voting power.
+  </p>
+
+  <p>
+    Kaya ang totoong tanong ay hindi simpleng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Absent sila, tanggalin sila sa bilang.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tanong ay:
+    Sa constitutional phrase na “all the Members of the Senate,” ano ang tamang legal denominator kapag may miyembrong hindi aktuwal na nakikilahok dahil sa extraordinary circumstances?
+  </p>
+
+  <h2>
+    Bakit Hindi Lang Ito Usapin ng 16
+  </h2>
+
+  <p>
+    Kung mananatiling 24 ang denominator, kailangan pa rin ng 16 affirmative votes kahit may mga senador na hindi makaboto.
+  </p>
+
+  <p>
+    Technically, ang absence ay hindi “no vote.”
+  </p>
+
+  <p>
+    Pero mathematically, kapag fixed ang 16, ang isang senador na hindi nakapagbibigay ng affirmative vote ay maaaring magkaroon ng parehong practical effect sa outcome: mas mahirap maabot ang conviction threshold.
+  </p>
+
+  <p>
+    Sa hard-16 interpretation, halimbawa:
+    Kung 15 senators ang bumoto ng guilty, lima ang bumoto ng not guilty, at apat ang walang boto—acquitted pa rin dahil hindi umabot sa 16.
+  </p>
+
+  <p>
+    Kaya may legitimate concern:
+    Kung sapat ang strategic absence para hindi maabot ang constitutional threshold, maaari bang maging de facto veto ang hindi paglahok?
+  </p>
+
+  <p>
+    Pero may kabilang panganib na equally serious.
+  </p>
+
+  <p>
+    Kung automatic namang tatanggalin sa denominator ang bawat absent o unavailable senator, maaari ring baguhin ang threshold sa pamamagitan ng pagbabawas sa mga taong bibilangin.
+  </p>
+
+  <p>
+    At doon nagiging mas delikado ang flexibility.
+  </p>
+
+  <p>
+    Dahil isipin:
+    Paano kung boycott lang?
+    Paano kung politically motivated ang suspension?
+    Paano kung detention?
+    Paano kung medical leave?
+    Paano kung nasa abroad?
+    Paano kung tumatangging dumalo?
+    Paano kung may permanent vacancy?
+  </p>
+
+  <p>
+    Hindi puwedeng pare-pareho ang legal effect ng lahat ng iyan nang walang malinaw na rule.
+  </p>
+
+  <p>
+    Dahil kung masyadong rigid ang system, maaaring manipulahin ang resulta sa pamamagitan ng absence.
+    Kung masyadong flexible naman, maaaring manipulahin ang resulta sa pamamagitan ng exclusion.
+  </p>
+
+  <p>
+    Iyan ang dalawang panganib na kailangang sabay protektahan ng Konstitusyon.
+  </p>
+
+            <h2>
+    Hindi Rin Basta “Present Senators” ang Sagot
+  </h2>
+
+  <p>
+    May mga nagsasabing gamitin na lamang ang dalawang-katlo ng aktuwal na participating senators.
+  </p>
+
+  <p>
+    Pero hindi rin iyon simpleng solusyon.
+  </p>
+
+  <p>
+    Kung 20 halimbawa ang magiging legal denominator, two-thirds nito ay 13⅓.
+  </p>
+
+  <p>
+    Dahil walang one-third senator, 14 affirmative votes ang minimum para tunay na umabot sa two-thirds.
+    Kung 19 naman ang denominator, two-thirds is 12⅔, kaya 13 ang minimum.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi sapat na sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kung mas kaunti ang senators, bababa ang number.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan munang sagutin ang mas mahalagang tanong:
+    Sino ang constitutionally dapat kasama sa denominator—and under what exact conditions?
+  </p>
+
+  <p>
+    Kung wala ang malinaw na sagot diyan, kahit tama ang arithmetic, maaaring mali pa rin ang constitutional basis.
+  </p>
+
+  <h2>
+    Ano ang Sinasabi ng Bayan v. Zamora?
+  </h2>
+
+  <p>
+    Isa sa pinakamalakas na legal bases ng hard-16 position ang Supreme Court decision sa <em>Bayan v. Zamora</em> noong 2000.
+  </p>
+
+  <p>
+    Treaty concurrence ang issue roon, hindi impeachment.
+    Pero pareho ang mahalagang constitutional wording: kailangan ang concurrence ng two-thirds of all the Members of the Senate.
+  </p>
+
+  <p>
+    Sinabi ng Supreme Court na dahil ang Konstitusyon ay nagtatakda ng 24 senators, not less than 16 favorable votes ang unquestionable compliance sa two-thirds requirement.
+  </p>
+
+  <p>
+    Interesting ang isang detalye:
+    23 lamang ang incumbent senators noong naganap ang voting.
+  </p>
+
+  <p>
+    Pero sinabi pa rin ng Korte na hindi nito binabago ang conclusion na sufficient ang 16 votes.
+  </p>
+
+  <p>
+    Malakas ito para sa hard-16 interpretation.
+  </p>
+
+  <p>
+    Pero may importanteng limitasyon.
+  </p>
+
+  <p>
+    Two-thirds ng 23 ay 15⅓.
+  </p>
+
+  <p>
+    Kaya kahit 23 mismo ang gamiting denominator, kailangan pa rin ng 16 whole votes.
+  </p>
+
+  <p>
+    Ibig sabihin, sa <em>Bayan</em>, hindi kinailangang harapin ng Korte ang mas mahirap na tanong na mahalaga ngayon:
+    Paano kung ang difference sa denominator ay sapat para aktuwal na baguhin ang required number?
+  </p>
+
+  <p>
+    Kaya mahalagang precedent ang <em>Bayan</em>—pero hindi ito eksaktong kapareho ng kasalukuyang impeachment problem.
+  </p>
+
+  <h2>
+    Paano Naman ang Avelino v. Cuenco?
+  </h2>
+
+  <p>
+    May kabilang line of reasoning na kumukuha ng analogy mula sa <em>Avelino v. Cuenco</em>.
+  </p>
+
+  <p>
+    Quorum ang issue doon, hindi impeachment conviction.
+  </p>
+
+  <p>
+    Sa later Supreme Court decisions explaining <em>Avelino</em>, kinilala na bagama’t 24 ang total membership ng Senate, naging sufficient ang presence ng 12 senators sa extraordinary circumstances dahil ang isang senador ay nasa labas ng bansa at beyond the coercive power of the Senate.
+  </p>
+
+  <p>
+    Mahalagang distinction:
+    Hindi sinabi ng <em>Avelino</em> na anumang absent senator ay automatic na hindi na bibilangin.
+    At lalong hindi nito sinabi na puwedeng gamitin ang same computation sa impeachment conviction.
+  </p>
+
+  <p>
+    Quorum doctrine iyon.
+  </p>
+
+  <p>
+    At may mas mahalagang textual limitation sa analogy.
+  </p>
+
+  <p>
+    Ang constitutional provision tungkol sa quorum—Article VI, Section 16(2)—mismo ang nagsasabing ang mas maliit na bilang ng members ay maaaring “compel the attendance of absent Members.”
+  </p>
+
+  <p>
+    Ibig sabihin, may direct textual connection sa quorum rule ang tanong kung ang isang absent member ay maaari pang mapilit na dumalo o nasa labas na ng coercive power ng chamber.
+  </p>
+
+  <p>
+    Samantalang ang impeachment conviction clause sa Article XI, Section 3(6) ay walang ganoong language tungkol sa attendance o coercive power.
+  </p>
+
+  <blockquote>
+    <p>
+      “Two-thirds of all the Members of the Senate.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya ang “beyond the coercive power” reasoning sa <em>Avelino</em> ay hindi automatic na puwedeng ilipat mula quorum papunta sa impeachment denominator.
+  </p>
+
+  <p>
+    Pero mahalaga pa rin ang broader principle na ipinapakita nito:
+    May pagkakataong kinikilala ng constitutional law ang actual institutional reality, hindi lamang ang theoretical maximum membership.
+  </p>
+
+  <p>
+    Kaya hindi maaaring sabihing completely alien sa Philippine constitutional law ang idea na may extraordinary circumstances na maaaring makaapekto sa paraan ng pagbilang.
+  </p>
+
+  <p>
+    Ang problema:
+    Hanggang saan maaaring dalhin ang principle na iyon bago ito maging rewriting na ng malinaw na constitutional text?
+  </p>
+
+  <p>
+    Iyan ang hindi pa settled.
+  </p>
+
+  <h2>
+    Dito Dapat Paghiwalayin ang Apat na Bagay
+  </h2>
+
+  <p>
+    Madalas nagkakahalo sa public discussion ang interpretation, procedure, judicial review at constitutional amendment.
+  </p>
+
+  <p>
+    Magkaiba ang apat.
+  </p>
+
+  <h3>
+    Constitutional Interpretation
+  </h3>
+
+  <p>
+    Ito ang tanong:
+    Ano ba talaga ang ibig sabihin ng “all the Members of the Senate” sa isang extraordinary circumstance?
+  </p>
+
+  <p>
+    Ito ang kasalukuyang constitutional controversy.
+  </p>
+
+  <p>
+    Hindi pa nito binabago ang mga salitang nakasulat sa Konstitusyon.
+  </p>
+
+  <p>
+    Sinusubukan nitong alamin kung paano dapat i-apply ang existing words.
+  </p>
+
+  <h3>
+    Procedural Implementation
+  </h3>
+
+  <p>
+    Article XI, Section 3(8) authorizes Congress to promulgate impeachment rules to effectively carry out the constitutional process.
+  </p>
+
+  <p>
+    Kaya maaaring gumawa ang Senate ng procedures tungkol sa presentation of evidence, voting mechanics, motions, schedules at iba pang trial rules.
+  </p>
+
+  <p>
+    Pero may hangganan iyon.
+  </p>
+
+  <p>
+    Procedural rules cannot simply erase or contradict an express constitutional requirement.
+  </p>
+
+  <p>
+    Kung dalawang-katlo ng “all the Members” ang nakasulat sa Konstitusyon, hindi maaaring palitan iyon ng ordinaryong Senate rule ng simpleng majority dahil mas convenient.
+  </p>
+
+  <h3>
+    Judicial Review
+  </h3>
+
+  <p>
+    Ang Senate ang may sole power to try and decide impeachment cases.
+  </p>
+
+  <p>
+    Pero hindi ibig sabihin na anumang gawin nito ay automatically beyond the Constitution.
+  </p>
+
+  <p>
+    Sa <em>Francisco v. House of Representatives</em>, kinilala ng Supreme Court na kahit may exclusive at sole impeachment powers ang Congress at Senate, maaaring pumasok ang judicial review kapag may alleged grave abuse of discretion o violation ng isang constitutional limitation.
+  </p>
+
+  <p>
+    Sa <em>Gutierrez v. House Committee on Justice</em>, muling kinilala ng Court ang role ng judicial review sa pagpapanatili ng constitutional boundaries habang nire-respeto ang impeachment powers ng political branches.
+  </p>
+
+  <p>
+    Pero hindi rin ibig sabihin na bawat procedural disagreement ay agad hahatulan ng Supreme Court.
+  </p>
+
+  <p>
+    Kailangan pa ring may proper case, ripe controversy at justiciable constitutional issue.
+  </p>
+
+  <p>
+    Kaya may dalawang guardrail:
+    Hindi dapat kontrolin ng Korte ang bawat galaw ng impeachment trial.
+    Pero hindi rin dapat maging immune sa constitutional review ang impeachment dahil lang political process ito.
+  </p>
+
+  <h3>
+    Formal Constitutional Reform
+  </h3>
+
+  <p>
+    At kung sa huli ay mapatunayan na ang tunay na problema ay nasa wording mismo ng Konstitusyon—ibang usapan na iyon.
+  </p>
+
+  <p>
+    Hindi na interpretation.
+    Constitutional amendment or revision na iyon.
+  </p>
+
+  <p>
+    Article XVII provides the formal process.
+  </p>
+
+  <p>
+    Maaaring magpropose ang Congress ng amendment o revision subject sa constitutional voting requirement, o dumaan sa Constitutional Convention.
+  </p>
+
+  <p>
+    Article XVII also provides a people’s initiative for amendments—not revisions.
+  </p>
+
+  <p>
+    Pero may mahalagang legal qualification dito.
+  </p>
+
+  <p>
+    Sa <em>Santiago v. COMELEC</em>, nagkaroon ng malaking jurisprudential problem tungkol sa adequacy ng statutory mechanism para maipatupad ang constitutional initiative provision.
+  </p>
+
+  <p>
+    Sa <em>Lambino v. COMELEC</em>, hindi rin pinayagan ang attempted initiative at muling binigyang-diin na ang people’s initiative under Article XVII ay para lamang sa amendments, hindi revisions.
+  </p>
+
+  <p>
+    Kaya bagama’t nasa Konstitusyon ang people’s initiative, hindi dapat ilarawan na parang walang legal complication ang actual implementation nito.
+  </p>
+
+  <p>
+    At anumang amendment o revision sa applicable Article XVII process ay kailangan pa ring ratipikahan ng taumbayan sa plebisito.
+  </p>
+
+  <p>
+    Iyan ang pinakamahalagang guardrail:
+    Hindi puwedeng baguhin ng isang temporary political majority ang fundamental rule na para bang ordinaryong batas lamang.
+  </p>
+
+            <h2>
+    Bakit May Amendment Process Kung Dapat Fixed Forever ang Constitution?
+  </h2>
+
+  <p>
+    Dito nagiging mas malalim ang usapan.
+  </p>
+
+  <p>
+    Ang pagiging supreme law ng Konstitusyon ay hindi nangangahulugang dapat itong maging frozen law.
+  </p>
+
+  <p>
+    Kung intended itong maging permanently untouchable, hindi sana naglagay ang framers ng buong Article XVII para sa amendment at revision.
+  </p>
+
+  <p>
+    At hindi lang ito philosophical argument.
+  </p>
+
+  <p>
+    May malaking body of comparative constitutional research tungkol dito.
+  </p>
+
+  <p>
+    Sa <em>The Endurance of National Constitutions</em>, gumamit sina Zachary Elkins, Tom Ginsburg at James Melton ng cross-national historical constitutional data upang pag-aralan kung bakit may Konstitusyon na tumatagal at may mabilis namang bumabagsak o napapalitan.
+  </p>
+
+  <p>
+    Sa kanilang comparative framework, ang flexibility—kasama ng iba pang institutional characteristics gaya ng inclusion at specificity—ay isa sa mga salik na maaaring makatulong sa constitutional endurance.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na mas flexible ay automatic na mas mahusay.
+    At hindi rin ibig sabihin na kapag mahirap baguhin ang Constitution ay tiyak nang babagsak ito.
+  </p>
+
+  <p>
+    Ang mas maingat na punto:
+    Ang kakayahan ng isang constitutional system na mag-adjust sa changing circumstances ay isa sa mga design factors na maaaring makatulong sa pagpapanatili ng constitutional order habang nagbabago ang political at social conditions.
+  </p>
+
+  <p>
+    International IDEA, sa primer nito tungkol sa constitutional amendment procedures, expresses essentially the same design problem:
+    Kailangang kayang i-update ang Konstitusyon kapag may provisions na inadequate na o may bagong societal needs—pero kailangan din silang protektahan laban sa short-sighted o partisan constitutional changes.
+  </p>
+
+  <p>
+    Iyan mismo ang tension:
+    Sobrang hirap baguhin—puwedeng maging dysfunctional.
+    Sobrang dali baguhin—puwedeng maging laruan ng nakaupong majority.
+  </p>
+
+  <h2>
+    Pero Hindi Lang Text ang Guardrail
+  </h2>
+
+  <p>
+    May isa pang importanteng finding sa constitutional research.
+  </p>
+
+  <p>
+    Sa research nina Tom Ginsburg at James Melton tungkol sa tinatawag nilang “amendment culture,” ipinakita nilang hindi formal amendment rule lamang ang nakakaimpluwensya sa actual pattern ng constitutional change.
+  </p>
+
+  <p>
+    Sa kanilang empirical analysis, gumamit sila ng historical experience sa constitutional amendment—kabilang ang amendment behavior sa preceding constitution—bilang paraan ng pagsukat sa amendment culture ng isang political system.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi sapat na tingnan lamang kung gaano kahirap o kadali ang formal amendment procedure.
+  </p>
+
+  <p>
+    Mahalaga rin kung paano aktuwal na ginagamit ng institutions at political actors ang mekanismo ng constitutional change sa paglipas ng panahon.
+  </p>
+
+  <p>
+    At napakahalaga nito sa Pilipinas.
+  </p>
+
+  <p>
+    Dahil kahit gaano kaganda ang nakasulat na guardrail, kung bawat political camp ay naghahanap lamang ng interpretasyon na pabor sa sariling kandidato o kakampi—mahina pa rin ang protection.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May rules naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan ding may constitutional culture na nagsasabing:
+    Hindi mo babaguhin ang prinsipyo dahil lamang hindi pabor sa iyo ang resulta ngayon.
+  </p>
+
+  <h2>
+    Ang Flexibility ay Hindi Dapat Gumana Pagkatapos Malaman Kung Sino ang Makikinabang
+  </h2>
+
+  <p>
+    Ito marahil ang pinakamahalagang guardrail.
+  </p>
+
+  <p>
+    Kung gagawing adaptable ang constitutional rule, dapat ang conditions ay:
+    objective,
+    pre-defined,
+    neutral,
+    reviewable,
+    at applicable kahit sino pa ang respondent.
+  </p>
+
+  <p>
+    Hindi puwedeng gumawa ng exception dahil lamang nakita nang kulang ang boto para ma-convict ang isang partikular na opisyal.
+    Pero hindi rin puwedeng ipilit ang rigidity dahil alam namang ang rigidity ang magliligtas sa isang partikular na opisyal.
+  </p>
+
+  <p>
+    Pareho silang outcome-driven constitutionalism.
+  </p>
+
+            <h2>
+    Isang Simpleng Test
+  </h2>
+
+  <p>
+    Kung supporter ka ni Sara Duterte, itanong:
+    Kung political opponent niya ang respondent at eksaktong pareho ang circumstances, gusto mo pa rin ba ang hard-16 interpretation?
+  </p>
+
+  <p>
+    Kung critic ka ni Sara Duterte, itanong din:
+    Kung kakampi mo ang respondent, gusto mo pa rin bang maaaring ibaba ang denominator dahil may absent senators?
+  </p>
+
+  <p>
+    Kapag nagbabago ang constitutional principle depende sa pangalan ng respondent—hindi na Konstitusyon ang pinoprotektahan.
+    Political outcome na ang pinoprotektahan.
+  </p>
+
+  <h2>
+    Ano ang Itsura ng “Flexibility with Strong Guardrails”?
+  </h2>
+
+  <p>
+    Hindi ibig sabihin nito na kailangan nating magdesisyon ngayon kung 24, 23, 20 o ibang denominator ang tama.
+  </p>
+
+  <p>
+    Mas mahalagang makita kung ano ang dapat laman ng isang maayos na constitutional mechanism kung sakaling i-reform ito sa hinaharap.
+  </p>
+
+  <p>
+    Dapat malinaw kung ano ang epekto ng:
+    permanent vacancy,
+    death,
+    resignation,
+    final disqualification,
+    temporary medical incapacity,
+    detention,
+    court-imposed restriction,
+    absence abroad,
+    political boycott,
+    refusal to participate,
+    at ibang extraordinary circumstances.
+  </p>
+
+  <p>
+    At hindi sapat na may exception.
+  </p>
+
+  <p>
+    Kailangan ding malinaw:
+    Sino ang magdedetermina na satisfied ang exception?
+    Anong evidence ang kailangan?
+    Temporary ba o permanent ang exclusion?
+    May judicial review ba?
+    Puwede bang baguhin ang denominator habang ongoing na ang trial?
+    At paano pipigilan na gamitin ang detention, suspension, boycott o strategic absence para manipulahin ang final threshold?
+  </p>
+
+  <p>
+    Diyan nagiging tunay na constitutional design ang usapan.
+  </p>
+
+  <h2>
+    May Ibang Paraan ng Pag-design ng Supermajority
+  </h2>
+
+  <p>
+    Hindi universal ang Philippine formulation.
+  </p>
+
+  <p>
+    Sa United States Constitution, halimbawa, impeachment conviction also requires two-thirds—pero ang wording ay two-thirds of the Members present.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na dapat kopyahin iyon ng Pilipinas.
+  </p>
+
+  <p>
+    Magkaiba ang constitutional history, institutions at political conditions.
+  </p>
+
+  <p>
+    Pero ipinapakita nito na posible ang ibang architecture:
+    Mataas pa rin ang threshold.
+    Hindi simpleng majority.
+  </p>
+
+  <p>
+    Pero built into the Constitution mismo kung ano ang denominator.
+  </p>
+
+  <p>
+    Iyan ang importanteng lesson.
+  </p>
+
+  <p>
+    Ang flexibility ay mas ligtas kapag nakasulat na bago pa dumating ang krisis—hindi kapag iniimbento habang alam na natin kung sino ang makikinabang.
+  </p>
+
+  <h2>
+    Ang Kasalukuyang Impeachment ay Isang Stress Test
+  </h2>
+
+  <p>
+    As of September 14, 2026, hindi pa final ang constitutional threshold controversy.
+  </p>
+
+  <p>
+    Presiding Officer Francis Escudero earlier adopted the hard-16 position.
+  </p>
+
+  <p>
+    Senator-judge Erwin Tulfo later sought a definitive ruling on whether senators who cannot participate should remain part of the voting base.
+  </p>
+
+  <p>
+    The impeachment court has invited retired Chief Justices Artemio Panganiban and Reynato Puno, retired Associate Justice and 1986 Constitutional Commissioner Adolfo Azcuna, while former Chief Justice Hilario Davide Jr. is expected to participate through a legal memorandum.
+  </p>
+
+  <p>
+    The amici curiae are scheduled to address the issue on September 16.
+  </p>
+
+  <p>
+    The prosecution and defense are scheduled for oral arguments on September 23, after which the senator-judges are expected to resolve the appeal concerning the voting threshold.
+  </p>
+
+  <p>
+    Ibig sabihin:
+    Wala pang final constitutional answer sa specific controversy habang sinusulat ito.
+  </p>
+
+  <p>
+    At tama lang na huwag natin itong ituring na settled na.
+  </p>
+
+  <h2>
+    Hindi Dapat Gawing Referendum Kay Sara ang Mas Malaking Tanong
+  </h2>
+
+  <p>
+    Puwedeng ma-convict.
+    Puwedeng ma-acquit.
+    Puwedeng manatili ang 16.
+    Puwedeng magkaroon ng ibang interpretation.
+  </p>
+
+  <p>
+    At maaari pang umabot sa judicial review kung magkaroon ng proper constitutional controversy.
+  </p>
+
+  <p>
+    Pero kahit anong mangyari sa kasong ito, mananatili ang mas malaking civic question:
+    Paano tayo gagawa ng Konstitusyon na sapat ang tibay para hindi baluktutin ng temporary political majority—pero sapat din ang adaptability para hindi maging hostage ang government sa isang scenario na hindi tahasang sinasagot ng constitutional text?
+  </p>
+
+  <p>
+    Hindi ang sagot ay:
+  </p>
+
+  <blockquote>
+    <p>
+      RIGID KAHIT HINDI NA GUMAGANA.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      FLEXIBLE KAPAG CONVENIENT.
+    </p>
+  </blockquote>
+
+  <p>
+    Mas matibay ang prinsipyo:
+    <br>
+    <strong>FIXED ANG FUNDAMENTAL PRINCIPLE.</strong><br>
+    <strong>ADAPTABLE ANG MECHANISM KUNG KAILANGAN.</strong><br>
+    <strong>OBJECTIVE ANG EXCEPTION.</strong><br>
+    <strong>NEUTRAL ANG APPLICATION.</strong><br>
+    <strong>MAHIGPIT ANG GUARDRAILS.</strong>
+  </p>
+
+  <p>
+    Dahil ang Konstitusyon ay ginawa para pigilan ang arbitrary power.
+  </p>
+
+  <p>
+    Pero ang arbitrary power ay maaaring manggaling sa dalawang direksyon:
+    sa taong gustong baluktutin ang rule,
+    at sa taong gustong gamitin ang sobrang rigidity ng rule kahit nagiging dysfunctional na ang sistema.
+  </p>
+
+  <p>
+    Ang tunay na constitutionalism ay hindi bulag na pagsunod sa political convenience.
+    Pero hindi rin ito simpleng pagsamba sa mga salita nang walang pakialam kung paano gumagana ang institusyon sa totoong buhay.
+  </p>
+
+            <blockquote>
+    <p>
+      ANG KONSTITUSYON AY DAPAT MATIBAY SA PRINSIPYO—PERO HINDI MARUPOK SA REALIDAD.
+    </p>
+  </blockquote>
+
+  <p>
+    At kung kailangan itong baguhin, may tamang proseso.
+  </p>
+
+  <p>
+    Hindi shortcut.<br>
+    Hindi political improvisation.<br>
+    Hindi depende kung sino ang makikinabang.
+  </p>
+
+  <blockquote>
+    <p>
+      FLEXIBILITY WITH STRONG GUARDRAILS—HINDI FLEXIBILITY WITHOUT LIMITS.
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Philippine Constitution — Article VI, Sections 2 and 16; Article XI, Section 3; Article XVII.
+    </li>
+
+    <li>
+      Senate of the Philippines — Rules of Procedure on Impeachment Trials, particularly the rule governing the final vote and the two-thirds-of-all-members requirement.
+    </li>
+
+    <li>
+      <em>Bayan v. Zamora</em>, G.R. Nos. 138570 et al., October 10, 2000 — Supreme Court discussion of the two-thirds-of-all-Senate-members requirement and the constitutionally prescribed 24-member Senate.
+    </li>
+
+    <li>
+      <em>Avelino v. Cuenco</em>, 83 Phil. 17 (1949), together with subsequent Supreme Court decisions discussing its quorum doctrine and the "beyond the coercive power" circumstance.
+    </li>
+
+    <li>
+      <em>Francisco v. House of Representatives</em>, G.R. No. 160261, November 10, 2003 — impeachment powers and constitutional judicial review.
+    </li>
+
+    <li>
+      <em>Gutierrez v. House Committee on Justice</em>, G.R. No. 193459, February 15, 2011 — judicial review and constitutional limits in impeachment proceedings.
+    </li>
+
+    <li>
+      <em>Santiago v. COMELEC</em>, G.R. No. 127325, March 19, 1997 — jurisprudential issue concerning implementation of people's initiative.
+    </li>
+
+    <li>
+      <em>Lambino v. COMELEC</em>, G.R. No. 174153, October 25, 2006 — limits of people's initiative to constitutional amendments rather than revisions.
+    </li>
+
+    <li>
+      Markus Böckenförde, <em>Constitutional Amendment Procedures</em>, International IDEA Constitution-Building Primer — balancing constitutional adaptability against short-sighted or partisan amendment.
+    </li>
+
+    <li>
+      Zachary Elkins, Tom Ginsburg &amp; James Melton, <em>The Endurance of National Constitutions</em>, Cambridge University Press, 2009 — comparative research on constitutional endurance, flexibility, inclusion and specificity.
+    </li>
+
+    <li>
+      Tom Ginsburg &amp; James Melton, <em>Does the Constitutional Amendment Rule Matter at All? Amendment Cultures and the Challenges of Measuring Amendment Difficulty</em>, <em>International Journal of Constitutional Law</em>, 2015.
+    </li>
+
+    <li>
+      Richard Albert, <em>The Structure of Constitutional Amendment Rules</em>; <em>Constitutional Amendments: Making, Breaking, and Changing Constitutions</em> — research on amendment architecture, voting thresholds, procedural safeguards and formal constitutional change.
+    </li>
+
+    <li>
+      U.S. Constitution, Article I, Section 3, Clause 6; <em>Constitution Annotated</em> — comparative example of an impeachment supermajority based on members present.
+    </li>
+
+    <li>
+      Philippine News Agency and GMA News reports, September 2026 — current status of the impeachment voting-threshold controversy, senator participation, <em>amici curiae</em> proceedings and scheduled arguments.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
