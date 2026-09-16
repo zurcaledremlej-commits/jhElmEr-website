@@ -1,1 +1,2546 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Kapag buhay na ang nakasalalay, bawat minuto ay mahalaga. Isang fact-based na pagsusuri sa Unified 911, emergency response, training, dispatch, kagamitan, at kung paano tunay na sinusukat ang kahandaan ng isang emergency system."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-emergency.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-emergency.html"
+>
+
+<title>KAPAG BUHAY NA ANG NAKASALALAY—GAANO KABILIS ANG TULONG? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  KAPAG BUHAY NA ANG NAKASALALAY—GAANO KABILIS ANG TULONG?
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+  class="article-image"
+  src="images/civic-emergency.png"
+  alt="Simbolikong paglalarawan ng emergency response, Unified 911, prehospital care, at kahalagahan ng mabilis at handang emergency system kapag buhay ang nakasalalay."
+>
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Sa ordinaryong serbisyo, ang ilang minutong paghihintay ay abala.
+    Sa emergency, ang parehong ilang minuto ay maaaring maging pagitan ng buhay at kamatayan.
+  </p>
+
+  <p>
+    Kapag may taong biglang nawalan ng malay, hindi normal ang paghinga, dumudugo nang malubha, na-stroke, inaatake sa puso o mabilis nang lumalala ang kondisyon, hindi naghihintay ang katawan habang inaayos kung sino ang sasagot, saan ipapasa ang tawag, anong unit ang available o sino ang may jurisdiction.
+  </p>
+
+  <blockquote>
+    <p>
+      TUMATAKBO ANG ORAS KAHIT HINDI PA DUMARATING ANG TULONG.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero dito madalas nagiging sobrang simple ang tingin natin sa emergency response.
+  </p>
+
+  <p>
+    Kapag may ambulansyang dumating, iniisip nating gumana ang sistema.<br>
+    Kapag may sumagot sa hotline, iniisip nating responsive ito.<br>
+    Kapag trained ang personnel, iniisip nating handa sila.<br>
+    Kapag may AED, oxygen at medical equipment sa inventory, iniisip nating equipped na.
+  </p>
+
+  <p>
+    Pero sa totoong emergency, hindi sapat na mayroon ang bawat isa.
+  </p>
+
+  <p>
+    Ang mahalaga ay kung gumagana ba silang magkakaugnay, nasa tamang lugar, operational, at handang gamitin sa mismong minutong kailangan sila ng pasyente.
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit mahalagang tingnan nang mas malalim ang nag-viral na reklamo kaugnay ng isang medical emergency sa Taguig at ang naging pagtugon ng Unified 911 system.
+  </p>
+
+  <p>
+    Madaling hatiin ang usapan sa dalawang extreme:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bulok ang 911.”
+    </p>
+  </blockquote>
+
+  <p style="text-align:center;"><strong>o</strong></p>
+
+  <blockquote>
+    <p>
+      “Isang insidente lang iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong kulang.
+  </p>
+
+  <p>
+    Hindi sapat ang isang viral case para hatulan ang buong national emergency system. Hindi rin dapat gawing final fact ang bawat unang alegasyon tungkol sa nangyari.
+  </p>
+
+  <p>
+    Sa official DILG update noong August 18, 2026, sinabi nitong batay sa initial system records ay nagkaroon ng humigit-kumulang 3 minuto at 23 segundong hold time bago makarating ang tawag ni Basti Askri sa assigned 911 call taker.
+  </p>
+
+  <p>
+    Sinabi rin ng DILG na sa loob ng 1 minuto at 25 segundo ay na-initiate ang three-way conference sa caller, Unified 911 at Taguig Command Center.
+  </p>
+
+  <p>
+    Nahihirapan din umano ang responding team na matukoy ang eksaktong lokasyon at hindi nito na-establish ang contact sa caller para sa dagdag na directions.
+  </p>
+
+  <p>
+    Pero mahalaga ang kasunod na sinabi mismo ng DILG:
+    Sa update na iyon, subject pa sa verification ang eksaktong dispatch time, attempted calls, movement ng response vehicle at actual arrival time.
+  </p>
+
+  <p>
+    Kaya ang kasong ito ay mas makabuluhang gamitin bilang entry point para siyasatin ang sistema, hindi bilang shortcut para magdeklara agad kung sino ang may kasalanan bago mabuo ang buong emergency-response timeline.
+  </p>
+
+  <blockquote>
+    <p>
+      DAHIL KAHIT ANO PA ANG MAGING FINAL FINDING SA ISANG PARTIKULAR NA KASO, MAY MAS MALAKING TANONG NA HINDI NAWAWALA:<br><br>
+      KAPAG TUMAWAG ANG ISANG PILIPINO DAHIL BUHAY NA ANG NAKASALALAY, GAANO KATATAG ANG BUONG SISTEMA MULA SA UNANG TAWAG HANGGANG SA AKTWAL NA LIFESAVING INTERVENTION?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil ang 911 ay hindi lang numero.
+    Hindi rin ito simpleng call center.
+  </p>
+
+  <p>
+    Ang trabaho nito ay hindi nagtatapos sa pagsagot at pag-forward ng tawag.
+  </p>
+
+  <p>
+    At ang emergency response ay hindi nagsisimula lamang kapag umandar na ang ambulansya.
+  </p>
+
+  <blockquote>
+    <p>
+      CALL → PAGKILALA SA EMERGENCY → TAMANG LOCATION → TRIAGE → PRE-ARRIVAL INSTRUCTION → DISPATCH → RESPONDER → TAMANG EQUIPMENT → PREHOSPITAL CARE → HOSPITAL.
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag naputol ang isang kritikal na kawing, puwedeng bumagsak ang buong response kahit mahusay ang iba.
+  </p>
+
+  <p>
+    Kaya bago natin sabihing “maayos” o “palpak” ang emergency system, mas makatarungang alamin muna kung ano talaga ang mayroon tayo, ano ang mga improvement nito, ano ang sinusukat ng mga numerong inilalabas—at higit sa lahat, kung sapat ba ang bilis, training, readiness, equipment at coordination kapag totoong buhay na ang nakataya.
+  </p>
+
+  <h2>
+    MAY 911 SYSTEM TAYO—AT MAY TOTOO NAMANG PROGRESS.
+  </h2>
+
+  <p>
+    Sa ilalim ng Executive Order No. 56 noong 2018, institutionalized ang Emergency 911 bilang nationwide emergency hotline.
+  </p>
+
+  <p>
+    Nasa ilalim ng DILG ang National Call Center. Kabilang naman sa primary at major support responders ang BFP, PNP, DOH, LGUs at iba pang public at accredited private institutions.
+  </p>
+
+  <p>
+    Hindi rin simpleng pagtanggap ng tawag ang mandato ng Emergency 911 National Office.
+  </p>
+
+  <p>
+    Kasama sa tungkulin nito ang pag-assess ng emergency-response capability at pag-develop ng training programs para sa emergency communications personnel at responders.
+  </p>
+
+  <p>
+    Ang EO 56 ay nag-eencourage din sa LGUs na magkaroon ng sariling local 911 centers, habang ang operations ng mga iyon ay sagot ng kani-kanilang local budgets at ang service responders ay may sarili ring gastos sa pagsuporta sa programa.
+  </p>
+
+  <p>
+    Noong rollout ng Unified 911, inanunsiyo ng DILG ang five-minute response target para sa key responders gaya ng police, fire at emergency units.
+  </p>
+
+  <p>
+    Mula January hanggang April 2026, ayon sa Emergency 911 National Call Center, 5,251,754 calls ang na-handle—mahigit isang milyong tawag kada buwan.
+  </p>
+
+  <p>
+    Noong June 2026, iniulat din ng DILG ang 97.23% efficiency rate, na inilalarawan nitong effectiveness sa pagtiyak na ang emergency calls ay natatanggap, napoproseso at naaaksyunan.
+  </p>
+
+  <p>
+    Magandang progreso iyan.
+  </p>
+
+  <p>
+    Hindi dapat burahin.
+    Pero hindi rin dapat doon matapos ang pagsusuri.
+  </p>
+
+  <h2>
+    ANG “97.23% EFFICIENCY” AY HINDI PA BUONG LARAWAN NG NARANASAN NG PASYENTE.
+  </h2>
+
+  <p>
+    May problema kapag isang malaking overall percentage lamang ang nakikita ng publiko.
+  </p>
+
+  <p>
+    Hindi nito awtomatikong sinasagot:<br>
+    Ilang segundo bago may sumagot?<br>
+    Ilang minuto bago nakilala kung life-threatening ang kondisyon?<br>
+    Gaano kabilis nakuha at na-verify ang lokasyon?<br>
+    Kailan na-dispatch ang tamang unit?<br>
+    Kailan dumating ang responder?<br>
+    Kailan nagsimula ang unang lifesaving intervention?<br>
+    Ilang critical callers ang nabigyan ng tamang pre-arrival instruction?<br>
+    Ilang kaso ang na-delay dahil sa location problem, handoff failure, unavailable responder o equipment issue?<br>
+    At kung may sasakyang dumating—tama ba ang clinical capability nito para sa emergency?
+  </p>
+
+  <p>
+    Kaya mahalagang tawagin ang 97.23% sa kung ano talaga ito:
+    DILG-reported system efficiency figure.
+  </p>
+
+  <p>
+    Hindi nito awtomatikong ibig sabihin na 97.23% ng emergency patients ay napuntahan sa loob ng limang minuto, dahil hindi iyon ang claim ng source.
+  </p>
+
+  <p>
+    Ganoon din sa 5.25 million.
+    Ang sinabi ng official data ay calls handled.
+  </p>
+
+  <p>
+    Hindi iyon katumbas ng pagsasabing 5.25 million separate life-threatening emergencies ang narespondehan at matagumpay na natapos.
+  </p>
+
+  <p>
+    Possible ang dalawang bagay na sabay na totoo:<br>
+    Malaki talaga ang improvement ng Unified 911.<br>
+    At maaari ring may localized o case-specific failures na hindi nakikita sa isang national percentage.
+  </p>
+
+  <p>
+    Hindi contradiction iyon.
+  </p>
+
+  <p>
+    Iyan ang dahilan kung bakit kailangan ng mas granular na performance measurement.
+  </p>
+
+          <h2>
+  SA EMERGENCY, HINDI LANG ISANG “RESPONSE TIME” ANG DAPAT SUKATIN.
+</h2>
+
+<p>
+  May magkakaibang orasan.
+</p>
+
+<p>
+  <strong>CALL-ANSWER TIME</strong><br>
+  Mula sa pagdating ng tawag hanggang may sumagot at makapagsimula ang two-way communication.
+</p>
+
+<p>
+  <strong>CALL PROCESSING AT TRIAGE</strong><br>
+  Mula sa pagsagot hanggang matukoy kung ano ang nangyari, gaano ito ka-critical at anong klaseng response ang kailangan.
+</p>
+
+<p>
+  <strong>DISPATCH TIME</strong><br>
+  Mula sa pagkilala sa pangangailangan hanggang maipadala ang tamang responder.
+</p>
+
+<p>
+  <strong>TRAVEL O ON-SCENE RESPONSE TIME</strong><br>
+  Mula dispatch hanggang makarating ang responder.
+</p>
+
+<p>
+  <strong>TIME TO FIRST CLINICAL INTERVENTION</strong><br>
+  Kailan talaga nagsimula ang CPR, defibrillation, oxygen, bleeding control, airway intervention o iba pang kailangang treatment?
+</p>
+
+<p>
+  Napakahalaga ng distinction.
+</p>
+
+<p>
+  Puwedeng mabilis ang takbo ng ambulansya pero matagal bago ito na-dispatch.<br>
+  Puwedeng mabilis sumagot ang operator pero matagal bago makilala ang cardiac arrest.<br>
+  Puwedeng mabilis ang dispatch pero mali o kulang ang location.<br>
+  Puwedeng mabilis dumating ang sasakyan pero hindi tugma ang capability nito sa kondisyon ng pasyente.
+</p>
+
+<p>
+  Kaya hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Mabilis naman ang responder.”
+  </p>
+</blockquote>
+
+<blockquote>
+  <p>
+    ANG MAS MAHALAGANG TANONG:<br><br>
+    MULA SA PAGTAWAG HANGGANG SA AKTWAL NA LIFESAVING INTERVENTION—SAAN NAUBOS ANG ORAS?
+  </p>
+</blockquote>
+
+<h2>
+  SA CARDIAC ARREST, ANG CALL TAKER MISMO AY PARTE NG RESCUE TEAM.
+</h2>
+
+<p>
+  Isa ito sa pinakamahalagang hindi gaanong naiintindihan sa ordinaryong usapan tungkol sa emergency hotline.
+</p>
+
+<p>
+  Kapag may taong biglang nawalan ng malay at hindi normal ang paghinga, hindi kailangang hintayin munang dumating ang ambulance bago magsimula ang lifesaving response.
+</p>
+
+<p>
+  Sa modern emergency dispatch, ang telecommunicator ay maaaring maging unang professional link ng pasyente.
+</p>
+
+<p>
+  Ayon sa American Heart Association, ang telecommunicator ay may mahalagang papel sa mabilis na pagkilala sa out-of-hospital cardiac arrest, pag-dispatch ng appropriate help at paggabay sa caller sa CPR.
+</p>
+
+<p>
+  Sa current AHA Telecommunicator-CPR performance measures, ang median benchmark mula sa pagtanggap ng responsible emergency authority sa 911 call hanggang telecommunicator recognition ng out-of-hospital cardiac arrest ay mas mababa sa 90 segundo.
+</p>
+
+<p>
+  Ang median benchmark naman hanggang sa unang chest compression na ginabayan ng telecommunicator ay mas mababa sa 150 segundo.
+</p>
+
+<p>
+  Mahalaga ang salitang <strong>median</strong>.
+</p>
+
+<p>
+  Hindi ibig sabihin na bawat individual cardiac-arrest call ay guaranteed na matatapos sa loob ng 90 o 150 segundo.
+</p>
+
+<p>
+  Performance benchmark iyon para masukat kung gaano kabilis gumagana ang isang system sa kabuuan.
+</p>
+
+<p>
+  At hindi rin iyon Philippine mandatory legal standard.
+</p>
+
+<p>
+  Pero mahalaga itong benchmark dahil ipinapakita nito kung gaano ka-detalye maaaring sukatin ang emergency response—hanggang sa mismong segundo bago makilala ang cardiac arrest at bago maumpisahan ang caller-assisted CPR.
+</p>
+
+<p>
+  Bakit mahalaga ang bilis?
+  Dahil ayon sa AHA, ang immediate CPR ay maaaring magdoble o magtriple ng pagkakataong mabuhay pagkatapos ng cardiac arrest.
+</p>
+
+<p>
+  Ibig sabihin, ang emergency call taker ay hindi lang dapat maging taga-sabi ng:
+</p>
+
+<blockquote>
+  <p>
+    “Hintayin ninyo ang ambulansya.”
+  </p>
+</blockquote>
+
+<p>
+  Sa appropriate medical emergency, mahalagang mabilis na matukoy:<br>
+  Conscious ba ang pasyente?<br>
+  Normal ba ang paghinga?<br>
+  Posibleng cardiac arrest ba?<br>
+  May severe bleeding ba?<br>
+  Nasaan eksakto ang pasyente?<br>
+  May taong puwedeng magsagawa ng CPR?<br>
+  At kung kinakailangan, kaya bang gabayan ang caller habang paparating pa lamang ang professional responder?
+</p>
+
+<p>
+  Diyan nagiging tunay na bahagi ng emergency-care chain ang telecommunicator—hindi simpleng taga-receive at taga-forward ng tawag.
+</p>
+
+<h2>
+  PERO MAY TRAINING BA—O MAINTAINED TALAGA ANG READINESS?
+</h2>
+
+<p>
+  May training framework tayo.
+</p>
+
+<p>
+  Sa EO 56 mismo, kasama sa mandato ng Emergency 911 National Office ang development at implementation ng training programs para sa emergency communications personnel at responders.
+</p>
+
+<p>
+  May TESDA Emergency Medical Services NC II training regulations din na sumasaklaw sa CPR with AED operation, maintenance ng life-support resources, ambulance communications, emergency-resource coordination, scene management, prehospital patient care at patient transport.
+</p>
+
+<p>
+  Mahalagang precision:
+  Sa amended TESDA EMS NC II regulations, ang holder ng qualification na ito ay maaaring maging First-Aider, Medical First Responder o Ambulance Care Assistant—hindi ito dapat awtomatikong tawaging full EMT qualification.
+</p>
+
+<p>
+  May DOH standards din para sa ambulance personnel, kabilang ang qualifications, training requirements at continuing education.
+</p>
+
+<blockquote>
+  <p>
+    MAY TRAINING ≠ LAGING READY.
+  </p>
+</blockquote>
+
+<p>
+  Ang certificate ay ebidensiya na nakatapos ng training.
+  Hindi nito automatic na pinatutunayang retained pa rin ang technical skill kapag totoong tao na ang naghihingalo at mataas na ang stress.
+</p>
+
+<p>
+  Sa 2025 American Heart Association Resuscitation Education Science guidelines, binanggit na ang CPR skills na nakukuha pagkatapos ng BLS training ay maaaring magpakita ng deterioration kasing aga ng tatlong buwan.
+</p>
+
+<p>
+  Kaya nirerekomenda ang spaced learning at booster sessions kaysa umasa lamang sa isang training event na susundan ng mahabang panahon bago refresher.
+</p>
+
+<p>
+  Sa mga studies na nireview ng AHA, repeated booster sessions ay nakitaan ng mas mahusay na retention at CPR performance sa ilang healthcare at lay-rescuer groups.
+</p>
+
+<p>
+  Kaya hindi sapat ang tanong na:
+</p>
+
+<blockquote>
+  <p>
+    “May BLS certificate ba?”
+  </p>
+</blockquote>
+
+<p>
+  Mas mahalaga ring tanungin:<br>
+  Kailan huling nag-training?<br>
+  May refresher ba?<br>
+  May regular simulation?<br>
+  Nasusukat ba ang actual skill?<br>
+  May scenario drills ba?<br>
+  May feedback pagkatapos ng critical case?<br>
+  May debriefing?<br>
+  At kapag may deviation sa protocol—may mechanism ba para malaman kung bakit at maiwasan itong maulit?
+</p>
+
+          <h2>
+  GANITO RIN SA 911 CALL TAKER: TRAINING LANG AY HINDI SAPAT KUNG WALANG QUALITY CONTROL.
+</h2>
+
+<p>
+  Sa AHA Telecommunicator-CPR model, hindi lang initial training ang mahalaga.
+</p>
+
+<p>
+  Kasama ang ongoing education, quality improvement, audit ng cardiac-arrest calls, pagsusukat ng critical time intervals, pag-alam sa reasons for delay, individual feedback, linkage ng dispatch audio sa EMS records at medical oversight.
+</p>
+
+<p>
+  Sa recommended model nito, ang isang confirmed cardiac-arrest call ay hindi simpleng natatapos kapag ibinaba na ang telepono.
+</p>
+
+<p>
+  Binabalikan ang call.<br>
+  Pinapakinggan.<br>
+  Sinusukat.
+</p>
+
+<p>
+  Sinusuri:<br>
+  Kailan nakilala ang arrest?<br>
+  Kailan na-dispatch ang responder?<br>
+  Kailan nagsimula ang CPR instruction?<br>
+  Bakit nagkaroon ng delay?<br>
+  Ano ang puwedeng baguhin?
+</p>
+
+<p>
+  Iyan ang malaking pagkakaiba ng training culture at performance culture.
+</p>
+
+<p>
+  Hindi lang:
+</p>
+
+<blockquote>
+  <p>
+    “Tinuruan namin sila.”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>
+    “Nasusukat ba kung nagagawa nila nang tama kapag totoong emergency na?”
+  </p>
+</blockquote>
+
+<h2>
+  AT MAY BAGONG PHILIPPINE EVIDENCE NA LALONG NAGPAPAKITA KUNG BAKIT MAHALAGA ITO.
+</h2>
+
+<p>
+  Noong August 2026, inilathala ang isang Philippine mixed-method study tungkol sa perceived implementation ng prehospital emergency-care protocols.
+</p>
+
+<p>
+  Kasama sa quantitative component ang 114 EMS personnel mula Metro Manila, Luzon, Visayas at Mindanao, at sinundan ito ng apat na focus-group discussions at anim na in-depth interviews.
+</p>
+
+<p>
+  Sa self-reported quantitative results, mataas ang perceived implementation ng prehospital protocols sa limang domains ng care.
+</p>
+
+<p>
+  Pero nang siyasatin ang operational experience sa qualitative component, lumabas ang mahahalagang barriers:<br>
+  time pressure sa scene,<br>
+  kakulangan ng airway at breathing devices,<br>
+  lack of standardization sa training,<br>
+  failure sa reassessment ng ilang pasyente,<br>
+  insufficient documentation,<br>
+  at communication gaps sa pagitan ng facilities.
+</p>
+
+<p>
+  At mahalaga ang conclusion ng researchers:
+  Hindi puwedeng i-assume ang system-level effectiveness mula lamang sa mataas na self-reported adherence sa protocols.
+</p>
+
+<p>
+  Kailangan ding tugunan ang resource provision, standardization at coordination.
+</p>
+
+<p>
+  Pero kailangan ding protektahan laban sa maling generalization.
+</p>
+
+<p>
+  114 respondents ito—hindi national EMS census at hindi nationwide performance audit.
+</p>
+
+<p>
+  Hindi nito pinatutunayang pare-pareho ang problema sa lahat ng EMS units sa Pilipinas.
+</p>
+
+<p>
+  Pero bilang bagong multi-region Philippine evidence, napakahalaga ng ipinapakita nito:
+</p>
+
+<blockquote>
+  <p>
+    MAY PROTOCOL ≠ CONSISTENT IMPLEMENTATION.<br>
+    MAY TRAINING ≠ MAINTAINED READINESS.
+  </p>
+</blockquote>
+
+<blockquote>
+  <p>
+    MAY EQUIPMENT STANDARD ≠ LAGING AVAILABLE AT OPERATIONAL ANG TAMANG GAMIT SA AKTWAL NA EMERGENCY.<br>
+    MAY AMBULANSYA ≠ TAMANG AMBULANSYA.
+  </p>
+</blockquote>
+
+<p>
+  Isa pang common assumption:
+  Kapag may sasakyang may stretcher at emergency markings, pare-pareho na ang capability.
+</p>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Sa DOH Administrative Order No. 2018-0001, malinaw ang distinction.
+</p>
+
+<p>
+  Ang Type I ambulance ay capable of Basic Life Support.<br>
+  Ang Type II ambulance ay capable of Advanced Life Support.
+</p>
+
+<p>
+  Samantala, ang Patient Transport Vehicle o PTV ay para sa transport ng pasyenteng non-life-threatening ang kondisyon.
+</p>
+
+<p>
+  Sinasabi rin ng DOH rules na ang vehicle na walang BLS o ALS capability ay dapat ikategorya bilang Patient Transport Vehicle, hindi basta emergency ambulance.
+</p>
+
+<p>
+  Mahalaga ito dahil ang tanong sa critical emergency ay hindi:
+</p>
+
+<blockquote>
+  <p>
+    “May sasakyan bang dumating?”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>
+    “ANG UNIT BANG DUMATING AY KAYANG GAWIN ANG KAILANGANG INTERVENTION NG PASYENTE?”
+  </p>
+</blockquote>
+
+<p>
+  Iba ang requirement ng cardiac arrest.<br>
+  Iba ang major trauma.<br>
+  Iba ang severe respiratory emergency.<br>
+  Iba ang stable patient na kailangan lamang dalhin mula isang lugar patungo sa iba.
+</p>
+
+<p>
+  Kapag life-threatening ang kaso pero ang unit na naipadala ay hindi tugma sa clinical need, may capability mismatch kahit technically ay may sasakyang dumating.
+</p>
+
+          <h2>
+  MAY EQUIPMENT ≠ OPERATIONAL ANG EQUIPMENT.
+</h2>
+
+<p>
+  Ito pa ang isang mahalagang distinction.
+</p>
+
+<p>
+  Hindi sapat na nasa inventory ang AED, oxygen, suction, airway equipment o iba pang emergency supplies.
+</p>
+
+<p>
+  Sa DOH ambulance regulations, ang prescribed equipment, medicines at supplies ng ambulansya ay dapat available at operational.
+</p>
+
+<p>
+  Kasama rin sa standards ang maintenance requirements at continuing staff development.
+</p>
+
+<p>
+  Napakahalaga ng salitang:<br>
+  <strong>OPERATIONAL.</strong>
+</p>
+
+<p>
+  Ang AED na nasa sasakyan pero hindi gumagana ang battery—hindi readiness.<br>
+  Ang AED na hindi usable ang pads—hindi readiness.<br>
+  Ang oxygen equipment na nasa checklist pero hindi magamit—hindi readiness.<br>
+  Ang suction equipment na sira—hindi readiness.<br>
+  Ang airway equipment na nandoon pero walang competent personnel na gagamit—hindi rin functional readiness.
+</p>
+
+<p>
+  Kaya ang tamang tanong ay hindi lamang:
+</p>
+
+<blockquote>
+  <p>
+    “MAY GAMIT BA?”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>
+    “AVAILABLE, FUNCTIONAL, MAINTAINED AT MAY TRAINED PERSONNEL BA PARA GAMITIN ITO NGAYON?”
+  </p>
+</blockquote>
+
+<h2>
+  ITO RIN ANG DIREKSIYON NG MODERN PREHOSPITAL CARE.
+</h2>
+
+<p>
+  Noong 2025, naglabas ang World Health Organization ng <em>Prehospital Emergency Care: Operational Guidance for Ambulance Systems.</em>
+</p>
+
+<p>
+  Hindi lang sasakyan ang tinitingnan nito.
+</p>
+
+<p>
+  Kasama ang operational standards at resources, ambulance equipment and medication lists, structured handover, emergency communication and dispatch centres, medical control at system-wide clinical protocols na nakaayon sa level ng provider.
+</p>
+
+<p>
+  Iyan ang mahalagang punto.
+</p>
+
+<p>
+  Ang modern emergency medical service ay hindi simpleng:<br>
+  bumili ng ambulansya + bumili ng AED + maglagay ng sirena.
+</p>
+
+<p>
+  System iyon.
+</p>
+
+<p>
+  Ang equipment ay konektado sa training.<br>
+  Ang training ay konektado sa protocol.<br>
+  Ang protocol ay konektado sa dispatch.<br>
+  Ang dispatch ay konektado sa medical oversight.<br>
+  Ang field response ay konektado sa hospital handover.
+</p>
+
+<p>
+  Kapag pinaghiwa-hiwalay ang mga iyon, maaaring mayroon kang maraming piraso ng emergency response—pero hindi pa nangangahulugang mayroon kang reliable emergency-care chain.
+</p>
+
+<h2>
+  HINDI RIN PARE-PAREHO ANG LOCAL CAPABILITY.
+</h2>
+
+<p>
+  Dito pumapasok ang structure ng Philippine system.
+</p>
+
+<p>
+  Sa EO 56, enjoined ang LGUs na mag-establish at mag-run ng local 911 call centers gamit ang sarili nilang funds.
+</p>
+
+<p>
+  Ang operations ng local centers ay chargeable sa kani-kanilang budgets, habang ang service responders ay sasagot din sa kani-kanilang expenses sa pagsuporta sa Emergency 911 National Program.
+</p>
+
+<p>
+  Ibig sabihin, kahit iisa ang national emergency number—hindi automatic na pare-pareho ang resources sa likod nito.
+</p>
+
+<p>
+  May urban areas na maraming nearby hospitals at responders pero matindi ang traffic at density.<br>
+  May rural communities na mas malayo ang travel distance.<br>
+  May island communities na may geographic limitations.<br>
+  May densely populated neighborhoods na mahirap tukuyin ang eksaktong address.<br>
+  May LGUs na mas malaki ang budget at fleet.<br>
+  May iba na mas limitado.
+</p>
+
+<p>
+  Kaya napakahalaga ng unified national entry point.
+</p>
+
+<p>
+  Pero ang tunay na quality ng emergency system ay nakasalalay din sa actual local capability na sasalo pagkatapos ng tawag.
+</p>
+
+<h2>
+  MATAGAL NANG MAY USAPIN TUNGKOL SA STANDARDIZATION—PERO HINDI DAPAT GAMITING 2026 NATIONAL SNAPSHOT ANG LUMANG EVIDENCE.
+</h2>
+
+<p>
+  Isang 2018 Philippine EMS perspective paper, <em>Philippine Emergency Medical Services: A Medical Student’s Perspective</em>, ang naglarawan sa mga hamon noon gaya ng insufficient facilities, referral-system problems, ambulance regulation at pangangailangan para sa updated local EMS data at greater national-local standardization.
+</p>
+
+<p>
+  Pero kailangang malinaw:
+</p>
+
+<blockquote>
+  <p>
+    PERSPECTIVE PAPER IYON MULA 2018.
+  </p>
+</blockquote>
+
+<p>
+  Hindi systematic national EMS audit.<br>
+  Hindi rin iyon dapat gamiting litrato ng buong Philippine emergency system sa 2026.
+</p>
+
+<p>
+  Malaki na ang nagbago mula noon, kabilang ang Unified 911 modernization.
+</p>
+
+<p>
+  Ang halaga ng paper ay historical context:
+  Ipinapakita nitong ang usapin ng integration, standardization, referral at prehospital-system development ay hindi problemang ipinanganak lamang dahil sa isang viral incident.
+</p>
+
+<p>
+  At ngayon, mayroon na ring mas bagong 2026 Philippine evidence na nagpapakitang may operational barriers pa ring kailangang pag-aralan—pero hindi rin iyon dapat gawing blanket verdict sa buong bansa.
+</p>
+
+          <h2>
+  ANG EMERGENCY SYSTEM AY DAPAT NAKA-DESIGN PARA SA TAONG NASA PANIC—HINDI PARA SA PERFECT CALLER.
+</h2>
+
+<p>
+  Madaling sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Dapat kasi kumpleto ang address.”
+  </p>
+</blockquote>
+
+<p>
+  Tama.
+</p>
+
+<p>
+  Kritikal ang location.
+</p>
+
+<p>
+  Pero isipin ang tunay na emergency caller.
+</p>
+
+<p>
+  Maaaring umiiyak.<br>
+  Nanginginig.<br>
+  Sumisigaw.<br>
+  Hindi alam ang medical terminology.<br>
+  Hindi kabisado ang eksaktong address.<br>
+  May hawak na dumudugong tao.<br>
+  O sabay na nag-CPR habang kausap ang operator.
+</p>
+
+<p>
+  Sa AHA T-CPR framework mismo, kinikilala ang real-world barriers gaya ng hysteria, language barriers at ibang circumstances na maaaring magpahirap sa cardiac-arrest recognition.
+</p>
+
+<p>
+  Iyan mismo ang dahilan kung bakit kailangang trained ang emergency telecommunicator.
+</p>
+
+<p>
+  Hindi puwedeng ang system ay gumagana lamang kapag perfect ang caller.
+</p>
+
+<p>
+  Kailangan ng structured questioning.<br>
+  Location verification.<br>
+  Callback capability.<br>
+  Clear handoff.<br>
+  Appropriate geolocation technology.<br>
+  At komunikasyong naiintindihan ng caller.
+</p>
+
+<p>
+  Kasama nga sa Unified 911 rollout ang regional-language support upang makatanggap ng tawag sa native languages ng callers.
+</p>
+
+<p>
+  Hindi trabaho ng taong nasa panic na maging professional dispatcher.
+</p>
+
+<blockquote>
+  <p>
+    TRABAHO NG SISTEMA NA TULUNGAN SIYANG MAIBIGAY ANG KRITIKAL NA IMPORMASYON KAHIT NASA PINAKAMASAMANG MINUTO SIYA NG BUHAY NIYA.
+  </p>
+</blockquote>
+
+<h2>
+  PERO MAY RESPONSIBILIDAD DIN ANG PUBLIKO.
+</h2>
+
+<p>
+  Hindi lahat ng pressure sa emergency hotline ay kasalanan ng responder.
+</p>
+
+<p>
+  May abuse din.
+</p>
+
+<p>
+  Ayon sa DILG, malaking problema noon ang prank at fraudulent calls, na iniulat nitong umaabot sa humigit-kumulang 60% noong 2024.
+</p>
+
+<p>
+  Matapos ang modernization, sa specific reporting period na September 8 hanggang 24, 2025, 884,809 calls ang natanggap at 872,586 ang handled.
+</p>
+
+<p>
+  Sa reporting window na iyon, 1,495 ang na-classify na prank calls—humigit-kumulang 0.17% ng calls.
+</p>
+
+<p>
+  Mahalagang linawin iyon:
+</p>
+
+<blockquote>
+  <p>
+    ANG 0.17% AY HINDI FULL-YEAR 2025 NATIONAL ANNUAL RATE.
+  </p>
+</blockquote>
+
+<p>
+  Resulta iyon ng particular September 8–24 reporting period na inilabas ng DILG.
+</p>
+
+<p>
+  Malaking improvement pa rin ang ipinapakita ng agency-reported data.
+</p>
+
+<p>
+  Pero mas tamang sabihin ang eksaktong saklaw kaysa gawing annual statistic ang short reporting window.
+</p>
+
+<p>
+  At hindi nawawala ang social lesson:
+</p>
+
+<blockquote>
+  <p>
+    ANG PRANK CALL SA EMERGENCY HOTLINE AY HINDI LANG KALOKOHAN.
+  </p>
+</blockquote>
+
+<p>
+  Gumagamit iyon ng call-system capacity at atensiyong maaaring kailangan ng isang totoong emergency.
+</p>
+
+<p>
+  Responsibilidad ng publiko na huwag abusuhin ang 911.
+</p>
+
+<p>
+  Pero hindi rin dapat gawing blanket excuse ang prank callers kapag may legitimate emergency na nagkaroon ng delay o system failure.
+</p>
+
+<p>
+  Ang tamang prinsipyo:
+</p>
+
+<blockquote>
+  <p>
+    RESPONSIBILIDAD NG PUBLIKO NA GAMITIN NANG TAMA ANG EMERGENCY SYSTEM.
+  </p>
+</blockquote>
+
+<p>
+  At:
+</p>
+
+<blockquote>
+  <p>
+    RESPONSIBILIDAD NG GOBYERNO NA GUMAWA NG SISTEMANG KAYANG SALAIN ANG ABUSO NANG HINDI NAPAPABAYAAN ANG TUNAY NA EMERGENCY.
+  </p>
+</blockquote>
+
+<p>
+  Parehong accountability.
+</p>
+
+<h2>
+  BAGO DUMATING ANG AMBULANSYA, MAY TAONG NASA TABI NA NG PASYENTE.
+</h2>
+
+<p>
+  Hindi kayang mag-teleport ng professional responder.
+</p>
+
+<p>
+  Kahit gaano kahusay ang dispatch system, may natural na gap bago makarating ang ambulance.
+</p>
+
+<p>
+  At sa maraming emergency, ang unang taong nasa tabi ng pasyente ay maaaring ordinaryong bystander:
+</p>
+
+<p>
+  pamilya,<br>
+  kapitbahay,<br>
+  guard,<br>
+  teacher,<br>
+  driver,<br>
+  katrabaho,<br>
+  o sinumang naroon nang mangyari ang insidente.
+</p>
+
+<p>
+  Kaya hindi puwedeng puro ambulance fleet ang emergency preparedness.
+</p>
+
+<p>
+  Mahalaga rin ang community capability sa basic lifesaving response.
+</p>
+
+<p>
+  May Republic Act No. 10871 o <em>Basic Life Support Training in Schools Act</em> tayo.
+</p>
+
+<p>
+  Inaatasan nito ang public at private basic-education schools na magbigay ng age-appropriate, hands-on basic life-support training gamit ang nationally recognized, evidence-based emergency cardiovascular-care programs.
+</p>
+
+<p>
+  Magandang policy foundation iyon.
+</p>
+
+<p>
+  Dahil sa cardiac arrest, ang survival response ay nagsisimula bago pa makarating ang ambulance.
+</p>
+
+<blockquote>
+  <p>
+    MAAGANG PAGKILALA → PAGTAWAG SA EMERGENCY SYSTEM → AGARANG CPR → MAAGANG DEFIBRILLATION → PROFESSIONAL EMS CARE → HOSPITAL CARE.
+  </p>
+</blockquote>
+
+          <h2>
+  SA IBANG SISTEMA, TECHNOLOGY AT COMMUNITY RESPONSE MISMO ANG GINAGAMIT PARA PAIKLIIN ANG GAP.
+</h2>
+
+<p>
+  Sa Singapore, halimbawa, ginagamit ng Singapore Civil Defence Force ang <em>myResponder</em>.
+</p>
+
+<p>
+  Maaari nitong i-alert ang nearby Community First Responders kapag may suspected cardiac arrest, ipakita ang location ng nearby AEDs at hayaang magbigay ng CPR o gumamit ng AED ang responder bago pa dumating ang professional EMS.
+</p>
+
+<p>
+  May feature din itong nagpapadala ng caller geolocation sa SCDF 995 Operations Centre upang mas madaling matukoy ang eksaktong lugar.
+</p>
+
+<p>
+  Hindi ibig sabihin na dapat eksaktong kopyahin ng Pilipinas ang Singapore.
+</p>
+
+<p>
+  Magkaiba ang geography, resources, governance at population environment.
+</p>
+
+<p>
+  Ang lesson ay mas simple:
+</p>
+
+<blockquote>
+  <p>
+    ANG MODERN EMERGENCY SYSTEM AY HINDI NAGHIHINTAY LANG SA PAGDATING NG AMBULANSYA BAGO MAGSIMULA ANG RESCUE.
+  </p>
+</blockquote>
+
+<p>
+  Ginagamit nito ang dispatch, technology, trained community at public-access AEDs para mabawasan ang dead time bago dumating ang professional help.
+</p>
+
+<h2>
+  KAYA HINDI “AMBULANCE RESPONSE” LANG ANG DAPAT PAG-USAPAN.
+</h2>
+
+<p>
+  Mabilis na ambulansya pero mabagal ang call processing—kulang.<br>
+  Mahusay na call taker pero walang available responder—kulang.<br>
+  Trained responder pero hindi maintained ang skills—kulang.<br>
+  May equipment pero hindi operational—kulang.<br>
+  Kumpletong ambulance pero maling location—kulang.<br>
+  Mabilis ang dispatch pero maling level ng unit ang naipadala—kulang.<br>
+  Mahusay ang prehospital care pero sablay ang hospital handover—kulang.
+</p>
+
+<blockquote>
+  <p>
+    ANG PASYENTE AY HINDI INTERESADO KUNG ALING AHENSIYA ANG MAY JURISDICTION.
+  </p>
+</blockquote>
+
+<p>
+  Hindi tumitigil ang cardiac arrest habang inaayos ang endorsement.<br>
+  Hindi tumitigil ang severe bleeding habang hinahanap kung kaninong ambulansya ang available.<br>
+  Hindi tumitigil ang stroke habang nagkakaroon ng problema sa handoff.
+</p>
+
+<blockquote>
+  <p>
+    Sa emergency medicine, ANG KATAWAN NG PASYENTE ANG TUNAY NA ORASAN.
+  </p>
+</blockquote>
+
+<h2>
+  KUMPARA SA IBANG BANSA, NASAAN ANG PILIPINAS?
+</h2>
+
+<p>
+  Dito kailangang iwasan ang fake precision.
+</p>
+
+<p>
+  Walang standardized at authoritative global league table na maaaring gamitin para simpleng sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Pilipinas ang #___ sa mundo sa 911 responsiveness.”
+  </p>
+</blockquote>
+
+<p>
+  Magkakaiba ang emergency systems sa geography, urban density, response categories, ambulance configuration, clinical definitions at paraan ng pagsukat.
+</p>
+
+<p>
+  Mas makatwiran ang pagkumpara ng specific performance metrics at transparency systems.
+</p>
+
+<p>
+  Sa United States, halimbawa, nag-publish ang National Emergency Number Association noong August 2026 ng updated <em>NENA-STA-020.2-2026, Standard for 9-1-1 Call Processing</em>, bilang current model standard para sa consistent processing ng emergency at non-emergency calls sa Public Safety Answering Points.
+</p>
+
+<p>
+  Ang long-established NENA call-answer benchmark ay 90% ng 911 calls answered within 15 seconds at 95% within 20 seconds.
+</p>
+
+<p>
+  Pero tandaan:
+</p>
+
+<blockquote>
+  <p>
+    CALL-ANSWER TIME IYON.
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon pareho sa Philippine five-minute responder target.
+</p>
+
+<p>
+  Hindi puwedeng sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “15 seconds ang America, five minutes ang Pilipinas, kaya mas mabagal tayo.”
+  </p>
+</blockquote>
+
+<p>
+  Magkaibang bahagi ng emergency timeline ang sinusukat.
+</p>
+
+<p>
+  At iyan mismo ang lesson:
+</p>
+
+<blockquote>
+  <p>
+    KAPAG SINABING “MABILIS,” DAPAT MALINAW KUNG ALING ORAS ANG SINUSUKAT.
+  </p>
+</blockquote>
+
+<h2>
+  ANG ISANG MALAKING DIFFERENCE SA MATURE SYSTEM AY TRANSPARENCY NG METRICS.
+</h2>
+
+<p>
+  Sa England, regular na naglalabas ang NHS ng Ambulance Quality Indicators.
+</p>
+
+<p>
+  Hindi lang isang overall efficiency number.
+</p>
+
+<p>
+  May system indicators at clinical outcome measures, monthly reporting, ambulance-service breakdowns at historical time-series data.<br>
+  May separate reporting din para sa hospital handover performance.
+</p>
+
+<p>
+  Hindi ibig sabihin na perfect ang NHS ambulance system.
+</p>
+
+<p>
+  Sa katunayan, ang halaga ng granular data ay mismong nakikita rin kung saan ito pumapalya.
+</p>
+
+<p>
+  At iyon ang mahalagang prinsipyo:
+</p>
+
+<blockquote>
+  <p>
+    ANG MATURE NA EMERGENCY SYSTEM AY HINDI LANG DAPAT KAYANG IPAGMALAKI KAPAG MABILIS.<br>
+    DAPAT KAYA RIN NITONG IPAKITA KUNG SAAN ITO MABAGAL.
+  </p>
+</blockquote>
+
+<h2>
+  AT DITO MAY ISA PANG MALAKING HAMON SA PILIPINAS: KULANG PA ANG EMERGENCY-MEDICINE RESEARCH BASE.
+</h2>
+
+<p>
+  Sa isang 2023 scoping review ng Philippine emergency-medicine research, 845 studies ang na-screen pero 43 lamang ang nakapasok sa review.
+</p>
+
+<p>
+  Mahigit kalahati ng included studies ay isinagawa sa Metro Manila, at karamihan ay observational o descriptive.
+</p>
+
+<p>
+  Sinabi ng authors na kailangan pang lumawak ang Philippine emergency-medicine research sa mas maraming institutions, regions at subject areas.
+</p>
+
+<p>
+  Mahalagang limitation iyon.
+</p>
+
+<p>
+  Kaya hindi natin dapat gawin ang resulta ng isang hospital, isang LGU, isang maliit na study o isang viral case bilang automatic nationwide truth.
+</p>
+
+<p>
+  May mga lugar na maaaring mahusay ang system.<br>
+  May mga lugar na malaki na ang improvement.<br>
+  May mga responders na mataas ang competency.
+</p>
+
+<p>
+  At maaaring may mga lugar na maraming gaps.
+</p>
+
+<p>
+  Ang problema:
+</p>
+
+<blockquote>
+  <p>
+    KUNG KULANG ANG NATIONWIDE GRANULAR DATA, MAHIRAP DING PATUNAYAN KUNG GAANO KA-CONSISTENT ANG QUALITY SA BUONG BANSA.
+  </p>
+</blockquote>
+
+<p>
+  Iyan ang dahilan kung bakit mahalaga ang bagong 2026 multi-region EMS study—pero mahalaga ring huwag abusuhin ang findings nito bilang national census.
+</p>
+
+<p>
+  Anecdote ang isang viral failure.<br>
+  Anecdote rin ang isang successful rescue.
+</p>
+
+<p>
+  Pareho silang mahalaga.<br>
+  Pero HINDI SILA KAPALIT NG SYSTEM-WIDE PERFORMANCE DATA.
+</p>
+
+          <h2>
+  KAYA KUNG SERYOSO TAYO SA “WORLD-CLASS 911,” MAS MARAMI PA SA ISANG PERCENTAGE ANG DAPAT MAKITA NG PUBLIKO.
+</h2>
+
+<p>
+  Kapag sinabi nating responsive ang system, dapat malinaw ang call-answer time—hindi lamang average, kundi median at high-percentile performance para makita ang worst delays.
+</p>
+
+<p>
+  Dapat alam ang abandoned-call rate—ilang callers ang bumitaw bago masagot at gaano katagal silang naghihintay.<br>
+  Dapat malinaw ang call-processing at triage time—gaano katagal bago matukoy ang urgency.<br>
+  Dapat nasusukat ang dispatch time—kailan talaga naipadala ang unit.<br>
+  Dapat malinaw ang on-scene response time—at kung paano ito nag-iiba sa urban, rural at iba't ibang locality.
+</p>
+
+<p>
+  Sa medical calls, mahalagang makita ang cardiac-arrest recognition, telephone-CPR performance at timing ng first intervention.
+</p>
+
+<p>
+  Dapat nasusukat ang location failures—ilang kaso ang na-delay dahil mali, kulang o hindi naipasa nang maayos ang location.<br>
+  Dapat malinaw ang handoff accountability—kapag na-transfer na ng national center sa local command center, sino ang nagmo-monitor hanggang may responder na talagang nakarating?<br>
+  Dapat malinaw ang ambulance capability—PTV ba, BLS o ALS?<br>
+  Dapat sinusukat ang crew readiness—qualification, continuing training at actual competency.<br>
+  Dapat sinusuri ang equipment readiness—hindi lang kung nasa inventory kundi kung operational sa mismong araw ng dispatch.<br>
+  Dapat may data sa hospital handover.
+</p>
+
+<p>
+  At kung posible, hindi lang operational success ang sinusukat kundi clinical outcomes.
+</p>
+
+<blockquote>
+  <p>
+    Dahil kung hindi hinihiwalay ang bawat kawing—HINDI NATIN MALALAMAN KUNG SAAN TALAGA NAPUPUTOL ANG KADENA.
+  </p>
+</blockquote>
+
+<h2>
+  HINDI ITO USAPAN NG “SISISIHIN NATIN ANG CALL TAKER” O “SISISIHIN NATIN ANG CALLER.”
+</h2>
+
+<p>
+  Masyadong mababaw iyon.
+</p>
+
+<p>
+  Maaaring may negligent operator.<br>
+  Maaaring kulang o mali ang impormasyong naibigay ng caller.<br>
+  Maaaring may system delay.<br>
+  Maaaring unavailable ang tamang responder.<br>
+  Maaaring mahirap hanapin ang location.<br>
+  Maaaring traffic.<br>
+  Maaaring may failed callback.<br>
+  Maaaring may handoff problem.<br>
+  Maaaring may equipment failure.<br>
+  Maaaring mahusay ang personnel pero kulang ang resources.<br>
+  Maaaring kumpleto ang resources pero mahina ang coordination.<br>
+  At maaari ring may combination ng mga iyon.
+</p>
+
+<p>
+  Kaya kailangan ng actual records at case investigation bago magturo ng personal na kasalanan.
+</p>
+
+<p>
+  Pero sa system level, may simpleng prinsipyo:
+</p>
+
+<blockquote>
+  <p>
+    ANG EMERGENCY SYSTEM AY DAPAT IDISENYO PARA KAYANIN ANG PANIC, HUMAN ERROR, LANGUAGE DIFFERENCES, TRAFFIC, MAHIRAP NA LOCATION, EQUIPMENT FAILURE, LOCAL RESOURCE INEQUALITY AT BIGLAANG DAMI NG TAWAG.
+  </p>
+</blockquote>
+
+<p>
+  Dahil hindi unusual ang mga problemang iyan sa emergency.
+</p>
+
+<blockquote>
+  <p>
+    IYAN MISMO ANG KAPALIGIRAN KUNG SAAN DAPAT GUMANA ANG EMERGENCY SYSTEM.
+  </p>
+</blockquote>
+
+<p>
+  Kung gumagana lamang nang maayos kapag kalmado ang caller, perfect ang address, walang traffic, available lahat ng responder, kumpleto lahat ng equipment at walang sabit sa coordination—hindi pa resilient ang system.
+</p>
+
+<h2>
+  REAL TALK
+</h2>
+
+<p>
+  Hindi natin kailangan ng 911 na maganda lang sa press release.
+</p>
+
+<p>
+  Kailangan natin ng 911 na kapag sinabing:
+</p>
+
+<blockquote>
+  <p>
+    “MABILIS” — kayang ipakita kung ilang segundo at minuto.<br>
+    “EFFICIENT” — malinaw kung ano mismo ang sinusukat.<br>
+    “TRAINED” — hindi lang may certificate kundi may maintained competency, refresher training, drills at quality review.<br>
+    “AMBULANCE” — malinaw kung PTV, BLS o ALS at kung tugma sa kondisyon ng pasyente.<br>
+    “KUMPLETO ANG EQUIPMENT” — hindi lang nasa listahan kundi available, operational, maintained at kayang gamitin ng crew.<br>
+    “FIVE-MINUTE RESPONSE” — malinaw kung anong punto ng emergency timeline ang simula at dulo ng limang minuto.<br>
+    “NA-DISPATCH NA” — hindi natatapos ang accountability sa pagpasa ng tawag; kailangang malinaw kung ano ang nangyari hanggang sa actual response.
+  </p>
+</blockquote>
+
+<p>
+  At kapag may pumalya—hindi dapat kayang itago ng isang magandang national percentage ang partikular na failure na kailangang ayusin.
+</p>
+
+<p>
+  Dahil sa ordinaryong serbisyo, ang delay ay inconvenience.<br>
+  Sa emergency response, ang delay ay maaaring maging permanenteng disability, irreversible injury o kamatayan.
+</p>
+
+<p>
+  Hindi dapat ang sukatan ng mahusay na emergency system ay:
+</p>
+
+<blockquote>
+  <p>
+    “MAY SUMAGOT NAMAN.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi rin:
+</p>
+
+<blockquote>
+  <p>
+    “MAY DUMATING NAMAN.”
+  </p>
+</blockquote>
+
+<p>
+  Ang tunay na sukatan ay:
+</p>
+
+<blockquote>
+  <p>
+    NAKARATING BA ANG TAMANG TULONG, SA TAMANG TAO, SA TAMANG ORAS—AT MAY KAKAYAHAN BA ITONG GAWIN ANG KAILANGANG GAWIN HABANG MAY ORAS PA?
+  </p>
+</blockquote>
+
+<p>
+  Doon dapat sinusukat ang 911.
+</p>
+
+<p>
+  Dahil kapag buhay na ang nakasalalay,
+</p>
+
+<blockquote>
+  <p>
+    HINDI SAPAT ANG MAY HOTLINE.<br>
+    HINDI SAPAT ANG MAY AMBULANSYA.<br>
+    HINDI SAPAT ANG MAY TRAINING CERTIFICATE.<br>
+    HINDI SAPAT ANG MAY EQUIPMENT SA INVENTORY.
+  </p>
+</blockquote>
+
+<p>
+  Ang kailangan ay isang buong emergency system na <strong>MABILIS, TRAINED, MAINTAINED, EQUIPPED, NASUSUKAT, NABUBUSISI AT HANDA TALAGANG SUMALO.</strong>
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Executive Order No. 56, s. 2018 — Institutionalizing Emergency 911 as the Nationwide Emergency Hotline; LawPhil.
+    </li>
+
+    <li>
+      Department of the Interior and Local Government — Unified 911 nationwide rollout and five-minute response target.
+    </li>
+
+    <li>
+      Emergency 911 National Call Center / DILG — 5,251,754 calls handled from January to April 2026.
+    </li>
+
+    <li>
+      Department of the Interior and Local Government — reported 97.23% Unified 911 efficiency rate, June 2026.
+    </li>
+
+    <li>
+      Department of the Interior and Local Government — August 18, 2026 official update on the Askri incident; initial call-system timeline and continuing verification of dispatch, callbacks, vehicle movement and actual arrival.
+    </li>
+
+    <li>
+      DILG Western Visayas — Unified 911 call data for September 8–24, 2025; 884,809 calls received, 872,586 handled and 1,495 classified as prank calls.
+    </li>
+
+    <li>
+      Department of Health Administrative Order No. 2018-0001 — Revised Rules and Regulations Governing the Licensure of Land Ambulances and Ambulance Service Providers.
+    </li>
+
+    <li>
+      TESDA — Emergency Medical Services NC II Training Regulations, amended 2013.
+    </li>
+
+    <li>
+      World Health Organization — <em>Prehospital Emergency Care: Operational Guidance for Ambulance Systems</em>, 2025.
+    </li>
+
+    <li>
+      American Heart Association — Telecommunicator CPR Recommendations and Performance Measures.
+    </li>
+
+    <li>
+      American Heart Association — 2025 Resuscitation Education Science Guidelines.
+    </li>
+
+    <li>
+      American Heart Association — CPR Facts &amp; Statistics.
+    </li>
+
+    <li>
+      Cordero, R.P., et al. — <em>Perceived Implementation of Prehospital Emergency Care Protocols by Emergency Medical Services Personnel in the Philippines: A Sequential Explanatory Mixed-Method Design</em>, 2026.
+    </li>
+
+    <li>
+      Padlan, M.P. &amp; Mesa-Gaerlan, F.J.C. — <em>Philippine Emergency Medical Services: A Medical Student’s Perspective</em>, Juntendo Medical Journal, 2018.
+    </li>
+
+    <li>
+      Vista, F.E.S., et al. — <em>Emergency Medicine Research in the Philippines: A Scoping Review</em>, JACEP Open, 2023.
+    </li>
+
+    <li>
+      Republic Act No. 10871 — Basic Life Support Training in Schools Act.
+    </li>
+
+    <li>
+      National Emergency Number Association — NENA-STA-020.2-2026, <em>Standard for 9-1-1 Call Processing</em>, and established 9-1-1 call-answer performance benchmarks.
+    </li>
+
+    <li>
+      NHS England — Ambulance Quality Indicators.
+    </li>
+
+    <li>
+      Singapore Civil Defence Force — myResponder community responder, public-access AED and geolocation system.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
