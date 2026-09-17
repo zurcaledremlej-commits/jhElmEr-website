@@ -1,1 +1,2299 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Kapag may pera, nakakalaya—kapag wala, kulungan muna? Isang fact-based na paliwanag tungkol sa pyansa, right to bail, bail hearing, individualized assessment, recognizance, at kung bakit hindi sapat ang simpleng 'may pera vs. walang pera' sa ilalim ng batas."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-pyansa.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-pyansa.html"
+>
+
+<title>KAPAG MAY PERA, NAKAKAUWI—KAPAG WALA, KULUNGAN MUNA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+          KAPAG MAY PERA, NAKAKAUWI—KAPAG WALA, KULUNGAN MUNA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-pyansa.png"
+            alt="Simbolikong paglalarawan ng pyansa, access sa kalayaan, at pagkakapantay-pantay sa ilalim ng batas."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <!-- ===================================
+             FULL ARTICLE BODY
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Dalawang tao ang maaaring parehong may kasong nakabinbin.
+          </p>
+
+          <p>
+            Pareho pang walang final na hatol.<br>
+            Pareho pang hindi dapat ituring na guilty.
+          </p>
+
+          <p>
+            Pero posible na ang isa ay makauwi habang nagpapatuloy ang kaso—samantalang ang isa ay manatili sa kulungan.
+          </p>
+
+          <p>
+            At minsan, ang malaking pagkakaiba ay hindi kung sino ang mas guilty.<br>
+            Kundi kung sino ang kayang magpiyansa.
+          </p>
+
+          <p>
+            Dito madalas nagsisimula ang impresyon na simple lang ang bail:
+          </p>
+
+          <blockquote>
+            <p>
+              “May pera, nakakalabas.”<br>
+              “Walang pera, nakakulong.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi ganoon kasimple ang batas—at hindi rin ganoon kasimple ang problema.
+          </p>
+
+          <p>
+            Dahil ang pyansa ay hindi bayad para mapawalang-sala. Hindi ito multa. Hindi rin nito binubura ang kaso.
+          </p>
+
+          <p>
+            May legal na dahilan kung bakit mayroon nito, may rules kung sino ang puwedeng mag-bail, may standards kung magkano ang dapat itakda, at may safeguards laban sa excessive bail.
+          </p>
+
+          <p>
+            Pero kasabay nito, may mas mahirap na tanong na kailangang harapin:
+          </p>
+
+          <p>
+            Kung ang isang karapatan ay nakasalalay sa halagang kailangang ilabas, pareho ba talaga ang access dito ng mayaman at mahirap?<br>
+            At kung puwedeng magkaiba ang bail ng dalawang taong pareho ang offense, kailan iyon makatarungang individualized assessment—at kailan naman ito nagiging puwang para sa arbitrary o unequal treatment?
+          </p>
+
+          <p>
+            Bago sagutin iyon, kailangang malinaw muna kung ano ba talaga ang pyansa at ano ang purpose nito sa criminal justice system.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG PYANSA?
+          </h2>
+
+          <p>
+            Sa Rule 114 ng Rules of Court, ang bail ay security na ibinibigay para sa provisional release ng taong nasa custody, upang masiguro ang kanyang pagharap sa korte kapag kailangan.
+          </p>
+
+          <p>
+            Hindi rin ito nangangahulugang kailangang laging maglabas ng buong cash amount.
+          </p>
+
+          <p>
+            Maaaring corporate surety bond, property bond, cash deposit o, kapag pinapayagan ng batas, release on recognizance.
+          </p>
+
+          <p>
+            Mahalagang maintindihan kung bakit mayroon nito.
+          </p>
+
+          <p>
+            Ang taong kinasuhan ay akusado pa lamang—hindi pa convict.
+          </p>
+
+          <p>
+            Sa Constitution, presumed innocent ang accused hanggang mapatunayan ang guilt ayon sa hinihinging standard ng batas. Kasabay nito, kinikilala rin ng Constitution ang right to bail before conviction, subject sa importanteng exceptions.
+          </p>
+
+          <p>
+            Kaya ang bail ay hindi gantimpala sa akusado.
+          </p>
+
+          <p>
+            Bahagi ito ng pagtatangkang balansehin ang dalawang bagay:
+            ang karapatan ng isang taong hindi pa nahahatulan na hindi basta mawalan ng kalayaan, at ang pangangailangan ng Estado na masigurong haharap siya sa proseso ng hustisya.
+          </p>
+
+          <h2>
+            KAILAN MAY KARAPATAN SA BAIL—AT KAILAN KORTE ANG MAGPAPASYA?
+          </h2>
+
+          <p>
+            Hindi sapat ang simpleng hati na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bailable case.”
+            </p>
+          </blockquote>
+
+          <p>
+            o
+          </p>
+
+          <blockquote>
+            <p>
+              “Non-bailable case.”
+            </p>
+          </blockquote>
+
+          <p>
+            Mas malinaw kung titingnan kung anong stage na ng kaso at anong penalty ang maaaring ipataw.
+          </p>
+
+          <p>
+            Sa Rule 114, bail is a matter of right bago o pagkatapos ng conviction sa first-level courts gaya ng MTC, MTCC, MeTC at MCTC, subject sa rule na wala nang bail kapag final na ang judgment.
+          </p>
+
+          <p>
+            Bail is also a matter of right bago ang conviction sa Regional Trial Court kapag ang offense ay hindi punishable by death, reclusion perpetua o life imprisonment.
+          </p>
+
+          <p>
+            Pero may mahalagang distinction:
+            Kapag matter of right ang bail, hindi ibig sabihin na automatic na rin ang kahit anong amount.
+          </p>
+
+          <p>
+            Kailangan pa ring sundin ang tamang bail procedure at ma-determine nang maayos ang reasonable amount, gamit ang relevant factors sa Rule 114.
+          </p>
+
+          <p>
+            Kapag bago ang conviction at ang offense ay punishable by reclusion perpetua o life imprisonment, hindi automatic ang bail.
+          </p>
+
+          <p>
+            Dito may pangunahing tanong na kailangang resolbahin ng korte:
+          </p>
+
+          <blockquote>
+            <p>
+              Malakas ba ang evidence of guilt?
+            </p>
+          </blockquote>
+
+          <p>
+            Kung malakas ang evidence of guilt, hindi maaaring i-admit sa bail ang accused sa ilalim ng Rule 114. Kung hindi strong ang evidence, maaaring payagan ang bail.
+          </p>
+
+          <p>
+            Iba naman ang discretionary bail pagkatapos ng RTC conviction habang pending ang appeal.
+          </p>
+
+          <p>
+            Kapag convicted na ng RTC ang accused sa offense na hindi punishable by death, reclusion perpetua o life imprisonment, hindi na automatic ang bail habang umaapela.
+          </p>
+
+          <p>
+            Discretionary na ito.
+          </p>
+
+          <p>
+            Pero sa stage na ito, hindi na ang pre-conviction question na “malakas ba ang evidence of guilt?” ang governing test.
+          </p>
+
+          <p>
+            May conviction na ng trial court.
+          </p>
+
+          <p>
+            Rule 114, Section 5 na ang framework.
+          </p>
+
+          <p>
+            At kung ang imprisonment na ipinataw ng RTC ay lampas anim na taon, maaaring tanggihan o kanselahin ang bail kapag naipakita ng prosecution ang mga circumstance tulad ng pagiging recidivist, quasi-recidivist o habitual delinquent; dating pagtakas, pag-iwas sa sentence o paglabag sa bail; paggawa ng offense habang nasa probation, parole o conditional pardon; mataas na probability of flight; o undue risk na gumawa muli ng krimen habang pending ang appeal.
+          </p>
+
+          <p>
+            Kaya mahalagang huwag pagsamahin ang dalawang sitwasyon:<br>
+            Pre-conviction discretionary bail sa mabigat na offense → strength of evidence ang sentrong issue.<br>
+            Post-RTC-conviction bail pending appeal → ibang discretionary framework na ang ginagamit dahil mayroon nang conviction.
+          </p>
+
+          <p>
+            Kapag naging final na ang judgment of conviction, general rule ay wala nang bail.
+          </p>
+
+          <p>
+            May limited exception kapag bago maging final ang judgment ay nag-apply ang accused para sa probation at pasok siya sa batas; maaaring payagan ang temporary liberty habang inaayos iyon.
+          </p>
+
+          <p>
+            Pero kapag nagsimula na siyang magsilbi ng sentence, hindi na maaaring mag-bail.
+          </p>
+
+          <p>
+            Kaya hindi lang pangalan ng kaso ang sagot sa tanong na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Puwede ba siyang magpiyansa?”
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalaga rin kung nasaan na ang kaso sa proseso.
+          </p>
+
+                    <h2>
+            “NON-BAILABLE” BA TALAGA KAPAG MABIGAT ANG KASO?
+          </h2>
+
+          <p>
+            Ito ang isa sa pinakakaraniwang napapasimpleng usapan.
+          </p>
+
+          <p>
+            Sa Article III, Section 13 ng Constitution, ang exception sa constitutional right to bail before conviction ay offense punishable by reclusion perpetua kapag malakas ang evidence of guilt.
+          </p>
+
+          <p>
+            Sa Rule 114, nakasaad din ang capital offense o offense punishable by reclusion perpetua o life imprisonment: hindi dapat payagan ang bail kapag strong ang evidence of guilt.
+          </p>
+
+          <p>
+            Kaya hindi sapat na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mabigat ang kaso, kaya automatic walang bail.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag kailangang pagdesisyunan ang bail bago conviction sa offense na sakop ng Rule 114 Sections 7 at 8, may kailangang gawin ang korte:
+          </p>
+
+          <blockquote>
+            <p>
+              BAIL HEARING.
+            </p>
+          </blockquote>
+
+          <p>
+            At hindi optional ang hearing na iyon.
+          </p>
+
+          <p>
+            Muling idiniin ng Supreme Court na mandatory at indispensable ang bail hearing sa ganitong sitwasyon.
+          </p>
+
+          <p>
+            Kahit pa hindi kumontra ang prosecution, hindi maaaring basta magdesisyon ang judge nang walang tamang pag-evaluate sa evidence.
+          </p>
+
+          <p>
+            Sa hearing, prosecution ang may burden na ipakitang malakas ang evidence of guilt.
+          </p>
+
+          <p>
+            Pagkatapos, kailangang suriin ng judge ang ebidensiya at tukuyin kung strong nga ito.
+          </p>
+
+          <p>
+            Ang order granting or denying bail ay dapat nakabatay sa evaluation ng prosecution evidence, hindi sa simpleng impression o agreement ng mga partido.
+          </p>
+
+          <p>
+            Kaya maaaring may kasong mabigat ang charge pero payagan pa rin ang bail dahil hindi nakita ng korte na malakas ang evidence of guilt para sa purpose ng bail proceeding.
+          </p>
+
+          <p>
+            At mahalagang linawin:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagbibigay ng bail ay hindi acquittal.<br>
+              Ang pagtanggi ng bail ay hindi conviction.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi pa iyon ang final determination kung guilty o innocent ang accused.
+          </p>
+
+          <h2>
+            SINO ANG NAGTATAKDA KUNG MAGKANO ANG PYANSA?
+          </h2>
+
+          <p>
+            May Bail Bond Guide ang Department of Justice na ginagamit ng prosecutors sa pagrerekomenda ng bail amount sa criminal Information.
+          </p>
+
+          <p>
+            Pero recommendation iyon—hindi automatic final amount.
+          </p>
+
+          <p>
+            Ang judge ang may tungkuling mag-fix ng reasonable bail.
+          </p>
+
+          <p>
+            At hindi puwedeng pangalan lang ng offense ang pagbasehan.
+          </p>
+
+          <p>
+            Sa Rule 114, kailangang ikonsidera ang financial ability ng accused, nature at circumstances ng offense, possible penalty, character at reputation, age at health, weight of evidence, probability na haharap siya sa trial, previous forfeiture of bail, kung naging fugitive siya, at kung may iba pa siyang pending cases habang naka-bail.
+          </p>
+
+          <p>
+            Pagkatapos ng listahang iyon, diretso ang Rule:
+          </p>
+
+          <blockquote>
+            <p>
+              “Excessive bail shall not be required.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ibig sabihin, may discretion ang judge.
+          </p>
+
+          <p>
+            Pero hindi ibig sabihin na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Bahala na si Judge kung anong number ang gusto niya.”
+            </p>
+          </blockquote>
+
+          <p>
+            Judicial discretion iyon—kaya dapat nakatali sa legal factors at circumstances ng kaso.
+          </p>
+
+          <h2>
+            PAREHONG KASO—BAKIT PUWEDENG MAGKAIBA ANG BAIL?
+          </h2>
+
+          <p>
+            Ito ang bahagi na madaling mapagkamalang loophole.
+          </p>
+
+          <p>
+            Halimbawa:<br>
+            Pareho ang offense na kinakaharap nina A at B.<br>
+            Si A ay minimum-wage earner, may pamilya at halos walang ipon.<br>
+            Si B ay multimillionaire na may malalaking financial resources.
+          </p>
+
+          <p>
+            Kung pareho silang pagbabayarin ng ₱100,000, mukhang patas sa papel:
+          </p>
+
+          <blockquote>
+            <p>
+              same offense, same amount.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero pareho ba talaga ang epekto?
+          </p>
+
+          <p>
+            Kay B, maaaring mailabas agad ang halaga at makauwi siya.<br>
+            Kay A, maaaring katumbas iyon ng maraming buwang kita—kaya kahit legally entitled siyang mag-bail, mananatili siyang nakakulong dahil wala siyang perang mailabas.
+          </p>
+
+          <p>
+            At hindi lang ito theoretical argument.
+          </p>
+
+          <p>
+            May aktwal nang Philippine Supreme Court case na tumama mismo sa problema ng blanket bail.
+          </p>
+
+          <p>
+            Sa Chu v. Dolalas, isang judge ang nagtakda ng ₱50,000 bawat isa para sa 18 accused sa iisang robbery case.
+          </p>
+
+          <p>
+            Pinuna ito ng Supreme Court.
+          </p>
+
+          <p>
+            Bakit?
+          </p>
+
+          <p>
+            Dahil hindi porke pare-pareho ang offense ay automatic nang pare-pareho rin ang financial ability, character, health, record at iba pang circumstances ng bawat accused.
+          </p>
+
+          <p>
+            Diretsong sinabi ng Korte na hindi lahat ng 18 accused ay similarly situated, kaya kailangang ikonsidera nang individual ang mga factors sa pagtatakda ng bail.
+          </p>
+
+          <p>
+            Mahalaga ang distinction:
+            Hindi ibig sabihin na kailangang laging magkaiba ang bail ng magkaparehong kaso.
+          </p>
+
+          <p>
+            Posibleng matapos suriin ang circumstances ay reasonable pa ring pareho ang amount.
+          </p>
+
+          <p>
+            Ang punto ay hindi maaaring:
+          </p>
+
+          <blockquote>
+            <p>
+              “Pareho ang kaso, kaya kopyahin lang ang parehong presyo.”
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang Rule mismo ang nag-uutos na tingnan ang tao at circumstances—hindi lang ang crime label.
+          </p>
+
+          <p>
+            Kaya ang individualized bail ay hindi mismo loophole.
+            Sa katunayan, safeguard ito laban sa mechanical justice.
+          </p>
+
+          <p>
+            Ang nagiging problema ay kapag ang discretion ay walang maipakitang legitimate factual at legal basis.
+          </p>
+
+                    <h2>
+            DITO PUMAPASOK ANG MAHIRAP AT MAYAMAN
+          </h2>
+
+          <p>
+            May isang uncomfortable reality ang cash-based bail:
+            Parehong halaga ay maaaring hindi parehong bigat.
+          </p>
+
+          <p>
+            Ang ₱10,000 sa isang pamilyang sapat lang ang kita para sa pagkain, upa, gamot at pamasahe ay ibang usapan kumpara sa ₱10,000 para sa taong may milyon-milyong liquid resources.
+          </p>
+
+          <p>
+            At may Philippine research na nagpapakitang hindi hypothetical ang problemang ito.
+          </p>
+
+          <p>
+            Sa isang historical dataset mula sa isang all-male jail sa isang Metro Manila jurisdiction na sinuri sa published research ni criminologist Raymund Narag, tiningnan ang records ng 2,868 detainees.
+          </p>
+
+          <p>
+            Mahalagang linawin ang scope:
+            Hindi ito nationwide estimate at hindi ito larawan ng lahat ng Philippine detainees ngayon.
+          </p>
+
+          <p>
+            Local historical dataset ito na ginagamit para makita kung paano maaaring gumana ang economic at procedural barriers sa pretrial detention.
+          </p>
+
+          <p>
+            Sa dataset na iyon, 1,003 o 35% ang maaaring nakapag-bail sana kung mayroon silang financial resources o alam nila kung paano i-navigate ang proseso ng pag-post ng bail.
+          </p>
+
+          <p>
+            Ang average bail ng grupong iyon ay ₱10,000.
+          </p>
+
+          <p>
+            Iniulat ng study na hindi nila kayang bayaran ang amount.
+          </p>
+
+          <p>
+            Isipin ang ibig sabihin nito.
+          </p>
+
+          <p>
+            Hindi sinasabi ng finding na innocent silang lahat.<br>
+            Hindi rin sinasabing lahat ng nakakulong ay dapat pakawalan.
+          </p>
+
+          <p>
+            At lalong hindi ibig sabihin na 35% ng lahat ng detainees sa Pilipinas ngayon ay nasa eksaktong parehong sitwasyon.
+          </p>
+
+          <p>
+            Ang ipinapakita nito ay mas specific:
+            Sa actual Philippine jail setting na pinag-aralan, may mga taong legally maaaring makalaya habang nililitis ang kaso pero nanatili sa detention dahil sa kakulangan sa pera o kaalaman sa proseso.
+          </p>
+
+          <p>
+            Doon nagiging civic issue ang bail.
+          </p>
+
+          <p>
+            Dahil may malaking difference sa pagitan ng:
+          </p>
+
+          <blockquote>
+            <p>
+              “Hindi ka puwedeng makalaya dahil hinihingi ng batas na manatili kang detained.”
+            </p>
+          </blockquote>
+
+          <p>
+            at
+          </p>
+
+          <blockquote>
+            <p>
+              “Puwede kang makalaya ayon sa batas—pero wala kang pera para magawa iyon.”
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LANG PERA ANG HADLANG—PATI PAG-ALAM SA SISTEMA
+          </h2>
+
+          <p>
+            May isa pang mahalagang layer ang Philippine research.
+          </p>
+
+          <p>
+            Sa isang qualitative account sa Narag study, may detainee na nagkuwento tungkol sa isang informal na “pyansador” na nilapitan ng kanyang pamilya para tumulong sa pag-navigate ng bail process.
+          </p>
+
+          <p>
+            Ayon sa account, nawala ang perang inilaan sana para sa bail matapos itong ipagkatiwala sa intermediary.
+          </p>
+
+          <p>
+            Mahalagang huwag i-overstate ito:
+            Isang account iyon sa qualitative portion ng study—hindi sapat para sabihing widespread o universal na bahagi ng Philippine bail system ang “pyansador.”
+          </p>
+
+          <p>
+            Pero ipinapakita nito ang isang mas malawak na access problem:
+            Kapag komplikado ang proseso para sa ordinaryong tao, maaaring maging dependent siya sa informal intermediaries o sa impormasyong hindi niya kayang i-verify.
+          </p>
+
+          <p>
+            Dito makikita na access to justice is not simply:
+          </p>
+
+          <blockquote>
+            <p>
+              “May batas naman.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kailangang alam ng ordinaryong tao kung paano gamitin ang batas.<br>
+            Kailangang may access sa counsel.<br>
+            Kailangang naiintindihan kung anong remedy ang maaaring ihain, kung saan magbabayad, anong dokumento ang kailangan, at kung may alternatibong recognizance o reduced bail na maaaring hingin.
+          </p>
+
+          <p>
+            Kapag mahirap ang tao, kulang sa impormasyon at walang madaling access sa legal assistance, mas malaki ang posibilidad na ang karapatang malinaw sa papel ay hindi niya aktwal na magamit.
+          </p>
+
+          <p>
+            At may social consequence iyon.
+          </p>
+
+          <p>
+            Sa parehong research, lumitaw ang legal cynicism o pagkawala ng tiwala sa justice system sa ilang nakaranas ng prolonged pretrial incarceration.
+          </p>
+
+          <p>
+            Hindi mahirap makita kung bakit.
+          </p>
+
+          <p>
+            Kung ang sariling karanasan ng tao sa batas ay:
+          </p>
+
+          <blockquote>
+            <p>
+              “Puwede pala akong makalabas, pero hindi ko kayang bayaran,”
+            </p>
+          </blockquote>
+
+          <p>
+            maaaring ibang justice system ang nakikita niya kumpara sa taong may resources, abogado at madaling access sa proseso.
+          </p>
+
+          <h2>
+            KUNG WALANG PERA, CASH BAIL LANG BA ANG PARAAN?
+          </h2>
+
+          <p>
+            Hindi.
+            May Recognizance Act of 2012 o Republic Act No. 10389.
+          </p>
+
+          <p>
+            Ang recognizance ay isang paraan ng release para sa qualified person na unable to post bail dahil sa abject poverty, subject sa requirements ng batas at court determination.
+          </p>
+
+          <p>
+            Sa halip na cash o property bond, maaaring ma-release ang qualified accused sa custody ng isang qualified responsible person mula sa kanyang barangay, city o municipality.
+          </p>
+
+          <p>
+            Hindi ito automatic na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mahihirap, libre lahat ng bail.”
+            </p>
+          </blockquote>
+
+          <p>
+            May application, indigency requirements at iba pang statutory conditions.
+          </p>
+
+          <p>
+            Pero mahalaga ang prinsipyo:
+            Mismong batas ang kumikilala na hindi dapat maging dead end ang poverty sa usapin ng provisional liberty.
+          </p>
+
+          <p>
+            At mismong declaration of policy ng Recognizance Act ang tumutukoy sa protracted trials, prolonged resolution of cases, lack of legal representation, inability to post bail at jail congestion bilang mga problemang kailangang tugunan ng criminal justice system.
+          </p>
+
+                    <h2>
+            MAY SPECIAL TREATMENT BA PARA SA INDIGENT?
+          </h2>
+
+          <p>
+            May attempt ang sistema na bawasan ang economic disparity.
+          </p>
+
+          <p>
+            Sa DOJ Department Circular No. 011 noong 2023, maaaring irekomenda ng prosecutor para sa qualified indigent respondent sa covered bailable cases ang 50% ng recommended bail sa 2018 Bail Bond Guide o ₱10,000, whichever is lower.
+          </p>
+
+          <p>
+            Noong 2025, mismong Office of the Court Administrator ang nag-direct sa first- at second-level courts na pansinin at ikonsidera ang policy na ito.
+          </p>
+
+          <p>
+            At kapansin-pansin ang sinabi mismo ng OCA:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang benefits ng bail ay dapat mapakinabangan ng rich and poor alike.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero may napakahalagang caveat.
+          </p>
+
+          <p>
+            Ang reduced number na iyon ay recommendation ng prosecutor.<br>
+            Hindi nito inaagawan ang judge ng constitutional at judicial duty na magtakda ng appropriate bail.
+          </p>
+
+          <p>
+            Mismong OCA Circular No. 53-2025 ang muling nagsabi na dapat ikonsidera ang Bail Bond Guide, pero hindi ito controlling, at hindi dapat mag-require ang korte ng excessive bail.
+          </p>
+
+          <p>
+            Kaya hindi formula ang justice.<br>
+            May guide para mabawasan ang arbitrariness.
+          </p>
+
+          <p>
+            Pero may judicial evaluation para hindi rin maging bulag ang formula sa actual circumstances.
+          </p>
+
+          <h2>
+            KAPAG HINDI KAYA ANG HALAGA—PUWEDE BANG HILINGING BABAAAN ANG BAIL?
+          </h2>
+
+          <p>
+            Oo—pero kailangang paghiwalayin ang dalawang procedural situation.
+          </p>
+
+          <p>
+            Sa Rule 114, Section 20, maaaring i-increase o i-reduce ng korte ang amount ng bail after the accused has already been admitted to bail, upon good cause.
+          </p>
+
+          <p>
+            Iyan ang exact scope ng Section 20.
+          </p>
+
+          <p>
+            Para naman sa isang indigent accused na hindi pa kayang i-post ang initially fixed bail, hiwalay ang practical legal route.
+          </p>
+
+          <p>
+            Kinikilala sa PAO, DOJ at OCA guidance ang posibilidad na humiling ang defense ng reduction of bail kapag ang initially fixed amount ay lampas sa financial capability ng accused.
+          </p>
+
+          <p>
+            Maaaring iharap sa korte ang kanyang financial circumstances at iba pang relevant factors upang hilinging gawing reasonable ang amount.
+          </p>
+
+          <p>
+            Hindi rin automatic na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Sinabi kong mahirap ako, bababaan na.”
+            </p>
+          </blockquote>
+
+          <p>
+            Korte pa rin ang magde-decide.
+          </p>
+
+          <p>
+            At kailangan pa ring timbangin ang iba pang factors gaya ng nature at circumstances ng offense, possible penalty, weight of evidence, probability of appearance, flight risk at iba pang considerations sa Rule 114.
+          </p>
+
+          <p>
+            Kaya dalawang bagay ang hindi dapat paghaluin:<br>
+            Rule 114, Section 20 → increase o reduction after admission to bail, upon good cause.<br>
+            Indigent accused na hindi pa makapag-post ng initially fixed bail → maaaring humiling ng reduction sa ilalim ng applicable defense/PAO-DOJ-OCA guidance at judicial consideration ng financial ability at iba pang bail factors.
+          </p>
+
+          <p>
+            Ito ang isa pang dahilan kung bakit mahalaga ang legal representation at kaalaman.
+          </p>
+
+          <p>
+            Dahil ang karapatan na hindi mo alam na mayroon ka ay madaling maging karapatang hindi mo nagagamit.
+          </p>
+
+          <h2>
+            BAKIT MALAKING USAPIN ITO SA MGA KULUNGAN?
+          </h2>
+
+          <p>
+            Hindi hiwalay ang bail issue sa jail congestion.
+          </p>
+
+          <p>
+            Sa PSA data sourced from BJMP, 337 sa 485 BJMP jails nationwide ang classified as congested as of June 30, 2025.
+          </p>
+
+          <p>
+            Sa 337 congested jails na iyon, ang average congestion rate ay 290%.
+          </p>
+
+          <p>
+            Ayon mismo sa PSA explanation, katumbas iyon ng humigit-kumulang apat hanggang limang PDL na naghahati sa ideal space na para sana sa isang tao.
+          </p>
+
+          <p>
+            Sa congested jails sa NCR, ang average congestion rate ay 410%—roughly anim na PDL sa ideal cell space para sa isa.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na bail lang ang sanhi ng congestion.
+          </p>
+
+          <p>
+            Maraming factors:<br>
+            case delay,<br>
+            court congestion,<br>
+            prosecution,<br>
+            sentencing,<br>
+            custodial policies<br>
+            at iba pa.
+          </p>
+
+          <p>
+            Pero malinaw kung bakit kasama ang bail reform at recognizance sa mga ginagamit na paraan para bawasan ang unnecessary detention.
+          </p>
+
+          <p>
+            Kapag ang isang tao ay legally maaaring nasa labas habang nililitis ang kaso pero nananatili sa loob dahil lamang hindi niya kayang mag-post ng bail, hindi lang siya ang naaapektuhan.<br>
+            Dagdag din siya sa already congested detention system.
+          </p>
+
+                    <h2>
+            ANO ANG EPEKTO NG MATAGAL NA PAGKAKULONG BAGO PA ANG HATOL?
+          </h2>
+
+          <p>
+            Sa parehong historical Narag dataset mula sa isang local Metro Manila jail jurisdiction, ang 2,868 detainees sa sample ay may average pretrial incarceration na 658 days.
+          </p>
+
+          <p>
+            Sa mga kasong nasa first-level court sa sample, average stay ay 275 days.<br>
+            Sa RTC cases, average ay 680 days.
+          </p>
+
+          <p>
+            Muli, mahalagang tandaan:<br>
+            Historical local data ito, hindi current nationwide average.
+          </p>
+
+          <p>
+            Pero ipinapakita nito kung gaano kahaba maaaring maging ang pretrial incarceration sa aktwal na Philippine setting na pinag-aralan.
+          </p>
+
+          <p>
+            Ibig sabihin, ang salitang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Temporary detention habang may kaso”
+            </p>
+          </blockquote>
+
+          <p>
+            ay hindi laging ilang gabi o ilang linggo.
+          </p>
+
+          <p>
+            Para sa ilan, maaari itong maging buwan o taon.
+          </p>
+
+          <p>
+            At habang wala pa ring final conviction, tuloy ang epekto sa trabaho, kita, pamilya at kakayahang ihanda ang sariling depensa.
+          </p>
+
+          <p>
+            May mas malawak ding empirical evidence tungkol dito.
+          </p>
+
+          <p>
+            Sa isang 2018 study nina Will Dobbie, Jacob Goldin at Crystal Yang sa <em>American Economic Review</em>, gumamit ang researchers ng quasi-random assignment ng bail judges sa United States para pag-aralan ang causal effects ng pretrial detention.
+          </p>
+
+          <p>
+            Nakita nilang ang pretrial detention ay nagtaas ng probability of conviction, largely through increased guilty pleas, at nagpababa rin ng formal-sector employment pagkatapos.
+          </p>
+
+          <p>
+            Hindi ito Philippine estimate.
+          </p>
+
+          <p>
+            Magkaiba ang legal system, institutions at population—kaya hindi puwedeng basta sabihing eksaktong ganoon din ang effect dito.
+          </p>
+
+          <p>
+            Pero mahalaga ang mechanism na ipinapakita:<br>
+            Ang detention bago pa ang final judgment ay hindi neutral na waiting room.
+          </p>
+
+          <p>
+            May totoong epekto ang pagkawala ng kalayaan habang nililitis pa lamang ang kaso.
+          </p>
+
+          <h2>
+            SO DAPAT BA BABABAAN NA LANG ANG LAHAT NG BAIL?
+          </h2>
+
+          <p>
+            Hindi rin.
+          </p>
+
+          <p>
+            Diyan nagiging komplikado ang balance.
+          </p>
+
+          <p>
+            Kung sobrang baba naman ng bail para sa isang taong may napakalaking financial resources, mataas na flight risk, dating tumakas, maraming pending cases o ibang legitimate risk factors, maaaring mawalan naman ng saysay ang security.
+          </p>
+
+          <p>
+            Ang purpose ng bail ay hindi gawing pinakamura ang release.<br>
+            Ang purpose ay magtakda ng reasonable security para masigurong haharap ang accused.
+          </p>
+
+          <p>
+            Matagal nang sinabi ng Supreme Court sa <em>De la Camara v. Enage</em> na kapag may right to bail, hindi ito maaaring gawing meaningless sa pamamagitan ng excessive amount.
+          </p>
+
+          <p>
+            Ang halaga ay dapat sapat para sa legitimate purpose nito—hindi mas mataas kaysa reasonably necessary para makamit iyon.
+          </p>
+
+          <p>
+            Kaya may dalawang maling extreme:<br>
+            Sobrang taas na bail na nagiging <em>de facto</em> detention dahil mahirap ang accused.
+          </p>
+
+          <p>
+            At:<br>
+            Sobrang baba na bail na halos walang saysay bilang security para sa accused na may malaking resources o mataas na risk of flight.
+          </p>
+
+          <p>
+            Ang tamang tanong ay hindi:
+          </p>
+
+          <blockquote>
+            <p>
+              “Pinakamababa ba?”
+            </p>
+          </blockquote>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “Reasonable ba para sa layunin ng bail at sa actual circumstances ng taong ito?”
+            </p>
+          </blockquote>
+
+          <h2>
+            EH KUNG MAKAPANGYARIHAN ANG AKUSADO—HINDI BA PUWEDENG PABORAN?
+          </h2>
+
+          <p>
+            Iyan ang totoong danger ng discretion.
+          </p>
+
+          <p>
+            Pero kailangang paghiwalayin ang discretion at arbitrariness.
+          </p>
+
+          <p>
+            May discretion ang judge dahil hindi magkakapareho ang circumstances ng lahat ng accused.
+          </p>
+
+          <p>
+            Pero hindi legal na dahilan ang:
+          </p>
+
+          <blockquote>
+            <p>
+              “Mayaman.”<br>
+              “Kilalang tao.”<br>
+              “May koneksiyon.”<br>
+              “Kaibigan.”<br>
+              “Makapangyarihan.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ang lawful considerations ay iyong nasa Rule 114 at iba pang relevant circumstances na may koneksiyon sa purpose ng bail.
+          </p>
+
+          <p>
+            Kaya kapag dalawang accused ang pareho ang offense pero malayo ang bail amount, hindi sapat na sabihing:
+          </p>
+
+          <blockquote>
+            <p>
+              “Ayan, special treatment.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero valid ding hindi basta maniwala na:
+          </p>
+
+          <blockquote>
+            <p>
+              “Discretion kasi ng judge.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ang mas matinong tanong ay:<br>
+            Ano ang factual at legal basis ng pagkakaiba?
+          </p>
+
+          <p>
+            Kung may legitimate difference sa financial capacity, flight risk, record, weight of evidence o ibang relevant factor, maaaring justified ang different amount.<br>
+            Kung wala, doon nagiging legitimate ang concern sa arbitrary treatment.
+          </p>
+
+          <p>
+            Dahil ang discretion ay hindi blank check.<br>
+            Ito ay kapangyarihang kailangang maipaliwanag sa ilalim ng batas.
+          </p>
+
+          <h2>
+            SAAN NAPUPUNTA ANG CASH BAIL?
+          </h2>
+
+          <p>
+            Isa pang common misconception:<br>
+            Hindi automatic na kinikita ng gobyerno ang cash bail na ibinayad.
+          </p>
+
+          <p>
+            Sa Rule 114, ang cash deposit ay itinuturing na bail.
+          </p>
+
+          <p>
+            Maaari itong ma-apply sa lawful fine at costs, at ang excess ay ibabalik sa accused o sa taong nagdeposito.
+          </p>
+
+          <p>
+            Kapag acquitted ang accused, dismissed ang kaso, o na-execute na ang judgment sa paraang nagka-cancel ng bail obligation, may rules para sa cancellation ng bail.<br>
+            Kapag naman hindi humarap ang accused kapag required at hindi natugunan ang legal requirements pagkatapos ma-declare ang forfeiture, maaaring magkaroon ng judgment laban sa bond.
+          </p>
+
+          <p>
+            Kaya mali ang simpleng equation na:
+          </p>
+
+          <blockquote>
+            <p>
+              Nagbayad ng ₱100,000 bail = kumita ang gobyerno ng ₱100,000.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ganoon.
+          </p>
+
+          <p>
+            Habang deposit pa iyon na subject sa bail obligation, fiduciary money iyon—pondong hawak <em>in trust</em> ayon sa court accounting rules.
+          </p>
+
+                    <h2>
+            HAWAK LANG BA IYAN NG KORTE? MAY AUDIT BA?
+          </h2>
+
+          <p>
+            May accounting controls.
+          </p>
+
+          <p>
+            Sa court rules, collections from bail bonds at ibang fiduciary collections ay kailangang ideposito sa authorized government depository arrangements.
+          </p>
+
+          <p>
+            Hindi dapat maging perang nasa personal na drawer, account o bulsa ng judge o court employee.
+          </p>
+
+          <p>
+            Ang Fiduciary Fund ay itinuturing na trust fund, at withdrawals generally require lawful court authority at prescribed signatures.
+          </p>
+
+          <p>
+            Kapag na-forfeit na ang bail, ibang usapan na iyon.
+          </p>
+
+          <p>
+            Under court fiscal rules, forfeited bail bonds at net interest income from Fiduciary Funds accrue to the General Fund, subject sa remittance rules.
+          </p>
+
+          <p>
+            At oo, may public audit framework.
+          </p>
+
+          <p>
+            Article IX-D ng Constitution gives the Commission on Audit authority over government revenues, receipts, expenditures at funds or property owned or held in trust by the Government.
+          </p>
+
+          <p>
+            May aktwal ding Supreme Court administrative cases kung saan financial audits uncovered shortages, delayed deposits o mishandling ng court fiduciary funds at cash bonds, at napapanagot ang court personnel.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi lamang theoretical ang accountability mechanism.
+          </p>
+
+          <h2>
+            ANG MAS MALALIM NA PROBLEMA
+          </h2>
+
+          <p>
+            Sa papel, madaling sabihin:
+          </p>
+
+          <blockquote>
+            <p>
+              “Pareho naman silang may karapatang mag-bail.”
+            </p>
+          </blockquote>
+
+          <p>
+            Pero ang right na iyon ay maaaring magkaiba ang tunay na halaga depende sa buhay ng taong gumagamit nito.
+          </p>
+
+          <p>
+            Para sa isang may resources, ang bail ay maaaring administrative inconvenience lamang.
+          </p>
+
+          <p>
+            Para sa isang mahirap, ang parehong halaga ay maaaring mangahulugan ng:<br>
+            trabahong mawawala,<br>
+            kita na titigil,<br>
+            pamilyang mawawalan ng suporta,<br>
+            at mga buwan ng pagkakakulong bago pa mapatunayang guilty.
+          </p>
+
+          <p>
+            Kaya ang equality sa bail ay hindi kasing-simple ng:
+          </p>
+
+          <blockquote>
+            <p>
+              “Same crime, same price.”
+            </p>
+          </blockquote>
+
+          <p>
+            Minsan, ang pare-parehong presyo ang mismong nagreresulta sa hindi pare-parehong access sa liberty.
+          </p>
+
+          <p>
+            Pero hindi rin ibig sabihin na dapat awtomatikong bababaan ang bail dahil lamang mahirap ang accused.
+          </p>
+
+          <p>
+            Ang financial ability ay isang factor, hindi ang nag-iisang factor.
+          </p>
+
+          <p>
+            Kailangan pa ring tingnan ang offense, penalty, evidence, flight risk, past behavior at iba pang legitimate considerations.
+          </p>
+
+          <h2>
+            ITO ANG DAPAT TANDAAN SA PYANSA
+          </h2>
+
+          <p>
+            Ang bail ay hindi patunay na mahina ang kaso.<br>
+            Ang kawalan ng bail ay hindi patunay na guilty na ang accused.<br>
+            Ang malaking bail ay hindi automatic na mas makatarungang bail.<br>
+            Ang maliit na bail ay hindi automatic na special treatment.<br>
+            At ang parehong bail amount sa parehong offense ay hindi automatic na equality.
+          </p>
+
+          <p>
+            Ang dapat bantayan ay kung pareho ang legal standard na ginagamit—at may sapat na factual basis ang resultang inilalapat sa bawat tao.
+          </p>
+
+          <p>
+            Dahil ang hustisya ay hindi dapat maging:
+          </p>
+
+          <blockquote>
+            <p>
+              May pera, may kalayaan;<br>
+              Walang pera, kulong muna.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi rin dapat maging:
+          </p>
+
+          <blockquote>
+            <p>
+              May kapangyarihan, maliit lang ang epekto ng rules.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang bail ay hindi presyo ng pagiging inosente.<br>
+            Hindi rin ito bayad para takasan ang kaso.
+          </p>
+
+          <p>
+            Ito ay security para masigurong haharap ang isang taong hindi pa nahahatulan habang nagpapatuloy ang proseso.
+          </p>
+
+          <p>
+            At doon dapat sinusukat ang sistema:<br>
+            Hindi kung pare-pareho ang numero sa papel—kundi kung ang discretion ay ginagamit nang may legal na dahilan, walang excessive bail, walang paboritismo, at hindi ginagawang parusa ang kahirapan bago pa man magkaroon ng hatol.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / Batayan
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              1987 Philippine Constitution, Article III, Sections 13–14; Article IX-D, Section 2 — right to bail, presumption of innocence, prohibition against excessive bail, at COA audit authority.
+            </li>
+
+            <li>
+              Rule 114, Revised Rules of Criminal Procedure — definition at forms of bail; matter of right; pre-conviction bail involving reclusion perpetua/life imprisonment; discretionary bail after RTC conviction; bail hearing; factors sa pagtatakda ng amount; Section 20 increase/reduction after admission to bail; forfeiture, cancellation at final-judgment rules.
+            </li>
+
+            <li>
+              Supreme Court jurisprudence on bail hearings, kabilang ang A.M. No. RTJ-24-066 (2024) — mandatory judicial evaluation kapag kailangang tukuyin kung strong ang evidence of guilt.
+            </li>
+
+            <li>
+              Chu v. Dolalas, A.M. No. MTJ-93-796 (1996) — individualized determination of bail; identical ₱50,000 bail para sa 18 accused na hindi naman lahat similarly situated.
+            </li>
+
+            <li>
+              De la Camara v. Enage, G.R. Nos. L-32951-2 (1971) — constitutional prohibition against excessive bail at requirement na reasonable ang amount para sa legitimate purpose nito.
+            </li>
+
+            <li>
+              Republic Act No. 10389, Recognizance Act of 2012 — recognizance para sa qualified indigent accused at statutory recognition ng inability to post bail, lack of legal representation, prolonged proceedings at jail congestion.
+            </li>
+
+            <li>
+              DOJ Department Circular No. 011 (2023) at OCA Circular No. 53-2025 — reduced bail recommendations para sa qualified indigent respondents; Bail Bond Guide as guide rather than controlling judicial amount; guidance relevant sa indigent accused whose initially fixed bail exceeds financial capability.
+            </li>
+
+            <li>
+              Raymund E. Narag, <em>Exploring the Consequences of Prolonged Pretrial Incarceration: Evidence from a Local Jurisdiction in the Philippines</em> — historical local dataset mula sa isang all-male Metro Manila jail jurisdiction; pretrial detention, bail affordability/access at legal-cynicism findings.
+            </li>
+
+            <li>
+              Philippine Statistics Authority / Bureau of Jail Management and Penology, <em>Congestion Rate Summary Statistics of BJMP Congested Jails</em>, as of June 30, 2025 — 337 congested jails out of 485 at 290% average congestion among congested facilities.
+            </li>
+
+            <li>
+              Will Dobbie, Jacob Goldin &amp; Crystal S. Yang, <em>American Economic Review</em> (2018) — empirical research on causal consequences of pretrial detention; ginamit bilang international supporting evidence, hindi bilang Philippine estimate.
+            </li>
+
+            <li>
+              Supreme Court issuances on Judiciary Fiduciary Funds and court financial accountability — handling, deposit, withdrawal at disposition ng cash bail and forfeited bail; kasama ang audit responsibility over funds held in trust.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
