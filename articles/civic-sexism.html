@@ -1,1 +1,1658 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa sexism, gender stereotypes, prejudice, at kung bakit mas lumalalim lang ang hati kapag sexism din ang isinasagot sa sexism."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-sexism.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-sexism.html"
+>
+
+<title>KAPAG SEXISM ANG SAGOT SA SEXISM—MAS LUMALALIM LANG ANG HATI | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    KAPAG SEXISM ANG SAGOT SA SEXISM—MAS LUMALALIM LANG ANG HATI
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-sexism.png"
+      alt="Simbolikong paglalarawan ng lumalalim na hidwaan sa pagitan ng kasarian, kung saan ang sexism ay sinasagot din ng panibagong sexism at lalo lamang pinapalawak ang hati."
+    >
+          
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>“No man is loyal.”</p>
+
+  <p>Kaya raw kung mag-aasawa ka rin naman, piliin mo na ang mayamang lalaki.</p>
+
+  <p>Dahil kung masasaktan at iiyak ka rin lang daw, mas mabuti nang gawin iyon sa mamahaling sasakyan kaysa sa public transportation.</p>
+
+  <p>Puwedeng nakakatawa bilang meme.<br>
+  Puwedeng sabihin na joke lang.</p>
+
+  <p>Pero kapag hinimay mo ang mensahe, dalawang problema agad ang makikita:<br>
+  Ginawang katangian ng lahat ng lalaki ang pagtataksil.<br>
+  At pagkatapos, ginawang pera at lifestyle ang consolation prize sa isang relasyong wala nang loyalty.</p>
+
+  <p>Ang masama, hindi nito itinatama ang sexist thinking.</p>
+
+  <p>Pinapalitan lang nito ng panibagong stereotype—at binibigyan pa ng bagong dahilan ang magkabilang panig para lalo nilang husgahan ang isa’t isa.</p>
+
+  <h2>ANG PROBLEMA SA “NO MAN IS LOYAL”</h2>
+
+  <p>May mga lalaking nanloloko.<br>
+  May mga babaeng nanloloko.</p>
+
+  <p>May taong sinungaling, manipulative, abusive o irresponsible.</p>
+
+  <p>Pero ibang claim na ang sabihing:</p>
+
+  <blockquote>
+    <p>“NO MAN IS LOYAL.”</p>
+  </blockquote>
+
+  <p>Hindi na iyan criticism sa isang behavior.<br>
+  Categorical judgment na iyan sa isang buong grupo.</p>
+
+  <p>Sa psychology, matagal nang pinag-aaralan kung paano maaaring mabuo ang maling association sa pagitan ng isang grupo at isang behavior.</p>
+
+  <p>Sa classic experiments nina David Hamilton at Robert Gifford noong 1976, ipinakita nila ang isang mekanismo ng <em>illusory correlation</em>: kapag nagco-occur ang statistically infrequent o distinctive na events, maaaring ma-overestimate ng observers ang association ng mga ito.</p>
+
+  <p>Hindi direktang tungkol sa gender o infidelity ang kanilang experiments. Pero mahalaga ang mechanism na ipinakita nito—kung paano maaaring mabuo o lumakas ang maling association sa pagitan ng isang grupo at isang behavior dahil sa salience at distinctiveness.</p>
+
+  <p>Hindi nito ibig sabihin na bawat stereotype ay galing sa iisang cognitive mechanism.</p>
+
+  <p>Pero mahalaga ang lesson:<br>
+  Ang madaling maalalang masamang halimbawa ay hindi awtomatikong representative sample ng buong grupo.</p>
+
+  <p>At kapag gender na ang pinag-uusapan, may isa pang problema.</p>
+
+  <p>Ipinapakita ng malawak na review ng psychological research na ang gender stereotypes ay maaaring makaapekto sa kung anong impormasyon ang napapansin natin, kung paano natin ito binibigyang-kahulugan, at kung ano ang mas madaling naaalala natin tungkol sa sarili at ibang tao.</p>
+
+  <p>Kaya kung ang expectation mo na ay:</p>
+
+  <blockquote>
+    <p>“Manloloko ang lalaki.”</p>
+  </blockquote>
+
+  <p>Mas madaling mapansin at maalala ang lalaking nanloko kaysa sa napakaraming ordinaryong relasyon na walang viral betrayal story.</p>
+
+  <p>At pagkatapos sasabihin:</p>
+
+  <blockquote>
+    <p>“Kita mo? Ganyan talaga sila.”</p>
+  </blockquote>
+
+  <p>Doon nagsisimulang mapagkamalang ebidensya ang isang halimbawa na tugma lamang sa dati nang paniniwala.</p>
+
+  <h2>KAPAG ANG TAO AY NAGING LABEL NA LANG</h2>
+
+  <p>May isa pang konsepto sa psychology na mahalaga rito: <strong>PSYCHOLOGICAL ESSENTIALISM.</strong></p>
+
+  <p>Ito ang tendency na isipin na ang mga miyembro ng isang social category ay may iisang malalim, inherent at relatively stable na “nature” na nagpapaliwanag kung bakit ganoon sila.</p>
+
+  <p>Halimbawa:</p>
+
+  <blockquote>
+    <p>“Ganyan talaga ang lalaki.”<br>
+    “Ganyan talaga ang babae.”<br>
+    “Natural sa kanila iyan.”</p>
+  </blockquote>
+
+  <p>Sa research tungkol sa gender at psychological essentialism, ang essentialist reasoning ay tumutukoy sa pag-aakalang ang differences ng mga grupo ay nagmumula sa inherently different natures ng mga miyembro nito.</p>
+
+  <p>May broader research din na sumusuri sa implications nito sa rigid stereotypes, intergroup relations at prejudice.</p>
+
+  <p>Dito mapanganib ang absolute statement.</p>
+
+  <p>Hindi na individual ang hinahatulan.<br>
+  Category na ang nagiging verdict.</p>
+
+  <p>Hindi na:</p>
+
+  <blockquote>
+    <p>“May lalaking nagtaksil.”</p>
+  </blockquote>
+
+  <p>Kundi:</p>
+
+  <blockquote>
+    <p>“Lalaki kasi.”</p>
+  </blockquote>
+
+  <p>At kapag nasanay tayo rito, madaling gawin din sa kabilang direksiyon:</p>
+
+  <p>Hindi na:</p>
+
+  <blockquote>
+    <p>“May babaeng inuuna ang financial status.”</p>
+  </blockquote>
+
+  <p>Kundi:</p>
+
+  <blockquote>
+    <p>“Babae kasi. Pera lang ang habol.”</p>
+  </blockquote>
+
+  <p>Parehong shortcut.<br>
+  Parehong nawawala ang tao sa likod ng label.</p>
+
+  <h2>GENDER-BASED PREJUDICE AY HINDI LANG HARAPANG PANG-IINSULTO</h2>
+
+  <p>Mahalaga ring maging eksakto rito.</p>
+
+  <p>Ang gender-based prejudice at stereotyping ay hindi lamang iyong lantad na:</p>
+
+  <blockquote>
+    <p>“Mahina ang babae.”<br><br>
+    o<br><br>
+    “Masama ang lalaki.”</p>
+  </blockquote>
+
+  <p>Sa classic work nina Peter Glick at Susan Fiske, ipinakita nilang mas komplikado ang sexist attitudes toward women kaysa simpleng lantad na hostility.</p>
+
+  <p>Ang kanilang <em>Ambivalent Sexism Theory</em> ay nag-distinguish ng hostile at tinatawag nilang benevolent sexism toward women—magkaibang tono, pero parehong nakaugnay sa traditional assumptions tungkol sa gender roles at relations.</p>
+
+  <p>At lumawak pa nang husto ang research mula noon.</p>
+
+  <p>Isang 2023 systematic review ang nag-screen ng 1,870 potentially relevant articles at nag-full-review ng 654 eligible articles.</p>
+
+  <p>Sa literature na nireview, lumitaw ang limang pangunahing research domains: social ideologies, violence, workplace, stereotypes at intimate relationships.</p>
+
+  <p>Sa kabuuan ng literature, nakita ng reviewers ang malawak na empirical support sa papel ng hostile at benevolent sexism sa pagpapanatili ng traditional gender relations at gendered power differences.</p>
+
+  <p>May hiwalay ding research sina Glick at Fiske tungkol sa hostile at benevolent prejudices at stereotypes about men, gamit ang <em>Ambivalence Toward Men Inventory</em>.</p>
+
+  <p>Pero mahalaga ang guardrail:<br>
+  Hindi ibig sabihin nito na identical ang historical context, social power, o consequences ng lahat ng stereotypes laban sa babae at lalaki.</p>
+
+  <p>Hindi kailangang gawing false equivalence ang usapan.</p>
+
+  <p>Ang punto ay mas simple:<br>
+  Kahit sino ang target, kapag ginawa mong permanenteng character flaw ng isang buong gender ang ginagawa ng ilang tao, stereotyping na ang ginagawa mo—hindi na individual accountability.</p>
+
+<h2>DITO PUWEDENG MABUO ANG FEEDBACK LOOP NG GENDER WAR</h2>
+
+<p>Isipin ang cycle:<br>
+May lalaking nanloko.<br>
+Kumalat ang kuwento.</p>
+
+<p>Nagiging:</p>
+
+<blockquote>
+  <p>“ALL MEN CHEAT.”</p>
+</blockquote>
+
+<p>Tapos may sasagot:</p>
+
+<blockquote>
+  <p>“Kung ganoon din naman, humanap ka na lang ng mayaman.”</p>
+</blockquote>
+
+<p>May makakabasa naman sa kabilang panig:</p>
+
+<blockquote>
+  <p>“Ayan. Pera lang talaga ang habol ng babae.”</p>
+</blockquote>
+
+<p>Pagkatapos may babae namang makakakita ng ganoong statement at sasagot:</p>
+
+<blockquote>
+  <p>“See? Men hate women.”</p>
+</blockquote>
+
+<p>At umiikot na naman.</p>
+
+<p>Sa huli, bawat grupo ay kumukuha ng pinakamasamang halimbawa ng kabilang grupo at ginagawa itong character description ng lahat.</p>
+
+<p>Matagal nang pinag-aaralan sa intergroup psychology ang relasyon ng social categorization, stereotyping, in-group/out-group bias, prejudice at mas malalang forms of social hostility.</p>
+
+<p>Hindi ibig sabihin na pinatutunayan ng research ang eksaktong viral chain na nasa halimbawa sa itaas.</p>
+
+<p>Ang punto ay may kilalang psychological mechanisms kung saan ang group categorization at bias ay maaaring magpalakas ng antagonistic na pagtingin sa out-group.</p>
+
+<p>At dito mahalagang makita:<br>
+Hindi pinatutunayan ng bawat bagong example ang stereotype.<br>
+Pero maaari nitong palakasin ang paniniwala ng taong naghahanap na ng confirmation.</p>
+
+<p>Kaya ang:</p>
+
+<blockquote>
+  <p>“NO MAN IS LOYAL”<br><br>
+  at<br><br>
+  “ALL WOMEN ARE MATERIALISTIC”</p>
+</blockquote>
+
+<p>ay maaaring magpalakas sa isa’t isa kahit parehong hindi makatwirang universal conclusion.</p>
+
+<h2>PERO HINDI BA TOTOO NA MAHALAGA ANG PERA SA PAGPILI NG PARTNER?</h2>
+
+<p>Oo.</p>
+
+<p>At dito kailangan ang nuance.</p>
+
+<p>Hindi materialistic automatically ang isang taong naghahanap ng financially stable na partner.</p>
+
+<p>Ang financial responsibility, trabaho, economic compatibility at kakayahang magplano para sa pamilya ay legitimate relationship considerations.</p>
+
+<p>Hindi rin kailangang magkunwari na walang average sex differences na nakikita sa ilang mate-preference research.</p>
+
+<p>Sa isang malaking 2020 study involving 14,399 participants across 45 countries, women on average placed relatively greater importance than men on a prospective partner's financial prospects, habang men on average placed relatively greater importance on youth and physical attractiveness.</p>
+
+<p>Pero tandaan ang salitang:<br>
+<strong>AVERAGE.</strong></p>
+
+<p>Hindi “lahat.”</p>
+
+<p>Hindi ibig sabihin na bawat babae ay pera ang pangunahing sukatan.<br>
+Hindi rin ibig sabihin na bawat lalaki ay physical appearance lamang ang habol.</p>
+
+<p>At higit sa lahat:<br>
+Ang average difference sa isang grupo ay hindi personality description ng bawat individual na kabilang sa grupong iyon.</p>
+
+<p>May isa pang mahalagang complication.</p>
+
+<p>Sa speed-dating research nina Paul Eastwick at Eli Finkel, lumitaw ang traditional sex differences nang tanungin ang participants tungkol sa kanilang stated ideal preferences.</p>
+
+<p>Pero nang tingnan ang romantic interest nila sa mga totoong taong aktuwal nilang nakilala, hindi lumitaw ang parehong sex differences sa relationship ng attractiveness at earning prospects sa kanilang romantic interest.</p>
+
+<p>Hindi rin mahusay na na-predict ng kanilang dating stated ideals kung sino ang aktuwal nilang nanaisin sa speed-dating event.</p>
+
+<p>Ibig sabihin:<br>
+Ang preference na sinasabi natin sa questionnaire ay hindi palaging eksaktong katumbas ng kung sino ang magugustuhan natin kapag totoong tao na ang kaharap natin.</p>
+
+<p>Kaya hindi sapat ang:</p>
+
+<blockquote>
+  <p>“Women, on average, valued this more.”</p>
+</blockquote>
+
+<p>para tumalon sa:</p>
+
+<blockquote>
+  <p>“Women are materialistic.”</p>
+</blockquote>
+
+<p>Magkaibang claim iyon.</p>
+
+<h2>PREFERENCE AY HINDI PREJUDICE</h2>
+
+<p>Gusto mo ng financially stable na partner?<br>
+Valid.</p>
+
+<p>Gusto mo ng magandang career?<br>
+Valid.</p>
+
+<p>Gusto mo ng taong kayang makipagsabayan sa lifestyle at financial goals mo?<br>
+Valid.</p>
+
+<p>May standards ka sa relationship?<br>
+Valid.</p>
+
+<p>Pero ibang usapan na kapag sinabi mong:</p>
+
+<blockquote>
+  <p>“Pare-pareho namang manloloko ang lalaki, kaya piliin mo na lang ang pinakamayaman.”</p>
+</blockquote>
+
+<p>Dahil hindi na lang financial preference ang pinag-uusapan.<br>
+Ginawa mo nang premise na wala nang halaga ang character dahil pare-pareho naman daw silang walang loyalty.</p>
+
+<p>At kapag pera ang ipinresenta bilang compensation sa betrayal, nagbabago rin ang framing ng relasyon:<br>
+Kung masasaktan ka rin, dapat comfortable ka.<br>
+Kung lolokohin ka rin, dapat may luxury.<br>
+Kung wala rin namang faithful, piliin mo ang may assets.</p>
+
+<p>Pero bakit kailangang tanggapin ang original premise?<br>
+Bakit kailangang mamili sa pagitan ng betrayal sa public transportation at betrayal sa mamahaling sasakyan?</p>
+
+<p>May pangatlong possibility:</p>
+
+<blockquote>
+  <p>HUWAG GAWING NORMAL ANG BETRAYAL.</p>
+</blockquote>
+
+<p>Hindi ka naghahanap ng mas magandang lugar kung saan iiyak.<br>
+Naghahanap ka ng relasyon kung saan ang loyalty, respeto at accountability ay bahagi ng standard.</p>
+
+<h2>ANG “CRY IN A LAMBORGHINI” AY HINDI LANG TUNGKOL SA KOTSE</h2>
+
+<p>Kaya appealing ang ganitong meme dahil clever ang trade-off:<br>
+Pain versus comfort.<br>
+Heartbreak versus status.</p>
+
+<p>Kung unavoidable daw ang una, bawiin sa pangalawa.</p>
+
+<p>Pero may socio-cultural message itong dala:<br>
+Kung hindi mo makokontrol ang character ng partner, kontrolin mo na lang ang economic reward na makukuha mo sa relationship.</p>
+
+<p>At kapag paulit-ulit nating nire-repackage ang relasyon bilang ganitong transaction, madali ring mabuhay ang stereotypes na:</p>
+
+<blockquote>
+  <p>“Provider lang ang lalaki.”<br><br>
+  At<br><br>
+  “Pera lang ang habol ng babae.”</p>
+</blockquote>
+
+<p>Ironically, iyong meme na gustong ipakita na hopeless ang mga lalaki ay maaari ring gamitin ng ibang tao bilang convenient example para sabihing hopeless naman ang motives ng mga babae.</p>
+
+<p>Pero mahalagang malinaw:</p>
+
+<blockquote>
+  <p>HINDI NITO PINATUTUNAYANG MATERIALISTIC ANG MGA BABAE.</p>
+</blockquote>
+
+<p>Hindi kayang patunayan ng isang meme, viral quote o ilang taong may ganoong pananaw ang pagkatao ng isang buong gender.</p>
+
+<p>Ang ginagawa nito ay nagbibigay ng stereotype-confirming example sa taong mayroon nang ganoong prejudice.</p>
+
+<p>Iyan ang mahalagang distinction.</p>
+
+<p>Kung mali ang pagtalon mula:</p>
+
+<blockquote>
+  <p>“May lalaking nanloko”</p>
+</blockquote>
+
+<p>papunta sa:</p>
+
+<blockquote>
+  <p>“Walang lalaking loyal,”</p>
+</blockquote>
+
+<p>Mali rin ang pagtalon mula:</p>
+
+<blockquote>
+  <p>“May babaeng nagsabing piliin ang mayaman”</p>
+</blockquote>
+
+<p>papunta sa:</p>
+
+<blockquote>
+  <p>“Materialistic ang mga babae.”</p>
+</blockquote>
+
+<p>Parehong maling paraan ng pag-generalize.</p>
+
+          <h2>AT SA SOCIAL MEDIA, MAY REWARD ANG MATINDING STATEMENT</h2>
+
+<p>May dahilan din kung bakit mas madaling makakuha ng attention ang:</p>
+
+<blockquote>
+  <p>“NO MAN IS LOYAL.”</p>
+</blockquote>
+
+<p>kaysa:</p>
+
+<blockquote>
+  <p>“May individual at contextual differences sa fidelity at relationship behavior.”</p>
+</blockquote>
+
+<p>Hindi specifically tungkol sa gender war ang isang malaking 2021 study nina William Brady at colleagues, kaya hindi dapat i-overclaim ang findings nito.</p>
+
+<p>Pero relevant ang mechanism na nakita nila.</p>
+
+<p>Sa dalawang observational studies, sinuri nila ang histories ng 7,331 Twitter users at 12.7 million tweets, kasama ang dalawang behavioral experiments.</p>
+
+<p>Nakita nilang ang positive social feedback sa expressions of moral outrage ay nag-predict ng mas mataas na posibilidad ng future outrage expression.</p>
+
+<p>Nakita rin nilang naaapektuhan ang expression ng users ng expressive norms ng kanilang social networks.</p>
+
+<p>Sa madaling salita:<br>
+Kapag may pahayag na paulit-ulit na nire-reward ng reaction at approval, mas maaari itong maulit.</p>
+
+<p>Kapag may matinding statement na paulit-ulit na nire-reward ng attention, likes, shares o approval, may social environment kung saan maaaring mahikayat ang pag-uulit ng parehong klase ng expression.</p>
+
+<p>Hindi nito ibig sabihin na algorithm lang ang dahilan ng sexism.<br>
+Hindi rin nito direktang pinatutunayan na ito mismo ang dahilan kung bakit kumakalat ang “all men” o “all women” posts.</p>
+
+<p>Pero ipinapakita nito kung bakit mahalagang pag-isipan ang social rewards na ibinibigay natin sa extreme at outrage-heavy content.</p>
+
+<p>Dahil kung ang pinakamatinding generalization ang laging pinakamalakas ang reaction, mas mahirap maging attractive ang:</p>
+
+<blockquote>
+  <p>“May problema rito, pero hindi lahat pare-pareho.”</p>
+</blockquote>
+
+<h2>HINDI MO NILALABANAN ANG SEXISM SA PAMAMAGITAN NG PANIBAGONG SEXISM</h2>
+
+<p>Kung mali ang:</p>
+
+<blockquote>
+  <p>“Women are only after money,”</p>
+</blockquote>
+
+<p>hindi nagiging tama ang:</p>
+
+<blockquote>
+  <p>“No man is loyal.”</p>
+</blockquote>
+
+<p>At kung mali ang:</p>
+
+<blockquote>
+  <p>“Men are naturally cheaters,”</p>
+</blockquote>
+
+<p>hindi rin magiging valid ang sagot na:</p>
+
+<blockquote>
+  <p>“Kaya piliin mo na lang ang mayaman.”</p>
+</blockquote>
+
+<p>Hindi kailangang protektahan ang masasamang lalaki para kondenahin ang maling generalization.<br>
+Hindi rin kailangang insultuhin ang lahat ng babae para punahin ang materialistic na mensahe ng isang statement.</p>
+
+<p>May mas consistent na standard:</p>
+
+<blockquote>
+  <p>KONDENAHIN ANG ACTUAL BEHAVIOR.</p>
+</blockquote>
+
+<p>Cheating? Kondenahin.<br>
+Manipulation? Kondenahin.<br>
+Gold-digging behavior? Kondenahin.<br>
+Financial irresponsibility? Kondenahin.<br>
+Abuse? Kondenahin.<br>
+Dishonesty? Kondenahin.</p>
+
+<p>Pero huwag kunin ang kasalanan ng isang tao at ipasa sa milyon-milyong taong kapareho lamang niya ng gender.</p>
+
+<h2>DAHIL HINDI LANG ITO TUNGKOL SA DATING</h2>
+
+<p>Kapag normal nating ginagamit ang:</p>
+
+<blockquote>
+  <p>“Men are…”<br>
+  “Women are…”</p>
+</blockquote>
+
+<p>bilang punchline, comeback o supposedly “real talk,” tinuturuan din natin ang isa’t isa na category muna ang tingnan bago character.</p>
+
+<p>Hindi na:<br>
+Ano ba talaga ang ginawa ng taong ito?<br>
+Ano ang evidence?<br>
+Ano ang character niya?<br>
+Ano ang circumstances?</p>
+
+<p>Kundi:<br>
+Lalaki kasi.<br>
+Babae kasi.</p>
+
+<p>At doon lumiliit ang isang komplikadong tao hanggang maging stereotype na lang.</p>
+
+<p>Hindi rin ito hiwalay sa mas malawak na social environment.</p>
+
+<p>UN Women has emphasized the role of media, marketing at advertising sa pagpapatuloy ng gender stereotypes at harmful norms, habang maaari ring gamitin ang parehong cultural spaces para hamunin ang stereotypes sa halip na palakasin ang mga ito.</p>
+
+<p>Kaya mas malaki ito kaysa sa isang viral quote.<br>
+Ito ay tungkol sa klase ng social environment na ginagawa nating normal.</p>
+
+<p>Environment ba kung saan:<br>
+kapag may isang lalaking nagkamali, lalaki ang problema?<br>
+At kapag may isang babaeng nagkamali, babae ang problema?</p>
+
+<p>O environment kung saan marunong tayong magsabi:</p>
+
+<blockquote>
+  <p>“Mali ang ginawa ng taong ito—pero hindi ko kailangang imbentuhin ang pagkatao ng isang buong gender para mapatunayan iyon.”</p>
+</blockquote>
+
+<h2>REAL TALK</h2>
+
+<p>Hindi mo kailangang maniwalang perfect ang mga lalaki para sabihing mali ang:</p>
+
+<blockquote>
+  <p>“No man is loyal.”</p>
+</blockquote>
+
+<p>Hindi mo rin kailangang sabihing walang babaeng materialistic para kondenahin ang:</p>
+
+<blockquote>
+  <p>“All women only want money.”</p>
+</blockquote>
+
+<p>May masasamang lalaki.<br>
+May masasamang babae.</p>
+
+<p>May loyal na lalaki.<br>
+May loyal na babae.</p>
+
+<p>May taong pera ang inuuna.<br>
+May taong character ang inuuna.</p>
+
+<p>May mayaman na faithful.<br>
+May mayaman na cheater.</p>
+
+<p>May mahirap na faithful.<br>
+May mahirap na cheater.</p>
+
+<blockquote>
+  <p>DAHIL ANG GENDER AY HINDI PERSONALITY TEST.<br>
+  AT ANG BANK ACCOUNT AY HINDI MORALITY TEST.</p>
+</blockquote>
+
+<p>Ang problema sa absolute gender statements ay hindi lamang dahil “nakaka-offend.”</p>
+
+<p>Mas malalim.</p>
+
+<blockquote>
+  <p>BINUBURA NITO ANG INDIVIDUAL ACCOUNTABILITY AT PINAPALITAN NG COLLECTIVE ACCUSATION.</p>
+</blockquote>
+
+<p>Kapag isang lalaki ang gumawa ng mali, hindi kailangang maging kasalanan ng lahat ng lalaki.<br>
+Kapag isang babae ang gumawa ng mali, hindi kailangang maging patunay laban sa lahat ng babae.</p>
+
+<p>At kapag ginawa natin iyon sa isa’t isa, hindi natin inaayos ang sexism.</p>
+
+          <p><strong>LALO LANG NATIN ITONG PINAPALALA.</strong></p>
+
+<p>Kaya kung gusto nating bawasan ang gender war, hindi sapat na kondenahin lamang ang stereotype kapag tayo ang target.</p>
+
+<p>Kailangan consistent ang prinsipyo kahit kabilang gender ang binabanatan.</p>
+
+<p>Dahil kung gusto nating tratuhin bilang individual ang sarili nating gender, kailangan handa rin tayong ibigay ang parehong fairness sa iba.</p>
+
+<blockquote>
+  <p>MALING UGALI ANG KONDENAHIN—HINDI BUONG GENDER ANG HATULAN.</p>
+</blockquote>
+
+<p>Dahil kapag ang sagot natin sa isang stereotype ay panibagong stereotype, walang naitama.</p>
+
+<blockquote>
+  <p>MAS LUMALALIM LANG ANG HATI.</p>
+</blockquote>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / Further Reading
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Hamilton, D. L. &amp; Gifford, R. K. (1976). <em>Illusory Correlation in Interpersonal Perception: A Cognitive Basis of Stereotypic Judgments.</em> Journal of Experimental Social Psychology.
+    </li>
+
+    <li>
+      Ellemers, N. (2018). <em>Gender Stereotypes.</em> Annual Review of Psychology.
+    </li>
+
+    <li>
+      Heyman, G. D. &amp; Giles, J. W. (2006). <em>Gender and Psychological Essentialism.</em> Enfance.
+    </li>
+
+    <li>
+      Glick, P. &amp; Fiske, S. T. (1996). <em>The Ambivalent Sexism Inventory: Differentiating Hostile and Benevolent Sexism.</em> Journal of Personality and Social Psychology.
+    </li>
+
+    <li>
+      Glick, P. &amp; Fiske, S. T. (1999). <em>The Ambivalence Toward Men Inventory: Differentiating Hostile and Benevolent Beliefs About Men.</em> Psychology of Women Quarterly.
+    </li>
+
+    <li>
+      Bareket, O. &amp; Fiske, S. T. (2023). <em>A Systematic Review of the Ambivalent Sexism Literature: Hostile Sexism Protects Men's Power; Benevolent Sexism Guards Traditional Gender Roles.</em> Psychological Bulletin.
+    </li>
+
+    <li>
+      Hewstone, M., Rubin, M. &amp; Willis, H. (2002). <em>Intergroup Bias.</em> Annual Review of Psychology.
+    </li>
+
+    <li>
+      Walter, K. V. et al. (2020). <em>Sex Differences in Mate Preferences Across 45 Countries: A Large-Scale Replication.</em> Psychological Science.
+    </li>
+
+    <li>
+      Eastwick, P. W. &amp; Finkel, E. J. (2008). <em>Sex Differences in Mate Preferences Revisited: Do People Know What They Initially Desire in a Romantic Partner?</em> Journal of Personality and Social Psychology.
+    </li>
+
+    <li>
+      Brady, W. J. et al. (2021). <em>How Social Learning Amplifies Moral Outrage Expression in Online Social Networks.</em> Science Advances.
+    </li>
+
+    <li>
+      UN Women Asia-Pacific. (2023). <em>Dismantling Gender Stereotypes in Media, Marketing and Advertising.</em>
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
