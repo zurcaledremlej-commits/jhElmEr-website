@@ -1,1 +1,1983 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang fact-based Civic Explainer ng jhElmEr tungkol sa kung paano maaaring lumaki ang corruption kapag ang maliliit na paglabag ay paulit-ulit na napapalampas, nagiging routine, at unti-unting nagiging normal sa loob ng isang sistema."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-bitak.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-bitak.html"
+>
+
+<title>KAPAG ANG MALI AY PINALAMPAS AT NAGING NORMAL | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    KAPAG ANG MALI AY PINALAMPAS AT NAGING NORMAL
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-bitak.png"
+      alt="Simbolikong paglalarawan ng isang bahay na may lumalaking butas sa bubong bilang representasyon ng maliliit na paglabag na unti-unting nagiging normal at lumalaki ang pinsala sa isang sistema."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Hindi lahat ng malaking problema ay malaki na agad sa simula.
+  </p>
+
+  <p>
+    Minsan, nagsisimula ito sa maliit na paglabag na walang agarang consequence.
+  </p>
+
+  <p>
+    Hindi pa malaki ang pinsala.<br>
+    Hindi pa maraming apektado.<br>
+    Hindi pa nakakagulat ang numero.<br>
+    Hindi pa sapat para maging headline.
+  </p>
+
+  <p>
+    Kaya madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Maliit lang naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero may mas delikadong nangyayari kapag ang maliit na mali ay paulit-ulit na nakakalusot.
+  </p>
+
+  <p>
+    Ang dating <strong>“hindi dapat”</strong> ay unti-unting nagiging <strong>“nangyayari naman.”</strong><br>
+    Ang <strong>“nangyayari naman”</strong> ay nagiging <strong>“matagal nang ganyan.”</strong>
+  </p>
+
+  <p>
+    At kapag umabot sa puntong hindi na ito kinukuwestiyon dahil nakasanayan na—hindi na lang isang maling gawain ang problema.
+    Ang mali mismo ang nagsisimulang maging normal.
+  </p>
+
+  <p>
+    Para mas madaling makita kung paano ito nangyayari, isipin ang isang bahay.
+  </p>
+
+  <p>
+    May maliit na butas sa bubong.<br>
+    Hindi pa naman tumutulo.<br>
+    Hindi pa basa ang sahig.<br>
+    Hindi pa sira ang kisame.
+  </p>
+
+  <p>
+    Kaya madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Maliit lang naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Lumipas ang panahon.
+  </p>
+
+  <p>
+    Hindi inayos ang butas.
+  </p>
+
+  <p>
+    Paulit-ulit itong nakita pero hindi naging priority dahil wala pa namang malaking pinsala.
+  </p>
+
+  <p>
+    Unti-unting lumawak.
+  </p>
+
+  <p>
+    May moisture nang pumapasok. May bahagi nang humihina. May pagkasirang nabubuo sa loob kahit hindi pa halata mula sa ibaba.
+  </p>
+
+  <p>
+    Hanggang dumating ang malakas na ulan.
+  </p>
+
+  <p>
+    Biglang tumulo.<br>
+    Nabasa ang kisame.<br>
+    Nasira ang gamit.
+  </p>
+
+  <p>
+    At saka lamang nagiging lantad kung gaano na kalaki ang problemang matagal nang pinabayaan.
+  </p>
+
+  <p>
+    Pero hindi talaga ngayon lang nagsimula ang problema.<br>
+    Ngayon lang naging napakalaki ng epekto para hindi na ito mapansin.
+  </p>
+
+  <p>
+    At dito pumapasok ang isang mahalagang usapin tungkol sa kurapsyon:
+    Hindi lahat ng problemang ngayon lamang naging lantad ay ngayon lamang nagsimula.
+  </p>
+
+  <h2>
+    ANG MALAKING BUTAS AY PUWEDENG MAGSIMULA SA MALIIT
+  </h2>
+
+  <p>
+    Ganoon din maaaring lumaki ang corruption sa isang organisasyon o institusyon.
+  </p>
+
+  <p>
+    Hindi lahat ng malalaking anomalya ay nagsisimula bilang malaking operasyon.
+    Minsan nagsisimula ito sa maliit na paglabag na hindi nahuli.
+  </p>
+
+  <p>
+    Sa shortcut na pinalampas.<br>
+    Sa questionable transaction na hindi nasuri nang maayos.<br>
+    Sa conflict of interest na hindi sinita.<br>
+    Sa inspection na naging routine na lamang.<br>
+    Sa red flag na walang follow-through.<br>
+    Sa maling gawain na ilang ulit nang nangyari pero wala namang nakitang seryosong consequence.
+  </p>
+
+  <p>
+    At kapag paulit-ulit itong nangyayari, may mapanganib na pagbabago:<br>
+    Ang dating <strong>“hindi dapat”</strong> ay puwedeng maging <strong>“minsan lang.”</strong><br>
+    Ang <strong>“minsan lang”</strong> ay nagiging <strong>“ginagawa naman ng iba.”</strong>
+  </p>
+
+  <p>
+    At ang <strong>“ginagawa naman ng iba”</strong> ay puwedeng mauwi sa:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganito talaga rito.”
+    </p>
+  </blockquote>
+
+  <p>
+    May research para rito.
+  </p>
+
+  <p>
+    Sa organizational research nina Blake Ashforth at Vikas Anand, ipinaliwanag kung paano maaaring maging normalized ang corruption sa pamamagitan ng tatlong magkakaugnay na proseso:
+  </p>
+
+  <p>
+    <strong>INSTITUTIONALIZATION</strong> — ang dating isolated na maling gawain ay naisasama sa regular na structures at processes.<br>
+    <strong>RATIONALIZATION</strong> — nagkakaroon ng mga paliwanag para gawing katanggap-tanggap ang mali.<br>
+    <strong>SOCIALIZATION</strong> — natututuhan ng mga bagong pumapasok na ito pala ang nakasanayang paraan ng paggawa.
+  </p>
+
+  <p>
+    Mahalaga ang huling punto.
+  </p>
+
+  <p>
+    Ibig sabihin, maaaring magpatuloy ang corrupt practice kahit hindi na pareho ang lahat ng taong unang nagsimula nito—dahil ang behavior ay nakapasok na sa routine, norms at sistema.
+  </p>
+
+  <h2>
+    KAPAG WALANG AGARANG PINSALA, MADALING BUMABA ANG ALARMA
+  </h2>
+
+  <p>
+    May kaparehong konsepto sa safety research na tinatawag na <em>normalization of deviance</em>.
+  </p>
+
+  <p>
+    Kapag paulit-ulit na nilalabag ang tamang standard pero walang agarang disaster, maaaring unti-unting bumaba ang sensitivity ng mga tao sa panganib.
+  </p>
+
+  <blockquote>
+    <p>
+      “Ginawa naman dati, wala namang nangyari.”<br>
+      “Matagal na namang ganyan.”<br>
+      “Okay pa naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hanggang ang deviation mismo ang nagiging normal.
+  </p>
+
+  <p>
+    Sa isang systematic review ng 33 academic studies sa high-risk industries, kabilang sa mga paulit-ulit na factors na nauugnay sa <em>normalization of deviance</em> ang risk normalization, organizational culture, pressure, at kawalan ng nakikitang negative consequences.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na pareho ang industrial accident at government corruption.
+  </p>
+
+  <p>
+    Ang relevant na human-behavior lesson ay mas simple:
+    Kapag ang maling gawain ay paulit-ulit na nangyayari nang walang agarang nakikitang pinsala o consequence, mas madali itong mawalan ng urgency.
+  </p>
+
+  <p>
+    Parang butas sa bubong.<br>
+    Dahil wala pang tagas, parang wala pang problema.
+  </p>
+
+            <h2>
+    MAY SOCIAL EFFECT DIN ANG “GINAGAWA NAMAN NG IBA”
+  </h2>
+
+  <p>
+    Hindi rin hiwalay sa impluwensiya ng iba ang mga desisyon ng tao.
+  </p>
+
+  <p>
+    Nakikita natin kung ano ang ginagawa ng iba.<br>
+    Nakikita natin kung ano ang pinapalampas.<br>
+    At nakikita rin natin kung ano ang may consequence—o wala.
+  </p>
+
+  <p>
+    Sa isang cross-country laboratory study sa Netherlands, Russia, Italy at China, nakita ng researchers ang evidence ng contagion effect.
+    Sa pooled results, tumataas ang bribing behavior ng participants kapag nakikita nilang mas mataas din ang bribing behavior ng iba.
+  </p>
+
+  <p>
+    Laboratory experiment ito at hindi direktang sukatan ng Philippine government corruption, pero ipinapakita nito kung bakit mahalaga ang social norms sa pagkalat o pagpigil ng corrupt behavior.
+  </p>
+
+  <p>
+    Kaya mahalaga ang institutional response sa maliit pa lamang na anomalya.
+  </p>
+
+  <p>
+    Dahil ang consequence ay hindi lang pagpaparusa sa isang tao.
+  </p>
+
+  <p>
+    Nagpapadala rin ito ng mensahe sa buong sistema:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hanggang dito ang limitasyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    At kapag walang ganitong malinaw na limitasyon, kabaligtaran ang maaaring matutuhan:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mukhang puwede naman.”
+    </p>
+  </blockquote>
+
+  <h2>
+    PERO MAG-INGAT SA SALITANG “KINUNSINTI”
+  </h2>
+
+  <p>
+    Dito kailangang maging eksakto.
+  </p>
+
+  <p>
+    Madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Alam nila iyan at kinunsinti nila.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kung partikular na administrasyon, opisyal o ahensiya na ang tinutukoy, hindi sapat ang analogy para patunayan iyon.
+  </p>
+
+  <p>
+    May malaking pagkakaiba ang:
+    Matagal nang umiiral ang problema at may partikular na taong alam ang problema, may kapangyarihan at tungkuling kumilos, pero sadyang hinayaang magpatuloy ito.
+  </p>
+
+  <p>
+    Para makatarungang sabihing may aktuwal na pagkunsinti, mahalaga ang ebidensiya:
+  </p>
+
+  <p>
+    May naunang audit finding ba?<br>
+    May formal complaint ba?<br>
+    May inspection report ba?<br>
+    May documented red flag ba?<br>
+    Sino ang nakatanggap nito?<br>
+    Ano ang authority at duty niya?<br>
+    May ginawa ba?<br>
+    Kung wala, bakit?<br>
+    At may sapat bang ebidensiya na ang failure to act ay higit pa sa ordinaryong pagkakamali o simpleng negligence?
+  </p>
+
+  <p>
+    Ito ang dahilan kung bakit hindi dapat gawing automatic equation ang:
+  </p>
+
+  <blockquote>
+    <p>
+      PALPAK NA PROYEKTO = KURAPSYON.
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring may palpak na proyekto dahil sa poor design, incompetence, procurement failure, weak supervision, maintenance failure, engineering error, gross negligence, fraud, corruption—o kombinasyon ng mga ito.
+  </p>
+
+  <p>
+    Ang bawat accusation ay kailangang suportado ng sarili nitong ebidensiya.
+  </p>
+
+  <h2>
+    MAY LEGAL NA PAGKAKAIBA ANG PAGKAKAMALI AT GRAFT
+  </h2>
+
+  <p>
+    Hindi lang ito usapin ng pagiging “fair.”
+  </p>
+
+  <p>
+    May legal reason kung bakit kailangang maging precise.
+  </p>
+
+  <p>
+    Sa Republic Act No. 3019 o Anti-Graft and Corrupt Practices Act, kabilang sa Section 3(e) ang pagdudulot ng undue injury sa gobyerno o pagbibigay ng unwarranted benefit, advantage o preference sa pamamagitan ng manifest partiality, evident bad faith, o gross inexcusable negligence.
+  </p>
+
+  <p>
+    Paulit-ulit ding nilinaw ng Supreme Court na kailangang mapatunayan ang kinakailangang elements ng offense.
+  </p>
+
+  <p>
+    Hindi sapat ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May mali, kaya corrupt.”
+    </p>
+  </blockquote>
+
+  <p>
+    Halimbawa, ang “evident bad faith” ay higit sa simpleng bad judgment, habang ang “gross inexcusable negligence” ay mas mataas na threshold kaysa ordinaryong pagkakamali o kapabayaan.
+  </p>
+
+  <p>
+    Kaya kung gusto nating maningil ng tunay na accountability, mas mahalaga ang ebidensiya kaysa pinakamalakas na accusation.
+  </p>
+
+  <p>
+    Dahil kapag lahat ng failure tinawag nating corruption nang walang distinction, mas madaling butasin pati ang mga kasong may totoong ebidensiya.
+  </p>
+
+  <h2>
+    BAKIT MALAKAS ANG ANALOGY NA ITO SA FLOOD CONTROL?
+  </h2>
+
+  <p>
+    Dahil ang flood control ay proteksiyon.
+  </p>
+
+  <p>
+    Hindi dekorasyon ang dike.<br>
+    Hindi display ang drainage.<br>
+    Hindi accomplishment board ang pumping station.<br>
+    Hindi numero lamang sa budget ang flood-control structure.
+  </p>
+
+  <p>
+    Ginagastusan ang mga ito para bawasan ang panganib at pinsala.
+  </p>
+
+  <p>
+    At dito kailangang linawin ang isa pang bagay:
+    Hindi corruption ang lumilikha ng ulan.
+    Hindi rin corruption lamang ang dahilan ng lahat ng pagbaha.
+  </p>
+
+  <p>
+    Ang tindi at tagal ng ulan, kondisyon ng ilog at watershed, drainage capacity, land use, urbanization, elevation, tides, climate conditions, maintenance at engineering design ay ilan lamang sa maraming factors na maaaring makaapekto sa flood risk.
+  </p>
+
+  <p>
+    Pero hindi rin tama ang kabilang extreme:
+  </p>
+
+  <blockquote>
+    <p>
+      “Umuulan naman talaga, kaya wala nang kinalaman ang kalidad ng flood-control system.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung ang isang proyekto ay ginawa para bawasan ang hazard o vulnerability, mahalaga kung:
+  </p>
+
+  <p>
+    totoo itong umiiral;<br>
+    tama ang design;<br>
+    ayon sa specification ang pagkakagawa;<br>
+    sapat ang materyales;<br>
+    tama ang lokasyon;<br>
+    functional ito;<br>
+    at nama-maintain pagkatapos maitayo.
+  </p>
+
+  <p>
+    Kung ang pondong dapat sana'y gumawa ng proteksiyon ay nauwi sa ghost project, substandard construction, manipulated procurement o ibang anomalya, hindi nito kailangang likhain ang ulan para maging mahalaga.
+  </p>
+
+  <p>
+    Maaari nitong alisin o pahinain ang proteksiyong binayaran sana para bawasan ang pinsala.
+  </p>
+
+  <p>
+    Sa public procurement research ng OECD, itinuturing na high-risk area ang procurement dahil sa laki ng financial interests, complexity ng proseso at interaction ng public at private actors.
+  </p>
+
+  <p>
+    Kabilang sa identified post-award risks ang substandard delivery, collusion with supervising officials, at invoices para sa goods o services na hindi naman na-supply.
+  </p>
+
+  <p>
+    Iyan ang equivalent ng bubong na dapat sana'y proteksiyon—pero ang bahagi ng proteksiyong binayaran ay mahina, kulang, o wala pala.
+  </p>
+
+            <h2>
+    HINDI LANG MORAL EXPECTATION ANG PAGBANTAY SA PONDO
+  </h2>
+
+  <p>
+    May malinaw na constitutional at legal backbone ang accountability.
+  </p>
+
+  <p>
+    Sinasabi ng Article II, Section 27 ng 1987 Constitution na dapat panatilihin ng Estado ang honesty at integrity sa public service at gumawa ng positive and effective measures laban sa graft and corruption.
+  </p>
+
+  <p>
+    Sa Section 28, policy ng Estado ang full public disclosure ng transactions involving public interest, subject sa reasonable conditions prescribed by law.
+  </p>
+
+  <p>
+    Mas diretso pa ang Article XI, Section 1:
+  </p>
+
+  <blockquote>
+    <p>
+      “Public office is a public trust.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mga public officer at employee ay kailangang accountable sa mamamayan at maglingkod nang may responsibility, integrity, loyalty at efficiency.
+  </p>
+
+  <p>
+    May constitutional audit mechanism din.
+  </p>
+
+  <p>
+    Sa Article IX-D, may kapangyarihan at tungkulin ang Commission on Audit na suriin ang paggamit ng government funds at magtakda ng auditing rules para maiwasan at ma-disallow ang irregular, unnecessary, excessive, extravagant o unconscionable expenditures.
+  </p>
+
+  <p>
+    At binibigyan din ng Constitution ang Office of the Ombudsman ng kapangyarihang mag-imbestiga sa acts or omissions ng public officials na maaaring illegal, unjust, improper o inefficient, at tukuyin ang causes ng inefficiency, mismanagement, fraud at corruption.
+  </p>
+
+  <p>
+    Sa madaling salita:
+    Hindi kailangang hintaying lumaki ang butas at lumala ang pinsala bago ito siyasatin.
+  </p>
+
+  <h2>
+    MAY GUARDRAILS DIN SA PROCUREMENT
+  </h2>
+
+  <p>
+    Ang current government procurement framework ay Republic Act No. 12009 o New Government Procurement Act.
+  </p>
+
+  <p>
+    Kabilang sa governing principles nito ang transparency, competitiveness, accountability, participatory public monitoring, sustainability at value for money.
+  </p>
+
+  <p>
+    Kasama mismo sa definition ng infrastructure projects sa batas ang flood control at drainage.
+  </p>
+
+  <p>
+    Mahalaga ring hindi gawing retroactive ang batas sa maling paraan.
+  </p>
+
+  <p>
+    Ang RA 12009 ay nag-take effect noong August 13, 2024, habang ang implementing rules nito ay nag-take effect noong February 25, 2025.
+  </p>
+
+  <p>
+    Ayon sa subsequent policy guidance ng Government Procurement Policy Board, ang procurement projects na na-publish bago February 25, 2025 ay patuloy na sakop ng RA 9184 at ng applicable IRR nito.
+  </p>
+
+  <p>
+    Ang three-year transitory period para sa full compliance sa RA 12009 ay reckoned mula May 14, 2025, nang aprubahan ng GPPB ang bagong Standard Procurement Forms, at umaabot hanggang May 15, 2028.
+  </p>
+
+  <p>
+    Sa transition period, maaari ring patuloy na gamitin ang ilang guidelines at forms na inilabas sa ilalim ng RA 9184 hangga't hindi pa nailalabas ang corresponding guidelines, forms at requirements sa ilalim ng RA 12009.
+  </p>
+
+  <p>
+    Kaya kung sinusuri ang isang lumang flood-control contract, kailangang tingnan kung kailan nagsimula ang procurement at kung anong batas, IRR, guidelines at transitory rules ang applicable rito—hindi basta gamitin pabalik ang kasalukuyang rules.
+  </p>
+
+  <blockquote>
+    <p>
+      Accountability requires context—not retroactive shortcuts.
+    </p>
+  </blockquote>
+
+  <h2>
+    AT HINDI ITO DAPAT ITURING NA “UGALING PILIPINO”
+  </h2>
+
+  <p>
+    May isa pang madaling explanation na dapat bantayan:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganyan naman talaga ang kultura natin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Problematiko iyan.
+  </p>
+
+  <p>
+    May historical scholarship tungkol sa patronage, personal connections, palakasan at corruption sa Philippine politics, pero hindi ibig sabihin na permanenteng genetic o cultural trait ng Pilipino ang corruption.
+  </p>
+
+  <p>
+    Sa isang 2025 historical-sociological study tungkol sa corruption at anti-corruption sa Pilipinas mula 1946, tinunton ni sociologist Marco Garrido kung paano nagbago sa paglipas ng panahon ang relasyon at tolerance ng mga Pilipino sa corruption at ang pag-usbong ng anti-corruption politics.
+  </p>
+
+  <p>
+    Ibig sabihin, may history ang corruption—pero may history din ang paglaban dito.
+  </p>
+
+  <p>
+    Mas kapaki-pakinabang kaysa sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganito talaga tayo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang itanong:
+  </p>
+
+  <p>
+    Anong behavior ang ginagantimpalaan ng sistema?<br>
+    Anong behavior ang tunay nitong pinaparusahan?
+  </p>
+
+  <p>
+    Kung nakikita ng mga tao na may consequence ang maling gawain, may signal ang sistema.
+    Kung nakikita nilang paulit-ulit itong nalulusutan, ibang signal naman ang natututunan.
+  </p>
+
+  <h2>
+    ANG PHILIPPINE FLOOD-CONTROL ISSUE AY HALIMBAWA—HINDI ANG BUONG PUNDASYON NG ARGUMENTO
+  </h2>
+
+  <p>
+    Mahalaga ang distinction na ito para manatiling timeless ang usapan.
+  </p>
+
+  <p>
+    Ang principle na “ang maliit na anomalya na hindi napuputol ay maaaring lumaki at ma-normalize” ay hindi nakadepende sa isang administration o isang scandal.
+  </p>
+
+  <p>
+    Pero may Philippine flood-control case na nagpapakitang hindi hypothetical ang risk.
+  </p>
+
+  <p>
+    Noong August 2025, iniulat ng Malacañang, batay sa initial DPWH information, na may 9,855 flood-control projects mula July 2022 hanggang May 2025 na nagkakahalaga ng ₱545.64 billion.
+  </p>
+
+  <p>
+    Sa mga iyon, 6,021 projects na mahigit ₱350 billion ang halaga ang walang specific description sa dataset kung anong uri ng flood-control structure ang itinayo, inayos o ni-rehabilitate.
+  </p>
+
+  <p>
+    Ang kakulangan ng description ay hindi awtomatikong patunay ng corruption, pero isa itong halimbawa kung bakit mahalaga ang transparent at verifiable project data.
+  </p>
+
+  <p>
+    Noong January 19, 2026, sinabi ng Department of Justice na 14 flood-control projects ang na-identify nitong ghost o non-existent.
+  </p>
+
+  <p>
+    Sinabi rin nitong ang ilang kaugnay na kaso ay naihain na sa Sandiganbayan habang ang iba ay nasa preliminary investigation pa.
+  </p>
+
+  <p>
+    Noong August 20, 2026, sinabi naman ng Malacañang na nagpapatuloy pa rin ang mga imbestigasyon ng Ombudsman at DOJ sa mga proyektong maaaring ghost, substandard o ineffective.
+  </p>
+
+  <p>
+    Ibig sabihin, kailangang malinaw ang language:
+  </p>
+
+  <p>
+    allegation is not conviction;<br>
+    investigation is not final judgment;<br>
+    at ang liability ng bawat taong sangkot ay kailangang patunayan ayon sa ebidensiya at due process.
+  </p>
+
+  <p>
+    Pero hindi rin nito binubura ang legitimate public-interest question:
+    Paano nakalusot ang anumang ghost o substandard project na mapapatunayang totoo—at saang bahagi ng sistema nabigo ang pagsusuri at pagbabantay bago ito nakalusot?
+  </p>
+
+            <h2>
+    HINDI RIN SAPAT NA ISANG ADMINISTRASYON LANG ANG SURIIN KUNG MAS MATAGAL ANG PROBLEMA
+  </h2>
+
+  <p>
+    Dito eksaktong bumabalik ang analogy ng bubong.
+  </p>
+
+  <p>
+    Kung ngayon lang lumala ang tagas, hindi ibig sabihin na ngayon lang nagsimula ang sira sa bubong.
+  </p>
+
+  <p>
+    Noong September 2025, ang Independent Commission for Infrastructure ay inatasang siyasatin ang alleged irregularities sa flood-control at related infrastructure projects sa nakaraang sampung taon.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng administrasyon, opisyal o proyektong sakop ng sampung taon ay corrupt.
+  </p>
+
+  <p>
+    Ang ibig sabihin lamang:
+    Ang posibleng institutional problem ay kailangang tingnan sa mas mahabang timeline kaysa isang political term.
+  </p>
+
+  <p>
+    At dito napakahalaga ng isang distinction:
+  </p>
+
+  <blockquote>
+    <p>
+      ACCUMULATED PROBLEM DOES NOT MEAN EQUAL BLAME.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung may problemang minana ang isang administrasyon, hindi automatic na siya ang gumawa nito.
+    Kung may anomalya noong nakaraang administration, hindi rin automatic na alam o kasabwat ang lahat ng nasa gobyerno noon.
+  </p>
+
+  <p>
+    At kung kasalukuyang administrasyon naman ang nakadiskubre ng lumang problema, hindi rin ibig sabihin na wala na itong sariling responsibility pagkatapos matuklasan iyon.
+  </p>
+
+  <p>
+    Mas makatwirang itanong sa bawat yugto:
+  </p>
+
+  <p>
+    Ano ang nadatnan?<br>
+    Ano ang nalaman?<br>
+    Ano ang documented red flags?<br>
+    Ano ang ginawa para ayusin?<br>
+    Ano ang hindi ginawa?<br>
+    Anong bagong problemang lumitaw?<br>
+    Sino ang may authority at duty na kumilos?<br>
+    At ano ang kayang patunayan ng records?
+  </p>
+
+  <p>
+    Hindi namamana ang guilt dahil lamang nasa parehong gobyerno ka.
+    Pero hindi rin nabubura ang responsibility dahil lamang minana ang problema.
+  </p>
+
+  <blockquote>
+    <p>
+      Accountability follows evidence, authority, decisions and omissions—not political convenience.
+    </p>
+  </blockquote>
+
+  <h2>
+    MAS MAHAL AYUSIN ANG BUTAS KAPAG MATAGAL NANG PINABAYAAN
+  </h2>
+
+  <p>
+    Kapag maliit pa ang butas, maaaring simpleng repair lang ang kailangan.
+    Kapag lumaki na, hindi na lang bubong ang problema.
+  </p>
+
+  <p>
+    Pati kahoy.<br>
+    Pati kisame.<br>
+    Pati dingding.<br>
+    Pati gamit sa loob.
+  </p>
+
+  <p>
+    Ganoon din sa institutional corruption.
+  </p>
+
+  <p>
+    Habang mas matagal itong nagiging routine, maaaring mas maraming proseso ang masangkot.
+  </p>
+
+  <p>
+    Mas maraming taong matutong sumunod sa nakasanayan.
+    Mas maraming relationship at interest ang mabuo sa paligid nito.
+  </p>
+
+  <p>
+    At mas mahirap tukuyin kung saan nagsisimula ang indibidwal na wrongdoing at saan naman pumapasok ang structural failure.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang anti-corruption strategy na naghihintay lamang ng malaking scandal.
+  </p>
+
+  <p>
+    Kailangan ng sistemang nakakakita habang maliit pa:
+  </p>
+
+  <p>
+    transparent procurement;<br>
+    verifiable project locations at specifications;<br>
+    competitive bidding;<br>
+    independent inspection at quality testing;<br>
+    digital audit trails;<br>
+    publicly accessible project information;<br>
+    beneficial-ownership disclosure;<br>
+    protection sa legitimate whistleblowers;<br>
+    follow-through sa audit findings;<br>
+    at tunay na consequence kapag napatunayan ang wrongdoing.
+  </p>
+
+  <p>
+    Ang RA 12009 mismo ay may transparency, accountability, public monitoring at beneficial-ownership safeguards sa procurement framework.
+  </p>
+
+  <p>
+    Dahil ang pinakamagandang panahon para ayusin ang butas ay hindi kapag lubog na ang sala, kundi habang maliit pa lang ang butas.
+  </p>
+
+  <h2>
+    HINDI NOONG BUMUHOS ANG ULAN NAGSIMULA ANG BUTAS
+  </h2>
+
+  <p>
+    Kaya kapag may malaking corruption scandal na lumitaw, madaling tumingin lamang sa kung sino ang kasalukuyang nakaupo.
+  </p>
+
+  <p>
+    Madali ring gawin ang kabaligtaran at isisi lahat sa mga nauna.
+  </p>
+
+  <p>
+    Parehong kulang.
+  </p>
+
+  <p>
+    Mas mahalagang tingnan ang buong institutional timeline.
+  </p>
+
+  <p>
+    Kailan unang lumitaw ang red flags?<br>
+    Sino ang may alam?<br>
+    Sino ang may responsibilidad na sumuri?<br>
+    Ano ang ginawa?<br>
+    Ano ang hindi ginawa?<br>
+    Ano ang paulit-ulit na nakalusot?<br>
+    At kailan nagsimulang maging “normal” ang hindi dapat normal?
+  </p>
+
+  <p>
+    Dahil minsan, ang malaking pinsalang nakikita natin ngayon ay hindi problemang biglang ipinanganak ngayon.
+    Ito ang visible damage ng problemang matagal nang lumalaki.
+  </p>
+
+  <p>
+    At hindi rin nangangahulugan na lahat ng dumaan sa bahay ay pare-parehong may kasalanan.
+  </p>
+
+  <p>
+    Kailangang alamin kung sino ang gumawa ng butas.
+  </p>
+
+  <p>
+    Sino ang nakakita.<br>
+    Sino ang may kakayahang mag-ayos.<br>
+    Sino ang nagpalala.<br>
+    Sino ang nagtangkang magkumpuni.<br>
+    At sino ang nakinabang sa hindi pagkukumpuni.
+  </p>
+
+  <p>
+    Doon nagiging tunay ang accountability.
+  </p>
+
+  <blockquote>
+    <p>
+      ANG MALAKING BUTAS AY HINDI BIGLANG LUMITAW.<br>
+      NAGSIMULA IYAN SA MALIIT NA BUTAS NA HINDI PINANSIN DAHIL “WALA PA NAMANG TAGAS.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ganoon din ang corruption:
+  </p>
+
+  <p>
+    Kapag ang maliit na anomalya ay hindi napuputol,<br>
+    Kapag ang paglabag ay paulit-ulit na walang consequence,<br>
+    Kapag ang exception ay nagiging routine,<br>
+    At kapag ang mali ay natututuhang tawaging normal—hindi na lang isang maling gawain ang lumalaki.
+  </p>
+
+  <p>
+    Maaaring isang sistemang natututong mabuhay kasama nito ang nabubuo.
+  </p>
+
+  <p>
+    Kaya kapag dumating ang araw na malaki na ang pinsala, huwag lamang tumingin sa nakikita nating epekto.
+  </p>
+
+  <p>
+    Mas mahalagang itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      “GAANO KATAGAL NANG MAY PROBLEMA—AT BAKIT HINAYAANG LUMAKI BAGO ITO SERYOSOHIN?”
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      1987 Constitution of the Republic of the Philippines — Article II, Sections 27–28; Article IX-D, Section 2; Article XI, Sections 1 and 13 — LawPhil
+    </li>
+
+    <li>
+      Republic Act No. 3019 — Anti-Graft and Corrupt Practices Act — LawPhil
+    </li>
+
+    <li>
+      Republic Act No. 12009 — New Government Procurement Act — LawPhil
+    </li>
+
+    <li>
+      Government Procurement Policy Board — Implementing Rules and Regulations of RA 12009
+    </li>
+
+    <li>
+      Government Procurement Policy Board — Resolution No. 05-2025, policy guidance on the transitory provisions of RA 12009 and the continuing applicability of relevant RA 9184 rules during transition
+    </li>
+
+    <li>
+      Ashforth, B.E. &amp; Anand, V. — “The Normalization of Corruption in Organizations,” <em>Research in Organizational Behavior</em>, Vol. 25, 2003
+    </li>
+
+    <li>
+      Sedlar, N., Irwin, A., Martin, D., &amp; Roberts, R. — “A Qualitative Systematic Review on the Application of the Normalization of Deviance Phenomenon Within High-Risk Industries,” <em>Journal of Safety Research</em>, 2023 — DOI: 10.1016/j.jsr.2022.11.005
+    </li>
+
+    <li>
+      Schram, A., Zheng, J.D., &amp; Zhuravleva, T. — “Corruption: A Cross-Country Comparison of Contagion and Conformism,” <em>Journal of Economic Behavior &amp; Organization</em>, 2022 — DOI: 10.1016/j.jebo.2021.11.017
+    </li>
+
+    <li>
+      OECD — <em>Anti-Corruption and Integrity Outlook 2026: Integrity in Public Procurement</em>
+    </li>
+
+    <li>
+      Garrido, M. — “A Thousand Years of Corruption: A History of Corruption and Anti-corruption in the Philippines since 1946,” <em>Comparative Studies in Society and History</em>, 2025
+    </li>
+
+    <li>
+      Presidential Communications Office — Initial DPWH Flood-Control Project Data, August 12, 2025
+    </li>
+
+    <li>
+      Presidential Communications Office — Independent Commission for Infrastructure Investigation Mandate, September 2025
+    </li>
+
+    <li>
+      Philippine News Agency — DOJ Confirmation Regarding 14 Identified Ghost Flood-Control Projects, January 19, 2026
+    </li>
+
+    <li>
+      Presidential Communications Office — Continuing Flood-Control Investigations by DOJ and Ombudsman, August 20, 2026
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
