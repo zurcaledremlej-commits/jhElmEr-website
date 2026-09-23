@@ -1,1 +1,1876 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa Copycat Phenomenon—kung paano maaaring maging modelo ng paggaya ang isang naunang kilos, bakit mahalaga ang responsableng pagpapakita ng harmful behavior, at kung paano ito inuunawa ng psychology, criminology, at media research."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-copycat.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-copycat.html"
+>
+
+<title>KAPAG ANG NAKITA AY NAGING IDEYA PARA GAYAHIN | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  KAPAG ANG NAKITA AY NAGING IDEYA PARA GAYAHIN
+</h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-copycat.png"
+      alt="Simbolikong paglalarawan kung paano maaaring maging modelo ng paggaya ang paulit-ulit na pagpapakita ng isang harmful behavior sa media at social media, habang pinapanatili ang pagkakaiba ng awareness at demonstration."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May mga maling gawain na hindi na kailangang maisip ng susunod na gagawa mula sa simula.
+  </p>
+
+  <p>
+    <strong>MAY NAUNA NANG NAGPAKITA KUNG PAANO.</strong>
+  </p>
+
+  <p>
+    May estudyanteng pinahiya habang kinukunan ng video.
+    May sinampal, tinulak, tinakot, o pinagtripan—tapos tinawag na “prank.”
+    May dangerous challenge na ginawa bilang content, in-upload, at sinubukan din ng iba.
+    May violent o unethical incident na kinunan, ibinalita, nirepost, at paulit-ulit na ipinakita para malaman ng publiko.
+  </p>
+
+  <p>
+    Magkaiba ang dahilan kung bakit napunta sa screen ang mga ito.
+  </p>
+
+  <p>
+    Ang isa, <strong>MISMONG GINAWA PARA MAGING CONTENT.</strong><br>
+    Ang isa naman, <strong>IPINAKITA PARA MAGBALITA, MAGBIGAY-BABALA, O MAGKAROON NG AWARENESS.</strong>
+  </p>
+
+  <p>
+    Pero sa taong nakakakita, may isang posibilidad na hindi dapat balewalain:
+    <strong>HINDI LANG NIYA NALAMAN KUNG ANO ANG NANGYARI.</strong><br>
+    <strong>MAAARI RIN NIYANG MAKITA KUNG PAANO ITO GINAWA.</strong>
+  </p>
+
+  <p>
+    At dito nagiging mas mabigat ang tanong.
+    Kapag ang isang maling gawain ay nakita ng napakaraming tao, posible bang sa ilan, hindi lang ito manatiling isang bagay na kanilang napanood—kundi maging ideya o modelong maaari nilang gayahin?
+  </p>
+
+  <p>
+    Hindi ibig sabihin na lahat ng nakakakita ay gagaya.
+    Hindi rin ibig sabihin na bawat kahawig na insidenteng susunod ay bunga ng nauna.
+  </p>
+
+  <p>
+    Pero may pangalan ang phenomenon na sumusuri sa mismong posibilidad na ang isang naunang kilos ay maging modelo ng susunod na gagawa.
+  </p>
+
+  <p>
+    At matagal na itong pinag-aaralan sa psychology, criminology at media research:
+    <strong>COPYCAT PHENOMENON.</strong>
+  </p>
+
+  <h2>
+    HINDI LANG “PANGGAGAYA” ANG COPYCAT PHENOMENON
+  </h2>
+
+  <p>
+    Sa pinakasimpleng paliwanag, nangyayari ang copycat effect kapag ang isang naunang kilos, insidente, o paraan ng paggawa ay nagiging modelo o reference ng kahawig na kilos ng ibang tao.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na lahat ng nakakita ay gagaya.
+    Hindi rin sapat na magkamukha ang dalawang insidente para sabihing copycat ang isa.
+  </p>
+
+  <p>
+    Kung dalawang estudyante ang nambully sa magkaibang lugar, hindi automatic na ginaya ng isa ang isa.
+    Kung dalawang grupo ang gumawa ng magkahawig na prank, hindi iyon automatic na ebidensiya ng copycat effect.
+  </p>
+
+  <p>
+    Ang mahalagang tanong ay:<br>
+    <strong>MAY NAUNANG KILOS BANG NAGING MODELO NG SUMUNOD NA KILOS?</strong>
+  </p>
+
+  <p>
+    Ito mismo ang dahilan kung bakit mahirap pag-aralan ang copycat phenomenon.
+  </p>
+
+  <p>
+    Noong 2015, naglathala si criminologist Jacqueline Helfgott ng malawak na review na pinamagatang <em>“Criminal Behavior and the Copycat Effect.”</em>
+  </p>
+
+  <p>
+    Ang mahalagang punto ng review:
+    Maraming case accounts at related research ang nagbibigay ng dahilan para seryosohin ang copycat crime, pero limitado pa ang empirical research na direktang sumusukat kung gaano kalawak ang phenomenon.
+  </p>
+
+  <p>
+    Kaya hindi niya inilalarawan ang copycat effect bilang simpleng:
+    <strong>NAKITA → GINAYA.</strong>
+  </p>
+
+  <p>
+    Mas makatwirang tingnan ito bilang isang <em>continuum of influence.</em>
+  </p>
+
+  <p>
+    May mga kasong halos walang papel ang nakitang media o naunang insidente.
+    May mga kasong maaaring isa lamang ito sa maraming impluwensiya.
+    At may mga kasong ang naunang gawa mismo ang nagsilbing mahalagang modelo ng sumunod na gumawa.
+  </p>
+
+  <p>
+    Kasama rito ang interaction ng individual, situational, environmental, cultural at media-related factors.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi kailangang mamili sa dalawang extreme na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Lahat ng nakikita ay ginagaya.”
+    </p>
+
+    <p>
+      o
+    </p>
+
+    <p>
+      “Walang epekto ang nakikita.”
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong sobrang simple.
+  </p>
+
+  <h2>
+    MAY MGA DOCUMENTED COPYCAT CASES—PERO MAY LIMITASYON ANG EBIDENSIYA
+  </h2>
+
+  <p>
+    May mas direktang empirical evidence na rin sa ilang uri ng matinding violence.
+  </p>
+
+  <p>
+    Sa isang 2024 study nina Adam Lankford at Jason Silva, tinipon ng researchers ang 205 documented instances sa buong mundo mula 1966 hanggang 2022 kung saan ang isang public mass shooter o active shooter ay naging role model ng isang copycat.
+  </p>
+
+  <p>
+    Hindi lamang nila tinignan kung magkalapit ang petsa.
+    Ikinumpara nila ang documented copycats sa kanilang role models at sa simulated random matches.
+  </p>
+
+  <p>
+    Lumabas na ang copycats ay significantly more likely kaysa random shooters na magkaroon ng ilang pagkakatulad sa kanilang role models—kabilang ang edad, sex, race, bansa, uri ng lugar ng insidente, at naging outcome ng perpetrator.
+  </p>
+
+  <p>
+    May isa pang mahalagang resulta:<br>
+    <strong>HALOS 80% NG DOCUMENTED COPYCATS AY KUMILOS MAHIGIT ISANG TAON PAGKATAPOS NG KANILANG ROLE MODEL.</strong>
+  </p>
+
+  <p>
+    Ang average gap ay humigit-kumulang walong taon.
+  </p>
+
+  <p>
+    Ibig sabihin, hindi requirement na:<br>
+    <strong>May nangyari ngayon → may gumaya bukas.</strong>
+  </p>
+
+  <p>
+    May mga documented cases kung saan nanatiling reference ang naunang perpetrator o insidente nang matagal.
+  </p>
+
+  <p>
+    Pero mahalaga ang limitasyon:
+    Ang research na ito ay tungkol sa isang partikular at extreme na uri ng violence. Hindi ito maaaring basta gamitin para sabihing pareho ang magnitude ng copycat effect sa ordinaryong school bullying, pranks, o lahat ng youth misconduct.
+  </p>
+
+  <p>
+    At kahit sa mas malawak na copycat literature, nananatiling mahirap tukuyin kung gaano karami sa lahat ng kahawig na insidente ang totoong imitation at gaano karami ang independent behavior.
+  </p>
+
+  <p>
+    Kaya ang scientific point ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “KAPAG MAY NAUNA, SIYA ANG SANHI NG SUMUNOD.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mas defensible na punto:<br>
+    <strong>MAY MGA DOCUMENTED NA PAGKAKATAON KUNG SAAN ANG NAUNANG TAO O KILOS AY NAGING MODELO NG SUMUNOD NA GUMAWA.</strong>
+  </p>
+
+  <h2>
+    PAANO NATUTUTUHAN ANG ISANG KILOS SA PAMAMAGITAN LANG NG PAGMAMASID?
+  </h2>
+
+  <p>
+    Dito nakatutulong ang psychology para maintindihan ang posibleng mekanismo.
+  </p>
+
+  <p>
+    Noong 1961, isinagawa nina Albert Bandura, Dorothea Ross at Sheila Ross ang naging klasikong experiment tungkol sa <em>transmission of aggression through imitation of aggressive models.</em>
+  </p>
+
+  <p>
+    Sa experiment, 72 preschool children ang inilagay sa aggressive-model, non-aggressive-model, o control conditions.
+  </p>
+
+  <p>
+    Ang ilan ay nakakita ng adult model na kumilos nang agresibo sa isang Bobo doll.
+    Ang iba ay nakakita ng non-aggressive model.
+    At may control group.
+  </p>
+
+  <p>
+    Mahalaga rito na hindi lamang ordinaryong aggression ang ipinakita ng adult model. May mga distinctive actions at verbal expressions na maaaring gamitin ng researchers para makita kung talagang ginagaya ng mga bata ang kanilang naobserbahan.
+  </p>
+
+  <p>
+    Pagkatapos, nang magkaroon ng pagkakataong makipaglaro ang mga bata nang wala na ang adult model, ang mga batang na-expose sa aggressive model ay nagpakita ng mas maraming behavior na kahawig ng kanilang nakita.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag nakakita ng violence ang bata, magiging violent siya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang sinasabi ng experiment.
+  </p>
+
+  <p>
+    Ang ipinakita nito ay mas specific:<br>
+    <strong>MAAARING MATUTO AT MAKAGAYA ANG TAO NG ISANG BEHAVIOR SA PAMAMAGITAN NG OBSERVATION—KAHIT HINDI SIYA DIREKTANG TINURUAN NA GAWIN ITO.</strong>
+  </p>
+
+  <p>
+    At mahalaga iyon sa pag-unawa sa copycat phenomenon.
+  </p>
+
+  <p>
+    Dahil sa copycat behavior, may naunang kilos o modelong maaaring pagkunan ng gagayahing behavior.
+  </p>
+
+<h2>
+  BAKIT MAHALAGA ITO KAPAG KABATAAN ANG NANONOOD?
+</h2>
+
+<p>
+  Dito kailangang maging maingat.
+</p>
+
+<p>
+  Hindi tama ang simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “Kabataan sila kaya madaling maimpluwensiyahan.”
+  </p>
+</blockquote>
+
+<p>
+  May sariling pag-iisip at agency ang kabataan.
+</p>
+
+<p>
+  Hindi rin nawawala ang personal responsibility dahil may nakita silang ibang gumawa.
+</p>
+
+<p>
+  Pero mahalaga ang observational learning sa development, at ang social environment ay bahagi ng kung paano natututuhan ng tao ang iba't ibang behavior.
+</p>
+
+<p>
+  At sa digital generation, napakalaki ng ipinagbago ng environment kung saan nangyayari ang observation.
+</p>
+
+<p>
+  Dati, limitado ang behavioral models na nakikita ng isang bata sa bahay, paaralan, komunidad, telebisyon, pelikula at mga taong personal niyang nakakasalamuha.
+</p>
+
+<p>
+  Ngayon, maaaring nasa kanyang palad ang napakaraming halimbawa mula sa iba't ibang bahagi ng mundo.
+</p>
+
+<p>
+  Isang swipe.<br>
+  May prank.
+</p>
+
+<p>
+  Isa pa.<br>
+  May suntukan.
+</p>
+
+<p>
+  Isa pa.<br>
+  May humiliation video.
+</p>
+
+<p>
+  Isa pa.<br>
+  May dangerous challenge.
+</p>
+
+<p>
+  Hindi ibig sabihin na gagayahin niya ang mga iyon.
+</p>
+
+<p>
+  Pero may isang bagay na nagbago:<br>
+  <strong>MAS MARAMING BEHAVIOR ANG MAAARING MAKITA—AT MAS MADALING MAKITA KUNG PAANO ITO GINAGAWA.</strong>
+</p>
+
+<h2>
+  SA DIGITAL WORLD, MAY MGA CONTENT NA ANG FORMAT MISMO AY NAKASANDIG SA PAG-UULIT
+</h2>
+
+<p>
+  Makikita ito nang malinaw sa social-media challenges.
+</p>
+
+<p>
+  Sa isang 2024 scoping review nina Lara Kobilke at Antonia Markiewitz, 66 studies tungkol sa youth participation sa social-media challenges ang sinuri.
+</p>
+
+<p>
+  Isa sa core characteristics na nakita nila sa social-media challenges ay <em>replicability.</em>
+</p>
+
+<p>
+  May gumawa ng activity.<br>
+  Kinunan niya ang sarili.<br>
+  In-upload.<br>
+  At ginagawa rin ng iba ang kapareho o variation nito.
+</p>
+
+<p>
+  Ayon sa review, maaaring kumalat ang challenges sa explicit invitation na gawin din ito ng iba, o sa copycat behavior induced by peer examples.
+</p>
+
+<p>
+  Hindi lahat ng challenges ay masama.
+  May positive, neutral at harmful challenges.
+</p>
+
+<p>
+  At binigyang-diin din ng researchers na fragmented pa ang research field at marami sa existing studies ay case-specific o exploratory.
+</p>
+
+<p>
+  Pero mahalaga ang isang bagay:
+  Sa ganitong uri ng content, ang replication ay hindi lamang posibleng resulta. Bahagi ito ng mismong format ng social-media challenge.
+</p>
+
+<blockquote>
+  <p>
+    MAY GUMAWA → MAY NAKAKITA → MAY UMULIT → MAY PANIBAGONG NAKAKITA.
+  </p>
+</blockquote>
+
+<p>
+  At dito nagiging ibang usapan ang digital environment.
+</p>
+
+<p>
+  Hindi na lang natin pinag-uusapan kung gaano karaming tao ang nakakita ng isang kilos.
+  Pinag-uusapan din natin kung gaano kadaling kopyahin at ipasa ang mismong behavior.
+</p>
+
+<h2>
+  KAPAG BULLYING ANG TINAWAG NA “PRANK”
+</h2>
+
+<p>
+  May harmless prank.
+  May biro na parehong panig ay natatawa pagkatapos.
+</p>
+
+<p>
+  Pero hindi lahat ng nilalagyan ng salitang “prank” ay harmless.
+</p>
+
+<p>
+  Kung ang mismong entertainment ay nakasalalay sa pananakit, pananakot, harassment, humiliation, o distress ng taong hindi naman kusang pumayag na maging bahagi nito, hindi sapat ang label na “prank” para mawala ang aktwal na ginawa.
+</p>
+
+<p>
+  At dito kailangang malinaw ang hangganan ng ebidensiya:<br>
+  <strong>LIMITADO PA ANG DIRECT RESEARCH NA SUMUSUKAT KUNG GAANO KADALAS ANG ISANG VIRAL BULLYING O HARMFUL-PRANK VIDEO MISMO ANG NAGIGING SANHI NG KAHALINTULAD NA INSIDENTE.</strong>
+</p>
+
+<p>
+  Kaya hindi natin maaaring sabihing bawat kahawig na prank ay copycat.
+</p>
+
+<p>
+  Ang concern dito ay mas specific:<br>
+  <strong>KAPAG IPINAKITA ANG MISMONG KILOS, MAY BEHAVIORAL MODEL NANG AVAILABLE NA MAAARING GAYAHIN.</strong>
+</p>
+
+<p>
+  Isipin ang isang viral video:<br>
+  May estudyanteng nilapitan.<br>
+  May ginawang setup.<br>
+  May paraan ng pananakot o pamamahiya.<br>
+  May reaction ng biktima.<br>
+  At ipinakita ang buong sequence sa video.
+</p>
+
+<p>
+  Kapag sinabi lamang natin:
+</p>
+
+<blockquote>
+  <p>
+    “May estudyanteng binully.”
+  </p>
+</blockquote>
+
+<p>
+  Impormasyon iyon tungkol sa nangyari.
+</p>
+
+<p>
+  Pero kapag ipinakita ang buong act, maaaring ibang klase ng impormasyon ang naipapasa.
+</p>
+
+<p>
+  Nakita kung paano nagsimula.<br>
+  Nakita kung ano ang ginawa.<br>
+  Nakita kung paano isinagawa.
+</p>
+
+<p>
+  Sa madaling salita:<br>
+  <strong>HINDI LANG RESULTA ANG NAKITA.</strong><br>
+  <strong>NAKITA RIN ANG PARAAN.</strong>
+</p>
+
+<p>
+  Hindi natin maaaring sabihin na automatic itong gagayahin.
+</p>
+
+<p>
+  Pero kung may susunod na taong gustong gumawa ng kahawig na prank o bullying—hindi na niya kailangang imbentuhin mula sa simula ang idea.
+</p>
+
+<p>
+  <strong>MAY NAUNA NANG NAGPAKITA NG MODELO.</strong>
+</p>
+
+<p>
+  Iyan ang bahagi ng usapan na madaling mawala kapag puro tanong lang tayo kung funny ba ang prank o kung mali ba ang gumawa.
+</p>
+
+<h2>
+  HINDI ABSTRACT ANG BULLYING SA PILIPINAS
+</h2>
+
+<p>
+  Mahalagang ilagay ito sa tamang konteksto.
+</p>
+
+<p>
+  Ayon sa OECD PISA 2022, 43% ng girls at 53% ng boys sa Pilipinas ang nag-report na naging biktima sila ng bullying acts nang hindi bababa sa ilang beses bawat buwan.
+</p>
+
+<p>
+  Ang OECD averages ay 20% para sa girls at 21% para sa boys.
+</p>
+
+<p>
+  Hindi ibig sabihin ng statistics na ito na copycat phenomenon ang dahilan ng bullying sa Pilipinas.
+</p>
+
+<p>
+  <strong>HINDI IYON ANG SINUSUKAT NG PISA DATA.</strong>
+</p>
+
+<p>
+  At magiging maling paggamit ng statistics kung iyon ang magiging conclusion.
+</p>
+
+<p>
+  Ang ipinapakita nito ay ibang bagay:
+  Kapag pinag-uusapan natin ang bullying at youth behavior sa Pilipinas, hindi tayo nag-uusap tungkol sa isang hypothetical na problemang wala naman dito.
+</p>
+
+<p>
+  May malaking bahagi ng mga estudyanteng nagre-report ng recurring exposure sa bullying.
+</p>
+
+<p>
+  Kaya mahalagang maintindihan hindi lamang kung bakit nangyayari ang bullying, kundi pati kung paano maaaring maipakita, maipasa at magaya ang ilang paraan nito.
+</p>
+
+          <h2>
+  KAPAG ANG BABALA AY NAGIGING IDEYA
+</h2>
+
+<p>
+  Dito nagiging uncomfortable ang usapan.
+</p>
+
+<p>
+  Kapag may viral bullying video, violent incident, o dangerous prank, may legitimate reasons para pag-usapan ito.
+</p>
+
+<p>
+  Kailangang malaman ng publiko.<br>
+  Kailangang maimbestigahan.<br>
+  Kailangang mapanagot ang gumawa.<br>
+  Kailangang magkaroon ng awareness.
+</p>
+
+<p>
+  Pero isipin natin ang dalawang taong nanood ng parehong video.
+</p>
+
+<p>
+  Ang una ay maaaring isipin:
+</p>
+
+<blockquote>
+  <p>
+    “Grabe. Hindi dapat ginagawa iyan.”
+  </p>
+</blockquote>
+
+<p>
+  Ang isa naman ay maaaring makakuha ng ibang impormasyon:
+</p>
+
+<blockquote>
+  <p>
+    “Ah, ganito pala ginagawa iyon.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi natin alam na ganoon ang magiging response ng bawat viewer.
+  At hindi natin dapat ipagpalagay na ganoon ang mangyayari sa karamihan.
+</p>
+
+<p>
+  Pero iyan mismo ang dahilan kung bakit seryosong pinag-aaralan ang imitation at copycat behavior.
+</p>
+
+<p>
+  <strong>ANG INTENSYON NG NAGPAPAKITA AT ANG NATUTUTUHAN NG NANONOOD AY HINDI LAGING PAREHO.</strong>
+</p>
+
+<p>
+  Puwedeng awareness ang intensyon.
+  Pero kung kasama sa ipinakita ang mismong mechanics ng act, kasama rin iyon sa impormasyong natanggap ng audience.
+</p>
+
+<p>
+  At dito lumalabas ang paradox:<br>
+  <strong>PAANO TAYO MAGBIBIGAY NG BABALA TUNGKOL SA ISANG MAPANGANIB NA GAWA NANG HINDI NATIN ITO GINAGAWANG DEMONSTRATION PARA SA SUSUNOD NA GAGAYA?</strong>
+</p>
+
+<h2>
+  HINDI ANG SAGOT AY “HUWAG NANG IBALITA”
+</h2>
+
+<p>
+  Hindi ito argumento para itago ang violence.
+  Hindi ito argumento para huwag pag-usapan ang bullying.
+</p>
+
+<p>
+  At lalong hindi ito dahilan para protektahan sa public accountability ang gumawa ng mali.
+</p>
+
+<p>
+  May mahalagang public interest sa reporting.
+  May karapatan ang publiko sa impormasyon.
+</p>
+
+<p>
+  At may malaking papel ang journalism sa paglalantad ng violence against children.
+</p>
+
+<p>
+  May mismong guidance ang World Health Organization para sa responsible reporting tungkol sa violence against children—hindi para patahimikin ang media, kundi para makatulong sa paglalantad ng problema nang may pag-iingat sa kapakanan at dignidad ng mga batang sangkot.
+</p>
+
+<p>
+  At kung isasama natin ang natutuhan mula sa copycat at imitation research, may isa pang dapat pag-isipan:<br>
+  <strong>GAANO KARAMING DETALYE NG MISMONG HARMFUL BEHAVIOR ANG KAILANGAN TALAGANG IPAKITA?</strong>
+</p>
+
+<p>
+  Kaya hindi simpleng choice ang:<br>
+  <strong>IPAKITA LAHAT versus HUWAG IPALABAS.</strong>
+</p>
+
+<p>
+  May ikatlong posibilidad:<br>
+  <strong>MAGBIGAY NG SAPAT NA IMPORMASYON PARA MAINTINDIHAN ANG MALI—NANG HINDI KAILANGANG GAWING TUTORIAL ANG MISMONG MALI.</strong>
+</p>
+
+<p>
+  Puwedeng sabihin kung ano ang nangyari nang hindi paulit-ulit na ipinapakita ang buong violent act.
+  Puwedeng ipaliwanag ang pinsala nang hindi ginagawang entertainment ang humiliation ng biktima.
+  Puwedeng magbabala tungkol sa dangerous challenge nang hindi kailangang ipakita nang detalyado kung paano ito ginagawa.
+  Puwedeng ituon ang kuwento sa harm, accountability, intervention at prevention—hindi lamang sa pinaka-shocking na eksena.
+</p>
+
+<h2>
+  AT HINDI LANG MEDIA ANG MAY RESPONSIBILIDAD
+</h2>
+
+<p>
+  Noon, madaling sabihin:
+</p>
+
+<blockquote>
+  <p>
+    “Responsibilidad iyan ng TV at news organizations.”
+  </p>
+</blockquote>
+
+<p>
+  Ngayon, bawat may social-media account ay puwedeng maging bahagi ng distribution.
+</p>
+
+<p>
+  Kapag may nakita tayong bullying video at pinindot natin ang SHARE dahil galit tayo—maaaring condemnation ang intensyon natin.
+</p>
+
+<p>
+  Kapag ni-repost natin ang isang dangerous prank para sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Huwag ninyong gagayahin ito!”
+  </p>
+</blockquote>
+
+<p>
+  maaaring warning ang intensyon natin.
+</p>
+
+<p>
+  Pero hindi nabubura ng caption ang mismong behavior na ipinakita sa video.
+</p>
+
+<p>
+  Kaya bago mag-share, may simpleng tanong na puwedeng itanong:<br>
+  <strong>ANO BA TALAGA ANG KAILANGANG MAKITA NG IBANG TAO PARA MAINTINDIHAN ANG PROBLEMA?</strong>
+</p>
+
+<p>
+  Kailangan ba talaga ang buong clip?<br>
+  Kailangan bang ulit-ulitin ang mismong pananakit?<br>
+  Kailangan bang makita ang buong mechanics ng dangerous act?<br>
+  O puwedeng maiparating ang awareness nang hindi na ipinapasa ang mismong blueprint?
+</p>
+
+<h2>
+  HINDI LAHAT NG NAKIKITA AY GINAGAYA—PERO MAY MGA NAKIKITANG PUWEDENG GAYAHIN
+</h2>
+
+<p>
+  Ito marahil ang pinakamahalagang guardrail sa buong usapan.
+</p>
+
+<p>
+  Hindi natin dapat gawing excuse ang Copycat Phenomenon.
+</p>
+
+<p>
+  Ang taong gumawa ng mali ay hindi awtomatikong nawawalan ng accountability dahil may nauna siyang nakita.
+</p>
+
+<p>
+  Hindi rin natin dapat sisihin ang isang video sa bawat kahawig na insidenteng sumunod.
+  At hindi natin dapat takutin ang mga magulang sa ideyang bawat violent content na makita ng kanilang anak ay gagayahin nito.
+</p>
+
+<p>
+  Hindi ganoon kasimple ang human behavior.
+</p>
+
+<p>
+  Pero hindi rin makatwirang balewalain ang kabilang bahagi ng ebidensiya:
+  Ang tao ay may kakayahang matuto sa pamamagitan ng obserbasyon.
+</p>
+
+<p>
+  May documented cases ng copycat behavior.
+  May research na nagpapakitang ang isang naunang actor ay maaaring maging role model ng susunod.
+</p>
+
+<p>
+  At sa digital environment, may mga behavior na maaaring makita, ulitin, i-record at ipasa sa napakaraming tao.
+</p>
+
+<p>
+  Kaya hindi ang tanong ay:
+</p>
+
+<blockquote>
+  <p>
+    “DAPAT BA NATING ITAGO ANG MASAMANG NANGYAYARI?”
+  </p>
+</blockquote>
+
+<p>
+  Hindi.
+</p>
+
+<p>
+  Ang mas magandang tanong:
+</p>
+
+<blockquote>
+  <p>
+    “PAANO NATIN ITO ILALANTAD NANG HINDI NATIN DINADAGDAGAN ANG POSIBILIDAD NA MAGING MODELO ITO NG SUSUNOD NA GAGAWA?”
+  </p>
+</blockquote>
+
+<h2>
+  ANG AWARENESS AY HINDI NASUSUKAT SA DAMI NG BESES NA NA-REPLAY ANG MALI
+</h2>
+
+<p>
+  Kailangang pag-usapan ang bullying.
+  Kailangang ibalita ang violence.
+  Kailangang kondenahin ang unethical behavior.
+  Kailangang mapanagot ang gumawa.
+</p>
+
+<p>
+  Pero hindi kailangang gawing palabas ang bawat segundo ng maling ginawa para maintindihan ng publiko na mali iyon.
+</p>
+
+<p>
+  Dahil may isang simpleng bagay na matagal nang ipinapakita ng psychology:<br>
+  <strong>NATUTUTO TAYO HINDI LANG SA SINASABI SA ATIN.</strong><br>
+  <strong>NATUTUTO RIN TAYO SA NAKIKITA NATING GINAGAWA NG IBA.</strong>
+</p>
+
+<p>
+  At sa panahon kung kailan ang isang kilos ay maaaring ma-record minsan pero mapanood nang milyon-milyong beses, hindi na sapat na itanong lamang:
+</p>
+
+<blockquote>
+  <p>
+    “TOTOO BA ITO?”<br>
+    “MALI BA ITO?”<br>
+    “DAPAT BA ITONG I-SHARE?”
+  </p>
+</blockquote>
+
+<p>
+  May isa pang tanong na dapat nating matutunang itanong:
+</p>
+
+<blockquote>
+  <p>
+    “ANO ANG MATUTUTUHAN NG SUSUNOD NA MAKAKAKITA NITO?”
+  </p>
+</blockquote>
+
+<p>
+  Dahil may mga maling gawain na kailangang ilantad.
+  Pero hindi lahat ng detalye ng maling gawain ay kailangang gawing spectacle.
+</p>
+
+<p>
+  At minsan, sa kagustuhan nating ipakita sa lahat kung ano ang hindi dapat gawin—baka hindi natin napapansing ipinapakita rin natin sa iba kung paano ito gawin.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Helfgott, J. B. (2015). <em>Criminal Behavior and the Copycat Effect: Literature Review and Theoretical Framework for Empirical Investigation.</em> <em>Aggression and Violent Behavior</em>, 22, 46–64.
+    </li>
+
+    <li>
+      Lankford, A., &amp; Silva, J. R. (2024). <em>Similarities Between Copycat Mass Shooters and Their Role Models: An Empirical Analysis with Implications for Threat Assessment and Violence Prevention.</em> <em>Journal of Criminal Justice</em>, 95, 102316.
+    </li>
+
+    <li>
+      Bandura, A., Ross, D., &amp; Ross, S. A. (1961). <em>Transmission of Aggression Through Imitation of Aggressive Models.</em> <em>Journal of Abnormal and Social Psychology</em>, 63(3), 575–582.
+    </li>
+
+    <li>
+      Kobilke, L., &amp; Markiewitz, A. (2024). <em>Understanding Youth Participation in Social Media Challenges: A Scoping Review of Definitions, Typologies, and Theoretical Perspectives.</em> <em>Computers in Human Behavior</em>, 157, 108265.
+    </li>
+
+    <li>
+      OECD. <em>PISA 2022 Results — Country Note: Philippines.</em>
+    </li>
+
+    <li>
+      World Health Organization. (2022). <em>Reporting on Violence Against Children: A Guide for Journalists.</em>
+    </li>
+
+  </ul>
+
+</section>
+
+</div>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
