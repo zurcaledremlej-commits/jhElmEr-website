@@ -1,1 +1,1998 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang fact-based Civic Explainer ng jhElmEr tungkol sa Divide Trap—kung paano maaaring baguhin ng political identity ang paraan ng pagsusuri sa impormasyon, bakit lumalalim ang pagkakahati, at bakit dapat manatiling pareho ang pamantayan sa kakampi at kalaban."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-divide-trap.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-divide-trap.html"
+>
+
+<title>DIVIDE TRAP | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    DIVIDE TRAP
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-divide-trap.png"
+      alt="Simbolikong paglalarawan ng dalawang nagbabanggaang kampo ng mga ordinaryong Pilipino habang ang sentro ng kapangyarihan ay nananatiling nakaupo sa likuran, bilang representasyon ng Divide Trap kung saan ang pagkakahati ay maaaring maglihis ng pansin mula sa pananagutan at pampublikong interes."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag kapwa Pilipino na ang kalaban—sino ang nakikinabang?
+  </p>
+
+  <p>
+    Sa pulitika, madaling makita kung sino ang magkabilang panig.
+  </p>
+
+  <p>
+    Mas mahirap mapansin kung kailan ang pagkampi ay nagsisimulang baguhin hindi lamang kung sino ang sinusuportahan natin—kundi pati kung sino ang itinuturing nating kalaban.
+  </p>
+
+  <p>
+    Kapag ang ordinaryong Pilipino ay mas abala nang depensahan ang sariling kampo, atakihin ang kabilang panig, at bantayan ang kapwa ordinaryong mamamayan—may mas mahalagang tanong:
+    Habang tayo ang nagbabangayan, ano ang hindi na natin nasusuri? Sino ang hindi na natin nababantayan? At sino ang maaaring makinabang kapag ang atensyon natin ay nasa isa't isa?
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na may iisang mastermind sa likod ng bawat political division.
+  </p>
+
+  <p>
+    Pero may mga psychological, social, political at digital mechanisms na puwedeng magpalalim ng pagkakahati—hanggang ang dating simpleng political choice ay maging bahagi na ng ating identity.
+  </p>
+
+  <p>
+    At kapag nangyari iyon, maaaring hindi na lang magkakaiba ang paniniwala natin.
+    Magkaiba na rin ang standard na ginagamit natin sa pagtingin sa katotohanan.
+  </p>
+
+  <h2>
+    Diyan nagsisimula ang Divide Trap.
+  </h2>
+
+  <p>
+    May isang uri ng pagkakahati na madaling makita.
+  </p>
+
+  <p>
+    Kapag nagsisigawan ang dalawang kampo. Kapag nagbabatuhan ng insulto. Kapag pamilya, magkakaibigan, magkatrabaho o magkakapitbahay ang nagkakasamaan ng loob dahil sa pulitika.
+  </p>
+
+  <p>
+    Pero may mas mahirap makita.
+  </p>
+
+  <p>
+    Iyong pagkakahating nasa loob na mismo ng paraan natin ng pag-iisip.
+  </p>
+
+  <p>
+    Kapag may lumabas na alegasyon laban sa politiko natin, depensa agad.
+    Kapag kaparehong alegasyon ang laban sa kabilang kampo, guilty agad.
+  </p>
+
+  <p>
+    Kapag magandang balita tungkol sa atin, share agad.
+    Kapag magandang balita tungkol sa kanila, duda agad.
+  </p>
+
+  <p>
+    Kapag may maling ginawa ang kanila, accountability.
+    Kapag may maling ginawa ang atin, context muna. Motibo muna. “Eh sila rin naman.”
+  </p>
+
+  <p>
+    Dito nagsisimulang maging mas malalim ang problema.
+  </p>
+
+  <p>
+    Hindi na lamang tayo may political choice.
+    Unti-unting nagiging bahagi na ng ating pagkakakilanlan ang political camp.
+  </p>
+
+  <p>
+    At kapag nangyari iyon, puwedeng magbago hindi lamang kung ano ang pinaniniwalaan natin—kundi kung paano natin sinusuri ang impormasyon.
+  </p>
+
+  <p>
+    Iyan ang tatawagin nating <strong>DIVIDE TRAP.</strong>
+  </p>
+
+  <p>
+    Hindi ito formal na pangalan ng isang psychological disorder o isang recognized standalone bias. Mas tama itong gamitin bilang civic label para sa kombinasyon ng mga mekanismong matagal nang pinag-aaralan sa psychology at political science:
+    Social identity, in-group bias, out-group hostility, motivated reasoning, affective polarization at groupism.
+  </p>
+
+  <p>
+    Research on political group identity and intergroup bias shows that group identification can shape political behavior and how people relate to those they classify as “us” and “them.”
+  </p>
+
+  <h2>
+    Hindi masama ang magkaroon ng kampo.
+  </h2>
+
+  <p>
+    Normal sa demokrasya ang pumili.
+    Normal ang magkaroon ng kandidato, partido, advocacy o political position na mas pinaniniwalaan natin.
+  </p>
+
+  <p>
+    Ang trap ay hindi nagsisimula sa pagpili.
+    Nagsisimula ito kapag ang pinili natin ay naging bahagi na ng identidad na kailangan nating ipagtanggol.
+  </p>
+
+  <p>
+    Sa social psychology, mahalaga ang konsepto ng social identity:
+    Bahagi ng pagtingin natin sa ating sarili ay nanggagaling sa mga grupong kinabibilangan natin.
+  </p>
+
+  <p>
+    Pamilya. Rehiyon. Paaralan. Relihiyon. Propesyon. Sports team.
+  </p>
+
+  <p>
+    At oo—puwede ring political group.
+  </p>
+
+  <p>
+    Kapag malakas ang identification, nagkakaroon ng malinaw na psychological boundary:
+  </p>
+
+  <blockquote>
+    <p>
+      KAMI.<br><br>
+      at<br><br>
+      SILA.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi automatic na masama iyon. Pero research on intergroup bias shows that stronger group identification, perceived threat, status at power differences can intensify favoritism toward the in-group at negative attitudes toward the out-group.
+  </p>
+
+  <p>
+    Kaya minsan, ang kritisismo sa isang politiko ay hindi na lamang naririnig bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      “May tanong tungkol sa ginawa ng taong sinusuportahan ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Puwede na itong maramdaman bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Inaatake ang grupo namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    At kapag naging identity threat ang usapan, mas mahirap maging detached observer.
+  </p>
+
+  <h2>
+    Dito pumapasok ang isa sa pinakamalakas na bitag: Motivated Reasoning.
+  </h2>
+
+  <p>
+    May natural tayong kagustuhang isipin na objective tayo.
+    Na basta makakita tayo ng ebidensya, pareho natin itong titimbangin kahit kanino pabor.
+  </p>
+
+  <p>
+    Pero hindi palaging ganoon gumagana ang tao.
+  </p>
+
+  <p>
+    Sa classic experiments nina Charles Taber at Milton Lodge, mas mataas ang assessment ng participants sa arguments na tugma sa dati na nilang paniniwala. Mas madali rin nilang kino-counterargue ang ebidensyang salungat sa kanilang position, habang mas kaunti ang resistance sa ebidensyang pabor sa kanila.
+  </p>
+
+  <p>
+    Tinawag itong <strong>MOTIVATED SKEPTICISM.</strong>
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng political belief ay irrational.
+  </p>
+
+  <p>
+    Ang ibig sabihin:
+    Kapag malakas na ang prior belief o identity, puwedeng hindi pareho ang standard na inilalapat natin sa dalawang panig.
+  </p>
+
+  <p>
+    May research review din na nagpapakita na political partisanship can influence memory, evaluation at maging ilang perceptual judgments—isang dahilan kung bakit maaaring manaig minsan ang loyalty sa group kaysa neutral na pagsusuri sa policy o facts.
+  </p>
+
+  <p>
+    Kaya napakadaling mahulog sa ganitong pattern:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag sila ang gumawa:<br><br>
+      “Tingnan natin ang ebidensya.”<br><br>
+      Kapag tayo ang gumawa:<br><br>
+      “Tingnan muna natin kung sino ang nag-aakusa.”<br><br>
+      Kapag sila ang nahuling mali:<br><br>
+      “Panagutin.”<br><br>
+      Kapag tayo:<br><br>
+      “Bakit siya lang?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mapapansin ang subtle na pagbabago.
+  </p>
+
+  <p>
+    Hindi na pareho ang tanong.
+    Hindi na pareho ang burden of proof.
+    Hindi na pareho ang standard.
+  </p>
+
+  <p>
+    Kampo na ang nagtatakda kung gaano tayo kahigpit o kaluwag sa ebidensya.
+  </p>
+
+            <h2>
+    At dito nabubuo ang “Kami vs. Sila.”
+  </h2>
+
+  <p>
+    May tawag dito sa political psychology:
+    <strong>AFFECTIVE POLARIZATION.</strong>
+  </p>
+
+  <p>
+    Hindi lamang ito tungkol sa pagkakaiba ng policy positions.
+    Mas tungkol ito sa kung ano ang nararamdaman natin tungkol sa mga taong nasa kabilang panig.
+  </p>
+
+  <p>
+    Puwedeng hindi naman napakalayo ng ating positions sa maraming issue—pero napakalayo na ng tingin natin sa isa't isa.
+  </p>
+
+  <p>
+    Isang 2026 systematic review ang nagsuri ng 135 peer-reviewed studies mula 2012 hanggang 2025 tungkol sa mga posibleng drivers at processes ng affective polarization.
+  </p>
+
+  <p>
+    Lumilitaw sa literature ang limang malalaking families of factors:
+    Psychological factors, media and information environment, identity and group processes, institutional factors at socioeconomic factors.
+  </p>
+
+  <p>
+    Pero mahalagang caveat:
+    Hindi pare-pareho ang lakas ng causal evidence sa mga studies na ito.
+  </p>
+
+  <p>
+    Sa review, 44.4% ng studies ay cross-sectional associative, 28.9% experimental at 20% panel studies, habang bihira ang quasi-experimental designs.
+  </p>
+
+  <p>
+    Ibig sabihin, malawak na ang research base—pero hindi lahat ng nakikitang association ay puwedeng tratuhing napatunayang sanhi.
+  </p>
+
+  <p>
+    Mahalaga rin ang distinction sa pagitan ng vertical polarization—citizens versus parties or elites—at horizontal polarization—citizens versus fellow citizens.
+  </p>
+
+  <p>
+    Iyan ang critical point.
+  </p>
+
+  <p>
+    Puwedeng ang political conflict ay nasa itaas—pero ang emotional damage ay kumalat pahalang.
+  </p>
+
+  <blockquote>
+    <p>
+      Supporter laban sa supporter.<br><br>
+      Kaibigan laban sa kaibigan.<br><br>
+      Kamag-anak laban sa kamag-anak.<br><br>
+      Ordinaryong mamamayan laban sa kapwa ordinaryong mamamayan.
+    </p>
+  </blockquote>
+
+  <p>
+    At may Philippine case-study evidence nang nagdodokumento ng lived experience nito.
+  </p>
+
+  <p>
+    Sa isang 2024 study sa Generation Z voters sa Ilocos, gumamit ang researcher ng 16 in-depth interviews at 4 focus group discussions upang suriin kung paano nararanasan at hinaharap ng kabataan ang political polarization sa isang environment na madalas mag-frame sa mga mamamayan bilang “pro” at “anti” camps.
+  </p>
+
+  <p>
+    Hindi ito national estimate ng buong Pilipinas.
+  </p>
+
+  <p>
+    Pero nagbibigay ito ng konkretong Philippine evidence kung paano puwedeng maranasan ang social costs ng political division sa tunay na interpersonal relationships.
+  </p>
+
+  <h2>
+    Mas interesting pa: Baka hindi naman talaga ganoon kalayo ang ilang pinag-awayang kampo.
+  </h2>
+
+  <p>
+    Dito nagiging napakahalaga ng Philippine data.
+  </p>
+
+  <p>
+    Sa nationally representative research na nangalap ng data bago ang 2025 Senate elections, hinati ng researchers ang electorate ayon sa support para sa tatlong major political factions—Marcos-aligned, Duterte-aligned at Liberal-aligned Opposition—kasama ang mga walang malinaw na alignment.
+  </p>
+
+  <p>
+    Ano ang isang striking finding?
+    <br><br>
+    57.5% ng respondents ang nag-identify bilang centrist.
+  </p>
+
+  <p>
+    Samantalang 16.9% lamang ang kabuuang nag-identify bilang left-wing o right-wing.
+  </p>
+
+  <p>
+    At ayon sa researchers, hindi malinaw na ideology ang pangunahing naghihiwalay sa tatlong factions. Mas malaking bahagi ng political cleavage ang personalistic factionalism at regional loyalty.
+  </p>
+
+  <p>
+    Mas revealing pa ang isang economic question sa parehong study.
+  </p>
+
+  <p>
+    Nang tanungin kung dapat bang buwisan ang income ng wealthy para ma-redistribute sa mahihirap, ang sumang-ayon o strongly agreed ay:
+  </p>
+
+  <blockquote>
+    <p>
+      82.5% sa Marcos supporters,<br>
+      77.9% sa Duterte supporters,<br>
+      79.2% sa Opposition supporters.
+    </p>
+  </blockquote>
+
+  <p>
+    Magkaibang kampo.
+    Pero sa issue na iyon, halos magkakatulad ang aggregate position.
+  </p>
+
+  <p>
+    Hindi nito ibig sabihin na walang tunay na policy differences ang mga grupong ito—may nakita ring differences sa ilang social issues.
+  </p>
+
+  <p>
+    Pero ipinapakita nito ang isang mahalagang possibility:
+    Puwedeng matindi ang political hostility kahit hindi ganoon kalayo ang maraming substantive beliefs ng ordinaryong supporters.
+  </p>
+
+  <p>
+    At iyan mismo ang fertile ground para sa Divide Trap.
+  </p>
+
+  <p>
+    Kapag personality at faction ang mas matibay na identity marker kaysa policy, puwedeng magmukhang napakalaki ng pagitan ng dalawang taong sa maraming usapin ay mas magkalapit pala kaysa inaakala nila.
+  </p>
+
+  <h2>
+    May Philippine context kung bakit madaling maging personal ang pulitika.
+  </h2>
+
+  <p>
+    Matagal nang inilalarawan ng political science ang Philippine party system bilang weakly institutionalized.
+  </p>
+
+  <p>
+    Hindi katulad ng mga sistema kung saan relatively stable at programmatic ang party identities, matagal nang problema rito ang party-switching, personal alliances, factional organization at politics centered on personalities and families.
+  </p>
+
+  <p>
+    Political scientist Allen Hicken described the Philippine party system as persistently under-institutionalized, with consequences for accountability and democratic representation.
+  </p>
+
+  <p>
+    Ipinapakita rin ng mas bagong research noong 2026 na mas mauunawaan ang political competition sa Pilipinas sa pamamagitan ng personalistic factions at regional loyalties, kaysa sa simpleng paghahati sa kaliwa at kanan batay sa ideology.
+  </p>
+
+  <p>
+    May mas malalim at mas matagal nang socio-political layer din.
+  </p>
+
+  <p>
+    Philippine politics has long involved familial ties, personal alliances and patron-client relationships.
+  </p>
+
+  <p>
+    Matagal nang binabalaan ng mga scholars na hindi sapat ang patron-client framework para ipaliwanag ang kabuuan ng politika sa Pilipinas. Gayunman, kinikilala rin sa research na mahalagang bahagi ng political life ang personal, pampamilya, at iba pang interpersonal relationships.
+  </p>
+
+  <p>
+    May empirical evidence din tungkol sa clientelism.
+  </p>
+
+  <p>
+    Sa isang study involving 900 randomly sampled voters connected through family-based networks in a Philippine city, poorer voters were disproportionately targeted by electoral handouts; familial ties affected targeting, while access to formal networks such as workers' associations reduced fears connected with not reciprocating politically.
+  </p>
+
+  <p>
+    At hindi maliit ang concentration ng political families.
+  </p>
+
+  <p>
+    Sa 2026 statistical inventory ng research arm ng House of Representatives gamit ang official COMELEC records at name-matching plus manual validation, 54.45% ng elected officials examined were potentially linked to political dynasties.
+  </p>
+
+  <p>
+    Ang researchers mismo ay nagbigay ng methodological caveat:
+    Hindi kayang hulihin ng name-matching approach ang lahat ng complex family relationships at mayroon itong limitations.
+  </p>
+
+  <p>
+    Mahalaga ito hindi para sabihing masama ang bawat miyembro ng political family.
+  </p>
+
+  <p>
+    Ang mahalagang structural point ay ito:
+    Sa isang political system na malakas ang personality, pamilya, regional loyalty at personal networks, madaling maging personal din ang loyalty ng ordinaryong botante.
+  </p>
+
+  <p>
+    At kapag personal ang loyalty, mas madaling maging personal ang disagreement.
+  </p>
+
+  <h2>
+    Pero huwag din tayong mahulog sa isa pang trap: Hindi monolithic ang mga supporters.
+  </h2>
+
+  <p>
+    Hindi porke DDS, Loyalist, Kakampink, administration supporter, opposition supporter o anumang label ay pare-pareho na ang dahilan, ugali at paniniwala ng bawat tao.
+  </p>
+
+  <p>
+    Isang 2025 Philippine study tungkol mismo sa DDS, Kakampinks at Loyalists warns against “groupism”—ang tendency na tratuhin ang isang political group na parang iisang solid block na pare-pareho ang motives at beliefs.
+  </p>
+
+  <p>
+    Ipinunto ng research na mas relational at mas komplikado ang political self-identification kaysa simpleng label.
+  </p>
+
+  <p>
+    Napakahalaga nito.
+  </p>
+
+  <p>
+    Dahil isa sa paraan ng Divide Trap para lumalim ay ang pagkawala ng individual human being sa likod ng political label.
+  </p>
+
+  <p>
+    Hindi na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ito si Juan na may sariling dahilan kung bakit ganiyan ang pananaw niya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “DDS iyan.”<br>
+      “Kakampink iyan.”<br>
+      “Loyalist iyan.”<br>
+      “Dilawan iyan.”<br>
+      “Bayaran iyan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Isang label—tapos parang alam na natin ang buong pagkatao.
+  </p>
+
+  <p>
+    Kapag nangyari iyon, mas madaling kausapin ang isang tao bilang kalaban, hindi bilang kapwa mamamayan.
+  </p>
+
+            <h2>
+    At may sistemang nagre-reward sa content na humahatak ng atensyon.
+  </h2>
+
+  <p>
+    Dito pumapasok ang social media.
+  </p>
+
+  <p>
+    Hindi tama ang simplistic na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Social media ang dahilan ng lahat ng political division.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mixed at context-dependent ang research tungkol sa causal effect ng social media sa polarization.
+  </p>
+
+  <p>
+    Pero may isang pattern na malinaw na nakita sa isang malaking study:
+    Malakas humatak ng engagement ang content tungkol sa political out-group.
+  </p>
+
+  <p>
+    Sa research na nag-analyze ng 2,730,215 Facebook at Twitter posts mula sa news organizations at U.S. congressional accounts, ang posts tungkol sa political out-group ay na-share o na-retweet nang humigit-kumulang doble kumpara sa posts tungkol sa in-group.
+  </p>
+
+  <p>
+    Bawat karagdagang salitang tumutukoy sa political out-group ay associated sa humigit-kumulang 67% higher odds na ma-share o ma-retweet ang post.
+  </p>
+
+  <p>
+    Sa dataset na iyon, mas malakas pa ang relationship ng out-group language sa sharing kaysa negative-emotion at moral-emotional language.
+  </p>
+
+  <p>
+    U.S. data iyon—hindi natin dapat direktang ipalagay na eksaktong parehong magnitude sa Pilipinas.
+  </p>
+
+  <p>
+    At hindi rin nito pinatutunayang kumikita ang isang platform mula sa bawat divisive post o na sadyang idinisenyo ang lahat ng platform para pag-awayin ang users.
+  </p>
+
+  <p>
+    Pero ipinapakita nito ang isang mahalagang incentive problem:
+    Ang content na <strong>“TINGNAN NINYO KUNG GAANO KASAMA SILA”</strong> ay maaaring makakuha ng mas maraming engagement.
+  </p>
+
+  <p>
+    At kapag mas maraming tao ang nagre-react, nagko-comment, nagre-retweet o nagshi-share, mas malaki ang posibilidad na patuloy itong umikot sa digital environment.
+  </p>
+
+  <p>
+    Kaya kahit walang secret meeting na nagsasabing “pag-awayin natin sila,” puwedeng magkaroon ng ecosystem kung saan ang divisive content ay paulit-ulit na napapalakas dahil iyon ang content na aktibong kinakagat at ipinapasa ng users.
+  </p>
+
+  <h2>
+    At ang online na away ay hindi laging hiwalay sa totoong buhay.
+  </h2>
+
+  <p>
+    Isang 2026 <em>Nature Human Behaviour</em> study surveyed 15,202 respondents across 30 countries—including the Philippines.
+  </p>
+
+  <p>
+    Natuklasan nitong mas maraming reported experiences of online political hostility sa mga bansa na mas mababa ang economic equality at liberal-democratic conditions.
+  </p>
+
+  <p>
+    Nakita rin sa bawat bansang sinuri na ang mga taong hostile online ay may tendency ding maging hostile offline, at associated ang hostility sa status-seeking motivations.
+  </p>
+
+  <p>
+    Observational ang pangunahing cross-national evidence nito.
+    Kaya hindi nito pinatutunayang ang isang factor lamang ang sanhi ng isa pa.
+  </p>
+
+  <p>
+    Pero mahalaga ang punto:
+    Hindi hiwalay na mundo ang comment section.
+  </p>
+
+  <p>
+    Ang galit, status competition, group rivalry at social tensions na dala natin sa lipunan ay puwedeng sumama sa atin online—at ang online environment naman ay nagbibigay ng lugar kung saan paulit-ulit itong naipapahayag.
+  </p>
+
+  <h2>
+    Posible bang sadyang gamitin ang paghahati para mapanatili ang kapangyarihan?
+  </h2>
+
+  <p>
+    Posible bilang human behavior.
+  </p>
+
+  <p>
+    Pero kailangan nating maging maingat dito.
+  </p>
+
+  <p>
+    May experimental research sa leadership psychology na tinawag mismo na <strong>“divide and conquer.”</strong>
+  </p>
+
+  <p>
+    Sa apat na experiments, nakita nina Case at Maner na ilang dominance-motivated leaders, kapag naramdamang nanganganib ang kanilang power, ay gumagawa ng paraan upang pigilan ang communication, proximity at interpersonal bonding ng highly capable subordinates na maaari nilang makita bilang threat.
+  </p>
+
+  <p>
+    Mahalagang research iyon dahil ipinapakita nitong sa experimental group settings, may mga kondisyong puwedeng maging advantageous sa isang power-motivated leader ang pagpigil sa pagkakaisa ng ibang miyembro ng grupo.
+  </p>
+
+  <p>
+    Pero hindi iyon study ng Philippine politicians, political campaigns o democratic institutions.
+    At hindi iyon ebidensya na ang isang partikular na politiko, partido o political clan sa Pilipinas ay gumagawa nito.
+  </p>
+
+  <p>
+    Para masabing may deliberate divide-and-conquer strategy sa isang aktwal na political case, kailangan pa rin ng specific evidence of intent, coordination at behavior.
+  </p>
+
+  <p>
+    At dito mahalagang paghiwalayin ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      May division na sadyang nililikha.<br><br>
+      At may division na self-reinforcing na kahit walang iisang mastermind, patuloy nang pinapalakas ng group identity, media incentives, political rhetoric at sariling reactions ng supporters.
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong posibleng mangyari.
+  </p>
+
+  <p>
+    Hindi natin dapat awtomatikong ipagpalagay kung alin nang walang ebidensya.
+  </p>
+
+  <h2>
+    Ito ang pinakamalalim na bahagi ng Divide Trap.
+  </h2>
+
+  <p>
+    Hindi mo kailangang mawalan ng karapatang magsalita para lumiit ang intellectual freedom mo.
+    Hindi kailangang may magdikta sa iyo ng bawat sagot.
+  </p>
+
+  <p>
+    Sapat nang dumating sa puntong ang unang tanong mo sa impormasyon ay hindi na:
+  </p>
+
+  <blockquote>
+    <p>
+      “TOTOO BA?”
+    </p>
+  </blockquote>
+
+  <p>
+    kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “KANINO GALING?”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “ANO ANG EBIDENSYA?”
+    </p>
+  </blockquote>
+
+  <p>
+    kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “KANINONG KAMPO ANG MAKIKINABANG?”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “TAMA BA ANG GINAWA?”
+    </p>
+  </blockquote>
+
+  <p>
+    kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “BAKIT, MAS MALALA NAMAN ANG KABILANG PANIG?”
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan nagiging metaphorical na kulungan ang Divide Trap.
+  </p>
+
+  <p>
+    Hindi dahil wala ka nang sariling isip.
+    Kundi dahil unti-unting lumiit ang mga conclusion na handa mong tanggapin.
+  </p>
+
+  <p>
+    Puwede kang maging kritikal—basta kabilang kampo ang kino-criticize.
+    Puwede kang humingi ng accountability—basta hindi kakampi mo.
+    Puwede kang maniwala sa ebidensya—basta hindi nito binabangga ang identity na pinoprotektahan mo.
+  </p>
+
+  <p>
+    At ang pinaka-mapanganib na bahagi?
+    Maaaring pakiramdam mo, malaya ka pa ring nagsusuri.
+  </p>
+
+            <h2>
+    Habang nag-aagawan ang mga kampo, may tanong na puwedeng naiiwan.
+  </h2>
+
+  <p>
+    Sino ang nakikinabang sa policy?<br>
+    Sino ang nalulugi?<br>
+    May ebidensya ba sa alegasyon?<br>
+    Nasunod ba ang batas at due process?<br>
+    May conflict of interest ba?<br>
+    May public money bang nasayang?<br>
+    May serbisyo bang gumanda?<br>
+    May pangakong natupad?<br>
+    May opisyal bang kailangang managot?
+  </p>
+
+  <p>
+    Iyan ang mga tanong na hindi dapat magbago depende kung sino ang nakaupo.
+  </p>
+
+  <p>
+    Dahil ang trabaho ng mamamayan ay hindi maging permanenteng defense lawyer ng isang politiko.
+    At hindi rin maging permanenteng prosecutor ng kabilang kampo.
+  </p>
+
+  <p>
+    Ang trabaho ng mamamayan ay bantayan ang kapangyarihan.
+    Kahit sino pa ang may hawak nito.
+  </p>
+
+  <h2>
+    Ang pinakamabigat na irony.
+  </h2>
+
+  <p>
+    Ang political alliances ay maaaring mabuo, mabuwag at mabuo ulit.
+    Ang dating magkakampi ay maaaring maging magkalaban.
+    Ang dating magkalaban ay maaaring magsanib.
+  </p>
+
+  <p>
+    Normal iyan sa politics, lalo na sa sistema na personalistic at factional ang competition.
+  </p>
+
+  <p>
+    Pero habang nagbabago ang alliances sa itaas—ang ordinaryong Pilipinong inaway mo sa ibaba ay maaari pa ring kapitbahay mo.
+  </p>
+
+  <blockquote>
+    <p>
+      Katrabaho mo.<br><br>
+      Kaibigan mo.<br><br>
+      Kamag-anak mo.<br><br>
+      Kapwa mo nagbabayad ng buwis.<br><br>
+      Kapwa mo pumipila sa ospital.<br><br>
+      Kapwa mo nahihirapan kapag mahal ang pagkain.<br><br>
+      Kapwa mo nalulubog kapag bumaha.<br><br>
+      Kapwa mo umaasa sa gobyernong gumagana.
+    </p>
+  </blockquote>
+
+  <p>
+    At maaaring habang abala kayong dalawa sa pagpapatunay kung kaninong kampo ang mas masama—pareho ninyong hindi napansing iisa pala ang hinihingi ninyo:
+    <strong>DISENTENG PAMAMAHALA.</strong>
+  </p>
+
+  <h2>
+    Kaya ang tanong ay hindi:
+  </h2>
+
+  <blockquote>
+    <p>
+      “ANONG KAMPO KA?”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas mahalaga ang:
+    Pareho ba ang standard mo kapag kakampi at kalaban ang sinusuri?
+  </p>
+
+  <p>
+    Kung ang ebidensyang sapat para kondenahin ang kabilang panig ay biglang kulang kapag sariling kampo na—may problema.
+    Kung ang alegasyon ay mahalaga lamang kapag kalaban ang inaakusahan—may problema.
+    Kung ang maling gawain ay nagiging tama dahil “ginawa rin naman nila”—may problema.
+  </p>
+
+  <p>
+    Kung mas galit tayo sa ordinaryong supporter ng kabilang panig kaysa interesado sa accountability ng mga taong may aktwal na kapangyarihan—baka nasa loob na tayo ng Divide Trap.
+  </p>
+
+  <h2>
+    Ang Divide Trap ay hindi lang pagkakahati.
+  </h2>
+
+  <p>
+    Ito ang puntong ang pagkakahati ay hindi na lang tungkol sa kung sino ang sinusuportahan natin—nakaaapekto na rin ito sa paraan ng pagtingin at pagsusuri natin sa impormasyon.
+  </p>
+
+  <p>
+    Kapag political choice lang ang mayroon tayo, kaya nating sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Susuportahan kita kapag tama ka. Papanagutin kita kapag mali ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kapag political identity na ang nangingibabaw:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kailangan kitang ipagtanggol dahil kapag natalo ka, parang natalo rin ako.”
+    </p>
+  </blockquote>
+
+  <p>
+    At doon nagbabago ang relasyon ng mamamayan sa kapangyarihan.
+  </p>
+
+  <blockquote>
+    <p>
+      Mula sa:<br>
+      <strong>TAGABANTAY</strong><br><br>
+
+      nagiging:<br>
+      <strong>TAGAPAGTANGGOL.</strong><br><br>
+
+      Mula sa:<br>
+      <strong>MAMAMAYAN</strong><br><br>
+
+      nagiging:<br>
+      <strong>KAMPO.</strong>
+    </p>
+  </blockquote>
+
+  <p>
+    At habang ang dalawang kampo ay abala sa pagbabantay sa isa't isa—mas kaunti ang matang nakatutok sa mga taong dapat sana nilang parehong binabantayan.
+  </p>
+
+  <p>
+    Hindi problema ang magkaroon ng pinapanigan.
+  </p>
+
+  <p>
+    Ang tunay na tanong ay:
+    <strong>KAPAG KAPWA PILIPINO NA ANG KALABAN—SINO ANG NAKIKINABANG?</strong>
+  </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Huddy, Leonie. (2018). <em>The Group Foundations of Democratic Political Behavior.</em> <em>Critical Review</em>, 30(1–2), 71–86. DOI: 10.1080/08913811.2018.1466857.
+            </li>
+
+            <li>
+              Hewstone, Miles, Mark Rubin, &amp; Hazel Willis. (2002). <em>Intergroup Bias.</em> <em>Annual Review of Psychology</em>, 53, 575–604. DOI: 10.1146/annurev.psych.53.100901.135109.
+            </li>
+
+            <li>
+              Taber, Charles S., &amp; Milton Lodge. (2006). <em>Motivated Skepticism in the Evaluation of Political Beliefs.</em> <em>American Journal of Political Science</em>, 50(3), 755–769. DOI: 10.1111/j.1540-5907.2006.00214.x.
+            </li>
+
+            <li>
+              Van Bavel, Jay J., &amp; Andrea Pereira. (2018). <em>The Partisan Brain: An Identity-Based Model of Political Belief.</em> <em>Trends in Cognitive Sciences</em>, 22(3), 213–224. DOI: 10.1016/j.tics.2018.01.004.
+            </li>
+
+            <li>
+              Kogel, Manuel Josef, &amp; Aidar Zinnatullin. (2026). <em>What Drives Affective Polarization? A Systematic Literature Review.</em> <em>European Political Science.</em> Systematic review of 135 peer-reviewed studies published from 2012–2025.
+            </li>
+
+            <li>
+              Presto, Athena Charanne R. (2024). <em>Cracks under Pressure: Political Polarization and the Spectrum of Youth Navigational Strategies in the Solid North.</em> <em>Philippine Studies: Historical and Ethnographic Viewpoints</em>, 72(3). DOI: 10.13185/2244-1638.5006.
+            </li>
+
+            <li>
+              Dulay, Dean, &amp; Cleve V. Arguelles. (2026). <em>The Contemporary Filipino Voter: Factionalism, Demographics, and Vote Choice.</em> <em>Journal of Current Southeast Asian Affairs.</em> DOI: 10.1177/18681034261455054.
+            </li>
+
+            <li>
+              Paras, Anzelwise Y. (2025). <em>The DDS, Kakampinks, and Loyalists: A Caution on Groupism.</em> <em>Asian Journal of Comparative Politics</em>, 10(4), 429–437. DOI: 10.1177/20578911251355716.
+            </li>
+
+            <li>
+              Hicken, Allen. (2014). <em>Party and Party System Institutionalization in the Philippines.</em> In <em>Party System Institutionalization in Asia.</em> Cambridge University Press. DOI: 10.1017/CBO9781107300385.013.
+            </li>
+
+            <li>
+              Kerkvliet, Benedict J. Tria. (1995). <em>Toward a More Comprehensive Analysis of Philippine Politics: Beyond the Patron-Client, Factional Framework.</em> <em>Journal of Southeast Asian Studies</em>, 26(2), 401–419. DOI: 10.1017/S0022463400007153.
+            </li>
+
+            <li>
+              Ravanilla, Nico, &amp; Allen Hicken. (2023). <em>Poverty, Social Networks, and Clientelism.</em> <em>World Development</em>, 162, 106128. DOI: 10.1016/j.worlddev.2022.106128.
+            </li>
+
+            <li>
+              Congressional Policy and Budget Research Department, House of Representatives. (2026). <em>SERB Statistical Inventory of Potential Political Dynasties.</em> Nationwide inventory using official COMELEC data, systematic name-matching and manual validation.
+            </li>
+
+            <li>
+              Rathje, Steve, Jay J. Van Bavel, &amp; Sander van der Linden. (2021). <em>Out-group Animosity Drives Engagement on Social Media.</em> <em>Proceedings of the National Academy of Sciences</em>, 118(26). DOI: 10.1073/pnas.2024292118.
+            </li>
+
+            <li>
+              Bor, Alexander, Antoine Marie, Lea Pradella, &amp; Michael Bang Petersen. (2026). <em>Social Media Users Experience More Political Hostility in Less Economically Equal and Less Democratic Societies.</em> <em>Nature Human Behaviour</em>, 10, 1083–1093. DOI: 10.1038/s41562-026-02432-5.
+            </li>
+
+            <li>
+              Case, Charleen R., &amp; Jon K. Maner. (2014). <em>Divide and Conquer: When and Why Leaders Undermine the Cohesive Fabric of Their Group.</em> <em>Journal of Personality and Social Psychology</em>, 107(6), 1033–1050. DOI: 10.1037/a0038201.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
