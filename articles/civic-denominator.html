@@ -1,1 +1,2318 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Alamin kung binago ba talaga ang constitutional two-thirds threshold sa impeachment o kung denominator lamang ang naging sentro ng September 23 Senate ruling."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-denominator.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-denominator.html"
+>
+
+<title>BINAGO BA TALAGA ANG 2/3 THRESHOLD? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    BINAGO BA TALAGA ANG 2/3 THRESHOLD?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-denominator.png"
+      alt="Simbolikong paglalarawan ng constitutional two-thirds threshold kung saan ang malaking 2/3 ang sentrong elemento habang ipinapakita ang pagbabago ng denominator at ang kaugnay nitong epekto sa bilang ng boto sa impeachment."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag ang dating naririnig nating kailangan ay 16 votes,
+    tapos biglang may posibilidad na maging 15 o 14, madaling isipin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ayan. Binaba nila ang 2/3 threshold.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero dito kailangang malinaw muna kung ano ang tinatawag
+    nating “threshold.”
+  </p>
+
+  <p>
+    Kung ang tinutukoy ay ang constitutional fraction na
+    <strong>2/3</strong>, hindi iyon pinalitan.
+  </p>
+
+  <p>
+    Kung ang tinutukoy naman ay ang fixed numerical headcount na
+    <strong>16 votes</strong>, iyon mismo ang inalis ng September 23
+    ruling bilang automatic requirement—dahil binago ng Senate
+    Impeachment Court ang interpretation kung sino ang dapat kasama
+    sa denominator kung saan kukunin ang 2/3.
+  </p>
+
+  <p>
+    Magkaibang bagay iyon.
+  </p>
+
+  <p>
+    Dahil ang <strong>2/3</strong> at ang bilang ng boto na lumalabas
+    mula sa 2/3 ay hindi iisang bagay.
+  </p>
+
+  <p>
+    At kung hindi natin paghihiwalayin ang mga iyon, puwedeng mali
+    agad ang premise bago pa man natin pagtalunan kung constitutional
+    o hindi ang naging ruling.
+  </p>
+
+  <p>
+    Kaya bago sabihing “binago ang 2/3,” “binalewala ang
+    Constitution,” o “pinadali lang ang conviction,” kailangan
+    munang linawin ang tatlong magkaibang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      FRACTION.<br>
+      DENOMINATOR.<br>
+      AT RESULTING NUMBER OF VOTES.
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil dito talaga nakasalalay kung tama ba ang
+    pagkakaintindi natin sa nangyari.
+  </p>
+
+  <h2>
+    Ano Ba Talaga ang Sinasabi ng Konstitusyon?
+  </h2>
+
+  <p>
+    Article XI, Section 3(6) ng 1987 Constitution ang
+    pangunahing teksto:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang Senado ang may “sole power to try and decide all cases of
+      impeachment,” at walang maaaring ma-convict kung walang
+      concurrence ng “two-thirds of all the Members of the Senate.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dalawang bagay agad ang malinaw dito.
+  </p>
+
+  <p>
+    Una:
+  </p>
+
+  <p>
+    <strong>2/3</strong> ang constitutional requirement para sa
+    conviction.
+  </p>
+
+  <p>
+    Ikalawa:
+  </p>
+
+  <p>
+    Senado ang constitutional body na binigyan ng kapangyarihang
+    litisin at desisyunan ang impeachment case.
+  </p>
+
+  <p>
+    Hindi sinabi ng September 23 ruling na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gawin nating majority vote.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gawin nating 60%.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag 13 lang ang gusto nating boto, 13 na lang.”
+    </p>
+  </blockquote>
+
+  <p>
+    Two-thirds pa rin ang constitutional fraction.
+  </p>
+
+  <p>
+    Ang pinagdesisyunan ay kung sinu-sino ang dapat kasama sa
+    “all the Members of the Senate” na pagbabatayan ng
+    two-thirds kapag may senador na legal o factual na hindi
+    kayang makilahok sa final judgment.
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI PINALITAN ANG 2/3 FRACTION.<br>
+      ANG INADJUST NG RULING AY ANG DENOMINATOR KUNG SAAN
+      KINUKUHA ANG 2/3.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung tama ba sa Constitution ang bagong interpretation ng
+    denominator na iyon, ibang tanong iyon—at iyon mismo ang
+    tunay na legal dispute.
+  </p>
+
+  <h2>
+    Fraction, Denominator, at Bilang ng Boto—Hindi Iyan Pare-Pareho
+  </h2>
+
+  <p>
+    Simplehan natin.
+  </p>
+
+  <p>
+    Kung mayroon kang:
+  </p>
+
+  <p>
+    <strong>2/3 ng 24</strong>, ang <strong>2/3</strong> ang fraction.
+  </p>
+
+  <p>
+    Ang <strong>24</strong> ang denominator o voting base.
+    At ang <strong>16</strong> ang resulting number of votes
+    required for conviction.
+  </p>
+
+  <p>
+    Kaya:
+  </p>
+
+  <blockquote>
+    <p>
+      2/3 × 24 = 16
+    </p>
+  </blockquote>
+
+  <p>
+    Kung <strong>20</strong> naman ang denominator na gagamitin
+    sa ilalim ng ruling:
+  </p>
+
+  <blockquote>
+    <p>
+      2/3 × 20 = 13.33
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi puwedeng 13 dahil mas mababa iyon sa two-thirds.
+  </p>
+
+  <p>
+    Kaya kailangang i-round up:
+  </p>
+
+  <blockquote>
+    <p>
+      14 votes.
+    </p>
+  </blockquote>
+
+  <p>
+    Ano ang nabago?
+  </p>
+
+  <p>
+    Hindi ang 2/3 fraction.
+    Ang nagbago ay kung 20 o 24 ang pagbabatayan nito.
+  </p>
+
+  <p>
+    At kapag nagbago ang denominator, maaaring magbago rin ang
+    resulting headcount.
+  </p>
+
+  <p>
+    Kaya malaking pagkakaiba ang pagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pinalitan nila ang 2/3.”
+    </p>
+  </blockquote>
+
+  <p>
+    at:
+  </p>
+
+  <blockquote>
+    <p>
+      “Binago nila kung ilan ang kasama sa basehan ng 2/3.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi pareho ang dalawang iyon.
+  </p>
+
+  <h2>
+    Pero Hindi Ba Mas Kaunti na ang Kailangang Boto para Ma-Convict?
+  </h2>
+
+  <p>
+    Posible.
+  </p>
+
+  <p>
+    At hindi kailangang itago iyon.
+  </p>
+
+  <p>
+    Kung mula 24 ang denominator ay maging 20:
+    Mula 16, magiging 14 ang kailangang guilty votes.
+  </p>
+
+  <p>
+    Pero dito nagiging incomplete ang framing kapag hanggang
+    doon lang ang sinasabi.
+  </p>
+
+  <p>
+    Dahil hindi lang conviction side ang ginagalaw ng denominator.
+    Pati ang bilang ng <strong>NOT GUILTY</strong> votes na sapat
+    para hindi na maabot ang required two-thirds ay gumagalaw din.
+  </p>
+
+  <p>
+    Tingnan natin.
+  </p>
+
+  <p>
+    Kung 24 ang voting base:
+    kailangan ang <strong>16 GUILTY</strong> para ma-convict.
+  </p>
+
+  <p>
+    Kapag mayroon nang <strong>9 NOT GUILTY</strong>,
+    15 na lang ang maximum possible guilty votes.
+  </p>
+
+  <p>
+    Ibig sabihin:
+    Hindi na maaabot ang required 16.
+  </p>
+
+  <p>
+    Ngayon, kung 20 ang denominator sa ilalim ng ruling:
+    Kailangan ang <strong>14 GUILTY</strong>.
+  </p>
+
+  <p>
+    Kapag mayroon nang <strong>7 NOT GUILTY</strong>,
+    13 na lang ang maximum possible guilty votes.
+  </p>
+
+  <p>
+    Hindi na rin maaabot ang required 14.
+  </p>
+
+  <blockquote>
+    <p>
+      24 → 20<br><br>
+
+      Votes needed for conviction:<br>
+      16 → 14<br><br>
+
+      NOT GUILTY votes na sapat para gawing
+      mathematically impossible ang conviction:<br>
+      9 → 7
+    </p>
+  </blockquote>
+
+  <p>
+    Parehong nabawasan ng dalawa.
+  </p>
+
+  <p>
+    Hindi ito equation kung saan ang absolute number sa isang
+    panig lamang ang gumagalaw.
+  </p>
+
+  <p>
+    Pero may mahalagang guardrail:
+  </p>
+
+  <p>
+    Hindi ibig sabihin ng mathematical symmetry na automatic ding
+    neutral ang practical political effect sa isang partikular
+    na kaso.
+  </p>
+
+  <p>
+    Kung sinu-sino ang hindi maisama sa denominator at kung paano
+    sana sila boboto ay maaaring makaapekto sa practical result.
+  </p>
+
+  <p>
+    Ang pinatutunayan lamang ng math ay ito:
+  </p>
+
+  <blockquote>
+    <p>
+      Kapag nagbago ang denominator, hindi lamang maaaring
+      magbago ang absolute number ng guilty votes na kailangan
+      para ma-convict. Maaari ring magbago ang bilang ng
+      not-guilty votes na sapat para hindi maabot ang
+      constitutionally required two-thirds concurrence.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang mas eksaktong punto.
+  </p>
+
+                  <h2>
+          Hindi Ito “1/3 Acquittal Rule”
+        </h2>
+
+        <p>
+          May importanteng legal distinction dito.
+        </p>
+
+        <p>
+          Walang nakasulat sa Constitution na:
+        </p>
+
+        <blockquote>
+          <p>
+            “One-third shall acquit.”
+          </p>
+        </blockquote>
+
+        <p>
+          Ang constitutional rule ay nasa conviction:
+          Kailangang maabot ang concurrence ng
+          <strong>two-thirds of all the Members of the Senate.</strong>
+        </p>
+
+        <p>
+          At dito pumapasok ang mismong Rule XXI ng Senate Rules on
+          Impeachment Trials.
+        </p>
+
+        <p>
+          Kapag ang impeachment ay hindi na-sustain sa isang article
+          ng votes ng required two-thirds, judgment of acquittal shall
+          be entered. Kapag naman naabot ang kinakailangang
+          two-thirds para sa conviction, saka magpo-pronounce ng
+          judgment of conviction ang Senate.
+        </p>
+
+        <p>
+          Kaya mas eksaktong sabihin:
+          Walang hiwalay na constitutional
+          <strong>“1/3 acquittal threshold.”</strong>
+        </p>
+
+        <p>
+          Ang acquittal ay legal consequence ng failure to obtain the
+          constitutionally required two-thirds concurrence for
+          conviction.
+        </p>
+
+        <p>
+          Kaya kapag nagbago ang denominator at nagbago ang absolute
+          number needed to reach two-thirds, maaari ring magbago ang
+          bilang ng votes na sapat para hindi na maabot ang
+          two-thirds.
+        </p>
+
+        <blockquote>
+          <p>
+            Iisang equation.<br>
+            Iisang denominator.<br>
+            Iisang constitutional fraction.
+          </p>
+        </blockquote>
+
+        <h2>
+          May Isa Pang Mahalagang Nuance sa Math
+        </h2>
+
+        <p>
+          Hindi rin tama na sabihing sa bawat isang senador na
+          mabawas sa denominator ay automatic na bababa agad ng isang
+          boto ang conviction requirement.
+        </p>
+
+        <p>
+          Dahil may rounding.
+        </p>
+
+        <p>
+          Halimbawa:
+        </p>
+
+        <blockquote>
+          <p>
+            24 members → 16 needed<br>
+            23 members → 15.33 → 16 pa rin<br>
+            22 members → 14.67 → 15<br>
+            21 members → 14<br>
+            20 members → 13.33 → 14
+          </p>
+        </blockquote>
+
+        <p>
+          Kaya ang mas eksaktong description ay:
+          Kapag nagbago ang denominator, maaaring magbago ang
+          resulting numerical requirement depende sa two-thirds
+          computation at rounding.
+        </p>
+
+        <p>
+          Hindi arbitrary ang number pagkatapos.
+        </p>
+
+        <p>
+          Kailangang maabot pa rin ang
+          <strong>at least two-thirds concurrence.</strong>
+        </p>
+
+        <p>
+          At minsan, dahil kailangang whole number ang boto, ang
+          actual percentage na kailangan ay mas mataas pa sa eksaktong
+          66⅔%.
+        </p>
+
+        <p>
+          Halimbawa:
+        </p>
+
+        <blockquote>
+          <p>
+            14 out of 20 = 70%.
+          </p>
+        </blockquote>
+
+        <p>
+          Kaya mas eksaktong sabihing
+          <strong>at least two-thirds</strong> pa rin ang
+          constitutional requirement, hindi na laging
+          “exactly 66.67%” ang actual headcount result.
+        </p>
+
+        <h2>
+          Puwede Ba Basta Magbawas ng Senador sa Denominator?
+        </h2>
+
+        <p>
+          Hindi iyon ang sinabi ng September 23 ruling.
+        </p>
+
+        <p>
+          Hindi sinabi:
+        </p>
+
+        <blockquote>
+          <p>
+            “Kung absent, tanggal agad.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi rin:
+        </p>
+
+        <blockquote>
+          <p>
+            “Kung ayaw bumoto, huwag nang bilangin.”
+          </p>
+        </blockquote>
+
+        <p>
+          Sa ruling, ang voting base ay ibabatay sa mga senador na
+          <strong>legally at factually capable of participating</strong>
+          kapag dumating ang final vote.
+        </p>
+
+        <p>
+          Binanggit bilang posibleng hindi maisama ang mga sitwasyong
+          gaya ng senador na:
+        </p>
+
+        <ul>
+          <li>detained, suspended o otherwise legally restrained;</li>
+          <li>sought by authorities at unknown ang whereabouts;</li>
+          <li>physically o medically incapacitated;</li>
+          <li>beyond the coercive processes of the Senate;</li>
+          <li>o similarly situated.</li>
+        </ul>
+
+        <p>
+          At hindi rin automatic ang exclusion.
+        </p>
+
+        <p>
+          Kailangang ang Impeachment Court mismo ang
+          mag-determine, batay sa competent and sufficient evidence,
+          kung talagang pasok ang isang senador sa kinikilalang
+          circumstance bago baguhin ang denominator.
+        </p>
+
+        <blockquote>
+          <p>
+            “Magbawas tayo ng senador para makuha ang numerong gusto
+            natin.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi ito ang pinahihintulutan ng ruling.
+        </p>
+
+        <p>
+          May factual at legal determination munang kailangang gawin.
+        </p>
+
+        <p>
+          At kung ang computation ay may fraction, hindi maaaring
+          i-round down para mapadali ang conviction.
+        </p>
+
+        <p>
+          Sa example na 20:
+        </p>
+
+        <blockquote>
+          <p>
+            13.33 ang two-thirds.<br><br>
+
+            Hindi puwedeng 13.<br>
+            14 ang kailangan.
+          </p>
+        </blockquote>
+
+                  <h2>
+          At Hindi Rin Ito Permanenteng Pag-amyenda ng Impeachment Rules
+        </h2>
+
+        <p>
+          Isa pa itong mahalagang guardrail.
+        </p>
+
+        <p>
+          Ang September 23 ruling ay ginawa
+          <em>pro hac vice</em>—para sa present occasion o
+          partikular na proceeding na iyon.
+        </p>
+
+        <p>
+          Hindi nito automatic na ginawang permanenteng rule
+          para sa lahat ng impeachment courts sa hinaharap ang
+          parehong interpretation. Ang very next day, mismong
+          discussion sa ruling emphasized that its
+          <em>pro hac vice</em> character means it does not
+          automatically bind future impeachment proceedings.
+        </p>
+
+        <p>
+          Kaya masyadong malawak ang framing na:
+        </p>
+
+        <blockquote>
+          <p>
+            “Binago na ng Senado ang constitutional impeachment
+            threshold para sa lahat.”
+          </p>
+        </blockquote>
+
+        <p>
+          Mas eksakto:
+          Nag-adopt ang kasalukuyang Senate Impeachment Court
+          ng interpretation, para sa kasong iyon, kung sino ang
+          kasama sa denominator ng constitutional two-thirds
+          requirement.
+        </p>
+
+        <h2>
+          May Kapangyarihan Ba ang Senate Impeachment Court na Magdesisyon sa Ganitong Tanong?
+        </h2>
+
+        <p>
+          May malinaw na constitutional starting point:
+          Ang Senado ang may
+          <strong>sole power to try and decide all cases of impeachment.</strong>
+        </p>
+
+        <p>
+          Ibig sabihin, bilang impeachment court, kailangan
+          nitong i-apply at i-interpret ang constitutional at
+          procedural rules na kailangan upang maresolba ang
+          kasong nasa harap nito.
+        </p>
+
+        <p>
+          Pero may napakahalagang kasunod:
+          Hindi ibig sabihin na judicially final o automatically
+          constitutional ang bawat interpretation nito.
+        </p>
+
+        <blockquote>
+          <p>
+            “Sole power” ay hindi
+            “walang constitutional limit.”
+          </p>
+        </blockquote>
+
+        <p>
+          Sa <em>Generillo v. Senate</em>, kinilala ng Supreme
+          Court noong 2026 na ang Senado ay may sariling
+          constitutional sphere sa impeachment at hindi basta
+          maaaring kontrolin ng judiciary sa pamamagitan ng
+          mandamus.
+        </p>
+
+        <p>
+          Pero sinabi rin ng Supreme Court ang mahalagang
+          exception:
+          <strong>grave abuse of discretion.</strong>
+        </p>
+
+        <p>
+          Sa mismong kasong iyon, tinrato pa ng korte ang
+          petition bilang <em>certiorari</em> upang suriin kung
+          nagkaroon ng grave abuse of discretion.
+        </p>
+
+        <p>
+          Ibig sabihin:
+          May constitutional space ang Senado para gampanan ang
+          impeachment function nito.
+        </p>
+
+        <p>
+          Pero may constitutional boundaries din ang
+          kapangyarihang iyon.
+        </p>
+
+        <p>
+          Kaya parehong sobra ang dalawang extreme:
+        </p>
+
+        <blockquote>
+          <p>
+            “Senado iyan, kaya kahit ano ang interpretation nila
+            ay automatically constitutional.”
+          </p>
+        </blockquote>
+
+        <p>
+          at:
+        </p>
+
+        <blockquote>
+          <p>
+            “Walang karapatan ang Senado na mag-interpret ng
+            constitutional rule na kailangan nitong i-apply
+            bilang impeachment court.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi ganoon kasimple ang separation of powers.
+          May sariling constitutional function ang Senado.
+        </p>
+
+        <p>
+          At may judicial review pa rin kapag ang issue ay
+          umabot sa grave abuse of discretion amounting to lack
+          or excess of jurisdiction.
+        </p>
+
+        <h2>
+          Kung Ganoon, Wala na Bang Matibay na Argumento Laban sa Bagong Denominator?
+        </h2>
+
+        <p>
+          Meron.
+        </p>
+
+        <p>
+          At dapat marinig iyon kung gusto nating maging patas
+          ang explainer.
+        </p>
+
+        <p>
+          Retired Supreme Court Justice
+          <strong>Adolfo Azcuna</strong>, na miyembro rin ng
+          1986 Constitutional Commission, ay nanindigan na:
+        </p>
+
+        <blockquote>
+          <p>
+            “All means all.”
+          </p>
+        </blockquote>
+
+        <p>
+          Para sa reading niya, habang miyembro pa rin ng Senado
+          ang isang senador, bahagi pa rin siya ng denominator.
+        </p>
+
+        <p>
+          Hindi dapat magbago ang base dahil lamang sa
+          attendance, detention, suspension o ibang circumstance
+          habang nananatili pa siyang senator.
+        </p>
+
+        <p>
+          Sa ganitong interpretation, ang 24-member Senate ay
+          nangangailangan pa rin ng
+          <strong>16 votes</strong> for conviction.
+        </p>
+
+        <p>
+          Malakas ang textual argument dahil literal na
+          nakasulat sa Constitution:
+        </p>
+
+        <blockquote>
+          <p>
+            “two-thirds of all the Members of the Senate.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi:
+        </p>
+
+        <blockquote>
+          <p>
+            “two-thirds of those present.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi:
+        </p>
+
+        <blockquote>
+          <p>
+            “two-thirds of those participating.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi rin:
+        </p>
+
+        <blockquote>
+          <p>
+            “two-thirds of those capable of voting.”
+          </p>
+        </blockquote>
+
+        <p>
+          Iyan ang strongest textual argument laban sa
+          capability-based denominator.
+        </p>
+
+        <h2>
+          Pero Hindi Rin Iisa ang Legal Reading
+        </h2>
+
+        <p>
+          Tatlo sa apat na inimbitahang
+          <em>amici curiae</em>—retired Chief Justices
+          Hilario Davide Jr., Artemio Panganiban at
+          Reynato Puno—ay nagbigay ng magkakaibang reasoning
+          pero hindi nila itinuring na necessarily fixed sa 24
+          ang denominator.
+        </p>
+
+        <p>
+          Si Azcuna ang malinaw na nanindigan sa
+          full-membership reading.
+        </p>
+
+        <p>
+          Pero mahalagang huwag itong baluktutin sa kabilang
+          direksyon.
+        </p>
+
+        <p>
+          Hindi ibig sabihin na:
+        </p>
+
+        <blockquote>
+          <p>
+            “Tatlo laban sa isa, kaya constitutional na.”
+          </p>
+        </blockquote>
+
+        <p>
+          Ang <em>amici curiae</em> ay
+          <em>friends of the court.</em>
+        </p>
+
+        <p>
+          Nagbibigay sila ng expert legal perspectives.
+          Hindi sila ang tribunal na nagbibigay ng final
+          binding constitutional judgment sa dispute.
+        </p>
+
+        <p>
+          Ang halaga ng kanilang disagreement ay ibang bagay:
+          Ipinapakita nitong may tunay na constitutional
+          interpretation issue dito.
+        </p>
+
+        <p>
+          Hindi ito simpleng usapin na:
+        </p>
+
+        <blockquote>
+          <p>
+            “May Constitution na nagsasabing 16, tapos
+            ginawang 14 ng Senado.”
+          </p>
+        </blockquote>
+
+        <p>
+          Dahil walang nakasulat na numerong
+          <strong>16</strong> sa Article XI,
+          Section 3(6).
+        </p>
+
+        <p>
+          Ang nakasulat ay:
+        </p>
+
+        <blockquote>
+          <p>
+            TWO-THIRDS OF ALL THE MEMBERS OF THE SENATE.
+          </p>
+        </blockquote>
+
+        <p>
+          Ang dispute ay nasa kahulugan at application ng:
+        </p>
+
+        <blockquote>
+          <p>
+            “all the Members.”
+          </p>
+        </blockquote>
+
+        <h2>
+          Ito ang Dapat Pagtalunan—Hindi ang Maling Premise
+        </h2>
+
+        <p>
+          Kung gusto mong kuwestiyunin ang ruling, may
+          lehitimong constitutional question:
+          Dapat bang fixed sa buong incumbent membership ang
+          denominator dahil malinaw ang salitang
+          <strong>“all”</strong>?
+        </p>
+
+        <p>
+          O:
+          Maaari bang hindi isama sa denominator ang isang
+          senator-judge na legal o factual na walang
+          kakayahang makilahok sa final judgment?
+        </p>
+
+        <p>
+          Iyan ang totoong debate.
+        </p>
+
+        <p>
+          Puwedeng ipagtanggol ang unang interpretation.
+          Puwedeng ipagtanggol ang ikalawa.
+        </p>
+
+        <p>
+          At kung magkaroon ng judicial challenge, maaaring
+          suriin kung ang ginawa ng Senate Impeachment Court ay
+          nasa loob ng constitutional discretion nito o umabot
+          sa grave abuse of discretion.
+        </p>
+
+        <p>
+          Pero ibang usapan iyon sa claim na:
+        </p>
+
+        <blockquote>
+          <p>
+            “PINALITAN NILA ANG TWO-THIRDS NG MAS MABABANG FRACTION.”
+          </p>
+        </blockquote>
+
+        <p>
+          Dahil hindi iyon ang nangyari.
+        </p>
+
+               <h2>
+          At Hindi Rin Sapat ang “Pinadali Lang Nila ang Conviction”
+        </h2>
+
+        <p>
+          Ito ang pinakasimpleng mathematical test.
+        </p>
+
+        <p>
+          Kung ang pagbabago ay inilalarawan na parang
+          one-way movement lamang sa guilty side, tingnan din
+          kung ano ang nangyayari sa kabilang side ng equation.
+        </p>
+
+        <p>
+          Sa 24:
+          <br>
+          16 guilty ang kailangan.
+          <br>
+          9 not guilty makes 16 impossible.
+        </p>
+
+        <p>
+          Sa 20:
+          <br>
+          14 guilty ang kailangan.
+          <br>
+          7 not guilty makes 14 impossible.
+        </p>
+
+        <p>
+          Kung bumaba ang absolute number needed to convict,
+          bumaba rin sa halimbawang ito ang absolute number ng
+          not-guilty votes na sapat para pigilan ang required
+          two-thirds concurrence.
+        </p>
+
+        <p>
+          Pero ulitin natin ang guardrail:
+          Hindi nito pinatutunayang walang practical advantage
+          o disadvantage sa alinmang panig sa aktuwal na kaso.
+        </p>
+
+        <p>
+          Depende iyon sa mga senator-judges na maaaring hindi
+          maisama at sa magiging boto nila kung makakalahok
+          sila.
+        </p>
+
+        <p>
+          Ang mathematical point ay mas limitado:
+          Parehong nakadepende sa denominator ang bilang na
+          kailangan para maabot ang two-thirds at ang bilang
+          ng opposing votes na sapat para gawing imposible ang
+          pag-abot dito.
+        </p>
+
+        <p>
+          Kaya kulang ang argumentong:
+        </p>
+
+        <blockquote>
+          <p>
+            “Mas kaunting guilty votes, therefore binaba na
+            ang constitutional fraction.”
+          </p>
+        </blockquote>
+
+        <p>
+          Hindi iyon ang parehong bagay.
+        </p>
+
+        <p>
+          At least two-thirds pa rin ang kailangang
+          concurrence.
+        </p>
+
+        <p>
+          Ang nagbago sa ruling ay ang voting population kung
+          saan kukunin ang fraction.
+        </p>
+
+        <p>
+          At iyon mismo ang constitutional issue na dapat
+          pagtalunan.
+        </p>
+
+        <h2>
+          Huwag Nating Hayaang ang Resulta ang Magdikta ng Pagbasa sa Rule
+        </h2>
+
+        <p>
+          Ito ang mas malaking civic lesson.
+        </p>
+
+        <p>
+          Kung gusto natin ang posibleng resulta, madaling
+          sabihing:
+        </p>
+
+        <blockquote>
+          <p>
+            “Tama ang interpretation.”
+          </p>
+        </blockquote>
+
+        <p>
+          Kung ayaw natin sa posibleng resulta, madaling
+          sabihing:
+        </p>
+
+        <blockquote>
+          <p>
+            “Bending the law.”
+          </p>
+        </blockquote>
+
+        <p>
+          Pero hindi dapat nakadepende sa pangalan ng
+          akusado, sa kulay ng kampo, o sa kung kanino pabor
+          ang magiging numero ang pagbasa natin sa
+          Constitution.
+        </p>
+
+        <p>
+          Dahil ang constitutional interpretation na
+          tinatanggap natin ngayon ay maaaring magkaroon ng
+          epekto bukas sa isang opisyal na suportado naman
+          natin.
+        </p>
+
+        <p>
+          Kaya ang tamang tanong ay hindi:
+        </p>
+
+        <blockquote>
+          <p>
+            SINO ANG MAKIKINABANG SA NUMERO?
+          </p>
+        </blockquote>
+
+        <p>
+          Ang tamang tanong ay:
+        </p>
+
+        <blockquote>
+          <p>
+            ANO ANG TAMANG CONSTITUTIONAL DENOMINATOR—AT MAY
+            SAPAT BANG LEGAL BASIS PARA RITO?
+          </p>
+        </blockquote>
+
+        <p>
+          Doon dapat magharap ang textual reading,
+          constitutional purpose, impeachment procedure,
+          institutional authority, precedent at judicial
+          review.
+        </p>
+
+        <p>
+          Hindi sa slogan.
+          <br>
+          Hindi sa kampihan.
+        </p>
+
+        <p>
+          At hindi sa maling premise na basta may nagbago
+          mula 16 ay pinalitan na rin ang constitutional
+          fraction na two-thirds.
+        </p>
+
+        <h2>
+          Ang Pinakamalinaw na Pagkakaiba
+        </h2>
+
+        <p>
+          <strong>FRACTION:</strong>
+          <br>
+          Two-thirds.
+        </p>
+
+        <p>
+          <strong>DENOMINATOR:</strong>
+          <br>
+          Kung sino at ilan ang dapat bilangin bilang
+          “all the Members of the Senate.”
+        </p>
+
+        <p>
+          <strong>RESULTING VOTE REQUIREMENT:</strong>
+          <br>
+          Ang whole number na kailangan upang maabot ang
+          at least two-thirds ng denominator na gagamitin.
+        </p>
+
+        <p>
+          Ang September 23 ruling ay direktang tungkol sa
+          ikalawa.
+        </p>
+
+        <p>
+          Ang pagbabago sa ikatlo ay mathematical consequence
+          nito.
+        </p>
+
+        <p>
+          Ang una—ang constitutional two-thirds
+          fraction—ay nanatili.
+        </p>
+
+        <h2>
+          Kaya Bago Sabihing “Binago ang Konstitusyon,” Linawin Muna Kung Ano Talaga ang Binago
+        </h2>
+
+        <p>
+          Hindi kailangang sumang-ayon sa ruling para
+          maintindihan ito nang tama.
+        </p>
+
+        <p>
+          Puwede mong sabihing mali ang Senate interpretation
+          ng “all the Members.”
+          Puwede mong sabihin na dapat fixed ang denominator.
+          Puwede mong hamunin ang legal basis nito.
+        </p>
+
+        <p>
+          Iyan ay lehitimong constitutional debate.
+        </p>
+
+        <p>
+          Pero kung ang argumento ay:
+        </p>
+
+        <blockquote>
+          <p>
+            “PINALITAN NILA ANG 2/3 NG MAS MABABANG VOTING FRACTION.”
+          </p>
+        </blockquote>
+
+        <p>
+          may pangunahing problemang kailangang ituwid muna.
+        </p>
+
+        <p>
+          Dahil two-thirds pa rin ang constitutional
+          fraction.
+        </p>
+
+        <p>
+          Ang pinagtatalunan ay:
+        </p>
+
+        <blockquote>
+          <p>
+            TWO-THIRDS NG SINO?
+            <br>
+            TWO-THIRDS NG ILAN?
+          </p>
+        </blockquote>
+
+        <p>
+          At kapag iyon ang pinag-uusapan, huwag nating
+          ipagkamali ang pagbabago sa denominator sa
+          pagbabago ng fraction.
+        </p>
+
+        <blockquote>
+          <p>
+            DAHIL ANG RULE OF LAW AY HINDI LANG PAGBASA SA
+            NUMERO.
+            <br><br>
+            PAG-UNAWA RIN ITO KUNG ANO ANG NUMERONG IYON,
+            SAAN ITO KINUKUHA, AT ANO TALAGA ANG SINASABI NG
+            KONSTITUSYON.
+          </p>
+        </blockquote>   
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / Legal References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              1987 Constitution, Article XI, Section 3(6) — Senate's sole power to try and decide impeachment cases; two-thirds concurrence requirement. Supreme Court E-Library.
+            </li>
+
+            <li>
+              Rules of Procedure on Impeachment Trials, Rule XXI — judgment of acquittal when an article fails to obtain the required two-thirds; conviction when the required two-thirds is obtained. Senate of the Philippines.
+            </li>
+
+            <li>
+              <em>Generillo v. Senate</em>, G.R. No. 278311, April 22, 2026 — Senate's constitutional sphere and judicial review for grave abuse of discretion. Supreme Court of the Philippines / Supreme Court E-Library.
+            </li>
+
+            <li>
+              September 23, 2026 Senate Impeachment Court ruling — removal of the automatic fixed-16 interpretation and adoption of a denominator based on senators legally and factually capable of participating.
+            </li>
+
+            <li>
+              September 16, 2026 <em>amici curiae</em> proceedings — differing interpretations concerning whether the denominator should remain the full 24-member Senate or may change according to capacity to participate.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
