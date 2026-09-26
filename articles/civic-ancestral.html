@@ -1,1 +1,1863 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang fact-based Civic Explainer ni jhElmEr tungkol sa ancestral domain, Indigenous Peoples’ rights, development, FPIC, CADT, at kung paano maaaring umunlad nang hindi binubura ang komunidad."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-ancestral.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-ancestral.html"
+>
+
+<title>PROGRESO BA—KUNG MAY KAILANGANG MAWALA PARA MAY MAITAYO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+         <h1 class="article-title">
+    PROGRESO BA—KUNG MAY KAILANGANG MAWALA PARA MAY MAITAYO?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-anchestral-domain.png"
+      alt="Progreso ba kung may kailangang mawala para may maitayo? Isang Civic Explainer tungkol sa ancestral domain, Indigenous Peoples' rights, at makatarungang development."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag may bagong kalsada, dam, planta, minahan, energy project o iba pang development, madaling makita kung ano ang madadagdag:<br>
+    Trabaho.<br>
+    Kuryente.<br>
+    Koneksiyon.<br>
+    Negosyo.<br>
+    Serbisyo.<br>
+    Kita.
+  </p>
+
+  <p>
+    At maaaring kailangan talaga ang mga iyon para umunlad ang lipunan.
+  </p>
+
+  <p>
+    Pero may isang bahagi ng development na mas madaling hindi makita:<br>
+    <strong>ANO ANG KAILANGANG MAWALA PARA MAITAYO ITO?</strong>
+  </p>
+
+  <p>
+    Dahil ang lugar na nakikita sa mapa bilang lokasyon ng susunod na proyekto ay maaaring hindi bakanteng espasyo.
+  </p>
+
+  <p>
+    Maaaring tahanan na iyon.<br>
+    Pinagkukunan ng kabuhayan.<br>
+    Kagubatan at watershed na matagal nang inaalagaan.<br>
+    Libingan ng mga ninuno.<br>
+    Sagradong lugar.<br>
+    Bahagi ng kasaysayan, kultura at pagkakakilanlan ng isang komunidad.
+  </p>
+
+  <p>
+    At kapag ang development ay pumasok sa lugar na may ganitong malalim at matagal nang ugnayan sa mga Indigenous Peoples, hindi na sapat na timbangin lamang kung ano ang maitatayo.
+  </p>
+
+  <p>
+    Kailangan ding timbangin kung ano ang maaaring mawala—at kung sino ang magdadala ng kapalit nito.
+  </p>
+
+  <h2>Dito Pumapasok ang Usapin ng Ancestral Domain</h2>
+
+  <p>
+    Hindi para sabihing kailangang pigilan ang development.
+  </p>
+
+  <p>
+    At hindi rin para sabihing dapat manatiling nakahiwalay sa modernisasyon ang mga katutubo.
+  </p>
+
+  <p>
+    Ang mas mahirap na tanong ay kung paano maaaring umunlad ang isang lipunan nang hindi ginagawang presyo ng progreso ang tahanan, karapatan, kultura at kinabukasan ng mga komunidad na matagal nang naroon.
+  </p>
+
+  <p>
+    Dahil bago natin masagot kung ano ang makatarungang development, kailangan muna nating maintindihan kung ano talaga ang ancestral domain—at bakit hindi ito simpleng lupa lamang.
+  </p>
+
+  <h2>Hindi Lang Ito Usapin ng Lupa</h2>
+
+  <p>
+    Sa ilalim ng Indigenous Peoples’ Rights Act of 1997 o IPRA, ang ancestral domain ay mas malawak kaysa sa bahay o lupang sinasaka ng isang katutubo.
+  </p>
+
+  <p>
+    Maaari itong sumaklaw sa mga lupain, inland waters, coastal areas at natural resources na tradisyunal nang pag-aari, tinitirhan, ginagamit o inaangkin ng Indigenous Cultural Communities/Indigenous Peoples o ICCs/IPs, alinsunod sa mga kondisyon ng batas.
+  </p>
+
+  <p>
+    Kasama rito ang kagubatan, pastulan, hunting grounds, burial grounds, worship areas, bodies of water at iba pang bahagi ng teritoryong may matagal nang ugnayan sa buhay ng komunidad.
+  </p>
+
+  <p>
+    Kaya kapag ancestral domain ang pinag-uusapan, hindi sapat na itanong:
+  </p>
+
+  <blockquote>
+    <p>“MAGKANO ANG HALAGA NG LUPA?”</p>
+  </blockquote>
+
+  <p>
+    Dahil may mga bagay na hindi kayang sukatin sa presyo kada metro kuwadrado.
+  </p>
+
+  <p>
+    Maaaring naroon ang pinagkukunan ng pagkain at tubig.<br>
+    Maaaring naroon ang tradisyunal na kabuhayan.<br>
+    Maaaring naroon ang libingan ng mga ninuno, sagradong lugar, kaalamang ipinapasa sa bawat henerasyon, at mismong landscape kung saan nabuo at nagpapatuloy ang kultura ng isang komunidad.
+  </p>
+
+  <p>
+    Hindi ito romantikong ideya lamang.
+  </p>
+
+  <p>
+    Sa isang pag-aaral sa sampung Indigenous communities sa Mindanao, lumitaw na mahalaga sa mga kalahok hindi lamang ang economic improvement kundi pati ang participatory planning, Indigenous knowledge, cultural revitalization, at papel ng elders at komunidad sa pagpapasya kung paano dapat umunlad ang kanilang ancestral domain.
+  </p>
+
+  <p>
+    Ibig sabihin, para sa maraming komunidad, ang tanong ay hindi simpleng:<br>
+    <strong>TRADISYON O PAG-UNLAD?</strong>
+  </p>
+
+  <p>
+    Ang hamon ay kung paano uunlad nang hindi kailangang mawala ang mga bagay na nagbibigay sa komunidad ng sariling pagkakakilanlan.
+  </p>
+
+  <h2>Ang Ancestral Domain ay Hindi Museum</h2>
+
+  <p>
+    May isa ring maling paraan ng pagtingin sa proteksiyon.
+  </p>
+
+  <p>
+    Para bang kapag katutubo, kailangan manatiling eksaktong gaya ng kanilang mga ninuno ang kanilang pamumuhay.
+  </p>
+
+  <p>
+    Hindi.
+  </p>
+
+  <p>
+    Kailangan din nila ng paaralan.<br>
+    Healthcare.<br>
+    Malinis na tubig.<br>
+    Kuryente at komunikasyon.<br>
+    Transportasyon.<br>
+    Kabuhayan.<br>
+    Trabaho at negosyo.<br>
+    Teknolohiya.
+  </p>
+
+  <p>
+    At pagkakataong makinabang sa mas malawak na ekonomiya.
+  </p>
+
+  <p>
+    Sa katunayan, may mga dokumentadong disparities pa rin sa access ng Indigenous Peoples sa basic services gaya ng education, health, clean water, sanitation at electricity—kaya kabilang sa mga rekomendasyon ng World Bank para sa Pilipinas ang pagpapabuti ng access sa mga serbisyong ito at mas inclusive na development planning.
+  </p>
+
+  <p>
+    Kaya hindi proteksiyon ang sabihin:
+  </p>
+
+  <blockquote>
+    <p>“Hayaan na lang natin silang mamuhay gaya ng dati.”</p>
+  </blockquote>
+
+  <p>
+    Kung ang ibig sabihin naman nito ay tanggapin nating kulang ang kanilang serbisyo, oportunidad at imprastraktura.
+  </p>
+
+  <p>
+    Hindi obligasyon ng pagiging katutubo ang manatiling mahirap para mapanatiling “authentic” ang kultura.
+  </p>
+
+  <p>
+    May karapatan din silang umunlad.
+  </p>
+
+  <p>
+    At mahalagang maintindihan ito:
+    Ang pagprotekta sa ancestral domain ay hindi pagprotekta sa kahirapan.
+  </p>
+
+  <p>
+    Ang pinoprotektahan ay ang karapatan ng komunidad na hindi mawalan ng lupa, boses, kultura at kakayahang magpasya habang nakikibahagi sila sa development.
+  </p>
+
+  <h2>Kaya Hindi “Ancestral Domain o Development?” ang Tamang Tanong</h2>
+
+  <p>
+    Kailangan ng bansa ng imprastraktura.<br>
+    Kailangan ng enerhiya.<br>
+    Kailangan ng pagkain, trabaho, industriya, transportasyon at investment.
+  </p>
+
+  <p>
+    At maaaring may mga proyektong kailangan talagang dumaan o gumamit ng mga lugar na nasa loob o nakaaapekto sa ancestral domains.
+  </p>
+
+  <p>
+    Kaya hindi makatotohanang gawing prinsipyo ang:
+  </p>
+
+  <blockquote>
+    <p>“ANCESTRAL DOMAIN ITO—KAYA WALANG DEVELOPMENT NA DAPAT PUMASOK.”</p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin sapat ang kabilang extreme:
+  </p>
+
+  <blockquote>
+    <p>“DEVELOPMENT ITO—KAYA KAILANGANG MAGBIGAY-DAAN ANG KOMUNIDAD.”</p>
+  </blockquote>
+
+  <p>
+    Mas mahirap ang tunay na civic question:<br>
+    <strong>ANONG DEVELOPMENT?</strong><br>
+    <strong>SINO ANG NAGPASYA?</strong><br>
+    <strong>SINO ANG MAKIKINABANG?</strong><br>
+    <strong>SINO ANG SASALO NG PINSALA?</strong><br>
+    <strong>ANO ANG MAWAWALA?</strong><br>
+    <strong>AT MAY TUNAY BANG KAPANGYARIHAN ANG KOMUNIDAD NA MAKILAHOK SA DESISYON?</strong>
+  </p>
+
+  <p>
+    Dahil hindi lahat ng development ay pareho.
+  </p>
+
+  <p>
+    May proyektong maaaring magdala ng access, serbisyo at kabuhayan.<br>
+    May maaaring tanggapin ng komunidad sa ilalim ng negotiated conditions at safeguards.<br>
+    May maaaring baguhin upang mabawasan ang pinsala.
+  </p>
+
+  <p>
+    At mayroon ding maaaring magdulot ng displacement, pagkawala ng kabuhayan, environmental degradation o permanenteng pagbabago sa lugar na hindi na basta maibabalik kapag nagkamali.
+  </p>
+
+            <h2>May Karapatan Sila—Pero Paano Ito Gumagana?</h2>
+
+  <p>
+    Dito mahalagang maintindihan ang ilang bahagi ng sistema.
+  </p>
+
+  <p>
+    Ang Certificate of Ancestral Domain Title o CADT ay pormal na pagkilala ng Estado sa rights of possession and ownership ng ICCs/IPs sa ancestral domain na na-identify at na-delineate alinsunod sa IPRA.
+  </p>
+
+  <p>
+    Pero mahalagang linawin:<br>
+    <strong>Hindi CADT ang lumilikha ng ancestral-domain rights.</strong>
+  </p>
+
+  <p>
+    Kinikilala at pinoprotektahan ng IPRA ang ancestral-domain rights ng ICCs/IPs.<br>
+    Kinikilala rin nito ang Native Title—mga pre-conquest rights sa lands and domains na, ayon sa depinisyon ng batas, matagal nang hawak sa ilalim ng claim of private ownership, hindi naging public lands, at ipinapalagay na hawak na sa gayong paraan bago pa ang Spanish Conquest.
+  </p>
+
+  <p>
+    Ang CADT naman ang pormal na pagkilala sa title ng concerned ICCs/IPs sa ancestral domain na natukoy at na-delineate alinsunod sa batas.
+  </p>
+
+  <p>
+    Kaya mahalaga ang CADT bilang legal recognition at dokumentasyon ng domain—pero hindi nangangahulugang walang ancestral-domain rights hangga't wala pang CADT.
+  </p>
+
+  <p>
+    Pero hindi rin rito nagtatapos ang usapan.
+  </p>
+
+  <p>
+    May Ancestral Domain Sustainable Development and Protection Plan o ADSDPP—ang community-based framework para tukuyin kung paano gustong protektahan, pamahalaan at paunlarin ng ICCs/IPs ang kanilang domain.
+  </p>
+
+  <p>
+    Dito maaaring pumasok ang kanilang priorities sa livelihood, infrastructure, natural-resource management, education, health, culture, governance at iba pang pangangailangan ng komunidad.
+  </p>
+
+  <p>
+    At kapag may mga panlabas na proyekto, programa o aktibidad na saklaw ng applicable FPIC requirements at maaaring makaapekto sa ancestral domain, pumapasok naman ang Free and Prior Informed Consent o FPIC.
+  </p>
+
+  <p>
+    Hindi ito simpleng:
+  </p>
+
+  <blockquote>
+    <p>“PUMAYAG BA KAYO—OO O HINDI?”</p>
+  </blockquote>
+
+  <p>
+    Ang mahalagang diwa nito ay dapat malaya sa external manipulation, interference at coercion ang pagpapasya; sapat na naipaliwanag at nauunawaan ng komunidad ang intent at scope ng aktibidad; at sinusunod ang kanilang naaangkop na customary laws at practices sa pagbuo ng consent.
+  </p>
+
+  <p>
+    Sa mga proyekto o aktibidad na saklaw ng FPIC requirements, kailangang makuha ang kinakailangang consent alinsunod sa timing at prosesong itinakda ng applicable law at NCIP regulations bago magpatuloy ang covered activity.
+  </p>
+
+  <p>
+    Mahalaga ang qualification na iyon:<br>
+    Hindi natin sinasabing lahat ng conceivable development ay awtomatikong dumaraan sa iisang FPIC process.
+  </p>
+
+  <p>
+    Nakadepende ang legal requirement at proseso sa uri ng aktibidad at sa applicable provisions ng IPRA at NCIP regulations.
+  </p>
+
+  <p>
+    Kaya sa madaling daloy:<br>
+    Ang CADT ay pormal na pagkilala sa title at ancestral-domain rights—hindi pinagmumulan ng mga karapatang iyon.<br>
+    Ang ADSDPP ay plano kung paano poprotektahan at pauunlarin ang domain.<br>
+    Ang FPIC ay safeguard sa mga proyekto, programa o aktibidad na saklaw ng applicable requirements.
+  </p>
+
+  <p>
+    At pagkatapos ng lahat ng iyon, kailangan pa rin ng implementation at enforcement.
+  </p>
+
+  <p>
+    Dahil maaaring napakaganda ng karapatan sa papel—pero ibang tanong kung gaano ito kalakas on the ground.
+  </p>
+
+  <h2>Ang Titulo ay Mahalaga—Pero Hindi Ito Magic Shield</h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang eye-opener sa usapin.
+  </p>
+
+  <p>
+    Ang legal recognition ay hindi awtomatikong katumbas ng security on the ground.
+  </p>
+
+  <p>
+    May matagal nang Philippine case studies ang International Labour Organization tungkol sa proseso ng pag-reclaim at pagkilala sa ancestral domains na nagdokumento rin ng conflicts at implementation difficulties na kinaharap ng ilang Indigenous communities.
+  </p>
+
+  <p>
+    Sa isang ethnographic study naman tungkol sa Agta ng Dimasalansan sa Northern Sierra Madre, nakita ng researchers kung paano maaaring pahinain ng procedural inconsistencies, institutional competition at development pressures ang proteksiyong inaasahang manggagaling sa Indigenous land-rights framework.
+  </p>
+
+  <p>
+    At sa isang 2026 comparative study sa Indigenous forest governance sa Kiangan at Sapang Bato, nakita rin ang mahalagang distinction sa pagitan ng de jure rights—mga karapatang kinikilala sa batas—at de facto governance—kung gaano kalakas ang aktuwal na kakayahang gamitin at ipatupad ang mga karapatang iyon.
+  </p>
+
+  <p>
+    Lumitaw na mahalaga ang legal recognition, pero maaari pa ring magkaroon ng constraints mula sa institutional fragmentation, ecological conditions at access sa resources.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nitong walang silbi ang CADT o IPRA.
+  </p>
+
+  <p>
+    Kabaligtaran.
+  </p>
+
+  <p>
+    Ipinapakita nitong hindi natatapos ang proteksiyon sa pag-isyu ng dokumento.
+  </p>
+
+  <p>
+    Kailangan itong suportahan ng malinaw na boundaries, functioning institutions, conflict resolution, coordination ng mga ahensiya at LGU, meaningful community participation, at aktuwal na enforcement.
+  </p>
+
+  <p>
+    Dahil ang karapatang hindi kayang ipatupad kapag sinusubok—ay karapatang nananatiling vulnerable.
+  </p>
+
+  <h2>Hindi Rin Sapat ang “Konsultasyon” Kung Wala Namang Tunay na Boses</h2>
+
+  <p>
+    May malaking pagkakaiba ang:
+  </p>
+
+  <blockquote>
+    <p>“Sinabihan namin sila.”</p>
+  </blockquote>
+
+  <p>
+    sa
+  </p>
+
+  <blockquote>
+    <p>“Kasama silang nagpasya.”</p>
+  </blockquote>
+
+  <p>
+    Kung tapos na ang plano, nakapili na ng lokasyon, nakapag-commit na ng pera at saka lamang kakausapin ang komunidad—gaano pa kalaya ang kanilang pagpili?<br>
+    Kung napakahaba at teknikal ng impormasyon ngunit hindi naman naipaliwanag sa paraang tunay na nauunawaan—gaano ka-informed ang consent?<br>
+    Kung iilang tao lamang ang narinig habang hindi tunay na nakalahok ang mas malawak na komunidad—gaano ka-representative ang proseso?
+  </p>
+
+  <p>
+    Hindi maliit na detalye ang mga tanong na ito.
+  </p>
+
+  <p>
+    Sa pag-aaral sa sampung Indigenous communities sa Mindanao, kabilang sa pinahahalagahang bahagi ng development planning ang adequate community consultation, consensus, preparation, at papel ng leaders at elders.
+  </p>
+
+  <p>
+    May Philippine research din na matagal nang nagbabala na ang formal participation ay hindi palaging nangangahulugang may tunay na kapangyarihan ang Indigenous communities na impluwensiyahan ang final decision.
+  </p>
+
+  <p>
+    Kaya ang participation ay hindi dapat checkbox.
+  </p>
+
+  <p>
+    Ang punto ng pakikilahok ay hindi lamang marinig ang komunidad.<br>
+    Ang punto ay magkaroon ng saysay ang boses nila sa desisyong direktang makaaapekto sa kanilang buhay at lupain.
+  </p>
+
+  <h2>Hindi Lang Kultura ang Nakataya</h2>
+
+  <p>
+    May environmental dimension din ang ancestral domain.
+  </p>
+
+  <p>
+    Marami sa mga ancestral domain ay sumasaklaw sa forests, watersheds, habitats at biodiversity areas.
+  </p>
+
+  <p>
+    Noong 2026, mismong NCIP ang nagbigay-diin na maraming natitirang forests, watersheds, biodiversity areas at critical habitats ng bansa ang matatagpuan sa loob ng ancestral domains habang pinapalakas nito ang environmental-governance policies para sa mga lugar na ito.
+  </p>
+
+  <p>
+    May konkretong Philippine research din.
+  </p>
+
+  <p>
+    Sa isang 2024 biodiversity assessment sa ancestral domain ng Tagbanua sa Aborlan, Palawan, nakapagtala ang researchers ng hindi bababa sa 73 plant species, kabilang ang 12 threatened plant species at isang critically endangered species ayon sa reference list na ginamit ng pag-aaral.
+  </p>
+
+  <p>
+    Hindi nito ibig sabihin na lahat ng ancestral domains ay awtomatikong mahusay ang conservation condition o na lahat ng Indigenous practices ay pare-pareho.
+  </p>
+
+  <p>
+    Pero ipinapakita nito kung bakit hindi maaaring tingnan ang ancestral domain bilang lupa lamang na naghihintay ng “productive use.”
+  </p>
+
+  <p>
+    Sa mas malawak na international evidence, isang 2026 systematic review ng 111 studies tungkol sa Indigenous lands at conservation ang nakitang 83 studies, o 75%, ang nag-ulat ng positive relationship sa conservation outcomes gaya ng forest cover, biodiversity at carbon storage.
+  </p>
+
+  <p>
+    May iba ring studies na mixed ang resulta depende sa lugar, biome, legal protection, governance at iba pang kondisyon.
+  </p>
+
+  <p>
+    Kaya hindi tamang gawing slogan na:
+  </p>
+
+  <blockquote>
+    <p>“Kapag ancestral domain, siguradong protektado ang kalikasan.”</p>
+  </blockquote>
+
+  <p>
+    Pero mayroon tayong sapat na dahilan para seryosohin ang papel ng Indigenous tenure at governance sa environmental protection.
+  </p>
+
+            <h2>Hindi Lang Ngayon ang Dapat Tingnan</h2>
+
+  <p>
+    May isa pang dahilan kung bakit kakaiba ang ancestral domain sa ordinaryong development decision:
+    Hindi lamang kasalukuyang henerasyon ang stakeholder.
+  </p>
+
+  <p>
+    Sa indigenous concept of ownership na kinikilala ng IPRA, ang ancestral domain bilang communal domain ay itinuturing na private but community property na para sa lahat ng henerasyon, kaya kaakibat nito ang intergenerational responsibility na pangalagaan ang lupa at likas na yaman para sa mga susunod na salinlahi.
+  </p>
+
+  <p>
+    Mahalaga ang distinction na ancestral domain bilang communal domain dito.
+  </p>
+
+  <p>
+    Hindi ito dapat basahin na para bang pare-pareho ang legal treatment ng bawat ancestral domain at ng lahat ng individually owned ancestral lands o individual claims, na may sarili ring mga probisyon sa ilalim ng IPRA.
+  </p>
+
+  <p>
+    Kaya kung ang isang proyekto ay magbibigay ng trabaho sa loob ng dalawampung taon pero permanenteng mawawala ang isang watershed, sacred site, traditional livelihood area o bahagi ng teritoryong mahalaga sa cultural continuity—hindi sapat na ang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>“MAGKANO ANG KIKITAIN NGAYON?”</p>
+  </blockquote>
+
+  <p>
+    Kailangan ding itanong:
+  </p>
+
+  <blockquote>
+    <p>“ANO ANG MATITIRA PAGKATAPOS?”</p>
+  </blockquote>
+
+  <p>
+    Dahil may development na temporary ang benepisyo pero maaaring permanenteng ang kapalit.
+    At mayroon ding development na maaaring idisenyo upang makinabang ang kasalukuyang henerasyon nang hindi inuubos ang pagpipilian ng susunod.
+  </p>
+
+  <h2>Pero Hindi Rin Absolute ang Lahat ng Karapatan sa Loob ng Domain</h2>
+
+  <p>
+    Mahalaga ring huwag gawing oversimplified ang kabilang panig.
+  </p>
+
+  <p>
+    Ang ancestral domain ay hindi hiwalay na bansang wala nang saklaw ang Philippine law.
+  </p>
+
+  <p>
+    Mismong IPRA ay may qualifications.
+    Halimbawa, kinikilala at iginagalang ng Section 56 ang property rights na existing at/o vested nang magkabisa ang IPRA.
+  </p>
+
+  <p>
+    Sa natural resources naman, kinikilala ng batas ang mga karapatan ng ICCs/IPs kaugnay ng development, control, use, management at conservation ng natural resources sa kanilang ancestral domains, habang umiiral din ang constitutional at national-law framework sa natural resources.
+  </p>
+
+  <p>
+    May customary laws.<br>
+    May national laws.<br>
+    May Indigenous rights.<br>
+    May environmental requirements.<br>
+    May existing rights na maaaring kailangang kilalanin.<br>
+    May public interest.
+  </p>
+
+  <p>
+    At maaaring magkaroon ng competing claims na kailangang resolbahin.
+  </p>
+
+  <p>
+    Kaya hindi sapat ang dalawang slogan:
+  </p>
+
+  <blockquote>
+    <p>“PROGRESO ITO, KAYA TABI.”</p>
+  </blockquote>
+
+  <p>
+    o
+  </p>
+
+  <blockquote>
+    <p>“ANCESTRAL DOMAIN ITO, KAYA TAPOS ANG USAPAN.”</p>
+  </blockquote>
+
+  <p>
+    Ang kailangan ay proseso kung saan malinaw kung kaninong karapatan ang apektado, ano ang legal basis, ano ang epekto, sino ang may authority, at paano tunay na nakikilahok ang komunidad.
+  </p>
+
+  <h2>Protection Without Isolation</h2>
+
+  <p>
+    Dito dapat maging malinaw ang balance.
+  </p>
+
+  <p>
+    Hindi dapat gawing dahilan ang ancestral-domain protection para pigilan ang mga komunidad sa pag-access ng paaralan, ospital, kuryente, internet, transportasyon, negosyo at modernong oportunidad.
+  </p>
+
+  <p>
+    Pero hindi rin dapat gamitin ang mga pangangailangang iyon bilang bargaining chip:
+  </p>
+
+  <blockquote>
+    <p>“Kung gusto ninyo ng development, kailangan ninyong isuko ito.”</p>
+  </blockquote>
+
+  <p>
+    Hindi dapat ganoon kasimple.
+  </p>
+
+  <p>
+    May ibang posibleng ruta.
+  </p>
+
+  <p>
+    Maaaring baguhin ang design.<br>
+    Maaaring baguhin ang lokasyon.<br>
+    Maaaring magtakda ng safeguards.<br>
+    Maaaring magkaroon ng benefit-sharing.<br>
+    Maaaring protektahan ang culturally or ecologically critical areas.<br>
+    Maaaring ang komunidad mismo ang magtakda ng development priorities sa pamamagitan ng kanilang ADSDPP at sariling decision-making structures.
+  </p>
+
+  <p>
+    Dito mahalaga ang integration sa mas malawak na planning.
+  </p>
+
+  <p>
+    Kung may ADSDPP ang isang ancestral domain pero hindi ito seryosong naiuugnay sa municipal, provincial at national development planning, maaaring magkatabi lamang sa papel ang dalawang magkaibang plano habang sa lupa ay nagsasalpukan ang kanilang priorities.
+  </p>
+
+  <p>
+    Kaya kabilang sa mga rekomendasyon ng World Bank ang mas mahusay na integration ng ADSDPPs sa development plans ng LGUs at pagpapalakas sa kakayahan ng Indigenous communities na suriin ang development proposals at lumahok bilang equal partners sa planning.
+  </p>
+
+  <p>
+    Dahil ang tunay na integration ay hindi:
+  </p>
+
+  <blockquote>
+    <p>“Ito ang development plan namin. Saan namin kayo isisingit?”</p>
+  </blockquote>
+
+  <p>
+    Mas makabuluhan ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>“Ano ang development na kailangan ninyo—at paano natin ito maisasama sa development ng mas malawak na lipunan?”</p>
+  </blockquote>
+
+  <h2>Development Without Dispossession</h2>
+
+  <p>
+    Ito ang pinakasentro.
+  </p>
+
+  <p>
+    Hindi kailangang pumili sa pagitan ng Indigenous rights at development na para bang kapag pinrotektahan ang isa, awtomatikong mawawala ang isa.
+  </p>
+
+  <p>
+    Ang tunay na hamon ay gumawa ng development na:<br>
+    nagdadala ng serbisyo nang hindi binubura ang komunidad;<br>
+    lumilikha ng oportunidad nang hindi inaalis ang kanilang boses;<br>
+    gumagamit ng resources nang hindi ipinapasa sa susunod na henerasyon ang lahat ng pinsala;<br>
+    at kumikilala na ang mga taong matagal nang nakatira sa isang lugar ay hindi simpleng obstacle sa plano.
+  </p>
+
+  <p>
+    Dahil may malaking pagkakaiba ang:<br>
+    <strong>PAGBABAGO</strong> at <strong>PAGBURA.</strong>
+  </p>
+
+  <p>
+    Puwedeng magkaroon ng bagong kalsada nang hindi kailangang burahin ang kultura.<br>
+    Puwedeng magkaroon ng trabaho nang hindi kailangang mawala ang boses ng komunidad.<br>
+    Puwedeng magkaroon ng imprastraktura nang hindi awtomatikong itinuturing na sagabal ang mga taong nauna nang naninirahan doon.<br>
+    At puwedeng protektahan ang ancestral domain nang hindi ipinagkakait sa mga katutubo ang benepisyo ng modernong lipunan.
+  </p>
+
+  <p>
+    Hindi sila museum exhibit na kailangang manatiling eksaktong gaya ng nakaraan.
+    Pero hindi rin sila obstacle na kailangang alisin para makarating tayo sa hinaharap.
+    Bahagi sila ng hinaharap.
+  </p>
+
+            <h2>Kaya Bago Sabihing “Para sa Progreso”</h2>
+
+  <p>
+    Kapag may development na papasok sa ancestral domain, hindi sapat na itanong:
+  </p>
+
+  <blockquote>
+    <p>“ANO ANG MAITATAYO NATIN DITO?”</p>
+  </blockquote>
+
+  <p>
+    Tanungin din:<br>
+    <strong>ANO ANG NARITO NA?</strong><br>
+    <strong>SINO ANG NABUBUHAY DITO?</strong><br>
+    <strong>ANO ANG MAWAWALA?</strong><br>
+    <strong>ANO ANG MAKUKUHA NG KOMUNIDAD—AT ANO ANG KAPALIT NITO PARA SA KANILA?</strong><br>
+    <strong>MAY TUNAY BA SILANG BOSES SA DESISYON?</strong><br>
+    <strong>AT KAPAG NATAPOS ANG PROYEKTO—MAS MATATAG BA ANG KOMUNIDAD, O MAS KAUNTI NA ANG NATIRA SA KANILA?</strong>
+  </p>
+
+  <p>
+    Dahil ang seguridad ng ancestral domain ay hindi lamang tungkol sa paglalagay ng boundary sa mapa.
+  </p>
+
+  <p>
+    Hindi rin ito natatapos sa CADT.<br>
+    Hindi natatapos sa isang consultation.<br>
+    Hindi natatapos sa pagpirma ng dokumento.<br>
+    At hindi natatapos sa pag-apruba ng development plan.
+  </p>
+
+  <p>
+    Ang tunay na seguridad ay kung ang mga karapatang kinilala sa papel ay kaya ring protektahan sa lupa.
+  </p>
+
+  <p>
+    Kasabay nito, ang tunay na development ay hindi iyong pinoprotektahan ang ancestral domain pero iniiwan naman ang komunidad na walang serbisyo at oportunidad.
+  </p>
+
+  <p>
+    Kailangan ang dalawa:<br>
+    <strong>PROTEKSIYON—NANG HINDI SILA INIISOLATE.</strong><br>
+    <strong>PAG-UNLAD—NANG HINDI SILA INAALIS.</strong>
+  </p>
+
+  <h2>Dahil May Mas Malalim na Sukatan ang Progreso</h2>
+
+  <p>
+    Madaling bilangin ang kilometro ng kalsada.<br>
+    Megawatt ng kuryente.<br>
+    Trabahong nalikha.<br>
+    Investment na pumasok.<br>
+    Mineral na nakuha.<br>
+    At perang naiambag sa ekonomiya.
+  </p>
+
+  <p>
+    Mahalaga ang mga iyon.
+  </p>
+
+  <p>
+    Pero may mga bagay ding kailangang bilangin bago natin tawaging progreso ang isang proyekto:<br>
+    Ilang pamilya ang kailangang umalis?<br>
+    Anong kabuhayan ang mawawala?<br>
+    Anong kagubatan o watershed ang maaapektuhan?<br>
+    Anong bahagi ng kultura ang hindi na maibabalik?<br>
+    At gaano kalaki ang tunay nilang boses sa desisyong sila rin ang sasalo ng epekto?
+  </p>
+
+  <p>
+    Dahil ang progreso ay hindi lamang tungkol sa kung ano ang naitayo.
+  </p>
+
+  <p>
+    May isa pang sukatan:
+  </p>
+
+  <blockquote>
+    <p>ANO ANG HINDI NATIN KINAILANGANG SIRAIN PARA MAKARATING DOON?</p>
+  </blockquote>
+
+  <p>
+    At kung ang development ay nangangailangan na mawala muna ang tahanan, boses, kultura o kinabukasan ng mismong mga taong sinasabing makikinabang dito—makatarungan lamang na itanong:
+  </p>
+
+  <blockquote>
+    <p>PROGRESO PARA KANINO?</p>
+  </blockquote>
+
+  <p>
+    Ang ancestral domain ay hindi dapat gawing pader laban sa pagbabago.
+    Pero hindi rin ito bakanteng espasyo sa mapa na puwedeng burahin kapag may mas malaking proyekto.
+  </p>
+
+  <p>
+    Dahil sa isang lipunang tunay na umuunlad, ang tanong ay hindi lamang kung sino ang kailangang magbigay-daan.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ay:
+  </p>
+
+  <blockquote>
+    <p>PAANO TAYO UUNLAD NANG WALANG KAILANGANG BURAHIN PARA LANG MAY MAITAYO?</p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Republic Act No. 8371 — Indigenous Peoples’ Rights Act of 1997, particularly its provisions on ancestral domains, Native Title, CADT, rights to ancestral domains, natural resources, intergenerational responsibilities, FPIC, Certification Precondition and existing/vested property rights.
+    </li>
+
+    <li>
+      National Commission on Indigenous Peoples — Administrative Order No. 3, Series of 2012, <em>The Revised Guidelines on Free and Prior Informed Consent (FPIC) and Related Processes of 2012.</em>
+    </li>
+
+    <li>
+      National Commission on Indigenous Peoples — Administrative Order No. 4, Series of 2012, <em>Revised Omnibus Rules on Delineation and Recognition of Ancestral Domains and Lands of 2012.</em>
+    </li>
+
+    <li>
+      National Commission on Indigenous Peoples — ADSDPP guidelines and programs concerning sustainable development, protection and management of ancestral domains.
+    </li>
+
+    <li>
+      Ibanez, J., Austin, B. J., &amp; Garnett, S. T. — <em>Planning Sustainable Development within Ancestral Domains: Indigenous People’s Perceptions in the Philippines.</em> Research involving ten Indigenous communities in Mindanao.
+    </li>
+
+    <li>
+      International Labour Organization / UNDP — <em>The Quest to Reclaim Ancestral Domains: A Journey of Hope—Implementing the Indigenous Peoples’ Rights Act of the Philippines.</em> Philippine case studies on ancestral-domain recognition and implementation.
+    </li>
+
+    <li>
+      Minter et al. — <em>Displacement in the Name of Development: How Indigenous Rights Legislation Fails to Protect Philippine Hunter-Gatherers.</em> Case study involving Agta communities in the Northern Sierra Madre.
+    </li>
+
+    <li>
+      Jarzebski, M. P. — <em>Tenure Reform and Indigenous Forest Governance: Comparative Policy Insights from the Philippines.</em> <em>Trees, Forests and People</em>, Vol. 26, 2026, Article 101378. DOI: 10.1016/j.tfp.2026.101378.
+    </li>
+
+    <li>
+      Quilang, R. M. — <em>Biodiversity and Soil Characterization of Ancestral Domain of the Tagbanua Tribe in Aborlan, Palawan, Philippines.</em> <em>Nature Environment and Pollution Technology</em>, 2024.
+    </li>
+
+    <li>
+      Nikolakis et al. — <em>The Relationship Between Indigenous Peoples’ Lands and Conservation: A Systematic Literature Review.</em> <em>People and Nature</em>, 2026. Review of 111 studies; 83 reported positive relationships between Indigenous lands and conservation outcomes, with important contextual variations.
+    </li>
+
+    <li>
+      World Bank — <em>No Data, No Story: Indigenous Peoples in the Philippines</em> — findings and recommendations concerning basic services, ancestral-domain governance, ADSDPP integration and inclusive development.
+    </li>
+
+    <li>
+      National Commission on Indigenous Peoples — materials on environmental governance and protection within ancestral domains.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
