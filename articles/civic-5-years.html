@@ -1,1 +1,2108 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Alamin kung paano nagbago ang termino ng Barangay at SK officials mula tatlong taon hanggang limang taon, bakit nag-iba ang election cycle, at ano ang epekto nito sa accountability, governance, at karapatan ng mga botante."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-5-years.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-5-years.html"
+>
+
+<title>3 YEARS LANG DATI—BAKIT 5 YEARS NA NGAYON? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    3 YEARS LANG DATI—BAKIT 5 YEARS NA NGAYON?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-5-years.png"
+      alt="Simbolikong paglalarawan ng pagbabago ng termino ng Barangay at SK officials mula tatlong taon tungo sa limang taon, kasama ang epekto nito sa election cycle, governance, at pananagutan sa mga botante."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kung ang tanda mo ay tatlong taon ang termino ng Barangay at SK officials, may pinanggagalingan iyon.
+  </p>
+
+  <p>
+    Sa ilalim ng <strong>Republic Act No. 9164</strong>, ang <strong>statutory term</strong>—ibig sabihin, ang haba ng terminong itinakda mismo ng batas—ay <strong>three years</strong>. Three years din ang regular interval ng Barangay at Sangguniang Kabataan Elections o BSKE.
+  </p>
+
+  <p>
+    Pero may mahalagang distinction:
+  </p>
+
+  <p>
+    Ang statutory term ay hindi palaging eksaktong kapareho ng aktuwal na tagal ng pananatili sa puwesto.
+  </p>
+
+  <p>
+    Sa kasaysayan ng BSKE, may mga pagkakataong lumampas sa nominal term ang actual tenure dahil na-postpone ang election at pinayagang manatili ang incumbents sa hold-over capacity hanggang mahalal at makapag-qualify ang kanilang successors.
+  </p>
+
+  <p>
+    Mismong Supreme Court ay naglinaw na maaaring tapos na ang legal term pero nagpapatuloy muna ang actual tenure dahil sa hold-over.
+  </p>
+
+  <p>
+    Kaya kapag sinabing <strong>“3 years lang dati,”</strong> ang tinutukoy dito ay ang longstanding RA 9164-era statutory framework na mas pamilyar sa kasalukuyang publiko—hindi isang claim na three years lamang ang umiral sa buong kasaysayan ng barangay elections.
+  </p>
+
+  <p>
+    Sa katunayan, may mas naunang five-year barangay framework din noong late 1980s sa ilalim ng <strong>RA 6679</strong>.
+  </p>
+
+  <p>
+    Pero sa modern framework na nakasanayan ng maraming botante, ito ang malaking progression:
+  </p>
+
+  <p>
+    <strong>3 YEARS → 4 YEARS → 5 YEARS</strong>
+  </p>
+
+  <p>
+    At hindi lang haba ng term ang gumalaw.
+  </p>
+
+  <p>
+    Pati ang mismong petsa kung kailan muling makakaboto ang publiko ay ilang beses ding nagbago.
+  </p>
+
+  <h2>
+    HINDI LANG TERM ANG GUMALAW—PATI ANG SUSUNOD NA ELEKSYON
+  </h2>
+
+  <p>
+    Noong 2023, idineklara ng Supreme Court na unconstitutional ang <strong>RA 11935</strong>—ang batas na naglipat sa 2022 BSKE patungong October 2023.
+  </p>
+
+  <p>
+    Dahil sa <strong>operative-fact doctrine</strong>, itinuloy pa rin ang October 2023 election.
+  </p>
+
+  <p>
+    Pero sa ruling na iyon, muling naging controlling ang dating framework ng <strong>RA 11462</strong>, kaya ang succeeding BSKE ay itinakda sa first Monday of December 2025.
+  </p>
+
+  <p>
+    Pagdating ng <strong>RA 12232</strong> noong 2025, nagbago ulit ang setup.
+  </p>
+
+  <p>
+    Ginawang <strong>FOUR YEARS</strong> ang regular statutory term at itinakda ang susunod na BSKE sa first Monday of November 2026.
+  </p>
+
+  <p>
+    Ngayon, sa ilalim ng <strong>RA 12326</strong>, <strong>FIVE YEARS</strong> na ang regular term at ang susunod na regular BSKE ay nasa second Monday of November 2028—at every five years thereafter.
+  </p>
+
+  <p>
+    Kaya dalawang progression ang kailangang makita:
+  </p>
+
+  <p>
+    <strong>TERM FRAMEWORK</strong><br>
+    3 YEARS → 4 YEARS → 5 YEARS
+  </p>
+
+  <p>
+    <strong>ELECTION SCHEDULE</strong><br>
+    DECEMBER 2025 → NOVEMBER 2026 → NOVEMBER 2028
+  </p>
+
+  <p>
+    Iyan ang context na nawawala kapag sinabing simpleng <strong>“4 years to 5 years”</strong> lang ang nangyari.
+  </p>
+
+  <p>
+    Legally, tama ang <strong>4 → 5</strong> dahil RA 12326 ang direktang nag-amend sa RA 12232, na four years ang itinakdang term.
+  </p>
+
+  <p>
+    Pero para maintindihan ng ordinaryong botante ang buong pagbabago, kailangang makita rin kung saan nanggaling ang mas pamilyar na three-year framework—at kung ilang beses nang gumalaw ang schedule ng susunod na boto.
+  </p>
+
+  <p>
+    At may isang mahalagang guardrail:
+  </p>
+
+  <p>
+    Ang <strong>3 → 4 → 5</strong> ay progression ng <strong>LEGAL FRAMEWORK</strong>.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na tatlong magkakahiwalay na term—three-year term, tapos four-year term, tapos five-year term—ang literal na dinaanan ng kasalukuyang incumbents.
+  </p>
+
+  <p>
+    May sariling transitional rules ang current incumbency.
+  </p>
+
+  <p>
+    Sa RA 12326, halimbawa, expressly sinasabi para sa term-limit computation na dahil sa <strong>TWO-YEAR EXTENSION</strong> ng incumbent elective barangay officials, ituturing silang nakakompleto ng isang term sa kanilang respective positions.
+  </p>
+
+  <h2>
+    ANO NA MISMO ANG BINAGO NG RA 12326?
+  </h2>
+
+  <p>
+    Five years na ang regular statutory term ng elected Barangay at SK officials.
+  </p>
+
+  <p>
+    Ang susunod na regular BSKE ay sa second Monday of November 2028, at every five years thereafter.
+  </p>
+
+  <p>
+    Para sa elective barangay officials, maximum na <strong>TWO CONSECUTIVE TERMS</strong> sa parehong posisyon.<br>
+    Para sa elective SK officials, maximum na <strong>ONE TERM</strong> sa parehong posisyon.
+  </p>
+
+  <p>
+    May transition rule din.
+  </p>
+
+  <p>
+    Dahil sa two-year extension ng incumbent elective barangay officials, itinuturing silang nakakompleto ng isang term para sa term-limit computation.
+  </p>
+
+  <p>
+    Kaya ang incumbent barangay official na nasa kanyang last allowable consecutive term ay hindi maaaring tumakbo muli sa parehong posisyon sa 2028 BSKE.
+  </p>
+
+  <p>
+    Naglagay din ang bagong batas ng mechanism para sa ilang vacancies sa SK membership at nag-institutionalize ng continuing training at capacity-building para sa Barangay at SK officials sa pangunguna ng DILG kasama ang iba pang government agencies.
+  </p>
+
+  <p>
+    Kaya hindi lang ito:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang BSKE ngayong 2026.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas malaki ang binago:
+  </p>
+
+  <p>
+    <strong>
+      TERM LENGTH.<br>
+      ELECTION CYCLE.<br>
+      TERM LIMITS.<br>
+      TRANSITION RULES.
+    </strong>
+  </p>
+
+  <p>
+    At ang haba ng pagitan bago muling makapagbigay ng electoral judgment ang botante.
+  </p>
+
+  <h2>
+    BAKIT MAY ARGUMENTONG MAS MAHABANG TERM ANG KAILANGAN?
+  </h2>
+
+  <p>
+    May governance argument para rito.
+  </p>
+
+  <p>
+    Ayon sa proponents ng five-year framework, mas mahabang at mas predictable na term ang maaaring magbigay ng mas malaking panahon para magplano, magpatupad at magtapos ng community projects, disaster-preparedness programs, peace-and-order initiatives at iba pang local programs nang hindi agad bumabalik sa campaign cycle.
+  </p>
+
+  <p>
+    At hindi naman walang support sa political-science research ang general idea na longer terms can sometimes affect political performance positively.
+  </p>
+
+  <p>
+    Sa natural experiments nina Ernesto Dal Bó at Martín Rossi sa Argentine Congress, random na nagkaroon ng magkakaibang term lengths ang legislators.
+  </p>
+
+  <p>
+    Sa kanilang data, ang legislators na may longer terms ay nagpakita ng mas mataas na legislative effort at productivity.
+  </p>
+
+  <p>
+    Ang interpretation ng researchers:
+  </p>
+
+  <blockquote>
+    <p>
+      May tinatawag na “investment logic.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kung ang effort ng isang official ay may benefits na matagal bago makita, maaaring mas may incentive siyang mag-invest sa trabaho kung mas mahaba ang kanyang time horizon.
+  </p>
+
+  <p>
+    May isa pang natural-experiment study si Rocío Titiunik sa Arkansas, Illinois at Texas state senates sa United States.
+  </p>
+
+  <p>
+    Dahil sa redistricting, may senators na random na nabigyan ng two-year o four-year terms.
+  </p>
+
+  <p>
+    Sa aggregate results, ang senators na may two-year terms ay mas madalas mag-abstain, mas kaunti ang bills na na-introduce, at hindi naman lumabas na mas responsive sila sa constituents kaysa sa may four-year terms.
+  </p>
+
+  <p>
+    Pero napakahalagang huwag lumampas sa ebidensya.
+  </p>
+
+  <p>
+    Hindi Philippine barangay officials ang subjects ng mga pag-aaral na iyon.<br>
+    Hindi nila pinatutunayan na <strong>FIVE YEARS</strong> ang “best” term para sa barangay sa Pilipinas.
+  </p>
+
+  <p>
+    Ang ipinapakita lang nila ay ito:
+  </p>
+
+  <blockquote>
+    <p>
+      Hindi automatic na SHORTER TERM = BETTER PERFORMANCE.
+    </p>
+  </blockquote>
+
+  <p>
+    At may empirical basis ang idea na sa ilang institutional settings, ang mas mahabang political horizon ay maaaring magkaroon ng governance benefits.
+  </p>
+
+            <h2>
+    PERO MAY KAPALIT DIN ANG MAS MAHABANG TERM
+  </h2>
+
+  <p>
+    Kung mas mahaba ang panahon para magpatupad ng programa, mas mahaba rin ang panahon bago muling magkaroon ng regular electoral opportunity ang botante.
+  </p>
+
+  <p>
+    Ang election kasi ay hindi lang mekanismo para magpalit ng opisyal.
+  </p>
+
+  <p>
+    Ito rin ang regular na sandali kung kailan masasabi ng publiko:
+  </p>
+
+  <blockquote>
+    <p>
+      “Okay ang performance—ituloy.”
+    </p>
+    <p>
+      “Hindi kami satisfied—iba naman.”
+    </p>
+  </blockquote>
+
+  <p>
+    Noong 2023, nang ideklara ng Supreme Court na unconstitutional ang <strong>RA 11935</strong>, binigyang-diin ng Korte na ang free at meaningful exercise ng right to vote ay nangangailangan ng genuine at periodic elections na hindi unduly long ang pagitan.
+  </p>
+
+  <p>
+    Nilinaw din ng Korte na ang election postponement ay dapat exception at kailangang may sufficiently important, substantial o compelling justification.
+  </p>
+
+  <p>
+    Pero noong 2025, ibang legal question naman ang hinarap ng Supreme Court.
+  </p>
+
+  <p>
+    <strong>RA 12232</strong> was challenged after Congress made the regular term four years and moved the election from December 2025 to November 2026.
+  </p>
+
+  <p>
+    Sa <strong>8–5–2</strong> decision, in-uphold ng Supreme Court ang RA 12232.
+  </p>
+
+  <p>
+    Ang majority reasoning:
+  </p>
+
+  <p>
+    May specific constitutional authority ang Congress na magtakda ng term ng barangay officials.
+  </p>
+
+  <p>
+    Sa <strong>Article X, Section 8</strong> ng 1987 Constitution, ang ordinaryong three-year constitutional term ng elective local officials ay expressly hindi direktang inilapat sa barangay officials.
+  </p>
+
+  <p>
+    Para sa barangay officials, ang Constitution mismo ang nagsasabing ang kanilang term ay <strong>“shall be determined by law.”</strong>
+  </p>
+
+  <p>
+    Kaya tinuring ng majority ang RA 12232 bilang fundamentally a <strong>TERM-SETTING LAW</strong>, at ang pagbabago ng election date bilang consequence ng bagong term framework.
+  </p>
+
+  <p>
+    Hindi unanimous ang ruling.
+  </p>
+
+  <p>
+    May dissenting justices na nag-argue na kahit term-setting ang label ng batas, hindi dapat mawala sa constitutional scrutiny ang practical effect na nade-delay ang regular opportunity ng electorate na bumoto.
+  </p>
+
+  <p>
+    Iyan ang tunay na legal tension:
+  </p>
+
+  <blockquote>
+    <p>
+      CONGRESSIONAL AUTHORITY TO SET THE BARANGAY TERM at THE ELECTORATE'S INTEREST IN REGULAR AND MEANINGFUL ELECTIONS.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi kailangang gawing slogan ang tension na iyon para makita kung bakit seryoso ang issue.
+  </p>
+
+  <h2>
+    PAANO KUNG MAY HUMAMON SA BAGONG BATAS?
+  </h2>
+
+  <p>
+    Ang isang constitutional challenge ay hindi automatic na nagbubura o nagsususpinde sa batas.
+  </p>
+
+  <p>
+    Unless may judicial relief na magrestrain sa implementation o may final ruling na mag-invalid ng relevant provisions, ang umiiral na statutory framework ang sinusunod ng government agencies.
+  </p>
+
+  <p>
+    Pagkatapos maisabatas ang RA 12326, inutusan na ng COMELEC na itigil ang activities para sa 2026 BSKE, kabilang ang filing of certificates of candidacy at campaign period.
+  </p>
+
+  <p>
+    Ibig sabihin, dalawang bagay ang dapat hiwalay:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG BATAS NA KASALUKUYANG IPINAPATUPAD at ANO ANG MAAARING MAGING RESULTA NG ISANG FUTURE COURT CHALLENGE.
+    </p>
+  </blockquote>
+
+  <p>
+    Magkaugnay sila—pero hindi sila iisang bagay.
+  </p>
+
+  <h2>
+    BAKIT MAS SENSITIVE ANG GANITONG PAGBABAGO SA BARANGAY LEVEL?
+  </h2>
+
+  <p>
+    Dahil iba ang grassroots politics sa national politics.
+  </p>
+
+  <p>
+    Sa barangay, ang official ay maaaring hindi lang pangalan sa ballot o mukha sa campaign poster.
+  </p>
+
+  <p>
+    Puwedeng kapitbahay.<br>
+    Kaibigan ng pamilya.<br>
+    Kamag-anak ng kakilala.
+  </p>
+
+  <p>
+    Taong nilalapitan kapag may certificate, medical assistance, funeral assistance, ayuda, dispute, disaster response o problema sa komunidad.
+  </p>
+
+  <p>
+    Legally nonpartisan ang barangay elections.
+  </p>
+
+  <p>
+    Pero ang pagiging nonpartisan sa papel ay hindi nangangahulugang nawawala ang personal relationships, family networks at informal political alliances.
+  </p>
+
+  <p>
+    At mayroon tayong Philippine empirical research tungkol dito.
+  </p>
+
+  <p>
+    Sa isang study published sa <em>American Economic Review</em>, gumamit sina Cesi Cruz, Julien Labonne at Pablo Querubín ng family-network data mula sa mahigit <strong>20 MILLION INDIVIDUALS</strong> sa humigit-kumulang <strong>15,000 PHILIPPINE VILLAGES</strong>.
+  </p>
+
+  <p>
+    Nakita nila na candidates for public office were disproportionately drawn from more central families.
+  </p>
+
+  <p>
+    Associated din ang family-network centrality sa higher vote shares.
+  </p>
+
+  <p>
+    May evidence din silang consistent sa idea na ang more central family networks ay maaaring mag-facilitate ng relationships of political exchange.
+  </p>
+
+  <p>
+    Sa isa pang Philippine study published sa <em>American Political Science Review</em>, gamit din ang large-scale family-network data, nakita na ang villages na mas fragmented ang social networks ay associated sa mas maraming political competition at mas mataas na public-goods provision.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na masama ang close-knit families.
+    Hindi rin ibig sabihin na lahat ng barangay ay kontrolado ng clans.
+  </p>
+
+  <p>
+    Ang mas limited at mas defensible na lesson ay:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY EPEKTO ANG SOCIAL STRUCTURE SA POLITICAL COMPETITION AT ELECTORAL OUTCOMES.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya kapag humaba ang pagitan ng elections, hindi lang <strong>“dagdag oras para matapos ang proyekto”</strong> ang maaaring maging relevant effect.
+  </p>
+
+  <p>
+    Sa isang lugar na competitive at may matibay na accountability mechanisms, maaaring maging advantage ang continuity.
+  </p>
+
+  <p>
+    Sa isang lugar naman na mahina ang political competition at napakalakas ng entrenched networks, mas mahabang pagitan bago ang susunod na election also means mas matagal bago dumating ang regular electoral opening para sa challengers at voters.
+  </p>
+
+  <p>
+    Parehong possibility ang kailangang makita.
+  </p>
+
+  <h2>
+    MAY TERM LIMIT NAMAN—HINDI BA SAPAT IYON?
+  </h2>
+
+  <p>
+    May term limit.
+    Pero kailangan ding maging precise kung ano ang ibig sabihin nito.
+  </p>
+
+  <p>
+    Sa longstanding three-year statutory framework ng <strong>RA 9164</strong>:<br>
+    Maximum na <strong>THREE CONSECUTIVE TERMS</strong> sa parehong barangay position.
+  </p>
+
+  <p>
+    Sa bagong five-year framework ng <strong>RA 12326</strong>:<br>
+    Maximum na <strong>TWO CONSECUTIVE TERMS</strong> sa parehong barangay position.
+  </p>
+
+  <p>
+    Kung full statutory terms lang ang iko-compute:
+  </p>
+
+  <blockquote>
+    <p>
+      3 TERMS × 3 YEARS = nominal 9-year full-term ceiling
+      <br><br>
+      kumpara sa:
+      <br><br>
+      2 TERMS × 5 YEARS = nominal 10-year full-term ceiling
+    </p>
+  </blockquote>
+
+  <p>
+    Pero ang <strong>“9 years”</strong> at <strong>“10 years”</strong> dito ay <strong>NOMINAL STATUTORY FULL-TERM CEILINGS</strong>.
+  </p>
+
+  <p>
+    Hindi iyon automatic na absolute maximum calendar time na maaaring tuloy-tuloy na manatili sa puwesto ang isang tao sa lahat ng possible circumstances.
+  </p>
+
+  <p>
+    Bakit?
+  </p>
+
+  <p>
+    Dahil historically, may hold-over provisions na nagpapahintulot sa incumbents na manatili hanggang mahalal at makapag-qualify ang successors.
+  </p>
+
+  <p>
+    Kaya mahalagang huwag paghaluin ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      TERM LIMIT at ACTUAL CONTINUOUS TENURE SA ISANG PARTICULAR NA TRANSITION O HOLD-OVER SITUATION.
+    </p>
+  </blockquote>
+
+            <h2>
+    AT HINDI RIN AUTOMATIC NA TERM LIMIT = POLITICAL TURNOVER
+  </h2>
+
+  <p>
+    May Philippine evidence na nakaka-adapt ang political dynasties sa term-limit rules.
+  </p>
+
+  <p>
+    Sa study nina Julien Labonne, Sahar Parsa at Pablo Querubín gamit ang Philippine municipal elections, nakita nilang nagkaroon ng increase sa women running and winning mayoral elections kapag na-trigger ang term limits.
+  </p>
+
+  <p>
+    Pero ang increase na iyon ay entirely driven by <strong>FEMALE RELATIVES OF TERM-LIMITED INCUMBENTS</strong>.
+  </p>
+
+  <p>
+    Ininterpret ito ng researchers bilang evidence ng adaptive strategies ng political dynasties para mapanatili ang political control.
+  </p>
+
+  <p>
+    Importanteng scope guardrail:
+  </p>
+
+  <p>
+    <strong>MUNICIPAL MAYORAL ELECTIONS</strong> ang pinag-aralan.
+  </p>
+
+  <p>
+    Hindi barangay elections.
+    Kaya hindi tama na sabihing automatic na ganoon din ang mangyayari sa bawat barangay.
+  </p>
+
+  <p>
+    Pero may valid institutional lesson:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG TERM LIMIT AT ACTUAL POLITICAL TURNOVER AY HINDI LAGING IISA.
+    </p>
+  </blockquote>
+
+  <p>
+    Puwedeng umalis ang isang pangalan sa ballot habang nananatili ang parehong family network o political organization.
+  </p>
+
+  <h2>
+    “MAS MAHAL ANG MADALAS NA ELEKSYON”—MAY DATOS DIYAN
+  </h2>
+
+  <p>
+    Malaki ang gastos sa nationwide BSKE.
+  </p>
+
+  <p>
+    Para sa BSKE na nakatakda sanang idaos sa November 2026 bago ito inilipat sa 2028, humigit-kumulang <strong>₱19.57 BILLION</strong> ang pondong inilaan para sa paghahanda at pagsasagawa ng eleksyon.
+  </p>
+
+  <p>
+    Bago tuluyang mabago ang schedule, sinabi ng COMELEC na humigit-kumulang <strong>₱8 BILLION</strong> na ang nagamit o na-commit para sa preparations at procurement.
+  </p>
+
+  <p>
+    Kaya may legitimate fiscal concern kapag malapit na ang isang nationwide election at malaki na ang nailabas o na-obligate bago muling mabago ang schedule.
+  </p>
+
+  <p>
+    Pero hindi rin accurate na sabihing buong election budget ang simpleng <strong>“natipid”</strong> nang hindi natuloy ang 2026 BSKE.
+  </p>
+
+  <p>
+    May mga gastos nang nangyari.<br>
+    May procurement commitments na.<br>
+    May materials nang na-print o nabili.
+  </p>
+
+  <p>
+    At matapos maisabatas ang RA 12326, hindi rin basta itinapon ang lahat ng preparation.
+  </p>
+
+  <p>
+    COMELEC ordered the cessation of the 2026 election activities—including COC filing and the campaign period.
+  </p>
+
+  <p>
+    Pero pinayagan nitong matapos ang ilang ongoing printing at pending procurement.
+  </p>
+
+  <p>
+    Inutusan din nitong i-secure, i-store at i-preserve for future use ang election forms, supplies at paraphernalia na na-print o na-procure na.
+  </p>
+
+  <p>
+    Kaya ang totoong fiscal question ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAGKANO ANG ELECTION?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kasama rin:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAGKANO ANG SUNK COST KAPAG NABAGO ANG SCHEDULE?” at “ANO ANG MAGAGAMIT PA SA SUSUNOD NA ELECTION, AT ANO ANG KAILANGANG GASTUSAN MULI?”
+    </p>
+  </blockquote>
+
+  <h2>
+    AT HINDI MALIIT NA ELEKSYON ANG PINAG-UUSAPAN
+  </h2>
+
+  <p>
+    Noong 2023 BSKE, COMELEC data showed around:
+  </p>
+
+  <p>
+    <strong>67.84 MILLION</strong> registered barangay voters at <strong>23.25 MILLION</strong> registered SK voters.
+  </p>
+
+  <p>
+    Hindi dapat basta i-add ang dalawang bilang na parang dalawang totally separate populations.
+  </p>
+
+  <p>
+    Ang SK electorate ay edad 15 hanggang 30. Ang 15–17 years old ay para sa SK vote lamang, habang ang registered voters na 18–30 years old ay bumoboto sa parehong SK at Barangay elections. Kaya hindi dapat basta pag-add-in ang total Barangay voters at total SK voters dahil may malaking overlap sa 18–30 age group.
+  </p>
+
+  <p>
+    Pero ipinapakita ng scale kung gaano kalaking bahagi ng voting public ang naaapektuhan kapag binabago ang BSKE cycle.
+  </p>
+
+  <p>
+    Hindi ito scheduling adjustment para sa iilang lugar.
+  </p>
+
+  <blockquote>
+    <p>
+      NATIONWIDE GRASSROOTS ELECTIONS ang pinag-uusapan.
+    </p>
+  </blockquote>
+
+  <h2>
+    PERO ANG ACCOUNTABILITY AY HINDI LANG TUWING MAY ELEKSYON
+  </h2>
+
+  <p>
+    Ito rin ang mahalagang bahagi ng debate.
+  </p>
+
+  <p>
+    Kung five years na ang regular interval ng BSKE, mas nagiging mahalaga ang accountability <strong>BETWEEN ELECTIONS</strong>.
+  </p>
+
+  <p>
+    May Barangay Assembly, halimbawa.
+  </p>
+
+  <p>
+    Sa current DILG guidelines, ginagawa ito dalawang beses kada taon—sa March at October.
+  </p>
+
+  <p>
+    Doon inaasahang mag-uulat ang barangay officials tungkol sa paggamit ng pondo, implementation ng programs at projects, at iba pang significant developments sa community.
+  </p>
+
+  <p>
+    May venue rin para makapagtaas ang residents ng local concerns.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na sapat na iyon para palitan ang election.
+  </p>
+
+  <p>
+    Magkaiba ang function nila.
+  </p>
+
+  <p>
+    Pero habang humahaba ang pagitan ng regular elections, mas nagiging mahalaga ang iba pang checks:
+  </p>
+
+  <p>
+    <strong>
+      PUBLIC DISCLOSURE.<br>
+      AUDITING.<br>
+      BARANGAY ASSEMBLIES.<br>
+      ADMINISTRATIVE COMPLAINTS.<br>
+      COURTS.<br>
+      CITIZEN PARTICIPATION.<br>
+      ACCESS TO INFORMATION.
+    </strong>
+  </p>
+
+  <p>
+    Atlinaw din ng RA 12326 na ang additional transition period ay hindi exemption mula sa accountability.
+  </p>
+
+  <p>
+    Ang incumbents ay maaari pa ring maharap sa pending o future administrative, civil at criminal investigations o liabilities alinsunod sa applicable law.
+  </p>
+
+  <p>
+    Dahil kung election day lang ang tanging sandali kung kailan naniningil ng accountability ang publiko—<strong>MAHABA ANG LIMANG TAON.</strong>
+  </p>
+
+  <h2>
+    MAY ISA PANG BAGAY NA MAHALAGA: IMPORMASYON NG BOTANTE
+  </h2>
+
+  <p>
+    Hindi lang haba ng term ang nakaaapekto sa electoral accountability.
+  </p>
+
+  <p>
+    Mahalaga rin kung ano ang nalalaman ng botante tungkol sa performance at commitments ng candidates.
+  </p>
+
+  <p>
+    Sa Philippine field research nina Cesi Cruz, Philip Keefer, Julien Labonne at Francesco Trebbi, voters who received information tungkol sa policy promises ng candidates were more likely to support candidates whose positions were closer to their own preferences.
+  </p>
+
+  <p>
+    At kapag binigyan ng impormasyon tungkol sa past commitments ng incumbents, mas nag-reward ang voters sa incumbents na tumupad sa kanilang dating commitments.
+  </p>
+
+  <p>
+    Ipinapakita nito na may value ang credible information sa paghusga ng botante.
+  </p>
+
+  <p>
+    May hiwalay ding Philippine field evidence tungkol sa vote-selling.
+  </p>
+
+  <p>
+    Sa study nina Allen Hicken, Stephen Leider, Nico Ravanilla at Dean Yang, gumamit ang researchers ng vote-switching bilang proxy measure.
+  </p>
+
+  <p>
+    Nakita nilang tumataas ang vote-switching habang lumalaki ang monetary offer ng alternative candidate relative sa initially preferred candidate.
+  </p>
+
+  <p>
+    Importanteng guardrail ulit:
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na lahat ng botante ay nabibili.
+    Hindi rin ibig sabihin na vote buying ang nagdidikta sa lahat ng elections.
+  </p>
+
+  <p>
+    Ang mas defensible na lesson ay:
+  </p>
+
+  <blockquote>
+    <p>
+      ELECTION FREQUENCY IS ONLY ONE PART OF ELECTORAL ACCOUNTABILITY.
+    </p>
+  </blockquote>
+
+  <p>
+    Mahalaga rin ang:
+  </p>
+
+  <p>
+    <strong>
+      INFORMATION.<br>
+      POLITICAL COMPETITION.<br>
+      SOCIAL NETWORKS.<br>
+      ECONOMIC INCENTIVES.<br>
+      TRANSPARENCY.<br>
+      AT ANG QUALITY NG INSTITUTIONS SA PALIGID NG BOTO.
+    </strong>
+  </p>
+
+        <h2>
+  SO MAS MAGANDA BA ANG FIVE YEARS O MAS MASAMA?
+</h2>
+
+<p>
+  Hindi iyon kayang sagutin nang responsable sa simpleng slogan.
+</p>
+
+<p>
+  May research na nagpapakitang longer political terms can improve effort or productivity in some institutional settings.
+  May democratic reason din kung bakit mahalaga ang regular opportunities for voters to renew o withdraw electoral support.
+</p>
+
+<p>
+  At sa Philippine grassroots setting, kailangan pang isaalang-alang ang:
+</p>
+
+<p>
+  <strong>
+    SOCIAL NETWORKS.<br>
+    POLITICAL COMPETITION.<br>
+    FAMILY TIES.<br>
+    CLIENTELISM.<br>
+    TRANSPARENCY.<br>
+    LOCAL INSTITUTIONAL CAPACITY.<br>
+    AT ACTUAL PERFORMANCE NG OFFICIALS.
+  </strong>
+</p>
+
+<p>
+  Kaya hindi sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    LONGER TERM = BETTER GOVERNANCE.
+  </p>
+</blockquote>
+
+<p>
+  Pero hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    LONGER TERM = WORSE GOVERNANCE.
+  </p>
+</blockquote>
+
+<p>
+  Ang actual effect ng five-year framework ay nakasalalay din sa kung paano ginagamit ang dagdag na panahon—at kung gaano kalakas ang accountability habang hindi pa dumarating ang susunod na election.
+</p>
+
+<h2>
+  ANG MAS MALAKING PUNTO
+</h2>
+
+<p>
+  Madalas kapag may pagbabago sa BSKE, nauuwi ang usapan sa:
+</p>
+
+<blockquote>
+  <p>
+    “TULOY BA O HINDI?”
+  </p>
+</blockquote>
+
+<p>
+  Pero pagkatapos sagutin iyon, mas mahalaga ang susunod:
+</p>
+
+<blockquote>
+  <p>
+    ANO ANG NAGBAGO SA RELASYON NG BOTANTE AT NG OPISYAL NA INIHALAL NIYA?
+  </p>
+</blockquote>
+
+<p>
+  Sa longstanding modern statutory framework:
+</p>
+
+<p>
+  <strong>THREE YEARS</strong> ang term.
+</p>
+
+<p>
+  Noong 2025:
+</p>
+
+<p>
+  <strong>FOUR YEARS.</strong>
+</p>
+
+<p>
+  Ngayon:
+</p>
+
+<p>
+  <strong>FIVE YEARS.</strong>
+</p>
+
+<p>
+  Samantala, ang succeeding election na itinakda pagkatapos ng 2023 Supreme Court ruling para sa:
+</p>
+
+<p>
+  <strong>DECEMBER 2025</strong>
+</p>
+
+<p>
+  ay naging:
+</p>
+
+<p>
+  <strong>NOVEMBER 2026</strong>
+</p>
+
+<p>
+  at ngayon:
+</p>
+
+<p>
+  <strong>NOVEMBER 2028.</strong>
+</p>
+
+<p>
+  Hindi ibig sabihin na automatic na masama ang dagdag na panahon.
+  Hindi rin ibig sabihin na automatic na magiging mas mahusay ang serbisyo dahil mas mahaba ang term.
+</p>
+
+<blockquote>
+  <p>
+    ANG DAGDAG NA PANAHON AY DAGDAG NA PAGKAKATAON PARA MAG-PERFORM.
+  </p>
+</blockquote>
+
+<p>
+  Pero kasabay nito:
+</p>
+
+<blockquote>
+  <p>
+    MAS MAHABA RIN ANG PAGITAN BAGO MULING MAKAPAGBIGAY NG ELECTORAL JUDGMENT ANG BOTANTE.
+  </p>
+</blockquote>
+
+<p>
+  Iyan ang tunay na trade-off.
+</p>
+
+<p>
+  At kapag humahaba ang pagitan ng elections, mas mahalagang hindi humina ang accountability sa pagitan ng elections.
+</p>
+
+<p>
+  Dahil sa dulo, ang tanong ay hindi lang:
+</p>
+
+<blockquote>
+  <p>
+    “GAANO KATAGAL DAPAT MANATILI ANG ISANG OPISYAL?”
+  </p>
+</blockquote>
+
+<p>
+  Mas mahalaga rin ang:
+</p>
+
+<blockquote>
+  <p>
+    “HABANG NANDIYAN SIYA, GAANO KALAKAS ANG KAKAYAHAN NG MAMAMAYAN NA MAKITA, SURIIN AT PANAGUTIN KUNG PAANO NIYA GINAGAMIT ANG PANAHONG IBINIGAY SA KANYA?”
+  </p>
+</blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Republic Act No. 9164 — three-year statutory Barangay/SK framework, three-term limit and hold-over provision.
+    </li>
+
+    <li>
+      Republic Act No. 11462 — earlier BSKE schedule, including the first Monday of December 2025 succeeding-election framework.
+    </li>
+
+    <li>
+      Supreme Court: <em>Macalintal v. COMELEC</em> / <em>Hidalgo et al.</em> (2023) — unconstitutional postponement of the 2022 BSKE; periodic elections; hold-over; revival of RA 11462.
+    </li>
+
+    <li>
+      Republic Act No. 12232 (2025) — four-year term, November 2026 BSKE, three-term Barangay limit, one-term SK limit and hold-over provision.
+    </li>
+
+    <li>
+      Supreme Court Press Briefer, November 11, 2025 — 8–5–2 decision upholding RA 12232 and the term-setting framework.
+    </li>
+
+    <li>
+      Republic Act No. 12326 (2026) / Philippine Information Agency–PCO summary — five-year term, November 2028 BSKE, two-term Barangay limit, one-term SK limit, transition provisions, SK vacancies and continuing capacity-building.
+    </li>
+
+    <li>
+      Republic Act No. 6679 (1988) — historical five-year barangay term framework.
+    </li>
+
+    <li>
+      COMELEC / GMA News — cessation of 2026 BSKE activities; completion, storage and preservation of already procured or printed election materials.
+    </li>
+
+    <li>
+      COMELEC 2023 BSKE data / Philippine News Agency — 67.84 million registered barangay voters and 23.25 million registered SK voters.
+    </li>
+
+    <li>
+      Dal Bó, Ernesto &amp; Martín Rossi (2011), <em>Term Length and the Effort of Politicians</em>, <em>Review of Economic Studies</em> 78(4), 1237–1263.
+    </li>
+
+    <li>
+      Titiunik, Rocío (2016), <em>Drawing Your Senator from a Jar: Term Length and Legislative Behavior</em>, <em>Political Science Research and Methods</em> 4(2), 293–316.
+    </li>
+
+    <li>
+      Cruz, Cesi; Julien Labonne &amp; Pablo Querubín (2017), <em>Politician Family Networks and Electoral Outcomes: Evidence from the Philippines</em>, <em>American Economic Review</em> 107(10), 3006–3037.
+    </li>
+
+    <li>
+      Cruz, Cesi; Julien Labonne &amp; Pablo Querubín (2020), <em>Social Network Structures and the Politics of Public Goods Provision: Evidence from the Philippines</em>, <em>American Political Science Review</em> 114(2), 486–501.
+    </li>
+
+    <li>
+      Labonne, Julien; Sahar Parsa &amp; Pablo Querubín (2021), <em>Political Dynasties, Term Limits and Female Political Representation: Evidence from the Philippines</em>, <em>Journal of Economic Behavior &amp; Organization</em> 182, 212–228.
+    </li>
+
+    <li>
+      Cruz, Cesi; Philip Keefer; Julien Labonne &amp; Francesco Trebbi (2024), <em>Making Policies Matter: Voter Responses to Campaign Promises</em>, <em>The Economic Journal</em> 134(661), 1875–1913.
+    </li>
+
+    <li>
+      Hicken, Allen; Stephen Leider; Nico Ravanilla &amp; Dean Yang (2015), <em>Measuring Vote-Selling: Field Evidence from the Philippines</em>, <em>American Economic Review: Papers &amp; Proceedings</em> 105(5), 352–356.
+    </li>
+
+    <li>
+      DILG Memorandum Circular No. 2026-012 — Omnibus Guidelines for Barangay Assembly Day in March and October.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
