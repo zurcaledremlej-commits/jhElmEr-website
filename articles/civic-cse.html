@@ -1,1 +1,2162 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Fact-based na paliwanag kung bakit may panukalang mandatory competency examination para sa elected public officials, ano ang kaibahan ng eligibility at competency, at ano ang mga legal, constitutional, at policy issues na kaugnay nito."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-cse.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-cse.html"
+>
+
+<title>HINDI LANG DAPAT ELIGIBLE—DAPAT COMPETENT DIN | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    HINDI LANG DAPAT ELIGIBLE—DAPAT COMPETENT DIN
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-cse.png"
+      alt="Isang simbolikong timbangan ng hustisya, mga dokumento ng pamahalaan, at competency scorecard sa harap ng isang pampublikong tanggapan—sumasagisag sa usapin ng eligibility, competency, at pananagutan sa elective public office."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <p>
+  May mga minimum requirements bago payagang tumakbo sa public office.
+</p>
+
+<p>
+  Edad. Citizenship. Residency. Voter registration. Kakayahang bumasa at sumulat—depende sa posisyon.
+</p>
+
+<p>
+  Kapag pasok ka sa requirements at walang legal disqualification, maaari kang maging kandidato.
+</p>
+
+<p>
+  Pero may isa pang tanong na hindi awtomatikong nasasagot ng mga requirement na iyon:<br>
+  <strong>May napatunayan ka bang minimum competency para sa kapangyarihang gusto mong hawakan?</strong>
+</p>
+
+<p>
+  Magkaiba kasi ang <strong>ELIGIBLE</strong> at <strong>COMPETENT</strong>.
+</p>
+
+<p>
+  Ang eligibility ang nagsasabing maaari kang tumakbo ayon sa umiiral na legal qualifications.
+  Ang competency naman ay tungkol sa kakayahang umunawa, mag-analisa, gumamit ng impormasyon at gumawa ng desisyong kailangan sa aktuwal na tungkulin.
+</p>
+
+<p>
+  At kapag public office ang pinag-uusapan, hindi maliit ang nakasalalay sa distinction na iyon.
+</p>
+
+<p>
+  Dahil ang mga inihahalal natin ay maaaring gumawa ng ordinansa o batas, mag-apruba ng budget, magtakda o magpatupad ng polisiya, mamahala ng serbisyo publiko at gumamit ng kapangyarihang ipinagkatiwala ng Estado.
+</p>
+
+<p>
+  Kaya kung may minimum legal qualifications bago makatakbo, ang posisyong inilalatag dito ay dapat mayroon ding objective minimum competency standard bago pagkatiwalaan ng elective public power ang isang tao.
+</p>
+
+<p>
+  Dito nagiging mahalaga ang panukalang inilutang ni Ombudsman Jesus Crispin Remulla na magkaroon ng Civil Service eligibility ang mga opisyal sa barangay dahil sila ang nasa frontline ng government service.
+</p>
+
+<p>
+  Binanggit din niya na concern din ang kawalan ng ganitong requirement sa presidency, bagama't sinabi niyang barangay muna ang pagtuunan.
+</p>
+
+<p>
+  Panukala pa lamang ito; hindi ito kasalukuyang general requirement para sa elective public office.
+</p>
+
+<p>
+  Pero ang proposal na iyon ay nagbubukas ng mas malaking usapin kaysa barangay lamang.
+</p>
+
+<p>
+  Kung mahalaga ang minimum competence dahil may responsibilidad at public authority ang isang opisyal, bakit hindi rin ito pag-usapan habang lumalaki ang kapangyarihan, pondong hinahawakan at lawak ng epekto ng kanyang mga desisyon?
+</p>
+
+<h2>
+  DAPAT BA MAGKAROON NG MANDATORY STANDARDIZED COMPETENCY EXAMINATION?
+</h2>
+
+<p>
+  Ang posisyong sinusuri sa explainer na ito ay mas malawak:<br>
+  <strong>DAPAT MAGKAROON NG MANDATORY STANDARDIZED COMPETENCY EXAMINATION PARA SA ELECTED PUBLIC OFFICIALS—AT MAAARING MAGSILBING PRACTICAL BASELINE ANG PROFESSIONAL-LEVEL CIVIL SERVICE EXAMINATION.</strong>
+</p>
+
+<p>
+  Pero kailangang malinaw agad ang limitasyon:<br>
+  Hindi dahil kayang sukatin ng isang exam ang buong pagkatao o kakayahan ng isang lider.<br>
+  Hindi dahil ang CSE passer ay awtomatikong mahusay na opisyal.<br>
+  At hindi dahil ang isang exam ang makapipigil sa corruption.
+</p>
+
+<p>
+  Kundi dahil ang pagiging legally eligible, pagkapanalo sa eleksiyon, at pagpapatunay ng minimum functional competence ay tatlong magkaibang bagay.
+</p>
+
+<h2>
+  IBA ANG PAGKAPANALO SA PAGPAPATUNAY NG COMPETENCY
+</h2>
+
+<p>
+  Sa demokrasya, boto ang nagdedesisyon kung sino ang mamumuno.
+</p>
+
+<p>
+  Pero ang election ay hindi standardized competency examination.
+</p>
+
+<p>
+  Hindi nito direktang sinusukat kung gaano kahusay umunawa ang isang kandidato ng komplikadong dokumento, mag-interpret ng datos, mag-analisa ng policy options, gumamit ng numerical information o umunawa ng basic constitutional at public-service principles.
+</p>
+
+<p>
+  At sa Pilipinas, may mas malawak pang political environment na nakapaligid sa pagpili ng mga kandidato.
+</p>
+
+<p>
+  Hindi lamang individual competence ang gumagalaw sa electoral competition.
+</p>
+
+<p>
+  May political families, local networks, patronage relationships, incumbency, party alliances at iba pang political at social factors na maaaring makaapekto sa access sa elective power.
+</p>
+
+<p>
+  Isang nationwide statistical inventory ng Congressional Policy and Budget Research Department, gamit ang official COMELEC data, systematic name matching at manual validation, ang nagtaya na <strong>54.45%</strong> ng mga elected officials sa kanilang dataset ay <strong>potentially linked</strong> sa political dynasties.
+</p>
+
+<p>
+  Mahalaga ang salitang <strong>POTENTIALLY</strong>.
+</p>
+
+<p>
+  May methodological limits ang paggamit ng names at family-link matching, at hindi rin ibig sabihin na kapag galing sa political family ay incompetent na agad ang isang opisyal.
+</p>
+
+<p>
+  Mismong CPBRD ay kinikilala ang limits sa pagtukoy ng complex family relationships; sa hiwalay nitong analysis, sinabi rin nitong mixed ang empirical evidence tungkol sa causal effects ng political dynasties.
+</p>
+
+<p>
+  Hindi iyon ang punto.
+</p>
+
+<p>
+  Ang mas simpleng ipinapakita nito ay:<br>
+  <strong>ANG PAG-ABOT SA ELECTIVE OFFICE AY HINDI PROSESO NA NAKABATAY LAMANG SA OBJECTIVE MEASUREMENT NG ADMINISTRATIVE COMPETENCE.</strong>
+</p>
+
+<p>
+  May mas matagal na Philippine research literature din tungkol sa patronage, clientelism, family networks at vote-buying.
+</p>
+
+<p>
+  Sa isang PIDS review, may mga studies na nakitang ang ilang clientelistic practices ay nakaaapekto sa provision at, sa ilang kaso, kalidad ng public services.
+</p>
+
+<p>
+  Pero malinaw din ang PIDS na scant at hindi pa conclusive ang kabuuang Philippine evidence—kaya hindi dapat gawing universal explanation ang patronage para sa lahat ng nangyayari sa local politics.
+</p>
+
+<p>
+  Kaya hindi makatwirang gawing equation na:<br>
+  <strong>NANALO = PINAKA-COMPETENT</strong> o <strong>SIKAT = TECHNICALLY PREPARED SA LAHAT NG DEMANDS NG PUBLIC OFFICE.</strong>
+</p>
+
+<p>
+  Ang pagkapanalo ay nagpapatunay na nakuha mo ang kinakailangang boto.
+</p>
+
+<p>
+  Mahalaga iyon dahil doon nanggagaling ang democratic mandate.
+</p>
+
+<p>
+  Pero ibang tanong kung may naipakita kang minimum standardized competence bago ibigay sa iyo ang public power.
+</p>
+
+<h2>
+  AT HINDI MALIIT ANG KAPANGYARIHANG PINAG-UUSAPAN
+</h2>
+
+<p>
+  Hindi ordinaryong trabaho ang elective public office.
+</p>
+
+<p>
+  Sa local government pa lamang, maaaring gumawa at bumoto sa ordinansa, mag-apruba ng appropriations at local revenue measures, gumawa ng development decisions at mamahala sa delivery ng public services.
+  Sa national level, mas malawak ang lawmaking, appropriations at executive authority.
+</p>
+
+<p>
+  At mismong Constitution ang naglalagay ng mataas na prinsipyo:
+</p>
+
+<blockquote>
+  PUBLIC OFFICE IS A PUBLIC TRUST.
+</blockquote>
+
+<p>
+  Inaatasan nitong maging accountable sa taumbayan ang public officers and employees at maglingkod nang may responsibility, integrity, loyalty at efficiency.
+</p>
+
+<p>
+  Hindi nito sinasabing kailangan ng CSE ang elected officials.
+</p>
+
+<p>
+  Pero ipinapakita nito kung gaano kabigat ang responsibility na nakakabit sa public office.
+</p>
+
+<h2>
+  PERO BAGO SABIHING “CSE,” LINAWIN MUNA NATIN ANG ISANG MAHALAGANG BAGAY
+</h2>
+
+<p>
+  Hindi pareho ang <strong>CIVIL SERVICE ELIGIBILITY</strong> at <strong>PAGPASA SA CAREER SERVICE EXAMINATION</strong>.
+</p>
+
+<p>
+  May mga taong maaaring maging civil service eligible kahit hindi sila kumuha at pumasa sa regular CSE-PPT.
+</p>
+
+<p>
+  Mismong Civil Service Commission ang naglilista ng special eligibilities tulad ng Bar/Board Eligibility, Honor Graduate Eligibility, Barangay Official Eligibility, Sanggunian Member Eligibility, Sangguniang Kabataan Officials Eligibility at iba pa.
+</p>
+
+<p>
+  Kaya kung ang mismong prinsipyo ay:<br>
+  <strong>DAPAT DUMAAN ANG ELECTED OFFICIAL SA ISANG STANDARDIZED COMPETENCY EXAMINATION,</strong>
+</p>
+
+<p>
+  Hindi sapat na sabihing:
+</p>
+
+<blockquote>
+  DAPAT CIVIL SERVICE ELIGIBLE.
+</blockquote>
+
+<p>
+  Dahil posible ang eligibility <strong>WITHOUT PASSING THE REGULAR CSE.</strong>
+</p>
+
+<p>
+  Mas precise ang posisyong pinag-uusapan dito:<br>
+  <strong>DAPAT MAY STANDARDIZED EXAMINATION NA KAILANGANG LAMPASAN BAGO HUMAWAK NG ELECTIVE PUBLIC POWER.</strong>
+</p>
+
+<p>
+  At kung gagamitin ang kasalukuyang sistema bilang starting point, ang Professional-level CSE-PPT ang isa sa pinaka-obvious na existing baselines na maaaring pag-aralan.
+</p>
+
+        <h2>
+  ANO BA TALAGA ANG SINUSUKAT NG CIVIL SERVICE EXAM?
+</h2>
+
+<p>
+  Mahalagang huwag gawing magic word ang <strong>“CSE.”</strong>
+</p>
+
+<p>
+  Hindi ito leadership examination.<br>
+  Hindi ito board exam para maging mayor, governor, congressman, senator o president.<br>
+  At hindi ito ginawa ng CSC bilang licensing examination para sa elected office.
+</p>
+
+<p>
+  Ang kasalukuyang Professional-level CSE-PPT covers general information, verbal ability, numerical ability at analytical ability.
+</p>
+
+<p>
+  Kasama sa verbal ability ang reading comprehension at paragraph organization.<br>
+  Kasama sa analytical ability ang abstract reasoning, identifying assumptions, drawing conclusions at data interpretation.<br>
+  Kasama sa numerical ability ang basic operations, number sequence at word problems.
+</p>
+
+<p>
+  At sa general information, kasama ang Philippine Constitution, R.A. 6713 o Code of Conduct and Ethical Standards for Public Officials and Employees, peace and human-rights concepts, at environmental management and protection.
+</p>
+
+<p>
+  Para pumasa, kailangan ng general rating na at least <strong>80.00</strong>.
+</p>
+
+<p>
+  Hindi nito sinusukat ang lahat ng kailangang malaman ng isang elected official.
+  Pero may mga sinusukat itong kakayahan na mahalaga rin sa paghawak ng public responsibility.
+</p>
+
+<p>
+  Reading comprehension.<br>
+  Analysis.<br>
+  Numbers.<br>
+  Data interpretation.<br>
+  Constitutional knowledge.<br>
+  Public-service ethics.
+</p>
+
+<p>
+  Mga basic abilities na relevant sa taong inaasahang haharap sa budgets, ordinances, laws, reports, policy proposals at government information.
+</p>
+
+<p>
+  Pero dito kailangang ihiwalay ang <strong>FACT</strong> sa <strong>POLICY POSITION.</strong>
+</p>
+
+<p>
+  <strong>FACT:</strong><br>
+  Sinusukat ng CSE-PPT ang defined set ng general abilities at public-service knowledge para sa civil-service eligibility.
+</p>
+
+<p>
+  <strong>POLICY POSITION:</strong><br>
+  Ang ganitong standardized examination ay maaaring gawing minimum competency floor para sa elected public officials.
+</p>
+
+<p>
+  Ang una ay established fact.<br>
+  Ang ikalawa ay policy proposal.
+</p>
+
+<p>
+  Wala pang ebidensiyang mula sa CSC na nagpapakitang ang CSE score ay maaasahang sukatan ng magiging performance ng isang mayor, governor, legislator o president.
+</p>
+
+<h2>
+  AT HINDI AUTOMATIC ANG PAGPASA
+</h2>
+
+<p>
+  Ang CSE ay hindi certificate na basta ibinibigay sa sinumang mag-apply.
+</p>
+
+<p>
+  May standardized threshold na kailangang lampasan.
+  Pero hindi ibig sabihin na ang hindi pumasa ay incompetent.
+</p>
+
+<p>
+  Hindi rin ito IQ test.
+</p>
+
+<p>
+  Ang examination performance ay maaaring maapektuhan ng preparation, educational background, test familiarity at iba pang factors.
+</p>
+
+<p>
+  Kaya ang pagiging passer ay dapat tingnan bilang pagpasa sa isang defined assessment—hindi bilang kumpletong sukatan ng katalinuhan, character o leadership.
+</p>
+
+<h2>
+  BAKIT MAY GANITONG STANDARD SA CAREER CIVIL SERVICE?
+</h2>
+
+<p>
+  Dahil mismong Constitution ang naglagay ng merit and fitness principle sa civil-service appointments.
+</p>
+
+<p>
+  Pero kailangang sabihin ang buong constitutional rule—hindi lamang ang bahaging pabor sa argumento.
+</p>
+
+<p>
+  Ayon sa Article IX-B, appointments in the civil service shall be made according to merit and fitness, na hangga't practicable ay tinutukoy sa pamamagitan ng competitive examination.
+</p>
+
+<p>
+  Pero may express exception sa competitive-examination requirement para sa positions na policy-determining, primarily confidential o highly technical.
+</p>
+
+<p>
+  Mahalaga iyon.
+</p>
+
+<p>
+  Ibig sabihin, mismong Constitution ay <strong>HINDI</strong> ginagawang universal ang competitive examination kahit sa appointive civil service.
+</p>
+
+<p>
+  Kaya hindi tamang sabihin:
+</p>
+
+<blockquote>
+  REQUIRED NG CONSTITUTION ANG EXAM SA GOVERNMENT EMPLOYEES, KAYA DAPAT AUTOMATICALLY REQUIRED DIN SA POLITICIANS.
+</blockquote>
+
+<p>
+  Hindi iyon ang constitutional rule.
+</p>
+
+<p>
+  Ang mas eksaktong punto ay:<br>
+  <strong>KINIKILALA NG CONSTITUTION ANG MERIT AND FITNESS BILANG MAHALAGANG PRINCIPLE SA PUBLIC SERVICE, PERO HINDI NITO SINASABING COMPETITIVE EXAMINATION ANG UNIVERSAL METHOD PARA SA LAHAT NG PUBLIC POSITIONS.</strong>
+</p>
+
+<p>
+  Kaya ang standardized examination requirement para sa elected officials ay kailangang ituring bilang bagong policy reform, hindi simpleng extension ng existing constitutional rule.
+</p>
+
+<h2>
+  AT KAHIT CSE PASSER KA, HINDI PA IYON BUONG QUALIFICATION
+</h2>
+
+<p>
+  Kahit sa career civil service, hindi sinasabi ng sistema na:
+</p>
+
+<blockquote>
+  PUMASA KA SA EXAM, KAYA SAPAT NA IYON PARA MASABING HANDA KA SA LAHAT NG RESPONSIBILIDAD NG POSISYON.
+</blockquote>
+
+<p>
+  Ang eligibility ay isang component lamang ng qualification framework.
+</p>
+
+<p>
+  Depende sa trabaho, maaari pang pumasok ang education, experience, training at ibang competency requirements.
+</p>
+
+<p>
+  Mahalagang principle iyon kung gagamitin ang CSE sa discussion tungkol sa elected officials:<br>
+  <strong>MINIMUM FLOOR, HINDI BUONG SUKATAN NG COMPETENCE.</strong>
+</p>
+
+<h2>
+  DITO LUMALABAS ANG MALAKING CONTRAST
+</h2>
+
+<p>
+  Sa maraming career government positions, may eligibility at qualification standards bago magkaroon ng permanent appointment.
+</p>
+
+<p>
+  Sa elective positions, ibang framework ang ginagamit.
+  Sa national offices, may qualifications na mismong Constitution ang nagtatakda.
+  Sa local elective offices naman, ang qualifications ay itinatalaga sa ilalim ng constitutional at statutory framework.
+</p>
+
+<p>
+  Kaya maaaring magkaroon ng ganitong contrast:
+  Ang aplikanteng naghahangad ng ilang permanent government positions ay kailangang magpakita ng eligibility at iba pang qualification standards.
+</p>
+
+<p>
+  Samantalang ang taong maaaring humawak ng kapangyarihang gumawa ng batas, mag-apruba ng public spending o mamuno sa malawak na bahagi ng bureaucracy ay hindi kailangang dumaan sa kaparehong general competency examination.
+</p>
+
+<p>
+  Hindi ibig sabihin na pareho ang trabaho nila.
+  Hindi sila pareho.
+</p>
+
+<p>
+  Pero iyon mismo ang dahilan kung bakit lehitimong pag-usapan kung dapat magkaroon ng sariling minimum competency floor ang elective public office.
+</p>
+
+<p>
+  At dito pumapasok ang isa pang mahalagang comparison.
+</p>
+
+<p>
+  Sa <strong>MARAMING REGULATED PROFESSIONS</strong>, hindi sapat na pasok ka lamang sa basic educational o application requirements.
+</p>
+
+<p>
+  Bago ka pagkatiwalaang legal na mag-practice bilang professional, may mga larangang kailangang patunayan muna ang minimum competence sa pamamagitan ng licensure examination.
+</p>
+
+<p>
+  Sa mismong R.A. 8981 o PRC Modernization Act, kinikilala ng Estado ang mahalagang papel ng professionals at ang layuning magkaroon ng professionals whose competence has been determined through honest and credible licensure examinations.
+</p>
+
+<p>
+  Ang PRC mismo ang nangangasiwa ng licensure examinations para sa maraming regulated professions sa ilalim ng kani-kanilang professional laws at requirements.
+</p>
+
+<p>
+  Hindi ibig sabihin na pareho ang pagiging elected official at pagiging licensed professional.
+  Hindi rin ibig sabihin na dahil may board exam ang isang engineer, nurse, physician o iba pang regulated professional ay automatic nang legally required ding magkaroon ng kaparehong exam ang isang mayor, senador o presidente.
+</p>
+
+<p>
+  Magkaiba ang constitutional at professional-regulatory frameworks nila.
+</p>
+
+<p>
+  Pero may prinsipyong worth confronting:<br>
+  <strong>SA MGA RESPONSIBILIDAD NA MALAKI ANG EPEKTO SA IBANG TAO, HINDI LAGING SAPAT ANG SABIHING PASOK KA SA BASIC REQUIREMENTS—MAY MGA SISTEMANG HUMIHINGI PA NG OBJECTIVE PROOF NG MINIMUM COMPETENCE.</strong>
+</p>
+
+<p>
+  Iyan ang comparison na inilalapat ng posisyong ito sa elective public office.
+</p>
+
+<p>
+  Hindi para gawing “board exam ng politika” ang CSE.
+</p>
+
+<p>
+  Kundi para sabihin na kung normal nating tinatanggap na kailangang patunayan muna ng maraming professionals ang minimum competence bago sila pagkatiwalaang mag-practice sa kanilang larangan, may dahilan ding pag-usapan kung bakit ang taong pagkakatiwalaan ng public funds, policymaking at kapangyarihan ng Estado ay walang anumang comparable standardized proof of minimum functional competence bago mahalal.
+</p>
+
+<p>
+  Hindi sapat na eligible lamang.
+</p>
+
+<p>
+  Sa posisyong inilalatag dito, dapat may <strong>OBJECTIVE PROOF DIN NA NALAMPASAN ANG ISANG MINIMUM COMPETENCY THRESHOLD.</strong>
+</p>
+
+        <h2>
+  MISMONG GOBYERNO, MAY CAPACITY-BUILDING PAGKATAPOS NG ELEKSIYON
+</h2>
+
+<p>
+  May Program for Newly Elected Officials ang DILG sa pamamagitan ng Local Government Academy.
+</p>
+
+<p>
+  Inilalarawan ito ng LGA bilang continuing package ng education, training at support services na naglalayong paunlarin ang newly elected officials bilang strategic leaders at palakasin ang leadership at decision-making skills nila.
+</p>
+
+<p>
+  May Barangay Newly Elected Officials Program din.
+</p>
+
+<p>
+  Kasama sa learning objectives nito ang revenue-raising powers, Barangay Development Plan at iba pang responsibilities, habang may electives sa anti-corruption, disaster-risk reduction at Katarungang Pambarangay.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na incompetent ang taong nanalo.
+</p>
+
+<p>
+  Normal sa kahit anong profession o institution ang patuloy na training.
+</p>
+
+<p>
+  Pero malinaw ang isang institutional reality:<br>
+  <strong>HINDI IPINAPALAGAY NG GOBYERNO NA ANG PAGKAPANALO SA ELEKSIYON AY AWTOMATIKONG NAGBIBIGAY NG LAHAT NG KAALAMANG KAILANGAN SA AKTUWAL NA GOVERNANCE.</strong>
+</p>
+
+<p>
+  May competencies na kailangang matutunan at paunlarin.
+</p>
+
+<h2>
+  MAY ACTUAL EVIDENCE RIN NA HINDI PARE-PAREHO ANG GOVERNMENT CAPACITY
+</h2>
+
+<p>
+  Sa isang PIDS baseline study tungkol sa devolution, nakita ang high variation sa LGU prioritization at LGU capacity.
+</p>
+
+<p>
+  Ayon din sa LGUs’ own assessments na pinag-aralan, hindi noon achievable ang full devolution sa original 2024 timeline, at ang capacity-development interventions ay pangunahing nakatuon sa workforce at training requirements.
+</p>
+
+<p>
+  May ongoing PIDS research naman tungkol sa analytical capacities ng LGUs sa evidence-informed policymaking.
+</p>
+
+<p>
+  Mismong project description ang nagsasabing may dearth of empirical evidence tungkol sa actual level ng LGU capacity sa pagganap ng policy mandates.
+</p>
+
+<p>
+  Sinusuri nito ang data collection, processing, analysis at utilization, kabilang ang individual at organizational dimensions.
+</p>
+
+<p>
+  Pero dito kailangang bantayan ang interpretation.
+</p>
+
+<p>
+  <strong>LGU CAPACITY IS NOT THE SAME THING AS THE INDIVIDUAL COMPETENCE OF AN ELECTED OFFICIAL.</strong>
+</p>
+
+<p>
+  Ang institutional capacity ay maaaring maapektuhan ng personnel, systems, resources, technical staff, processes, leadership at maraming iba pang factors.
+</p>
+
+<p>
+  Kaya hindi maaaring gamitin ang PIDS findings bilang shortcut para sabihing:
+</p>
+
+<blockquote>
+  INCOMPETENT ANG ELECTED OFFICIALS.
+</blockquote>
+
+<p>
+  Hindi iyon ang napatunayan.
+</p>
+
+<p>
+  Ang mas suportadong konklusyon:<br>
+  <strong>NAGKAKAIBA-IBA ANG CAPACITY NG LOCAL GOVERNMENTS, AT DOCUMENTED ANG PANGANGAILANGAN SA WORKFORCE, TRAINING AT ANALYTICAL CAPACITY DEVELOPMENT.</strong>
+</p>
+
+<p>
+  Ipinapakita nito kung bakit mahalaga ang competence sa governance.
+</p>
+
+<p>
+  Hindi nito pinatutunayan kung sino mismo sa mga elected officials ang competent o incompetent.
+</p>
+
+<h2>
+  ANO NAMAN ANG SINASABI NG RESEARCH TUNGKOL SA MERIT?
+</h2>
+
+<p>
+  Dito mas malawak ang international evidence.
+</p>
+
+<p>
+  Isang systematic review sa journal <em>Public Administration</em> ang nagsuri ng 96 empirical articles mula 1991 hanggang 2022 tungkol sa merit principles at government performance.
+</p>
+
+<p>
+  Sa kabuuan, nakita ng review na ang core merit principles tulad ng meritocratic appointments/recruitment, professionalism at impartiality ay strongly associated sa higher government performance at lower corruption.
+</p>
+
+<p>
+  May hiwalay ding review ng 36 studies tungkol sa civil-service management at corruption.
+</p>
+
+<p>
+  Natuklasan nitong ang meritocratic recruitment ay associated with lower corruption, habang mas mahina o kulang pa ang robust evidence para sa ilang ibang personnel-management practices.
+</p>
+
+<p>
+  Malakas na ebidensiya iyan para sa isang principle:<br>
+  <strong>MAHALAGA ANG MERIT-BASED INSTITUTIONS SA PROFESSIONAL PUBLIC SERVICE.</strong>
+</p>
+
+<p>
+  Pero dito kailangan ang pinakamahalagang research guardrail ng buong usapan.
+</p>
+
+<h2>
+  HINDI PA NAPATUTUNAYAN NG RESEARCH NA “CSE PASSER = MAHUSAY NA POLITIKO”
+</h2>
+
+<p>
+  Ang systematic reviews na iyon ay pangunahing tungkol sa civil-service systems, professional bureaucracy at public personnel management.
+</p>
+
+<p>
+  Hindi sila experiments sa Philippine elected officials.
+</p>
+
+<p>
+  Hindi nila sinubukan ang policy na:
+</p>
+
+<blockquote>
+  IPASA NATIN SA CSE ANG LAHAT NG KANDIDATO AT TINGNAN KUNG GAGANDA ANG PHILIPPINE GOVERNANCE.
+</blockquote>
+
+<p>
+  Kaya hindi suportado ng evidence ang claim na:
+  Kapag CSE passer, siguradong mahusay na mayor, governor, legislator o president.
+</p>
+
+<p>
+  Hindi rin napatutunayan na:
+  Mas mataas ang CSE score = mas mahusay na political leadership.
+</p>
+
+<p>
+  At maraming mahalagang leadership qualities ang hindi lubos na sinusukat ng current CSE:
+</p>
+
+<p>
+  judgment;<br>
+  integrity;<br>
+  negotiation;<br>
+  crisis leadership;<br>
+  policy expertise;<br>
+  communication;<br>
+  consensus-building;<br>
+  at ability to translate information into sound public decisions.
+</p>
+
+<p>
+  Puwedeng pumasa sa exam at maging corrupt.<br>
+  Puwedeng magaling sa abstract reasoning pero mahina sa actual leadership.
+</p>
+
+<p>
+  At puwedeng may mahusay na public-service judgment ang isang tao kahit hindi mataas ang performance niya sa isang standardized test.
+</p>
+
+<p>
+  Kaya mali ang equation na:
+</p>
+
+<blockquote>
+  CSE PASSER = GOOD LEADER.
+</blockquote>
+
+<p>
+  Ang mas defensible na proposition ay mas limitado:<br>
+  <strong>KUNG MAGKAKAROON NG MINIMUM STANDARDIZED COMPETENCY THRESHOLD PARA SA ELECTED OFFICE, ANG CSE-TYPE EXAMINATION AY MAAARING MAGSILBING BASELINE—PERO HINDI CERTIFICATE NG GOOD GOVERNANCE.</strong>
+</p>
+
+        <h2>
+  MAY ISA PANG KAKAIBANG CONTRAST SA KASALUKUYANG SISTEMA
+</h2>
+
+<p>
+  May ilang elected officials na maaaring magkaroon ng Civil Service eligibility dahil sa kanilang serbisyo bilang elected officials, kapag natugunan ang requirements ng applicable law at CSC rules.
+</p>
+
+<p>
+  May Barangay Official Eligibility.<br>
+  May Sanggunian Member Eligibility.<br>
+  May Sangguniang Kabataan Officials Eligibility.
+</p>
+
+<p>
+  At hindi lahat ng ganitong eligibility ay nangangailangan ng pagpasa sa regular CSE-PPT.
+</p>
+
+<p>
+  Kaya maaaring magkaroon ng ganitong sitwasyon:<br>
+  <strong>MAAARING MAGKAROON NG RECOGNIZED CIVIL SERVICE ELIGIBILITY PAGKATAPOS MAKAPAGLINGKOD SA ELECTIVE OFFICE—SAMANTALANG WALANG STANDARDIZED COMPETENCY EXAMINATION NA KAILANGANG IPASA BAGO MAGSIMULA ANG MISMONG ELECTIVE SERVICE.</strong>
+</p>
+
+<p>
+  Hindi ito automatic proof na mali ang current system.
+</p>
+
+<p>
+  Pero malinaw itong policy contrast na karapat-dapat pag-usapan.
+</p>
+
+<h2>
+  PERO HINDI IISA ANG LEGAL PATH PARA SA LAHAT NG ELECTED OFFICES
+</h2>
+
+<p>
+  Kung target ng reform ang lahat ng elected officials, hindi sapat ang:
+</p>
+
+<blockquote>
+  MAGPASA LANG TAYO NG ISANG BATAS NA MANDATORY CSE PARA SA LAHAT.
+</blockquote>
+
+<p>
+  Magkakaiba ang constitutional structure ng mga elective offices.
+</p>
+
+<p>
+  Para sa constitutionally prescribed national elective positions, may mahalagang legal limit sa ordinary legislation.
+</p>
+
+<p>
+  Sa <em>Social Justice Society v. Dangerous Drugs Board</em>, pinawalang-bisa ng Supreme Court ang mandatory drug-testing requirement insofar as ginawa itong additional qualification para sa senatorial candidates dahil mismong Constitution na ang nagtatakda ng qualifications ng senador.
+</p>
+
+<p>
+  Sa <em>Albano v. COMELEC</em>, muling ipinaliwanag ng Korte ang distinction sa district representatives at party-list representatives.
+</p>
+
+<p>
+  Hindi basta maaaring dagdagan ng Congress ang constitutionally fixed qualifications ng district representatives, samantalang may mas malawak na legislative role sa party-list framework dahil sa mismong constitutional text.
+</p>
+
+<p>
+  Sa local elective offices, iba naman ang statutory at constitutional starting point.
+</p>
+
+<p>
+  Kaya kung magiging nationwide reform ito, hindi intellectually honest na sabihing:
+</p>
+
+<blockquote>
+  ISANG BATAS LANG PARA SA LAHAT.
+</blockquote>
+
+<p>
+  Mas precise:<br>
+  <strong>OFFICE-BY-OFFICE ANG LEGAL PATHWAY.</strong>
+</p>
+
+<p>
+  Sa ilang local positions, statutory amendment ang maaaring maging pangunahing route.
+</p>
+
+<p>
+  Sa constitutionally prescribed national offices, maaaring mangailangan ng constitutional change kung ang examination requirement ay gagawing tunay na additional qualification na hindi maaaring idagdag sa ordinary legislation.
+</p>
+
+<p>
+  At sa party-list representation, hiwalay pa ang constitutional at statutory analysis.
+</p>
+
+<h2>
+  AT KUNG GAGAWING MANDATORY, HINDI PUWEDENG “BASTA EXAM LANG”
+</h2>
+
+<p>
+  Dito kailangang maging seryoso ang policy design.
+</p>
+
+<p>
+  Kung actual CSE ang gagamiting requirement, anong level?<br>
+  Professional ba para sa lahat?<br>
+  Pareho ba ang test para sa barangay official at President?<br>
+  Kailan kailangang pumasa—bago mag-file ng certificate of candidacy, bago ang election, o bago mag-assume ng office?<br>
+  Ano ang mangyayari sa retakes?<br>
+  May transition period ba para sa incumbent officials?<br>
+  Paano sisiguraduhing accessible sa mga kandidatong nasa malalayong lugar o may limitadong resources?<br>
+  Paano maiiwasang maging <em>de facto</em> advantage ito ng may pera para sa review centers at preparation?
+</p>
+
+<p>
+  At pinakamahalaga:<br>
+  <strong>SAPAT BA ANG KASALUKUYANG PROFESSIONAL CSE PARA SA MISMONG TUNGKULIN NG MGA ELECTED OFFICIALS?</strong>
+</p>
+
+<p>
+  Ang current test covers useful general abilities.
+</p>
+
+<p>
+  Pero hindi ito specifically designed para sukatin ang legislative drafting, public budgeting, procurement oversight, policy evaluation, local development planning, executive management o crisis governance.
+</p>
+
+<p>
+  Kaya dalawang posibleng policy models ang kailangang paghiwalayin:<br>
+  <strong>EXISTING PROFESSIONAL CSE AS THE MINIMUM BASELINE</strong> o <strong>ISANG DEDICATED ELECTED-PUBLIC-OFFICIAL COMPETENCY EXAMINATION NA MAY MAS DIRECTLY RELEVANT COVERAGE.</strong>
+</p>
+
+<p>
+  Ang unang model ay mas simple dahil existing na ang infrastructure.
+</p>
+
+<p>
+  Ang ikalawa ay maaaring mas job-relevant—but would require new test design, validation, rules and safeguards.
+</p>
+
+<p>
+  Iyan ang klase ng implementation question na kailangang sagutin kung ang layunin ay tunay na competency at hindi lamang dagdag na certificate.
+</p>
+
+<h2>
+  HINDI ITO DIPLOMA POLITICS
+</h2>
+
+<p>
+  Hindi rin dapat mauwi ang argumento sa:
+</p>
+
+<blockquote>
+  DAPAT PURO COLLEGE GRADUATE O MATAAS ANG PINAG-ARALAN ANG PUWEDE TUMAKBO.
+</blockquote>
+
+<p>
+  Ibang usapan iyon.
+</p>
+
+<p>
+  May taong walang elite educational background pero mahusay sa judgment, leadership at public service.
+</p>
+
+<p>
+  At may highly educated people na maaaring maging mahina, dishonest o incompetent na public officials.
+</p>
+
+<p>
+  Ang prinsipyo ng standardized competency assessment ay hindi dapat:<br>
+  Saan ka nagtapos?<br>
+  Mayaman ka ba?<br>
+  Prominente ba ang apelyido mo?<br>
+  May master's degree ka ba?
+</p>
+
+<p>
+  Mas basic ang tanong:<br>
+  <strong>MAY MINIMUM FUNCTIONAL COMPETENCE KA BANG KAYANG PATUNAYAN BAGO KA PAGKATIWALAAN NG PUBLIC POWER?</strong>
+</p>
+
+<h2>
+  HINDI RIN NITO PINAPALITAN ANG BOTANTE
+</h2>
+
+<p>
+  Isa ito sa pinakamahalagang democratic objections sa ganitong proposal.
+</p>
+
+<p>
+  Kung ang mamamayan ang sovereign electorate, bakit hindi sila ang bahalang pumili kung sino ang competent para sa kanila?
+</p>
+
+<p>
+  Mahalagang objection iyon.
+</p>
+
+<p>
+  Pero mayroon nang legal qualifications bago pa man makarating sa final choice ng botante.
+</p>
+
+<p>
+  Ibig sabihin, hindi naman talaga "kahit sino basta iboto" ang current system.
+</p>
+
+<p>
+  May eligibility floor bago magsimula ang electoral choice.
+</p>
+
+<p>
+  Kaya ang tunay na policy issue ay hindi simpleng:
+</p>
+
+<blockquote>
+  STANDARDS VERSUS DEMOCRACY.
+</blockquote>
+
+<p>
+  Mas accurate:<br>
+  <strong>ANO ANG LEHITIMONG MINIMUM QUALIFICATIONS NA DAPAT MATUGUNAN MUNA BAGO IBIGAY SA VOTERS ANG FINAL CHOICE?</strong>
+</p>
+
+<p>
+  At kung dadagdagan ang qualification floor, kailangan nitong maging constitutional, objectively administered, reasonably accessible at hindi ginagawang artificial barrier para protektahan ang existing political class.
+</p>
+
+        <h2>
+  KAYA HINDI SAPAT ANG “MAGALING NAMAN SIYA KAHIT WALANG CSE”
+</h2>
+
+<p>
+  Posibleng totoong mahusay ang isang particular na official kahit walang CSE.
+</p>
+
+<p>
+  Pero ang institutional standards ay hindi ginagawa lamang batay sa exceptional individuals.
+</p>
+
+<p>
+  Ginagawa ang standards para magkaroon ng minimum rule.
+</p>
+
+<p>
+  Kasabay nito, hindi rin sapat ang kabaligtaran:
+</p>
+
+<blockquote>
+  CSE PASSER SIYA, KAYA MAHUSAY SIYANG LIDER.
+</blockquote>
+
+<p>
+  Hindi rin iyon napatunayan.
+</p>
+
+<p>
+  Kaya kailangang panatilihin ang distinction:<br>
+  <strong>ANG BOTO AY MANDATE.</strong><br>
+  <strong>ANG COMPETENCY STANDARD AY THRESHOLD.</strong>
+</p>
+
+<p>
+  Magkaiba ang function nila.
+</p>
+
+<p>
+  Ang voters pa rin ang pumipili sa pagitan ng mga kandidatong nakatutugon sa legal qualifications.
+</p>
+
+<p>
+  Ang competency requirement—kung gagawing bahagi ng system—ay tungkol sa kung anong minimum standard ang dapat matugunan bago makarating ang kandidato sa puntong iyon.
+</p>
+
+<h2>
+  DITO LUMALAWAK ANG MAS MALAKING USAPIN
+</h2>
+
+<p>
+  Ang panukala ni Ombudsman Remulla sa barangay level ay maaaring maliit na bahagi lamang ng mas malaking debate.
+</p>
+
+<p>
+  Dahil kung ang rationale ay kailangan ng mas mataas na qualification dahil frontline sila ng government service, natural na lumilitaw ang consistency question:
+</p>
+
+<blockquote>
+  HABANG LUMALAKI ANG KAPANGYARIHAN, BUDGET AT EPEKTO NG DESISYON—DAPAT BANG MANATILING WALA SA EQUATION ANG STANDARDIZED PROOF OF MINIMUM COMPETENCE?
+</blockquote>
+
+<p>
+  Hindi pinatutunayan ng available research na CSE ang magic solution sa corruption.
+</p>
+
+<p>
+  Hindi rin nito pinatutunayan na CSE passers automatically become better politicians.
+</p>
+
+<p>
+  Ang international merit-system research ay primarily tungkol sa professional civil service, hindi elected Philippine leadership.
+</p>
+
+<p>
+  Hindi rin maaaring ipagwalang-bahala ang constitutional role ng voters at ang legal limits sa pagdagdag ng qualifications sa ilang elected offices.
+</p>
+
+<p>
+  At kung gagawa ng competency requirement, kailangang seryosohin ang accessibility, relevance ng test, fairness at constitutional design.
+</p>
+
+<p>
+  Pero may malinaw ding dahilan kung bakit hindi dapat paghaluin ang electoral popularity at demonstrated functional competence.
+</p>
+
+<p>
+  Ang election ay sumasagot sa:
+</p>
+
+<blockquote>
+  SINO ANG PINILI NG MAMAMAYAN?
+</blockquote>
+
+<p>
+  Ang competency standard ay sasagot sana sa ibang tanong:
+</p>
+
+<blockquote>
+  ANO ANG MINIMUM FUNCTIONAL ABILITY NA KAILANGANG MAIPAKITA NG SINUMANG GUSTONG HUMAWAK NG PUBLIC POWER?
+</blockquote>
+
+<p>
+  Hindi dapat ituring ang isang exam bilang sukatan ng buong kakayahan ng isang lider.
+</p>
+
+<p>
+  Hindi rin dapat ituring itong solusyon sa lahat ng problema sa governance.
+</p>
+
+<p>
+  Sa ilalim ng posisyong inilalatag sa post na ito, ang objective competency floor ay hindi kapalit ng boto kundi proposed minimum threshold bago ang democratic choice—at kailangang suriin iyon kasama ang ebidensiya, fairness, accessibility at constitutional safeguards.
+</p>
+
+<blockquote>
+  HINDI CERTIFICATE ANG GUMAGAWA NG MAHUSAY NA LIDER.<br>
+  PERO ANG PAGIGING ELIGIBLE AT PAGKAPANALO AY HINDI RIN SAPAT NA PATUNAY NG COMPETENCY.
+</blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      <strong>Civil Service Commission</strong><br>
+      • Career Service Examination – Pen and Paper Test: examination coverage and passing standard<br>
+      • Special Eligibilities<br>
+      • Barangay Official Eligibility<br>
+      • Sanggunian Member Eligibility<br>
+      • Sangguniang Kabataan Officials Eligibility
+    </li>
+
+    <li>
+      <strong>Professional Regulation Commission / Republic Act No. 8981</strong><br>
+      • PRC Modernization Act of 2000<br>
+      • Professional licensure examination framework
+    </li>
+
+    <li>
+      <strong>1987 Constitution of the Republic of the Philippines</strong><br>
+      • Articles VI, VII, IX-B, X and XI
+    </li>
+
+    <li>
+      <strong>Supreme Court of the Philippines</strong><br>
+      • <em>Social Justice Society v. Dangerous Drugs Board</em>, G.R. Nos. 157870, 158633 &amp; 161658<br>
+      • <em>Albano v. Commission on Elections</em>, G.R. No. 257610 / UDK No. 17230
+    </li>
+
+    <li>
+      <strong>Congressional Policy and Budget Research Department</strong><br>
+      • Statistical Inventory of Potential Political Dynasts<br>
+      • Dynasty Dynamics: Poverty, Political Clans, and Political Adaptation
+    </li>
+
+    <li>
+      <strong>Philippine Institute for Development Studies</strong><br>
+      • A Survey of Literature on Philippine Decentralization<br>
+      • Baseline Study on the State of Devolution in the (Pre-Mandanas) Philippines<br>
+      • Assessing Analytical Capacities in Local Government Policymaking
+    </li>
+
+    <li>
+      <strong>DILG – Local Government Academy</strong><br>
+      • Program for Newly Elected Officials<br>
+      • Barangay Newly Elected Officials Program
+    </li>
+
+    <li>
+      <strong>Oliveira et al.</strong><br>
+      • <em>What Does the Evidence Tell Us About Merit Principles and Government Performance?</em><br>
+      • <em>Public Administration</em>
+    </li>
+
+    <li>
+      <strong>Meyer-Sahling, Mikkelsen &amp; Schuster</strong><br>
+      • <em>Civil Service Management and Corruption: What We Know and What We Don’t</em><br>
+      • <em>Public Administration</em>
+    </li>
+
+    <li>
+      <strong>ABS-CBN News / Pilipino Star Ngayon</strong><br>
+      • Reports on Ombudsman Jesus Crispin Remulla’s proposal on Civil Service eligibility for barangay officials
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
