@@ -1,1 +1,2438 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Isang fact-based na paliwanag tungkol sa hangganan ng paggalang sa magulang, parental authority, utang na loob, boundaries, batas, pananampalataya, at responsibilidad ng adult na anak at magulang."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-magulang-anak.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-magulang-anak.html"
+>
+
+<title>KAILAN NAGIGING MALI ANG “MAGULANG MO PA RIN ’YAN”? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+     .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    KAILAN NAGIGING MALI ANG “MAGULANG MO PA RIN ’YAN”?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-magulang-anak.png"
+      alt="Simbolikong paglalarawan ng isang adult na anak na nakatali sa mga tanikala na may mga salitang utang na loob, respeto, pamilya at pagsunod, habang nakatanaw sa sariling direksiyon bilang representasyon ng hangganan sa pagitan ng paggalang, pananagutan at personal na awtonomiya."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    May mga salitang kapag sinabi tungkol sa pamilya, parang tapos na agad ang usapan.
+  </p>
+
+  <p>
+    “Magulang mo pa rin ’yan.”
+  </p>
+
+  <p>
+    Kapag nasaktan ka—magulang mo pa rin ’yan.<br>
+    Kapag hindi kayo magkasundo—magulang mo pa rin ’yan.<br>
+    Kapag gusto mong lumayo muna—magulang mo pa rin ’yan.<br>
+    Kapag naglagay ka ng hangganan—magulang mo pa rin ’yan.
+  </p>
+
+  <p>
+    At dahil totoo namang hindi nabubura ng away, pagkakamali o distansiya ang pagiging magulang, napakalakas ng bigat ng linyang ito.
+  </p>
+
+  <p>
+    Pero kailan nagiging mali ang paggamit nito?
+  </p>
+
+  <p>
+    Kapag ba ang “paggalang” ay nangangahulugan nang kailangan mong sumunod kahit adult ka na?<br>
+    Kapag ba ang “utang na loob” ay nangangahulugan nang may habambuhay na karapatan ang magulang sa pera, desisyon, relasyon at direksiyon ng buhay ng anak?<br>
+    Kapag ba ang “pamilya” ay sapat nang dahilan para tiisin ang paulit-ulit na pagkontrol, guilt, manipulation o pananakit?
+  </p>
+
+  <p>
+    At kapag naglagay ng boundary ang anak—kawalan ba agad iyon ng respeto?
+  </p>
+
+  <p>
+    Hindi simpleng magulang laban sa anak ang usaping ito.<br>
+    Hindi rin ito tungkol sa paghahanap ng dahilan para talikuran ang pamilya.
+  </p>
+
+  <p>
+    Mas mahirap ang tunay na tanong:
+  </p>
+
+  <h2>
+    HANGGANG SAAN ANG PAGGALANG—AT SAAN NAGSISIMULA ANG KARAPATAN NG ISANG ADULT NA ANAK NA MAGLAGAY NG HANGGANAN?
+  </h2>
+
+  <p>
+    Dahil may obligasyon ang anak.<br>
+    Pero may pananagutan din ang magulang.
+  </p>
+
+  <p>
+    May halaga ang utang na loob.<br>
+    Pero may pagkakaiba ang pasasalamat sa habambuhay na pagkakautang.
+  </p>
+
+  <p>
+    May lugar ang pagpapatawad.<br>
+    Pero hindi pareho ang forgiveness, trust at unlimited access.
+  </p>
+
+  <p>
+    At kung gusto nating maging patas sa usaping ito, hindi sapat ang isang linyang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Magulang mo pa rin ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kailangan nating tingnan kung ano talaga ang ibig sabihin ng pagiging magulang, anak, pamilya, respeto at pananagutan—sa kultura natin, sa batas, sa pananampalataya, at sa mismong realidad ng relasyon ng tao.
+  </p>
+
+  <h2>
+    LINAWIN MUNA NATIN ANG SCOPE
+  </h2>
+
+  <p>
+    Ang pangunahing pinag-uusapan dito ay relasyon ng magulang at anak na nasa hustong gulang na.
+  </p>
+
+  <p>
+    Ibang usapan ang isang menor de edad.
+  </p>
+
+  <p>
+    Ang bata ay nasa ilalim pa ng parental authority at may espesyal na pangangailangan sa paggabay, pag-aaruga at proteksiyon. May legal at moral na responsibilidad ang magulang sa kaniya.
+  </p>
+
+  <p>
+    Pero habang lumalaki ang anak at nagiging adult, nagbabago rin ang relasyon.
+  </p>
+
+  <blockquote>
+    <p>
+      MAGULANG = MAY AWTORIDAD<br>
+      ANAK = DAPAT SUMUNOD
+    </p>
+  </blockquote>
+
+  <p>
+    Nagiging relasyon na ito ng dalawang adult na parehong may dignidad, responsibilidad, sariling desisyon at pananagutan.
+  </p>
+
+  <h2>
+    ANG PAGGALANG AY HINDI BLANK CHECK
+  </h2>
+
+  <p>
+    Ang “magulang mo pa rin ’yan” ay totoong pahayag tungkol sa relasyon. Pero hindi nito awtomatikong sinasagot kung tama ang ginagawa ng magulang.
+  </p>
+
+  <p>
+    Hindi nawawala ang pagiging ama o ina dahil nagkamali sila.<br>
+    Pero hindi rin nawawala ang kanilang pananagutan dahil ama o ina sila.
+  </p>
+
+  <p>
+    At dito kadalasang nagkakaroon ng malaking imbalance sa usapan.
+  </p>
+
+  <p>
+    Kapag anak ang nagkamali:
+  </p>
+
+  <blockquote>
+    <p>
+      “Matuto kang rumespeto.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kapag magulang ang nakasakit:
+  </p>
+
+  <blockquote>
+    <p>
+      “Intindihin mo na lang. Magulang mo pa rin ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero kung tunay na mahalaga ang pamilya, bakit obligasyon lamang ng anak ang kailangang bantayan?
+  </p>
+
+  <h2>
+    ANO NAMAN ANG RESPONSIBILIDAD NG MAGULANG SA ANAK?
+  </h2>
+
+  <p>
+    Hindi one-way street ang pamilya.
+  </p>
+
+  <p>
+    Hindi puwedeng paggalang, obedience at utang na loob lamang ng anak ang pinag-uusapan habang nawawala sa usapan ang pananagutan ng magulang.
+  </p>
+
+  <h2>
+    PATI ANG BATAS, HINDI PURO AWTORIDAD ANG TINGIN SA PAGIGING MAGULANG
+  </h2>
+
+  <p>
+    Sa Family Code of the Philippines, ang parental authority ay hindi inilalarawan bilang kapangyarihan lamang.
+  </p>
+
+  <p>
+    Kasama sa Article 220 ang karapatang humingi ng respect and obedience mula sa unemancipated children.
+  </p>
+
+  <p>
+    Pero sa mismong provision ding iyon, nakalista ang mga tungkulin ng magulang:
+  </p>
+
+  <p>
+    support,<br>
+    education,<br>
+    good example,<br>
+    love and affection,<br>
+    advice and counsel,<br>
+    companionship and understanding,<br>
+    moral and spiritual guidance,<br>
+    at pangangalaga sa kapakanan ng anak.
+  </p>
+
+  <blockquote>
+    <p>
+      MAY KARAPATAN ANG MAGULANG—PERO MAY KAAGAPAY ITONG RESPONSIBILIDAD.
+    </p>
+  </blockquote>
+
+  <p>
+    At may mas direktang distinction pa sa Article 211 ng Family Code.
+  </p>
+
+  <p>
+    Inaatasan nito ang mga anak na panatilihin ang respect and reverence toward their parents, pero iniuugnay nito ang obligasyong sumunod sa panahon habang nasa ilalim pa sila ng parental authority.
+  </p>
+
+  <p>
+    Mahalaga ang distinction na iyon:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG PAGGALANG AY HINDI AWTOMATIKONG KATUMBAS NG HABAMBUHAY NA OBEDIENCE.
+    </p>
+  </blockquote>
+
+  <p>
+    May isa pang mahalagang detalye na madaling mawala sa diskusyon.
+  </p>
+
+  <p>
+    Sa Pilipinas, ang age of majority ay 18 years old.
+  </p>
+
+  <p>
+    Sa ilalim ng Republic Act No. 6809, ang attainment of majority ang nagdudulot ng emancipation. Sa emancipation, generally natatapos ang parental authority over the person and property of the child, at ang adult child ay nagiging qualified at responsable na para sa kaniyang acts of civil life, subject sa mga exceptions na itinakda ng batas.
+  </p>
+
+  <p>
+    Napakahalaga nito.
+  </p>
+
+  <p>
+    Dahil kahit ang batas ay kumikilala na may punto kung saan ang isang anak ay hindi na simpleng taong nasa ilalim ng parental authority.
+  </p>
+
+  <p>
+    Adult na siya.
+  </p>
+
+  <p>
+    Generally qualified at responsable na siya sa sarili niyang acts of civil life, subject sa mga exceptions na itinakda ng batas.
+  </p>
+
+  <p>
+    May sarili siyang desisyon.<br>
+    May sarili siyang pananagutan.
+  </p>
+
+  <p>
+    Pero hindi rin tama ang kabilang extreme na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Eighteen na ako, wala na akong anumang obligasyon sa pamilya ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin ganoon kasimple.
+  </p>
+
+  <p>
+    May provisions din ang Family Code tungkol sa legal support sa pagitan ng ilang parents, ascendants, children at descendants.
+  </p>
+
+  <p>
+    At ang halaga ng support ay nakaugnay sa pangangailangan ng tatanggap at sa resources o kakayahan ng nagbibigay.
+  </p>
+
+  <p>
+    Kaya mahalagang paghiwalayin ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      PARENTAL AUTHORITY AT FAMILIAL RESPONSIBILITY.
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring matapos ang parental authority—pero hindi ibig sabihin na nabubura ang lahat ng responsibilidad, malasakit o legal obligations sa pamilya.
+  </p>
+
+  <p>
+    At kabaligtaran:
+  </p>
+
+  <p>
+    Ang pagkakaroon ng family obligation ay hindi rin nangangahulugang bumalik ang magulang sa pagkakaroon ng buong authority sa buhay ng adult child.
+  </p>
+
+            <h2>
+    RESPONSIBILIDAD AY HINDI PAGMAMAY-ARI
+  </h2>
+
+  <h2>
+    “UTANG NA LOOB” — MAGANDANG PAGPAPAHALAGA, PERO MAY HANGGANAN DIN ANG GAMIT NITO
+  </h2>
+
+  <p>
+    Malalim ang utang na loob sa kulturang Pilipino.
+  </p>
+
+  <p>
+    Hindi ito simpleng “utang” na parang pera. Nasa likod nito ang pagkilala sa sakripisyo, tulong, kabutihan at relasyon.
+  </p>
+
+  <p>
+    At may dahilan kung bakit napakalakas nito sa loob ng pamilya.
+  </p>
+
+  <p>
+    Sa isang 2024 study ni Filipino psychologist Liane Peña Alampay tungkol sa cultural values at parenting sa Pilipinas, nakita na ang collectivistic values ng Filipino parents ay may association sa mas mataas na expectations tungkol sa familial obligations ng kanilang mga anak.
+  </p>
+
+  <p>
+    Kasama sa sample ang mga bata at kanilang mga magulang mula sa urban Metro Manila.
+  </p>
+
+  <p>
+    Hindi nito sinasabing masama ang collectivism o masama ang family obligation.
+  </p>
+
+  <p>
+    Ang mahalagang punto:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY CULTURAL CONTEXT TALAGA KUNG BAKIT MALAKAS SA ATIN ANG EXPECTATION NA MAY DAPAT IBALIK ANG ANAK SA PAMILYA.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya kapag naririnig natin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pinalaki kita.”<br>
+      “Pinag-aral kita.”<br>
+      “Pinakain kita.”<br>
+      “Lahat isinakripisyo ko para sa iyo.”<br>
+      “Huwag mong kalimutan kung saan ka nanggaling.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi lang ito simpleng personal na pananalita. May mas malawak itong cultural background.
+  </p>
+
+  <p>
+    At maraming pagkakataon, maganda iyon.
+  </p>
+
+  <p>
+    Dahil tinuturuan tayo nitong huwag maging makasarili.
+  </p>
+
+  <p>
+    Tumulong sa magulang.<br>
+    Alalahanin ang sakripisyo ng pamilya.<br>
+    Magbalik ng kabutihan.
+  </p>
+
+  <p>
+    At huwag basta iwan ang mga taong tumulong sa atin.
+  </p>
+
+  <p>
+    Pero may problema kapag ang gratitude ay nagiging walang katapusang pagkakautang.
+  </p>
+
+  <p>
+    Kapag ang pasasalamat ay naging kondisyon para kontrolin ang:
+  </p>
+
+  <p>
+    pera,<br>
+    trabaho,<br>
+    asawa o partner,<br>
+    tirahan,<br>
+    oras,<br>
+    pagpapamilya,<br>
+    o halos buong direksiyon ng buhay ng adult child.
+  </p>
+
+  <p>
+    May isang 2025 study sa 557 Filipino college students na tumingin sa utang na loob, perceived parental academic pressure at anxiety.
+  </p>
+
+  <p>
+    Nakita rito ang statistically significant associations sa pagitan ng utang na loob at perceived parental academic pressure, at sa state at trait anxiety. Ang study mismo ay descriptive-correlational at hindi nag-aangkin ng direct causality.
+  </p>
+
+  <p>
+    Kaya mahalagang huwag abusuhin ang findings na ito.
+  </p>
+
+  <blockquote>
+    <p>
+      CORRELATION ITO—HINDI PATUNAY NA ANG UTANG NA LOOB ANG SANHI NG ANXIETY.
+    </p>
+  </blockquote>
+
+  <p>
+    Isang college-student sample din ito, kaya hindi ito maaaring gawing larawan ng lahat ng pamilyang Pilipino.
+  </p>
+
+  <p>
+    Pero may mahalagang ipinapakita ang research: Ang isang magandang cultural value ay maaaring magkaroon ng psychological weight kapag nahalo sa pressure at expectations.
+  </p>
+
+  <p>
+    Kaya hindi ang utang na loob ang problema.
+  </p>
+
+  <p>
+    Ang problema ay kapag ginamit natin ito bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      “MAY UTANG KA SA AKIN, KAYA MAY KARAPATAN AKO SA BUONG BUHAY MO.”
+    </p>
+  </blockquote>
+
+  <p>
+    Doon kailangang huminto.
+  </p>
+
+  <p>
+    Dahil ang gratitude ay hindi ownership.
+  </p>
+
+  <p>
+    At ang pagpapalaki sa anak ay hindi investment contract na kailangang bayaran ng anak sa pamamagitan ng habambuhay na pagsuko ng kaniyang autonomy.
+  </p>
+
+  <h2>
+    PERO HINDI RIN FAIR NA SABIHING “MASAMA ANG MAGULANG—CUT OFF AGAD”
+  </h2>
+
+  <p>
+    Dito rin kailangan ang pantay na pagtimbang.
+  </p>
+
+  <p>
+    Hindi lahat ng away ay abuso.<br>
+    Hindi lahat ng disagreement ay toxicity.<br>
+    Hindi lahat ng mahigpit na magulang ay abusive.<br>
+    Hindi lahat ng anak na lumalayo ay tama.
+  </p>
+
+  <p>
+    At hindi lahat ng magulang na nasasaktan sa desisyon o kilos ng anak ay ginagamit ang sariling sakit o sama ng loob para kontrolin siya.
+  </p>
+
+  <p>
+    May mga anak ding nakasasakit.<br>
+    May mga anak ding selfish.<br>
+    May mga anak ding unfair.
+  </p>
+
+  <p>
+    May mga magulang ding nagkakamali nang walang intensiyong manakit.
+  </p>
+
+  <p>
+    May communication breakdown.<br>
+    Generational differences.<br>
+    Pagkakaiba sa values.<br>
+    Misunderstanding.<br>
+    Pride.<br>
+    Unresolved wounds.
+  </p>
+
+  <p>
+    At minsan, pareho silang may bahagi sa problema.
+  </p>
+
+  <p>
+    Research mismo tungkol sa family estrangement ang nagpapakitang hindi simpleng isang panig lamang ang kuwento.
+  </p>
+
+  <p>
+    Sa isang 2015 study involving 898 estranged parents and adult children, malaki ang pagkakaiba ng mga dahilan na ibinigay ng dalawang panig.
+  </p>
+
+  <p>
+    Mas madalas na itinuro ng parents ang relationships ng adult child na hindi nila sinasang-ayunan o ang perceived sense of entitlement.
+  </p>
+
+  <p>
+    Samantalang ang adult children ay mas madalas na nagturo sa kanilang nakikitang toxic parental behavior o pakiramdam na hindi sila sinuportahan o tinanggap.
+  </p>
+
+  <p>
+    Hindi matched parent-child pairs ang sample, kaya hindi ito paghahambing ng dalawang bersyon ng mismong parehong pamilya.
+  </p>
+
+  <p>
+    Pero mahalaga ang insight:
+  </p>
+
+  <blockquote>
+    <p>
+      MAAARING PAREHONG NANINIWALA ANG MAGULANG AT ANAK NA SILA ANG NASAKTAN—AT MAGKAIBA SILA NG PAGKAKAINTINDI KUNG BAKIT NASIRA ANG RELASYON.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya bago agad humatol:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang utang na loob ang anak.”
+    </p>
+  </blockquote>
+
+  <p>
+    o
+  </p>
+
+  <blockquote>
+    <p>
+      “Masamang magulang ’yan.”
+    </p>
+  </blockquote>
+
+  <p>
+    may mas matalinong tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO BA TALAGA ANG NANGYARI SA RELASYON?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil family conflict is rarely understood well through one sentence.
+  </p>
+
+  <h2>
+    MINSAN, HINDI LANG ISANG INSIDENTE ANG UGAT
+  </h2>
+
+  <p>
+    May isa pang study na tumingin sa 2,013 mother–adult child relationships mula sa 561 later-life families.
+  </p>
+
+  <p>
+    Isa sa malinaw na findings nito:
+    Ang mothers’ perceived value dissimilarity—kung gaano nila nakikitang magkaiba ang kanilang general outlook at ang sa kanilang adult child—ay isang strong predictor ng estrangement sa sample.
+  </p>
+
+  <p>
+    Mahalaga ring maging precise rito:
+    Hindi ito objective test na nagpapatunay kung gaano talaga kalaki ang pagkakaiba ng values ng dalawang panig.
+  </p>
+
+  <p>
+    Perception ng mothers ang kabilang measure sa analysis.
+  </p>
+
+  <p>
+    Sa qualitative accounts naman, ang perceived differences sa values ay nauugnay sa matinding relational tension na maaaring humantong sa estrangement.
+  </p>
+
+  <p>
+    Hindi ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Kapag magkaiba kayo ng values, lumayo ka.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi iyon ang conclusion.
+  </p>
+
+  <p>
+    Ang mahalagang eye-opener ay ito:
+  </p>
+
+  <blockquote>
+    <p>
+      MINSAN ANG RIFT AY HINDI LANG DAHIL SA ISANG AWAY.
+    </p>
+  </blockquote>
+
+  <p>
+    Maaaring bunga ito ng matagal nang tension tungkol sa:
+  </p>
+
+  <p>
+    choices,<br>
+    relationships,<br>
+    beliefs,<br>
+    identity,<br>
+    expectations,<br>
+    roles,<br>
+    o kung sino ang may karapatang magdesisyon sa buhay ng adult child.
+  </p>
+
+  <p>
+    At minsan, ang nakikita ng ibang tao na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ang liit lang naman ng pinag-awayan.”
+    </p>
+  </blockquote>
+
+  <p>
+    ay huling patak lamang ng mas mahabang history na hindi nakikita ng publiko.
+  </p>
+
+            <h2>
+    ANG BOUNDARY AY HINDI ISANG ON/OFF SWITCH
+  </h2>
+
+  <p>
+    Dito mahalagang linawin ang salitang <strong>BOUNDARY</strong>.
+  </p>
+
+  <p>
+    Kapag narinig kasi ito, minsan ang agad na interpretation:
+  </p>
+
+  <blockquote>
+    <p>
+      “Lumayo ka na.”<br>
+      “I-cut off mo.”<br>
+      “Huwag mo nang kausapin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon.
+  </p>
+
+  <blockquote>
+    <p>
+      BOUNDARY IS A SPECTRUM.
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong magsimula sa simpleng healthy disagreement:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi tayo pareho ng pananaw dito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong maging conversation:
+  </p>
+
+  <blockquote>
+    <p>
+      “Nasasaktan ako sa paraan ng pag-uusap natin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong maging stated boundary:
+  </p>
+
+  <blockquote>
+    <p>
+      “Desisyon namin ito bilang mag-asawa. Hihingi kami ng payo, pero kami ang magdedesisyon.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong maging limitasyon:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ko kayang magbigay ng ganoong halaga buwan-buwan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong maging reduced access:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi muna natin pag-uusapan ang topic na ito kung mauuwi lang sa insultuhan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Maaari itong maging temporary distance kapag paulit-ulit nang nasisira ang usapan.
+  </p>
+
+  <p>
+    At sa seryoso, persistent at harmful na sitwasyon, may mga relasyong umaabot sa substantial reduction of contact o estrangement.
+  </p>
+
+  <p>
+    Pero hindi dapat gawing automatic destination ang pinakahuling hakbang.
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI LAHAT NG CONFLICT AY ABUSE.<br>
+      HINDI LAHAT NG BOUNDARY AY ESTRANGEMENT.<br>
+      HINDI LAHAT NG ESTRANGEMENT AY PERMANENT.
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin lahat ng reconciliation ay nangangahulugang parang walang nangyari.
+  </p>
+
+  <h2>
+    RESPETO ≠ UNLIMITED OBEDIENCE
+  </h2>
+
+  <p>
+    Ito ang isa sa pinakamahalagang distinction.
+  </p>
+
+  <p>
+    Puwedeng igalang ang magulang—pero hindi ibig sabihin na lahat ng desisyon niya ay kailangang sundin ng adult child.
+    Puwedeng kilalanin ang sakripisyo ng magulang—pero hindi ibig sabihin na siya na ang may final say sa trabaho, asawa, pera o tahanan ng adult child.
+    Puwedeng mahalin ang magulang—pero hindi ibig sabihin na wala nang puwedeng limitasyon sa paraan ng pakikitungo niya.
+  </p>
+
+  <blockquote>
+    <p>
+      RESPECT ≠ UNLIMITED OBEDIENCE.<br>
+      RESPECT ≠ UNLIMITED ACCESS.<br>
+      RESPECT ≠ CONTROL.<br>
+      RESPECT ≠ PAGTITIIS SA PATULOY NA PANANAKIT.
+    </p>
+  </blockquote>
+
+  <p>
+    At ang boundary ay hindi awtomatikong disrespect.
+  </p>
+
+  <p>
+    Puwedeng hindi murahin ang magulang.
+  </p>
+
+  <p>
+    Hindi gantihan.<br>
+    Hindi ipahiya.<br>
+    Hindi maliitin.
+  </p>
+
+  <p>
+    Pero sabay sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hanggang dito lang ang kaya kong payagan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi lahat ng “NO” ay kawalan ng respeto.
+  </p>
+
+  <p>
+    Minsan, iyon mismo ang pinakamalinaw na paraan para hindi tuluyang masira ang relasyon.
+  </p>
+
+  <h2>
+    PATI ANG BIBLIYA, HINDI ONE-WAY ANG PANANAGUTAN
+  </h2>
+
+  <p>
+    Isa sa pinakamadalas gamiting argumento ay ang Fourth Commandment:
+    <em>Honor your father and mother.</em>
+  </p>
+
+  <p>
+    Mahalaga iyon.
+  </p>
+
+  <p>
+    Hindi natin kailangang paliitin ang commandment para lang maipagtanggol ang boundaries.
+  </p>
+
+  <p>
+    Pero hindi rin tama na kunin lamang ang isang bahagi ng biblical teaching at kalimutan ang iba.
+  </p>
+
+  <p>
+    Sa Ephesians 6:1–4, tinuturuan ang mga anak na sumunod at gumalang sa kanilang mga magulang.
+  </p>
+
+  <p>
+    Pero sa mismong passage ding iyon, direkta namang sinasabihan ang mga ama na huwag pukawin sa galit ang kanilang mga anak at palakihin sila nang may wastong paggabay.
+  </p>
+
+  <p>
+    May obligasyon ang anak.<br>
+    May obligasyon din ang magulang.
+  </p>
+
+  <p>
+    Hindi biblically honest na gamitin ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Honor your father and mother”
+    </p>
+  </blockquote>
+
+  <p>
+    pero burahin ang pananagutan na inilalagay rin ng passage sa mga magulang.
+  </p>
+
+  <p>
+    At mas malinaw pa sa Catechism of the Catholic Church.
+  </p>
+
+  <p>
+    Tinuturuan nitong dapat patuloy na igalang ng mga anak ang kanilang mga magulang.
+  </p>
+
+  <p>
+    Pero malinaw din ang pagkakaiba:
+    Ang pagsunod sa magulang ay nagtatapos sa emancipation; ang respeto ay nananatili.
+  </p>
+
+  <p>
+    Kasabay nito, malinaw din ang responsibility ng parents.
+  </p>
+
+  <p>
+    Dapat nilang igalang ang kanilang mga anak bilang human persons.
+    Dapat silang gumawa ng tahanang may tenderness, forgiveness, respect at good example.
+  </p>
+
+  <p>
+    At kapag adult na ang anak, sinasabi rin ng Catechism na mayroon itong right and duty to choose its profession and state of life, habang ang magulang ay hindi dapat maglagay ng pressure sa pagpili ng profession o spouse.
+  </p>
+
+  <p>
+    May isa pang linyang madalas gamitin mula sa Catechism:
+  </p>
+
+  <blockquote>
+    <p>
+      “Family ties are important but not absolute.”
+    </p>
+  </blockquote>
+
+  <p>
+    Totoo ang linyang iyon—pero mahalagang ilagay sa tamang konteksto.
+  </p>
+
+  <p>
+    Sa Catechism, paragraph 2232, binibigyang-diin ang paglago ng anak tungo sa human at spiritual autonomy at ang kaniyang natatanging Christian vocation na sundin ang tawag ng Diyos. Sa kontekstong iyon sinasabi ng Catechism na mahalaga ang family ties ngunit hindi absolute.
+  </p>
+
+  <p>
+    Hindi ito blanket statement na nagsasabing puwedeng balewalain ang pamilya kapag mahirap ang relasyon.
+  </p>
+
+  <p>
+    Pero malinaw nitong ipinapakita na kahit sa Catholic teaching, hindi itinuturing na absolute ang family bond na kayang burahin ang lahat ng ibang moral, spiritual at personal responsibilities ng isang tao.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na disposable ang pamilya.<br>
+    Hindi ibig sabihin na puwedeng talikuran ang magulang kapag inconvenient na.
+  </p>
+
+  <p>
+    Ang ibig sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG PAGIGING PAMILYA AY NAPAKAHALAGA—PERO HINDI ITO LISENSIYA PARA BURAHIN ANG KONSENSIYA, DIGNIDAD AT RESPONSIBILIDAD NG ISANG TAO.
+    </p>
+  </blockquote>
+
+  <h2>
+    FORGIVENESS, TRUST AT RECONCILIATION—HINDI SILA IISA
+  </h2>
+
+  <p>
+    Isa pa itong madalas pagsamahin.
+  </p>
+
+  <blockquote>
+    <p>
+      “Pinatawad mo na? Eh di bati na kayo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ganoon kasimple.
+  </p>
+
+  <blockquote>
+    <p>
+      FORGIVENESS IS NOT AUTOMATICALLY RESTORED TRUST.
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi rin awtomatikong reconciliation ang forgiveness.
+  </p>
+
+  <p>
+    Mismong American Psychological Association ang nagdi-distinguish sa forgiveness mula sa reconciliation at sa simpleng pag-excuse sa nagawang mali.
+  </p>
+
+  <p>
+    Maaaring magpatawad pero kailangan pa ring maghilom.<br>
+    Maaaring mawala ang galit pero hindi pa bumalik ang tiwala.<br>
+    Maaaring buksan ang komunikasyon pero hindi pa ibalik ang dating access.
+  </p>
+
+  <p>
+    Maaaring magmahal pero sabihing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Hindi ko muna kayang bumalik sa dati.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang tiwala ay hindi switch na binubuksan pagkatapos ng “sorry.”
+  </p>
+
+  <p>
+    Kapag nasira ito, maaari itong kailangang muling buuin sa pamamagitan ng:
+  </p>
+
+  <p>
+    pagkilala sa nangyari,<br>
+    tapat na paghingi ng tawad,<br>
+    pagbabago ng behavior,<br>
+    consistency,<br>
+    at respeto sa boundaries.
+  </p>
+
+  <p>
+    At ang reconciliation ay hindi proyekto ng isang tao lamang.
+  </p>
+
+  <p>
+    Kung isang panig lang ang laging pinagsasabihang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Magpatawad ka na.”<br>
+      “Intindihin mo na.”<br>
+      “Lumapit ka na.”
+    </p>
+  </blockquote>
+
+  <p>
+    habang walang hinihinging accountability sa kabilang panig—HINDI IYON GANAP NA RECONCILIATION.
+  </p>
+
+  <p>
+    Maaaring reconciliation ang tawag natin.
+    Pero ang nangyari lang pala ay bumalik ang dating setup.
+  </p>
+
+            <blockquote>
+    <p>
+      “KAHIT BALIGTARIN MO ANG MUNDO, MAGULANG MO PA RIN ’YAN.”
+    </p>
+  </blockquote>
+
+  <p>
+    Totoo.
+  </p>
+
+  <p>
+    Pero puwede rin nating tapusin ang pangungusap:
+  </p>
+
+  <blockquote>
+    <p>
+      KAHIT BALIGTARIN MO ANG MUNDO, ANAK MO PA RIN ’YAN.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung hinihingi natin sa anak ang respeto dahil magulang niya iyon—dapat ding may bigat sa magulang ang katotohanang anak niya iyon.
+  </p>
+
+  <p>
+    Hindi bagay na pag-aari.<br>
+    Hindi extension ng sariling kagustuhan.<br>
+    Hindi retirement plan.<br>
+    Hindi permanenteng source ng pera.<br>
+    Hindi taong kailangang sumunod habambuhay bilang patunay ng utang na loob.
+  </p>
+
+  <p>
+    Isang sariling tao.
+  </p>
+
+  <p>
+    May dignidad.<br>
+    May konsensiya.<br>
+    May responsibilidad.<br>
+    May karapatang magkaroon ng sariling pamilya.
+  </p>
+
+  <p>
+    At may sariling buhay na kailangan din niyang panagutan.
+  </p>
+
+  <h2>
+    PAANO KUNG IBANG TAO ANG MAS NAGING “PAMILYA”?
+  </h2>
+
+  <p>
+    Isa rin itong napakasakit na realidad sa ilang pamilya.
+  </p>
+
+  <p>
+    May anak na mas malapit sa kaibigan.
+  </p>
+
+  <p>
+    Sa asawa.<br>
+    Sa partner.<br>
+    Sa biyenan.<br>
+    Sa mentor.<br>
+    O sa ibang taong hindi kadugo.
+  </p>
+
+  <p>
+    Madaling sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mas pinili mo pa sila kaysa sa sarili mong pamilya.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero may isa pang tanong na kailangang magkaroon tayo ng tapang na itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      BAKIT DOON NIYA NARAMDAMAN ANG SEGURIDAD, PAGGALANG, PAGTANGGAP O PAGKALINGA NA HINAHANAP NIYA?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi ibig sabihin na dahil mas malapit ang isang anak sa ibang tao ay awtomatikong masama ang kaniyang biological family.
+  </p>
+
+  <p>
+    At hindi rin automatic na tama ang anak.
+  </p>
+
+  <p>
+    Pero hindi sapat ang dugo para ipaliwanag ang kalidad ng isang relasyon.
+  </p>
+
+  <blockquote>
+    <p>
+      ANG DUGO ANG NAGTATATAG NG PAGKAKAMAG-ANAK.<br>
+      ANG PARAAN NG PAKIKITUNGO ANG TUMUTULONG MAGPANATILI NG RELASYON.
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi nabubura kung sino ang biological parent.
+    Pero ang closeness, trust at sense of safety ay hindi basta naiuutos dahil magkakadugo.
+  </p>
+
+  <h2>
+    HINDI RIN LAHAT NG PAGLAYO AY PAREHO
+  </h2>
+
+  <p>
+    May anak na lumayo dahil ayaw niyang mapagsabihan.<br>
+    May lumayo dahil may bagong partner.<br>
+    May lumayo dahil magkaiba sila ng values.<br>
+    May lumayo dahil sa matagal na conflict.<br>
+    May lumayo dahil sa pakiramdam niyang hindi siya tinanggap.
+  </p>
+
+  <p>
+    At mayroon ding lumalayo dahil naniniwala silang iyon ang kinakailangang proteksiyon laban sa seryoso at paulit-ulit na harm.
+  </p>
+
+  <p>
+    Kaya hindi sapat na makita lang ang distance at agad sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang utang na loob.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi rin sapat na marinig ang salitang “boundary” at agad sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Tama ang anak.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang mature na pagtingin ay hindi naghahanap agad ng kampihan.
+  </p>
+
+  <p>
+    Hinahanap nito ang:
+  </p>
+
+  <p>
+    context,<br>
+    pattern,<br>
+    responsibility,<br>
+    proportionality,<br>
+    at kung may tunay bang effort na ayusin ang relasyon.
+  </p>
+
+  <h2>
+    ANG TANONG AY HINDI “MAY EXEMPTION BA SA PAGGALANG?”
+  </h2>
+
+  <p>
+    Baka mali ang framing na:
+  </p>
+
+  <blockquote>
+    <p>
+      “In every rule, there is an exemption.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil parang sinasabi nitong may punto kung kailan puwede nang mawala ang dignidad ng magulang.
+  </p>
+
+  <p>
+    Mas malinaw ang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO BA TALAGA ANG PAGGALANG—AT ANO ANG HINDI?
+    </p>
+  </blockquote>
+
+  <p>
+    Kung ang respeto ay:
+  </p>
+
+  <p>
+    huwag hamakin,<br>
+    huwag murahin,<br>
+    huwag saktan,<br>
+    huwag ipahiya,<br>
+    kilalanin ang kanilang dignidad,<br>
+    alalahanin ang kabutihan at sakripisyong ginawa,<br>
+    at tumulong kapag tunay na kailangan at kaya—may malaking moral weight iyon.
+  </p>
+
+  <p>
+    Pero kung ang tinatawag na “respect” ay:
+  </p>
+
+  <p>
+    hayaan kang kontrolin,<br>
+    isuko ang sariling desisyon,<br>
+    magbigay kahit wala ka nang kakayahan,<br>
+    manatili sa paulit-ulit na harmful treatment,<br>
+    o manahimik dahil “magulang mo pa rin ’yan”—
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI NA RESPETO LANG ANG HINIHINGI.<br>
+      PAGSUKO NA NG HANGGANAN ANG HINIHINGI.
+    </p>
+  </blockquote>
+
+  <p>
+    At hindi iyon pareho.
+  </p>
+
+  <h2>
+    WALANG BLANK CHECK SA MAGULANG—PERO WALA RING BLANK CHECK SA ANAK
+  </h2>
+
+  <p>
+    Ito marahil ang pinakamahalagang balance.
+  </p>
+
+  <p>
+    Hindi dahil adult na ang anak ay wala na siyang moral responsibility.
+    Hindi dahil nasaktan siya ay automatic na tama ang lahat ng gagawin niya.
+    Hindi rin lisensiya ang “boundary” para mang-insulto, manghiganti o gamitin ang katahimikan bilang parusa.
+  </p>
+
+  <p>
+    Pero ganoon din sa magulang.
+  </p>
+
+  <p>
+    Hindi lisensiya ang “nanay mo ako” o “tatay mo ako” para burahin ang autonomy ng adult child.
+    Hindi lisensiya ang sakripisyo para maningil ng habambuhay na pagsunod.
+    Hindi lisensiya ang dugo para makalampas sa lahat ng boundary.
+    At hindi lisensiya ang utang na loob para gawing pag-aari ang buhay ng anak.
+  </p>
+
+  <h2>
+    PAMILYA AY HINDI LANG DUGO—RELASYON DIN ITO
+  </h2>
+
+  <p>
+    Sa huli, hindi kailangang mamili sa dalawang extreme:
+  </p>
+
+  <blockquote>
+    <p>
+      “TIISIN MO LAHAT DAHIL MAGULANG MO.”
+    </p>
+  </blockquote>
+
+  <p>
+    o
+  </p>
+
+  <blockquote>
+    <p>
+      “KAPAG NASAKTAN KA, ITAKWIL MO AGAD.”
+    </p>
+  </blockquote>
+
+  <p>
+    May pag-uusap.<br>
+    May accountability.<br>
+    May pagpapatawad.<br>
+    May pagbabago.<br>
+    May second chance.<br>
+    May pag-aayos.<br>
+    May boundaries.<br>
+    May limited contact.<br>
+    May panahon para humilom.
+  </p>
+
+  <p>
+    Sa ilang seryoso at persistent na sitwasyon, maaaring magkaroon ng mas malaking distansiya.
+  </p>
+
+  <p>
+    Hindi pare-pareho ang bawat pamilya.
+  </p>
+
+  <p>
+    At walang research, batas o verse na kayang malaman ang buong katotohanan ng isang relasyon mula sa isang Facebook post, screenshot o kuwento ng isang panig.
+  </p>
+
+  <p>
+    Pero may isang prinsipyong puwedeng panghawakan:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG PAGGALANG SA MAGULANG AY MAHALAGA.<br>
+      ANG PAGGALANG SA ANAK BILANG ISANG TAO AY MAHALAGA RIN.
+    </p>
+  </blockquote>
+
+  <p>
+    May karapatan ang magulang na pahalagahan.
+    May pananagutan din siyang maging magulang sa tunay na diwa nito.
+  </p>
+
+  <p>
+    May responsibilidad ang anak na tumanaw ng kabutihan at malasakit na natanggap.
+    Pero habang lumalaki siya, mayroon din siyang responsibilidad na panagutan ang sarili niyang buhay.
+  </p>
+
+  <p>
+    Dahil ang tunay na pamilya ay hindi nasusukat lamang sa kung sino ang nagbigay ng buhay.
+    Nasusukat din ito sa kung paano natin pinapahalagahan ang buhay, dignidad at pagkatao ng isa’t isa pagkatapos noon.
+  </p>
+
+  <blockquote>
+    <p>
+      ANG PAGIGING MAGULANG AY HINDI BLANK CHECK.<br>
+      ANG PAGIGING ANAK AY HINDI HABAMBUHAY NA PAGSUKO NG SARILING BUHAY.
+    </p>
+  </blockquote>
+
+  <p>
+    At minsan, ang tunay na respeto ay hindi ang pagsang-ayon sa lahat.
+  </p>
+
+  <p>
+    Minsan ito ang kakayahang magmahal, tumanaw ng utang na loob at kumilala sa isang magulang—habang may tapang ding magsabi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mahalaga ka sa akin. Iginagalang kita. Pero hindi ibig sabihin noon na lahat ay kailangan kong payagan.”
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Liane Peña Alampay — <em>Cultural Values, Parenting and Child Adjustment in the Philippines</em>, <em>International Journal of Psychology</em>, 2024. Philippine research examining collectivism, individualism, parenting and expectations of children's familial obligations.
+            </li>
+
+            <li>
+              Dizon et al. — Leila Jasmine Dizon, Liezel Moises Abrea, Angelia Eunice Cruzada, Simon Ledz Erguiza, Alvin Ralphe Grape &amp; Geo Dela Roca — <em>Utang na loob, perceived parental academic pressure and mental health status among Filipino college students</em>, <em>Mental Health and Social Inclusion</em>, 2025. Descriptive-correlational study involving 557 Filipino college students.
+            </li>
+
+            <li>
+              Carr, Holman, Abetz, Koenig Kellas &amp; Vagnoni — <em>Giving Voice to the Silence of Family Estrangement</em>, <em>Journal of Family Communication</em>, 2015. Study involving 898 estranged parents and adult children and their reported reasons for estrangement.
+            </li>
+
+            <li>
+              Gilligan, Suitor &amp; Pillemer — <em>Estrangement Between Mothers and Adult Children: The Role of Norms and Values</em>, <em>Journal of Marriage and Family</em>, 2015. Analysis of 2,013 mother–adult child dyads nested within 561 later-life families, including the role of mothers’ perceived value dissimilarity.
+            </li>
+
+            <li>
+              Family Code of the Philippines — particularly Articles 194–220 on family support, parental authority, duties, respect and obedience. Article 211 distinguishes continuing respect and reverence from obedience while children remain under parental authority.
+            </li>
+
+            <li>
+              Republic Act No. 6809 — lowered the Philippine age of majority to 18 and amended the Family Code provisions on emancipation and the termination of parental authority.
+            </li>
+
+            <li>
+              Holy Bible — Ephesians 6:1–4 — duties of children to obey and honor alongside the instruction to fathers concerning their treatment and upbringing of their children.
+            </li>
+
+            <li>
+              Catechism of the Catholic Church §§2214–2233 — duties of children and parents; distinction between obedience and continuing respect; adult children's profession and state of life; and §2232 on family ties in the context of human and spiritual autonomy and Christian vocation.
+            </li>
+
+            <li>
+              American Psychological Association — <em>Forgiveness</em> — distinguishes forgiveness from reconciliation and from merely excusing or condoning wrongdoing.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
