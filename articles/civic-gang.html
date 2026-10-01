@@ -1,1 +1,2372 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa epekto ng pagbuwag sa mga gang—ano ang sinasabi ng research tungkol sa crime reduction, violent networks, recruitment, fragmentation, at kung bakit hindi laging magkapareho ang pagkawala ng organisasyon at pagbaba ng krimen."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-gang.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-gang.html"
+>
+
+<title>KAPAG NABUWAG ANG MGA GANG—MABABAWASAN BA TALAGA ANG KRIMEN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    KAPAG NABUWAG ANG MGA GANG—MABABAWASAN BA TALAGA ANG KRIMEN?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-gang.png"
+      alt="Simbolikong pagbagsak ng isang organisadong criminal network habang nananatiling buhay ang mga ugat ng koneksyon sa ilalim—sumasagisag sa pagkakaiba ng pagbuwag sa organisasyon at aktuwal na pagbabawas ng krimen."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Kapag may grupong paulit-ulit na iniuugnay sa karahasan, robbery, extortion, hazing, recruitment ng kabataan, o iba pang krimen, madaling maintindihan ang unang reaksiyon:
+  </p>
+
+  <p><strong>BUWAGIN.</strong></p>
+
+  <p>
+    May malinaw na logic doon.
+  </p>
+
+  <p>
+    Kung ginagamit ang isang grupo para mag-recruit, mag-coordinate ng krimen, gumamit ng pananakot, magpanatili ng kontrol sa isang teritoryo, o mag-organisa ng karahasan, ang pagputol sa structure nito ay maaaring magpahina sa kakayahan nitong ipagpatuloy ang mga gawaing ito.
+  </p>
+
+  <p>
+    Pero dito nagsisimula ang mas mahalagang tanong:
+  </p>
+
+  <h2>
+    SAPAT BANG MABUWAG ANG ORGANISASYON PARA MASABING NABAWASAN NA RIN ANG PROBLEMA?
+  </h2>
+
+  <p>
+    Dahil puwedeng mawala ang pangalan.
+  </p>
+
+  <p>
+    Puwedeng mawala ang chapter.<br>
+    Puwedeng maaresto ang lider.<br>
+    Puwedeng masira ang command structure.<br>
+    Puwedeng tumigil ang visible activities.
+  </p>
+
+  <p>
+    Pero kung nananatili ang mga taong gumagawa ng krimen, ang recruitment network, ang rivalries, ang illegal market, o ang mga kondisyong patuloy na nagdadala ng bagong recruit—<strong>MAAARING NABUWAG ANG GRUPO, PERO HINDI PA TAPOS ANG CYCLE.</strong>
+  </p>
+
+  <p>
+    Dito kailangang paghiwalayin ang dalawang bagay na madalas napagkakamalang iisa:
+  </p>
+
+  <blockquote>
+    <p>
+      PAGBUWAG SA ORGANISASYON at PAGBAWAS SA KARAHASAN AT KRIMEN.
+    </p>
+  </blockquote>
+
+  <p>
+    Magkaugnay sila.
+    <br>
+    Pero hindi sila awtomatikong pareho.
+  </p>
+
+  <p>
+    Ang una ay organizational outcome:
+    <br>
+    nabuwag ba ang grupo?
+  </p>
+
+  <p>
+    Ang pangalawa ay public-safety outcome:
+    <br>
+    mas kaunti na ba ang robbery, assault, extortion, retaliation, recruitment at iba pang krimeng ginagawa ng mga taong kabilang o konektado sa network?
+  </p>
+
+  <p>
+    At iyan ang mas mahalagang sukatan.
+  </p>
+
+  <p>
+    Hindi lang kung nawala ang pangalan—kundi kung mas kaunti na rin ang nabibiktima pagkatapos.
+  </p>
+
+  <h2>
+    HINDI RIN PARE-PAREHO ANG GANG, FRATERNITY, AT CRIMINAL ORGANIZATION
+  </h2>
+
+  <p>
+    Bago tingnan ang research, kailangang malinaw ito.
+  </p>
+
+  <p>
+    Hindi automatic na kriminal ang isang fraternity, brotherhood, club, youth group, o community organization.
+  </p>
+
+  <p>
+    Hindi rin pare-pareho ang street gang, organized-crime group, drug-trafficking organization, at fraternity.
+  </p>
+
+  <p>
+    Magkakaiba ang structure.<br>
+    Magkakaiba ang dahilan ng pagsali.<br>
+    Magkakaiba ang uri ng illegal behavior na maaaring mangyari.<br>
+    Magkakaiba ang laki at tibay ng network.
+  </p>
+
+  <p>
+    At magkakaiba rin ang paraan ng pag-operate.
+  </p>
+
+  <p>
+    Kaya hindi puwedeng kunin ang resulta ng isang cartel study sa Mexico at sabihing eksaktong ganoon din ang mangyayari sa isang fraternity sa Pilipinas.
+  </p>
+
+  <p>
+    Hindi rin puwedeng kunin ang resulta ng isang university-fraternity moratorium at gawing universal rule para sa street gangs.
+  </p>
+
+  <p>
+    Pero may common public-safety question silang puwedeng tulungang sagutin:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG NANGYAYARI KAPAG PINAHINA, NILIMITAHAN, PINAHINTO, O DINISRUPT ANG ISANG ORGANISASYONG MAY MGA MIYEMBRONG SANGKOT SA KARAHASAN O KRIMEN?
+    </p>
+  </blockquote>
+
+  <p>
+    At higit sa lahat:
+  </p>
+
+  <blockquote>
+    <p>
+      NAWAWALA BA ANG HARMFUL BEHAVIOR KAPAG NAWALA O HUMINA ANG ORGANISASYON?
+    </p>
+  </blockquote>
+
+  <h2>
+    BAGO TINGNAN ANG RESEARCH, MAY ISANG IMPORTANTENG LIMITASYON
+  </h2>
+
+  <p>
+    Mahalagang linawin kung ano ang ibig sabihin kapag sinasabing <em>“pagbuwag.”</em>
+  </p>
+
+  <p>
+    Walang iisang intervention na kinakatawan ng salitang iyon.
+  </p>
+
+  <p>
+    Sa research, maaaring ang intervention ay focused deterrence, gang injunction, leadership removal, temporary moratorium, targeted enforcement, o mas malawak na prevention-and-suppression program.
+  </p>
+
+  <p>
+    At hindi rin iisa ang klase ng grupong pinag-aaralan.
+  </p>
+
+  <p>
+    May street gangs.<br>
+    May organized-crime groups.<br>
+    May drug-trafficking organizations.<br>
+    May fraternities.<br>
+    May youth gangs.
+  </p>
+
+  <p>
+    Kaya ang mga pag-aaral sa ibaba ay hindi isang malaking direct experiment na nagkumpara lamang ng <em>“formal dissolution”</em> laban sa <em>“walang dissolution.”</em>
+  </p>
+
+  <p>
+    Sa halip, sinusukat nila ang iba't ibang paraan ng pag-disrupt, pag-restrict, pag-target, o pansamantalang pagpahinto sa activities ng mga grupo—at kung ano ang nangyayari sa violence, crime, recruitment, at network pagkatapos.
+  </p>
+
+  <p>
+    Malawak na rin ang research field.
+  </p>
+
+  <p>
+    Isang systematic evidence map ng interventions laban sa gang-related violence ang nakahanap ng 248 evaluations, kabilang ang 114 controlled studies.
+  </p>
+
+  <p>
+    Pero heterogeneous ang mga intervention.
+    Hindi sila iisang paraan ng <em>“pagbuwag,”</em> kaya hindi rin dapat pagbuklurin ang lahat na parang pare-pareho ang ginawa at pare-pareho ang sinusukat.
+  </p>
+
+  <p>
+    Kaya hindi tamang basahin ang research bilang:
+  </p>
+
+  <blockquote>
+    <p>
+      “NAPATUNAYAN NA GUMAGANA ANG PAGBUWAG.”
+    </p>
+  </blockquote>
+
+  <p style="text-align:center;"><strong>o</strong></p>
+
+  <blockquote>
+    <p>
+      “NAPATUNAYAN NANG WALANG SILBI ANG PAGBUWAG.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas precise ang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG NANGYAYARI SA KRIMEN AT KARAHASAN KAPAG IBA’T IBANG BAHAGI NG ISANG VIOLENT NETWORK AY DINISRUPT?
+    </p>
+  </blockquote>
+
+  <p>
+    Doon natin makikita kung ano ang may ebidensiyang gumagana, saan limitado ang epekto, at ano ang maaaring mangyari pagkatapos.
+  </p>
+
+  <h2>
+    MAY EBIDENSIYA BANG GUMAGANA ANG MATINDING PAGTARGET SA VIOLENT GROUPS?
+  </h2>
+
+  <p>
+    Meron.
+  </p>
+
+  <p>
+    Pero mahalagang tingnan kung ano mismo ang napatunayang gumagana.
+  </p>
+
+  <p>
+    Noong 2026, inilabas nina criminologists Anthony Braga, Brandon Turchan at David Weisburd ang updated systematic review ng 50 controlled evaluations ng tinatawag na focused deterrence.
+  </p>
+
+  <p>
+    Siyam sa mga iyon ay randomized field experiments—isang mas mahigpit na research design para masuri kung ang intervention mismo ang may epekto.
+  </p>
+
+  <p>
+    Sa kabuuang 50 evaluations, ang focused deterrence ay naiugnay sa humigit-kumulang 23% crime reduction sa treatment groups relative sa control groups.
+  </p>
+
+  <p>
+    Kapag ang siyam na randomized experiments lamang ang tiningnan, mas maliit ngunit statistically significant pa rin ang estimated effect:
+    <br>
+    Humigit-kumulang 16% reduction.
+  </p>
+
+  <p>
+    At sa iba't ibang uri ng programang kasama sa review, ang mga intervention na nakatutok sa gang at group-involved gun violence ang may pinakamalalaking estimated crime-reduction effects.
+  </p>
+
+  <p>
+    Malakas na ebidensiya iyon.
+  </p>
+
+  <p>
+    Pero may mahalagang detalye:
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI ITO SIMPLENG “HANAPIN ANG GANG AT BUWAGIN.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang focused deterrence ay karaniwang nakatutok sa maliit na bilang ng mga tao at grupong pinaka-involved sa serious violence.
+  </p>
+
+  <p>
+    May targeted law enforcement.<br>
+    May malinaw na consequences kapag nagpatuloy ang violence.
+  </p>
+
+  <p>
+    Pero may kasama ring social services at community involvement.
+  </p>
+
+  <p>
+    Ibig sabihin, ang intervention na sinusukat dito ay hindi simpleng pag-delete sa pangalan ng isang organisasyon.
+  </p>
+
+  <p>
+    Mas malapit ito sa:
+  </p>
+
+  <blockquote>
+    <p>
+      ALAMIN KUNG SINO AT ANONG NETWORK ANG NAGDADRIVE NG SERIOUS VIOLENCE—AT TUMUTOK DOON.
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi sapat ang equation na:
+  </p>
+
+  <blockquote>
+    <p>
+      MAS MARAMING NAARESTO = MAS KAUNTING KRIMEN.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang kailangang sukatin ay kung talagang bumaba ang offending, violence at victimization pagkatapos.
+  </p>
+
+<h2>
+  DAHIL ANG GANG AY HINDI LANG PANGALAN
+</h2>
+
+<p>
+  Dito madaling magkaroon ng blind spot.
+</p>
+
+<p>
+  Isipin ang isang violent group.
+</p>
+
+<p>
+  May pangalan.<br>
+  May lider.<br>
+  May hierarchy.<br>
+  May territory.<br>
+  May recruits.
+</p>
+
+<p>
+  Kapag naaresto ang leadership at nawala ang visible activities nito, maaaring totoong na-disrupt o nabuwag ang organization.
+</p>
+
+<p>
+  Pero paano kung magkakakilala pa rin ang natitirang miyembro?<br>
+  Paano kung pareho pa rin ang rivalries?<br>
+  Pareho ang illegal market?<br>
+  Pareho ang source ng kita?<br>
+  Pareho ang lugar kung saan kumukuha ng bagong recruit?<br>
+  At pareho ang mga taong handang gumawa ng karahasan?
+</p>
+
+<p>
+  Doon makikita ang distinction:
+</p>
+
+<blockquote>
+  <p>
+    PUWEDENG MASIRA ANG ORGANIZATIONAL STRUCTURE NANG HINDI GANAP NA NASISIRA ANG CRIMINAL NETWORK.
+  </p>
+</blockquote>
+
+<p>
+  May magandang halimbawa nito mula sa Los Angeles.
+</p>
+
+<p>
+  Sa isang 2025 study na sinuportahan ng U.S. justice agencies, sinuri ang 986 prosecuted violent-crime cases involving 328 known gangs at crime groups sa loob ng 16 na taon.
+</p>
+
+<p>
+  Sa mga kasong sakop ng analysis, 77% ay murder o attempted murder charges, 12% robbery, at 9% assault.
+</p>
+
+<p>
+  Gumamit ang researchers ng social-network analysis para tingnan kung paano nagbago ang patterns ng violence bago at pagkatapos gamitin ang civil gang injunctions.
+</p>
+
+<p>
+  Ang civil gang injunctions ay court orders na naglalagay ng restrictions sa activities ng ilang gang members.
+</p>
+
+<p>
+  Pagkatapos gamitin ang mga injunction, nakita ng researchers na naging mas complex at dynamic ang inter-gang conflict patterns, at may mga bagong conflicts na lumitaw sa pagitan ng ilang grupo.
+</p>
+
+<p>
+  Pero may mahalagang qualification.
+</p>
+
+<p>
+  Hindi pinatutunayan ng analysis na ang injunction mismo ang sanhi ng bawat bagong conflict na nakita pagkatapos.
+</p>
+
+<p>
+  Pre/post social-network analysis ang ginawa ng study—hindi randomized experiment.
+</p>
+
+<p>
+  Ang ipinakita nito ay nagbago ang observed pattern ng relationships at conflicts sa network pagkatapos ng intervention.
+</p>
+
+<p>
+  Kaya mas maingat ang implication:
+  Kapag dinisrupt ang isang gang network, hindi sapat na tingnan lamang kung humina ang target group.
+  Kailangan ding tingnan kung paano nagbago ang relasyon ng ibang groups sa paligid nito at kung may bagong conflicts na lumitaw.
+</p>
+
+<p>
+  Kaya rin nagrekomenda ang researchers ng mas tailored na intervention batay sa actual network structure sa halip na one-size-fits-all approach.
+</p>
+
+<p>
+  Iyan ang mahalagang lesson:
+</p>
+
+<blockquote>
+  <p>
+    KAPAG GINALAW MO ANG ISANG CRIMINAL NETWORK, MAAARING MAGBAGO ANG NETWORK—HINDI LANG MAWALA.
+  </p>
+</blockquote>
+
+<h2>
+  PERO SAAN NANGGAGALING ANG SUSUNOD NA RECRUIT?
+</h2>
+
+<p>
+  Ito ang isa pang bahagi ng problema na madaling mawala kapag puro raid, arrest at dismantling ang nakikita natin.
+</p>
+
+<p>
+  Ang isang gang ay binubuo ng mga kasalukuyang miyembro.
+  Pero ang susunod na recruitment pool nito ay nasa labas pa ng organization—mga taong maaari nitong hikayatin o impluwensiyahang sumali sa grupo.
+</p>
+
+<p>
+  At kung hindi nagbabago ang mga kondisyong nagtutulak o humihikayat sa mga tao na sumali sa grupo, maaaring mabawasan ang kasalukuyang membership pero may panibagong papalit.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na may iisang simpleng dahilan kung bakit sumasali ang isang kabataan.
+</p>
+
+<p>
+  Hindi sapat ang sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “MAHIRAP KASI.”<br>
+    “KULANG SA GABAY.”<br>
+    “MASAMANG BATA LANG.”
+  </p>
+</blockquote>
+
+<p>
+  Mas komplikado ang ipinakikita ng research.
+</p>
+
+<p>
+  Ang gang-risk research ng U.S. National Gang Center ay tumitingin sa magkakaugnay na factors sa individual, peer, family, school at community domains.
+</p>
+
+<p>
+  At mahalagang punto:
+</p>
+
+<blockquote>
+  <p>
+    WALANG ISANG RISK FACTOR NA SAPAT PARA MASABING SASALI ANG ISANG BATA SA GANG.
+  </p>
+</blockquote>
+
+<p>
+  Mas tumataas ang risk kapag dumarami at nagsasabay-sabay ang vulnerabilities sa iba't ibang bahagi ng buhay.
+</p>
+
+<p>
+  May konkretong halimbawa.
+</p>
+
+<p>
+  Sa isang Seattle longitudinal study na ginagamit sa National Gang Center research synthesis, ang mga batang exposed sa pito o higit pa sa 19 measured risk factors ay 13 beses na mas malamang na sumali sa gang kaysa sa mga batang may zero o isang risk factor lamang.
+</p>
+
+<p>
+  Pero ito ang napakahalagang kasunod:
+</p>
+
+<blockquote>
+  <p>
+    32% LAMANG KAHIT SA HIGH-RISK GROUP NA IYON ANG AKTUWAL NA SUMALI.
+  </p>
+</blockquote>
+
+<p>
+  Ibig sabihin:
+</p>
+
+<blockquote>
+  <p>
+    RISK AY HINDI DESTINY.
+  </p>
+</blockquote>
+
+<p>
+  Hindi dahil mahirap ang bata, may problema sa pamilya, o nakatira sa high-crime area ay magiging gang member na siya.
+  Hindi rin dapat gawing stereotype ang isang komunidad dahil maraming risk factors doon.
+</p>
+
+<p>
+  Mas maingat ang sinasabi ng data:
+  Habang dumarami at nagsasabay-sabay ang vulnerabilities, maaaring tumaas ang risk—pero hindi nito binubura ang individual differences, protective factors, o personal agency.
+</p>
+
+<h2>
+  HINDI LANG TAKOT O PERA ANG PUWEDENG HUMILA SA ISANG KABATAAN
+</h2>
+
+<p>
+  May Campbell systematic review tungkol sa youth gang membership sa low- at middle-income countries.
+</p>
+
+<p>
+  Mahalaga ito dahil hindi lamang high-income Western settings ang tiningnan.
+</p>
+
+<p>
+  Sa walong studies na naisama sa quantitative analysis, may associations na nakita sa iba't ibang individual, peer, family, school at community factors.
+</p>
+
+<p>
+  Kabilang sa mga lumitaw sa evidence ang delinquency at delinquent peers, family environment at parental monitoring, school-related factors, victimization, at exposure sa violence.
+</p>
+
+<p>
+  Pero may isa pang mahalagang context.
+</p>
+
+<p>
+  Binabanggit din ng review, batay sa mas malawak na gang literature, na para sa ilang disenfranchised youth, ang gang ay maaaring magsilbing source ng social capital, sense of belonging, at sense of purpose.
+</p>
+
+<p>
+  Mahalaga ang distinction iyon.
+</p>
+
+<p>
+  Hindi dapat ipresenta ang belonging at purpose na parang isa itong pooled quantitative result ng walong studies.
+</p>
+
+<p>
+  Bahagi ito ng mas malawak na research context na tumutulong ipaliwanag kung bakit maaaring maging attractive ang gang membership sa ilang socially disconnected o marginalized na kabataan.
+</p>
+
+<p>
+  Diyan nagiging mas komplikado ang recruitment.
+</p>
+
+<p>
+  May kabataang naghahanap ng proteksiyon.<br>
+  May naghahanap ng barkada.<br>
+  May naghahanap ng identity o status.<br>
+  May naghahanap ng pera.<br>
+  May naghahanap ng lugar kung saan pakiramdam niya ay kabilang siya.
+</p>
+
+<p>
+  Hindi nito ginagawang katanggap-tanggap ang krimen.
+  Hindi rin do inaalis ang personal responsibility ng taong gumagawa nito.
+</p>
+
+<p>
+  Pero nakatutulong itong ipaliwanag kung bakit minsan ay hindi sapat ang pagkawala ng kasalukuyang recruiter o leader para mawala ang susunod na recruit.
+</p>
+
+<p>
+  Kung ang parehong vulnerabilities at social network ay nananatili, maaaring may ibang taong pumalit sa papel na iyon.
+</p>
+
+<h2>
+  PERO HUWAG DIN SOBRANG PALAKASIN ANG SINASABI NG DATA
+</h2>
+
+<p>
+  Dito mahalaga ang distinction sa pagitan ng:
+</p>
+
+<blockquote>
+  <p>
+    RISK FACTOR at DIRECT CAUSE.
+  </p>
+</blockquote>
+
+<p>
+  Hindi sila pareho.
+</p>
+
+<p>
+  Kung mas maraming delinquent behavior ang nakikita sa gang members, halimbawa, hindi laging madaling malaman kung nagsimula ba iyon bago sumali, lumala ba dahil sa gang involvement, o pareho.
+</p>
+
+<p>
+  Kaya hindi dapat sabihin na may isang simpleng checklist na kayang hulaan kung sino ang magiging gang member.
+  At hindi rin dapat gawing excuse sa krimen ang social conditions.
+</p>
+
+<p>
+  Ang mas mahalagang insight ay ito:
+</p>
+
+<blockquote>
+  <p>
+    HINDI LANG ORGANISASYON ANG NAGPAPATULOY SA GANG PROBLEM.
+  </p>
+</blockquote>
+
+<p>
+  May recruitment environment sa paligid nito.<br>
+  May peer networks.<br>
+  May family at school factors.<br>
+  May exposure sa violence.<br>
+  May criminal opportunities.
+</p>
+
+<p>
+  At may social needs na maaaring samantalahin ng isang gang para makakuha ng bagong miyembro.
+</p>
+
+<p>
+  Kaya kapag ang current membership lamang ang na-disrupt pero patuloy ang recruitment pipeline—<strong>MAAARING NABUWAG ANG ORGANISASYON, PERO HINDI PA NABUWAG ANG CYCLE.</strong>
+</p>
+
+          <h2>
+  KAYA DALAWANG MAGKAIBANG BAGAY ANG NETWORK AT PIPELINE
+</h2>
+
+<p>
+  May current violent network:
+  Sila ang kasalukuyang nag-oorganisa, gumagawa, nag-uutos, o tumutulong sa krimen.
+</p>
+
+<p>
+  At may recruitment pipeline:
+  Sila naman ang mga posibleng papasok sa susunod.
+</p>
+
+<p>
+  Magkaiba iyon.
+</p>
+
+<p>
+  Kung maputol ang current network, maaaring bumaba ang immediate capacity ng organization.
+  Pero kung may bagong recruits na patuloy na pumapasok, puwedeng mag-regenerate ang structure.
+</p>
+
+<p>
+  At kung prevention lang naman pero walang enforcement laban sa mga taong aktuwal na gumagawa ng serious violence, hindi rin nito pinipigilan ang immediate harm.
+</p>
+
+<p>
+  Diyan nagtatagpo ang dalawang pangangailangan:
+</p>
+
+<blockquote>
+  <p>
+    PANANAGUTAN PARA SA GUMAGAWA NG KRIMEN at PAGPUTOL SA PIPELINE NA PATULOY NA NAGDADALA NG BAGONG TAO PAPASOK.
+  </p>
+</blockquote>
+
+<p>
+  Magkaiba ang problema ng kasalukuyang violent offender at ng susunod na posibleng recruit.
+</p>
+
+<p>
+  Kaya hindi rin dapat pareho lang ang intervention sa dalawa.
+</p>
+
+<h2>
+  MINSAN, ANG PAGPUTOL SA ULO AY HINDI KATAPUSAN NG KATAWAN
+</h2>
+
+<p>
+  Matagal nang ginagamit laban sa organized crime ang tinatawag na leadership decapitation o kingpin strategy:
+  Tanggalin ang lider para pahinain ang organization.
+</p>
+
+<p>
+  Logical ang ideya.
+</p>
+
+<p>
+  Kung mawala ang nag-uutos, maaaring mawalan ng coordination ang grupo.
+</p>
+
+<p>
+  At may research na nagpapakitang maaari talaga itong mangyari—kahit pansamantala.
+</p>
+
+<p>
+  Sa isang 2015 study sa <em>The Journal of Politics</em>, sinuri ni Brian Phillips ang leadership removal sa Mexican drug-trafficking organizations.
+</p>
+
+<p>
+  Ang theoretical at empirical analysis niya ay consistent sa posibilidad na pansamantalang humina ang criminal organization at bumaba ang violence pagkatapos maalis ang lider.
+</p>
+
+<p>
+  Pero habang nagkakaroon ng fragmentation at may mga bagong grupong lumilitaw para tugunan ang parehong market demand, maaaring tumaas muli ang violence sa mas mahabang panahon.
+</p>
+
+<p>
+  Kapansin-pansin din na sa analysis niya, ang short-term violence reduction ay nakita kapag naaresto, hindi napatay, ang leader at kapag mid-level leader, hindi top leader, ang target.
+</p>
+
+<p>
+  Hindi ibig sabihin nitong mali ang pag-aresto sa lider.
+</p>
+
+<p>
+  Ang ipinakikita nito ay maaaring may second-order effects ang organizational disruption.
+</p>
+
+<p>
+  Kapag nagkaroon ng power vacuum, maaaring magkaroon ng succession fight.
+</p>
+
+<p>
+  Maaaring humiwalay ang faction.<br>
+  Maaaring samantalahin ng rival group ang kahinaan.
+</p>
+
+<p>
+  At maaaring magkaroon ng ilang mas maliliit na organization mula sa dating isang malaking grupo.
+</p>
+
+<h2>
+  AT MAY MAS BAGONG DATA TUNGKOL SA FRAGMENTATION
+</h2>
+
+<p>
+  Noong 2025, inilathala ni Jane Esberg ang research gamit ang bagong dataset ng 473 criminal groups operating in Mexico mula 2009 hanggang 2020.
+</p>
+
+<p>
+  Nakakita ang study ng suggestive evidence na ang kingpin removals ay correlated sa paglitaw ng mas maliliit na groups.
+</p>
+
+<p>
+  Hindi nito pinatutunayan na kingpin removal ang sanhi ng bawat bagong criminal group.
+</p>
+
+<p>
+  Pero consistent ang pattern sa possibility ng fragmentation at decentralization pagkatapos ma-disrupt ang mas malalaking organizations.
+</p>
+
+<p>
+  Ito ang uncomfortable pero mahalagang possibility:
+</p>
+
+<blockquote>
+  <p>
+    PUWEDENG MABUWAG ANG ISANG MALAKING ORGANISASYON—PERO MAGKAROON NG ILANG MAS MALILIIT NA ORGANISASYON PAGKATAPOS.
+  </p>
+</blockquote>
+
+<p>
+  Hindi iyon automatic.
+  Hindi iyon mangyayari sa bawat gang.
+</p>
+
+<p>
+  Pero sapat ang evidence para hindi ipalagay na ang organizational collapse ay laging katumbas ng pagkawala ng criminal activity.
+</p>
+
+<p>
+  Kaya mahalagang itanong hindi lamang:
+</p>
+
+<blockquote>
+  <p>
+    “PAANO NABUWAG ANG GRUPO?”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>
+    “ANO ANG NANGYARI SA MGA TAO, TERRITORY, MARKET, RIVALRIES AT NETWORK PAGKATAPOS?”
+  </p>
+</blockquote>
+
+<h2>
+  MAY MGA SISTEMA RING INDIVIDUAL AT BEHAVIOR ANG DIREKTANG TINA-TARGET
+</h2>
+
+<p>
+  Sa England at Wales, halimbawa, may statutory framework para sa gang injunctions laban sa gang-related violence at drug dealing.
+</p>
+
+<p>
+  Ang approach ay gumagamit ng court-based restrictions laban sa particular conduct at individuals, sa halip na umasa lamang sa pagpapawala ng pangalan ng isang organization.
+</p>
+
+<p>
+  Mahalaga ang logic:
+</p>
+
+<blockquote>
+  <p>
+    ANG ORGANIZATIONAL LABEL AT ANG INDIVIDUAL BEHAVIOR AY HINDI IISA.
+  </p>
+</blockquote>
+
+<p>
+  Maaaring magbago ang pangalan ng grupo.<br>
+  Maaaring lumipat ang affiliation.<br>
+  Maaaring magkaroon ng splinter group.
+</p>
+
+<p>
+  Pero kung parehong tao ang patuloy na gumagawa ng parehong krimen, hindi sapat na pangalan lamang ang nawala.
+</p>
+
+<h2>
+  PAANO NAMAN ANG FRATERNITY?
+</h2>
+
+<p>
+  Dito kailangang maging lalo pang precise.
+</p>
+
+<p>
+  <strong>HINDI AUTOMATIC NA GANG ANG ISANG FRATERNITY.</strong>
+</p>
+
+<p>
+  At hindi awtomatikong criminal organization ang isang fraternity, sorority, brotherhood, club, o association.
+</p>
+
+<p>
+  Sa Pilipinas, ang Republic Act No. 11053 o Anti-Hazing Act of 2018 ay nagbabawal sa hazing sa school-based organizations at pati sa community-based at iba pang similar fraternities, sororities at organizations.
+</p>
+
+<p>
+  May registration at regulation provisions din para sa community-based groups at kanilang initiation rites.
+</p>
+
+<p>
+  Ibig sabihin, ang batas mismo ay nagdi-distinguish sa organization at sa prohibited conduct.
+</p>
+
+<p>
+  Hindi dahil fraternity ang isang samahan ay automatic nang kriminal.
+</p>
+
+<p>
+  Pero kapag may hazing, coercion o ibang prohibited behavior, iyon ang kailangang papanagutin.
+</p>
+
+<p>
+  May empirical research din tungkol sa kung ano ang nangyayari kapag pansamantalang nililimitahan ang fraternity activities.
+</p>
+
+<p>
+  Sa isang study ni Michael Topper na inilathala sa <em>Journal of Human Resources</em>, sinuri ang 44 temporary university-wide moratoriums sa 37 universities mula 2014 hanggang 2019.
+</p>
+
+<p>
+  Pero kailangang precise kung ano ang ipinahinto:
+  Ang interventions na pinag-aralan ay temporary university-wide halts on all fraternity activity involving alcohol—hindi simpleng total abolition ng lahat ng fraternity activity.
+</p>
+
+<p>
+  Habang umiiral ang moratorium, bumaba nang humigit-kumulang 26% ang alcohol offenses.
+</p>
+
+<p>
+  Mayroon ding suggestive evidence ng humigit-kumulang 29% reduction sa reported weekend sexual assaults.
+</p>
+
+<p>
+  Pero may mahalagang kasunod:
+</p>
+
+<blockquote>
+  <p>
+    WALANG NAKITANG EBIDENSIYA NG LONG-TERM CHANGE PAGKATAPOS ALISIN ANG MORATORIUM.
+  </p>
+</blockquote>
+
+<p>
+  Napakahalagang distinction nito.
+</p>
+
+<p>
+  Kapag pinahinto ang isang activity na nagbibigay ng opportunity para mangyari ang harmful behavior, maaaring mabawasan ang pinsala habang nakahinto iyon.
+</p>
+
+<p>
+  Pero hindi automatic na nabago ang underlying behavior, social environment o organizational culture.
+</p>
+
+<p>
+  Kaya posible ang:
+</p>
+
+<blockquote>
+  <p>
+    TEMPORARY SUPPRESSION nang walang LASTING BEHAVIORAL CHANGE.
+  </p>
+</blockquote>
+
+<h2>
+  KAYA HINDI RIN TAMANG SABIHING WALANG SILBI ANG PAGBUWAG
+</h2>
+
+<p>
+  Iyon naman ang kabilang oversimplification.
+</p>
+
+<p>
+  Kung ginagamit ang isang organization para mag-coordinate ng violence, robbery, extortion, hazing, illegal drug activity, recruitment o ibang krimen, may malinaw na dahilan kung bakit maaaring magkaroon ng epekto ang disruption.
+</p>
+
+<p>
+  Puwedeng maputol ang communication.<br>
+  Puwedeng masira ang command structure.<br>
+  Puwedeng mawalan ng access sa resources.<br>
+  Puwedeng mapahina ang recruitment.<br>
+  Puwedeng mawalan ng operational freedom ang repeat violent offenders.
+</p>
+
+<p>
+  At puwedeng pansamantalang mawala ang coordination na nagbibigay-lakas sa organization.
+</p>
+
+<p>
+  Kaya hindi sinasabi ng research na:
+</p>
+
+<blockquote>
+  <p>
+    “HUWAG BUWAGIN ANG VIOLENT GROUPS.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi rin nito sinasabi na:
+</p>
+
+<blockquote>
+  <p>
+    “BUWAGIN LANG SILA AT TAPOS NA ANG PROBLEMA.”
+  </p>
+</blockquote>
+
+<p>
+  Mas komplikado ang ebidensya kaysa sa dalawang iyon.
+</p>
+
+<p>
+  May mga intervention na nakababawas ng violence.<br>
+  May mga epekto na pansamantala.<br>
+  May mga network na nag-aadapt.<br>
+  May mga setting na nagkakaroon ng fragmentation.
+</p>
+
+<p>
+  At may mga problemang bumabalik kapag hindi nabago ang recruitment environment o underlying behavior.
+</p>
+
+          <h2>
+  MAY DAHILAN KUNG BAKIT ANG ISANG MAJOR GANG MODEL AY HINDI ENFORCEMENT LANG
+</h2>
+
+<p>
+  Ang U.S. Office of Juvenile Justice and Delinquency Prevention ay may Comprehensive Gang Model para sa youth gang problems.
+</p>
+
+<p>
+  Hindi suppression lang ang strategy nito.
+</p>
+
+<p>
+  Pinagsasama nito ang community mobilization, opportunities provision, social intervention, suppression, at organizational change and development.
+</p>
+
+<p>
+  Kasama ang enforcement.
+</p>
+
+<p>
+  Pero kasama rin ang education, training at employment opportunities.
+</p>
+
+<p>
+  Kasama ang intervention sa gang-involved youth at kanilang pamilya.<br>
+  Kasama ang community organizations.
+</p>
+
+<p>
+  At kasama ang coordination at organizational changes sa mga ahensiya.
+</p>
+
+<p>
+  Sa initial six-site evaluation, tatlo ang itinuring na high-fidelity implementation sites.
+</p>
+
+<p>
+  Sa tatlong iyon, may statistically significant reductions sa gang violence relative sa matched comparison groups.
+</p>
+
+<p>
+  Sa dalawa sa tatlong sites, may reductions din sa drug-related offenses.
+</p>
+
+<p>
+  Hindi ibig sabihin na automatic na magiging successful ang model saan man dalhin.
+</p>
+
+<p>
+  Ang mismong implementation quality ay mahalaga.
+</p>
+
+<p>
+  Pero ipinapakita nito kung bakit hindi enforcement lang ang ginagamit sa ilang comprehensive gang strategies.
+</p>
+
+<p>
+  Kung may bagong teenager na pumapalit sa bawat nahuhuling recruit, hindi tuluyang naputol ang recruitment.<br>
+  Kung may ibang grupo na kumukuha sa dating territory, hindi nawala ang criminal opportunity.<br>
+  Kung ang dating miyembro ay lumabas pero bumalik lamang sa parehong network, hindi naputol ang cycle.
+</p>
+
+<p>
+  At kung nagpapatuloy ang retaliation kahit nagbago ang pangalan—
+  <strong>HINDI TALAGA SAPAT NA SUKATAN ANG PAGKAWALA NG PANGALAN.</strong>
+</p>
+
+<h2>
+  KAYA ANO ANG MAS MAKABULUHANG SUKATAN?
+</h2>
+
+<p>
+  Dito nagiging konkretong public-safety question ang lahat.
+</p>
+
+<p>
+  Pagkatapos ng crackdown, injunction, arrest campaign, leadership removal o organizational dismantling, hindi sapat na malaman lamang kung ilang grupo ang idineklarang “nabuwag.”
+</p>
+
+<p>
+  Kailangang tingnan ang actual outcomes.
+</p>
+
+<p>
+  BUMABA BA ANG HOMICIDE AT SERIOUS ASSAULT?<br>
+  BUMABA BA ANG ROBBERY AT EXTORTION?<br>
+  BUMABA BA ANG RETALIATORY VIOLENCE?<br>
+  NABAWASAN BA ANG RECRUITMENT NG MGA BATA AT KABATAAN?<br>
+  NABAWASAN BA ANG REPEAT OFFENDING?<br>
+  LUMIIT BA ANG VIOLENT NETWORK?<br>
+  MAY BAGONG SPLINTER GROUP BANG LUMITAW?<br>
+  LUMIPAT LANG BA ANG KRIMEN SA IBANG PANGALAN, LUGAR, O GRUPO?
+</p>
+
+<p>
+  Diyan makikita ang malaking distinction:
+</p>
+
+<blockquote>
+  <p>
+    NAWALA ANG ORGANISASYON at NABAWASAN ANG BIKTIMA.
+  </p>
+</blockquote>
+
+<p>
+  Puwedeng magkasabay ang dalawa.
+</p>
+
+<p>
+  Pero kailangang sukatin para malaman.
+</p>
+
+<p>
+  Dahil puwedeng successful ang operasyon—pero ibang tanong pa kung successful din ang long-term crime-control strategy.
+</p>
+
+<h2>
+  MAY LIMITASYON DIN ANG MGA PAG-AARAL NA ITO
+</h2>
+
+<p>
+  Mahalagang huwag gawing mas malaki ang conclusion kaysa sa evidence.
+</p>
+
+<p>
+  Malaking bahagi ng gang-intervention research ay mula sa United States.
+</p>
+
+<p>
+  Ang leadership-removal at fragmentation evidence na binanggit dito ay mula sa Mexico.
+</p>
+
+<p>
+  Ang fraternity-moratorium study ay mula sa U.S. universities.
+</p>
+
+<p>
+  At ang youth-gang systematic review naman ay nakatutok sa low- at middle-income countries pero limitado ang available studies.
+</p>
+
+<p>
+  May methodological limitations din ang ilang evidence na ginamit natin.
+</p>
+
+<p>
+  Halimbawa, ang 2025 Mexico fragmentation study ni Jane Esberg ay gumamit ng dataset ng 473 criminal groups operating from 2009 to 2020 na binuo mula sa isang citizen-journalism narcoblog.
+</p>
+
+<p>
+  Hindi ibig sabihin nito na walang halaga ang study.
+</p>
+
+<p>
+  Pero mahalagang malaman kung saan nanggaling ang underlying organizational data—at isa iyan sa mga dahilan kung bakit maingat ang pag-aaral at inilalarawan ang resulta bilang suggestive evidence, hindi definitive proof na kingpin removal ang sanhi ng lahat ng fragmentation.
+</p>
+
+<p>
+  May temporal limitation din ang Campbell review.
+</p>
+
+<p>
+  Na-publish ito noong 2018, pero ang systematic searches nito ay sumaklaw sa studies available hanggang September 2013.
+</p>
+
+<p>
+  Siyam na studies ang nakatugon sa eligibility criteria, pero ang isa ay walang sapat na kinakailangang data para maisama sa analysis, kaya walo ang aktuwal na naisama sa quantitative synthesis.
+</p>
+
+<p>
+  Mismong review ang nagsasabing napakaliit ng available evidence base at limitado ang lawak ng conclusions na maaaring gawin mula rito.
+</p>
+
+<p>
+  Kaya hindi dapat tratuhin ang Campbell review bilang latest global census ng lahat ng nalalaman tungkol sa youth gangs.
+</p>
+
+<p>
+  Ang value nito rito ay mas specific:
+  Nagbibigay ito ng systematic evidence na ang gang involvement ay may associations sa maraming domains habang malinaw ding limitado ang causal conclusions na maaaring gawin mula sa available studies.
+</p>
+
+<p>
+  At higit sa lahat, magkakaiba ang policing systems.
+</p>
+
+<p>
+  Magkakaiba ang batas.<br>
+  Magkakaiba ang social conditions.<br>
+  Magkakaiba ang gang structures, criminal markets at recruitment patterns.
+</p>
+
+<p>
+  Kaya hindi maaaring sabihin na kung ano ang nangyari sa Los Angeles, Mexico, o American universities ay eksaktong mangyayari rin sa Pilipinas.
+</p>
+
+<p>
+  Ang maingat na paggamit sa foreign research ay hindi:
+</p>
+
+<blockquote>
+  <p>
+    “GANITO ANG MANGYAYARI SA ATIN.”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<blockquote>
+  <p>
+    “ITO ANG MGA EPEKTONG NAKITA SA IBANG SETTINGS—KAYA ITO ANG MGA BAGAY NA MAHALAGANG SUKATIN DITO.”
+  </p>
+</blockquote>
+
+<p>
+  Iyan ang malaking pagkakaiba ng evidence-based discussion sa simpleng hula.
+</p>
+
+<h2>
+  DAHIL SA HULI, HINDI LANG PANGALAN NG GRUPO ANG KAILANGANG TINGNAN
+</h2>
+
+<p>
+  May mga lider na kailangang arestuhin kapag may legal na basehan.<br>
+  May violent networks na kailangang i-disrupt.<br>
+  May recruitment na kailangang putulin.<br>
+  May mga taong kailangang papanagutin sa aktuwal na krimen.
+</p>
+
+<p>
+  Pero may isang mahalagang lesson mula sa research:
+</p>
+
+<blockquote>
+  <p>
+    ANG ORGANISASYON AT ANG PROBLEMANG NILILIKHA NITO AY HINDI LAGING NAWAWALA NANG SABAY.
+  </p>
+</blockquote>
+
+<p>
+  Dahil ang criminal activity ay maaaring manatili sa network.
+</p>
+
+<p>
+  Sa illegal market.<br>
+  Sa rivalry.<br>
+  Sa recruitment pipeline.<br>
+  Sa repeat offenders.<br>
+  Sa opportunity para kumita sa illegal activity.
+</p>
+
+<p>
+  At sa mga vulnerability na puwedeng samantalahin para sa susunod na recruit.
+</p>
+
+<p>
+  Kaya kapag sinabi nating:
+</p>
+
+<blockquote>
+  <p>
+    “NABUWAG NA ANG GRUPO.”
+  </p>
+</blockquote>
+
+<p>
+  may kasunod pang tanong na mas mahalaga kaysa sa headline:
+</p>
+
+<blockquote>
+  <p>
+    “PAGKATAPOS NITONG MABUWAG—MAS KAUNTI NA BA TALAGA ANG NABIBIKTIMA?”
+  </p>
+</blockquote>
+
+<p>
+  Dahil kung nawala ang pangalan pero pareho ang recruitment, pareho ang violence, at may ibang grupong pumalit—
+</p>
+
+<blockquote>
+  <p>
+    ORGANISASYON ANG NAWALA.<br>
+    HINDI PA TIYAK NA NABAWASAN DIN ANG KRIMEN.
+  </p>
+</blockquote>
+
+<p>
+  Pero kung pagkatapos ng intervention ay talagang bumaba ang victimization, recruitment, repeat violence at criminal activity—doon may mas matibay na basehan para sabihing hindi lang matagumpay ang operasyon.
+</p>
+
+<blockquote>
+  <p>
+    NABAWASAN DIN ANG AKTUWAL NA PINSALANG NARARANASAN NG MGA TAO.
+  </p>
+</blockquote>
+
+<p>
+  At sa public safety, iyon ang mas mabigat na sukatan.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Braga, Anthony A.; Turchan, Brandon S.; Weisburd, David L. (2026). <em>Focused Deterrence Can Reduce Crime: A Systematic Review of Randomized Controlled Trials and Quasi-Experiments.</em> <em>Criminology &amp; Public Policy.</em> Updated systematic review ng 50 controlled evaluations, kabilang ang 9 randomized field experiments. DOI: 10.1111/1745-9133.70012
+    </li>
+
+    <li>
+      Richardson, M. et al. (2024; published online 2023). <em>A Systematic Evidence Map of Intervention Evaluations to Reduce Gang-Related Violence.</em> <em>Journal of Experimental Criminology.</em> Nakahanap ng 248 evaluations, kabilang ang 114 controlled studies, tungkol sa iba't ibang interventions laban sa gang-related violence.
+    </li>
+
+    <li>
+      Bichler, Gisela; Norris, Alexis; Ibarra, Citalik (2025). <em>Untangling the Web of Violence: The Network Effects of Civil Gang Injunctions.</em> U.S. Office of Juvenile Justice and Delinquency Prevention. Sinuri ang 986 prosecuted violent-crime cases involving 328 known gangs at crime groups sa Los Angeles.
+    </li>
+
+    <li>
+      U.S. National Gang Center / Office of Juvenile Justice and Delinquency Prevention. <em>Risk Factors for Gang Joining.</em> Research synthesis tungkol sa cumulative risk factors sa individual, peer, family, school, at community domains.
+    </li>
+
+    <li>
+      Higginson, Angela et al. (2018). <em>Factors Associated with Youth Gang Membership in Low- and Middle-Income Countries: A Systematic Review.</em> <em>Campbell Systematic Reviews.</em> Siyam na studies ang eligible; walo ang naisama sa quantitative analysis. Ang systematic searches ay umabot hanggang September 2013.
+    </li>
+
+    <li>
+      Phillips, Brian J. (2015). <em>How Does Leadership Decapitation Affect Violence? The Case of Drug Trafficking Organizations in Mexico.</em> <em>The Journal of Politics</em>, 77(2), 324–336. Research tungkol sa epekto ng leadership removal sa violence at posibleng fragmentation ng criminal organizations.
+    </li>
+
+    <li>
+      Esberg, Jane (2025). <em>Criminal Fragmentation in Mexico.</em> <em>Political Science Research and Methods.</em> Gumamit ng dataset ng 473 criminal groups operating in Mexico mula 2009–2020 at nakakita ng suggestive evidence ng fragmentation matapos ang kingpin removals.
+    </li>
+
+    <li>
+      Topper, Michael (2026). <em>The Effect of Fraternity Moratoriums on Alcohol Offenses and Sexual Assaults.</em> <em>Journal of Human Resources</em>, 61(1), 297–334. Sinuri ang 44 temporary university-wide halts on fraternity activity involving alcohol sa 37 universities; nakita ang 26% lower alcohol offenses, suggestive 29% lower reported weekend sexual assaults, at walang evidence ng lasting change pagkatapos alisin ang moratorium.
+    </li>
+
+    <li>
+      U.S. Office of Juvenile Justice and Delinquency Prevention / National Gang Center. <em>OJJDP Comprehensive Gang Model.</em> Five-strategy framework na pinagsasama ang community mobilization, opportunities provision, social intervention, suppression, at organizational change and development.
+    </li>
+
+    <li>
+      UK Home Office. <em>Injunctions to Prevent Gang-Related Violence and Gang-Related Drug Dealing.</em> Statutory guidance tungkol sa paggamit ng gang injunctions sa England and Wales.
+    </li>
+
+    <li>
+      Republic Act No. 11053 — <em>Anti-Hazing Act of 2018.</em> Philippine law na nagbabawal sa hazing at nagre-regulate ng initiation rites, kabilang ang community-based fraternities, sororities, at similar organizations.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
