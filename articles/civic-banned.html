@@ -1,1 +1,1929 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang fact-based Civic Explainer ng jhElmEr tungkol sa kung bakit hindi laging ang pagban sa isang online platform ang solusyon, at bakit mahalaga ang regulation, accountability, supervision, at enforcement."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-banned.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-banned.html"
+>
+
+<title>BAN BA TALAGA ANG SOLUSYON—O REGULATION ANG KULANG? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    BAN BA TALAGA ANG SOLUSYON—O REGULATION ANG KULANG?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-banned.png"
+      alt="Isang simbolikong digital platform na nakatali sa mga kable at chain habang nasa harap ng gusaling may simbolo ng hustisya—sumasagisag sa usapin ng platform ban, regulation, accountability, at pagpapatupad ng batas sa digital services."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-reading-area">
+
+  <div class="article-body">
+
+    <p>
+      Kapag may online platform na paulit-ulit nasasangkot sa scams, harmful content, unsafe investments, exploitation, o ibang problemang nakaaapekto sa mga Pilipino, madaling maintindihan kung bakit lumalabas agad ang isang sagot:
+      I-BAN.
+    </p>
+
+    <p>
+      Kung hindi makontrol, harangin.<br>
+      Kung hindi makasunod, alisin ang access.<br>
+      Kung may panganib, ipasara.
+    </p>
+
+    <p>
+      May logic iyon—lalo na kung ang isang kumpanya ay kumikita at kumukuha ng users sa Pilipinas pero mahirap panagutin kapag may problema.
+    </p>
+
+    <p>
+      Pero bago tayo makarating sa tanong na “Dapat ba itong i-ban?”, may mas mahalagang tanong na dapat mauna:<br>
+      Ano ba talaga ang problemang sinusubukan nating solusyunan?
+    </p>
+
+    <p>
+      Dahil kung ang problema ay kawalan ng accountability, hindi automatic na ang pagkawala ng platform ang katumbas ng pagkakaroon ng accountability.
+    </p>
+
+    <p>
+      At kung ang problema naman ay scams, exploitation, harmful content o risky online activity, hindi rin automatic na mawawala ang mismong problema kapag nawala ang isang app o website.
+    </p>
+
+    <h2>
+      DITO NAGIGING MAHALAGA ANG DISTINCTION
+    </h2>
+
+    <blockquote>
+      <p>
+        ANG BAN AY PUWEDENG MAGING SOLUSYON SA ACCESS.<br>
+        PERO HINDI ITO LAGING SOLUSYON SA UNDERLYING PROBLEM.
+      </p>
+    </blockquote>
+
+    <p>
+      Kaya ang mas tamang civic question ay hindi lang:
+    </p>
+
+    <blockquote>
+      <p>
+        “BAN BA O HUWAG I-BAN?”
+      </p>
+    </blockquote>
+
+    <p>
+      Kundi:
+    </p>
+
+    <blockquote>
+      <p>
+        BAN BA TALAGA ANG KAILANGANG SOLUSYON—O UMABOT LANG TAYO SA BAN DAHIL MAY KULANG SA REGULATION, SUPERVISION AT ENFORCEMENT?
+      </p>
+    </blockquote>
+
+    <p>
+      At para masagot iyan, kailangan nating paghiwalayin ang dalawang bagay na madalas napagsasama: ang pagpigil sa isang platform at ang paglutas sa problemang nangyayari sa loob o sa pamamagitan nito.
+    </p>
+
+    <p>
+      Hindi sila awtomatikong pareho.
+    </p>
+
+    <h2>
+      ANG BAN AY PUWEDENG PARUSA—PERO PUWEDE RIN ITONG PAMIMILIT NA SUMUNOD
+    </h2>
+
+    <p>
+      Isipin natin ang ordinaryong negosyo.
+    </p>
+
+    <p>
+      May kumpanyang kumikita sa mga Pilipino.<br>
+      May customers dito.<br>
+      May users dito.<br>
+      May perang dumadaan dito.<br>
+      May serbisyong ginagamit dito.
+    </p>
+
+    <p>
+      Pero kapag nagkaproblema ang customer, walang malinaw na taong haharap.
+    </p>
+
+    <p>
+      Kapag may kailangang ipatupad na lawful order, mahirap tukuyin kung sino ang may kapangyarihang kumilos.
+      Kapag may kailangang imbestigahan, maaaring nasa ibang bansa ang operator, decision-makers, records at pangunahing operasyon.
+    </p>
+
+    <blockquote>
+      <p>
+        SINO ANG MANANAGOT DITO?
+      </p>
+    </blockquote>
+
+    <p>
+      Ito ang malaking bahagi ng kasalukuyang usapin tungkol sa Meta.
+    </p>
+
+    <p>
+      Noong September 2026, nanawagan ang ilang mambabatas na magkaroon ang Meta ng accountable Philippine presence na may personnel na may aktuwal na authority na tumugon sa government concerns tungkol sa scams, harmful content at iba pang online threats. May House Resolution 1460 ding humihiling ng inquiry kung dapat bang mapasailalim ang Meta sa heightened regulation, restriction, suspension, o maging complete prohibition of operations sa Pilipinas.
+    </p>
+
+    <p>
+      Mahalagang linawin:
+      Hindi pa ito katumbas ng isang umiiral nang nationwide Facebook ban.
+    </p>
+
+    <p>
+      Ang mahalagang tanong sa ngayon ay kung anong regulatory at enforcement powers ang dapat mayroon ang Estado laban sa isang global platform na kayang mag-operate sa Philippine market kahit ang pangunahing control nito ay nasa labas ng bansa.
+    </p>
+
+    <h2>
+      HINDI BAGO ANG GANITONG PROBLEMA
+    </h2>
+
+    <p>
+      Nakita na natin ang parehong tension sa ibang klase ng digital platforms.
+    </p>
+
+    <p>
+      Hindi Facebook.<br>
+      Hindi social media.
+    </p>
+
+    <p>
+      Kundi online investment at trading platforms.
+    </p>
+
+    <p>
+      Noong 2024, umusad ang Philippine Securities and Exchange Commission sa pag-block sa Binance matapos nitong sabihing walang kinakailangang registration at authority ang platform para sa mga aktibidad na sakop ng Philippine securities laws.
+    </p>
+
+    <p>
+      Sa eToro, naglabas din ang SEC ng advisory noong March 2024.
+    </p>
+
+    <p>
+      Ayon sa SEC, ang operator nito ay hindi registered bilang corporation sa Pilipinas at walang kinakailangang license o authority para mag-offer ng securities, mag-operate bilang broker o dealer, o gumawa ng exchange para sa securities sa paraang sakop ng Securities Regulation Code.
+    </p>
+
+    <p>
+      Pero may mahalagang distinction:
+      Hindi pareho ang nangyari sa Binance at eToro.
+    </p>
+
+    <p>
+      Sa Binance, mismong blocking action ang isinulong ng SEC.
+      Sa eToro, regulatory advisory at kawalan ng Philippine authorization ang naging pangunahing government action.
+    </p>
+
+    <p>
+      Mahalaga ang distinction dahil madaling tawagin silang lahat na “ban,” pero hindi pare-pareho ang legal mechanism.
+    </p>
+
+    <h2>
+      BAKIT KAILANGAN NG LOCAL REGULATION?
+    </h2>
+
+    <p>
+      Hindi porke online ang negosyo ay nawawala na ang jurisdiction.
+    </p>
+
+    <p>
+      Kung financial platform ang pinag-uusapan, may existing laws na nagtatakda kung sino ang maaaring mag-offer ng securities, kumilos bilang broker o dealer, o mag-operate ng exchange sa Pilipinas.
+    </p>
+
+    <p>
+      Sa ilalim ng Securities Regulation Code, bahagi mismo ng state policy ang investor protection, full and fair disclosure, at pagpigil sa fraudulent at manipulative practices.
+    </p>
+
+    <blockquote>
+      <p>
+        “Hindi namin kayo kayang bantayan kaya iba-ban namin kayo.”
+      </p>
+    </blockquote>
+
+    <p>
+      Mas eksakto ang tanong:
+      Kung gumagawa ka ng regulated activity sa Philippine market, nasa loob ka ba ng regulatory system na nagbibigay sa gobyerno ng legal authority na i-supervise at panagutin ka?
+    </p>
+
+    <p>
+      Dahil kung nasa labas ka ng regulatory perimeter, mahirap gamitin laban sa iyo ang ordinaryong supervision na ginagamit sa licensed entities.
+    </p>
+
+    <p>
+      Diyan maaaring maging enforcement tool ang restriction.
+    </p>
+
+    <blockquote>
+      <p>
+        Kung gusto mong magkaroon ng access sa market namin, kailangan mong sumunod sa requirements na ginagamit namin para protektahan ang market na iyon.
+      </p>
+    </blockquote>
+
+    <h2>
+      PERO HINDI PAREHO ANG FACEBOOK AT ISANG INVESTMENT PLATFORM
+    </h2>
+
+    <p>
+      Ito ang isang distinction na madaling mawala kapag pinagsama-sama natin ang lahat ng “ban.”
+    </p>
+
+    <p>
+      Ang financial platform ay pangunahing gumagawa ng financial activity na maaaring direktang saklaw ng licensing at securities regulation.
+    </p>
+
+    <p>
+      Ang Facebook naman ay hindi lamang commercial platform.
+    </p>
+
+    <p>
+      Doon nagsasalita ang ordinaryong tao.<br>
+      Doon nakikipag-usap ang pamilya.<br>
+      Doon nagnenegosyo ang maliliit na sellers.<br>
+      Doon nagbabasa ng balita.<br>
+      Doon nag-oorganisa ng communities.<br>
+      Doon naglalabas ng opinyon tungkol sa gobyerno.
+    </p>
+
+    <p>
+      Kaya kapag buong social-media platform na ang bina-block, hindi lamang kumpanya ang naaapektuhan.
+      Kasama ang communication at expression ng users nito.
+    </p>
+
+    <p>
+      At dito pumapasok ang Constitution.
+    </p>
+
+    <p>
+      Article III, Section 4 of the 1987 Constitution states that no law shall be passed abridging freedom of speech, expression, or the press.
+    </p>
+
+    <p>
+      Hindi ibig sabihin nito na bawal na ang lahat ng regulation sa internet.
+      Hindi rin ibig sabihin na walang maaaring i-block kailanman.
+    </p>
+
+    <p>
+      Pero nangangahulugan itong mas mabigat ang legal questions kapag buong communications platform ang pinag-uusapan.
+    </p>
+
+        <h2>
+      MAY PHILIPPINE PRECEDENT NA DAPAT TANDAAN
+    </h2>
+
+    <p>
+      Noong 2014, sa <em>Disini v. Secretary of Justice</em>, sinuri ng Supreme Court ang Section 19 ng Cybercrime Prevention Act.
+    </p>
+
+    <p>
+      Pinapayagan sana nito ang Department of Justice na mag-order ng restriction o blocking ng computer data kapag <em>prima facie</em> itong lumalabag sa Cybercrime Law.
+    </p>
+
+    <p>
+      Ibinasura ng Supreme Court ang provision.
+    </p>
+
+    <p>
+      Kabilang sa dahilan:
+      Ang computer data ay maaaring mismong speech, at ang administrative blocking mechanism ay may constitutional implications sa freedom of expression at protection laban sa unreasonable searches and seizures.
+    </p>
+
+    <p>
+      Hindi ibig sabihin ng <em>Disini</em> na automatic nang unconstitutional ang anumang future restriction sa isang online platform.
+    </p>
+
+    <p>
+      Iba ang facts, batas at mechanism ng bawat kaso.
+    </p>
+
+    <p>
+      Pero malinaw ang lesson:
+      Hindi puwedeng ituring ang nationwide blocking ng isang communications platform na parang simpleng pag-off ng ordinaryong unlicensed website.
+    </p>
+
+    <p>
+      Kailangan pa ring itanong:<br>
+      Ano ang legal authority?<br>
+      Ano ang violation?<br>
+      May due process ba?<br>
+      Gaano kalawak ang restriction?<br>
+      Necessary ba?<br>
+      Proportionate ba?<br>
+      May mas targeted bang remedy?
+    </p>
+
+    <h2>
+      EPEKTIBO ANG BAN—PERO PARA SA ANO?
+    </h2>
+
+    <p>
+      Ito marahil ang pinakamahalagang tanong sa buong usapin.
+    </p>
+
+    <p>
+      Hindi sapat na itanong:
+    </p>
+
+    <blockquote>
+      <p>
+        “Gumagana ba ang ban?”
+      </p>
+    </blockquote>
+
+    <p>
+      Dapat itanong:
+    </p>
+
+    <blockquote>
+      <p>
+        “Gumagana para saan?”
+      </p>
+    </blockquote>
+
+    <p>
+      Kung ang target ay:
+      Mapilit ang isang platform na sumunod sa local requirements, magtalaga ng representative, sumunod sa lawful orders, o pumasok sa regulatory system—may mga totoong precedent na nagpapakitang maaaring magkaroon ng enforcement leverage ang restriction.
+    </p>
+
+    <p>
+      Sa Nigeria, pitong buwan na-suspend ang Twitter noong 2021.
+    </p>
+
+    <p>
+      Noong January 2022, ibinalik ang access matapos sabihin ng Nigerian government na pumayag ang Twitter, bukod sa iba pang kondisyon, na magtalaga ng country representative at sumunod sa ilang local obligations.
+    </p>
+
+    <p>
+      Sa Brazil naman, na-suspend ang X noong 2024 matapos hindi ito sumunod sa ilang court requirements at mawalan ng legal representative sa bansa.
+    </p>
+
+    <p>
+      Kalaunan ay nagtalaga ang X ng legal representative, nagsimulang sumunod sa court orders at nagbayad ng fines; noong October 2024, pinayagan itong mag-resume ng operations.
+    </p>
+
+    <blockquote>
+      <p>
+        Ang pagkawala ng market access ay maaaring maging pressure para sa corporate compliance.
+      </p>
+    </blockquote>
+
+    <p>
+      Pero ibang tanong ang kasunod.
+    </p>
+
+    <h2>
+      KUNG NA-BAN ANG PLATFORM—NAWAWALA BA ANG PROBLEMA?
+    </h2>
+
+    <p>
+      Kung scammer ang problema at nawala ang isang social-media platform, hindi awtomatikong nawawala ang scammer.<br>
+      Kung cyberbullying ang problema, hindi nawawala ang kakayahang mang-bully dahil lamang nawala ang isang app.<br>
+      Kung exploitation ang problema, hindi nawawala ang perpetrator dahil na-block ang isang distribution channel.<br>
+      Kung unauthorized investment solicitation ang problema, hindi nawawala ang demand, promoter, recruiter o investor dahil hindi na accessible ang isang website.
+    </p>
+
+    <p>
+      Puwedeng mawalan sila ng malaking venue.<br>
+      Puwedeng lumiit ang reach.<br>
+      Puwedeng maging mas mahirap ang operasyon.
+    </p>
+
+    <p>
+      Totoong epekto ang mga iyon.
+    </p>
+
+    <p>
+      Pero ibang claim iyon sa:
+    </p>
+
+    <blockquote>
+      <p>
+        “Na-ban na ang platform, kaya solved na ang problema.”
+      </p>
+    </blockquote>
+
+    <h2>
+      MAY EBIDENSYA RIN NG CIRCUMVENTION
+    </h2>
+
+    <p>
+      Sa Nigeria Twitter ban, isang peer-reviewed study ang nagsuri sa 3,885 social-media posts at nagsagawa rin ng survey sa 319 students ng Nile University of Nigeria.
+    </p>
+
+    <p>
+      Sa sample na iyon, 264 sa 319 respondents—83%—ang nagsabing patuloy nilang na-access ang Twitter gamit ang VPN habang may ban.
+    </p>
+
+    <p>
+      Mahalagang limitation:
+      University students ang sample, kaya hindi ito dapat ipresenta na representasyon ng buong populasyon ng Nigeria.
+    </p>
+
+    <p>
+      Pero malinaw nitong ipinapakita ang isang importanteng policy problem:
+    </p>
+
+    <blockquote>
+      <p>
+        BLOCKED ACCESS DOES NOT ALWAYS MEAN ZERO ACCESS.
+      </p>
+    </blockquote>
+
+    <p>
+      Kapag pinutol ang isang digital road, may users na titigil.
+    </p>
+
+    <p>
+      May iba namang maaaring gumamit ng VPN.<br>
+      May lilipat sa ibang platform.<br>
+      May lilipat sa messaging apps.<br>
+      May gagamit ng alternative domains o ibang distribution channels.
+    </p>
+
+    <p>
+      Ito ang tinatawag nating displacement at circumvention problem.
+    </p>
+
+    <p>
+      Kaya kung ang measure of success ay:
+    </p>
+
+    <blockquote>
+      <p>
+        “Hindi na maa-access ang platform sa normal na paraan,”
+      </p>
+    </blockquote>
+
+    <p>
+      maaaring effective ang blocking.
+    </p>
+
+    <p>
+      Pero kung ang measure ay:
+    </p>
+
+    <blockquote>
+      <p>
+        “Nawala na ang harmful behavior,”
+      </p>
+    </blockquote>
+
+    <p>
+      mas mahirap patunayan iyon.
+    </p>
+
+    <h2>
+      APAT NA BAGAY ANG DAPAT SUKATIN
+    </h2>
+
+    <p>
+      Kapag may proposed platform ban o restriction, hindi dapat isang result lang ang tinitingnan.
+    </p>
+
+    <p>
+      Una, compliance effect.<br>
+      Napipilit ba nitong sumunod ang kumpanya?
+    </p>
+
+    <p>
+      Ikalawa, harm-reduction effect.<br>
+      Talaga bang nababawasan ang scam, exploitation, illegal activity o harmful content na dahilan ng intervention?
+    </p>
+
+    <p>
+      Ikatlo, displacement effect.<br>
+      Saan napupunta ang activity kapag nawala ang platform?
+    </p>
+
+    <p>
+      At ikaapat, collateral effect.<br>
+      Ano ang nawawala kasama ng target?
+    </p>
+
+    <p>
+      Legitimate businesses?<br>
+      Communication?<br>
+      News distribution?<br>
+      Creators?<br>
+      Community groups?<br>
+      Ordinaryong users?
+    </p>
+
+    <p>
+      Dahil puwedeng maging effective ang policy sa unang objective pero mahina sa pangalawa—habang malaki naman ang collateral effect.
+    </p>
+
+    <p>
+      Diyan pumapasok ang proportionality.
+    </p>
+
+        <h2>
+      HINDI LANG “BAN O HUWAG I-BAN” ANG CHOICES
+    </h2>
+
+    <p>
+      Ito rin ang problema kapag sobrang bilis ng public debate.
+    </p>
+
+    <p>
+      Nagiging dalawang kampo agad:
+    </p>
+
+    <blockquote>
+      <p>
+        “I-BAN!”
+      </p>
+    </blockquote>
+
+    <p>
+      versus
+    </p>
+
+    <blockquote>
+      <p>
+        “HUWAG I-BAN!”
+      </p>
+    </blockquote>
+
+    <p>
+      Pero maraming regulatory tools ang maaaring nasa pagitan.
+    </p>
+
+    <p>
+      Puwedeng magkaroon ng stronger licensing o registration requirements kung appropriate sa industriya.<br>
+      Puwedeng hingin ang accountable local representative.<br>
+      Puwedeng magkaroon ng faster lawful-response mechanisms.<br>
+      Puwedeng magpataw ng fines.<br>
+      Puwedeng limitahan ang monetization o advertising.<br>
+      Puwedeng magkaroon ng targeted takedown requirements.<br>
+      Puwedeng magkaroon ng platform-specific safety obligations.
+    </p>
+
+    <p>
+      At kung hindi sapat ang mga iyon, saka pumapasok ang mas matinding restriction.
+    </p>
+
+    <p>
+      Hindi ibig sabihin na palaging sapat ang lesser measures.
+      Hindi rin ibig sabihin na palaging mali ang total restriction.
+    </p>
+
+    <blockquote>
+      <p>
+        DAPAT MAGKATUGMA ANG BIGAT NG REMEDYO AT ANG PROBLEMANG GUSTONG SOLUSYUNAN.
+      </p>
+    </blockquote>
+
+    <p>
+      Makikita rin ang ganitong logic sa European Union's Digital Services Act enforcement framework.
+    </p>
+
+    <p>
+      May posibilidad ng temporary restriction ng isang service, pero itinuturing itong last resort, pagkatapos ng ibang enforcement steps, at nangangailangan ng specific procedure at judicial involvement.
+    </p>
+
+    <p>
+      Ibig sabihin:
+      Hindi kahinaan ng regulation ang pagkakaroon ng safeguards.
+      Bahagi mismo iyon ng matinong regulation.
+    </p>
+
+    <h2>
+      ANG MAS MALALIM NA PROBLEMA: GLOBAL ANG PLATFORM, LOCAL ANG PANANAGUTAN
+    </h2>
+
+    <p>
+      Noon, mas madaling makita kung sino ang negosyo.
+    </p>
+
+    <p>
+      May opisina.<br>
+      May tindahan.<br>
+      May branch.<br>
+      May taong mahahabol.
+    </p>
+
+    <p>
+      Ngayon, maaaring nasa ibang kontinente ang headquarters pero nasa cellphone ng milyon-milyong Pilipino ang serbisyo.
+    </p>
+
+    <p>
+      Puwedeng kumuha ng users dito.<br>
+      Puwedeng kumita rito.<br>
+      Puwedeng tumanggap ng pera mula rito.<br>
+      Puwedeng magkaroon ng malaking social o economic impact dito.
+    </p>
+
+    <p>
+      Pero kapag kailangang ipatupad ang local accountability, doon lumalabas ang problema ng jurisdiction at enforcement.
+    </p>
+
+    <blockquote>
+      <p>
+        GLOBAL ANG PLATFORM.<br>
+        LOCAL ANG USER.<br>
+        LOCAL ANG PINSALA.<br>
+        PERO HINDI PALAGING LOCAL ANG KAYANG PANAGUTIN.
+      </p>
+    </blockquote>
+
+    <p>
+      Diyan talaga nag-uugat ang debate.
+    </p>
+
+    <h2>
+      PERO MAY TANONG DIN PARA SA GOBYERNO
+    </h2>
+
+    <p>
+      Hindi sapat na platform lang ang tanungin.
+    </p>
+
+    <p>
+      Kung paulit-ulit na dumarating ang digital businesses sa Pilipinas nang saka pa lamang pinag-uusapan ang regulatory gap kapag malaki na ang problema, may tanong din para sa Estado:
+      Mas malinaw ba dapat ang regulatory requirements at conditions bago pa payagang makapag-operate nang malawakan ang isang high-risk digital service sa Pilipinas?
+    </p>
+
+    <p>
+      Dahil ang mahusay na regulation ay hindi lamang kakayahang magsara.
+    </p>
+
+    <p>
+      Kasama rin dito ang kakayahang:<br>
+      gumawa ng malinaw na rules,<br>
+      magbigay ng predictable requirements,<br>
+      mag-supervise,<br>
+      mag-imbestiga,<br>
+      magpatupad ng penalties,<br>
+      magbigay ng due process,<br>
+      at gumawa ng legal pathway para sa kumpanyang gustong sumunod.
+    </p>
+
+    <p>
+      Kung ang default response ay:
+    </p>
+
+    <blockquote>
+      <p>
+        “Hindi natin kayang i-supervise, kaya i-ban na lang,”
+      </p>
+    </blockquote>
+
+    <p>
+      may lehitimong accountability question din iyon para sa gobyerno.
+    </p>
+
+    <p>
+      Dahil ang restriction ay maaaring enforcement tool.
+      Pero hindi ito dapat maging kapalit ng regulatory capacity.
+    </p>
+
+    <h2>
+      KAYA KUNG ACCOUNTABILITY ANG HABOL—BAKIT BAN AGAD ANG ISINUSULONG NA REMEDYO?
+    </h2>
+
+    <p>
+      Dahil may pagkakataong ang pinakamalakas na leverage ng isang bansa laban sa global company ay ang access mismo sa market nito.
+    </p>
+
+    <blockquote>
+      <p>
+        SUMUNOD SA RULES—O MAWALA ANG ACCESS.
+      </p>
+    </blockquote>
+
+    <p>
+      May logic iyon.
+    </p>
+
+    <p>
+      At may mga precedent na nagpapakitang maaari itong makapagpabago ng corporate behavior.
+    </p>
+
+    <p>
+      Pero hindi doon dapat matapos ang analysis.
+    </p>
+
+    <p>
+      Dahil kapag sinabi nating:
+    </p>
+
+    <blockquote>
+      <p>
+        “I-ban dahil may scams.”
+      </p>
+    </blockquote>
+
+    <p>
+      Dapat itanong:<br>
+      Mawawala ba ang scammers?
+    </p>
+
+    <p>
+      Kapag sinabi nating:
+    </p>
+
+    <blockquote>
+      <p>
+        “I-ban dahil may harmful content.”
+      </p>
+    </blockquote>
+
+    <p>
+      Dapat itanong:<br>
+      Mawawala ba ang harmful behavior—o lilipat?
+    </p>
+
+    <p>
+      Kapag sinabi nating:
+    </p>
+
+    <blockquote>
+      <p>
+        “I-ban dahil hindi locally regulated.”
+      </p>
+    </blockquote>
+
+    <p>
+      Dapat itanong:<br>
+      Ano ang eksaktong requirement na dapat sundin upang maging compliant?
+    </p>
+
+    <p>
+      At kapag sinabi nating:
+    </p>
+
+    <blockquote>
+      <p>
+        “I-ban dahil kailangan silang panagutin.”
+      </p>
+    </blockquote>
+
+    <p>
+      Dapat itanong:<br>
+      Ano ang kondisyon para maibalik ang access kapag sumunod na sila?
+    </p>
+
+    <p>
+      Dahil ang enforcement na walang malinaw na violation, standard, objective at exit condition ay madaling maging arbitrary.
+    </p>
+
+    <p>
+      At ang ban na walang measurement ng actual outcome ay madaling mapagkamalang solusyon dahil lamang nakikita nating may ginawang aksyon.
+    </p>
+
+        <h2>
+      ANG BAN AY HINDI DAPAT MAGING ENDING NG USAPAN
+    </h2>
+
+    <p>
+      Kapag narinig natin ang salitang BAN, huwag agad magpalakpakan.
+    </p>
+
+    <p>
+      Huwag din agad sumigaw na censorship.
+    </p>
+
+    <p>
+      Mas magandang itanong muna:<br>
+      Ano ang violation?<br>
+      Sino ang dapat managot?<br>
+      Ano ang hindi kayang ipatupad ngayon?<br>
+      Ano ang eksaktong maaayos ng restriction?<br>
+      Ano ang hindi nito maaayos?<br>
+      May mas targeted bang remedy?<br>
+      Ano ang magiging collateral effect?<br>
+      At ano ang malinaw na kondisyon para matapos ang restriction?
+    </p>
+
+    <p>
+      Dahil hindi nasusukat ang mahusay na regulation sa dami ng website o app na kayang i-block.
+    </p>
+
+    <p>
+      Nasusukat ito sa kung:<br>
+      malinaw ang rules,<br>
+      may kayang managot,<br>
+      napoprotektahan ang publiko,<br>
+      may due process,<br>
+      at may tunay na consequence kapag hindi sumunod.
+    </p>
+
+    <blockquote>
+      <p>
+        KAYA KUNG ACCOUNTABILITY TALAGA ANG HABOL—HINDI LANG ANG TANONG KUNG DAPAT MAG-BAN.
+      </p>
+    </blockquote>
+
+    <p>
+      Ang mas mabigat na tanong ay:
+    </p>
+
+    <blockquote>
+      <p>
+        BAKIT KINAILANGANG UMABOT SA BAN PARA LANG MAY MAPANAGOT?
+      </p>
+    </blockquote>
+
+    <p>
+      At kapag nag-ban na—
+    </p>
+
+    <blockquote>
+      <p>
+        PANANAGUTAN BA TALAGA ANG NAKUHA NATIN, O ACCESS LANG ANG NAWALA?
+      </p>
+    </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              House of Representatives of the Philippines — House Resolution No. 1460; <em>“Social media platforms can’t profit in PH without accountability — Garin,”</em> September 2026.
+            </li>
+
+            <li>
+              Securities and Exchange Commission Philippines — <em>“SEC Proceeds with Blocking of Binance,”</em> March 25, 2024.
+            </li>
+
+            <li>
+              Securities and Exchange Commission Philippines — <em>Advisory Against eToro,</em> March 14, 2024.
+            </li>
+
+            <li>
+              Republic Act No. 8799 — <em>Securities Regulation Code.</em>
+            </li>
+
+            <li>
+              1987 Constitution of the Republic of the Philippines — Article III, Bill of Rights.
+            </li>
+
+            <li>
+              Supreme Court of the Philippines — <em>Disini v. Secretary of Justice,</em> G.R. No. 203335, February 11, 2014.
+            </li>
+
+            <li>
+              Mohammed &amp; Adelakun — <em>“The 2021 Nigerian Twitter ban: A text-analytics and survey insight into public reactions and outcomes in the early weeks of the ban,”</em> <em>Social Media + Society,</em> 2023.
+            </li>
+
+            <li>
+              Al Jazeera — <em>Nigeria ends Twitter ban after seven months,</em> January 2022.
+            </li>
+
+            <li>
+              Reuters — <em>Brazil X suspension and subsequent compliance,</em> 2024.
+            </li>
+
+            <li>
+              European Commission — <em>Digital Services Act enforcement framework and safeguards for temporary service restrictions.</em>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
