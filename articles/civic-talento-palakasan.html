@@ -1,1 +1,2054 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa patas na sports selection, talent identification, coaching discretion, opportunity, at kung kailan nagiging problema ang koneksyon kaysa merito."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-talento-palakasan.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-talento-palakasan.html"
+>
+
+<title>
+TALENTO, PERFORMANCE—O KUNG SINO ANG MAY KONEKSYON? | jhElmEr
+</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+    TALENTO, PERFORMANCE—O KUNG SINO ANG MAY KONEKSYON?
+  </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+      class="article-image"
+      src="images/civic-talento-palakasan.png"
+      alt="Mga atletang sumasailalim sa sports selection habang ipinapakita ang tensyon sa pagitan ng talento, performance, oportunidad, at impluwensiya ng koneksyon sa proseso ng pagpili."
+    >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+<div class="article-body">
+
+  <p>
+    Sa sports, madalas simple ang kuwento sa labas:
+  </p>
+
+  <p>
+    Kung magaling ka, magsikap ka, mag-perform ka—mapapansin ka rin.
+  </p>
+
+  <p>
+    Pero ganoon ba talaga kasimple ang daan mula tryout hanggang roster?
+  </p>
+
+  <p>
+    Dahil bago pa man makarating sa tanong na “Sino ang pinakamagaling?”, may mas naunang mga tanong na kailangang sagutin:
+  </p>
+
+  <p>
+    Sino ang nabigyan ng pagkakataong sumubok?<br>
+    Sino ang mas madaling napansin?<br>
+    Pare-pareho ba ang standard?
+  </p>
+
+  <p>
+    At kapag limitado ang slots, talento at performance lang ba talaga ang tumitimbang—o may pagkakataong nakakaapekto rin kung sino ang may access, exposure, impluwensiya, o koneksyon?
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na kapag hindi napili ang isang atleta ay automatic nang may “palakasan.”
+  </p>
+
+  <p>
+    Pero hindi rin sapat na sabihing “ganyan talaga sa sports” kapag ang mismong proseso ng pagpili ay hindi malinaw.
+  </p>
+
+  <p>
+    Dahil sa competitive sports, normal ang may mapili at may maiwan.
+  </p>
+
+  <p>
+    Ang mas mahalagang tanong ay kung patas ba ang prosesong nagdesisyon kung sino ang mabibigyan ng pagkakataon.
+  </p>
+
+  <p>
+    At dito nagsisimula ang mas malaking usapin.
+  </p>
+
+  <h2>
+    HINDI LANG “MAY KILALA” ANG PROBLEMA
+  </h2>
+
+  <p>
+    Kapag sinabing palakasan, kadalasan ang naiisip natin ay simple:
+  </p>
+
+  <p>
+    May kakilala sa coach.<br>
+    May kamag-anak sa organizer.<br>
+    May malapit sa management.<br>
+    Kaya nauna o napaboran.
+  </p>
+
+  <p>
+    Posibleng mangyari ang direct favoritism sa kahit anong organisasyon.
+  </p>
+
+  <p>
+    Pero may mas malawak na problema na matagal nang pinag-aaralan sa sports science:
+  </p>
+
+  <p>
+    Kahit walang tahasang padrino, puwedeng maging hindi pantay ang selection dahil sa subjective judgment, developmental differences, socioeconomic advantage, geography, access sa coaching at facilities, at mismong structure ng talent-development system.
+  </p>
+
+  <p>
+    Ibig sabihin, maaaring walang nagsabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ito ang piliin mo dahil kakilala ko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero maaari pa ring magkaroon ng sistema na mas madaling makakita, makapagsanay at makapagbigay ng pagkakataon sa ilan kaysa sa iba.
+  </p>
+
+  <p>
+    At kapag ganoon, hindi sapat na talento lamang ang tingnan.
+  </p>
+
+  <h2>
+    KAHIT EXPERT ANG COACH, HINDI IBIG SABIHING INFALLIBLE ANG “COACH'S EYE”
+  </h2>
+
+  <p>
+    Malaking bahagi ng sports selection ang nakasalalay sa judgment ng coaches at scouts.
+  </p>
+
+  <p>
+    May dahilan iyon.
+  </p>
+
+  <p>
+    Hindi lahat ng mahalagang katangian ng atleta ay nasusukat sa stopwatch, statistics o isang physical test.
+  </p>
+
+  <p>
+    May game intelligence, positioning, decision-making, attitude, communication, adaptability at iba pang bagay na kailangang makita ng experienced coach.
+  </p>
+
+  <p>
+    Pero may kapalit ang ganitong discretion:
+  </p>
+
+  <blockquote>
+    <p>
+      Subjective judgment is still human judgment.
+    </p>
+  </blockquote>
+
+  <p>
+    Sa isang systematic review at meta-synthesis ng 14 studies tungkol sa talent identification, lumabas na ang “instinct” o tacit/experiential knowledge ng coaches ang pangunahing theme sa kanilang pagpili ng talent.
+  </p>
+
+  <p>
+    Kasama sa pumapasok sa judgment na iyon ang drive and ambition, game intelligence, at physical at technical skills.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nitong mali ang instinct.
+  </p>
+
+  <p>
+    Ipinapakita nitong malaking bahagi ng proseso ay hindi purely objective measurement.
+  </p>
+
+  <p>
+    At may dahilan para maging maingat sa sobrang kumpiyansa sa isang maagang assessment.
+  </p>
+
+  <p>
+    Sa isang longitudinal case study, sinundan nang 18 buwan ang aktwal na proseso ng isang elite coach sa pagpili ng athletes.
+  </p>
+
+  <p>
+    May mga pagkakataong malaki ang pagbabago ng assessment niya sa parehong atleta sa paglipas ng panahon.
+  </p>
+
+  <p>
+    Nang tingnan makalipas ang anim na taon kung sino talaga ang nagtagumpay, mixed ang accuracy ng kanyang original predictions.
+  </p>
+
+  <p>
+    Kaya mahalaga ang coach's eye.
+  </p>
+
+  <p>
+    Pero hindi dapat maging:
+  </p>
+
+  <blockquote>
+    <p>
+      “Coach's eye, therefore final truth.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang expertise ay valuable.
+  </p>
+
+  <p>
+    Hindi ito immunity laban sa bias, uncertainty o maling prediction.
+  </p>
+
+  <h2>
+    MINSAN, ANG MUKHANG “MAS TALENTED” AY MAS MAAGA LANG ANG DEVELOPMENT
+  </h2>
+
+  <p>
+    Ito ang isang magandang halimbawa kung bakit delikadong pagsamahin ang current performance at future potential.
+  </p>
+
+  <p>
+    Sa youth sports, dalawang batang pareho ang edad sa papel ay maaaring malaki ang diperensya sa biological development.
+  </p>
+
+  <p>
+    Maaaring mas matangkad, mas malakas, mas mabilis o mas physically mature ang isa—hindi dahil mas mataas na agad ang ceiling ng talent niya, kundi dahil mas maaga lamang siyang nade-develop.
+  </p>
+
+  <p>
+    May tinatawag ding relative age effect.
+  </p>
+
+  <p>
+    Sa isang meta-analysis na sumaklaw sa 38 studies, 253 independent samples, 14 sports at 16 countries, nakita ang relative-age effects:
+  </p>
+
+  <p>
+    Sa ilang developmental settings, mas napapaboran sa participation at selection ang relatively older athletes sa loob ng parehong age category.
+  </p>
+
+  <p>
+    Pero mahalaga ang caveat:
+  </p>
+
+  <p>
+    Maliit ang overall effect sa meta-analysis at hindi ito pare-pareho sa lahat ng sports, edad at competition levels.
+  </p>
+
+  <p>
+    Lumalakas o humihina ang effect depende sa context; kabilang sa mas vulnerable na settings ang adolescent males sa representative level ng highly popular sports.
+  </p>
+
+  <p>
+    May isa pang study na gumamit ng Implicit Association Test sa youth baseball at soccer coaches.
+  </p>
+
+  <p>
+    Nakakita ito ng medium-to-strong automatic associations kung saan mas madaling maiugnay ang greater body size sa positive performance attributes at giftedness.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayang ang height mismo ang dahilan kung bakit napipili ang isang atleta.
+  </p>
+
+  <p>
+    Ipinapakita nito na maaaring may automatic associations ang evaluators na relevant sa selection judgment.
+  </p>
+
+  <p>
+    Kaya may batang hindi napili ngayon na maaaring hindi naman kulang sa long-term potential.
+  </p>
+
+  <p>
+    Baka mas maaga lang natin siyang hinusgahan kaysa sa development niya.
+  </p>
+
+  <h2>
+    MAS MALALIM PA: ANG PAGKAKATAON MISMO AY NAKAKATULONG GUMAWA NG “MAS MAGALING” NA ATLETA
+  </h2>
+
+  <p>
+    Ito ang madaling makaligtaan.
+  </p>
+
+  <p>
+    Kapag napili ang isang atleta sa developmental program, kadalasan hindi lang medalya o pangalan sa roster ang nakukuha niya.
+  </p>
+
+  <p>
+    Nakakakuha siya ng mas mahusay na coaching.
+  </p>
+
+  <p>
+    Mas maraming practice.<br>
+    Mas malakas na competition.<br>
+    Mas magandang facilities.<br>
+    Mas mataas na exposure.
+  </p>
+
+  <p>
+    At sa mas developed na systems, maaaring may sports-science at medical support pa.
+  </p>
+
+  <p>
+    Samantalang ang hindi napili ay maaaring bumalik sa environment na mas kaunti ang ganitong resources.
+  </p>
+
+  <p>
+    Research on youth talent pathways has repeatedly raised this issue:
+  </p>
+
+  <p>
+    Ang selection mismo ay maaaring magbigay sa napiling atleta ng developmental resources at competitive challenges na nakatutulong ding humubog sa susunod niyang performance.
+  </p>
+
+  <p>
+    Kaya puwedeng magkaroon ng cumulative advantage.
+  </p>
+
+  <p>
+    Ang unang advantage sa selection ay nagbibigay ng mas maraming development opportunities.
+  </p>
+
+  <p>
+    Ang mas maraming opportunities ay maaaring magpalaki pa ng performance gap.
+  </p>
+
+  <p>
+    At kapag sumunod ang panibagong selection, mukhang natural lamang na mas malakas na ang napili noon.
+  </p>
+
+  <p>
+    Kaya minsan, baligtarin natin ang karaniwang tanong.
+  </p>
+
+  <blockquote>
+    <p>
+      “Napili ba siya dahil mas magaling siya?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Gaano kalaking bahagi ng pagiging mas magaling niya ngayon ang resulta rin ng mas marami niyang naunang pagkakataon?”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi nito binabawasan ang sipag o talento ng napili.
+  </p>
+
+  <p>
+    Pero ipinapaalala nitong ang opportunity ay puwedeng humubog sa performance, at ang performance naman ay magbukas ng mas marami pang opportunity.
+  </p>
+
+  <h2>
+  HINDI RIN PANTAY ANG STARTING LINE NG LAHAT
+</h2>
+
+<p>
+  May batang may talento.
+</p>
+
+<p>
+  Pero paano kung walang malapit na training center?
+</p>
+
+<p>
+  Walang pambayad sa pamasahe?<br>
+  Walang equipment?<br>
+  Walang maghahatid sa tryout?<br>
+  Walang access sa private coaching?<br>
+  Walang nakakaalam kung saan at kailan ang selection?
+</p>
+
+<p>
+  Ang mga iyon ay hindi simpleng excuses.
+</p>
+
+<p>
+  Bahagi sila ng environment kung saan nade-develop—or hindi nade-develop—ang atleta.
+</p>
+
+<p>
+  Sa isang systematic review at meta-analysis ng 104 studies at 163 effect sizes, mas mataas ang participation sa organized sport ng mga bata at adolescents mula sa higher-socioeconomic-status households.
+</p>
+
+<p>
+  Sa pooled analysis, 1.87 ang odds ratio kumpara sa lower-SES groups.
+</p>
+
+<p>
+  Ibig sabihin, 1.87 times ang odds ng participation sa higher-SES group—hindi ito dapat basahin bilang automatic na “1.87 times more likely” sa probability terms.
+</p>
+
+<p>
+  <strong>Mahalagang caveat</strong><br>
+  High-income countries ang sakop ng review. Hindi ito Philippine statistic at hindi ito proof ng padrino.
+</p>
+
+<p>
+  Pero malinaw ang lesson:
+</p>
+
+<p>
+  Bago pa dumating ang tryout, maaari nang hindi pantay ang pagkakataong maghanda para sa tryout.
+</p>
+
+<p>
+  At geography mismo ay maaari ring magkaroon ng epekto.
+</p>
+
+<p>
+  Sa isang 2026 Australian talent-search study involving 4,805 athletes across 16 sports at 19 disciplines, nakita ng hierarchical model na sa aggregate, ang regional athletes ay humarap sa humigit-kumulang 1.009 standard deviations higher selection threshold kaysa metropolitan athletes para magkaroon ng comparable selection probability.
+</p>
+
+<p>
+  Pero mahalagang huwag basahin ang aggregate finding na parang eksaktong pareho ang epekto sa bawat sport.
+</p>
+
+<p>
+  Sa 16 sa 19 disciplines, ang sport-specific adjustments ay malapit sa zero—ibig sabihin, karamihan ay largely sumunod sa overall regional-disadvantage pattern, sa halip na magkaroon ng malaking additional o reduced disadvantage na unique sa kanilang sport.
+</p>
+
+<p>
+  Kaya ang 1.009-SD finding ay pinakamainam basahin bilang aggregate pattern sa program na pinag-aralan, hindi bilang eksaktong parehong disadvantage sa bawat sport.
+</p>
+
+<p>
+  Again:
+</p>
+
+<p>
+  Hindi ito proof ng “palakasan.”
+</p>
+
+<p>
+  Pero ipinapakita nitong hindi performance lamang ang maaaring humubog sa opportunity.
+</p>
+
+<h2>
+  AT DITO PAPASOK ANG “KONEKSYON”—PERO KAILANGANG MALINAW ANG IBIG SABIHIN NATIN
+</h2>
+
+<p>
+  Sa Philippine social-science literature, matagal nang pinag-aaralan ang papel ng personal relationships at kinship sa Filipino interpersonal life.
+</p>
+
+<p>
+  May literature rin sa Sikolohiyang Pilipino tungkol sa mga konseptong tulad ng pakikisama, utang na loob at pakikipagkapwa.
+</p>
+
+<p>
+  Pero mahalagang huwag gawing stereotype ang mga konseptong ito.
+</p>
+
+<p>
+  Hindi ibig sabihin ng pakikisama o utang na loob na automatic na may favoritism.
+</p>
+
+<p>
+  Sa Sikolohiyang Pilipino mismo, mas nuanced ang mga konseptong ito kaysa sa simpleng “favor for favor” interpretation.
+</p>
+
+<p>
+  Malaking bahagi rito ang mas malawak na konsepto ng kapwa at iba't ibang antas ng pakikipag-ugnayan sa ibang tao.
+</p>
+
+<p>
+  At maging sa athlete development, mahalaga talaga ang networks.
+</p>
+
+<p>
+  Research outside the Philippines has documented that support networks at access sa coaching differ across development levels.
+</p>
+
+<p>
+  Sa isang study involving 1,383 male cricket players, mothers and fathers were major sources of financial at emotional support, habang mentors naman ay nakapagbibigay ng sport-specific information at technical/coaching support.
+</p>
+
+<p>
+  May nakita ring differences sa support patterns ng community at elite players.
+</p>
+
+<p>
+  Observational finding iyon.
+</p>
+
+<p>
+  Hindi nito pinatutunayang:
+</p>
+
+<blockquote>
+  <p>
+    “Connections caused elite status.”
+  </p>
+</blockquote>
+
+<p>
+  Pero ipinapakita nitong ang athlete development ay hindi isolated individual journey.
+</p>
+
+<p>
+  May pamilya.<br>
+  May coach.<br>
+  May mentor.<br>
+  May resources.<br>
+  May access.<br>
+  May network.
+</p>
+
+<p>
+  Kaya hindi patas sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “May koneksyon, therefore palakasan.”
+  </p>
+</blockquote>
+
+<p>
+  Normal at maaaring napakahalagang bahagi ng athlete development ang relationships.
+</p>
+
+<p>
+  Ang problema ay nagsisimula kapag ang relasyon ang pumapalit sa qualification.
+</p>
+
+<p>
+  Kapag ang kakilala ay nakakakuha ng slot na hindi niya makukuha sa parehong standard.<br>
+  Kapag ang isang atleta ay kailangang maging exceptional para mapansin, pero sapat nang “kilala” ang isa para mabigyan ng pagkakataon.<br>
+  Kapag may rules sa papel pero nag-iiba depende kung sino ang aplikante.
+</p>
+
+<p>
+  Kapag hindi na maipaliwanag ang desisyon gamit ang performance, role requirement o malinaw na selection criteria—kundi nauuwi lamang sa:
+</p>
+
+<blockquote>
+  <p>
+    “Ganun talaga.”
+  </p>
+</blockquote>
+
+<p>
+  Doon nagiging problema ang koneksyon.
+</p>
+
+<p>
+  Hindi dahil masama ang magkaroon nito.
+</p>
+
+<p>
+  Kundi dahil hindi dapat ito maging substitute sa merit.
+</p>
+
+<h2>
+  HINDI RIN LAHAT NG “MAS MAGALING” AY AUTOMATIC NA DAPAT MAPILI
+</h2>
+
+<p>
+  Ito rin ang kailangang linawin.
+</p>
+
+<p>
+  Sa team sports, hindi fantasy draft ang selection kung saan kukunin lang ang pinakamataas ang individual statistics.
+</p>
+
+<p>
+  Maaaring kailangan ng coach ng particular position.
+</p>
+
+<p>
+  Specific playing style.<br>
+  Defensive specialist.<br>
+  Leadership.<br>
+  Chemistry.<br>
+  Tactical fit.<br>
+  O combination ng players na mas epektibong gumagana bilang isang team.
+</p>
+
+<p>
+  Sa qualitative research involving team-sport coaches and athletes, kabilang sa mga factors na ginagamit sa pag-facilitate ng teamwork ang team selection, player roles, tactical systems, leadership, internal competition at athlete relationships.
+</p>
+
+<p>
+  Ang practical implication:
+</p>
+
+<p>
+  Sa pagpili ng team, maaaring kailangang tumingin lampas sa individual skill lamang at isaalang-alang ang combination ng players na nakatutulong sa collective performance.
+</p>
+
+<p>
+  Kaya hindi sapat ang argumento na:
+</p>
+
+<blockquote>
+  <p>
+    “Mas magaling ako sa kanya, kaya dapat ako ang napili.”
+  </p>
+</blockquote>
+
+<p>
+  Ang mas tamd tanong:
+</p>
+
+<p>
+  Relevant ba sa goal ng team ang criterion na ginamit—at pareho ba itong ginamit sa lahat?
+</p>
+
+<p>
+  Iyan ang malaking difference ng coaching discretion at favoritism.
+</p>
+
+<p>
+  Sa discretion, may sporting reason.
+</p>
+
+<p>
+  Sa favoritism, nagbabago ang standard depende sa tao.
+</p>
+
+<h2>
+  ANG FAIRNESS AY HINDI “LAHAT DAPAT MAPILI”
+</h2>
+
+<p>
+  Competitive sports require rejection.
+</p>
+
+<p>
+  Hindi maiiwasan iyon.
+</p>
+
+<p>
+  Ang fairness ay hindi guarantee ng slot.
+</p>
+
+<p>
+  Ang fairness ay credible process.
+</p>
+
+<p>
+  Sa research sa elite volleyball at handball athletes, ang perceived procedural justice ng coach ay associated sa stronger team identification, habang ang team identification naman ay related sa team cohesion.
+</p>
+
+<p>
+  Sa isa pang longitudinal study sa elite handball at volleyball teams, kabilang sa factors na sinuri ang coaching style, decision justifications, starter/substitute status at game results.
+</p>
+
+<p>
+  Nakita ring relevant ang pagbibigay ng explanation o justification sa athletes’ perception kung patas ba ang naging coaching decision.
+</p>
+
+<p>
+  At noong 2026, 56 researchers and practitioners mula sa Talent Identification and Development Environments in Sport Society ang bumuo ng 13 evidence-informed principles para sa ethical at athlete-centred talent identification.
+</p>
+
+<p>
+  Kasama rito ang:
+</p>
+
+<p>
+  Sociocultural context.<br>
+  Timing ng selection.<br>
+  Entry at exit opportunities.<br>
+  Heuristics and biases.<br>
+  At tamang pagbalanse ng objective at subjective information.
+</p>
+
+<p>
+  Sa madaling salita, hindi sinasabi ng science:
+</p>
+
+<blockquote>
+  <p>
+    “Alisin ang judgment ng coach.”
+  </p>
+</blockquote>
+
+<p>
+  Ang sinasabi nito ay:
+</p>
+
+<blockquote>
+  <p>
+    Huwag gawing black box ang judgment ng coach.
+  </p>
+</blockquote>
+
+  <h2>
+  KAYA ANO ANG MAS MATIBAY NA SISTEMA?
+</h2>
+
+<p>
+  Hindi kailangang gawing laboratory experiment ang bawat barangay tryout.
+</p>
+
+<p>
+  Pero habang mas seryoso ang level at mas malaki ang nakasalalay na scholarship, roster slot, public funding o career opportunity, mas mahalaga ang simpleng guardrails.
+</p>
+
+<p>
+  Malinaw bago ang selection kung ano ang hinahanap.<br>
+  Relevant sa sport at role ang criteria.<br>
+  Hindi iisang sandali lamang ang basehan kung may pagkakataong mag-observe nang mas matagal.<br>
+  Kung praktikal, higit sa isang evaluator ang tumitingin.<br>
+  May kombinasyon ng objective measures at informed coaching judgment.<br>
+  Isinasaalang-alang ang age at biological development lalo na sa kabataan.<br>
+  Pareho ang standard kahit kakilala, kamag-anak o outsider.<br>
+  Dine-declare at mina-manage ang conflict of interest.<br>
+  May record o malinaw na dahilan para sa major selection decisions.<br>
+  At may maayos na feedback sa hindi napili kung praktikal.
+</p>
+
+<p>
+  Hindi nito ginagarantiya na mawawala ang lahat ng pagkakamali.
+</p>
+
+<p>
+  Pero pinapaliit nito ang puwang kung saan maaaring magtago ang bias at favoritism.
+</p>
+
+<h2>
+  SA PILIPINAS, HINDI LANG PERSONAL NA USAPIN ANG SPORTS DEVELOPMENT
+</h2>
+
+<p>
+  May civic dimension ito.
+</p>
+
+<p>
+  Sa Article XIV, Section 19 ng 1987 Constitution, inaatasan ang Estado na i-promote ang physical education at hikayatin ang sports programs, league competitions at amateur sports, kabilang ang training para sa international competitions.
+</p>
+
+<p>
+  Sa Republic Act No. 6847 naman, kabilang sa objectives ng Philippine Sports Commission ang pagbibigay ng particular emphasis sa grass-roots participation at paghikayat ng wide participation of all sectors sa amateur sports promotion and development.
+</p>
+
+<p>
+  At interestingly, mismong Section 13(i) ng RA 6847 ay nagpapakitang ang national-team selection ay hindi ipinapantay ng batas sa raw athletic statistics lamang.
+</p>
+
+<p>
+  Para sa national sports associations, nakasaad sa Section 13(i) na sa pagpili ng athletes, coaches at officials para sa national teams, isinasaalang-alang hindi lamang ang athletic abilities kundi pati discipline, moral character, aptitude at attitude.
+</p>
+
+<p>
+  Mahalagang distinction ito.
+</p>
+
+<blockquote>
+  <p>
+    Merit does not necessarily mean “highest statistic wins.”
+  </p>
+</blockquote>
+
+<p>
+  May legitimate non-statistical considerations.
+</p>
+
+<p>
+  Pero kailangan pa ring sporting-relevant, consistently applied at hindi arbitrary ang proseso.
+</p>
+
+<p>
+  At kailangan ding malinaw ang legal limit ng argumentong ito:
+</p>
+
+<p>
+  Ang Constitution at RA 6847 ay hindi, by themselves, garantiya na may karapatan ang bawat atleta sa isang roster slot, at hindi rin sila nagtatakda ng iisang universal tryout o appeal procedure para sa lahat ng sports.
+</p>
+
+<p>
+  Ang ipinapakita nila ay ang public-policy interest ng Estado sa sports development, grassroots participation at organized national sports governance.
+</p>
+
+<p>
+  Maging ang official description ng Batang Pinoy ay tinatawag itong key grassroots program at wide-scale talent-search platform na nagbibigay ng participation opportunity kabilang sa out-of-school youth, sectoral at marginalized groups.
+</p>
+
+<p>
+  At academic research tungkol sa Philippine sports governance ay matagal nang tumutukoy sa issues ng funding, politics, institutional actors at good governance.
+</p>
+
+<p>
+  Mas bagong 2026 country-profile research naman describes Philippine sport policy as shaped by historical, social at political influences, fragmented institutional layers, funding priorities at patuloy na tension sa pagitan ng grassroots development at elite performance.
+</p>
+
+<p>
+  Hindi nito pinatutunayang may palakasan sa bawat team o competition.
+</p>
+
+<p>
+  Pero malinaw kung bakit legitimate public concern ang access, transparency at fairness—lalo na kapag school, LGU, national sports program o public resources ang sangkot.
+</p>
+
+<h2>
+  ITO ANG MAHALAGANG LIMITASYON
+</h2>
+
+<p>
+  Hindi sapat ang research tungkol sa bias para sabihing:
+</p>
+
+<blockquote>
+  <p>
+    “Ayan, proof na may palakasan sa Philippine sports.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi ganoon gumagana ang ebidensiya.
+</p>
+
+<p>
+  Marami sa mga studies na nabanggit dito ay mula sa ibang bansa at iba't ibang sports systems.
+</p>
+
+<p>
+  Pinapakita nila na real at measurable ang subjectivity, developmental bias, socioeconomic inequality, geographic differences at unequal developmental opportunities.
+</p>
+
+<p>
+  Hindi nila pinapatunayang ang isang partikular na coach, school, LGU, federation o team ay guilty ng favoritism.
+</p>
+
+<p>
+  Para doon, kailangan ng case-specific evidence.
+</p>
+
+<p>
+  Ano ang criteria?<br>
+  Ano ang performance records?<br>
+  Sino ang evaluators?<br>
+  Pareho ba ang standard?<br>
+  May conflict of interest ba?<br>
+  May documented deviation ba sa rules?
+</p>
+
+<p>
+  Diyan nagkakaiba ang kritikal na pagsusuri sa tsismis.
+</p>
+
+<h2>
+  DAHIL ANG PINAKAMALAKING SAYANG AY HINDI LANG ANG ATLETANG HINDI NAPILI
+</h2>
+
+<p>
+  Mas malaki ang nawawala kapag ang isang sports system ay paulit-ulit na nakakakita lamang ng talentong madaling makita.
+</p>
+
+<p>
+  Yung may access.<br>
+  Yung maagang nag-mature.<br>
+  Yung nasa tamang lugar.<br>
+  Yung may magandang training.<br>
+  Yung may established support network.
+</p>
+
+<p>
+  Habang ang batang maaaring may malaking potential pero nasa probinsya, kulang sa resources, late bloomer, walang network o hindi agad impressive sa isang maikling tryout ay tahimik na nawawala sa pipeline.
+</p>
+
+<p>
+  Doon hindi lang isang atleta ang natatalo.
+</p>
+
+<p>
+  Pati ang sports system nawawalan ng talentong hindi nito binigyan ng pagkakataong ma-develop.
+</p>
+
+<h2>
+  REAL TALK
+</h2>
+
+<p>
+  Hindi masamang magkaroon ng kakilala.
+</p>
+
+<p>
+  Hindi masamang pagkatiwalaan ng coach ang sariling experience.
+</p>
+
+<p>
+  Hindi rin obligasyon ng team na piliin ang lahat ng nagsikap.
+</p>
+
+<p>
+  At hindi rin automatic na unfair kapag hindi ang may pinakamataas na statistics ang napili.
+</p>
+
+<p>
+  Pero kapag ang pagkakataon ay nakadepende na sa kung sino ang nakakakilala sa iyo kaysa sa kung ano ang kaya mong ipakita sa parehong patas na proseso, ibang laro na iyon.
+</p>
+
+<p>
+  At kung gusto nating malaman kung may “palakasan,” hindi sapat ang kutob ng natalo.
+</p>
+
+<p>
+  Pero hindi rin sapat ang:
+</p>
+
+<blockquote>
+  <p>
+    “Trust the coach.”
+  </p>
+</blockquote>
+
+<p>
+  Mas magandang sagot ang sistema na kayang sabihin:
+</p>
+
+<p>
+  Ito ang criteria.<br>
+  Ito ang nakita namin.<br>
+  Ito ang parehong standard.<br>
+  At ito ang dahilan kung bakit ito ang naging desisyon.
+</p>
+
+<p>
+  Dahil sa tunay na patas na sports system, hindi kailangang pare-pareho ang resulta.
+</p>
+
+<p>
+  Ang kailangang patas ay ang pagkakataong masukat.
+</p>
+
+<p>
+  At walang atleta ang dapat mangailangan ng padrino para lamang magkaroon ng fair shot.
+</p>
+
+</div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Roberts, A. H., Greenwood, D. A., Stanley, M., Humberstone, C., Iredale, F., &amp; Raynor, A. (2019). <em>Coach knowledge in talent identification: A systematic review and meta-synthesis.</em> Journal of Science and Medicine in Sport, 22(10), 1163–1172. DOI: 10.1016/j.jsams.2019.05.008.
+    </li>
+
+    <li>
+      Johnston, K., Wattie, N., Schorer, J., &amp; Baker, J. (2018). <em>Talent Identification in Sport: A Systematic Review.</em> Sports Medicine, 48, 97–109. DOI: 10.1007/s40279-017-0803-2.
+    </li>
+
+    <li>
+      Roberts, A., Johnston, K., &amp; Raynor, A. (2026). <em>“Not everybody has the ability to see talent, but I can”: A longitudinal case-study of a coach’s process of identifying and selecting talent.</em> Journal of Sports Sciences, 44(17–18), 2494–2508. DOI: 10.1080/02640414.2025.2570032.
+    </li>
+
+    <li>
+      Cobley, S., Baker, J., Wattie, N., &amp; McKenna, J. (2009). <em>Annual age-grouping and athlete development: A meta-analytical review of relative age effects in sport.</em> Sports Medicine, 39(3), 235–256. DOI: 10.2165/00007256-200939030-00005.
+    </li>
+
+    <li>
+      Furley, P., &amp; Memmert, D. (2016). <em>Coaches’ implicit associations between size and giftedness: Implications for the relative age effect.</em> Journal of Sports Sciences, 34(5), 459–466. DOI: 10.1080/02640414.2015.1061198.
+    </li>
+
+    <li>
+      Sweeney, L., MacNamara, Á., &amp; Taylor, J. (2023). <em>International selection and competition in youth sport: Pin the tail on the donkey or targeted intervention?</em> Frontiers in Sports and Active Living, 5, 1298909. DOI: 10.3389/fspor.2023.1298909.
+    </li>
+
+    <li>
+      Owen, K. B., Nau, T., Reece, L. J., et al. (2022). <em>Fair play? Participation equity in organised sport and physical activity among children and adolescents in high income countries: A systematic review and meta-analysis.</em> International Journal of Behavioral Nutrition and Physical Activity, 19, 27. DOI: 10.1186/s12966-022-01263-7.
+    </li>
+
+    <li>
+      Johnston, K., Wang, Y., Trace, J., et al. (2026). <em>A Bayesian perspective on geographic influences in coach decision-making for athlete identification and selection.</em> Scientific Reports, 16, 8234. DOI: 10.1038/s41598-025-30791-y.
+    </li>
+
+    <li>
+      Warmenhoven, J., Weissensteiner, J. R., &amp; MacMahon, C. (2021). <em>“It takes a village”: The sources and types of support in development of male cricket players.</em> Journal of Science and Medicine in Sport, 24(2), 164–170. DOI: 10.1016/j.jsams.2020.07.010.
+    </li>
+
+    <li>
+      Crawford, K., Arnold, R., McKay, C., &amp; McEwan, D. (2024). <em>Coaching teamwork: Team sport athletes’ and coaches’ perceptions of how coaches facilitate teamwork.</em> Journal of Applied Sport Psychology, 36(5), 697–721. DOI: 10.1080/10413200.2023.2299203.
+    </li>
+
+    <li>
+      De Backer, M., Boen, F., Ceux, T., et al. (2011). <em>Do perceived justice and need support of the coach predict team identification and cohesion?</em> Psychology of Sport and Exercise, 12(2), 192–201. DOI: 10.1016/j.psychsport.2010.09.009.
+    </li>
+
+    <li>
+      De Backer, M., Reynders, B., Boen, F., Van Puyenbroeck, S., &amp; Vande Broek, G. (2018). <em>Do coaching style and game circumstances predict athletes’ perceived justice of their coach?</em> PLOS ONE, 13(10), e0205559. DOI: 10.1371/journal.pone.0205559.
+    </li>
+
+    <li>
+      Kelly, A. L., Johnston, K., Till, K., et al. (2026). <em>Principles of talent identification in sport: The Talent Identification and Development Environments in Sport (TIDES) Society position statement.</em> Journal of Sports Sciences, 44(17–18), 2202–2217. DOI: 10.1080/02640414.2026.2705709.
+    </li>
+
+    <li>
+      Bonifacio, M. F. (1977). <em>An Exploration into Some Dominant Features of Filipino Social Behavior.</em> Philippine Journal of Psychology, 10(1), 29–36.
+    </li>
+
+    <li>
+      Pe-Pua, R., &amp; Protacio-Marcelino, E. A. (2000). <em>Sikolohiyang Pilipino (Filipino psychology): A legacy of Virgilio G. Enriquez.</em> Asian Journal of Social Psychology, 3(1), 49–71. DOI: 10.1111/1467-839X.00054.
+    </li>
+
+    <li>
+      Blanco, D. V. (2016). <em>Sports governance stakeholders, actors and policies in the Philippines: Current issues, challenges and future directions.</em> Asia Pacific Journal of Sport and Social Science, 5(3), 165–186. DOI: 10.1080/21640599.2016.1227544.
+    </li>
+
+    <li>
+      Ramos, R. A., &amp; De Bosscher, V. (2026). <em>Sport policy in the Philippines: Institutional dynamics and context conditions.</em> International Journal of Sport Policy and Politics. DOI: 10.1080/19406940.2026.2633129.
+    </li>
+
+    <li>
+      1987 Philippine Constitution, Article XIV, Section 19.
+    </li>
+
+    <li>
+      Republic Act No. 6847 — Philippine Sports Commission Act, particularly Sections 6 and 13(i).
+    </li>
+
+    <li>
+      Philippine Sports Commission — <em>Batang Pinoy</em>, official program description.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
