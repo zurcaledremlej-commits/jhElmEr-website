@@ -1,1 +1,2072 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Fact-based na paliwanag kung bakit hindi dapat matapos sa Teacher's Day celebration ang pagpapahalaga sa mga guro, at kung bakit dapat itong makita sa suporta, oras, benepisyo, at working conditions sa buong taon."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-teacher-day.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-teacher-day.html"
+>
+
+<title>PARA SA GURO—O PARA SA PROGRAMA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+        <h1 class="article-title">
+  PARA SA GURO—O PARA SA PROGRAMA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-teacher-day.png"
+      alt="Teacher na nasa gitna ng Teacher's Day celebration habang napapalibutan ng dekorasyon, malaking orasan, at tambak na papeles—sumasagisag sa tanong kung ang pagdiriwang ba ay tunay na para sa guro o para sa mismong programa."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Sa maraming Teacher’s Day celebrations, pamilyar na ang eksena—speeches, performances, raffles, picture-taking at paulit-ulit na mensaheng:
+  </p>
+
+  <blockquote>
+    <p>
+      “Salamat, Teacher.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero habang mas nakasanayan natin ang ganitong paraan ng pagdiriwang, may isang simpleng tanong na madaling mawala sa gitna ng programa:
+    <strong>KUNG ARAW TALAGA ITO PARA SA GURO—GAANO KARAMI SA GINAGAWA NATIN ANG TALAGANG PARA SA KANILA, AT GAANO KARAMI ANG NAGING BAHAGI NA LANG NG TAUNANG ROUTINE?</strong>
+  </p>
+
+  <p>
+    Dahil puwedeng sincere ang appreciation at maganda ang intensyon ng selebrasyon—pero hindi ibig sabihin na iyon na rin ang pinakamakabuluhang paraan ng pagpapahalaga.
+  </p>
+
+  <p>
+    Kung ang isang buong araw ay tinatawag na “para sa teachers,” makatuwirang itanong kung ang guro ba ang tunay na sentro nito: sa oras, sa pahinga, sa benepisyo, sa pagpili kung paano niya gustong gugulin ang araw—at sa suportang nararamdaman niya kahit tapos na ang programa.
+  </p>
+
+  <p>
+    Walang masama sa Teacher’s Day celebration.
+  </p>
+
+  <p>
+    May halaga ang tribute. May halaga ang simpleng “thank you.” May halaga ang pagkilala sa mga gurong araw-araw na nagtuturo, gumagabay at may malaking papel sa paghubog ng mga bata.
+  </p>
+
+  <p>
+    May halaga rin ang programa, entertainment, pagkain, regalo at pagkakataong magsama-sama.
+  </p>
+
+  <h2>
+    PERO HINDI DAPAT DITO NATATAPOS ANG APPRECIATION.
+  </h2>
+
+  <p>
+    Dahil kapag taon-taon ay halos pareho ang cycle—speeches, performances, raffles, palakpakan, picture-taking at social-media posts—may panganib na ang isang mahalagang pagkilala ay maging taunang ritwal na lamang.
+  </p>
+
+  <p>
+    Hindi dahil mali ang selebrasyon. Kundi dahil puwedeng maging napakalakas ng simbolikong pagpapahalaga habang napakaliit naman ng nagbabago sa mismong araw-araw na buhay ng gurong ipinagdiriwang.
+  </p>
+
+  <h2>
+    ANG OCTOBER 5 AY ARAW NG PAGKILALA—HINDI LIMITASYON NG PAGPAPAHALAGA
+  </h2>
+
+  <p>
+    May isang framing na kailangang maitama.
+  </p>
+
+  <p>
+    Hindi October 5 ang “isang araw para mahalin at pahalagahan ang mga guro” na para bang doon lang dapat ipakita ang appreciation.
+  </p>
+
+  <p>
+    Sa ilalim ng Republic Act No. 10743, October 5 ang National Teachers’ Day at isa itong special working holiday. Hinihikayat ng batas ang meaningful observance at pagbibigay ng sapat na panahon at pagkakataon para makilahok sa mga aktibidad para rito.
+  </p>
+
+  <p>
+    Mas malawak pa rito, September 5 hanggang October 5 ng bawat taon ang National Teachers’ Month sa ilalim ng Proclamation No. 242. Bahagi mismo ng layunin nito ang pagpapataas ng public awareness sa halaga ng teachers at pagpapahayag ng appreciation sa kanila.
+  </p>
+
+  <p>
+    Ibig sabihin, may espesyal na araw at buwan upang ituon ang pambansang pansin sa mga guro.
+  </p>
+
+  <p>
+    Pero hindi nito ginagawang seasonal ang tunay na pagpapahalaga.
+  </p>
+
+  <blockquote>
+    <p>
+      MAY ARAW NG PAGKILALA.<br>
+      PERO ANG RESPETO, SUPORTA AT MALASAKIT AY DAPAT NAKIKITA SA BUONG TAON.
+    </p>
+  </blockquote>
+
+  <p>
+    Sa workload.<br>
+    Sa working conditions.<br>
+    Sa professional support.<br>
+    Sa compensation at benefits.<br>
+    Sa oras na natitira para sa pamilya at sarili.
+  </p>
+
+  <p>
+    At sa paraan ng pakikitungo sa kanila kahit walang stage, microphone o camera.
+  </p>
+
+  <h2>
+    DAHIL ANG “ARAW PARA SA GURO” AY HINDI AWTOMATIKONG ARAW PARA SA SARILI NG GURO
+  </h2>
+
+  <p>
+    Madalas sabihin sa Teacher’s Day program:
+  </p>
+
+  <blockquote>
+    <p>
+      “Teacher, araw ninyo ito.”
+    </p>
+  </blockquote>
+
+  <p>
+    Magandang mensahe iyon.
+  </p>
+
+  <p>
+    Pero puwede rin tayong magtanong:
+    <strong>KUNG ARAW TALAGA IYON PARA SA GURO, GAANO KALAKING BAHAGI NG ARAW ANG SIYA MISMO ANG MAY KONTROL?</strong>
+  </p>
+
+  <p>
+    May gurong gustong dumalo sa concert. May gustong makipagsaya sa mga kasamahan. May gustong sumali sa games. May gustong manood ng performances.
+  </p>
+
+  <p>
+    At walang masama roon.
+  </p>
+
+  <p>
+    Pero hindi pare-pareho ang tao.
+  </p>
+
+  <p>
+    May gurong mas gustong makauwi nang maaga. May gustong makasama ang pamilya. May gustong matulog. May personal na lakad na matagal nang hindi maasikaso. May gustong lumabas kung saan niya gusto.
+  </p>
+
+  <p>
+    At mayroon ding gustong magkaroon lamang ng ilang oras na walang classroom, paperwork, meeting, program o obligasyong kailangang isipin.
+  </p>
+
+  <p>
+    Kaya hindi sapat na sabihing ang event ay “para sa teachers.”
+  </p>
+
+  <p>
+    Mahalagang itanong din kung <strong>TEACHER-CENTERED</strong> ba talaga ang design ng appreciation.
+  </p>
+
+  <h2>
+    MAY DATOS KUNG BAKIT MAHALAGA ANG ORAS AT PAHINGA
+  </h2>
+
+  <p>
+    Hindi maliit ang workload context nito sa Philippine public-school system.
+  </p>
+
+  <p>
+    Sa nationally representative study ng EDCOM II at IDinsight, katuwang ang DepEd, nangalap ng datos mula sa 2,283 schools, 2,246 school heads, 14,892 public-school teachers at 1,713 Administrative Officer IIs.
+  </p>
+
+  <p>
+    Lumabas na ang public-school teachers sa study ay nagre-report ng average na 52 oras na trabaho kada linggo, kasama ang weekends.
+  </p>
+
+  <p>
+    Humigit-kumulang 45% lamang nito ang classroom instruction.
+  </p>
+
+  <p>
+    Sa average, nasa 17.8 oras bawat linggo ang ancillary work, 8.1 oras ang school-related assignments, at may iba pang informal at administrative work.
+  </p>
+
+  <p>
+    Sa mas bagong EDCOM II National Education Plan, iniulat din na 42% ng public-school teachers sa data ang nagtatrabaho nang higit sa 50 oras kada linggo.
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na Teacher’s Day programs mismo ang sanhi ng workload problem. Hindi iyon ang sinukat ng pag-aaral.
+  </p>
+
+  <p>
+    Pero mahalaga ang context:
+    <strong>ANG GURO AY HINDI DUMARATING SA ISANG SELEBRASYON NA HIWALAY SA ARAW-ARAW NIYANG WORKLOAD.</strong>
+  </p>
+
+  <p>
+    Ang isang buong araw na activity ay pumapasok sa buhay ng taong may classroom duties, lesson preparation, checking, reports, school assignments, programs at personal responsibilities din pagkatapos ng trabaho.
+  </p>
+
+  <p>
+    Kaya may malaking pagkakaiba sa pagitan ng:
+  </p>
+
+  <blockquote>
+    <p>
+      “May programa kami para sa iyo.”
+      <br><br>
+      at
+      <br><br>
+      “May oras kang ikaw mismo ang magpapasya kung paano mo gagamitin.”
+    </p>
+  </blockquote>
+
+  <h2>
+    ANG PAHINGA AY HINDI LANG “WALANG TRABAHO”
+  </h2>
+
+  <p>
+    May teacher-specific research na nagpapaliwanag kung bakit mahalaga ang totoong separation mula sa trabaho.
+  </p>
+
+  <p>
+    Isang systematic review noong 2020 ang nagsuri ng 12 studies tungkol sa psychological detachment at work-related rumination ng teachers.
+  </p>
+
+  <p>
+    Ang psychological detachment ay hindi simpleng paglabas ng school gate. Ito ang kakayahang mentally makahiwalay muna sa trabaho kapag off-duty na.
+  </p>
+
+  <p>
+    Sa review, ang mataas na workload at ibang job stressors ay nauugnay sa mas mababang psychological detachment. Ang mababang detachment at patuloy na work-related rumination ay naiugnay naman sa poorer sleep at iba pang indicators ng strain, habang kabilang din sa literature na nirepaso ang burnout at depressive symptoms.
+  </p>
+
+  <p>
+    Mahalaga ang distinction.
+  </p>
+
+  <p>
+    Puwedeng wala ka sa classroom pero trabaho pa rin ang nasa isip. Puwedeng “day off” sa papel pero may reports, messages, preparation at responsibilities na patuloy na sumusunod.
+  </p>
+
+  <p>
+    Kaya ang tunay na recovery ay hindi lang walang klase. May halaga rin ang pagkakataong makalayo muna mentally sa trabaho.
+  </p>
+
+  <h2>
+    MAHALAGA RIN KUNG SINO ANG MAY KONTROL SA ORAS
+  </h2>
+
+  <p>
+    May isa pang teacher study na mahalagang tingnan dito.
+  </p>
+
+  <p>
+    Sa pag-aaral sa 909 Finnish teachers at school principals, tiningnan ang iba't ibang recovery experiences kapag wala na sila sa trabaho—kabilang ang psychological detachment, relaxation at control over off-job time.
+  </p>
+
+  <p>
+    Ang ibig sabihin ng control ay simple:
+    <strong>MAY KAKAYAHAN KANG MAGPASYA KUNG ANO ANG GAGAWIN MO SA SARILI MONG LEISURE TIME.</strong>
+  </p>
+
+  <p>
+    Sinukat mismo sa study ang sense na kayang magdesisyon ng tao para sa sarili niya kung paano gagamitin ang kanyang free time.
+  </p>
+
+  <p>
+    Mahalagang caveat: Finnish teachers ang sample nito, hindi Filipino teachers.
+  </p>
+
+  <p>
+    At hindi nito tinanong kung:
+  </p>
+
+  <blockquote>
+    <p>
+      “Mas gusto ba ng teachers ang day off kaysa Teacher’s Day program?”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi natin dapat gamitin ang study para sabihing iyon ang preference ng lahat ng guro.
+  </p>
+
+  <p>
+    Ang sinusuportahan nito ay mas limitado pero mahalaga:
+    <strong>MAY DOCUMENTED VALUE ANG RECOVERY AT PAGKAKAROON NG CONTROL SA SARILING OFF-JOB TIME.</strong>
+  </p>
+
+  <p>
+    At iyon ang nagbibigay ng research basis sa tanong:
+    Kung nais nating magbigay ng oras “para sa teacher,” bakit hindi rin natin pag-usapan ang oras na teacher mismo ang may kapangyarihang magpasya kung paano gagamitin?
+  </p>
+
+            <h2>
+    AT MAS MALAWAK PA ANG EBIDENSYA SA TEACHER WELL-BEING
+  </h2>
+
+  <p>
+    Hindi lang recovery studies ang dahilan kung bakit mahalagang pag-usapan ang oras, workload at working conditions.
+  </p>
+
+  <p>
+    Isang 2024 meta-analysis sa <em>Educational Psychology Review</em> ang nagsama ng 173 studies at 89,876 participants upang suriin ang iba't ibang factors na may kaugnayan sa teacher well-being.
+  </p>
+
+  <p>
+    Sa maraming factors na sinuri, lumitaw ang work-life balance bilang isa sa pinakamalalakas na positibong factors na nauugnay sa general teacher well-being. Sinuri rin ng meta-analysis ang papel ng job resources, motivation, social relationships, competencies at iba pang personal at workplace factors.
+  </p>
+
+  <p>
+    Ibig sabihin, kapag teacher well-being ang pinag-uusapan, hindi sapat na tingnan lamang kung masaya ang isang event.
+  </p>
+
+  <p>
+    Kasama sa mas malaking usapan ang:<br>
+    May hangganan ba ang trabaho?<br>
+    May oras ba para sa buhay sa labas ng school?<br>
+    May resources ba para magawa nang maayos ang trabaho?<br>
+    May sapat bang support para hindi personal na sakripisyo ang laging sumasalo sa kakulangan?
+  </p>
+
+  <p>
+    At may isa pang dahilan kung bakit hindi dapat ituring na personal concern lamang ng teacher ang kanyang well-being.
+  </p>
+
+  <p>
+    Noong 2026, isang systematic review at meta-analysis sa <em>Educational Psychology Review</em> ang nagsama ng 186 articles, 811 effect sizes at data mula sa 355,637 teachers.
+  </p>
+
+  <p>
+    Nakakita ito ng small but significant positive association sa pagitan ng teacher well-being at student motivation/achievement, at negative association naman sa pagitan ng teacher ill-being at student outcomes.
+  </p>
+
+  <p>
+    Pero mahalagang huwag sosobra ang claim.
+  </p>
+
+  <p>
+    Hindi nito pinatutunayang kapag binigyan ng isang dagdag na rest day ang teachers ay awtomatikong tataas ang grades ng students. Hindi rin nito pinatutunayang teacher well-being lamang ang sanhi ng student performance.
+  </p>
+
+  <blockquote>
+    <p>
+      ASSOCIATION ANG NAKITA—HINDI SIMPLENG ONE-WAY CAUSATION.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero mahalaga ang ipinapakita nito: Ang kapakanan ng teacher ay hindi lang personal na usapin na hiwalay sa classroom.
+  </p>
+
+  <blockquote>
+    <p>
+      BAHAGI ITO NG MAS MALAKING EDUCATIONAL ENVIRONMENT KUNG SAAN NAGTUTURO ANG TEACHER AT NATUTUTO ANG BATA.
+    </p>
+  </blockquote>
+
+  <h2>
+    MAY MAS MALALIM DING USAPIN SA “BAYANI ANG GURO”
+  </h2>
+
+  <p>
+    Isa sa pinakamagandang pagkilala sa mga guro ang pagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bayani ang mga guro.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi kailangang alisin iyon.
+  </p>
+
+  <p>
+    Maraming teacher ang tunay na nagbibigay nang higit sa minimum na hinihingi ng trabaho.
+  </p>
+
+  <p>
+    Pero may interesting na Philippine socio-cultural critique tungkol dito.
+  </p>
+
+  <p>
+    Noong 2026, inilathala sa <em>Canadian Review of Sociology</em> ang sociological analysis ni Filipino scholar Louie Giray tungkol sa tinatawag niyang teacher-as-hero o kabayanihan narrative sa Philippine education.
+  </p>
+
+  <p>
+    Ang argumento niya: Maaaring maging problematic kapag ang kabayanihan ng guro ay masyadong nakakabit sa pagtitiis, personal na sakripisyo at willingness na saluhin ang kakulangan ng sistema.
+  </p>
+
+  <p>
+    Sa analysis niya, may panganib na ang structural problems at invisible labor ay ma-normalize kapag ang patuloy na pagsasakripisyo ay nire-reframe bilang personal virtue o kabayanihan.
+  </p>
+
+  <p>
+    Mahalagang linawin: Hindi ito nationwide survey na nagpapatunay na lahat ng Filipino teachers ay ganito ang karanasan.
+  </p>
+
+  <p>
+    Isa itong sociological argument at structural critique.
+  </p>
+
+  <p>
+    Pero napakahalaga ng tanong na binubuksan nito:
+  </p>
+
+  <blockquote>
+    <p>
+      KAILAN NAGIGING PAGKILALA ANG PAGPURI SA SAKRIPISYO—AT KAILAN NAMAN NITO HINDI SINASADYANG GINAGAWANG NORMAL ANG PATULOY NA PAGSASAKRIPISYO?
+    </p>
+  </blockquote>
+
+  <h2>
+    HINDI MALI ANG “BAYANI”—PERO HUWAG NATING GAWING REQUIREMENT ANG PAGTITIIS
+  </h2>
+
+  <p>
+    May malaking pagkakaiba sa dalawang mensahe:
+  </p>
+
+  <blockquote>
+    <p>
+      “Bayani kayo dahil sa malasakit at ambag ninyo sa mga bata.”
+      <br><br>
+      at
+      <br><br>
+      “Bayani kayo kaya kayanin ninyo na lang ang anumang kakulangan.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang una ay pagkilala. Ang ikalawa ay maaaring maging normalization ng burden.
+  </p>
+
+  <p>
+    Hindi dapat kailanganing laging ubusin ng guro ang sarili para mapatunayan na dedicated siya. Hindi dapat maging sukatan ng mabuting teacher kung gaano karaming personal na oras ang kaya niyang isakripisyo.
+  </p>
+
+  <p>
+    At hindi dapat maging sagot sa structural problem ang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Para naman sa mga bata.”
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil puwedeng parehong totoo ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      DEDICATED ANG TEACHER.<br>
+      AT MAY OBLIGASYON PA RIN ANG SISTEMA NA SUPORTAHAN SIYA.
+    </p>
+  </blockquote>
+
+  <p>
+    Ang kabayanihan ay dapat kilalanin.
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI DAPAT GAMITIN ANG KABAYANIHAN BILANG KAPALIT NG MAAYOS NA KONDISYON SA TRABAHO.
+    </p>
+  </blockquote>
+
+  <h2>
+    KAYA HINDI SAPAT ANG SYMBOLIC APPRECIATION
+  </h2>
+
+  <p>
+    May halaga ang symbolic recognition.
+  </p>
+
+  <p>
+    Kailangan din ng tao na marinig:
+  </p>
+
+  <blockquote>
+    <p>
+      “Salamat.”<br>
+      “Nakikita namin ang ginagawa ninyo.”<br>
+      “Mahalaga ang ambag ninyo.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi natin dapat maliitin iyon.
+  </p>
+
+  <p>
+    Pero may pagkakaiba ang symbolic appreciation at substantive support.
+  </p>
+
+  <p>
+    Ang isa ay nagsasabing:
+  </p>
+
+  <blockquote>
+    <p>
+      “Pinahahalagahan ka namin.”
+    </p>
+  </blockquote>
+
+  <p>
+    Ang isa naman ay nagpaparamdam nito sa pamamagitan ng:
+    oras, working conditions, reasonable workload, professional support, resources, compensation, benefits, at pagkakataong magkaroon din ng buhay sa labas ng trabaho.
+  </p>
+
+  <p>
+    Hindi kailangang pumili sa dalawa.
+  </p>
+
+  <blockquote>
+    <p>
+      MAS BUO ANG APPRECIATION KAPAG PAREHO SILANG NAROON.
+    </p>
+  </blockquote>
+
+  <h2>
+    AT HINDI RIN WALANG HALAGA ANG “THANK YOU”
+  </h2>
+
+  <p>
+    Hindi rin tama ang kabilang extreme na parang walang saysay ang tribute, appreciation message o simpleng pasasalamat.
+  </p>
+
+  <p>
+    May research mismo tungkol dito.
+  </p>
+
+  <p>
+    Sa isang 2024 Australian study ng #ThankYourTeacher campaign, sinuri ng researchers ang 328 public social-media posts na may expressions of gratitude para sa teachers.
+  </p>
+
+  <p>
+    Mas maraming mensahe ang nakatuon sa tinatawag nilang Heart at Hands dimensions—tulad ng kindness, empathy, encouragement, social at emotional support, enthusiasm at leadership—kaysa sa subject knowledge lamang.
+  </p>
+
+  <p>
+    Mahalaga iyon.
+  </p>
+
+  <p>
+    Ipinapakita nitong sa campaign na iyon, kapag naaalala at pinasasalamatan ng mga tao ang teachers, hindi lamang pagtuturo ng lesson ang naaalala.
+  </p>
+
+  <p>
+    Kasama rin ang pakikitungo, paggabay, pag-encourage at pagiging present sa buhay ng estudyante.
+  </p>
+
+  <p>
+    Pero kailangan ding maging maingat sa interpretation.
+  </p>
+
+  <p>
+    Ang study ay analysis ng responses sa isang Australian gratitude campaign. Hindi nito pinatunayan na ang isang Teacher’s Day program ay awtomatikong nagpapataas ng well-being ng teachers.
+  </p>
+
+  <p>
+    Mismong researchers ay nagsabing kailangan pa ng further research para malaman kung paano talaga tinatanggap ng teachers ang ganitong public expressions of gratitude at kung nakaaapekto ito sa kanilang perceived appreciation.
+  </p>
+
+  <p>
+    Kaya ang tamang framing ay hindi:
+  </p>
+
+  <blockquote>
+    <p>
+      “Walang silbi ang thank you.”
+      <br><br>
+      At hindi rin:
+      <br><br>
+      “Sapat na ang thank you.”
+    </p>
+  </blockquote>
+
+  <p>
+    Mas tama:
+  </p>
+
+  <blockquote>
+    <p>
+      MAY TUNAY NA LUGAR ANG PAGKILALA AT PASASALAMAT.<br>
+      PERO HINDI SILA KAPALIT NG MAAYOS NA WORKING CONDITIONS AT INSTITUTIONAL SUPPORT.
+    </p>
+  </blockquote>
+
+  <p>
+    Puwedeng maging sincere ang “thank you” at kulang pa rin ang suporta. Puwedeng totoong pinahahalagahan ng organizer ang teachers at maaari pa ring itanong kung may mas magandang paraan para maging mas teacher-centered ang celebration.
+  </p>
+
+  <p>
+    Hindi kailangang kontrahin ang appreciation.
+  </p>
+
+  <p>
+    <strong>KAILANGAN LANG PALALIMIN ITO.</strong>
+  </p>
+
+  <h2>
+    AT DITO PAPASOK ANG RAFFLE
+  </h2>
+
+  <p>
+    Walang masama sa raffle.
+  </p>
+
+  <p>
+    Masaya ito.
+  </p>
+
+  <p>
+    May excitement. May mga gurong maaaring makapag-uwi ng appliance, gadget, cash o iba pang premyo.
+  </p>
+
+  <p>
+    Pero mahalagang huwag paghaluin ang dalawang bagay:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG RAFFLE AY CHANCE NA MAKATANGGAP NG BENEFIT.<br>
+      ANG BROADLY DISTRIBUTED BENEFIT AY SADYANG DINISENYO UPANG UMAABOT SA LAHAT NG QUALIFIED RECIPIENTS.
+    </p>
+  </blockquote>
+
+  <p>
+    Kung 1,000 teachers ang dumalo at sampu lang ang nanalo sa raffle, may tunay na pakinabang ang sampung iyon. Pero ang benepisyo ng raffle ay nanatiling para sa iilan—hindi sa lahat ng gurong dumalo.
+  </p>
+
+  <p>
+    Kaya kung institutional o public resources ang ginagamit sa appreciation, lehitimong itanong:
+  </p>
+
+  <blockquote>
+    <p>
+      ANO ANG OBJECTIVE?
+    </p>
+  </blockquote>
+
+  <p>
+    Kung entertainment ang objective, may lugar ang raffle. Kung broad teacher support ang objective, mahalagang tingnan ang reach.
+  </p>
+
+  <p>
+    Ilan ang actual beneficiaries?<br>
+    Ano ang halaga ng benefit bawat isa?<br>
+    May epekto ba pagkatapos ng event?<br>
+    May mas equitable bang paraan ng paggamit ng available resources?
+  </p>
+
+  <p>
+    Hindi ibig sabihin nito na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Cash na lang lahat.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi rin puwedeng basta gawing cash distribution ang anumang event budget.
+  </p>
+
+  <p>
+    May appropriation, budgeting, accounting, procurement at auditing rules na kailangang sundin.
+  </p>
+
+  <p>
+    Pero mahalaga pa ring pag-usapan ang <strong>DESIGN NG APPRECIATION.</strong>
+  </p>
+
+  <h2>
+    MAY PRECEDENT NA ANG SUPPORT AY PUWEDENG DIREKTANG UMAABOT SA GURO
+  </h2>
+
+  <p>
+    Sa ilalim ng Republic Act No. 11997 o <em>Kabalikat sa Pagtuturo Act</em>, ang covered public-school teachers ay binibigyan ng ₱10,000 teaching allowance mula School Year 2025–2026 onward.
+  </p>
+
+  <p>
+    May partikular itong purpose: teaching supplies, materials, incidental expenses at iba pang authorized learning-delivery costs.
+  </p>
+
+  <p>
+    Kaya hindi ito generic Teacher’s Day cash gift.
+  </p>
+
+  <p>
+    Hiwalay dito, sa FY 2026 General Appropriations Act, may ₱1,000 World Teachers’ Day Incentive Benefit per teacher, subject sa applicable DepEd guidelines at budgeting, accounting at auditing rules.
+  </p>
+
+  <p>
+    Mahalagang maging date-specific dito: Ang ₱1,000 amount na ito ay nakasaad sa FY 2026 appropriation at hindi natin dapat ipalagay na permanenteng pareho ang halaga sa lahat ng susunod na taon.
+  </p>
+
+  <p>
+    Magkaiba rin ang legal purpose ng mga benepisyong ito.
+  </p>
+
+  <p>
+    Hindi sila simpleng pera na maaaring ipalit sa anumang local Teacher’s Day program.
+  </p>
+
+  <p>
+    Pero may ipinapakita silang mahalagang principle:
+  </p>
+
+  <blockquote>
+    <p>
+      ANG APPRECIATION AT SUPPORT AY HINDI KAILANGANG PURO SYMBOLIC.
+    </p>
+  </blockquote>
+
+  <p>
+    Puwede ring magkaroon ng benefit na may malinaw at direktang recipient.
+  </p>
+
+            <h2>
+    PAANO KUNG ANG “ARAW PARA SA GURO” AY TALAGANG MAY BAHAGING NASA KAMAY NG GURO?
+  </h2>
+
+  <p>
+    Dito puwedeng pumasok ang isang mas seryosong policy discussion.
+  </p>
+
+  <p>
+    Sa kasalukuyang batas, special working holiday ang October 5. Hindi ito automatic rest day.
+  </p>
+
+  <p>
+    Kaya hindi natin puwedeng sabihing may existing right na ang teachers sa isang extra day off dahil Teacher’s Day.
+  </p>
+
+  <blockquote>
+    <p>
+      Wala.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero ibang tanong ang:
+  </p>
+
+  <blockquote>
+    <p>
+      KARAPAT-DAPAT BA ITONG PAG-ARALAN BILANG POLICY OPTION?
+    </p>
+  </blockquote>
+
+  <p>
+    Kung kaya ng school calendar, legal authority at operational requirements, maaaring pag-usapan ang isang protected teacher-directed rest o non-teaching day, o ibang arrangement kung saan ang bahagi ng appreciation ay hindi panibagong mandatory activity kundi tunay na oras para sa teacher.
+  </p>
+
+  <p>
+    At dito nagiging relevant ang recovery research.
+  </p>
+
+  <p>
+    Hindi dahil napatunayang lahat ng teachers ay mas gusto ang day off kaysa celebration. Hindi iyon ang sinasabi ng ebidensya. Kundi dahil may documented value ang psychological detachment, relaxation at control over off-job time sa teacher recovery at well-being.
+  </p>
+
+  <p>
+    Kung gusto niyang magpahinga—oras niya.<br>
+    Kung gusto niyang makasama ang pamilya—oras niya.<br>
+    Kung gusto niyang gumala—oras niya.<br>
+    Kung gusto niyang manatili sa bahay—oras niya.<br>
+    Kung gusto niyang makipag-celebrate—puwede rin.
+  </p>
+
+  <p>
+    Ang mahalagang prinsipyo:
+  </p>
+
+  <blockquote>
+    <p>
+      KUNG TALAGANG REGALO ANG ORAS, HINDI DAPAT LAHAT NG MINUTO NITO AY NAKA-PROGRAMA NA PARA SA TAONG TUMATANGGAP NG REGALO.
+    </p>
+  </blockquote>
+
+  <h2>
+    KAPAG PAREHO NA LANG TAON-TAON, MAY PANGANIB NA MAGING RITUAL NA LANG
+  </h2>
+
+  <p>
+    May value ang tradition.
+  </p>
+
+  <p>
+    Hindi masama ang taunang speech tungkol sa sakripisyo ng teachers. Hindi masama ang tribute song. Hindi masama ang performances. Hindi masama ang group photo. Hindi masama ang program.
+  </p>
+
+  <p>
+    Pero kung halos pareho ang mensahe taon-taon—
+  </p>
+
+  <blockquote>
+    <p>
+      “Salamat sa inyong sakripisyo.”<br>
+      “Bayani kayo.”<br>
+      “Hindi matatawaran ang inyong serbisyo.”
+    </p>
+  </blockquote>
+
+  <p>
+    —habang taon-taon ding bumabalik ang usapin tungkol sa workload, administrative burden, resources at teacher welfare, may lehitimong tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      KAILAN NAGIGING KONKRETONG SUPORTA ANG PAULIT-ULIT NA PAGKILALA?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi repetition ang problema.
+  </p>
+
+  <p>
+    Ang problema ay kapag <strong>ANG RECOGNITION NA MISMO ANG NAGIGING ENDPOINT.</strong>
+  </p>
+
+  <h2>
+    AT HINDI NATIN KAILANGANG HULAAN KUNG “PUBLICITY” ANG MOTIBO
+  </h2>
+
+  <p>
+    Hindi rin kailangang sabihin na ang isang mayor, governor, school official o organizer ay nagdaos ng Teacher’s Day celebration “para lang sa publicity.”
+  </p>
+
+  <p>
+    Kung walang ebidensya sa kanilang tunay na intensyon, speculation iyon.
+  </p>
+
+  <p>
+    Mas matibay ang civic question kapag ang sinusukat natin ay resulta.
+  </p>
+
+  <blockquote>
+    <p>
+      TEACHER-CENTERED BA O EVENT-CENTERED ANG DESIGN?<br>
+      GAANO KARAMI ANG RESOURCES NA NAPUNTA SA PRODUCTION AT ENTERTAINMENT?<br>
+      GAANO KARAMING TEACHERS ANG MAY DIREKTANG NAKUHANG BENEFIT?<br>
+      ANO ANG NAIWAN PAGKATAPOS NG SPEECHES, RAFFLE, PERFORMANCES AT PICTURE-TAKING?<br>
+      MAY SUPPORT BANG NARAMDAMAN PAGKATAPOS MAWALA ANG STAGE AT DECORATIONS?
+    </p>
+  </blockquote>
+
+  <p>
+    Diyan hindi natin kailangang basahin ang isip ng organizer. Makikita ang priorities sa design, allocation at outcomes.
+  </p>
+
+  <p>
+    At kapag mas visible ang event kaysa sa konkretong support na nararamdaman ng teachers, makatuwirang itanong kung sapat bang tawaging substantive appreciation ang selebrasyon lamang.
+  </p>
+
+  <h2>
+    HINDI ITO “CELEBRATION O SUPPORT”
+  </h2>
+
+  <p>
+    Hindi kailangang alisin ang Teacher’s Day celebration.
+  </p>
+
+  <p>
+    Puwedeng may tribute.<br>
+    Puwedeng may entertainment.<br>
+    Puwedeng may pagkain.<br>
+    Puwedeng may simpleng programa.<br>
+    Puwedeng may raffle kung may resources para rito.<br>
+    Puwedeng magbigay ng mensahe ang students, parents, officials at community.
+  </p>
+
+  <blockquote>
+    <p>
+      PERO HINDI KAILANGANG DOON MATAPOS.
+    </p>
+  </blockquote>
+
+  <p>
+    Puwedeng may celebration AT workload protection.<br>
+    Recognition AT professional support.<br>
+    Entertainment AT broadly distributed benefits.<br>
+    Tribute AT tunay na pahinga.<br>
+    “Thank you” AT konkretong tulong.
+  </p>
+
+  <p>
+    Doon nagiging mas buo ang appreciation.
+  </p>
+
+  <h2>
+    DAHIL ANG PAGPAPAHALAGA SA GURO AY HINDI DAPAT SEASONAL
+  </h2>
+
+  <p>
+    Ang teacher ay hindi lamang teacher kapag October 5.
+  </p>
+
+  <p>
+    Hindi lang siya pagod kapag Teacher’s Day. Hindi lamang niya kailangan ng suporta kapag may celebration. Hindi lamang kailangang respetuhin ang oras niya kapag may camera.
+  </p>
+
+  <p>
+    At hindi lamang isang araw mahalaga ang ambag niya.
+  </p>
+
+  <p>
+    Kaya walang mali sa pagkakaroon ng isang araw na sabay-sabay nating sabihin:
+  </p>
+
+  <blockquote>
+    <p>
+      “Salamat, Teacher.”
+    </p>
+  </blockquote>
+
+  <p>
+    Pero mas mabigat ang salitang salamat kapag makikita rin ito sa natitirang mga araw ng taon.
+  </p>
+
+  <p>
+    Sa workload na makatao.<br>
+    Sa oras na iginagalang.<br>
+    Sa resources na kailangan niya.<br>
+    Sa professional support na hindi lang pangako.<br>
+    Sa benefits na hindi nakasalalay sa kung mabubunot ang pangalan niya sa raffle.<br>
+    Sa pagkakataong magkaroon ng buhay sa labas ng trabaho.
+  </p>
+
+  <p>
+    At sa sistemang hindi kailangang hintayin ang Teacher’s Day bago maalalang <strong>ANG GURO AY HINDI LAMANG TAGAPAGBIGAY NG ORAS AT SAKRIPISYO—TAO RIN SIYANG NANGANGAILANGAN NG ORAS, SUPORTA AT PAHINGA.</strong>
+  </p>
+
+  <blockquote>
+    <p>
+      HINDI DAPAT MATAPOS SA “THANK YOU” ANG PAGPAPAHALAGA SA GURO.<br>
+      MAY HALAGA ANG SELEBRASYON—PERO HINDI ITO KAPALIT NG SUPPORT.
+    </p>
+  </blockquote>
+
+  <p>
+    AT KUNG TATAWAGIN NATIN ITONG “ARAW PARA SA GURO,” MAKATWIRANG ITANONG:
+  </p>
+
+  <blockquote>
+    <p>
+      GAANO KALAKING BAHAGI NG ARAW NA IYON ANG TALAGANG NASA KAMAY NG GURO?
+    </p>
+  </blockquote>
+
+  <p>
+    Dahil sa huli, hindi lang dapat tanungin kung gaano kasaya ang programa.
+  </p>
+
+  <blockquote>
+    <p>
+      MAS MAHALAGANG ITANONG KUNG ANO ANG NAIWAN SA GURO PAGKATAPOS NITO—AT KUNG ANG PAGPAPAHALAGANG IPINAKITA SA ISANG ARAW AY NARARAMDAMAN PA RIN NIYA SA NATITIRANG MGA ARAW NG TAON.
+    </p>
+  </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Republic Act No. 10743 — National Teachers’ Day Act
+    </li>
+
+    <li>
+      Proclamation No. 242, s. 2011 — National Teachers’ Month, September 5–October 5
+    </li>
+
+    <li>
+      EDCOM II / IDinsight — <em>Understanding Teacher Workload as a Systemic Issue</em>; nationally representative Philippine public-school study covering 2,283 schools and 14,892 teachers
+    </li>
+
+    <li>
+      EDCOM II — <em>National Education Plan</em>; teacher-workload findings, including the proportion working more than 50 hours weekly
+    </li>
+
+    <li>
+      Türktorun, Weiher &amp; Horz — <em>Psychological Detachment and Work-Related Rumination in Teachers: A Systematic Review</em>, <em>Educational Research Review</em> (2020)
+    </li>
+
+    <li>
+      Virtanen, De Bloom &amp; Kinnunen — <em>Relationships Between Recovery Experiences and Well-Being Among Younger and Older Teachers</em>, <em>International Archives of Occupational and Environmental Health</em> (2020)
+    </li>
+
+    <li>
+      Zhou, Slemp &amp; Vella-Brodrick — <em>Factors Associated with Teacher Wellbeing: A Meta-Analysis</em>, <em>Educational Psychology Review</em> (2024); 173 studies, N=89,876
+    </li>
+
+    <li>
+      <em>Association of Teacher Well-Being With Student Motivation and Achievement: A Systematic Review and Meta-Analysis</em>, <em>Educational Psychology Review</em> (2026); 186 articles, 811 effect sizes, data from 355,637 teachers
+    </li>
+
+    <li>
+      Allen et al. — <em>Expressions of Gratitude in Education: An Analysis of the #ThankYourTeacher Campaign</em>, <em>International Journal for Educational Integrity</em> (2024); Australian campaign, 328 public social-media posts
+    </li>
+
+    <li>
+      Giray — <em>Weaponized Virtue: Teachers’ Kabayanihan (Heroism) as a Form of Ideological Control and the Normalization of Systemic Neglect in Philippine Education</em>, <em>Canadian Review of Sociology</em> (2026)
+    </li>
+
+    <li>
+      Republic Act No. 11997 — <em>Kabalikat sa Pagtuturo Act</em>
+    </li>
+
+    <li>
+      FY 2026 General Appropriations Act — World Teachers’ Day Incentive Benefit, ₱1,000 per teacher, subject to applicable guidelines and government budgeting, accounting and auditing rules
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
