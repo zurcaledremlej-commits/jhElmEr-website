@@ -1,1 +1,2287 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+    <meta
+  name="description"
+  content="Basahin ang Civic Explainer ng jhElmEr tungkol sa organized social media influence operations, Oxford cyber troop research, coordinated online campaigns, at kung bakit ang viral ay hindi awtomatikong organic."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/civic-organisadong-operasyon.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/civic-organisadong-operasyon.html"
+>
+
+<title>OPINYON BA—O ORGANISADONG OPERASYON? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+      <header class="article-header">
+
+  <h1 class="article-title">
+    OPINYON BA—O ORGANISADONG OPERASYON?
+  </h1>
+
+</header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+      <figure class="article-image-figure">
+
+  <div class="article-image-frame">
+
+    <img
+      class="article-image"
+      src="images/civic-organisadong-operasyon.png"
+      alt="Biswal na paglalarawan ng isang smartphone na pinapalakas ng magkakaugnay na social media reactions, comments, hashtags at megaphones habang tila may mga puppet strings mula sa mga nakatagong operator—sumasagisag sa tanong kung ang nakikitang online opinion ay kusang nabuo o bahagi ng organisadong influence operation."
+    >
+
+  </div>
+
+</figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+  <p>
+    Sa social media, madaling mapaniwala ng dami.
+  </p>
+
+  <p>
+    Kapag paulit-ulit mong nakikita ang parehong mensahe—sa posts, comments, videos, pages, influencers at hashtags—madaling mabuo ang impresyon na:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ganito talaga ang iniisip ng maraming tao.”
+    </p>
+  </blockquote>
+
+  <p>
+    At posible namang totoo iyon.
+  </p>
+
+  <p>
+    May mga opinyong kusang kumakalat dahil maraming tao ang talagang naniniwala, sumusuporta, tumututol o nagagalit.
+  </p>
+
+  <p>
+    Pero may isa pang posibilidad na hindi agad nakikita sa screen: Ang mukhang sabay-sabay na opinyon ng maraming tao ay maaari ring may organisasyon, pondo, coordination at strategy sa likod nito.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na coordinated agad ang bawat magkakaparehong post. Hindi rin ibig sabihin na peke ang bawat viral na opinion.
+  </p>
+
+  <p>
+    Ang problema ay maaaring magmukhang magkapareho sa ordinaryong user ang organic na public reaction at organisadong influence operation.
+  </p>
+
+  <p>
+    Pareho silang puwedeng magkaroon ng maraming posts. Pareho silang puwedeng magkaroon ng libu-libong comments at shares. Pareho silang puwedeng mag-trending.
+  </p>
+
+  <p>
+    At pareho silang puwedeng magmukhang:
+  </p>
+
+  <blockquote>
+    <p>
+      “Ito ang sinasabi ng publiko.”
+    </p>
+  </blockquote>
+
+  <p>
+    Kaya hindi na sapat ang tanong na:
+  </p>
+
+  <blockquote>
+    <p>
+      “MARAMI BA TALAGANG NANINIWALA DITO?”
+    </p>
+  </blockquote>
+
+  <p>
+    May mas mahalagang tanong:
+  </p>
+
+  <blockquote>
+    <p>
+      KUSANG NABUO BA ANG NAKIKITA NATING OPINYON—O MAY ORGANISADONG SISTEMANG TUMUTULONG PARA PALAKASIN AT PAGMUKHAING MAS MALAWAK ITO?
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi bagong tanong iyan.
+  </p>
+
+  <p>
+    Mahigit isang dekada nang pinag-aaralan ng mga researchers kung paano ginagamit ang social media hindi lamang para magpahayag ng political opinion, kundi para organisadong hubugin kung ano ang nakikita, pinag-uusapan at pinaniniwalaan ng publiko.
+  </p>
+
+  <p>
+    At isa sa mga bansang paulit-ulit na lumitaw sa research ay ang Pilipinas.
+  </p>
+
+  <h2>
+    Ano Talaga ang Nakita ng Oxford?
+  </h2>
+
+  <p>
+    Noong 2017, inilabas ng Oxford Internet Institute ang <em>Troops, Trolls and Troublemakers: A Global Inventory of Organized Social Media Manipulation.</em>
+  </p>
+
+  <p>
+    Hindi lang nito hinanap kung may “fake news.”
+  </p>
+
+  <p>
+    Sinuri ng researchers ang mga organisasyong sangkot, paraan ng messaging, paggamit ng fake o automated accounts, coordination, personnel at resources sa organized social-media manipulation sa 28 bansa.
+  </p>
+
+  <p>
+    Ginamit ng researchers ang terminong <strong>“cyber troops”</strong> para tukuyin ang government, military o political-party teams na gumagamit ng social media upang subukang manipulahin ang public opinion.
+  </p>
+
+  <p>
+    Sa Pilipinas, lima ang organizational forms na tiningnan sa 2017 framework:
+  </p>
+
+  <ul>
+    <li>Government</li>
+    <li>Politicians and Parties</li>
+    <li>Civil Society</li>
+    <li>Citizens</li>
+    <li>Private Contractor</li>
+  </ul>
+
+  <p>
+    Sa lima, apat ang may documented evidence para sa Pilipinas:
+  </p>
+
+  <ul>
+    <li>Politicians and Parties</li>
+    <li>Civil Society</li>
+    <li>Citizens</li>
+    <li>Private Contractor</li>
+  </ul>
+
+  <p>
+    Walang government organization na nakalista sa Philippine row ng table noong panahong iyon.
+  </p>
+
+  <p>
+    Mismong Oxford table ang naglagay ng:
+  </p>
+
+  <blockquote>
+    <p>
+      NUMBER OF FORMS: 4
+    </p>
+  </blockquote>
+
+  <p>
+    Mathematically:
+  </p>
+
+  <blockquote>
+    <p>
+      4 sa 5 = 80% ng organizational categories na sinusubaybayan sa bahaging iyon ng study.
+    </p>
+  </blockquote>
+
+  <p>
+    Pero mahalagang malinaw: Hindi sinabi ng Oxford na “80% ang troll intensity ng Pilipinas.”
+  </p>
+
+  <p>
+    Hindi iyon 80% ng Filipino voters. Hindi iyon 80% ng social media. Hindi rin iyon 80% effectiveness.
+  </p>
+
+  <p>
+    Ang 80% ay simpleng arithmetic conversion lamang ng apat na documented organizational forms mula sa limang categories na ginagamit noon ng research.
+  </p>
+
+  <p>
+    Iyan ang tamang pagbasa.
+  </p>
+
+  <h2>
+    Hindi Lang Dami ng Account ang Nakita
+  </h2>
+
+  <p>
+    Sa parehong 2017 inventory, ang Philippine case ay may earliest reported activity noong 2016.
+  </p>
+
+  <p>
+    Nakalista rin ang humigit-kumulang US$200,000 na budget information, 400–500 na staff capacity, at organizational behavior na inilarawan bilang may maluwag o “liminal” membership pero may ilang coordination across teams.
+  </p>
+
+  <p>
+    Pero mahalagang linawin kung ano ang ibig sabihin ng mga numerong ito.
+  </p>
+
+  <p>
+    Hindi nagsagawa ang Oxford researchers ng independent financial audit ng campaign spending o sariling headcount ng 400–500 personnel.
+  </p>
+
+  <p>
+    Open-source comparative research ang 2017 inventory.
+  </p>
+
+  <p>
+    Sistematikong sinuri ng researchers ang published news reports, pagkatapos ay dinagdagan ang evidence base ng working papers at reports mula sa think tanks, government agencies, civil-society groups, universities at iba pang research sources.
+  </p>
+
+  <p>
+    Gumamit din sila ng country experts upang i-double-check ang published evidence.
+  </p>
+
+  <p>
+    Ang final news sample nila ay binubuo ng 83 articles, at hindi nila isinama ang impormasyong hindi nila kayang independently ma-verify sa published sources.
+  </p>
+
+  <p>
+    Kaya ang US$200,000 at 400–500 ay mas tamang basahin bilang documented estimates na isinama at sinuri ng Oxford sa comparative inventory—hindi bilang halagang personal na in-audit ng Oxford o sariling physical headcount ng research team.
+  </p>
+
+  <p>
+    Dito nagmula ang mga headline noon tungkol sa humigit-kumulang ₱10 milyon at daan-daang “trolls.”
+  </p>
+
+  <p>
+    Pero kapag doon lang tumigil ang kuwento, maliit na bahagi lamang ng research ang nakikita.
+  </p>
+
+  <p>
+    Dahil ang mas malaking tanong ng Oxford ay hindi lang:
+  </p>
+
+  <blockquote>
+    <p>
+      MAGKANO ANG GINASTOS?
+    </p>
+  </blockquote>
+
+  <p>
+    Kundi:
+  </p>
+
+  <blockquote>
+    <p>
+      SINO ANG ORGANISADO? PAANO SILA ORGANISADO? ANONG PARAAN ANG GINAGAMIT? AT GAANO KALAKI ANG CAPACITY NG OPERASYON?
+    </p>
+  </blockquote>
+
+  <h2>
+    Hindi Rin Natapos sa 2017
+  </h2>
+
+  <p>
+    Nagpatuloy ang Oxford research program.
+  </p>
+
+  <p>
+    Noong 2019 Global Inventory, ang Pilipinas ay classified bilang <strong>medium cyber-troop capacity</strong>, may permanent status at estimated team size na 300–500.
+  </p>
+
+  <p>
+    Sa Oxford framework, hindi lamang dami ng tao ang capacity.
+  </p>
+
+  <p>
+    Kinokonsidera rin ang number of actors, sophistication ng tools, dami ng campaigns, laki at permanency ng teams, at budgets o expenditures.
+  </p>
+
+  <p>
+    Pagdating sa <em>Industrialized Disinformation: 2020 Global Inventory of Organized Social Media Manipulation</em>—na inilabas noong 2021—lumawak na ang global dataset sa 81 countries.
+  </p>
+
+  <p>
+    At sa inventory na iyon, kabilang ang Pilipinas sa:
+  </p>
+
+  <blockquote>
+    <p>
+      HIGH CYBER TROOP CAPACITY
+    </p>
+  </blockquote>
+
+  <p>
+    Nakalista rin para sa Pilipinas ang:
+  </p>
+
+  <ul>
+    <li>Recent activity — documented</li>
+    <li>Status — Permanent</li>
+    <li>Coordinated cyber-troop team — documented</li>
+    <li>Resources spent — documented</li>
+    <li>Coordination — Centralized</li>
+  </ul>
+
+  <p>
+    Sa definition ng Oxford, ang high-capacity category ay hindi lamang tungkol sa dami ng accounts.
+  </p>
+
+  <p>
+    Kabilang sa kanilang capacity assessment ang resources, staffing, variety at sophistication ng techniques, number of campaigns at kung permanent o temporary ang organizational infrastructure.
+  </p>
+
+  <p>
+    Kaya mahalagang distinction ito: Hindi sariling percentage ang “high capacity.”
+  </p>
+
+  <p>
+    Iyan ang mismong classification na inilagay ng Oxford sa Philippine case sa updated global inventory.
+  </p>
+
+  <h2>
+    Sa Updated Oxford Case Study, Lahat ng Limang Organizational Categories ay May Documented Evidence
+  </h2>
+
+  <p>
+    Noong 2017, limang organizational forms ang ginamit sa comparative table ng Oxford.
+  </p>
+
+  <p>
+    Sa Philippine row, apat sa limang categories ang may documented example.
+  </p>
+
+  <p>
+    Sa updated Philippine case material na kasama sa later Oxford research, limang actor categories ang sinusubaybayan:
+  </p>
+
+  <ul>
+    <li>Government Agencies</li>
+    <li>Politicians &amp; Parties</li>
+    <li>Private Contractors</li>
+    <li>Civil Society Organizations</li>
+    <li>Citizens &amp; Influencers</li>
+  </ul>
+
+  <p>
+    At sa updated Philippine evidence, may “Evidence Found” sa lahat ng limang categories.
+  </p>
+
+  <p>
+    Kung category coverage lamang ang kukuwentahin:
+  </p>
+
+  <blockquote>
+    <p>
+      2017: 4 sa 5 = 80%<br>
+      Updated case evidence: 5 sa 5 = 100%
+    </p>
+  </blockquote>
+
+  <p>
+    Pero hindi ito dapat basahin bilang official Oxford:
+  </p>
+
+  <blockquote>
+    <p>
+      “80% → 100% intensity score.”
+    </p>
+  </blockquote>
+
+  <p>
+    Hindi nito pinatutunayang tumaas nang eksaktong 20 percentage points ang social-media manipulation.
+  </p>
+
+  <p>
+    Hindi rin ito 100% control ng social media. Hindi ito 100% effectiveness.
+  </p>
+
+  <p>
+    At lalong hindi ibig sabihin na lahat ng organization, citizen o influencer ay bahagi ng manipulation.
+  </p>
+
+  <p>
+    Ang ipinapakita lamang ng comparison ay: Mas malawak ang documented actor coverage sa updated evidence kaysa sa naitala sa unang inventory.
+  </p>
+
+  <p>
+    At dahil nagkaroon ng bagong data, expanded evidence base at updated framework sa paglipas ng research program, mas matibay ang literal na conclusion kaysa gumawa ng sariling severity trend:
+  </p>
+
+  <blockquote>
+    <p>
+      Sa unang inventory, apat sa limang organizational forms ang documented sa Philippine case.<br><br>
+
+      Sa updated case evidence, may documented examples na sa lahat ng limang actor categories.<br><br>
+
+      At sa 2020 Global Inventory, inilagay na rin ang Pilipinas sa high cyber-troop capacity category.
+    </p>
+  </blockquote>
+
+  <p>
+    Iyan ang research-faithful progression.
+  </p>
+
+            <h2>
+    Hindi na Sapat ang Larawan ng Isang “Troll”
+  </h2>
+
+  <p>
+    Dito mahalaga ang Philippine research nina Jonathan Corpus Ong at Jason Vincent Cabañes.
+  </p>
+
+  <p>
+    Sa <em>Architects of Networked Disinformation</em>, pinag-aralan nila kung paano ginagawa ang political disinformation production sa likod ng mga account at campaign.
+  </p>
+
+  <p>
+    Ang lumitaw ay hindi lamang random individuals na binabayaran para mang-away.
+  </p>
+
+  <p>
+    Na-document nila ang mas professionalized at hierarchical na paggawa ng political communication, kung saan maaaring may political clients, strategists, advertising at PR professionals, influencers at account operators na may magkakaibang papel sa mas malaking network.
+  </p>
+
+  <p>
+    Ibig sabihin, ang nakikita ng ordinaryong user bilang:
+  </p>
+
+  <ul>
+    <li>isang meme,</li>
+    <li>isang comment,</li>
+    <li>isang trending hashtag,</li>
+    <li>isang influencer video,</li>
+    <li>o maraming magkakatulad na opinion,</li>
+  </ul>
+
+  <p>
+    ay maaaring magkakahiwalay na bahagi ng mas organisadong communication operation.
+  </p>
+
+  <p>
+    Hindi ibig sabihin na coordinated agad ang bawat magkakaparehong opinion.
+  </p>
+
+  <p>
+    Pero ibig sabihin din na hindi ligtas na ipalagay na organic ang lahat ng nakikitang engagement.
+  </p>
+
+  <h2>
+    May Platform Evidence Din
+  </h2>
+
+  <p>
+    Noong March 2019, sinabi ng Facebook na nagtanggal ito ng:
+  </p>
+
+  <ul>
+    <li>67 Pages</li>
+    <li>68 Facebook accounts</li>
+    <li>40 Groups</li>
+    <li>25 Instagram accounts</li>
+  </ul>
+
+  <p>
+    mula sa isang Philippine network dahil sa coordinated inauthentic behavior.
+  </p>
+
+  <p>
+    Ayon sa Facebook, iniugnay ng investigation nito ang network kay Nic Gabunada.
+  </p>
+
+  <p>
+    Humigit-kumulang 3.6 million accounts ang sumusunod sa isa o higit pang Pages, at 1.8 million accounts ang kabilang sa isa o higit pang Groups.
+  </p>
+
+  <p>
+    Mahalaga rin ang paliwanag ng Facebook:
+  </p>
+
+  <blockquote>
+    <p>
+      Ang batayan ng enforcement ay behavior at pagtatago o maling pagpapakita kung sino ang tunay na nagpapatakbo ng coordinated activity—hindi ang political viewpoint ng posts.
+    </p>
+  </blockquote>
+
+  <p>
+    Noong 2020, nagtanggal naman ang Facebook ng:
+  </p>
+
+  <ul>
+    <li>64 Facebook accounts</li>
+    <li>32 Pages</li>
+    <li>33 Instagram accounts</li>
+  </ul>
+
+  <p>
+    mula sa isa pang Philippine network na sinabi nitong may links sa Philippine military at police at nakatuon sa domestic audiences.
+  </p>
+
+  <p>
+    Ayon sa platform, fake accounts ang ginagamit para mag-post, mag-comment, mag-manage ng Pages at umiwas sa enforcement.
+  </p>
+
+  <p>
+    Pero dapat ding malinaw ang limitasyon:
+  </p>
+
+  <p>
+    Facebook/Meta ang gumawa ng attribution na iyon.
+  </p>
+
+  <p>
+    Platform investigation iyon. Hindi iyon criminal conviction. Hindi rin iyon court finding.
+  </p>
+
+  <p>
+    Iyan ang tamang level ng claim.
+  </p>
+
+  <h2>
+    Mas Lumalawak Pa ang Nakikitang Industriya
+  </h2>
+
+  <p>
+    Hindi rin tumigil ang academic research sa lumang “troll farm” model.
+  </p>
+
+  <p>
+    Sa isang comparative study ng influence operations sa Indonesia, Philippines at Thailand, gumamit ang researchers ng 78 in-depth interviews with industry insiders.
+  </p>
+
+  <p>
+    Sa 27 Philippine interviews, 22 participants ang may confirmed experience sa influence-operation work.
+  </p>
+
+  <p>
+    Sa Philippine case, nakita ng researchers na ang influence operations ay mas karaniwang konektado sa PR agencies at professional political-communication networks.
+  </p>
+
+  <p>
+    Inilarawan din ng research ang outsourcing ng operations sa PR at advertising firms, political consultants at loosely connected teams na maaaring humawak ng fake accounts, audiovisual content, scripts at amplification.
+  </p>
+
+  <p>
+    Sa walong Philippine campaign leads na na-interview, apat ang employed sa PR companies.
+  </p>
+
+  <p>
+    Ipinapakita nito na ang influence operation ay hindi kailangang magmukhang traditional political machinery.
+  </p>
+
+  <p>
+    Puwede itong dumaan sa structures na pamilyar na sa commercial advertising at public relations.
+  </p>
+
+  <h2>
+    Pati Influencers, Puwedeng Maging Bahagi ng Mas Malaking Political Operation
+  </h2>
+
+  <p>
+    May isa pang mahalagang Philippine study tungkol sa 2022 presidential election.
+  </p>
+
+  <p>
+    Sa interdisciplinary analysis ng political influencers sa Facebook, Twitter/X, TikTok at YouTube, kinilala ng researchers ang 1,425 influencer accounts na kanilang classified bilang engaged sa covert o under-the-radar political campaigning.
+  </p>
+
+  <p>
+    Gumamit din sila ng economic modelling upang tantiyahin ang posibleng halaga ng activity.
+  </p>
+
+  <p>
+    Lumabas ang humigit-kumulang:
+  </p>
+
+  <ul>
+    <li>US$10.9 million sa isang retainer-based model</li>
+    <li>US$27 million sa pay-per-post model</li>
+  </ul>
+
+  <p>
+    Pero mahalagang qualifier:
+  </p>
+
+  <p>
+    Hindi ito audited proof na eksaktong ganoong halaga ang aktuwal na ibinayad. Economic-model estimates iyon sa ilalim ng dalawang compensation scenarios.
+  </p>
+
+  <p>
+    Ang mahalagang ipinapakita ng study ay hindi ang eksaktong piso o dolyar.
+  </p>
+
+  <p>
+    Ang mahalaga ay kung gaano kalaking bahagi ng modern political campaigning ang maaaring dumaan sa content na hindi agad mukhang traditional political advertisement.
+  </p>
+
+  <p>
+    Minsan, mukha lang itong ordinaryong post.
+  </p>
+
+  <ul>
+    <li>Reaction video.</li>
+    <li>Commentary.</li>
+    <li>Meme.</li>
+    <li>Lifestyle content.</li>
+    <li>O influencer opinion.</li>
+  </ul>
+
+  <h2>
+    Kaya Hindi na Sapat ang “Fake News Lang”
+  </h2>
+
+  <p>
+    May isa pang mahalagang pagbabago sa research.
+  </p>
+
+  <p>
+    Hindi lahat ng political influence operation ay kailangang mag-imbento ng pekeng impormasyon.
+  </p>
+
+  <p>
+    Sa research ng University of the Philippines tungkol sa 2022 elections, binigyang-diin ang paglipat mula sa makitid na konsepto ng disinformation—intentional false information—patungo sa mas malawak na influence operations.
+  </p>
+
+  <p>
+    Ibig sabihin, maaaring subukang hubugin ang attitudes at beliefs ng publiko kahit hindi puro kasinungalingan ang ginagamit.
+  </p>
+
+  <ul>
+    <li>Puwedeng totoo ang isang impormasyon pero pili lamang ang context.</li>
+    <li>Puwedeng isang tunay na insidente ang paulit-ulit na palakihin.</li>
+    <li>Puwedeng iisang grievance ang gawing sentro ng napakaraming content.</li>
+    <li>Puwedeng palakasin ang isang mensahe hanggang magmukhang iyon ang dominanteng opinyon.</li>
+    <li>Puwedeng gumamit ng tunay na influencer nang hindi agad malinaw sa audience kung may campaign relationship sa likod nito.</li>
+  </ul>
+
+  <p>
+    At puwedeng sabay na gumana ang facts, half-truths, emotional framing, repetition at selective amplification.
+  </p>
+
+  <p>
+    Kaya mahalaga ang fact-checking.
+  </p>
+
+  <p>
+    Pero hindi sapat ang fact-checking lamang para ipaliwanag ang buong influence-operation problem.
+  </p>
+
+          <h2>
+  Bakit May mga Mensaheng Mas Madaling Kumapit?
+</h2>
+
+<p>
+  Dito pumapasok ang socio-cultural dimension.
+</p>
+
+<p>
+  Hindi kailangan ipalagay na madaling malinlang ang Pilipino.
+</p>
+
+<p>
+  Mas komplikado ang problema.
+</p>
+
+<p>
+  Sa isang 2022 qualitative study ni Jason Vincent A. Cabañes, gumamit siya ng 15 life-story interviews sa mga residente ng Manila upang pag-aralan kung paano nila inuunawa ang racially tinged COVID-19 disinformation at political trolling, partikular iyong gumagamit ng resentment tungkol sa China.
+</p>
+
+<p>
+  Kaya mahalagang huwag itong gawing blanket study ng lahat ng Filipino voters o lahat ng political disinformation sa bansa.
+</p>
+
+<p>
+  Ang mahalagang ambag ng study sa usapin natin ay ang mekanismong nakita nito:
+</p>
+
+<p>
+  Maaaring subukang gamitin ng digital disinformation ang existing social narratives ng mga tao at ang kanilang relationally embedded practices of media consumption.
+</p>
+
+<p>
+  Sa simpleng salita:
+</p>
+
+<p>
+  Hindi natin tinatanggap ang impormasyon nang hiwalay sa lahat ng dati na nating karanasan.
+</p>
+
+<ul>
+  <li>May dala tayong dating paniniwala.</li>
+  <li>May social relationships.</li>
+  <li>May community narratives.</li>
+  <li>May takot.</li>
+  <li>May sama ng loob.</li>
+  <li>May political identity.</li>
+  <li>May personal at historical experiences.</li>
+</ul>
+
+<p>
+  Sa particular na sample ng study, nakita kung paano maaaring kumapit ang disinformation narrative sa dati nang resentment at social interpretation ng participants.
+</p>
+
+<p>
+  Hindi nito pinatutunayang ganoon ang lahat ng Pilipino.
+</p>
+
+<p>
+  Pero nagbibigay ito ng empirical example kung bakit mahalagang tingnan hindi lamang ang mensahe kundi pati ang existing narratives at social context na maaaring kapitan ng mensahe.
+</p>
+
+<p>
+  At dito mas direktang pumapasok ang research tungkol sa 2022 Philippine elections, kung saan nakita ring ang resonance ng political narratives ay konektado hindi lamang sa social-media exposure kundi sa prior political attitudes, information-consumption patterns at matagal nang political grievances.
+</p>
+
+<blockquote>
+  <p>
+    “TANGA LANG ANG NANINIWALA.”
+  </p>
+</blockquote>
+
+<p>
+  Kaya masyadong mababaw ang ganitong paliwanag.
+</p>
+
+<p>
+  Dahil kung simpleng katangahan lang ang problema, hindi na kakailanganin ang market research, political strategy, PR professionals, influencers, audience targeting, fake personas, repetition, metrics at organized amplification.
+</p>
+
+<p>
+  Ang mismong professionalization ng ganitong trabaho ay nagpapakitang pinag-aaralan kung ano ang papansinin, tatatak at kakapit sa audience.
+</p>
+
+<h2>
+  Viral ay Hindi Automatic na Organic
+</h2>
+
+<p>
+  Ito ang isa sa pinakamahalagang practical lessons.
+</p>
+
+<p>
+  Sa social media, nakikita natin ang resulta:
+</p>
+
+<ul>
+  <li>views,</li>
+  <li>shares,</li>
+  <li>comments,</li>
+  <li>likes,</li>
+  <li>hashtags,</li>
+  <li>trending topics.</li>
+</ul>
+
+<p>
+  Hindi natin awtomatikong nakikita ang proseso sa likod nito.
+</p>
+
+<ul>
+  <li>Sino ang unang nagplano ng message?</li>
+  <li>May client ba?</li>
+  <li>May bayad ba?</li>
+  <li>May coordinated accounts ba?</li>
+  <li>May influencer contract ba?</li>
+  <li>May advertising spend ba?</li>
+  <li>May audience targeting ba?</li>
+  <li>May fake identity ba?</li>
+  <li>O talagang maraming independent na taong sabay-sabay lamang nagkaroon ng parehong opinion?</li>
+</ul>
+
+<p>
+  Minsan organic.
+</p>
+
+<p>
+  Minsan organized.
+</p>
+
+<p>
+  At minsan halo ng dalawa.
+</p>
+
+<p>
+  Maaaring may organized network na unang nagtulak ng isang mensahe—pagkatapos ay tunay na supporters naman ang kusang nagpatuloy at nagpalakas nito.
+</p>
+
+<blockquote>
+  <p>
+    Popular ay hindi automatic na totoo.<br>
+    Viral ay hindi automatic na organic.<br><br>
+    Maraming account ay hindi automatic na maraming independent na tao.
+  </p>
+</blockquote>
+
+<h2>
+  Pero Ano ang Sabi ng Batas?
+</h2>
+
+<p>
+  Dito kailangang maging maingat.
+</p>
+
+<p>
+  Hindi puwedeng ang sagot sa manipulation ay basta patahimikin ang political speech.
+</p>
+
+<p>
+  Sa ilalim ng Article III, Section 4 ng 1987 Constitution, protektado ang freedom of speech, expression at press.
+</p>
+
+<p>
+  May malawak na espasyo ang mamamayan para pumuna, sumuporta, magtanong at makipagtalo tungkol sa gobyerno at politika.
+</p>
+
+<blockquote>
+  <p>
+    “MALI ANG SINABI MO, KAYA KRIMEN AGAD.”
+  </p>
+</blockquote>
+
+<p>
+  Kaya hindi tamang legal framing ang ganitong pananaw.
+</p>
+
+<p>
+  Ang legal liability ay nakadepende sa aktuwal na conduct, applicable law o regulation, context, intent at elements na kailangang mapatunayan.
+</p>
+
+<p>
+  Pero hindi rin ibig sabihin na walang regulation ang political activity online.
+</p>
+
+<h2>
+  May Pananagutan Din sa Election Propaganda
+</h2>
+
+<p>
+  Sa Republic Act No. 9006 o Fair Election Act, pinapayagan ang election propaganda sa television, radio, newspapers o anumang medium, pero subject ito sa authorized campaign expenses, truth in advertising, at supervision at regulation ng COMELEC.
+</p>
+
+<p>
+  Ibig sabihin:
+</p>
+
+<p>
+  Hindi awtomatikong exempt sa election rules ang digital election propaganda.
+</p>
+
+<p>
+  Ang internet ay hindi hiwalay na mundo na awtomatikong walang election-law obligations.
+</p>
+
+<h2>
+  May Usapin Din ng Transparency sa Digital Campaign
+</h2>
+
+<p>
+  Para sa 2025 national and local elections, naglabas ang COMELEC ng Resolution Nos. 11064 at 11064-A tungkol sa social media, AI at internet technology sa digital election campaigns.
+</p>
+
+<p>
+  Kasama rito ang registration ng official online campaign platforms ng candidates at parties at mga rules laban sa misuse ng social media, AI at internet technology sa electoral context.
+</p>
+
+<p>
+  Mahalaga ring makita kung paano inamyendahan ang rules.
+</p>
+
+<p>
+  Sa Resolution 11064-A, kinilala ng COMELEC ang freedom of expression ng private individuals, at nilimitahan ang registration requirement sa official campaign platforms ng candidates at political parties kaysa gawing blanket registration requirement para sa ordinaryong mamamayan.
+</p>
+
+<blockquote>
+  <p>
+    Regulation ng organized campaign activity—nang hindi awtomatikong itinuturing na campaign operative ang bawat mamamayang may political opinion.
+  </p>
+</blockquote>
+
+<p>
+  At dahil election-specific ang COMELEC resolutions, maaaring magbago ang detalye sa mga susunod na election cycles.
+</p>
+
+<p>
+  Ang mas timeless na prinsipyo ay:
+</p>
+
+<p>
+  Transparency at accountability sa organized campaigning habang pinoprotektahan ang legitimate political expression.
+</p>
+
+          <h2>
+  May Data Privacy Issue Rin
+</h2>
+
+<p>
+  Kung ang political campaign o influence operation ay gumagamit ng personal data para kilalanin, i-profile o targetin ang voters, pumapasok din ang Republic Act No. 10173 o Data Privacy Act of 2012.
+</p>
+
+<p>
+  Sa election-campaign guidance ng National Privacy Commission, binigyang-diin ang mga prinsipyo ng:
+</p>
+
+<ul>
+  <li>Transparency</li>
+  <li>Legitimate Purpose</li>
+  <li>Proportionality</li>
+</ul>
+
+<p>
+  at ang pangangailangan ng lawful basis para sa processing ng personal data.
+</p>
+
+<p>
+  Mahalaga ito dahil iba ang simpleng political persuasion sa:
+</p>
+
+<p>
+  Political persuasion na gumagamit ng personal data nang walang tamang legal basis o sapat na transparency.
+</p>
+
+<p>
+  Kapag data-driven na ang campaign, hindi lang speech ang tanong.
+</p>
+
+<p>
+  Privacy at accountability na rin.
+</p>
+
+<h2>
+  At Hindi Pare-pareho ang “Mali,” “Misinformation” at “Disinformation”
+</h2>
+
+<p>
+  May mahalagang development din sa Supreme Court jurisprudence noong 2026.
+</p>
+
+<p>
+  Sa isang En Banc decision, tinalakay ng Supreme Court ang malawak na protection na ibinibigay sa democratic at political discourse habang pinag-iba ang misinformation, mal-information at disinformation.
+</p>
+
+<p>
+  Sa discussion ng Court, ang disinformation ay tumutukoy sa deliberately false information na ipinapakalat nang may kaalaman sa falsity nito, karaniwang para itulak ang isang agenda o linlangin ang audience.
+</p>
+
+<p>
+  Pero mahalaga ang distinction:
+</p>
+
+<p>
+  Hindi nangangahulugan na dahil tinawag na “disinformation” ang isang expression ay automatic nang may criminal conviction.
+</p>
+
+<p>
+  Para magkaroon ng legal sanction, kailangan pa ring tukuyin ang applicable law o regulation at mapatunayan ang kinakailangang legal elements, context, intent at due process.
+</p>
+
+<blockquote>
+  <p>
+    “FAKE NEWS.”
+  </p>
+</blockquote>
+
+<p>
+  Kaya hindi sapat ang label na ito.
+</p>
+
+<p>
+  Kailangang itanong:
+</p>
+
+<ul>
+  <li>Ano mismo ang ginawa?</li>
+  <li>Sino ang gumawa?</li>
+  <li>May intent ba?</li>
+  <li>May applicable election, privacy, civil o criminal rule ba?</li>
+  <li>At ano ang ebidensiya?</li>
+</ul>
+
+<h2>
+  Hindi Rin Ito Problema ng Isang Permanenteng Political Camp Lang
+</h2>
+
+<p>
+  Mahalaga ring hindi gawing partisan shortcut ang research.
+</p>
+
+<p>
+  Ang early Philippine Oxford evidence ay malakas na konektado sa 2016 Duterte campaign at sa networks na pinag-aaralan noong panahong iyon.
+</p>
+
+<p>
+  Pero ang later research ay nagpapakita ng mas malawak na phenomenon.
+</p>
+
+<p>
+  Sa comparative influence-operations research, lumilitaw ang Philippine model bilang bahagi ng competitive electoral politics at PR-led campaigning, kung saan iba't ibang political actors—national man o local—ay maaaring kumuha o gumamit ng professional communication networks.
+</p>
+
+<p>
+  Sa research tungkol sa 2025 midterm elections, nakita rin ang influence operations sa gitna ng nagbabagong political alliances, partisan information outlets, influencers at paggamit ng generative AI.
+</p>
+
+<p>
+  Ibig sabihin, ang infrastructure at techniques ay maaaring lumipat ng client, target o political alignment depende sa competition.
+</p>
+
+<blockquote>
+  <p>
+    “MASAMA ANG TROLLS NG KABILANG PANIG.”
+  </p>
+</blockquote>
+
+<p>
+  Hindi pa natin naiintindihan ang problema kung dito lamang matatapos ang usapan.
+</p>
+
+<p>
+  Ang mas mahalagang democratic question ay:
+</p>
+
+<p>
+  <strong>
+    ANONG RULES ANG GUSTO NATING IPATUPAD KAHIT SINO PA ANG NAKIKINABANG SA OPERASYON?
+  </strong>
+</p>
+
+<h2>
+  Dahil ang Problema ay Hindi Opinyon—Kundi ang Pagtatago sa Likod ng Opinyon
+</h2>
+
+<p>
+  Walang mali sa tunay na supporter na sumuporta.
+</p>
+
+<p>
+  Walang mali sa tunay na critic na pumuna.
+</p>
+
+<p>
+  Walang mali sa influencer na magkaroon ng political opinion.
+</p>
+
+<p>
+  Walang mali sa campaign na gumamit ng social media.
+</p>
+
+<p>
+  Bahagi ang mga iyon ng political participation.
+</p>
+
+<p>
+  Nagiging ibang usapan kapag may:
+</p>
+
+<ul>
+  <li>bayad na hindi malinaw,</li>
+  <li>identity na sadyang itinago o pineke,</li>
+  <li>coordinated network na ipinapakitang organic,</li>
+  <li>personal data na ginagamit nang walang tamang legal basis,</li>
+  <li>campaign spending o campaign relationship na hindi naa-account o hindi dini-disclose kung required,</li>
+  <li>o sistematikong deception na ginagamit para magmukhang kusang public sentiment ang isang organized operation.</li>
+</ul>
+
+<p>
+  Doon nagiging usapin ng transparency at accountability ang isang bagay na sa unang tingin ay simpleng:
+</p>
+
+<blockquote>
+  <p>
+    “opinyon lang.”
+  </p>
+</blockquote>
+
+<h2>
+  Kaya Huwag Lang Tanungin Kung Totoo ang Post
+</h2>
+
+<p>
+  Mas malawak ang kailangang tingnan.
+</p>
+
+<p>
+  Hindi lang:
+</p>
+
+<blockquote>
+  <p>
+    “TOTOO BA ITO?”
+  </p>
+</blockquote>
+
+<p>
+  Kundi:
+</p>
+
+<ul>
+  <li>Saan galing?</li>
+  <li>Sino ang nagpapalakas?</li>
+  <li>May nakikitang coordination ba?</li>
+  <li>May disclosure ba kung bayad o campaign content?</li>
+  <li>May primary evidence ba?</li>
+  <li>May independent sources ba?</li>
+  <li>At may interes ba ang nagpapakalat na hindi agad nakikita ng audience?</li>
+</ul>
+
+<p>
+  Hindi ibig sabihin na duda agad sa lahat.
+</p>
+
+<p>
+  Ang ibig sabihin ay:
+</p>
+
+<p>
+  Hindi tayo dapat huminto sa nakikita sa ibabaw ng feed.
+</p>
+
+<h2>
+  Iyan ang Mas Malaking Babala ng Research
+</h2>
+
+<p>
+  Noong unang Oxford inventory, apat sa limang organizational forms ang documented sa Philippine case.
+</p>
+
+<p>
+  Sa updated evidence, mayroon nang documented examples sa lahat ng limang actor categories.
+</p>
+
+<p>
+  At sa 2020 Global Inventory, classified ang Pilipinas bilang:
+</p>
+
+<ul>
+  <li>High Cyber Troop Capacity</li>
+  <li>Permanent</li>
+  <li>Centralized</li>
+</ul>
+
+<p>
+  Kasabay nito, ipinakita ng Philippine at Southeast Asian studies ang professionalization ng influence operations sa PR, advertising at influencer ecosystems.
+</p>
+
+<p>
+  At habang umuunlad ang platforms, techniques, political marketing at AI, patuloy ding nagbabago ang anyo ng political persuasion online.
+</p>
+
+<blockquote>
+  <p>
+    “MAY MGA TROLL SA INTERNET.”
+  </p>
+</blockquote>
+
+<p>
+  Kaya hindi na sapat na isipin ang problema sa ganitong simpleng paglalarawan.
+</p>
+
+<p>
+  Mas mabigat ang realidad:
+</p>
+
+<blockquote>
+  <p>
+    Ang paghubog ng opinyon online ay puwedeng organisahin.<br>
+    Puwedeng pondohan.<br>
+    Puwedeng propesyonalisahin.<br>
+    Puwedeng palakihin.<br>
+    At puwedeng itago sa mukha ng ordinaryong content.
+  </p>
+</blockquote>
+
+<p>
+  At kung ang public opinion ay bahagi ng kapangyarihang nagbibigay-direksiyon sa isang demokrasya, mahalaga ring malaman natin kung ang opinyong nakikita natin ay tunay na kusang nabuo—o may organisadong sistemang tumutulong para magmukhang ganoon.
+</p>
+
+<p>
+  Hindi para sabihin sa publiko kung ano ang dapat paniwalaan.
+</p>
+
+<p>
+  Kundi para mas malinaw nating makita kung paano sinusubukang hubugin ang pinaniniwalaan natin.
+</p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+  class="article-sources"
+  aria-labelledby="sources-heading"
+>
+
+  <h2
+    class="sources-title"
+    id="sources-heading"
+  >
+    Sources / References
+  </h2>
+
+  <ul class="sources-list">
+
+    <li>
+      Bradshaw, Samantha &amp; Howard, Philip N. (2017) — <em>Troops, Trolls and Troublemakers: A Global Inventory of Organized Social Media Manipulation.</em> Oxford Internet Institute / Computational Propaganda Research Project. Original 28-country inventory; organizational forms, strategies, staffing, budget information at methodology.
+    </li>
+
+    <li>
+      Bradshaw, Samantha &amp; Howard, Philip N. (2019) — <em>The Global Disinformation Order: 2019 Global Inventory of Organised Social Media Manipulation.</em> Oxford Internet Institute. Philippines listed as medium cyber-troop capacity, permanent, with estimated 300–500 personnel.
+    </li>
+
+    <li>
+      Bradshaw, Samantha; Bailey, Hannah; &amp; Howard, Philip N. (2021) — <em>Industrialized Disinformation: 2020 Global Inventory of Organized Social Media Manipulation.</em> Working Paper 2021.1, Programme on Democracy &amp; Technology, University of Oxford. “2020” refers to the inventory cycle; official publication/release was in 2021. Philippines classified under high cyber-troop capacity.
+    </li>
+
+    <li>
+      Oxford Programme on Democracy &amp; Technology — <em>Philippines Country Case Study.</em> Updated evidence on government agencies, politicians/parties, private contractors, civil-society organizations and citizens/influencers in the Philippine influence-operation ecosystem.
+    </li>
+
+    <li>
+      Ong, Jonathan Corpus &amp; Cabañes, Jason Vincent A. (2018) — <em>Architects of Networked Disinformation: Behind the Scenes of Troll Accounts and Fake News Production in the Philippines.</em> Documents professionalized, hierarchical and labor-based production of political disinformation.
+    </li>
+
+    <li>
+      Meta/Facebook (2019, 2020) — <em>Coordinated Inauthentic Behavior</em> reports concerning Philippine networks. Platform-level evidence on coordinated networks and account removals; platform attribution, not court findings.
+    </li>
+
+    <li>
+      University of the Philippines — <em>2022 Philippine Election Disinformation / Influence-Operations Research.</em> Examines social-media information consumption, political attitudes, grievances and the broader shift from “fake news” toward influence operations.
+    </li>
+
+    <li>
+      Cabañes, Jason Vincent A. (2022) — <em>The Imaginative Dimension of Digital Disinformation: Fake News, Political Trolling, and the Entwined Crises of Covid-19 and Inter-Asian Racism in a Postcolonial City.</em> International Journal of Cultural Studies, 25(3–4), 428–444. Qualitative study based on 15 life-story interviews with Manila residents; used here specifically for its socio-cultural mechanism, not as a representative survey of the entire Philippine electorate.
+    </li>
+
+    <li>
+      Gaw, Fatima et al. — <em>Covert Political Campaigning: Mapping the Scope, Scale, and Cost of Cross-Platform Election Influence Operations.</em> New Media &amp; Society. First published online January 2025; issue published April 2026, Volume 28, Issue 4, pp. 1686–1709. Identified 1,425 influencer accounts; US$10.9M and US$27M are economic-model estimates under different compensation assumptions, not audited campaign spending.
+    </li>
+
+    <li>
+      Comparative Southeast Asian influence-operations research (2025–2026) — 78 insider interviews across Indonesia, Philippines and Thailand; documents PR-led, outsourced and professionalized influence operations, including Philippine cases from national to local politics.
+    </li>
+
+    <li>
+      Sigla Research Center — <em>2025 Philippine Midterm Elections Research.</em> Examines partisan information outlets, influencers, changing political alliances, regulation and generative AI in the Philippine information environment.
+    </li>
+
+    <li>
+      1987 Philippine Constitution, Article III, Section 4 — Constitutional protection of freedom of speech, expression and of the press.
+    </li>
+
+    <li>
+      Republic Act No. 9006 — <em>Fair Election Act.</em> Election propaganda, authorized campaign expenses, truth in advertising and COMELEC supervision/regulation.
+    </li>
+
+    <li>
+      Republic Act No. 10173 — <em>Data Privacy Act of 2012</em>, together with National Privacy Commission election-campaign guidance. Governs lawful processing of personal data and emphasizes transparency, legitimate purpose, proportionality and lawful basis.
+    </li>
+
+    <li>
+      COMELEC Resolution Nos. 11064 and 11064-A — Rules governing official online campaign platforms, social media, AI and digital campaigning for the 2025 elections; election-specific regulations that also recognize the freedom of expression of private individuals.
+    </li>
+
+    <li>
+      Supreme Court of the Philippines, En Banc — <em>Atty. Mark Kristopher G. Tolentino and Atty. Rolex Suplico v. Richard J. Heydarian and Hon. Percival Cendaña / Ferdinand S. Topacio v. Secretary Lorenzo “Larry” G. Gadon</em>, G.R. Nos. E-01742 &amp; E-01747, 8 April 2026. Full primary decision used for the discussion of political expression, misinformation, mal-information, disinformation and legal accountability.
+    </li>
+
+  </ul>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
