@@ -1,1 +1,2289 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Personal funds sa government office—hanggang saan ang ownership? Alamin ang rules sa fixtures, leased premises, property accountability, turnover, at restoration costs."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-akin-ito.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-akin-ito.html"
+  >
+
+  <title>PERSONAL FUNDS, GOVERNMENT OFFICE—MAY HANGGANAN BA ANG “AKIN ITO”? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          PERSONAL FUNDS, GOVERNMENT OFFICE—MAY HANGGANAN BA ANG “AKIN ITO”?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-akin-ito.png"
+            alt="Government office na may tinanggal na wall fixture at sirang bahagi ng pader, kasama ang dokumentong may markang Personal Funds bilang simbolo ng ownership, authority, at property accountability."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+        <div class="article-body">
+
+          <p>
+            May resibo.<br>
+            Sariling pera ang ginamit.
+          </p>
+
+          <p>
+            Pero paano kung ang binili ay hindi lang laptop, sofa o gamit na puwedeng buhatin at dalhin?<br>
+            Paano kung ikinabit na sa sahig, pader, electrical system, plumbing o ibang bahagi ng isang GOVERNMENT OFFICE?
+          </p>
+
+          <p>
+            Kapag lilipat ang public official, automatic bang puwede itong baklasin at dalhin dahil—“AKIN ITO. AKO ANG NAGBAYAD.”
+          </p>
+
+          <p>
+            Doon nagiging mas komplikado ang usapan.
+          </p>
+
+          <p>
+            Dahil sa government office, hindi lang “Sino ang nagbayad?” ang kailangang sagutin.
+          </p>
+
+          <blockquote>
+            <p>
+              Kailangan ding malaman:<br>
+              KANINO TALAGA ANG PROPERTY?<br>
+              SINO ANG MAY AUTHORITY NA MAGPAKABIT O MAGPABAKLAS?<br>
+              ANO ANG RULES O KONTRATANG SUMASAKOP DITO?<br>
+              AT SINO ANG SASAGOT KUNG KAILANGANG IBALIK SA MAAYOS AT MAGAGAMIT NA KONDISYON ANG OPISINA?
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil maaaring personal ang pera.<br>
+            Pero institutional ang lugar.
+          </p>
+
+          <p>
+            Maaaring personal ang purchase.<br>
+            Pero hindi pareho ang legal at administrative treatment ng isang laptop, isang freestanding cabinet, isang floor tile at isang electrical fixture.
+          </p>
+
+          <p>
+            At dito pumapasok ang mas malaking usapin:
+          </p>
+
+          <blockquote>
+            <p>
+              SAAN BA TALAGA NAGTATAPOS ANG “AKIN ITO” KAPAG ANG PINAGKABITAN AY GOVERNMENT OFFICE?
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG ISYU AY HINDI LANG KUNG SINO ANG BUMILI
+          </h2>
+
+          <p>
+            Ngayong Oktubre 2026, naging usapin ang kondisyon ng isang Senate office matapos alisin ang furniture at maging ang ilang floor tiles, wall panels, lighting fixtures, electrical components at bathroom fixtures bago ito i-turn over sa susunod na occupant.
+          </p>
+
+          <p>
+            Ayon sa kampo ni Sen. Jinggoy Estrada, karamihan sa mga inalis—kabilang ang floor tiles, glass panels, lighting fixtures at cabinets—ay binili gamit ang personal funds at ililipat lamang sa kanyang bagong opisina.
+          </p>
+
+          <p>
+            Giit din ng kanyang kampo:
+          </p>
+
+          <p>
+            “NOT A SINGLE CENTAVO OF PUBLIC FUNDS WAS WASTED.”
+          </p>
+
+          <p>
+            Sinabi rin nilang ang pagdadala ng personally funded fixtures at materials mula sa isang Senate office patungo sa iba ay established at accepted practice umano sa institusyon.
+          </p>
+
+          <p>
+            Ayon din sa kanila, naipaliwanag na ang usapin sa resident COA auditor.
+          </p>
+
+          <p>
+            Sa kabilang panig, iniulat na ikinagulat ng staff ni Sen. Tito Sotto ang kondisyon ng office na kanilang lilipatan matapos itong maiwang walang ilang fixtures, sockets at tiles.
+          </p>
+
+          <p>
+            Hindi sapat ang statement ng alinmang panig para tapusin ang usapan.
+          </p>
+
+          <blockquote>
+            <p>
+              KAILANGAN ANG RECORDS.
+            </p>
+          </blockquote>
+
+          <p>
+            At dito nagiging mas mahalaga ang tanong kaysa sa personalidad ng mga senador.
+          </p>
+
+          <h2>
+            HINDI LAHAT NG BINILI MO AY PARE-PAREHO ANG LEGAL NA KATAYUAN KAPAG IKINABIT MO NA
+          </h2>
+
+          <p>
+            Isipin ang pinakasimpleng halimbawa.
+          </p>
+
+          <p>
+            Bumili ng sariling laptop at dinala sa opisina?<br>
+            Malinaw na ibang klase iyon ng property.
+          </p>
+
+          <p>
+            Sariling coffee maker, painting o freestanding cabinet?<br>
+            Madaling ihiwalay at dalhin.
+          </p>
+
+          <p>
+            Pero bumili ng tiles at idinikit sa sahig.<br>
+            Naglagay ng built-in wall panel.<br>
+            Nagpakabit ng electrical installation.<br>
+            Nagpalit ng sanitary fixture.<br>
+            Naglagay ng permanenteng partition.
+          </p>
+
+          <blockquote>
+            <p>
+              IBANG KLASENG TANONG NA IYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa Civil Code, may distinction mismo sa movable at immovable property.
+          </p>
+
+          <p>
+            Sa Article 415, kabilang sa immovable property ang mga bagay na nakakabit sa isang immovable sa paraang hindi basta maihihiwalay nang walang pagkasira ng material o deterioration ng object.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na automatic nang government property ang lahat ng ikinabit sa government office.
+          </p>
+
+          <p>
+            Pero ipinapakita nito kung bakit hindi rin automatic ang argumentong:
+          </p>
+
+          <p>
+            “AKO ANG BUMILI, KAYA AKIN IYAN KAHIT PAANO AT SAAN KO IKINABIT.”
+          </p>
+
+          <p>
+            Ang klase ng property, paraan ng pagkakabit, kontrata, authorization at legal relationship sa premises ay maaaring makaapekto sa sagot.
+          </p>
+
+          <h2>
+            MAS KOMPLIKADO PA DAHIL HINDI SARILING PROPERTY NG SENADOR ANG ESPASYONG GINAGAMIT BILANG OPISINA
+          </h2>
+
+          <p>
+            Ang Senate offices sa Pasay ay nasa gusali ng Government Service Insurance System o GSIS na inuupahan ng Senate of the Philippines.
+          </p>
+
+          <p>
+            Noong Hunyo 2025, sinabi mismo ng Senate Committee on Accounts chair na nire-review ang lease agreement ng Senado sa GSIS habang pinaplano ang eventual transfer sa New Senate Building.
+          </p>
+
+          <p>
+            Ibig sabihin, may tatlong magkaibang layer na kailangang paghiwalayin:
+          </p>
+
+          <blockquote>
+            <p>
+              GSIS bilang owner ng building.<br>
+              SENATE OF THE PHILIPPINES bilang institutional lessee.<br>
+              SENATOR bilang occupant ng particular office.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi sila interchangeable.
+          </p>
+
+          <p>
+            Kaya hindi puwedeng basta gamitin ang simpleng argumento na:
+          </p>
+
+          <p>
+            “AKO ANG GUMASTOS SA IPINAKABIT, KAYA MAY AUTOMATIC RIGHT AKONG BAKLASIN AT DALHIN IYON.”
+          </p>
+
+          <p>
+            Ang documented lessee ng premises ay ang Senate institution—hindi automatic na ang individual senator na gumagamit ng particular office.
+          </p>
+
+          <h2>
+            MAY BATAS TUNGKOL SA IMPROVEMENTS SA INUUPAHANG PROPERTY—PERO MAY MAHALAGANG LIMITASYON
+          </h2>
+
+          <p>
+            Sa Article 1678 ng Civil Code, may rules tungkol sa useful improvements na ginawa ng LESSEE.
+          </p>
+
+          <p>
+            Para pumasok sa rule, pinag-uusapan ang useful improvements made in good faith, suitable sa paggamit ng leased property at ginawa nang hindi binabago ang form o substance nito.
+          </p>
+
+          <p>
+            Sa termination ng lease, may circumstances kung saan maaaring alisin ng lessee ang improvement kapag hindi pinili ng lessor ang reimbursement contemplated by law.
+          </p>
+
+          <p>
+            Pero kahit doon, may limitasyon:
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI MAAARING MAGDULOT NG HIGIT NA IMPAIRMENT SA LEASED PROPERTY KAYSA KINAKAILANGAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero ito ang critical distinction:
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI AUTOMATIKONG NAGBIBIGAY ANG ARTICLE 1678 NG REMOVAL RIGHT SA ISANG INDIVIDUAL SENATOR.
+            </p>
+          </blockquote>
+
+          <p>
+            Bakit?<br>
+            Dahil ang Article 1678 ay tungkol sa rights at obligations sa LESSOR-LESSEE relationship.
+          </p>
+
+          <p>
+            Sa situation ng Senate premises, ang documented lease relationship ay principally:
+          </p>
+
+          <blockquote>
+            <p>
+              GSIS ↔ SENATE OF THE PHILIPPINES
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi:
+          </p>
+
+          <p>
+            GSIS ↔ INDIVIDUAL SENATOR
+          </p>
+
+          <p>
+            Kaya bago gamitin ang Article 1678 bilang legal basis para sabihing maaaring magbaklas ang isang senator ng personally funded improvement, kailangan munang malaman kung ano ang authority ng individual office occupant sa ilalim ng Senate-GSIS lease at internal Senate rules or approvals.
+          </p>
+
+          <p>
+            May isa pang mahalagang layer.<br>
+            Hindi rin sapat na tingnan lang ang default rule sa Civil Code—maaaring may partikular na kasunduan sa lease na direktang sumasaklaw sa improvements at pagtanggal ng mga ito.
+          </p>
+
+          <p>
+            Kinilala na rin ng Supreme Court na maaaring magtakda ang lease contract ng sariling lawful terms tungkol sa permanent improvements at alterations.
+          </p>
+
+          <p>
+            May mga sitwasyong ang kontrata mismo ang nagdidikta kung mananatili, aalisin o mapupunta sa lessor ang improvement.
+          </p>
+
+          <p>
+            Kaya sa Senate issue, napakahalaga ng dokumentong hindi pa natin nakikita nang buo sa public record:
+          </p>
+
+          <blockquote>
+            <p>
+              ANO TALAGA ANG NAKASAAD SA SENATE-GSIS LEASE TUNGKOL SA RENOVATIONS, ALTERATIONS, PERMANENT FIXTURES, REMOVAL AT RESTORATION?
+            </p>
+          </blockquote>
+
+          <p>
+            Hangga't hindi iyon nakikita, hindi matibay ang dalawang extreme assumptions:
+          </p>
+
+          <p>
+            “PERSONAL ANG PERA, KAYA AUTOMATIC NA PUWEDENG BAKLASIN.” at “NASA GOVERNMENT OFFICE, KAYA AUTOMATIC GOVERNMENT PROPERTY NA.”
+          </p>
+
+          <blockquote>
+            <p>
+              RECORDS AT APPLICABLE RULES ANG KAILANGANG SUMAGOT.
+            </p>
+          </blockquote>
+
+                    <h2>
+            MAY SARILING PROPERTY AT FACILITIES SYSTEM ANG SENADO
+          </h2>
+
+          <p>
+            Hindi ordinaryong personal workspace lamang ang Senate office.
+          </p>
+
+          <p>
+            Sa official organizational structure ng Senado, may Property and Procurement Service na humahawak sa procurement at sa receipt, storage, issuance, control at utilization ng supplies, materials at equipment.
+          </p>
+
+          <p>
+            May Maintenance and General Services Bureau ding responsable sa Senate facilities, kabilang ang buildings, electrical at electromechanical systems.
+          </p>
+
+          <p>
+            At ang Maintenance and Physical Facilities Service ang humahawak sa planning, design, carpentry, plumbing at engineering-related repairs.
+          </p>
+
+          <p>
+            Bakit mahalaga iyon?
+          </p>
+
+          <p>
+            Dahil kapag pinag-uusapan na ang:<br>
+            tiles,<br>
+            walls,<br>
+            electrical sockets,<br>
+            wiring,<br>
+            plumbing,<br>
+            toilet fixtures,<br>
+            at built-in installations,
+          </p>
+
+          <p>
+            hindi na sapat na itanong lamang kung <strong>SINO ANG NAGLABAS NG PERA.</strong>
+          </p>
+
+          <p>
+            May institutional property at facilities system na kailangang isaalang-alang.
+          </p>
+
+          <h2>
+            AT MAY ACTUAL SENATE RECORD NA NAGPAPAKITANG ANG GANITONG FIXTURES AY PUWEDENG GOVERNMENT EXPENSE
+          </h2>
+
+          <p>
+            Sa updated Senate Annual Procurement Plan for 2024, may item na:
+          </p>
+
+          <p>
+            “RENOVATION OF WASH ROOM” — ₱50,000
+          </p>
+
+          <p>
+            at Government of the Philippines ang nakasaad na source of funds.
+          </p>
+
+          <p>
+            Kasama sa description ang checking at repair ng bathroom leaks at replacement of toilet bowl.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang government-funded ang toilet bowl, tiles o ibang fixtures na tinanggal sa particular office na pinag-uusapan.
+          </p>
+
+          <p>
+            Mahalagang huwag lumampas sa ebidensiya.
+          </p>
+
+          <p>
+            Pero pinatutunayan nito ang isang bagay:
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TOILET FIXTURE, BATHROOM REPAIR AT RENOVATION SA SENADO AY HINDI AUTOMATIKONG “PERSONAL ITEM.”
+            </p>
+          </blockquote>
+
+          <p>
+            Maaari silang pumasok mismo sa formal government procurement at facilities expenditure.
+          </p>
+
+          <p>
+            Kaya kailangang malaman ang provenance ng bawat disputed item.
+          </p>
+
+          <p>
+            Personal bang binili?<br>
+            Senate-funded ba?<br>
+            Parte ba ng GSIS property?<br>
+            May institutional reimbursement ba?<br>
+            May formal transfer o recognition ba?<br>
+            May written approval ba sa installation at removal?
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAYANG SAGUTIN NG RESIBO LAMANG ANG LAHAT NG IYON.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAHIT HINDI PUBLIC FUNDS ANG GINAMIT, HINDI IBIG SABIHING TAPOS NA ANG USAPIN KUNG KANINO TALAGA ANG PROPERTY
+          </h2>
+
+          <p>
+            May formal accounting treatment ang gobyerno kahit sa property na hindi mismong binili gamit ang public funds.
+          </p>
+
+          <p>
+            Halimbawa, ayon mismo sa Commission on Audit, ang Property, Plant and Equipment na natanggap bilang donation without condition ay maaaring i-recognize bilang government asset sa fair value nito, kasama ang qualifying delivery at installation costs.
+          </p>
+
+          <p>
+            Hindi natin sinasabing donated ang disputed Senate fixtures.
+          </p>
+
+          <p>
+            Wala tayong ebidensiya niyan.
+          </p>
+
+          <p>
+            Ang point ay mas basic:
+          </p>
+
+          <blockquote>
+            <p>
+              FUNDING SOURCE AT LEGAL O ACCOUNTING OWNERSHIP ARE NOT ALWAYS THE SAME QUESTION.
+            </p>
+          </blockquote>
+
+          <p>
+            May property na binili ng gobyerno.<br>
+            May property na na-donate sa gobyerno.<br>
+            May property na na-transfer.<br>
+            May improvement sa leased premises.
+          </p>
+
+          <p>
+            At may property na personal at nananatiling personal.
+          </p>
+
+          <p>
+            Kaya kailangan ang classification at records.
+          </p>
+
+          <h2>
+            SA GOVERNMENT ACCOUNTING, RECORDS ANG BASEHAN NG PROPERTY ACCOUNTABILITY
+          </h2>
+
+          <p>
+            May formal property-accountability system ang national government.
+          </p>
+
+          <p>
+            Sa Government Accounting Manual, may records at forms para sa government property, kabilang ang Property Card, PPE Ledger Card, reports on damaged or destroyed property at Property Transfer Report.
+          </p>
+
+          <p>
+            At malinaw ang description ng Property Transfer Report:<br>
+            Ginagamit ito kapag may transfer ng property mula sa isang OUTGOING OFFICER patungo sa SUCCESSOR, o mula sa isang accountable officer o employee patungo sa iba.
+          </p>
+
+          <p>
+            Ibig sabihin, sa accountable government property, hindi verbal assertion o institutional memory ang pangunahing sistema.
+          </p>
+
+          <p>
+            May records para sa:<br>
+            acquisition,<br>
+            description,<br>
+            custody,<br>
+            transfer,<br>
+            damage,<br>
+            repair,<br>
+            at disposal.
+          </p>
+
+          <p>
+            Hindi:
+          </p>
+
+          <p>
+            “ALAM NAMAN NAMING KANINO IYAN.”
+          </p>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “ANO ANG NASA RECORDS?”
+            </p>
+          </blockquote>
+
+          <h2>
+            SA TERM-BASED GOVERNMENT OFFICES, ANG GENERAL PRINCIPLE AY TURNOVER AT ACCOUNTABILITY
+          </h2>
+
+          <p>
+            Makikita ito sa iba't ibang bahagi ng gobyerno.
+          </p>
+
+          <p>
+            Noong 1993, naglabas ang Malacañang ng Memorandum Circular No. 34 dahil sa problema ng outgoing officials at employees na hindi nagsu-surrender ng government vehicles, communications equipment at iba pang government assets.
+          </p>
+
+          <p>
+            Inatasan nito ang covered government offices na tiyaking may physical turnover ng government assets na nasa custody ng outgoing officials bago maging effective ang kanilang transfer, resignation, retirement o separation.
+          </p>
+
+          <p>
+            Hindi iyon direct Senate rule.
+          </p>
+
+          <p>
+            Mahalagang malinaw iyon dahil hiwalay na constitutional branch ang Senado.
+          </p>
+
+          <p>
+            Pero ipinapakita nito ang longstanding administrative principle:
+          </p>
+
+          <blockquote>
+            <p>
+              NAGBABAGO ANG OCCUPANT.<br>
+              NAGPAPATULOY ANG INSTITUSYON.<br>
+              AT KASAMA SA TRANSITION ANG PROPERTY ACCOUNTABILITY.
+            </p>
+          </blockquote>
+
+                    <h2>
+            GANITO RIN ANG PRINCIPLE SA BARANGAY TRANSITIONS
+          </h2>
+
+          <p>
+            Sa DILG Memorandum Circular No. 2018-12, required ang inventory at turnover ng barangay properties, financial records, documents at money accountabilities.
+          </p>
+
+          <p>
+            Required ding i-account at i-turn over ang properties at supplies na nasa possession o custody ng outgoing officials, kasama ang reports tungkol sa damaged o lost items at repairs.
+          </p>
+
+          <p>
+            At hindi iyon historical example lamang.
+          </p>
+
+          <p>
+            Sa DILG Memorandum Circular No. 2026-021, muling binigyang-diin ang inventory at turnover ng barangay at SK assets, financial records, documents at money accountabilities para sa orderly transition mula outgoing patungo sa incoming officials.
+          </p>
+
+          <p>
+            Again:<br>
+            Hindi ito direct rule para sa Senate office.
+          </p>
+
+          <p>
+            Magkaiba ang institution at applicable regulations.
+          </p>
+
+          <p>
+            Pero pareho ang administrative DNA:
+          </p>
+
+          <blockquote>
+            <p>
+              PUBLIC INSTITUTIONS CONTINUE EVEN WHEN THE PEOPLE OCCUPYING THEIR OFFICES CHANGE.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG GOVERNMENT OFFICE AY HINDI PARANG PERSONAL NA CONDO UNIT
+          </h2>
+
+          <p>
+            Kapag sariling bahay, mas malawak ang discretion ng owner kung ano ang ikakabit, aalisin o babaguhin.
+          </p>
+
+          <p>
+            Pero ang government office ay bahagi ng isang nagpapatuloy na institution.
+          </p>
+
+          <p>
+            May susunod na gagamit.<br>
+            May maintenance.<br>
+            May facilities management.<br>
+            May property records.<br>
+            May contractual obligations.<br>
+            May audit.
+          </p>
+
+          <p>
+            At higit sa lahat—<strong>MAY TAXPAYER NA MAAARING SUMALO SA SUSUNOD NA GASTOS.</strong>
+          </p>
+
+          <p>
+            Kaya hindi sapat ang argumentong:
+          </p>
+
+          <p>
+            “WALANG PUBLIC MONEY SA BINILI.”
+          </p>
+
+          <p>
+            Dahil mayroon pang ikalawang tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              MAY PUBLIC MONEY BANG KAILANGANG GASTUSIN DAHIL TINANGGAL ITO?
+            </p>
+          </blockquote>
+
+          <h2>
+            DIYAN NAGIGING MAHALAGA ANG “NOT A SINGLE CENTAVO OF PUBLIC FUNDS WAS WASTED”
+          </h2>
+
+          <p>
+            Posibleng mapatunayan ang claim.
+          </p>
+
+          <p>
+            Kung personal talagang binili ang disputed materials, authorized ang installation at removal, walang Senate o GSIS asset na nasira, reusable ang materials, at walang public expenditure na kailangang sagutin dahil sa removal o restoration, lalakas ang factual basis ng depensa.
+          </p>
+
+          <p>
+            Pero hindi sapat na patunayan lamang na personal money ang unang ginamit.
+          </p>
+
+          <p>
+            Halimbawa:
+          </p>
+
+          <p>
+            Kung personal funds ang ginamit sa tiles, pero pagkatapos baklasin ay kailangang palitan ang flooring bago magamit ng susunod na occupant—<strong>SINO ANG MAGBABAYAD?</strong>
+          </p>
+
+          <p>
+            Kung personal funds ang ginamit sa wall panels, pero kailangan ngayong ayusin ang underlying wall pagkatapos alisin ang mga ito—<strong>SINO ANG MAGBABAYAD?</strong>
+          </p>
+
+          <p>
+            Kung personal funds ang ginamit sa electrical fixtures, pero kailangang i-restore ang electrical system para maging safe at functional ang office—<strong>SINO ANG MAGBABAYAD?</strong>
+          </p>
+
+          <p>
+            Diyan pumapasok ang konsepto ng <strong>LIFE-CYCLE COST.</strong>
+          </p>
+
+          <p>
+            Hindi lang:
+          </p>
+
+          <p>
+            “MAGKANO ANG IPINAMBILI?”
+          </p>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “ANO ANG KABUUANG GASTOS MULA INSTALLATION AT PAGGAMIT HANGGANG MAINTENANCE, REMOVAL AT RESTORATION?”
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI IMBENTONG STANDARD ANG PAGTINGIN SA BUONG LIFE CYCLE NG PUBLIC ASSET
+          </h2>
+
+          <p>
+            Sa OECD Government at a Glance 2025, binigyang-diin ang pag-manage ng public assets sa buong life cycle—kabilang ang operation, maintenance at eventual decommissioning.
+          </p>
+
+          <p>
+            Sa 33 OECD countries na may available data, 12 lamang o 36% ang systematic na nagsasama ng full life-cycle costs sa appraisal ng lahat ng projects; 19 naman ang gumagawa nito para lamang sa ilang projects.
+          </p>
+
+          <p>
+            At sa OECD's 2026 work on asset management, binigyang-diin din ang budgeting, monitoring, maintenance, upgrading at decommissioning bilang bahagi ng whole-life management ng infrastructure assets.
+          </p>
+
+          <p>
+            Hindi pag-aaral sa Senate office ang OECD research.
+          </p>
+
+          <p>
+            Ang governance lesson ay mas malawak:
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI NATATAPOS SA PURCHASE PRICE ANG TANONG KUNG EFFICIENT AT RESPONSIBLE ANG PAGGAMIT NG PROPERTY.
+            </p>
+          </blockquote>
+
+          <p>
+            Kasama ang maintenance.
+          </p>
+
+          <p>
+            Useful life.<br>
+            Damage.<br>
+            Replacement.<br>
+            Removal.<br>
+            At restoration.
+          </p>
+
+          <h2>
+            MAY PHILIPPINE EVIDENCE DIN KUNG BAKIT MAHALAGA ANG ASSET MANAGEMENT
+          </h2>
+
+          <p>
+            Sa Philippine Public Investment Management Assessment na ginawa noong 2018 at inilathala ng IMF noong 2019, tinatayang may humigit-kumulang 23% efficiency gap ang Pilipinas kumpara sa best-performing emerging-market economies sa pag-convert ng public investment tungo sa infrastructure, batay sa benchmark using perceived infrastructure quality.
+          </p>
+
+          <p>
+            Historical assessment iyon.
+          </p>
+
+          <p>
+            <strong>HINDI IYON DAPAT IPRESENT BILANG CURRENT 2026 EFFICIENCY MEASUREMENT.</strong>
+          </p>
+
+          <p>
+            At sa IMF Philippines infrastructure-governance profile na nagre-reflect sa PIMA findings, ang Monitoring of Public Assets ay rated HIGH sa institutional design ngunit MEDIUM sa effectiveness, na may nakasaad na issues sa comprehensiveness ng reporting at frequency ng updates.
+          </p>
+
+          <p>
+            Hindi rin iyon bagong 2026 field assessment ng Senado o ng particular office na pinag-uusapan.
+          </p>
+
+          <p>
+            Ang relevance nito ay nasa broader governance principle:
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG PUBLIC ASSET ANG PINAG-UUSAPAN, MAHALAGA ANG RECORD, CONDITION, MAINTENANCE AT ACCOUNTABILITY—HINDI LANG KUNG SINO ANG UNANG NAGLABAS NG PERA.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY MALAKING PAGKAKAIBA ANG “WALANG PUBLIC MONEY SA BINILI” AT “WALANG PUBLIC MONEY NA NASAYANG”
+          </h2>
+
+          <p>
+            Ang una ay SOURCE-OF-FUNDS QUESTION.<br>
+            Ang ikalawa ay TOTAL-COST-AND-ACCOUNTABILITY QUESTION.
+          </p>
+
+          <p>
+            Puwedeng personal ang isang improvement.
+          </p>
+
+          <p>
+            Pero kung pagkatapos alisin ay kailangan ng government institution na gumastos para gawing functional muli ang space, hindi na sapat ang pagsagot na:
+          </p>
+
+          <p>
+            “SARILING PERA NAMAN ANG GINAMIT NOONG UNA.”
+          </p>
+
+          <p>
+            Hindi ibig sabihin na automatic nang “waste” ang anumang restoration expense.
+          </p>
+
+          <p>
+            Kailangan pa ring malaman:<br>
+            Required ba ang restoration?<br>
+            Sino ang may contractual responsibility?<br>
+            Authorized ba ang removal?<br>
+            May actual damage ba?<br>
+            Normal at approved ba ang ganitong turnover arrangement?
+          </p>
+
+          <p>
+            Pero iyon mismo ang dahilan kung bakit kailangang makita ang records bago ideklara ang:
+          </p>
+
+          <blockquote>
+            <p>
+              ZERO PUBLIC COST.<br>
+              ZERO PUBLIC WASTE.
+            </p>
+          </blockquote>
+
+                    <h2>
+            MAY MALINAW DING GOVERNMENT PROPERTY ACCOUNTABILITY RULES
+          </h2>
+
+          <p>
+            Sa Presidential Decree No. 1445 o Government Auditing Code of the Philippines, bawat government officer na may possession o custody ng government funds o property ay accountable sa safekeeping nito.
+          </p>
+
+          <p>
+            Ang agency head naman ay primarily responsible sa government funds at property ng kanyang agency.
+          </p>
+
+          <p>
+            At sa Section 103, expenditures of government funds o uses of government property na lumalabag sa law o regulations ay maaaring maging personal liability ng official o employee na mapatunayang directly responsible.
+          </p>
+
+          <p>
+            Pero mahalagang huwag ding baligtarin ang rule.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI IBIG SABIHIN NA DAHIL MAY CONTROVERSY AY MAY LIABILITY NA AGAD.
+            </p>
+          </blockquote>
+
+          <p>
+            Para pumasok ang Section 103, kailangang ma-establish ang relevant government funds o property, ang applicable rule at anumang violation, at kung sino ang directly responsible.
+          </p>
+
+          <p>
+            Kaya hindi dapat inuunahan ang factual at audit process.
+          </p>
+
+          <h2>
+            “NAIPALIWANAG NA SA COA” AY HINDI PA PAREHO NG FORMAL COA CONCLUSION
+          </h2>
+
+          <p>
+            Ayon sa Estrada camp, naipaliwanag na nila ang matter sa resident COA auditor.
+          </p>
+
+          <p>
+            Relevant iyon.
+          </p>
+
+          <p>
+            Pero magkaiba ang:<br>
+            <strong>NAKAPAGBIGAY NG EXPLANATION SA AUDITOR</strong> at <strong>MAY FORMAL WRITTEN COA AUDIT FINDING, OBSERVATION, NOTICE, DECISION O IBANG OFFICIAL RECORD NA NAG-RESOLVE SA SPECIFIC PROPERTY O ACCOUNTING ISSUE.</strong>
+          </p>
+
+          <p>
+            Kaya hangga't walang ganoong written official record na available, hindi dapat i-frame ang statement na “naipaliwanag na” bilang automatic na COA clearance o final audit determination.
+          </p>
+
+          <p>
+            At pareho ring hindi tama na ideklara agad na may audit violation bago magkaroon ng factual at official determination.
+          </p>
+
+          <h2>
+            PAANO NAMAN ANG DEPENSANG “STANDARD PRACTICE NAMAN IYAN”?
+          </h2>
+
+          <p>
+            Ito ang isa sa pinakamahalagang bahagi ng usapin.
+          </p>
+
+          <p>
+            Ayon sa Estrada camp, na-turn over din umano sa kanya noong 2022 ang parehong office sa halos walang laman na kondisyon.
+          </p>
+
+          <p>
+            Ginamit iyon bilang halimbawa na hindi bago o unusual ang ganitong turnover at bahagi umano ito ng longstanding Senate practice.
+          </p>
+
+          <p>
+            Pero may direktang dispute sa mismong precedent na iyon.
+          </p>
+
+          <p>
+            Ang previous occupant ng office noong 2022 ay si Sen. Panfilo Lacson.
+          </p>
+
+          <p>
+            At matapos lumabas ang claim, kinontra niya ito.
+          </p>
+
+          <p>
+            Ayon kay Lacson, wala siyang inalis o sinira nang i-turn over niya ang Pro Tempore office kay Estrada noong 2022, at sinabi niyang government funds ang ginamit sa refurbishment ng office noong siya ang occupant.
+          </p>
+
+          <p>
+            Mahalaga ito.
+          </p>
+
+          <p>
+            Hindi dahil automatic nang napatunayang mali ang statement ng kabilang panig.
+          </p>
+
+          <p>
+            Pareho pa ring claims ang kailangang ikumpara sa records.
+          </p>
+
+          <p>
+            Ang mahalagang punto:
+          </p>
+
+          <blockquote>
+            <p>
+              MISMONG 2022 PRECEDENT NA GINAGAMIT BILANG EBIDENSIYA NG “LONG-STANDING PRACTICE” AY DISPUTED.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya mas lalong mahalaga ang documentary evidence.
+          </p>
+
+          <p>
+            Ano talaga ang condition ng office noong 2022 turnover?<br>
+            Ano ang property inventory?<br>
+            Ano ang government-funded refurbishment?<br>
+            Ano ang personally funded items?<br>
+            Ano ang inalis?<br>
+            Ano ang naiwan?<br>
+            May photos, work orders, property records o turnover documents ba?
+          </p>
+
+          <p>
+            Iyan ang mas matibay na paraan para resolbahin ang conflicting accounts ng dalawang panig.
+          </p>
+
+          <h2>
+            AT KAHIT MAY MGA NAUNANG KATULAD NA TURNOVER—PRACTICE IS NOT AUTOMATICALLY POLICY
+          </h2>
+
+          <p>
+            Posibleng mayroon talagang internal Senate practice na hindi publicly posted.<br>
+            Posible ring may ibang senators na nagtanggal o naglipat ng personally funded fixtures.
+          </p>
+
+          <p>
+            Pero iba ang:
+          </p>
+
+          <p>
+            “NANGYARI NA ITO DATI.”
+          </p>
+
+          <p>
+            sa:
+          </p>
+
+          <p>
+            “ITO ANG OFFICIAL RULE AT AUTHORIZED PROCEDURE.”
+          </p>
+
+          <p>
+            May relevant principle ang Civil Code.
+          </p>
+
+          <p>
+            Article 12 states that a custom must be proved as a fact, habang hindi maaaring gamiting dahilan ang custom para balewalain ang applicable law.
+          </p>
+
+          <p>
+            Pero kailangan ding maging precise rito:<br>
+            <strong>HINDI IBIG SABIHIN NA BAWAT INTERNAL OFFICE PRACTICE AY AUTOMATIC NANG “CUSTOM” SA TECHNICAL LEGAL SENSE NG ARTICLE 12.</strong>
+          </p>
+
+          <p>
+            Hindi natin kailangang gawing Article 12 ang legal weapon na magdedesisyon sa Senate controversy.
+          </p>
+
+          <p>
+            Mas limitado at mas simple ang point:
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG ANG “NAKASANAYAN” AY GINAGAMIT BILANG JUSTIFICATION, MAKATWIRANG HINGIN ANG EBIDENSIYA KUNG ANO TALAGA ANG PRACTICE—AT KUNG CONSISTENT ITO SA APPLICABLE RULES, CONTRACTS AT PROPERTY CONTROLS.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya ang tanong ay hindi lamang:
+          </p>
+
+          <p>
+            “GINAGAWA BA ITO DATI?”
+          </p>
+
+          <p>
+            Kundi:
+          </p>
+
+          <blockquote>
+            <p>
+              “ANO ANG AUTHORITY NA NAGPAPAHINTULOT DITO?”
+            </p>
+          </blockquote>
+
+          <h2>
+            KUNG TALAGANG STANDARD PRACTICE—ANO ANG DAPAT MAKITA?
+          </h2>
+
+          <p>
+            Hindi kailangang magpalakasan ng statement.
+          </p>
+
+          <p>
+            Mas useful ang documents.
+          </p>
+
+          <p>
+            <strong>SENATE OFFICE-TURNOVER AT RENOVATION POLICY</strong>
+          </p>
+
+          <p>
+            Kung may longstanding rule tungkol sa personally funded improvements, ano mismo ang nakasulat?
+          </p>
+
+          <p>
+            <strong>2022 AT 2026 PROPERTY O TURNOVER RECORDS</strong>
+          </p>
+
+          <p>
+            Para makita kung ano talaga ang condition ng parehong office bago at pagkatapos ng dalawang turnover.
+          </p>
+
+          <p>
+            <strong>PROOF OF PURCHASE AT SOURCE OF FUNDS</strong>
+          </p>
+
+          <p>
+            Para malaman kung alin ang personal, Senate-funded o bahagi ng GSIS premises.
+          </p>
+
+          <p>
+            <strong>INSTALLATION AT REMOVAL APPROVALS O WORK ORDERS</strong>
+          </p>
+
+          <p>
+            Dahil ibang tanong ang “sino ang bumili” sa “sino ang nag-authorize na ikabit at alisin.”
+          </p>
+
+          <p>
+            <strong>RELEVANT SENATE-GSIS LEASE PROVISIONS</strong>
+          </p>
+
+          <p>
+            Lalo na sa alterations, permanent improvements, fixtures, removal at restoration.
+          </p>
+
+          <p>
+            <strong>CONDITION ASSESSMENT AT RESTORATION PLAN</strong>
+          </p>
+
+          <p>
+            Ano talaga ang kailangang gawin para maging usable muli ang office?
+          </p>
+
+          <p>
+            <strong>SOURCE OF FUNDS PARA SA RESTORATION</strong>
+          </p>
+
+          <p>
+            Kung may gagastusin, sino ang contractually o administratively responsable?
+          </p>
+
+          <p>
+            At kung magkaroon ng formal COA action—<strong>WRITTEN AUDIT RECORD ANG MAS MATIBAY KAYSA VERBAL CHARACTERIZATION NG ALINMANG PANIG.</strong>
+          </p>
+
+          <h2>
+            DAHIL SA GOVERNMENT OFFICE, HINDI SAPAT ANG “AKIN ANG PERA”
+          </h2>
+
+          <p>
+            Mas mahalagang itanong:<br>
+            KANINO ANG PROPERTY?<br>
+            ANO ANG TERMS NG PAGKAKABIT?<br>
+            SINO ANG MAY AUTHORITY?<br>
+            ANO ANG APPLICABLE LEASE O POLICY?<br>
+            ANO ANG NAIWANG KONDISYON?<br>
+            AT SINO ANG SASAGOT SA SUSUNOD NA GASTOS?
+          </p>
+
+          <p>
+            Dahil maaaring personal ang pera pero institutional ang space.<br>
+            Maaaring personal ang purchase pero regulated ang installation.<br>
+            Maaaring removable ang isang improvement pero may contractual o restoration conditions.<br>
+            At maaaring walang public money sa unang purchase pero magkaroon ng public expenditure pagkatapos ng removal.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi ito simpleng argumento tungkol sa tiles o inidoro.<br>
+              USAPIN ITO NG HANGGANAN NG PERSONAL OWNERSHIP SA LOOB NG GOVERNMENT OFFICE.
+            </p>
+          </blockquote>
+
+          <p>
+            At iyan ang mas malaking lesson kahit matapos na ang particular na controversy:
+          </p>
+
+          <blockquote>
+            <p>
+              ANG POSISYON AY TEMPORARY.<br>
+              ANG INSTITUSYON AY NAGPAPATULOY.<br>
+              AT ANG PROPERTY ACCOUNTABILITY AY HINDI DAPAT NAKASALALAY LANG SA KUNG SINO ANG KASALUKUYANG NAKAUPO.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung personal talaga—ipakita ang ownership at applicable authority.<br>
+            Kung government property—i-account at i-turn over.<br>
+            Kung improvement sa leased premises—tingnan kung sino talaga ang lessee, ano ang kontrata at ano ang applicable rules.<br>
+            At kung may restoration cost—linawin kung sino ang responsable at sino ang magbabayad.
+          </p>
+
+          <p>
+            Dahil sa property at pera na konektado sa government operations, hindi sapat ang:
+          </p>
+
+          <p>
+            “GANITO NAMAN ANG NAKASANAYAN.”
+          </p>
+
+          <p>
+            At hindi rin sapat ang:
+          </p>
+
+          <p>
+            “AKIN ITO DAHIL AKO ANG NAGBAYAD.”
+          </p>
+
+          <p>
+            Ang mas mahalagang tanong ay:
+          </p>
+
+          <blockquote>
+            <p>
+              GANITO BA ANG NAKASULAT?<br>
+              GANITO BA ANG NAKA-RECORD?<br>
+              AT GANITO BA ANG AUTHORIZED NA GAWIN?
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil—SINO ANG NAGBAYAD ay simula lamang ng usapan.
+          </p>
+
+          <blockquote>
+            <p>
+              SINO ANG MAY-ARI, SINO ANG MAY AUTHORITY, AT SINO ANG SASAGOT SA GASTOS—DIYAN NASUSUKAT ANG TUNAY NA ACCOUNTABILITY.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Republic Act No. 386 — Civil Code of the Philippines</strong>, particularly Articles 7, 11, 12, 415 and 1678 — Lawphil.
+            </li>
+
+            <li>
+              <strong>Supreme Court, G.R. No. 222785, March 2, 2020</strong> — application of Article 1678 to useful improvements introduced by a lessee.
+            </li>
+
+            <li>
+              <strong>Supreme Court jurisprudence</strong> on lease-contract provisions governing permanent improvements and alterations.
+            </li>
+
+            <li>
+              <strong>Presidential Decree No. 1445 — Government Auditing Code of the Philippines</strong>, particularly Sections 101–103 on custody, primary responsibility and unlawful expenditures or use of government property — Supreme Court E-Library.
+            </li>
+
+            <li>
+              <strong>Government Accounting Manual for National Government Agencies</strong> — property-accountability records and Property Transfer Report used in transfers from an outgoing officer to a successor.
+            </li>
+
+            <li>
+              <strong>Commission on Audit</strong> — guidance on recognition and accounting treatment of donated Property, Plant and Equipment.
+            </li>
+
+            <li>
+              <strong>Senate of the Philippines — Administrative and Financial Services</strong>; functions of the Property and Procurement Service and Maintenance and General Services Bureau.
+            </li>
+
+            <li>
+              <strong>Senate of the Philippines — Updated Annual Procurement Plan 2024</strong>; ₱50,000 “Renovation of wash room” item, including repair of bathroom leaks and replacement of toilet bowl.
+            </li>
+
+            <li>
+              <strong>Senate of the Philippines, June 28, 2025</strong> — discussion of the Senate-GSIS lease and planned transfer to the New Senate Building.
+            </li>
+
+            <li>
+              <strong>Memorandum Circular No. 34, s. 1993</strong> — physical turnover of government assets by covered outgoing officials and employees.
+            </li>
+
+            <li>
+              <strong>DILG Memorandum Circular No. 2018-12</strong> — inventory and turnover of barangay properties, financial records, documents and money accountabilities.
+            </li>
+
+            <li>
+              <strong>DILG Memorandum Circular No. 2026-021</strong> — barangay/SK inventory and turnover guidelines for leadership transition.
+            </li>
+
+            <li>
+              <strong>OECD, Government at a Glance 2025</strong> — Management of Asset Performance Throughout the Life Cycle.
+            </li>
+
+            <li>
+              <strong>OECD, Management of Assets Throughout Their Life Cycle, 2026</strong> — whole-life asset management, maintenance, monitoring and decommissioning.
+            </li>
+
+            <li>
+              <strong>International Monetary Fund — Philippines: Public Investment Management Assessment</strong>, conducted in 2018 and published in 2019.
+            </li>
+
+            <li>
+              <strong>IMF — Philippines Infrastructure Governance Profile</strong>; Monitoring of Public Assets.
+            </li>
+
+            <li>
+              <strong>GMA News, October 6, 2026</strong> — statement of the Estrada camp on personally funded fixtures, claimed Senate practice and the 2022 turnover; including Sen. Panfilo Lacson’s rebuttal regarding the office he turned over in 2022.
+            </li>
+
+            <li>
+              <strong>GMA News, October 6, 2026</strong> — reports on the condition of the Senate office intended for Sen. Tito Sotto.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
