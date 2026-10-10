@@ -1,1 +1,1638 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Super El Niño ba ay mas dapat paghandaan ngayon? Suriin ang PAGASA forecasts, historical impacts, climate change, heat risks, at preparedness."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-super-elniño.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-super-elniño.html"
+  >
+
+  <title>SUPER EL NIÑO: DATING NANGYAYARI NA—PERO BAKIT MAS DAPAT PAGHANDAAN NGAYON? | jhElmEr</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SUPER EL NIÑO: DATING NANGYAYARI NA—PERO BAKIT MAS DAPAT PAGHANDAAN NGAYON?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-super-elniño.png"
+            alt="Simbolikong visual ng Super El Niño na may basag na patak ng tubig, tuyong lupa, sakahan, matinding init, at water-level gauge bilang representasyon ng drought, heat risk, at water stress."
+          >
+
+        </div>
+
+      </figure>
+      
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Hindi bago ang El Niño. pero hindi rin ibig sabihing dahil nangyari na ito noon, handa na tayo sa susunod.
+          </p>
+
+          <p>
+            Ngayong muling naging usap-usapan ang Super El Niño, may mga nangangamba sa mga babala tungkol sa matinding init, tagtuyot, kakulangan sa tubig at posibleng pagkamatay ng libo-libong tao. Mayroon ding nagkikibit-balikat dahil matagal nang nangyayari ang El Niño—parang wala nang dahilan para seryosohin ang panibagong babala.
+          </p>
+
+          <p>
+            Pero may mahalagang bahagi ng usapin na hindi nasasagot ng alinman sa dalawang reaksiyon.
+          </p>
+
+          <p>
+            Noon pa man, may mga matitinding El Niño nang sumira sa pananim, nagpahirap sa suplay ng tubig at nakaapekto sa kabuhayan ng maraming Pilipino. Hindi ito bagong panganib na ngayon lamang natuklasan.
+          </p>
+
+          <p>
+            Ang pagkakaiba, patuloy nang umiinit ang mundo dahil sa climate change. At habang nagbabago ang mga kondisyon ng klima, nananatiling magkakaiba ang kakayahan ng mga pamilya, komunidad at institusyon na harapin ang matinding init at kakulangan sa ulan.
+          </p>
+
+          <p>
+            Hindi nito awtomatikong ibig sabihin na bawat bagong El Niño ay mas malakas kaysa sa nauna. Pero hindi rin sapat na tawagin itong natural na siklo para maliitin ang mga panganib na maaari nitong dalhin.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG PAGIGING NATURAL NG ISANG PANGYAYARI AY HINDI GARANTIYA NA HINDI ITO MAGIGING MAPAMINSALA.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya bago husgahan kung panakot lamang ang mga babala o kung talagang mas dapat tayong maghanda, mahalagang balikan ang mismong siyensiya, ang mga pinsalang naitala na sa kasaysayan, at ang papel ng climate change sa mga panganib na kinakaharap natin ngayon.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG EL NIÑO?
+          </h2>
+
+          <p>
+            Ang El Niño ay bahagi ng natural na sistemang tinatawag na El Niño–Southern Oscillation o ENSO.
+          </p>
+
+          <p>
+            Sa karaniwang kondisyon, ang mga hanging tinatawag na trade winds ay tumutulong na itulak ang mainit na tubig sa ibabaw ng equatorial Pacific pakanluran, patungo sa bahagi ng Indonesia at kanlurang Pacific. Kasabay nito, mas malamig na tubig mula sa ilalim ng karagatan ang umaakyat sa silangang bahagi nito.
+          </p>
+
+          <p>
+            Kapag nagkaroon ng El Niño, humihina o nagbabago ang mga hanging ito. Kumakalat ang mas mainit na tubig patungo sa gitna at silangang Pacific, at nagbabago rin ang lokasyon ng pagbuo ng mga ulap, pag-ulan at malalakas na pag-angat ng hangin.
+          </p>
+
+          <p>
+            Hindi ito simpleng pag-init lamang ng dagat.
+          </p>
+
+          <p>
+            Isa itong pagbabago sa ugnayan ng karagatan at atmospera na kayang makaapekto sa rainfall patterns, temperatura at mga kondisyon ng panahon sa iba't ibang bahagi ng mundo.
+          </p>
+
+          <p>
+            Karaniwang nagkakaroon ng ENSO events sa pagitan ng humigit-kumulang dalawa hanggang pitong taon, pero hindi ito eksaktong iskedyul. Nagkakaiba rin ang tagal, lokasyon ng pinakamainit na tubig, at lakas ng bawat pangyayari.
+          </p>
+
+          <p>
+            Kapag umabot sa napakataas na intensity, ginagamit ang katawagang Super El Niño. Popular itong paglalarawan sa napakalakas na El Niño, bagaman hindi iisa ang pormal na pamantayan ng lahat ng climate agencies sa paggamit ng salitang “super.”
+          </p>
+
+          <h2>
+            MAY AKTUWAL BANG BATAYAN ANG MGA BABALA?
+          </h2>
+
+          <p>
+            Mayroon.
+          </p>
+
+          <p>
+            Sa advisory ng PAGASA noong Oktubre 7, 2026, kinilala nito ang strong to very strong El Niño sa tropical Pacific. Inaasahang magpapatuloy ang pangyayari hanggang sa kalagitnaan ng 2027, at maaari itong umabot sa pinakamataas na lakas bago matapos ang 2026.
+          </p>
+
+          <p>
+            Sa October 8, 2026 ENSO Diagnostic Discussion ng NOAA Climate Prediction Center, umabot sa +2.1°C ang naobserbahang sea-surface temperature anomaly sa Niño-3.4 region. Ibig sabihin, mas mainit nang 2.1°C kaysa sa itinakdang reference average ang ibabaw ng dagat sa mahalagang bahaging iyon ng Pacific.
+          </p>
+
+          <p>
+            Ayon din sa NOAA, may 83% forecast probability na ang tatlong-buwang period na Oktubre hanggang Disyembre 2026 ay aabot sa record-level intensity batay sa kanilang Relative Oceanic Niño Index, kumpara sa mga naitalang pangyayari mula 1950.
+          </p>
+
+          <p>
+            Samantala, nagbigay ang World Meteorological Organization ng seasonal forecast na maaaring umabot sa humigit-kumulang +3.7°C ang Niño-3.4 sea-surface temperature anomaly para sa Oktubre–Disyembre 2026.
+          </p>
+
+          <p>
+            Mahalagang tandaan: ang +3.7°C ay forecast ng pagbabago sa temperatura ng isang bahagi ng karagatan, hindi dagdag na 3.7°C sa temperatura ng buong Pilipinas o ng buong mundo.
+          </p>
+
+          <p>
+            At ang 83% ay posibilidad ng isang antas ng El Niño intensity—hindi 83% na posibilidad na makaranas ng drought ang bawat lalawigan.
+          </p>
+
+          <p>
+            Malinaw ang siyentipikong batayan ng babala. Pero hindi ibig sabihin na alam na natin ang eksaktong magiging pinsala, bilang ng mga maaapektuhan, o kung aling komunidad ang pinakamalubhang tatamaan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PAREHO ANG MALAKAS NA FORECAST AT SIGURADONG KALAMIDAD.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI ITO ANG UNANG MATINDING EL NIÑO SA KASAYSAYAN.
+          </h2>
+
+          <p>
+            Kabilang ang 1982–1983, 1997–1998 at 2015–2016 sa pinakamalalakas na El Niño events na naitala sa modernong instrumental record, ayon sa Intergovernmental Panel on Climate Change o IPCC.
+          </p>
+
+          <p>
+            At hindi lang temperatura ng karagatan ang naging sukatan ng bigat ng mga pangyayaring ito.
+          </p>
+
+          <p>
+            Sa Pilipinas, may aktuwal nang kasaysayan ng pagkasira ng pananim, pagkaubos ng water reserves, at malawakang epekto sa kabuhayan.
+          </p>
+
+          <p>
+            Ayon sa 2019 World Bank study na Striking a Balance: Managing El Niño and La Niña in Philippines’ Agriculture, noong 1997–1998 El Niño, umabot sa humigit-kumulang kalahati ng historical level ang pag-ulan sa mga apektadong kondisyon, at nakaranas ng drought ang malaking bahagi ng bansa—tinatayang dalawang-katlo nito.
+          </p>
+
+          <p>
+            Nagdulot din ang matinding tagtuyot ng mga sunog sa kagubatan na sumira sa halos 10,000 ektarya ng natural forest.
+          </p>
+
+          <p>
+            Sa parehong pangyayari, umabot sa kritikal na antas ang tubig sa Angat Dam. Dahil dito, nahinto ang irigasyon sa humigit-kumulang 27,000 ektarya ng palayan at maisan. Tinatayang 15,000 farm households ang naapektuhan, at umabot sa 100,000 metric tons ang tinatayang nabawas sa produksiyon ng palay mula sa pagkaantala ng irigasyon.
+          </p>
+
+          <p>
+            Noong 2015–2016 naman, ayon sa parehong World Bank study, tumagal nang humigit-kumulang 18 buwan ang dry El Niño conditions. Pagsapit ng Mayo 2016, mahigit 400,000 magsasaka at 550,000 ektarya ng lupang sakahan ang direktang naapektuhan ng El Niño-induced drought.
+          </p>
+
+          <p>
+            Tinatayang US$327 million ang agricultural production losses mula sa pangyayaring iyon, ayon sa datos na ginamit sa pag-aaral. Historical estimate ito, hindi halagang in-adjust sa kasalukuyang presyo.
+          </p>
+
+          <p>
+            Hindi rin kailangang bumalik nang ilang dekada para makita ang epekto.
+          </p>
+
+          <p>
+            Noong 2023–2024 El Niño, umabot sa ₱15.30 billion ang kabuuang naitalang pinsala sa agrikultura, ayon sa Final Bulletin ng Department of Agriculture–Disaster Risk Reduction and Management Operations Center noong Agosto 2, 2024.
+          </p>
+
+          <p>
+            Naapektuhan ang 333,195 magsasaka at mangingisda sa 15 rehiyon. Naitala rin ang humigit-kumulang 784,344 metric tons ng crop production losses sa 270,855 ektarya ng lupang sakahan.
+          </p>
+
+          <p>
+            Hindi ito forecast ng maaaring mangyari.
+          </p>
+
+          <blockquote>
+            <p>
+              MGA PINSALANG NAITALA NA ITO.
+            </p>
+          </blockquote>
+
+          <p>
+            Ibig sabihin, bago pa man ang pinakabagong babala tungkol sa Super El Niño, napatunayan na ng karanasan ng Pilipinas na ang ENSO ay hindi lamang usapin ng temperatura at weather maps.
+          </p>
+
+          <p>
+            May katumbas itong nawalang ani, naantalang kabuhayan, limitadong irigasyon at dagdag na pressure sa suplay ng pagkain at tubig.
+          </p>
+
+                            <h2>
+            PERO CLIMATE CHANGE BA ANG DAHILAN KUNG BAKIT LUMALALA ANG EL NIÑO?
+          </h2>
+
+          <p>
+            Dito kailangang maging maingat.
+          </p>
+
+          <p>
+            Hindi nilikha ng modernong climate change ang El Niño. Natural na bahagi ito ng sistema ng karagatan at atmospera, at umiiral na bago pa nagsimula ang kasalukuyang human-caused global warming.
+          </p>
+
+          <p>
+            Pero may mahalagang pagkakaiba ang pinagmulan ng isang phenomenon at ang mga kondisyong nagpapabigat sa epekto nito.
+          </p>
+
+          <p>
+            Ang human-caused climate change ay nagpapataas ng pangkalahatang temperatura ng mundo dahil sa pagdami ng greenhouse gases, lalo na mula sa pagsusunog ng fossil fuels at iba pang gawain ng tao.
+          </p>
+
+          <p>
+            Habang umiinit ang mundo, mas mataas na rin ang temperatura kung saan nagsisimula ang mga natural na pagbabago sa klima.
+          </p>
+
+          <p>
+            Sa madaling salita, maaaring natural ang pagdating ng El Niño, pero hindi na kapareho ng dati ang mundong naaabutan nito.
+          </p>
+
+          <p>
+            Mas mainit na hangin at karagatan, nagbabagong rainfall patterns, at mas maraming lugar na nanganganib sa extreme heat ang ilan sa mga kondisyong kailangang isaalang-alang.
+          </p>
+
+          <p>
+            May mahalagang paglilinaw ang IPCC Sixth Assessment Report.
+          </p>
+
+          <p>
+            Wala pang matibay na pagkakasundo ang mga climate model kung sistematikong lalakas ang pagbabagu-bago ng sea-surface temperature na kaugnay ng ENSO dahil sa global warming.
+          </p>
+
+          <p>
+            Pero ayon sa IPCC, very likely na lalakas ang ENSO-related rainfall variability sa mas mainit na mundo, lalo na sa mga dekada pagkatapos ng 2050 sa ilang emissions scenarios.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi pa settled ang tanong kung ang bawat susunod na El Niño ay magiging mas malakas sa temperatura ng dagat.
+          </p>
+
+          <p>
+            Mas malinaw ang ebidensiya na ang climate change ay nagpapataas ng extreme heat risks at maaaring magpalala ng mga pagbabago sa pag-ulan na kaugnay ng ENSO.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG SABIHING CLIMATE CHANGE ANG LUMIKHA NG EL NIÑO PARA MAUNAWAANG MAS MAPANGANIB ANG INIT SA ISANG UMIINIT NA MUNDO.
+            </p>
+          </blockquote>
+
+          <h2>
+            BAKIT MAHALAGA ITO SA ORDINARYONG PILIPINO?
+          </h2>
+
+          <p>
+            Dahil hindi pantay ang epekto ng init at tagtuyot.
+          </p>
+
+          <p>
+            Ang pamilyang may maayos na bahay, insulation, sapat na tubig at air-conditioning ay hindi kapareho ng sitwasyon ng pamilyang nakatira sa maliit na bahay na may yero, kulang sa bentilasyon, at kailangang magtipid sa kuryente.<br>
+            Ang empleyadong nagtatrabaho sa air-conditioned office ay hindi kapareho ng exposure ng construction worker, street vendor, delivery rider, magsasaka o traffic enforcer na kailangang manatili sa labas.<br>
+            Ang magsasakang may maaasahang irigasyon ay hindi kapareho ng magsasakang umaasa lamang sa ulan.
+          </p>
+
+          <p>
+            At ang komunidad na may matatag na suplay ng tubig ay hindi kapareho ng lugar na hirap nang magkaroon ng sapat na tubig kahit wala pang drought.
+          </p>
+
+          <p>
+            Ayon sa World Health Organization, ang extreme heat ay maaaring magpalala ng mga kondisyon sa puso, bato, baga at iba pang karamdaman. Mas mataas ang panganib para sa matatanda, mga taong may pre-existing health conditions, at mga manggagawang matagal na exposed sa init.
+          </p>
+
+          <p>
+            Hindi rin lahat ng heat-related deaths ay simpleng kaso ng heatstroke. Maaaring lumala ang isang dati nang sakit dahil sa sobrang init kahit hindi iyon agad makilala bilang heat-related sa karaniwang pag-uulat.
+          </p>
+
+          <p>
+            Mahalaga rin ang heat index—ang temperaturang nararamdaman ng katawan kapag isinama ang epekto ng humidity. Iba ito sa aktuwal na air temperature.
+          </p>
+
+          <p>
+            Kaya posibleng mapanganib ang kondisyon kahit hindi umabot sa 40°C ang temperatura sa thermometer.
+          </p>
+
+          <p>
+            At hindi rin tama ang palagay na kapag tag-ulan ay wala nang dapat ipag-alala tungkol sa init o drought.
+          </p>
+
+          <p>
+            Ang El Niño ay karaniwang nagdaragdag ng posibilidad ng below-normal rainfall sa ilang bahagi ng Pilipinas, pero hindi nito tuluyang pinipigilan ang ulan, habagat, thunderstorms o pagdating ng bagyo.
+          </p>
+
+          <p>
+            Maaaring magkaroon ng matinding pag-ulan sa isang lugar habang nakararanas naman ng kakulangan sa tubig ang iba.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG EL NIÑO AY HINDI GARANTIYA NG TAGTUYOT SA LAHAT NG LUGAR. PERO ANG PAG-ULAN SA ISANG ARAW AY HINDI RIN PATUNAY NA WALA NANG DROUGHT RISK.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO NAMAN ANG MGA BALITANG MAY LIBO-LIBONG POSIBLENG MAMATAY?
+          </h2>
+
+          <p>
+            May aktuwal na research na pinagmulan ng mga ganitong babala.
+          </p>
+
+          <p>
+            Noong Setyembre 2026, inilabas ng University of Chicago’s Climate Impact Lab ang analysis na 451,000 at Risk: Where Action Can Save Lives During the Super El Niño.
+          </p>
+
+          <p>
+            Tinataya ng mga researcher na maaaring magkaroon ng humigit-kumulang 451,000 additional heat-related deaths sa buong mundo mula Hunyo 2026 hanggang Pebrero 2027, kumpara sa inaasahang bilang sa katumbas na mga buwan ng isang karaniwang taon.
+          </p>
+
+          <p>
+            Siyam na buwan ang saklaw ng estimate na ito, kabilang ang mga buwang lumipas na bago inilabas ang report noong Setyembre.
+          </p>
+
+          <p>
+            Para naman sa anim na buwang forecast period mula Setyembre 2026 hanggang Pebrero 2027, tinataya ang 239,000 ± 11,000 additional heat-related deaths sa buong mundo.
+          </p>
+
+          <p>
+            Magkaiba ang saklaw ng dalawang bilang.
+          </p>
+
+          <p>
+            Kasama na sa 451,000 ang anim na buwang saklaw ng 239,000. Hindi dapat pagsamahin ang dalawang bilang, at hindi rin dapat ipalabas na lahat ng 451,000 ay inaasahan pang mangyari pagkatapos mailabas ang research.
+          </p>
+
+          <p>
+            Paano nila nakuha ang mga projection?
+          </p>
+
+          <p>
+            Gumamit ang mga researcher ng seasonal temperature forecasts at mga pag-aaral sa ugnayan ng temperatura at mortality. Isinaalang-alang nila ang lokal na klima, vulnerability at adaptive capacity sa 24,378 rehiyon sa buong mundo.
+          </p>
+
+          <p>
+            Inihambing ang projected temperature-related excess mortality sa mga katumbas na buwan ng average year, gamit ang 1996–2025 bilang baseline.
+          </p>
+
+          <p>
+            May kasama ring uncertainty ang kanilang mga projection dahil hindi eksaktong mahuhulaan ang temperatura at ang magiging epekto nito sa kalusugan ng bawat populasyon.
+          </p>
+
+          <p>
+            Pero may mahalagang limitasyon sa pagbasa ng mga resulta.
+          </p>
+
+          <p>
+            Ang model ay tumataya sa karagdagang temperature-related deaths sa ilalim ng forecasted conditions. Hindi nito hiwalay na sinusukat kung ilan sa mga pagkamatay ang eksklusibong dulot ng El Niño, kung ihihiwalay sa epekto ng pangmatagalang global warming at iba pang salik na nakaaapekto sa temperatura at kalusugan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PAREHO ANG PAGTANTIYA SA HEAT-RELATED MORTALITY AT PAGPAPATUNAY NA EL NIÑO LAMANG ANG SANHI NG BAWAT PROJECTED DEATH.
+            </p>
+          </blockquote>
+
+          <p>
+            Paano naman ang Pilipinas?
+          </p>
+
+          <p>
+            Sa ulat ng GMA News noong Setyembre 23, 2026, direktang iniulat mula sa Climate Impact Lab projection ang tinatayang 6,500 ± 410 additional heat-related deaths sa Pilipinas mula Setyembre 2026 hanggang Pebrero 2027, kumpara sa isang karaniwang taon.
+          </p>
+
+          <p>
+            Nabanggit din ang 6,500 figure sa Malacañang press briefing noong Oktubre 5, 2026, nang itanong ito ng isang reporter sa mga opisyal ng PAGASA at Department of Health. Bilang tugon, ipinaliwanag ni Health Secretary Edwin Mercado ang mga pag-iingat laban sa matinding init, lalo na para sa mga vulnerable na sektor. Hindi ito hiwalay na pagkumpirma ng mga opisyal sa eksaktong mortality projection ng research.
+          </p>
+
+          <p>
+            Sa pangunahing inilathalang research text ng Climate Impact Lab, ang direktang nakasaad ay 19,400 additional heat-related deaths para sa pinagsamang Pilipinas, Vietnam, Thailand at Cambodia sa anim na buwang period. Hindi nakahiwalay sa mismong narrative text ang buong country-level calculation para sa Pilipinas.
+          </p>
+
+          <p>
+            Kaya mahalagang kilalanin ang Philippine-specific estimate na iniulat mula sa research, habang malinaw ding sinasabi kung saan ito naitala at kung ano ang mga limitasyon nito.
+          </p>
+
+          <p>
+            Ang 6,500 ay hindi kumpirmadong bilang ng mamamatay. Ang ±410 ay nagpapakita ng uncertainty sa estimate, hindi garantiya na sa loob lamang ng saklaw na iyon ang magiging aktuwal na resulta.
+          </p>
+
+          <p>
+            Bukod dito, sinabi ng Climate Impact Lab na ilalathala pa sa isang peer-reviewed journal ang kumpletong metodolohiya ng seasonal analysis.
+          </p>
+
+          <p>
+            Hindi rin saklaw ng heat-mortality projection ang lahat ng posibleng pinsala mula sa baha, wildfire at iba pang epekto ng El Niño.
+          </p>
+
+          <p>
+            Kaya hindi makatarungang tawaging gawa-gawa ang buong babala dahil lamang malaki ang numero.<br>
+            Pero hindi rin makatarungang gamitin ang projection na parang tiyak nang may libo-libong mamamatay.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG SCIENTIFIC PROJECTION AY BABALA PARA MAKAPAGHANDA—HINDI DEATH COUNT NA NAITALA NA.
+            </p>
+          </blockquote>
+
+          <h2>
+            AT DITO PUMAPASOK ANG MAS MALAKING TANONG: HANDA BA TALAGA TAYO?
+          </h2>
+
+          <p>
+            Hindi sapat na alam nating may paparating na matinding El Niño.
+          </p>
+
+          <p>
+            Dapat malinaw kung aling mga lugar ang may tumataas na drought risk, anong mga watershed at dam ang posibleng makaranas ng pressure sa suplay, at paano mapoprotektahan ang mga komunidad na pinaka-exposed sa init.
+          </p>
+
+          <p>
+            Para sa agrikultura, mahalaga ang maagap na pag-adjust ng planting calendars kung kailangan, tamang irrigation planning, drought-tolerant crops kung angkop, at malinaw na suporta sa mga magsasakang maaaring mawalan ng ani.
+          </p>
+
+          <p>
+            Para sa water security, hindi dapat hintaying magkaroon ng matinding kakulangan bago repasuhin ang water allocation, pagtagas sa distribution systems, at contingency supply para sa mga apektadong lugar.
+          </p>
+
+          <p>
+            Para sa kalusugan, dapat may malinaw at praktikal na heat-warning system, access sa inuming tubig, mga lugar na maaaring pagpapalamigan, at proteksiyon para sa outdoor workers at vulnerable residents.
+          </p>
+
+          <p>
+            Para sa mga paaralan, hindi sapat ang paulit-ulit na anunsiyong mag-ingat sa init. Kailangang may malinaw na batayan para sa pagbabago ng schedules, classroom ventilation, hydration access at iba pang proteksiyon sa kalusugan ng mga mag-aaral at guro.
+          </p>
+
+          <p>
+            At para sa mga lokal na pamahalaan, mahalaga ang regular na paglalabas ng datos: rainfall deficits, drought assessments, water supply conditions, vulnerable areas at aktuwal na paghahanda.
+          </p>
+
+          <p>
+            Hindi lahat ng lugar ay nangangailangan ng pare-parehong aksiyon. Dapat ang paghahanda ay nakabatay sa lokal na panganib at hindi lamang sa isang nationwide headline.
+          </p>
+
+          <p>
+            Ang babala ng PAGASA ay mahalagang simula. Pero kailangan itong maisalin sa mga hakbang na naiintindihan at nararamdaman ng mga taong posibleng maapektuhan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI NASUSUKAT ANG PAGHAHANDA SA DAMI NG ADVISORY NA NAIPOST. NASUSUKAT ITO SA KUNG MAY NAGAGAWA BAGO PA LUMALA ANG PINSALA.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY ISA PANG DAPAT HINDI KALIMUTAN.
+          </h2>
+
+          <p>
+            Ang epekto ng El Niño ay hindi natatapos sa sandaling humina ang temperatura ng dagat o ibaba ang ENSO advisory.
+          </p>
+
+          <p>
+            Ang sakahang nawalan ng ani ay nangangailangan pa rin ng panahon at puhunan bago makabawi.<br>
+            Ang komunidad na naubusan ng sapat na water reserves ay hindi agad babalik sa normal dahil lamang umulan nang ilang beses.
+          </p>
+
+          <p>
+            At ang pamilyang nawalan ng kita dahil sa matinding init, nasirang pananim o naantalang trabaho ay maaaring patuloy na makaramdam ng epekto kahit humupa na ang climate event.
+          </p>
+
+          <p>
+            Ito ang dahilan kung bakit ang climate preparedness ay hindi lamang emergency response.
+          </p>
+
+          <p>
+            Kasama rito ang pangmatagalang pamamahala sa tubig, matatag na agrikultura, maayos na urban planning, proteksiyon sa kalusugan, at pagbabawas ng greenhouse gas emissions.
+          </p>
+
+          <p>
+            Hindi dapat umasa ang isang bansa na laging makakabawi ang mamamayan pagkatapos ng bawat matinding climate event.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG LAGING PAGBANGON KUNG MAY MGA PANGANIB NA MAAARI NAMANG PAGHANDAAN AT BAWASAN ANG PINSALA.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAYA ANO ANG DAPAT TALAGANG KATAKUTAN?
+          </h2>
+
+          <p>
+            Hindi ang salitang “Super.”<br>
+            Hindi ang matingkad na pulang kulay sa weather map.
+          </p>
+
+          <p>
+            At hindi rin ang isang forecast na hindi pa nangyayari.
+          </p>
+
+          <p>
+            Ang dapat seryosohin ay ang posibilidad na isang kilalang natural phenomenon ang magdulot na naman ng pinsalang may nauna nang babala, may historical evidence, at may mga hakbang na maaaring gawin upang mabawasan ang epekto.
+          </p>
+
+          <p>
+            Hindi natin kontrolado kung kailan muling magkakaroon ng El Niño o kung gaano ito kalakas.<br>
+            Pero may kontrol tayo sa kalidad ng paghahanda, sa pamamahala ng ating likas na yaman, sa pagpapatupad ng mga proteksiyon, at sa kung gaano kaseryoso nating ginagamit ang siyentipikong impormasyon.
+          </p>
+
+          <p>
+            May hangganan ang kayang pigilan ng tao laban sa kalikasan. Pero hindi nito pinawawalang-saysay ang pananagutang paghandaan ang mga panganib na kaya nang matukoy.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG EL NIÑO AY NATURAL NA SIKLO. ANG CLIMATE CHANGE AY NAGDARAGDAG NG PANGANIB. AT ANG KAKULANGAN SA PAGHAHANDA AY MAAARING MAGPALALA PA NG PINSALA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang magpakalat ng takot para hikayatin ang publiko na maging handa.<br>
+            Hindi rin kailangang maliitin ang babala para lamang magmukhang kalmado.
+          </p>
+
+          <p>
+            Ang kailangan ay malinaw na impormasyon, tapat na pagtalakay sa uncertainty, at mga hakbang na may aktuwal na pakinabang sa mamamayan.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil sa huli, HINDI LANG KUNG GAANO KALAKAS ANG EL NIÑO ANG DAPAT PAG-USAPAN—KUNDI KUNG GAANO KARAMING PINSALA ANG KAYA NATIN MAIWASAN DAHIL NAGHANDA TAYO NANG MAAGA.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung alam na nating maaaring dumating ang panganib, ang susunod na dapat nating itanong ay hindi lamang kung ano ang magiging forecast.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNDI KUNG ANO ANG GINAWA NATIN HABANG MAY PANAHON PA PARA MAGHANDA.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Pangunahing Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>PAGASA (2026)</strong> — El Niño Advisory No. 5, Oktubre 7, 2026.
+            </li>
+
+            <li>
+              <strong>NOAA Climate Prediction Center (2026)</strong> — ENSO Diagnostic Discussion, Oktubre 8, 2026.
+            </li>
+
+            <li>
+              <strong>World Meteorological Organization (2026)</strong> — Global Seasonal Climate Update for October–November–December 2026, Oktubre 8, 2026.
+            </li>
+
+            <li>
+              <strong>World Bank (2019)</strong> — Striking a Balance: Managing El Niño and La Niña in Philippines’ Agriculture.
+            </li>
+
+            <li>
+              <strong>Intergovernmental Panel on Climate Change (2021)</strong> — Climate Change 2021: The Physical Science Basis, Sixth Assessment Report, Working Group I.
+            </li>
+
+            <li>
+              <strong>World Health Organization (2026)</strong> — Heat and Health, Hulyo 31, 2026.
+            </li>
+
+            <li>
+              <strong>University of Chicago Climate Impact Lab (2026)</strong> — 451,000 at Risk: Where Action Can Save Lives During the Super El Niño, Setyembre 2026.
+            </li>
+
+            <li>
+              <strong>Department of Agriculture–DRRM Operations Center (2024)</strong> — Final El Niño Bulletin, Agosto 2, 2024.
+            </li>
+
+            <li>
+              <strong>GMA News (2026)</strong> — PH faces 6,500 heat-related deaths by 2027 amid super El Niño threat —report, Setyembre 23, 2026.
+            </li>
+
+            <li>
+              <strong>Presidential Communications Office (2026)</strong> — Malacañang Press Briefing of Palace Press Officer and PCO Undersecretary Claire Castro, Oktubre 5, 2026.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
