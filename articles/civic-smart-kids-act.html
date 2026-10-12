@@ -1,1 +1,1867 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="SMART KIDS Act—proteksyon ba talaga ang ban? Suriin ang age verification, online child safety, platform accountability, privacy, at enforcement."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-smart-kids-act.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-smart-kids-act.html"
+  >
+
+  <title>SMART KIDS ACT—PROTEKSYON BA TALAGA ANG BAN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SMART KIDS ACT—PROTEKSYON BA TALAGA ANG BAN?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-smart-kids-act.png"
+            alt="Simbolikong visual ng SMART KIDS Act na may age verification screen, restricted access notice, fake birthdate, panibagong account, at mga posibleng loophole bilang representasyon ng online child safety at enforcement challenges."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Kapag may batang nabibiktima ng panlilinlang, cyberbullying o pang-aabuso sa social media, madaling sabihing ipagbawal na lang ang paggamit nito sa mga menor de edad.
+          </p>
+
+          <p>
+            Pero may isang tanong na hindi dapat mawala sa usapan:<br>
+            Kapag ipinagbawal ang account, napigilan na rin ba ang panganib?
+          </p>
+
+          <p>
+            Sa internet, maaaring gumawa ng panibagong account, magbigay ng maling edad, gumamit ng account ng iba, o lumipat sa ibang platform. Kaya kahit mahigpit ang nakasulat na pagbabawal, ibang usapan kung gaano ito kaepektibo sa aktuwal na paggamit.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihing walang silbi ang age restrictions. May tunay na mga panganib na kailangang pigilan at mga batang kailangang protektahan. Pero may malaking pagkakaiba ang paglilimita sa access at pagtiyak na nababawasan ang mismong panganib.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG BATAS NA MAHIGPIT SA PAPEL, PERO MAHINA SA PAGPAPATUPAD, AY MAAARING MAGBIGAY NG PAKIRAMDAM NA MAY PROTEKSYON—KAHIT MAY MGA NAKAKALUSOT PA RIN.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito kailangang suriin ang SMART KIDS Act. Hindi lamang kung maganda ang layunin nitong protektahan ang mga bata, kundi kung malinaw ang mga panuntunan, may sapat na paraan para ipatupad ang mga ito, at may tunay na pananagutan ang online platforms.
+          </p>
+
+          <p>
+            Bago sabihing sapat o kulang ang pagbabawal, mahalagang alamin muna kung ano talaga ang ipinapanukala, sino ang saklaw nito, at paano ito inaasahang magbibigay ng proteksyon.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG SMART KIDS ACT?
+          </h2>
+
+          <p>
+            Noong Oktubre 8, 2026, inaprubahan ng Senado sa ikatlo at huling pagbasa ang Senate Bill No. 2424 o Safe Media Access and Responsible Technology for Kids in Digital Spaces (SMART KIDS) Act, sa botong 16 pabor, isa ang tutol, at walang abstention.
+          </p>
+
+          <p>
+            Sa bersyong inaprubahan ng Senado, ipinagbabawal sa mga wala pang 18 taong gulang ang paggawa, paggamit, pag-access, at pagpapanatili ng account sa mga digital platform na ituturing na high-risk, kabilang ang mga may social networking functions.
+          </p>
+
+          <p>
+            Hindi sapat ang pahintulot o supervision ng magulang para gawing exempted ang isang menor de edad sa pagbabawal.
+          </p>
+
+          <p>
+            Inaatasan din ang mga sakop na platform na magpatupad ng age verification at alisin, suspindihin, o i-disable ang mga account na matutukoy na ginagamit ng mga menor de edad.
+          </p>
+
+          <p>
+            Hindi naman awtomatikong saklaw ang email, private messaging, news services, educational platforms, at online games na hindi pangunahing ginagamit para sa social networking.
+          </p>
+
+          <p>
+            Mahalagang linawin na hindi lahat ng online games ay awtomatikong exempted. Depende sa mga features at sa magiging pamantayan ng pagkakakategorya, maaaring masaklaw ang ilang gaming platforms na may social networking functions.
+          </p>
+
+          <p>
+            Ayon sa mga ulat tungkol sa Senate-approved measure, maaaring patawan ng ₱5 milyon hanggang ₱20 milyon na multa ang lumalabag na platform. May iniulat ding karagdagang multang ₱100,000 kada araw para sa patuloy na hindi pagsunod.
+          </p>
+
+          <p>
+            May iminungkahing parusa rin sa mga magulang o guardian na sadyang tumutulong para malampasan ang age restrictions. Gayunman, magkakaiba ang naiulat na halaga ng multa, kaya kailangang kumpirmahin ang eksaktong probisyon sa opisyal na bersyong inaprubahan ng Senado.
+          </p>
+
+          <p>
+            Ang Department of Information and Communications Technology (DICT) naman ang inaasahang mangangasiwa sa pagpapatupad kung magiging batas ang panukala.
+          </p>
+
+          <p>
+            Pero mahalagang malinaw:
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PA ITO GANAP NA BATAS.
+            </p>
+          </blockquote>
+
+          <p>
+            May hiwalay na House Bill No. 11566 na inaprubahan sa ikalawang pagbasa noong Oktubre 6, 2026.
+          </p>
+
+          <p>
+            Sa opisyal na legislative record ng Kamara, nakatala ito bilang Children's Digital Safety, Protection, and Well-Being Act. Sa mga ulat tungkol sa amended second-reading version, tinukoy rin ito bilang Safe and Friendly Environment for Kids in Digital Spaces Act.
+          </p>
+
+          <p>
+            Iba ang diskarte nito sa Senate version.
+          </p>
+
+          <p>
+            Batay sa mga ulat tungkol sa House measure, nakatuon ang pagbabawal sa sariling social media account ng mga batang wala pang 13 taong gulang, habang pinapayagan ang mas nakatatandang kabataan na gumamit sa ilalim ng parental consent at mga angkop na proteksyon at paghihigpit.
+          </p>
+
+          <p>
+            Kailangan pang matapos ang proseso ng pagsasabatas at maayos ang anumang pagkakaiba ng dalawang bersyon.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi dapat ipagkamali ang Senate approval bilang isang patakarang umiiral na sa buong Pilipinas.
+          </p>
+
+          <h2>
+            MAY TOTOONG PANGANIB—AT MAY DATOS NA NAGPAPATUNAY NITO.
+          </h2>
+
+          <p>
+            Hindi kathang-isip ang online sexual exploitation, grooming, cyberbullying, at exposure sa mapanganib na content.
+          </p>
+
+          <p>
+            Sa Disrupting Harm in the Philippines study na inilathala noong 2022 ng UNICEF, ECPAT International, at INTERPOL, tinatayang 20% ng mga batang Pilipinong edad 12–17 na gumagamit ng internet ang nakaranas ng online sexual abuse o exploitation noong 2021.
+          </p>
+
+          <p>
+            Katumbas ito ng tinatayang dalawang milyong bata sa panahong pinag-aralan.
+          </p>
+
+          <p>
+            Mas nakakabahala, ayon sa UNICEF, 0–4% lamang ng mga batang biktima ang nag-ulat ng kanilang karanasan, habang 0–3% lamang ang nakaaalam kung paano mag-report sa pulisya o helpline.
+          </p>
+
+          <p>
+            May 55% din ng mga batang sinurvey na hindi alam kung paano mag-report ng harmful content sa social media, habang 44% ang hindi alam kung saan hihingi ng tulong kung sila o ang kanilang kaibigan ay makaranas ng sexual harassment o abuse.
+          </p>
+
+          <p>
+            Magkaiba ang mga bilang na ito:<br>
+            Ang una ay tungkol sa pag-uulat ng mga biktima, habang ang iba ay tungkol sa kaalaman ng mga bata kung paano at saan makakahingi ng tulong.
+          </p>
+
+          <p>
+            Hindi ito simpleng problema ng labis na paggamit ng cellphone. May mga batang aktuwal na naaabuso, nalilinlang, at pinagsasamantalahan sa digital environment.
+          </p>
+
+          <p>
+            Sa hiwalay na pag-aaral ng World Health Organization na inilathala noong 2024, umakyat mula 7% noong 2018 tungong 11% noong 2022 ang bahagdan ng mga kabataang may problematic social media use sa mga bansang saklaw ng survey.
+          </p>
+
+          <p>
+            Halos 280,000 kabataang edad 11, 13, at 15 mula sa 44 na bansa at rehiyon sa Europe, Central Asia, at Canada ang kasali sa 2022 survey.
+          </p>
+
+          <p>
+            Ang problematic use ay hindi simpleng madalas na pag-scroll. Tumutukoy ito sa mga palatandaang nahihirapan nang kontrolin ang paggamit at may negatibong epekto na sa pang-araw-araw na buhay.
+          </p>
+
+          <p>
+            Pero hindi ito Philippine survey. Hindi rin nito pinatutunayang lahat ng batang gumagamit ng social media ay may ganitong problema.
+          </p>
+
+          <p>
+            At may isa pang mahalagang limitasyon.
+          </p>
+
+          <p>
+            Sa 2024 consensus report ng US National Academies of Sciences, Engineering, and Medicine, hindi sapat ang pinagsama-samang ebidensiya para sabihing ang social media mismo ang sanhi ng pagbabago sa kalusugan ng mga kabataan sa antas ng buong populasyon.
+          </p>
+
+          <p>
+            May tunay na panganib, pero mayroon ding benepisyo. Nagkakaiba ang epekto depende sa bata, uri ng paggamit, content, at sitwasyon.
+          </p>
+
+          <p>
+            Kaya hindi dapat gawing awtomatikong paliwanag ang social media sa bawat insidente ng karahasan sa paaralan nang walang sapat na ebidensiyang nag-uugnay rito sa partikular na pangyayari.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGKILALA SA PANGANIB AY HINDI PA PATUNAY NA EPEKTIBO ANG NAPILING SOLUSYON.
+            </p>
+          </blockquote>
+
+          <p>
+            At dito nagiging mahalaga ang aktuwal na karanasan ng ibang bansa.
+          </p>
+
+          <h2>
+            AUSTRALIA: MAY AGE RESTRICTION—PERO MAY NAKAKAPASOK PA RIN.
+          </h2>
+
+          <p>
+            Noong Disyembre 10, 2025, nagsimulang ipatupad sa Australia ang social media age restrictions para sa mga batang wala pang 16 taong gulang.
+          </p>
+
+          <p>
+            Ang pangunahing obligasyon ng mga sakop na platform ay gumawa ng makatuwirang hakbang upang pigilan ang mga batang wala pang 16 sa paggawa o pagpapanatili ng sariling account.
+          </p>
+
+          <p>
+            Sa unang evaluation ng Australian eSafety Commissioner at mga research partners nito, sinubaybayan ang mahigit 4,000 bata at pamilya bilang bahagi ng dalawang taong pag-aaral.
+          </p>
+
+          <p>
+            Sa baseline survey bago ang pagpapatupad, 52.4% ng mga batang wala pang 16 ang may sariling account sa kahit isang age-restricted platform.
+          </p>
+
+          <p>
+            Pagkalipas ng tatlong buwan, bumaba ito sa 42.1%.
+          </p>
+
+          <p>
+            May pagbawas. Hindi maaaring sabihing walang naging epekto ang patakaran.
+          </p>
+
+          <p>
+            Pero narito ang mas mahalagang detalye.
+          </p>
+
+          <p>
+            Bago ang restrictions, 85.9% ang nagsabing gumagamit sila ng kahit isang age-restricted platform, mayroon man silang sariling account o wala.
+          </p>
+
+          <p>
+            Pagkaraan ng tatlong buwan, 81.5% pa rin ang gumagamit.
+          </p>
+
+                            <blockquote>
+            <p>
+              BUMABA ANG MAY SARILING ACCOUNT—PERO HINDI GANOON KALAKI ANG PAGBABA NG AKTUWAL NA PAGGAMIT.
+            </p>
+          </blockquote>
+
+          <p>
+            Bakit?
+          </p>
+
+          <p>
+            Ayon sa evaluation, marami sa mga account na nanatili ay hindi pa nasusuri nang maayos ang edad ng gumagamit. Mayroon ding mga account na ang nakatalang edad ay 16 pataas, o hindi tama ang naging pagtatantiya ng verification system.
+          </p>
+
+          <p>
+            Mahalagang tandaan na hindi pangunahing dahilan ang VPN o iba pang komplikadong paraan ng pag-bypass. Maliit lamang na bahagi ng mga bata ang nag-ulat ng ganitong pamamaraan.
+          </p>
+
+          <p>
+            May mga nakakagamit din ng platform nang walang sariling account—halimbawa, sa pamamagitan ng shared account o content na hindi nangangailangan ng login.
+          </p>
+
+          <p>
+            Dito kailangang paghiwalayin ang dalawang bagay.
+          </p>
+
+          <p>
+            Ang pagbabawal sa pagkakaroon ng sariling account ay hindi eksaktong kapareho ng pagbabawal sa lahat ng paraan ng paggamit ng platform.
+          </p>
+
+          <p>
+            Kaya hindi awtomatikong paglabag sa Australian law ang bawat paggamit na walang sariling account. Pero mahalaga pa rin ito sa pagsusuri kung gaano kalawak ang nababawas na online exposure.
+          </p>
+
+          <p>
+            Hindi pa pinatutunayan ng unang evaluation kung magtatagumpay o mabibigo ang buong patakaran sa katagalan. Tatlong buwan pa lamang ang saklaw ng mga unang resulta.
+          </p>
+
+          <p>
+            Pero may malinaw na aral:
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PORKET NAPIGILAN ANG PAGGAWA NG ACCOUNT AY NAPIGILAN NA RIN ANG PAG-ACCESS.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung hindi pare-pareho ang pagpapatupad ng age verification, maaaring magpatuloy ang access na mismong nilalayong limitahan.
+          </p>
+
+          <h2>
+            UNITED KINGDOM: MAY MGA BATANG NAKAKALAMPAS SA AGE CHECKS.
+          </h2>
+
+          <p>
+            Mas direktang sinuri ng United Kingdom ang usapin ng pag-bypass.
+          </p>
+
+          <p>
+            Sa research na inilathala ng UK Department for Science, Innovation and Technology noong Hulyo 2026, may 2,299 kabataang edad 11–17 na sumagot tungkol sa kanilang karanasan sa age checks at mga paraan ng pag-access.
+          </p>
+
+          <p>
+            Sa kanilang self-reported survey, 39% ang nagsabing matagumpay na nilang nalampasan ang kahit isang age check.
+          </p>
+
+          <p>
+            May 53% namang nagsabing sinadya nilang pumili ng website, app, o game dahil walang age check o madaling lampasan ang verification.
+          </p>
+
+          <p>
+            Kabilang sa mga iniulat na paraan ang pagbibigay ng maling petsa ng kapanganakan, paggamit ng pagkakakilanlan ng ibang tao, at paggamit ng mga tool na nagpapalit ng nakikitang online location.
+          </p>
+
+          <p>
+            Pero may mahalagang hangganan ang datos na ito.
+          </p>
+
+          <p>
+            Hindi lahat ng age checks na pinag-aralan ay mahihigpit na verification system. Kasama rin ang simpleng paglalagay ng birthday o pag-tick sa kahong nagsasabing nasa tamang edad ang gumagamit.
+          </p>
+
+          <p>
+            Batay rin ang mga resulta sa mga sagot ng mga kabataan, hindi sa direktang pagsubok ng bawat verification system.
+          </p>
+
+          <p>
+            Hindi rin ito direktang pagsukat sa magiging epekto ng Philippine SMART KIDS Act.
+          </p>
+
+          <p>
+            Gayunman, ipinapakita nito ang isang problemang kailangang paghandaan sa paggawa ng batas.
+          </p>
+
+          <blockquote>
+            <p>
+              KAPAG MAHINA ANG PARAAN NG PAGTUKOY SA EDAD, MAY MGA GUMAGAMIT NA NAKAKALAMPAS SA LIMITASYON.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung mas mahigpit ang verification, may panibagong tanong tungkol sa privacy at wastong paghawak ng personal na impormasyon.
+          </p>
+
+          <h2>
+            KUNG GOVERNMENT ID ANG GAGAMITIN—PAANO ANG PRIVACY?
+          </h2>
+
+          <p>
+            Sa mga talakayan tungkol sa SMART KIDS Act, kabilang sa pinag-uusapan ang paggamit ng government-issued ID para makumpirma ang edad.
+          </p>
+
+          <p>
+            Pero mahalagang hindi ipagpalagay na government ID lamang ang maaaring gamitin sa lahat ng age-verification system. Kailangang malinaw sa pinal na batas at implementing rules kung aling mga paraan ang papayagan at anong proteksyon ang kailangan.
+          </p>
+
+          <p>
+            Kahit walang permanenteng kopya ng ID, hindi awtomatikong ibig sabihing walang panganib sa data.
+          </p>
+
+          <p>
+            Maaaring magkaroon pa rin ng pagproseso ng personal na impormasyon, maling pagkakakilanlan, kahinaan sa seguridad, o hindi awtorisadong paggamit ng nakolektang datos.
+          </p>
+
+          <p>
+            May umiiral na tayong Republic Act No. 10173 o Data Privacy Act of 2012.
+          </p>
+
+          <p>
+            Sa Section 11 nito, kailangang sundin ang transparency, legitimate purpose, at proportionality sa pagproseso ng personal na impormasyon.
+          </p>
+
+          <p>
+            Sa madaling salita, dapat malinaw kung bakit kinukuha ang datos, gamitin lamang ito sa lehitimong layunin, at huwag mangolekta nang higit sa kailangan.
+          </p>
+
+          <p>
+            Noong Setyembre 23, 2026, nanawagan din ang National Privacy Commission sa mga digital platform na gumamit ng privacy-preserving age assurance at ihinto ang behavioral profiling na nagtutulak ng marahas o hindi ligtas na content sa mga batang gumagamit.
+          </p>
+
+          <p>
+            Kaya hindi sapat na sabihing magpatupad ng age verification.
+          </p>
+
+          <p>
+            Kailangang malinaw kung anong paraan ang katanggap-tanggap, paano poprotektahan ang impormasyon, paano aayusin ang maling resulta, at paano mapapanagot ang kumpanyang lumabag.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil hindi rin proteksyon ang isang sistemang pinipigilan ang batang gumamit ng platform pero inilalagay naman sa panganib ang personal na datos ng gumagamit.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY BATAS NA TAYO LABAN SA ONLINE CHILD EXPLOITATION. ANO ANG DAPAT PALAKASIN?
+          </h2>
+
+          <p>
+            Noong 2022, naisabatas ang Republic Act No. 11930, na nagpaparusa sa online sexual abuse o exploitation of children at sa mga kaugnay na materyal ng pang-aabuso.
+          </p>
+
+          <p>
+            Hindi lamang nito pinaparusahan ang gumagawa ng krimen. May obligasyon din ang internet intermediaries, kabilang ang pag-aalis o pag-block ng ipinagbabawal na materyal, pag-iingat ng kaugnay na ebidensiya, at pakikipagtulungan sa mga awtoridad sa ilalim ng naaangkop na legal na proseso.
+          </p>
+
+          <p>
+            Sa Section 9, may partikular na mga tungkulin ang internet intermediaries.
+          </p>
+
+          <p>
+            Kabilang dito ang pag-block, pag-remove, o pag-take down ng tinukoy na child sexual abuse or exploitation material sa loob ng 24 oras matapos makatanggap ng notice mula sa competent authority, o notice na may sapat na impormasyong kailangan upang matukoy ang content at pinagmulan nito.
+          </p>
+
+          <p>
+            Maaari lamang palawigin ito ng karagdagang 24 oras sa mga sitwasyong pinapayagan ng batas, kapag nagsumite ng nakasulat na paliwanag—halimbawa, kung kulang ang impormasyong kailangan upang matukoy ang content at pinagmulan nito.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi nagsisimula sa zero ang pananagutan ng online platforms sa Pilipinas.
+          </p>
+
+          <p>
+            Ang tanong ngayon ay kung gaano kahusay naipatutupad ang mga umiiral na obligasyon at kung anong karagdagang proteksyon ang talagang kailangan.
+          </p>
+
+          <p>
+            Kung may bagong pagbabawal, kailangang malinaw ang koneksyon nito sa mga umiiral na batas, sa enforcement, at sa mga ahensyang magpapatupad.
+          </p>
+
+          <p>
+            Dahil ang online grooming, exploitation, at harassment ay hindi awtomatikong nawawala kapag na-disable ang isang account.
+          </p>
+
+          <p>
+            May mga gumagawa ng pang-aabuso na maaaring lumipat ng platform, gumamit ng ibang account, o humanap ng ibang paraan para makontak ang biktima.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat na mabawasan ang access ng potensyal na biktima kung hindi rin napipigilan, natutukoy, at napapanagot ang mismong nang-aabuso.
+            </p>
+          </blockquote>
+
+                            <h2>
+            BAKIT MAY NAG-IISANG SENADOR NA TUMUTOL?
+          </h2>
+
+          <p>
+            Sa 16–1–0 na botohan ng Senado, si Sen. Risa Hontiveros ang nag-iisang bumoto laban sa SMART KIDS Act.
+          </p>
+
+          <p>
+            Pero mahalagang malinaw kung ano talaga ang kanyang tinututulan.
+          </p>
+
+          <p>
+            Hindi niya itinatanggi ang panganib ng cyberbullying, online sexual exploitation, grooming, at harmful content sa mga bata.
+          </p>
+
+          <p>
+            Ang kanyang pagtutol ay nakasentro sa blanket ban para sa lahat ng wala pang 18 taong gulang, sa halip na mga paghihigpit na isinasaalang-alang ang edad at pangangailangan ng kabataan.
+          </p>
+
+          <p>
+            Sa kanyang paliwanag sa pagboto, binanggit niya ang isang 17-year-old working student na kumikita sa online selling at pagtatrabaho bilang virtual assistant.
+          </p>
+
+          <p>
+            May mga kabataan ding umaasa sa social media para makausap ang magulang na nagtatrabaho sa ibang bansa, makakuha ng impormasyon, o makahingi ng suporta kapag nakararanas ng pang-aabuso.
+          </p>
+
+          <p>
+            Binanggit din niya ang isang estudyanteng gumamit ng social media upang mailantad ang harassment matapos umanong hindi aksyunan ang reklamo nito sa paaralan.
+          </p>
+
+          <p>
+            Sa mga halimbawang ito, binigyang-diin niya na magkakaiba ang sitwasyon, dahilan, at pangangailangan ng mga kabataan sa paggamit ng social media.
+          </p>
+
+          <p>
+            Kaya sa halip na iisang pagbabawal para sa lahat ng wala pang 18, iminungkahi niya ang tiered restrictions—mas mahigpit na proteksyon para sa mas bata, habang unti-unting binibigyan ng mas malaking kalayaang magdesisyon ang mas nakatatandang kabataan, na may kaukulang gabay at proteksyon.
+          </p>
+
+          <p>
+            Kabilang sa mga iminungkahi niyang hakbang ang mas mahigpit na default privacy settings, limitasyon sa pakikipag-ugnayan ng matatanda sa mga menor de edad, paghihigpit sa targeted advertising at profiling, mas mahigpit na regulasyon sa algorithms, at mas malakas na paggabay ng mga magulang at paaralan.
+          </p>
+
+          <p>
+            Nagpanukala rin siya ng edad 15 bilang posibleng minimum age threshold, sa halip na 18. Nauna na rin siyang nagmungkahi ng edad 13.
+          </p>
+
+          <p>
+            Binanggit din niya na ang mga 15-year-old ay maaari nang bumoto sa Sangguniang Kabataan elections at legal na magtrabaho, alinsunod sa naaangkop na mga batas at limitasyon.
+          </p>
+
+          <p>
+            Kaya para sa kanya, mahalagang isaalang-alang kung paano maaapektuhan ng pagbabawal ang kanilang access sa impormasyon, pakikilahok sa komunidad, at mga pagkakataong kumita upang makatulong sa pamilya.
+          </p>
+
+          <p>
+            Pero may mahalagang tanong din sa alternatibong ito.
+          </p>
+
+          <p>
+            Kung magkakaroon ng iba't ibang restriction depende sa edad, paano matitiyak na tama ang age verification, nasusunod ang mga limitasyon, at napapanagot ang platforms kapag may paglabag?
+          </p>
+
+          <p>
+            Dahil kahit tiered restrictions ang gamitin sa halip na blanket ban, hindi pa rin awtomatikong nawawala ang mga paraan para makalusot.
+          </p>
+
+          <blockquote>
+            <p>
+              MAGKAIBA ANG PAGTUTOL SA ISANG PARAAN NG PAGBABAWAL AT PAGTUTOL SA PROTEKSYON NG MGA BATA.
+            </p>
+          </blockquote>
+
+          <p>
+            At anuman ang piliing sistema—blanket ban man o age-based restrictions—kailangan pa ring patunayan na malinaw, naipatutupad, at talagang nakababawas ng panganib ang mga panuntunan.
+          </p>
+
+          <h2>
+            BAKIT 18—AT PAREHO BA TALAGA ANG PANGANGAILANGAN NG LAHAT NG MENOR DE EDAD?
+          </h2>
+
+          <p>
+            May isa pang anggulong kailangang pag-usapan.
+          </p>
+
+          <p>
+            Ang isang 12-year-old at isang 17-year-old ay parehong menor de edad. Pero hindi ibig sabihin na pareho ang kanilang kakayahan, pangangailangan, at paraan ng paggamit ng internet.
+          </p>
+
+          <p>
+            May mga batang gumagamit ng online platforms para sa komunikasyon sa pamilya, pag-aaral, paghahanap ng impormasyon, at kabuhayan.
+          </p>
+
+          <p>
+            Sa ilalim ng UN Convention on the Rights of the Child, mahalagang isaalang-alang ang proteksyon ng bata, ang kanyang umuunlad na kakayahang magdesisyon, privacy, at access sa angkop na impormasyon.
+          </p>
+
+          <p>
+            Mas detalyado rin itong tinalakay sa General Comment No. 25 noong 2021, na tumutukoy sa karapatan ng mga bata sa digital environment.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang bawal magtakda ng age restrictions.
+          </p>
+
+          <p>
+            Ang ibig sabihin nito, kailangang may malinaw na dahilan kung bakit ang isang partikular na limitasyon ay angkop at kailangan.
+          </p>
+
+          <p>
+            May naghahambing din sa Republic Act No. 9344, kung saan ang mga batang 15 taong gulang pababa ay exempted sa criminal liability, habang may espesyal na panuntunan para sa mga lampas 15 ngunit wala pang 18, depende sa discernment.
+          </p>
+
+          <p>
+            Pero hindi pareho ang criminal responsibility at social media eligibility. Magkaiba ang layunin at legal na pamantayan ng dalawang usapin.
+          </p>
+
+          <p>
+            Kaya hindi awtomatikong mali ang 18 dahil may ibang age threshold sa juvenile justice law.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong tama ang 18 dahil iyon ang karaniwang legal na hangganan ng adulthood.
+          </p>
+
+          <blockquote>
+            <p>
+              KAILANGANG MAY BATAYAN ANG EDAD NA PINILI—HINDI LANG DAHIL MADALING GAWING ISANG NUMERO ANG LAHAT.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LANG MGA SENADOR ANG MAY GANITONG PANGAMBA.
+          </h2>
+
+          <p>
+            Noong Oktubre 8, 2026, naglabas din ng pahayag ang UNICEF Philippines tungkol sa mga panukalang naghihigpit sa social media access ng mga bata.
+          </p>
+
+          <p>
+            Kinilala nito ang tunay na panganib ng online sexual exploitation, grooming, sextortion, at iba pang uri ng pang-aabuso.
+          </p>
+
+          <p>
+            Pero binigyang-diin din ng UNICEF na hindi sapat ang social media bans o age restrictions lamang para mapanatiling ligtas ang mga bata.
+          </p>
+
+          <p>
+            Ayon sa organisasyon, kapag hindi maayos ang pagkakagawa o pagpapatupad ng pagbabawal, maaari nitong limitahan ang access ng kabataan sa impormasyon at mga taong nagbibigay ng suporta.
+          </p>
+
+          <p>
+            Maaari rin silang lumipat sa ibang digital spaces na mas mahina ang regulasyon at proteksyon.
+          </p>
+
+          <p>
+            Hindi ito patunay na siguradong mangyayari ang ganoong resulta sa Pilipinas. Babala ito tungkol sa mga posibleng epekto na kailangang isaalang-alang.
+          </p>
+
+          <p>
+            Sa halip na pagbabawal lamang, nanawagan ang UNICEF ng mas ligtas na disenyo ng digital platforms, mas mahigpit na pananagutan ng mga kumpanya, age-appropriate safeguards, digital literacy, at mga serbisyong madaling lapitan ng mga batang nangangailangan ng tulong.
+          </p>
+
+          <p>
+            Mahalaga ring pakinggan ang karanasan ng mga bata at kabataan sa pagbuo ng mga patakarang direktang makaaapekto sa kanila.
+          </p>
+
+          <p>
+            Dito nagtatagpo ang isang mahalagang punto sa usapin.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LANG DAPAT ITANONG KUNG PAANO PIPIGILAN ANG MGA BATA SA PAGPASOK—KUNDI KUNG PAANO GAGAWING MAS LIGTAS ANG MISMONG DIGITAL ENVIRONMENT.
+            </p>
+          </blockquote>
+
+          <h2>
+            DITO DAPAT HIGPITAN ANG PANUNTUNAN AT PANANAGUTAN.
+          </h2>
+
+          <p>
+            Kung talagang child protection ang layunin, hindi dapat huminto ang batas sa pagbabawal ng paggawa o paggamit ng account.
+          </p>
+
+          <p>
+            Kailangang malinaw kung aling platform at features ang high-risk, at anong ebidensiya ang batayan ng pagkakakategorya.<br>
+            Kailangang may nasusukat na pamantayan sa age verification, regular na pagsusuri kung epektibo ang sistema, at paraan ng pagwawasto kapag mali ang pagkakatukoy sa edad.<br>
+            Kailangang may matibay na proteksyon sa personal na datos, malinaw na reporting system, agarang pagtugon sa mapanganib na content, at pananagutan sa mga platform na nagpapabaya.
+          </p>
+
+          <p>
+            Mahalaga ring suriin ang algorithms, targeted advertising, at platform features na maaaring magpalala ng harmful exposure o humikayat ng labis na paggamit.
+          </p>
+
+          <p>
+            At hindi dapat mawala ang digital literacy, paggabay ng pamilya, proteksyon sa paaralan, at suporta sa mga batang nakaranas na ng pang-aabuso.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihing walang puwang ang age-based ban.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang ibig sabihin, KAHIT MAY BAN, KAILANGANG MAY SISTEMANG KAYANG MAGPATUPAD, SUMURI, MAGWASTO, AT MANAGOT.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil maaaring may batas na nagbabawal sa isang menor de edad na gumawa ng account, pero may platform namang hindi talaga sumusuri ng edad.
+          </p>
+
+          <p>
+            Maaaring may mahigpit na age limit, pero may account na ginagamit ng ibang tao.<br>
+            Maaaring may ipinagbabawal na content sa isang platform, pero lumipat lamang ito sa ibang digital service na mahina ang proteksyon.
+          </p>
+
+          <p>
+            Mga posibilidad itong kailangang paghandaan—hindi dahilan para ipagpalagay na walang silbi ang lahat ng pagbabawal.
+          </p>
+
+          <p>
+            At higit sa lahat, dapat may aktuwal na pagsukat kung nababawasan ang cyberbullying, exploitation, harmful exposure, at iba pang panganib.
+          </p>
+
+          <p>
+            Hindi sapat ang bilang ng tinanggal na account kung hindi alam kung nabawasan din ang pinsalang nararanasan ng mga bata.
+          </p>
+
+                            <h2>
+            ANG HULING TANONG: BAN BA ANG SUKATAN—O PROTEKSYON?
+          </h2>
+
+          <p>
+            Maaaring maganda ang hangarin ng SMART KIDS Act. May malinaw na dahilan para protektahan ang mga bata sa panganib ng online platforms.
+          </p>
+
+          <p>
+            Pero ang magandang layunin ay simula lamang ng paggawa ng batas.<br>
+            Hindi ito awtomatikong katumbas ng epektibong resulta.
+          </p>
+
+          <p>
+            Ang isang batang nawalan ng sariling account ay hindi agad nangangahulugang ligtas na sa online harm.<br>
+            Ang isang platform na may nakapaskil na age restriction ay hindi agad nangangahulugang sinusunod ito ng lahat.
+          </p>
+
+          <p>
+            At ang gobyernong nakapagpasa ng pagbabawal ay hindi pa nangangahulugang napatunayan na nitong nabawasan ang panganib.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANUMANG GANDA NG LAYUNIN NG ISANG BATAS—KUNG MAHINA, MALABO, AT HINDI PARE-PAREHO ANG PAGPAPATUPAD NG MGA PANUNTUNAN, MAY MGA MAKAKAHANAP PA RIN NG PARAAN PARA MALAMPASAN ANG LIMITASYON.
+            </p>
+          </blockquote>
+
+          <p>
+            At habang may nakakalusot, kailangang patuloy na suriin kung ang mismong panganib ay nababawasan—o lumilipat lamang sa ibang account, ibang platform, at ibang paraan.
+          </p>
+
+          <p>
+            Hindi dapat mauwi sa simpleng paghihigpit sa mga bata ang isang patakarang nilalayong protektahan sila.
+          </p>
+
+          <p>
+            Dapat may kasabay itong malinaw at nasusukat na pananagutan ng mga kumpanyang nagpapatakbo ng digital platforms.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TUNAY NA PROTEKSYON AY HINDI NASUSUKAT SA HIGPIT NG NAKASULAT NA PAGBABAWAL.<br>
+              NASUSUKAT ITO SA LAKAS NG PAGPAPATUPAD, LINAW NG PANUNTUNAN, AT PANANAGUTAN KAPAG MAY NAKALUSOT O NAPAHAMAK.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang batas na malakas lamang sa papel, pero mahina sa aktuwal na pagpapatupad, ay maaaring magbigay ng pakiramdam na may proteksyon—kahit nananatili ang panganib.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA MAY BAWAL. DAPAT MAY PANANAGUTAN.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Batayan at Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>PANUKALANG BATAS AT LEGISLATIVE RECORDS</strong>
+            </li>
+
+            <li>
+              <strong>Senate Bill No. 2424</strong> — SMART KIDS Act; Win Gatchalian, SMART KIDS Act to Boost Online Safety of Minors (October 8, 2026)
+            </li>
+
+            <li>
+              <strong>House of Representatives</strong> — HB No. 11566, Children's Digital Safety, Protection, and Well-Being Act, legislative record (2026)
+            </li>
+
+            <li>
+              <strong>Newsbytes.PH</strong> — Senate Passes Bill Restricting Under-18 Access to High-Risk Online Platforms (October 8, 2026)
+            </li>
+
+            <li>
+              <strong>Newsbytes.PH</strong> — Hontiveros Opposes Under-18 Social Media Ban, Pushes Age-Based Restrictions (October 9, 2026)
+            </li>
+
+            <li>
+              <strong>LEGAL BASIS</strong>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11930</strong> — Anti-OSAEC and Anti-CSAEM Act, Section 9
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10173</strong> — Data Privacy Act of 2012, Section 11
+            </li>
+
+            <li>
+              <strong>Republic Act No. 9344</strong> — Juvenile Justice and Welfare Act, Section 6
+            </li>
+
+            <li>
+              <strong>National Privacy Commission</strong> — Public Advisory: NPC Calls on Digital Platforms to Ensure Compliance (September 23, 2026)
+            </li>
+
+            <li>
+              <strong>UN Committee on the Rights of the Child</strong> — General Comment No. 25, Children's Rights in Relation to the Digital Environment (2021)
+            </li>
+
+            <li>
+              <strong>RESEARCH AT INTERNATIONAL EVIDENCE</strong>
+            </li>
+
+            <li>
+              <strong>UNICEF, ECPAT International, INTERPOL</strong> — Disrupting Harm in the Philippines (2022)
+            </li>
+
+            <li>
+              <strong>UNICEF Philippines</strong> — Online Sexual Abuse and Exploitation of Children in the Philippines
+            </li>
+
+            <li>
+              <strong>UNICEF Philippines</strong> — UNICEF Urges a Broader Approach to Child Online Safety Beyond Social Media Restrictions (October 8, 2026)
+            </li>
+
+            <li>
+              <strong>World Health Organization / HBSC</strong> — Teens, Screens and Mental Health (2024)
+            </li>
+
+            <li>
+              <strong>National Academies of Sciences, Engineering, and Medicine</strong> — Social Media and Adolescent Health (2024):
+              <a
+                href="https://doi.org/10.17226/27396"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.17226/27396
+              </a>
+            </li>
+
+            <li>
+              <strong>Australian eSafety Commissioner</strong> — Early Days, Early Insights: Understanding Experiences of Social Media Age Restrictions at the Three-Month Follow-Up (2026)
+            </li>
+
+            <li>
+              <strong>UK Department for Science, Innovation and Technology</strong> — Children's Circumvention Behaviours Online (July 2026)
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
