@@ -1,1 +1,1519 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="AMLC: bilyon ang na-freeze, milyon ang pondo—pero may napanagot ba talaga? Suriin ang freeze orders, forfeiture, performance data, budget, at tunay na sukatan ng pananagutan."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-amcl.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-amcl.html"
+  >
+
+  <title>AMLC: BILYON ANG NA-FREEZE, MILYON ANG PONDO—PERO MAY NAPANAGOT BA TALAGA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          AMLC: BILYON ANG NA-FREEZE, MILYON ANG PONDO—PERO MAY NAPANAGOT BA TALAGA?
+        </h1>
+
+            </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-amcl.png"
+            alt="Simbolikong visual ng AMLC na may timbangan ng hustisya, frozen assets, budget documents, pera, kandado, at investigative evidence bilang representasyon ng financial intelligence, asset freezing, public funds, at pananagutan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Kapag may balitang bilyong pisong bank accounts at ari-arian ang na-freeze dahil sa isang imbestigasyon, madaling isipin na malaking tagumpay na iyon laban sa krimen.
+          </p>
+
+          <p>
+            Pero pagkatapos ng ingay ng headline, ano na ang nangyayari sa perang iyon? Napatunayan bang nagmula ito sa ilegal na gawain? May nabawi ba? At may mga taong talagang napanagot sa ilalim ng batas?
+          </p>
+
+          <p>
+            Mas mabigat ang mga tanong na ito kapag isinama ang milyong pisong pondong inilalaan taon-taon sa Anti-Money Laundering Council o AMLC—ang ahensiyang may mahalagang papel sa pagsusuri ng kahina-hinalang galaw ng pera at pagtulong sa mga imbestigasyong may kaugnayan sa financial crimes.
+          </p>
+
+          <p>
+            Pero ano ba talaga ang AMLC? Gaano kalawak ang kapangyarihan nito? Maaari ba itong magpakulong at magbigay ng hatol, o may ibang institusyong responsable sa pagpapanagot sa mga nagkasala?
+          </p>
+
+          <p>
+            Mahalagang malinawan dito bago husgahan kung sulit ang pondong inilalaan sa ahensiya. Dahil hindi patas na sukatin ang AMLC sa kapangyarihang wala naman ito. Pero hindi rin sapat na ituring na tagumpay ang bawat malaking halagang natutunton o na-freeze nang hindi sinusuri kung ano ang aktuwal na naibubunga nito.
+          </p>
+
+          <p>
+            Hindi lamang pangalan ng mga personalidad ang nakataya. Kasama rito ang kakayahan ng gobyernong tukuyin ang perang nagmula sa krimen, protektahan ang financial system, at matiyak na may tunay na pananagutan sa ilalim ng batas.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG NASUSUNDANG PERA AY ILEGAL. AT HINDI LAHAT NG NA-FREEZE AY NABAWI NA.
+            </p>
+          </blockquote>
+
+          <h2>
+            BAKIT BA MAY AMLC?
+          </h2>
+
+          <p>
+            Nilikha ang AMLC sa ilalim ng Republic Act No. 9160 o Anti-Money Laundering Act of 2001. Bago nito, kabilang na ang Pilipinas sa listahan ng Financial Action Task Force (FATF) ng mga bansang may malulubhang kakulangan sa paglaban sa money laundering.
+          </p>
+
+          <p>
+            Hindi lang ito usapin ng reputasyon. Kapag mahina ang kakayahan ng isang bansa na matukoy ang pinagmulan ng maruming pera, mas nagiging mahirap pigilan ang paggamit sa mga bangko, negosyo, at iba pang financial services para maitago ang kita mula sa krimen.
+          </p>
+
+          <p>
+            Sa ilalim ng batas, ang AMLC ang itinalagang Financial Intelligence Unit ng Pilipinas. Binubuo ang Council ng gobernador ng Bangko Sentral ng Pilipinas bilang chairperson, kasama ang pinuno ng Securities and Exchange Commission at Insurance Commission. May Secretariat itong nagsasagawa ng araw-araw na technical, analytical, at legal na gawain.
+          </p>
+
+          <p>
+            Ang mandato nito ay hindi lamang para sa korapsyon. Saklaw ng anti-money laundering system ang mga panganib na kaugnay ng ilegal na droga, panloloko, human trafficking, cybercrime, at iba pang unlawful activities. Kasama na rin sa pinalawak na tungkulin nito ang terrorism financing at proliferation financing.
+          </p>
+
+          <p>
+            Sa madaling salita, hindi kailangang may sangkot na politiko bago maging mahalaga ang AMLC.
+          </p>
+
+          <h2>
+            ANO BA ANG TALAGANG GINAGAWA NITO?
+          </h2>
+
+          <p>
+            Isipin ang isang taong nakakuha ng malaking halaga mula sa ilegal na gawain. Maaaring ilipat ang pera sa maraming account, ipadaan sa negosyo, gamitin sa pagbili ng property, o ipasok sa iba't ibang financial transactions upang mahirapang matukoy ang pinagmulan.
+          </p>
+
+          <p>
+            Dito pumapasok ang AMLC.
+          </p>
+
+          <p>
+            Ang mga bangko at iba pang institusyong saklaw ng batas ay may obligasyong mag-ulat ng covered transactions at suspicious transactions.
+          </p>
+
+          <p>
+            Sa karaniwang covered transactions, ang itinakdang threshold ay cash o katumbas na monetary instrument na lampas ₱500,000 sa loob ng isang banking day. May ibang thresholds para sa ilang sektor. Hindi ibig sabihin na lahat ng electronic transfers na lumampas sa ₱500,000 ay awtomatikong saklaw ng covered transaction reporting.
+          </p>
+
+          <p>
+            Samantala, maaaring maging suspicious ang transaksyon anuman ang halaga kung may mga palatandaang nakasaad sa batas—halimbawa, walang malinaw na legal o economic purpose, hindi tugma sa profile ng kliyente, o may posibleng kaugnayan sa unlawful activity.
+          </p>
+
+          <p>
+            Ngunit tandaan:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang ulat ng kahina-hinalang transaksyon ay hindi pa patunay ng krimen.
+            </p>
+          </blockquote>
+
+          <p>
+            Sinusuri ng AMLC ang financial information, pinag-uugnay ang mga transaksyon, at nakikipagtulungan sa mga awtoridad. May kapangyarihan din itong magsagawa ng financial investigation, gumamit ng mga legal na paraan para sa bank inquiry, humiling ng freeze order sa Court of Appeals, at magsimula ng mga hakbang para sa civil forfeiture.
+          </p>
+
+          <p>
+            Sa ilang terrorism-related cases, may espesyal din itong kapangyarihang magpatupad ng targeted financial sanctions ayon sa batas.
+          </p>
+
+          <p>
+            May kapangyarihan din ang AMLC na magpataw ng administrative sanctions, gaya ng multa, warning o reprimand, sa mga saklaw na institusyon at taong lumalabag sa anti-money laundering rules, matapos sundin ang kaukulang proseso. Pero iba ito sa criminal conviction at parusang pagkakakulong na maaari lamang ipataw ng korte.
+          </p>
+
+          <p>
+            Pero hindi ito korte. Hindi nito maaaring basta hatulang guilty ang isang tao o magpataw ng criminal imprisonment. Ang criminal investigation at prosecution ay dumaraan sa mga kaukulang awtoridad gaya ng DOJ at Ombudsman, habang ang korte ang nagpapasya sa criminal liability at forfeiture cases.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG AMLC AY MAAARING TUMULONG SA PAGBUO NG KASO. HINDI NITO MAAARING PALITAN ANG EBIDENSIYA, DUE PROCESS, AT HATOL NG KORTE.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY NAPATUNAYAN NA BA ITONG SILBI SA MGA MALALAKING KASO?
+          </h2>
+
+          <p>
+            Hindi lamang mga bagong kontrobersiya ang kinasangkutan ng AMLC. Sa mahigit dalawang dekada, lumitaw ang papel nito sa ilang mahahalagang kasong may kinalaman sa financial crimes.
+          </p>
+
+          <p>
+            Noong 2013, sa kasagsagan ng Priority Development Assistance Fund o PDAF scam, nakakuha ang AMLC at Office of the Solicitor General ng freeze order mula sa Court of Appeals laban sa mga account at kaugnay na ari-arian ni Janet Lim-Napoles, kanyang pamilya, at mga organisasyong iniugnay sa iskandalo.
+          </p>
+
+          <p>
+            Mahalaga ang hakbang na ito dahil puwedeng mailipat o maitago ang pera habang hindi pa natatapos ang kaso. Ngunit ang pag-freeze ay pansamantalang pagpigil sa paggamit o paglipat ng assets—hindi pa katumbas ng pinal na pagkuha ng gobyerno sa mga ito.
+          </p>
+
+          <p>
+            Noong 2016, naharap naman ang Pilipinas sa isang international financial scandal nang mapasok sa Philippine banking system ang humigit-kumulang US$81 milyon na ninakaw mula sa Bangladesh Bank.
+          </p>
+
+          <p>
+            Dumaan ang malaking bahagi ng pera sa mga transaksyong umabot sa casino sector. Sa pamamagitan ng legal proceedings at pakikipagtulungan ng iba't ibang institusyon, humigit-kumulang US$15 milyon ang naibalik sa Bangladesh noong Nobyembre 2016.
+          </p>
+
+          <p>
+            May aktuwal na nabawi—pero malayo iyon sa buong halagang ninakaw. Ipinakita ng kaso ang dalawang mukha ng anti-money laundering enforcement: may kakayahang tumulong sa pagbawi ng pera, ngunit maaaring napakahirap nang habulin ang pondo kapag nakalusot sa financial controls.
+          </p>
+
+          <p>
+            Noong 2024, nakakuha rin ang AMLC ng Court of Appeals freeze order na sumaklaw sa 90 bank accounts at iba pang ari-arian na iniugnay sa mga imbestigasyon sa ilegal na POGO operations at sa mga kasong kinasasangkutan ni Alice Guo at iba pang indibidwal.
+          </p>
+
+          <p>
+            Muli, mahalagang protektahan ang posibleng ebidensiya at assets. Pero ang freeze order ay hindi criminal conviction, at ang mga alegasyon ay kailangang patunayan sa wastong legal na proseso.
+          </p>
+
+          <p>
+            Sa mga imbestigasyon naman sa maanomalyang flood control projects, iniulat ng AMLC noong Disyembre 2025 na umabot na sa humigit-kumulang ₱20.3 bilyon ang halaga ng mga na-freeze na asset, kabilang ang libo-libong bank accounts at iba pang ari-arian.
+          </p>
+
+          <p>
+            Malaking halaga iyon. Ngunit hindi dapat sabihing ₱20.3 bilyon na ang naibalik sa kaban ng bayan. Kailangan pa ring matukoy kung alin ang mananatiling saklaw ng freeze order, alin ang mapatutunayang konektado sa unlawful activity, at alin ang maaaring tuluyang ma-forfeit.
+          </p>
+
+          <p>
+            May mga kasong umabot din sa mas malinaw na legal na resulta. Ngayong 2026, iniulat ng AMLC ang mga paghatol ng trial courts sa money laundering cases na may kaugnayan sa ilegal na investment solicitation. Nagkaroon din ng court order para sa forfeiture ng mga bank account na naglalaman ng humigit-kumulang ₱3.5 milyon at iniugnay sa illegal drug trafficking.
+          </p>
+
+          <p>
+            Ngunit maging ang mga money laundering convictions na inanunsyo noong Agosto 2026 ay iniulat ng AMLC na nasa proseso pa ng appeal.
+          </p>
+
+          <p>
+            Ibig sabihin, may mga konkretong hakbang at resulta. Pero magkakaiba ang legal na bigat ng investigation, freeze order, forfeiture, trial court conviction, at final judgment.
+          </p>
+
+          <h2>
+            ANO NAMAN ANG SINASABI NG AKTUWAL NA PERFORMANCE DATA?
+          </h2>
+
+          <p>
+            Ayon sa AMLC performance figures para sa 2021–2024, nakapaghanda ito ng 632 investigation reports at nakapaghain ng 72 money laundering cases at 186 complaints na may kaugnayan sa money laundering at terrorism financing.
+          </p>
+
+          <p>
+            Sa parehong panahon, nakatanggap ang sistema ng humigit-kumulang 204.76 milyong covered transaction reports at 51.56 milyong suspicious transaction reports.
+          </p>
+
+          <p>
+            Umabot din sa ₱4.15 bilyon ang naiulat na halaga ng frozen assets, habang ₱7.01 bilyon naman ang assets na subject sa civil forfeiture.
+          </p>
+
+          <p>
+            Mahalaga ang mga numerong ito. Ipinapakita nilang hindi lamang nakaupo ang AMLC at naghihintay ng headline bago kumilos.
+          </p>
+
+          <p>
+            Pero may seryosong limitasyon ang pagbasa sa mga datos.
+          </p>
+
+          <p>
+            Ang 51.56 milyong suspicious transaction reports ay hindi nangangahulugang ganoon karami ang napatunayang ilegal na transaksyon o kriminal. Ang bilang ng mga naisampang kaso ay hindi bilang ng mga nahatulan. At ang halaga ng assets na subject sa forfeiture proceedings ay hindi awtomatikong halagang tuluyan nang nabawi.
+          </p>
+
+          <p>
+            Hindi rin puwedeng pagsamahin ang lahat ng frozen assets mula sa iba't ibang panahon at kaso na para bang magkakahiwalay at pinal nang naibalik na pera.
+          </p>
+
+          <blockquote>
+            <p>
+              MARAMING REPORT AY HINDI AUTOMATICALLY MARAMING KRIMENG NAPIGILAN. MARAMING KASONG NAISAMPA AY HINDI AUTOMATICALLY MARAMING NAPANAGOT.
+            </p>
+          </blockquote>
+
+          <h2>
+            PERO EPEKTIBO BA ANG SISTEMA AYON SA RESEARCH?
+          </h2>
+
+          <p>
+            Noong 2019, inilabas ang international mutual evaluation ng anti-money laundering system ng Pilipinas. Sa 11 effectiveness outcomes na sinusuri, anim ang may low effectiveness rating, apat ang moderate, at isa ang substantial.
+          </p>
+
+          <p>
+            Kabilang sa mga nakitang mahihinang bahagi noon ang money laundering investigations and prosecutions at confiscation ng criminal proceeds.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaiba ng pagsunod sa isang patakaran at pagkamit ng tunay na resulta. Maaaring kumpleto ang mga reporting requirements, policies, at procedures, pero ibang tanong kung sapat ang mga ito para mapigilan ang krimen at mabawi ang ilegal na kita.
+          </p>
+
+          <p>
+            Noong Hunyo 2021, muling isinailalim ang Pilipinas sa increased monitoring o FATF grey list dahil sa mga kakulangan sa anti-money laundering at counter-terrorism financing system.
+          </p>
+
+          <p>
+            Noong Pebrero 21, 2025, inalis ang Pilipinas sa grey list matapos makitaan ng makabuluhang pag-unlad sa pagpapatupad ng mga kinakailangang reporma, kabilang ang paggamit ng financial intelligence, investigations, prosecutions, at oversight sa mga high-risk sectors.
+          </p>
+
+          <p>
+            Mahalagang tagumpay ito ng mas malawak na sistema ng mga ahensiya, regulators, financial institutions, at law enforcement bodies—hindi ng AMLC lamang.
+          </p>
+
+          <p>
+            Ngunit hindi ibig sabihin na wala nang malaking problema sa money laundering.
+          </p>
+
+          <p>
+            Sa Third National Risk Assessment ng Pilipinas na inilabas ngayong 2026, itinuring na medium-high pa rin ang overall money laundering risk ng bansa batay sa pagsusuri sa panahon ng 2021–2024. Kabilang sa mga high-threat areas ang illegal drug trafficking, fraud, environmental crimes, at tax crimes. May mahahalagang panganib din sa korapsyon, cyber-enabled crimes, at iba pang ilegal na gawain.
+          </p>
+
+          <p>
+            Ipinapakita nito na kahit may mga napabuti nang hakbang para matukoy at mapigilan ang money laundering, nananatiling malaki ang panganib na magamit ang financial system sa mga ilegal na gawain.
+          </p>
+
+          <p>
+            May mas malawak pang babala mula sa international research.
+          </p>
+
+          <p>
+            Sa 2020 study ni Ronald F. Pol na inilathala sa Policy Design and Practice, tinukoy ang napakaliit na bahagi ng tinatayang criminal proceeds na naaabot ng pandaigdigang anti-money laundering interventions. Ayon sa kanyang pagsusuri, maaaring mas mababa pa sa 0.1% ang epekto ng mga ito sa criminal finances, habang napakalaki ng gastusin sa compliance.
+          </p>
+
+          <p>
+            Hindi ito direktang sukat ng performance ng AMLC sa Pilipinas. Kinilala rin ng research ang limitasyon ng available data at mga pagtataya. Ngunit mahalaga ang tanong na ibinubukas nito:<br>
+            Paano kung mas mabilis dumami ang mga report, gastos, at requirements kaysa sa aktuwal na nababawing pera at napipigilang krimen?
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat na gumagana ang proseso. Kailangang malaman kung gaano ito kaepektibo.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAGKANO ANG GINAGASTOS PARA SA AMLC?
+          </h2>
+
+          <p>
+            Sa 2025 General Appropriations Act, may ₱163.328 milyong bagong appropriation ang AMLC.<br>
+            Sa 2026 General Appropriations Act, naging ₱333.102 milyon ang bagong appropriation—mahigit doble sa nakaraang taon.<br>
+            Sa 2026 budget, ₱293.042 milyon ang nakalaan sa maintenance and other operating expenses, habang ₱40.060 milyon naman sa capital outlays.
+          </p>
+
+          <p>
+            Makikita rin sa breakdown ang humigit-kumulang ₱130.09 milyon para sa subscription expenses, ₱63.58 milyon para sa professional services, ₱24.06 milyon para sa representation expenses, at ₱9.6 milyon para sa confidential expenses.
+          </p>
+
+          <p>
+            Ang mga halagang ito ay bagong appropriations para sa AMLC sa General Appropriations Act. Hindi pa ito kumpletong tala ng aktuwal na nagastos, at hindi rin nito saklaw ang lahat ng resources at gastusin ng ibang institusyong kasama sa pagpapatupad ng anti-money laundering laws.
+          </p>
+
+          <p>
+            Hindi dapat agad ituring na pag-aaksaya ang mga halagang ito. May mga gawaing nangangailangan ng specialized financial databases, analytics tools, technical expertise, secure systems, at international cooperation.
+          </p>
+
+          <p>
+            Pero hindi rin dapat makalusot sa pagsusuri ang isang gastusin dahil lamang sensitibo o technical ang pangalan nito.
+          </p>
+
+          <p>
+            Ang appropriation ay awtorisadong pondo, hindi pa aktuwal na nagastos. At kahit nagastos nang legal ang buong halaga, hindi pa rin nito awtomatikong pinatutunayang nagamit iyon nang mahusay.
+          </p>
+
+          <p>
+            Mahalagang itanong kung ano ang aktuwal na naibunga ng bawat malaking paggasta. Halimbawa, nakatulong ba ang mga biniling subscription at professional services para mapabilis ang financial investigations, mahanap ang nakatagong assets, mapahusay ang kalidad ng ebidensiya, at mabawasan ang mga kasong natatagalan nang walang malinaw na resulta?
+          </p>
+
+          <p>
+            Kailangan ding protektahan ang sensitibong impormasyon. Ngunit maaaring magkaroon ng makabuluhang public accountability nang hindi inilalantad ang confidential intelligence, personal financial records, o mga imbestigasyong maaari pang maapektuhan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG CONFIDENTIALITY AY PROTEKSYON SA SENSITIBONG IMPORMASYON—HINDI DAHILAN PARA MAWALA ANG PANANAGUTAN SA PAGGAMIT NG PUBLIC FUNDS.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAYA BA TALAGANG SABIHING SULIT ANG AMLC?
+          </h2>
+
+          <p>
+            Hindi sapat ang mga datos para magbigay ng simpleng oo o hindi sa bawat pisong ginagastos dito.
+          </p>
+
+          <p>
+            May napatunayang halaga ang pagkakaroon ng specialized financial intelligence capability. Kung wala ang ganitong sistema, maaaring mas mahirapan ang mga awtoridad na pagsama-samahin ang magkakahiwalay na financial records, makipag-ugnayan sa ibang bansa, at mapigilan ang mabilis na paglilipat ng assets habang may imbestigasyon.
+          </p>
+
+          <p>
+            Hindi rin lahat ng benepisyo ay nasusukat sa perang nabawi. May halaga ang paghadlang sa financial crimes, pagpapahusay sa financial integrity, at pagbawas sa panganib na magamit ang Pilipinas bilang daluyan ng ilegal na pera.
+          </p>
+
+          <p>
+            Pero hindi maaaring ang mga benepisyong iyon ang maging palaging sagot sa anumang tanong tungkol sa performance.
+          </p>
+
+          <p>
+            Mas makatarungang suriin ang AMLC sa kalidad at bilis ng mga investigation, paggamit ng financial intelligence sa aktuwal na kaso, halaga ng mga asset na tuluyang na-forfeit, mga desisyong nanatili matapos ang appeal, at kung nagdudulot ba ang mga aksyon nito ng mas matibay na proteksyon laban sa financial crimes.
+          </p>
+
+          <p>
+            Kailangang isaalang-alang din kung may mga karapatan ng inosenteng tao na naapektuhan ng maling pag-freeze o labis na paghihigpit, at kung may mga pagkukulang sa ibang ahensiya na humahadlang sa pag-usad ng kaso. Hindi lahat ng pagkabigo sa prosecution ay maaaring ibintang sa AMLC, pero hindi rin ito dapat ganap na maalis sa pagsusuri sa kabuuang resulta.
+          </p>
+
+          <p>
+            Hindi patas na husgahan ang isang ahensiya sa dami lamang ng taong nakulong dahil hindi naman iyon ang sarili nitong kapangyarihan. Pero hindi rin sapat na sukatin ang tagumpay nito sa dami ng report na natanggap o perang pansamantalang na-freeze.
+          </p>
+
+          <p>
+            Ang mas mahalagang tanong ay kung ang intelligence, ebidensiya, at mga legal na hakbang nito ay nakatulong sa tunay na pagpapatupad ng batas.
+          </p>
+
+          <p>
+            Dahil sa huli, ang pera mula sa korapsyon, panloloko, ilegal na droga, at iba pang krimen ay hindi lamang numerong dumaraan sa financial system. May katumbas itong biktima, nawawalang oportunidad, at pinsalang maaaring umabot sa buong komunidad.
+          </p>
+
+          <p>
+            Hindi dapat gawing panangga ang AMLC para sa sinumang makapangyarihang personalidad. Hindi rin ito dapat gamitin upang ipalabas na guilty na ang isang tao dahil lamang may suspicious transactions na nakapangalan sa kanya.
+          </p>
+
+          <p>
+            Parehong mahalaga ang matibay na pag-iimbestiga at ang proteksyon sa due process.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SUKATAN NG TAGUMPAY ANG LAKI NG PERANG NAKITA—KUNG HINDI MALINAW KUNG ANO ANG NAPATUNAYAN, NABAWI, AT NAPANAGUTAN.
+            </p>
+          </blockquote>
+
+          <p>
+            May dahilan kung bakit itinatag ang AMLC. May mga konkretong resulta rin itong naipakita sa mahigit dalawang dekada. Ngunit ang patuloy na pangangailangan dito ay hindi awtomatikong patunay na sulit ang bawat gastusin.
+          </p>
+
+          <p>
+            Dapat itong magkaroon ng sapat na kakayahan at pondo para magampanan ang mandato nito—kasabay ng malinaw na pagsusuri kung epektibo at mahusay nitong ginagamit ang mga ipinagkatiwalang resources.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG PAGHABOL SA MARUMING PERA AY HINDI DAPAT MATAPOS SA PAGHANAP KUNG SAAN ITO NAPUNTA. ANG TUNAY NA PANANAGUTAN AY NAKIKITA SA EBIDENSIYANG NAPATUNAYAN, PERANG NAIPANUMBALIK, AT BATAS NA NAIPATUPAD—SINUMAN ANG SANGKOT.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian / Sources
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>PHILIPPINE LAWS AND AMLC</strong>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 9160</strong> — Anti-Money Laundering Act of 2001
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10365</strong> — AMLA Amendments, Including Administrative Sanctions
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11521</strong> — Amendments to the Anti-Money Laundering Act
+            </li>
+
+            <li>
+              <strong>Anti-Money Laundering Council</strong> — Official Publications, Performance Information, Advisories and Case Updates
+            </li>
+
+            <li>
+              <strong>AMLC FY 2021–2024 Performance Figures</strong> — Reported in The Philippine Star, March 31, 2025
+            </li>
+
+            <li>
+              <strong>Third National Risk Assessment on Money Laundering, Terrorism Financing and Proliferation Financing</strong> (2021–2024), Abridged Public Version
+            </li>
+
+            <li>
+              <strong>HISTORICAL CASES AND LEGAL ACTIONS</strong>
+            </li>
+
+            <li>
+              <strong>Philippine News Agency</strong> — Court of Appeals Orders Asset Freeze on Alice Guo and Related Assets, July 11, 2024
+            </li>
+
+            <li>
+              <strong>Philippine News Agency</strong> — AMLC Reports ₱20.3 Billion in Frozen Assets Linked to Flood Control Investigations, December 19, 2025
+            </li>
+
+            <li>
+              <strong>AMLC</strong> — Money Laundering Convictions and Court-Ordered Forfeiture, August–September 2026
+            </li>
+
+            <li>
+              <strong>INTERNATIONAL ASSESSMENTS AND RESEARCH</strong>
+            </li>
+
+            <li>
+              <strong>Financial Action Task Force / Asia-Pacific Group</strong> — Philippines Mutual Evaluation Report (2019)
+            </li>
+
+            <li>
+              <strong>Financial Action Task Force</strong> — Removal of the Philippines from Increased Monitoring, February 21, 2025
+            </li>
+
+            <li>
+              <strong>Ronald F. Pol (2020)</strong> — Anti-money laundering: The world's least effective policy experiment? Together, we can fix it. Policy Design and Practice, 3(1), 73–94.
+            </li>
+
+            <li>
+              <strong>GOVERNMENT BUDGET DOCUMENTS</strong>
+            </li>
+
+            <li>
+              <strong>Department of Budget and Management</strong> — FY 2025 General Appropriations Act, AMLC Detailed Appropriations
+            </li>
+
+            <li>
+              <strong>Department of Budget and Management</strong> — FY 2026 General Appropriations Act, AMLC Detailed Appropriations
+            </li>
+
+          </ul>
+
+        </section>
+        
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
