@@ -1,1 +1,1615 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Expert witness—eksperto ang testigo, pero gaano katibay ang kanyang testimonya? Suriin ang qualifications, methodology, ebidensiya, cross-examination, at bigat ng expert opinion sa ilalim ng batas."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-expert-witness.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-expert-witness.html"
+  >
+
+  <title>EXPERT WITNESS—EKSPERTO ANG TESTIGO, PERO GAANO KATIBAY ANG KANYANG TESTIMONYA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+     .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          EXPERT WITNESS—EKSPERTO ANG TESTIGO, PERO GAANO KATIBAY ANG KANYANG TESTIMONYA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-expert-witness.png"
+            alt="Simbolikong visual ng expert witness na napapalibutan ng professional credentials, technical records, scientific data, legal documents, methodology, assumptions, limitations, cross-examination, at ebidensiya bilang representasyon ng pagsusuri sa qualification at reliability ng expert testimony."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+           <div class="article-body">  
+             
+                  <p>
+            May lisensiya. May mahabang karanasan. May espesyalisadong kaalaman. Kapag ipinakilalang expert witness ang isang testigo, natural na mas nabibigyan ng bigat ang kanyang sinasabi. Lalo na kung may mataas na posisyon, kinikilalang professional credentials, o mga titulong hindi pamilyar sa karaniwang tao.
+          </p>
+
+          <p>
+            Pero may pagkakaiba ang pagiging eksperto sa isang larangan at ang pagiging tama ng bawat konklusyong inilalahad niya.
+          </p>
+
+          <p>
+            Maaaring tunay siyang qualified, pero may limitasyon ang mga dokumentong kanyang nasuri. Maaaring maayos ang kanyang methodology, pero may mahahalagang impormasyong hindi naisama. At maaari ring kuwestiyunin ang kanyang findings nang hindi nangangahulugang wala siyang kakayahan o nagsisinungaling siya.
+          </p>
+
+          <p>
+            Sa kabilang banda, hindi rin makatarungang balewalain ang isang expert opinion dahil lamang hindi pabor sa sariling paniniwala ang kanyang findings.
+          </p>
+
+          <p>
+            Kaya bago basta maniwala o kumontra, may mas mahahalagang tanong:<br>
+            Ano ang aktuwal niyang expertise? Ano ang ebidensiyang kanyang sinuri? Paano niya nabuo ang kanyang konklusyon—at hanggang saan talaga ito sinusuportahan ng ebidensiya?
+          </p>
+
+          <p>
+            Dito mahalagang maunawaan kung ano ang tunay na papel ng isang expert witness, paano kinikilala ang kanyang qualifications, at bakit kahit tanggapin ang kanyang testimonya, hindi nangangahulugang awtomatikong napatunayan na ang lahat ng kanyang sinasabi.
+          </p>
+
+          <h2>
+            ANO ANG EXPERT WITNESS?
+          </h2>
+
+          <p>
+            Ang expert witness ay isang testigong may espesyal na kaalaman o kasanayan sa isang larangang nangangailangan ng mas malalim na pagsusuri kaysa karaniwang obserbasyon.
+          </p>
+
+          <p>
+            Maaaring ito ay doktor na nagpapaliwanag ng isang komplikadong injury, engineer na nagsusuri ng sanhi ng pagguho ng isang gusali, forensic accountant na sumusubaybay sa daloy ng pera, o digital forensic specialist na sumusuri ng electronic records.
+          </p>
+
+          <p>
+            Hindi kinakailangang personal na nasaksihan ng expert witness ang mismong pangyayari. Ang kanyang papel ay maaaring suriin ang mga dokumento, materyal, technical findings at iba pang datos upang magbigay ng opinyong nakabatay sa kanyang expertise.
+          </p>
+
+          <p>
+            Dito siya naiiba sa karaniwang testigong nagsasalaysay ng kanyang personal na nakita, narinig o naranasan.
+          </p>
+
+          <p>
+            Pero hindi ibig sabihin na malaya nang magbigay ng anumang opinyon ang isang expert witness. Kailangang may sapat na batayan ang kanyang sinasabi at saklaw iyon ng kanyang aktuwal na kakayahan.
+          </p>
+
+          <h2>
+            HINDI LAHAT NG MAY TITULONG EXPERT AY AUTOMATICALLY QUALIFIED
+          </h2>
+
+          <p>
+            Sa ilalim ng Rule 130, Section 52 ng Revised Rules on Evidence sa Pilipinas, maaaring tanggapin ang opinyon ng isang testigo sa usaping nangangailangan ng special knowledge, skill, experience, training o education na naipakitang taglay niya.
+          </p>
+
+          <p>
+            Kapansin-pansin ang batas:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lamang professional license ang kinikilala nitong batayan ng expertise.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga larangang nangangailangan ng government-issued professional license. Mayroon ding specialized fields kung saan ang qualifications ay maaaring mapatunayan sa pamamagitan ng advanced training, certifications, technical work at mahabang aktuwal na karanasan.
+          </p>
+
+          <p>
+            Halimbawa, regulated ang propesyon ng Certified Public Accountant sa Pilipinas. Ngunit ang titulong Forensic Financial Analyst ay hindi hiwalay na PRC professional license. Maaari itong maging job title o espesyalisasyon sa financial investigation.
+          </p>
+
+          <p>
+            May pagkakatulad ito sa paggamit ng mga titulong sports analyst at political analyst, na hindi karaniwang nangangailangan ng iisang mandatory government license.
+          </p>
+
+          <p>
+            Pero may malaking pagkakaiba sa sandaling ang isang tao ay iharap bilang expert witness sa isang legal proceeding.
+          </p>
+
+          <p>
+            Hindi sapat na sabihing knowledgeable siya. Kailangang maipakita kung ano ang kanyang partikular na expertise, paano niya ito nakuha, at bakit ito angkop sa isyung kanyang susuriin.
+          </p>
+
+          <p>
+            At kung ang isang gawain ay nakalaan sa ilalim ng batas para sa licensed professionals, hindi maaaring palitan ng simpleng job title ang kinakailangang lisensiya.
+          </p>
+
+          <h2>
+            MAY HANGGANAN DIN ANG EXPERTISE
+          </h2>
+
+          <p>
+            Ang isang doktor ay maaaring eksperto sa medisina, pero hindi nangangahulugang pare-pareho ang kanyang espesyalisasyon sa lahat ng uri ng sakit, pinsala at medical examination.<br>
+            Ang isang CPA ay maaaring mahusay sa auditing o taxation, pero kailangan pa ring suriin ang kaugnayan ng kanyang karanasan sa partikular na fraud investigation o forensic analysis na kanyang ginagawa.
+          </p>
+
+          <p>
+            Ganoon din sa isang digital forensic specialist. Maaaring kaya niyang suriin ang isang electronic file, alamin ang metadata nito o tukuyin ang mga palatandaan ng pagbabago. Pero ibang usapin ang pagpapatunay kung sino mismo ang gumamit ng device o gumawa ng isang partikular na aksiyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nawawala ang expertise dahil may hangganan ito.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa katunayan, mahalagang bahagi ng maaasahang expert opinion ang malinaw na pagkilala sa mga bagay na kaya at hindi kayang patunayan ng pagsusuri.
+          </p>
+
+          <h2>
+            EXPERTISE AT RELIABILITY—HINDI IISA
+          </h2>
+
+          <blockquote>
+            <p>
+              Maaaring tunay na qualified ang isang expert witness, pero hindi nito awtomatikong napapatunayan na tama ang kanyang konklusyon.
+            </p>
+          </blockquote>
+
+          <p>
+            May pagkakaiba ang qualification, admissibility, at evidentiary weight.
+          </p>
+
+          <p>
+            Ang qualification ay tumutukoy sa kakayahan at karanasan ng testigo sa partikular na larangan.<br>
+            Ang admissibility ay usapin kung maaaring tanggapin ang kanyang opinyon bilang ebidensiya sa ilalim ng naaangkop na rules.<br>
+            Ang evidentiary weight naman ay kung gaano kalaking halaga ang dapat ibigay sa opinyong iyon matapos suriin ang pinagmulan, pamamaraan at kabuuang ebidensiya.
+          </p>
+
+          <p>
+            Kahit tanggapin ang testimonya bilang expert opinion, hindi nangangahulugang obligadong sundin ng korte ang lahat ng kanyang konklusyon.
+          </p>
+
+          <p>
+            Sa ilalim ng Rule 133, Section 5, maaaring suriin ng korte kung sapat ang facts at data, kung maaasahan ang principles at methods, at kung tama ang pagkakagamit ng mga ito sa partikular na kaso.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito dahil maaaring tama ang datos, pero mali ang pagkakabasa rito. Maaari ring tama ang methodology, pero kulang ang impormasyong pinaggamitan nito.
+          </p>
+
+                       <h2>
+            KAPAG NUMERO ANG EBIDENSIYA, HINDI SAPAT ANG PAGKUWENTA LANG
+          </h2>
+
+          <p>
+            Isipin ang isang forensic financial analyst na nagsuri ng mga bank transactions.
+          </p>
+
+          <p>
+            May ₱1 milyong inilipat mula sa Account A papunta sa Account B. Pagkatapos, ang parehong pera ay nailipat mula Account B papunta sa Account C.
+          </p>
+
+          <p>
+            May ₱2 milyong kabuuang transfers sa mga rekord. Pero hindi nito awtomatikong pinatutunayang may ₱2 milyong bagong kinita, natanggap na karagdagang yaman, o perang ilegal.
+          </p>
+
+          <p>
+            Maaaring iisang pondo lamang ang nailipat nang dalawang beses.
+          </p>
+
+          <p>
+            Gayundin, hindi lahat ng bank deposit ay income. Maaaring galing ito sa utang, negosyo, pagbenta ng ari-arian, paglipat mula sa ibang account, o iba pang pinagmulan.
+          </p>
+
+          <p>
+            Kung corporate records naman ang sinusuri, kailangang paghiwalayin ang kita ng kompanya, personal na kita ng may-ari, shares, dividends, utang at aktuwal na pagmamay-ari ng assets.
+          </p>
+
+          <p>
+            Hindi rin sapat ang pagkakaroon ng kahina-hinalang transaksiyon upang awtomatikong mapatunayang may money laundering o ibang krimeng naganap.
+          </p>
+
+          <p>
+            Maaaring makatulong ang forensic analysis sa pagtukoy ng iregularidad at posibleng pinagmulan ng pera. Ngunit ang pagdedeklara ng criminal liability ay nangangailangan ng pagsusuri sa mga elemento ng batas at sa kabuuang ebidensiya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagkakatukoy ng financial irregularity ay hindi awtomatikong pagpapatunay ng financial crime.
+            </p>
+          </blockquote>
+
+          <h2>
+            PUWEDE BANG MAGKAMALI ANG EXPERT WITNESS?
+          </h2>
+
+          <p>
+            Oo. At hindi ito nangangahulugang walang halaga ang expert testimony.
+          </p>
+
+          <p>
+            Maaaring magkaroon ng pagkakamali sa pagkolekta ng datos, pagpili ng methodology, pagkuwenta, interpretasyon, o sa mga assumption na ginamit.
+          </p>
+
+          <p>
+            Sa forensic examination, mahalaga rin ang authenticity at maayos na pangangalaga sa ebidensiya. Kung hindi mapagkakatiwalaan ang pinagmulan o integridad ng isang dokumento o digital file, maaaring maapektuhan ang konklusyong nakabatay rito.
+          </p>
+
+          <p>
+            May mga pagkakataon ding magkakaiba ang konklusyon ng dalawang qualified experts.
+          </p>
+
+          <p>
+            Hindi ito awtomatikong nangangahulugang may nagsisinungaling. Maaaring magkaiba ang datos na kanilang nasuri, assumptions, pamamaraan, o antas ng katiyakang pinahihintulutan ng ebidensiya.
+          </p>
+
+          <p>
+            Pero hindi rin dapat gawing palusot ang pagkakaiba ng opinyon upang ipalabas na pare-pareho lamang ang bigat ng lahat ng konklusyon.
+          </p>
+
+          <p>
+            Ang mahalaga ay kung alin ang may mas sapat na ebidensiya at mas maaasahang paraan ng pagsusuri—hindi kung sino ang mas kilala o mas mahusay magsalita.
+          </p>
+
+          <h2>
+            ANO ANG SINASABI NG AKTUWAL NA RESEARCH TUNGKOL SA FORENSIC EXPERTS?
+          </h2>
+
+          <p>
+            Hindi lamang sa mga hypothetical example nakabatay ang posibilidad ng pagkakamali at pagkakaiba ng expert findings.
+          </p>
+
+          <p>
+            Noong 2009, inilabas ng National Research Council ng United States ang ulat na Strengthening Forensic Science in the United States: A Path Forward.
+          </p>
+
+          <p>
+            Sinuri nito ang mga suliranin sa iba't ibang forensic science disciplines, kabilang ang kakulangan sa scientific validation ng ilang pamamaraan, hindi magkakaparehong professional standards, training, quality assurance at pangangailangan ng mas matibay na research.
+          </p>
+
+          <p>
+            Hindi nito sinasabing walang silbi ang lahat ng forensic techniques o hindi mapagkakatiwalaan ang lahat ng practitioners.
+          </p>
+
+          <p>
+            Ang mahalagang punto:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat na matagal nang ginagamit ang isang pamamaraan para ipalagay na napatunayan na ang reliability nito. Kailangan pa ring suriin kung mayroon itong sapat na scientific foundation at kung maayos itong ginagamit.
+            </p>
+          </blockquote>
+
+          <p>
+            May mas konkretong halimbawa sa pag-aaral nina Itiel Dror at Greg Hampikian noong 2011, na inilathala sa Science &amp; Justice.
+          </p>
+
+          <p>
+            Sa kanilang research tungkol sa forensic DNA mixture interpretation, hiniling sa 17 North American DNA examiners na suriin ang parehong DNA evidence mula sa isang criminal case, nang hindi ibinibigay ang ilang impormasyong maaaring makaimpluwensiya sa kanilang interpretasyon.
+          </p>
+
+          <p>
+            Hindi naging magkakapareho ang kanilang findings. Karamihan din sa kanilang mga interpretasyon ay naiiba sa naunang konklusyon ng laboratoryong humawak sa kaso.
+          </p>
+
+          <p>
+            Ipinakita nito na kahit may professional training at technical expertise, maaaring magkaroon ng pagkakaiba sa pag-unawa sa parehong ebidensiya. Maaari ring makaapekto ang impormasyong hindi direktang bahagi ng technical examination sa interpretasyon ng isang eksperto.
+          </p>
+
+          <p>
+            Mahalagang tandaan ang limitasyon ng pag-aaral:
+          </p>
+
+          <p>
+            17 examiners lamang ang kalahok, isang partikular na DNA case ang ginamit, at hindi ito direktang pag-aaral tungkol sa forensic accounting, medical examination o lahat ng expert witnesses.
+          </p>
+
+          <p>
+            Kaya hindi makatarungang gamitin ito upang sabihing pare-pareho ang error rate o reliability ng lahat ng forensic disciplines.
+          </p>
+
+          <p>
+            Pero may malinaw itong aral:
+          </p>
+
+          <blockquote>
+            <p>
+              ANG EXPERTISE AY HINDI GARANTIYA LABAN SA PAGKAKAMALI, AT ANG PAGIGING TECHNICAL NG ISANG FINDING AY HINDI AWTOMATIKONG PATUNAY NG PAGIGING OBJECTIVE NITO.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi nito binabawasan ang halaga ng tunay na expertise. Ipinapakita lamang kung bakit mahalaga ang validated methods, sapat na datos, malinaw na limitations at independent verification.
+          </p>
+
+          <h2>
+            MAY ACTUAL SUPREME COURT PRECEDENT DITO
+          </h2>
+
+          <p>
+            Sa Quijano v. People (G.R. No. 202151, February 10, 2021), naging mahalagang usapin ang medical expert testimony tungkol sa isang gunshot wound.
+          </p>
+
+          <p>
+            Kinilala ang qualification ng doktor bilang expert witness. Ngunit nakita ng Supreme Court na hindi sapat ang kanyang paliwanag at suportang detalye para mapatunayang mamamatay sana ang biktima kung walang agarang medical intervention.
+          </p>
+
+          <p>
+            Hindi rin si Dr. Roque Anthony Paradela, ang expert witness na nagbigay ng opinyon, ang doktor na mismong gumamot sa biktima. Hindi naiharap ang attending physician, at hindi sapat ang medical records at paliwanag ng expert upang mapatunayan ang fatal nature ng sugat.
+          </p>
+
+          <p>
+            Bunga ng kakulangan sa patunay sa mahalagang elementong iyon, itinuring ng Korte ang krimen bilang attempted murder sa halip na frustrated murder.
+          </p>
+
+          <p>
+            Hindi ang professional qualification ng doktor ang pangunahing problema. Ang hindi sapat na batayan ng kanyang partikular na opinyon.
+          </p>
+
+          <p>
+            Ipinapakita nito na kahit kinilala ang pagiging eksperto ng isang testigo, maaari pa ring hindi sapat ang kanyang testimonya upang patunayan ang isang mahalagang isyu sa kaso.
+          </p>
+
+          <blockquote>
+            <p>
+              QUALIFIED ANG EXPERT—PERO KAILANGAN PA RING PATUNAYAN ANG KONKLUSYON.
+            </p>
+          </blockquote>
+
+                       <h2>
+            BAKIT MAHALAGA ANG CROSS-EXAMINATION?
+          </h2>
+
+          <p>
+            Ang cross-examination ay hindi simpleng pagkakataong ipahiya ang isang testigo o sirain ang kanyang reputasyon.
+          </p>
+
+          <p>
+            Sa ilalim ng Rule 132, Section 6, layunin nitong masuri ang accuracy, truthfulness, posibleng interest o bias, at iba pang mahahalagang katotohanang may kinalaman sa usapin.
+          </p>
+
+          <p>
+            Sa isang expert witness, maaaring kuwestiyunin kung ano ang eksaktong sinuri niya, kung sapat at mapagkakatiwalaan ang mga dokumento, kung may impormasyong hindi naisama, at kung kayang suportahan ng kanyang methodology ang konklusyon.
+          </p>
+
+          <p>
+            Maaari ring itanong kung may ibang posibleng paliwanag sa resulta.
+          </p>
+
+          <p>
+            At kung may lumitaw na limitasyon sa kanyang pagsusuri, hindi agad nangangahulugang wala nang saysay ang buong testimony. Kailangang tukuyin kung gaano kalaki ang epekto ng limitasyong iyon sa partikular na finding.
+          </p>
+
+          <p>
+            Ganoon din kung hindi niya personal na nainterbyu ang lahat ng taong may kinalaman sa pagsusuri. Hindi ito awtomatikong nagpapawalang-bisa sa expert opinion sa bawat uri ng kaso. Ang tanong ay kung sapat at angkop pa rin ang datos at paraan para sa konklusyong ibinigay.
+          </p>
+
+          <p>
+            Maging ang pagtanggap ng bayad bilang expert witness ay hindi awtomatikong patunay ng pandaraya o bias. Ngunit maaari itong isaalang-alang, kasama ng iba pang pangyayari, sa pagsusuri sa pagiging independent at kapani-paniwala ng kanyang testimonya.
+          </p>
+
+          <h2>
+            PAANO TALAGA SINUSURI ANG EXPERT WITNESS SA LOOB NG KORTE?
+          </h2>
+
+          <p>
+            Sa ordinaryong court proceedings sa Pilipinas, hindi natatapos ang pagsusuri sa isang expert witness sa simpleng pagpapakilala sa kanya bilang eksperto.
+          </p>
+
+          <p>
+            Sa ilalim ng Rule 132, Sections 4–8, may proseso ng direct examination, cross-examination, re-direct examination at re-cross-examination.
+          </p>
+
+          <p>
+            Kapag tinawag ang expert witness, pormal na iniaalok ang kanyang testimony at tinutukoy ang layunin nito.
+          </p>
+
+          <p>
+            Sa direct examination, ang panig na nagharap sa kanya ay maaaring magtanong tungkol sa kanyang edukasyon, lisensiya, training, karanasan at partikular na espesyalisasyon.
+          </p>
+
+          <p>
+            Dito maaaring ipakita kung bakit siya qualified na magbigay ng expert opinion sa usaping pinag-uusapan.
+          </p>
+
+          <p>
+            Inilalahad din ang kanyang pagsusuri, mga dokumentong ginamit, methodology at konklusyon.
+          </p>
+
+          <p>
+            Sa mga kasong saklaw ng Judicial Affidavit Rule (A.M. No. 12-8-8-SC), ang sinumpaang judicial affidavit ang pumapalit sa karaniwang oral direct testimony. Ngunit hindi ibig sabihin na sapat nang magsumite ng nakasulat na salaysay. Kailangang humarap pa rin ang testigo sa korte upang masuri ang kanyang testimonya sa pamamagitan ng cross-examination, alinsunod sa naaangkop na rules. May partikular ding limitasyon sa paggamit nito sa mga kasong kriminal.
+          </p>
+
+          <p>
+            Pagkatapos nito, maaaring magsagawa ng cross-examination ang kabilang panig upang subukin ang kanyang qualifications, ebidensiya, assumptions at paraan ng pagbuo ng findings.
+          </p>
+
+          <p>
+            Pero hindi rito kinakailangang matapos ang kanyang pagpapaliwanag.
+          </p>
+
+          <p>
+            Sa re-direct examination, maaaring balikan ng panig na nagharap sa testigo ang mga sagot na ibinigay niya sa cross-examination upang linawin o dagdagan ang paliwanag. Kung may bagong usaping hindi natalakay sa cross-examination, kailangan ang pahintulot ng korte para matanong ito.
+          </p>
+
+          <p>
+            Maaari namang sundan ito ng re-cross-examination, kung saan muling makapagtatanong ang kabilang panig tungkol sa mga bagay na natalakay sa re-direct at iba pang pinahihintulutan ng korte.
+          </p>
+
+          <p>
+            May mahalagang papel din ang objections.
+          </p>
+
+          <p>
+            Maaaring tutulan ang isang tanong o ebidensiya kung may legal na batayan, gaya ng pagiging irrelevant o paglabag sa naaangkop na rules of evidence. Kailangang maipahayag ang objection sa tamang pagkakataon at tukuyin ang dahilan nito.
+          </p>
+
+          <p>
+            Sa ilalim ng Rule 132, Sections 34–36, may mga tuntunin din sa pormal na pag-aalok ng ebidensiya. Ang testimony ay iniaalok kapag tinawag ang testigo, habang ang documentary at object evidence ay pormal na iniaalok matapos ang presentation ng testimonial evidence ng panig na naghaharap nito.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi sapat na may hawak na report o dokumentong ipinakita sa pagdinig para awtomatikong maituturing na napatunayan na ang lahat ng nakasulat dito.
+          </p>
+
+          <p>
+            May proseso sa pagtanggap ng ebidensiya, at hiwalay pang usapin ang bigat na ibibigay rito.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGTANGGAP SA EXPERT TESTIMONY AY HINDI KATUMBAS NG PAGTANGGAP SA LAHAT NG KONKLUSYON NITO.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya mahalaga ang buong proseso—mula sa pagpapakita ng qualifications hanggang sa pagsusuri sa methodology at ebidensiya.
+          </p>
+
+          <p>
+            Hindi lamang kung sino ang nagsalita ang tinitingnan, kundi kung paano niya naipaliwanag at nasuportahan ang kanyang findings matapos itong masuri ng magkabilang panig.
+          </p>
+
+          <h2>
+            EXPERT WITNESS BA ANG NAGPAPASYA KUNG SINO ANG MAY SALA?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Ang ekspertong nagsusuri ng ebidensiya ay maaaring magpaliwanag kung ano ang nakita sa kanyang examination at kung ano ang teknikal na kahulugan ng resulta.
+          </p>
+
+          <p>
+            Pero iba ang technical conclusion sa legal judgment.
+          </p>
+
+          <p>
+            Ang pag-alam kung may chemical substance sa isang sample ay iba sa pagpapatunay ng lahat ng elemento ng isang krimen.<br>
+            Ang pagtukoy ng hindi pangkaraniwang daloy ng pera ay iba sa pagpapasyang may napatunayang money laundering.<br>
+            Ang pagtukoy ng structural defect ay iba sa pagdedesisyon kung sino ang may legal liability sa nangyaring pinsala.
+          </p>
+
+          <p>
+            Ang expert witness ay maaaring magbigay ng mahalagang tulong sa paglilinaw ng ebidensiya. Hindi nito inaalis ang tungkulin ng korte na suriin ang kabuuang kaso at ilapat ang batas.
+          </p>
+
+          <p>
+            At hindi lahat ng forum ay pare-pareho ang procedures. Ang ordinaryong court trial, legislative investigation, administrative proceeding at impeachment trial ay maaaring may magkakaibang tuntuning sinusunod.
+          </p>
+
+          <h2>
+            KAPAG EXPERT ANG NAGSALITA—DAPAT BA AGAD PANIWALAAN?
+          </h2>
+
+          <p>
+            Dapat seryosohin ang tunay na expertise. Hindi lahat ng technical opinion ay katumbas lamang ng ordinaryong personal na pananaw.
+          </p>
+
+          <p>
+            Pero hindi rin dapat ituring na awtomatikong katotohanan ang isang opinyon dahil lamang may mataas na degree, professional license o mahabang résumé ang nagsabi nito.
+          </p>
+
+          <p>
+            Mali ang basta pagbalewala sa qualified expert dahil hindi pabor sa sariling paniniwala ang kanyang findings.<br>
+            Mali rin ang pagtatanggol sa kanyang bawat konklusyon nang hindi man lamang sinusuri ang ebidensiyang pinagbabatayan.
+          </p>
+
+          <p>
+            Sa isang lipunang madaling matangay ng pangalan, titulo at kampihan, kailangang matutong paghiwalayin ang paggalang sa propesyonal at ang kritikal na pagsusuri sa kanyang trabaho.
+          </p>
+
+                  <blockquote>
+            <p>
+              EXPERTISE ANG DAHILAN PARA PAKINGGAN ANG TESTIGO—HINDI LISENSIYA PARA HUWAG NA SIYANG KUWESTIYUNIN.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagtatanong ay hindi paglapastangan sa expertise, kung ang layunin ay subukin ang ebidensiya at hindi basta sirain ang tao.
+          </p>
+
+          <p>
+            Sa huli, hindi dapat ang reputasyon ng eksperto ang pumalit sa pagpapatunay ng kanyang konklusyon. Hindi rin dapat ang ingay ng publiko ang magtakda kung alin sa mga ebidensiya ang totoo.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG EXPERT OPINION AY DAPAT TIMBANGIN SA EBIDENSIYA—HINDI ANG EBIDENSIYA ANG PILITING SUMUNOD SA OPINYON NG EXPERT.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil sa usapin ng pananagutan at hustisya, walang titulong dapat maging mas mataas kaysa sa pangangailangang patunayan ang katotohanan.
+          </p>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Supreme Court, 2019 Amendments to the Revised Rules on Evidence, A.M. No. 19-08-15-SC</strong> — Rule 130, Sections 51–53; Rule 132, Sections 4–8 at 34–36; Rule 133, Section 5.
+            </li>
+
+            <li>
+              <strong>Supreme Court, Judicial Affidavit Rule, A.M. No. 12-8-8-SC, September 4, 2012</strong> — Sections 2, 6, 7, 9 at 10.
+            </li>
+
+            <li>
+              <strong>Quijano v. People, G.R. No. 202151, February 10, 2021.</strong>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 9298</strong> — Philippine Accountancy Act of 2004.
+            </li>
+
+            <li>
+              <strong>Magsino v. Magsino, G.R. No. 205333, February 18, 2019</strong> — timely objections, admissibility at probative value ng expert testimony.
+            </li>
+
+            <li>
+              <strong>National Research Council (2009).</strong> Strengthening Forensic Science in the United States: A Path Forward. The National Academies Press. DOI: 10.17226/12589.
+            </li>
+
+            <li>
+              <strong>Dror, I. E., &amp; Hampikian, G. (2011).</strong> Subjectivity and Bias in Forensic DNA Mixture Interpretation. Science &amp; Justice, 51(4), 204–208. DOI: 10.1016/j.scijus.2011.08.004.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
