@@ -1,1 +1,1712 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="“Walang kuwenta”—kailangan bang may pakinabang bago irespeto? Suriin ang dignidad, ableism, autism, diskriminasyon, public ridicule, inclusion, at karapatan ng mga PWD."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-walang-kuwenta.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-walang-kuwenta.html"
+  >
+
+  <title>“WALANG KUWENTA”—KAILANGAN BANG MAY PAKINABANG BAGO IRESPETO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          “WALANG KUWENTA”—KAILANGAN BANG MAY PAKINABANG BAGO IRESPETO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-walang-kuwenta.png"
+            alt="Simbolikong visual ng isang taong hinuhusgahan sa timbangan laban sa mga simbolo ng productivity, success, status at approval bilang representasyon ng ableism, dignidad, kapansanan, pakinabang, at karapatang igalang."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+        <div class="article-body">
+
+          <p>
+            Hindi kailangang maging kawawa ang isang tao bago maging mali ang paghamak sa kaniya. At hindi rin niya kailangang patunayang may pakinabang siya bago maging karapat-dapat sa paggalang.
+          </p>
+
+          <p>
+            Pero bakit may mga taong madaling husgahang “walang kuwenta” dahil lang hindi sila nakapagsasalita, nakakakilos, o nakapag-aambag sa paraang inaasahan ng iba? Kailan pa naging sukatan ng halaga ng tao ang kaniyang kakayahan, pagiging produktibo, o pakinabang sa kapwa?
+          </p>
+
+          <p>
+            Sa isang episode ng Machong Chismisan podcast na inilabas nitong Oktubre 5, 2026, naging usap-usapan ang mga pahayag tungkol kay Josh Aquino, ang panganay na anak ni Kris Aquino na may autism. Habang inihahambing ang magkapatid na Josh at Bimby, tinawag ng isang host si Josh na “walang kuwenta.” Sinundan pa ito ng mapanlait na komento tungkol sa kaniyang kilos, na sinabayan ng tawanan.
+          </p>
+
+          <p>
+            May isang co-host na nagsabing low blow ang pahayag, pero naging kontrobersiyal din ang sumunod niyang komento. Kalaunan, humingi siya ng paumanhin at inako ang pananagutan sa kaniyang naging paglahok at reaksiyon.
+          </p>
+
+          <p>
+            Naglabas din ng mga pahayag ng paghingi ng tawad ang podcast at iba pang host. Tinapos naman ng The Pod Network ang kontrata nito sa programa.
+          </p>
+
+          <p>
+            May mga pagtatanggol kay Josh na nakasentro sa posibilidad na mahirapan siyang ipagtanggol ang sarili dahil sa kaniyang kondisyon. Mahalagang kilalanin ang ganitong pangamba. Pero kung kaya niyang sumagot, lumaban, o manindigan, magiging katanggap-tanggap na ba ang paghamak sa kaniya?
+          </p>
+
+          <p>
+            Hindi lang ito tungkol sa mga salitang binitiwan. Kailangan din nating suriin ang mas malawak na paniniwalang puwedeng husgahan ang buong halaga ng isang tao batay sa mga bagay na kaya o hindi niya kayang gawin.
+          </p>
+
+          <h2>
+            HINDI NASUSUKAT SA PAKINABANG ANG DIGNIDAD
+          </h2>
+
+          <p>
+            Sa pang-araw-araw na buhay, pamilyar tayo sa mga komentong “wala namang ambag,” “pabigat lang,” “sayang ang ginagastos,” o “wala namang silbi.” Madalas itong ibinabato sa mga taong hindi nakaaabot sa inaasahan ng iba.
+          </p>
+
+          <p>
+            Pero hindi pareho ang pagpuna sa ginagawa ng isang tao at ang paghatol na wala nang halaga ang kaniyang buong pagkatao.
+          </p>
+
+          <p>
+            Puwedeng kuwestiyunin ang maling desisyon, punahin ang kapabayaan, at panagutin ang sinumang nakagawa ng mali. Pero ibang usapan kapag mismong dignidad ng tao ang minamaliit dahil sa kaniyang kapansanan, limitasyon, o pangangailangan ng suporta.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pananagutan ay tungkol sa ginawa ng tao. Ang dignidad ay tungkol sa kaniyang pagkatao. Hindi dapat paghaluin ang dalawa.
+            </p>
+          </blockquote>
+
+          <p>
+            May isa pang pananaw na dapat suriin:<br>
+            Ang pagtatanggol sa isang taong may kapansanan dahil hindi raw niya kayang ipagtanggol ang sarili.
+          </p>
+
+          <p>
+            Mahalagang hindi samantalahin ang sinumang nahihirapang magsalita, sumagot, o manindigan. Pero hindi dapat iyon lang ang dahilan kung bakit natin kinokondena ang pangungutya.
+          </p>
+
+          <p>
+            Dahil kung doon lang nakabatay ang ating pagtingin, para bang nagiging katanggap-tanggap na ang panghahamak kapag ang pinagsalitaan ay kayang sumagot o lumaban.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nakasalalay sa kakayahang ipagtanggol ang sarili ang karapatang igalang. Kahit gaano pa kahusay magsalita, katapang manindigan, o kabilis sumagot ang isang tao, wala pa ring karapatan ang iba na maliitin ang kaniyang pagkatao.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin pare-pareho ang kakayahan at pangangailangan ng mga taong may autism o ibang kapansanan. Kaya hindi sapat ang kanilang kondisyon para husgahan kung kaya o hindi nilang ipagtanggol ang sarili.
+          </p>
+
+          <p>
+            Puwedeng punahin ang asal ng isang tao, kuwestiyunin ang kaniyang mga desisyon, at suriin maging ang kaniyang integridad kung may malinaw na batayan. Pero ibang usapan ang hamakin ang kaniyang pagkatao, gawing katatawanan ang kaniyang kapansanan, o tratuhin siyang parang mas mababa ang halaga niya kaysa sa iba.
+          </p>
+
+          <p>
+            Mali ang paghamak sa dignidad ng tao—kaya man niyang ipagtanggol ang sarili o hindi. May kapansanan man siya o wala, walang sinuman ang may karapatang yurakan ang kaniyang pagkatao.
+          </p>
+
+          <p>
+            Sa datos ng World Health Organization noong 2023, tinatayang 1.3 bilyong tao, o 16% ng populasyon sa buong mundo, ang may significant disability. Katumbas ito ng humigit-kumulang isa sa bawat anim na tao.
+          </p>
+
+          <p>
+            Hindi maliit na bahagi ng lipunan ang pinag-uusapan. At hindi rin pare-pareho ang uri ng kanilang kapansanan, kakayahan, at pangangailangan ng suporta.
+          </p>
+
+          <p>
+            Sa Pilipinas, iniulat ng Philippine Statistics Authority na 8,469,426 kataong edad limang taon pataas, o 8.7% ng kaukulang household population sa 2020 Census, ang nakararanas ng hirap sa kahit isa sa anim na larangang sinuri: paningin, pandinig, paglalakad, memorya o pagtutuon ng pansin, pangangalaga sa sarili, at pakikipagkomunikasyon.
+          </p>
+
+          <p>
+            Kasama sa bilang na ito ang mga may banayad o mild functional difficulty, na bumubuo sa humigit-kumulang 86% ng kabuuan. Mahalagang linawin na hindi ito awtomatikong bilang ng mga rehistradong PWD, at hindi rin ito bilang ng mga taong may autism.
+          </p>
+
+          <p>
+            Ipinapakita ng mga datos na ang iba't ibang kondisyon at antas ng kakayahan ay bahagi ng realidad ng buhay. Hindi ito usaping dapat lang nating pansinin kapag may viral na insidente o kilalang personalidad na nasangkot.
+          </p>
+
+          <p>
+            Pero bakit nagiging dahilan pa rin ng pagmamaliit ang mga bagay na ito?
+          </p>
+
+          <h2>
+            KAPAG HINDI PASOK SA PAMANTAYANG “NORMAL”
+          </h2>
+
+          <p>
+            Isa sa mga problemang dapat nating suriin ay ang nakasanayan nating pamantayan ng pagiging “normal.”
+          </p>
+
+          <p>
+            Kapag hindi karaniwan ang paraan ng pagsasalita, pakikipag-usap, pagtugon, o pagkilos ng isang tao, may mga pagkakataong agad siyang hinuhusgahan. Mabilis magkaroon ng maling palagay tungkol sa kaniyang talino, ugali, kakayahan, at halaga.
+          </p>
+
+          <p>
+            Sa halip na kilalanin muna kung sino siya bilang tao, ang unang napapansin ay kung ano ang naiiba sa kaniya.
+          </p>
+
+          <p>
+            Sa isang pag-aaral nina Noah Sasson at kaniyang mga kasamahan na inilathala sa Scientific Reports noong 2017, sinuri sa tatlong magkakahiwalay na eksperimento kung paano nabubuo ang unang impresyon ng mga taong walang autism tungkol sa mga autistic individual.
+          </p>
+
+          <p>
+            Lumabas na mas negatibo ang kanilang unang impresyon sa mga autistic participant, at mas mababa rin ang kagustuhan nilang makipag-ugnayan sa kanila. Sa ilang segundo pa lamang ng exposure, nabubuo na ang ganitong paghusga.
+          </p>
+
+          <p>
+            Pero may isang mahalagang detalye sa resulta.
+          </p>
+
+          <p>
+            Nang text lamang ng usapan ang ipinakita, at hindi ang mismong paraan ng pagsasalita o pagkilos, hindi na lumabas ang parehong negatibong pagtingin.
+          </p>
+
+          <p>
+            Ipinapakita nito na hindi lang ang sinasabi ng isang tao ang nakaaapekto sa pagtingin sa kaniya. Maging ang paraan ng kaniyang pagsasalita, pagkilos, at pakikipag-usap ay maaaring pagmulan ng hindi patas na paghusga.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na ganito ang reaksiyon ng lahat. Pero ipinapakita ng pag-aaral kung paano maaaring maging hadlang sa pakikisalamuha ang negatibong unang impresyon ng ibang tao.
+          </p>
+
+          <p>
+            Sa isa pang pag-aaral nina Catherine Crompton at kaniyang mga kasamahan na inilathala sa Nature Human Behaviour noong 2025, sinuri ang pagpapasa ng impormasyon sa pagitan ng 311 autistic at non-autistic adult participant.
+          </p>
+
+          <p>
+            Walang nakitang makabuluhang pagkakaiba sa accuracy ng naipapasang impormasyon sa tatlong uri ng grupo: puro autistic, puro non-autistic, at halo ang mga kasapi.
+          </p>
+
+          <p>
+            May nakita ring maliit na positibong epekto sa pakiramdam ng maayos na pakikipag-ugnayan, o rapport, kapag alam ng mga tumatanggap ng impormasyon na may autism ang kanilang kausap.
+          </p>
+
+          <p>
+            Pero hindi ganoon kalinaw ang resulta para sa mga nagbibigay ng impormasyon. Kaya hindi natin puwedeng sabihing pareho ang epekto nito sa lahat ng participant.
+          </p>
+
+          <p>
+            May limitasyon din ang eksperimento. Hindi nito kinakatawan ang karanasan ng lahat ng autistic person, lalo na ang mga may mas mataas na pangangailangan ng suporta.
+          </p>
+
+          <p>
+            Gayunman, may mahalagang puntong makukuha rito:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat ang diagnosis, nakikitang kilos, o paraan ng pakikipag-usap para husgahan ang kabuuang kakayahan ng isang tao.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang autism ay isang neurodevelopmental condition na may malawak na saklaw ng mga katangian at pangangailangan. Maaari itong makaapekto sa komunikasyon, social interaction, sensory experiences, at pag-uugali.
+          </p>
+
+          <p>
+            May mga autistic person na kayang mamuhay nang halos independent, habang ang iba naman ay nangangailangan ng mas malawak o tuloy-tuloy na suporta.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong nangangahulugan ng intellectual disability ang pagkakaroon ng autism.
+          </p>
+
+          <p>
+            Kaya hindi makatarungang gamitin ang isang maikling video, kakaibang kilos, o sandali ng pananahimik para husgahan ang talino, kakayahan, o buong pagkatao ng isang tao.
+          </p>
+
+          <p>
+            At hindi rin dapat maging sukatan ng halaga ang pagiging independent.
+          </p>
+
+          <p>
+            May mga taong nangangailangan ng tulong sa pagkain, pag-aayos ng sarili, pag-aaral, pakikipagkomunikasyon, o paggawa ng mahahalagang desisyon. Pero hindi dahil kailangan nila ng suporta ay nababawasan na ang kanilang karapatang igalang, pakinggan, at kilalanin bilang tao.
+          </p>
+
+          <p>
+            Dito pumapasok ang ableism—ang hindi patas na pagtingin o pagtrato sa mga taong may kapansanan dahil sa paniniwalang ang mga kakayahang itinuturing na normal ang dapat maging pamantayan ng lahat.
+          </p>
+
+          <p>
+            Hindi lang ito nakikita sa direktang insulto. Lumalabas din ito kapag mababa agad ang inaasahan natin sa isang PWD, hindi siya binibigyan ng pagkakataon, hindi tinutugunan ang kaniyang pangangailangan, o tinatrato siyang parang wala siyang sariling opinyon at kakayahang makilahok.
+          </p>
+
+          <p>
+            Hindi rin sapat na sabihin nating dapat igalang ang mga PWD dahil marami sa kanila ang mahusay sa sining, sports, negosyo, o iba pang larangan.
+          </p>
+
+          <p>
+            Totoong mahalagang kilalanin ang kanilang talento, kakayahan, at kontribusyon.
+          </p>
+
+          <p>
+            Pero kung doon lang natin ibabatay ang paggalang, paano naman ang mga taong hindi makapagtrabaho, hindi makapagsalita, o nangangailangan ng panghabambuhay na pangangalaga?
+          </p>
+
+          <blockquote>
+            <p>
+              Ang dignidad ay hindi gantimpala sa pagiging mahusay. Hindi rin ito premyo sa pagiging produktibo.
+            </p>
+          </blockquote>
+
+                    <h2>
+            HINDI LAHAT NG HADLANG AY NASA TAONG MAY KAPANSANAN
+          </h2>
+
+          <p>
+            Hindi natatapos sa personal na panghuhusga ang problema. May mga pagkakataong mismong ang inaasahan at paraan ng pakikitungo ng lipunan ang nagiging hadlang.
+          </p>
+
+          <p>
+            Sa isang systematic review nina Luciana Lisboa White at kaniyang mga kasamahan na inilathala noong 2024, sinuri ang mga pag-aaral tungkol sa loneliness at social connection ng autistic young people.
+          </p>
+
+          <p>
+            Isa sa mahahalagang puntong lumabas ay hindi laging akma sa kanilang karanasan ang karaniwang pamantayan sa pakikipagkaibigan at pakikisalamuha.
+          </p>
+
+          <p>
+            Dahil dito, ang isang autistic person na may ibang paraan ng pakikipag-ugnayan ay maaaring mapagkamalang walang interes makipagkaibigan o hindi marunong makisama.
+          </p>
+
+          <p>
+            Pero hindi dahil iba ang paraan ng pakikisalamuha ay wala nang pagnanais o kakayahang magkaroon ng makabuluhang relasyon sa ibang tao.
+          </p>
+
+          <p>
+            May mga pag-aaral din sa Pilipinas na nagpapakita ng mga hamong kinakaharap ng ilang pamilyang may autistic children.
+          </p>
+
+          <p>
+            Sa isang pag-aaral na inilathala sa Advances in Autism ngayong 2026, nakapanayam ang 60 guardian mula sa mga therapy center sa Butuan City.
+          </p>
+
+          <p>
+            Kabilang sa mga problemang kanilang naranasan ang mataas na gastos sa therapy, kakulangan sa resources, at stigma mula sa publiko.
+          </p>
+
+          <p>
+            Hindi ito national survey na kumakatawan sa lahat ng pamilya sa Pilipinas. Pero nagbibigay ito ng konkretong halimbawa ng mga problemang kinakaharap ng ilang pamilyang nag-aalaga ng autistic children.
+          </p>
+
+          <p>
+            Sa isa pang lokal na pag-aaral noong 2025, sinuri ang karanasan ng limang magulang na may autistic children sa inclusive classrooms.
+          </p>
+
+          <p>
+            Kabilang sa kanilang mga ibinahaging problema ang kakulangan ng suporta mula sa ilang institusyon, limitadong budget, at stigma sa paligid nila.
+          </p>
+
+          <p>
+            Maliit ang bilang ng mga kalahok sa mga pag-aaral na ito, kaya hindi puwedeng gawing pangkalahatang karanasan ng lahat ang kanilang mga natuklasan.
+          </p>
+
+          <p>
+            Gayunman, mahalaga ang ipinapakita nilang sitwasyon:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lang kondisyon o kakayahan ng isang bata ang dapat pagtuunan ng pansin. Kailangan ding tingnan kung may sapat na suporta, oportunidad, at pag-unawa sa kaniyang paligid.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya hindi sapat ang sabihing ang mga taong may kapansanan ang kailangang mag-adjust para matanggap ng lipunan.
+          </p>
+
+          <p>
+            May responsibilidad din ang mga paaralan, institusyon, komunidad, at bawat isa sa atin na alisin ang mga hadlang na pumipigil sa kanilang makilahok.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lahat ng nahihirapan ay dahil kulang sa kakayahan. May mga pagkakataong kulang ang suporta at oportunidad na ibinibigay sa kanila.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG BIRO AY NAGIGING DAAN SA PAGMAMALIIT
+          </h2>
+
+          <p>
+            Mahalaga ring pag-usapan kung paano nagiging bahagi ng normal na usapan ang pangungutya, lalo na kapag ipinapasa ito bilang katatawanan.
+          </p>
+
+          <p>
+            Hindi lahat ng nakasasakit na biro ay sinasadyang magpalaganap ng diskriminasyon.
+          </p>
+
+          <p>
+            Pero hindi rin nawawala ang posibleng epekto nito dahil lang sinabing “biro lang naman.”
+          </p>
+
+          <p>
+            Noong 2004, ipinaliwanag nina Thomas Ford at Mark Ferguson sa Personality and Social Psychology Review ang tinatawag na prejudiced norm theory.
+          </p>
+
+          <p>
+            Ayon sa kanilang pagsusuri, ang mga birong nangmamaliit sa isang grupo ay maaaring magbigay ng impresyong katanggap-tanggap ang diskriminasyon, lalo na sa mga taong mayroon nang negatibong pagtingin sa grupong iyon.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang bawat mapanlait na biro ay direktang nagdudulot ng diskriminasyon.
+          </p>
+
+          <p>
+            Pero may research basis ang pangambang ang paulit-ulit na pangungutya ay maaaring makaapekto sa kung anong uri ng pagtrato sa kapwa ang nagiging katanggap-tanggap sa isang grupo.
+          </p>
+
+          <p>
+            Dito pumapasok ang responsibilidad ng content creators, podcast hosts, at maging ng audience.
+          </p>
+
+          <p>
+            May kalayaan ang isang tao na magpatawa, magpahayag ng opinyon, at pumuna. Pero may malinaw na kaibahan ang birong tumutuligsa sa maling asal o ideya at ang birong ang mismong pinagtatawanan ay ang kapansanan o pagkatao ng isang tao.
+          </p>
+
+          <p>
+            May responsibilidad din ang mga kasama sa usapan.
+          </p>
+
+          <p>
+            Hindi awtomatikong nangangahulugan ng pagsang-ayon ang bawat pagtawa. May mga taong tumatawa dahil nabigla, nailang, o hindi alam kung paano tutugon.
+          </p>
+
+          <p>
+            Pero kapag may mapanlait na pahayag at may pagkakataong kuwestiyunin ito, mahalaga kung ano ang magiging reaksiyon ng mga nakarinig.
+          </p>
+
+          <p>
+            Ang pagtutol o pagpigil sa ganitong usapan ay maaaring makatulong para hindi magmukhang normal o katanggap-tanggap ang pangungutya.
+          </p>
+
+          <h2>
+            MAY BATAS NA NAGTATAKDA NG HANGGANAN
+          </h2>
+
+          <p>
+            Hindi lang personal na paniniwala o usapin ng magandang asal ang paggalang sa dignidad ng mga PWD. May mga batas din sa Pilipinas na nagpoprotekta sa kanilang mga karapatan.
+          </p>
+
+          <p>
+            Sa Article II, Section 11 ng 1987 Constitution, kinikilala ng Estado ang dignidad ng bawat tao at ang obligasyong igalang ang karapatang pantao.
+          </p>
+
+          <p>
+            Sa Republic Act No. 7277, o Magna Carta for Disabled Persons, kinikilala ang karapatan ng mga PWD na makilahok sa lipunan.
+          </p>
+
+          <p>
+            Pinalakas pa ito ng Republic Act No. 9442, na nagdagdag ng mga probisyon laban sa public ridicule at vilification.
+          </p>
+
+          <p>
+            Sa Sections 39 at 40 ng RA 7277, na idinagdag ng RA 9442, tinutukoy at ipinagbabawal ang ilang uri ng pampublikong pangungutya o panlilibak sa mga PWD dahil sa kanilang kapansanan.
+          </p>
+
+          <p>
+            Sa Sections 41 at 42 naman, tinatalakay ang vilification, kabilang ang mga mapanirang pahayag at pampublikong gawaing nag-uudyok ng matinding paghamak o pangungutya laban sa mga PWD.
+          </p>
+
+          <p>
+            Nililinaw din ng implementing rules na maaaring masaklaw ng public ridicule ang mga degrading joke at mapanlait na panggagaya sa isang PWD sa mga pampublikong pagtatanghal o entertainment.
+          </p>
+
+          <p>
+            May kaukulang parusa ang paglabag sa batas.
+          </p>
+
+          <p>
+            Sa Section 46 ng RA 7277, na inamyendahan ng RA 9442, ang unang paglabag ay maaaring parusahan ng multang ₱50,000 hanggang ₱100,000, pagkakakulong nang anim na buwan hanggang dalawang taon, o pareho, depende sa magiging desisyon ng hukuman at sa naaangkop na probisyon.
+          </p>
+
+          <p>
+            Pero may mahalagang limitasyon dito.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lahat ng nakasasakit na biro ay awtomatikong isang napatunayang krimen. Kailangang suriin ang eksaktong mga salita, konteksto, kaugnayan sa kapansanan, mga kailangang mapatunayang elemento ng paglabag, at ang ebidensiya sa tamang legal na proseso.
+            </p>
+          </blockquote>
+
+          <p>
+            Protektado rin ng Konstitusyon ang freedom of speech at expression.
+          </p>
+
+          <p>
+            Kaya hindi sapat na sabihing may kalayaan ang isang tao na magsalita, o kaya naman ay may nasaktan sa sinabi niya, para agad masagot ang lahat ng legal na tanong.
+          </p>
+
+          <p>
+            Kailangang tingnan ang mga karapatang sangkot at ang mga limitasyong itinatakda ng batas.
+          </p>
+
+          <p>
+            Mahalaga ring huwag paghaluin ang pampublikong pagpuna, desisyon ng isang pribadong network tungkol sa kontrata, at legal na paghatol kung may nagawang krimen.
+          </p>
+
+          <p>
+            Magkakaibang usapin ang mga ito, at hindi awtomatikong patunay ng criminal liability ang isa sa mga ito.
+          </p>
+
+                    <h2>
+            HINDI AWA ANG INCLUSION—KARAPATAN ITO
+          </h2>
+
+          <p>
+            Hindi lang pagbabawal sa pangungutya ang layunin ng mga batas na nagpoprotekta sa mga PWD.
+          </p>
+
+          <p>
+            Kasama rin dito ang pagbibigay ng patas na pagkakataon, angkop na suporta, at access sa mga serbisyong kailangan nila.
+          </p>
+
+          <p>
+            Sa Republic Act No. 11650, na ipinasa noong 2022, itinakda ang mga patakaran at suportang naglalayong gawing mas accessible at inclusive ang edukasyon para sa learners with disabilities.
+          </p>
+
+          <p>
+            Kabilang dito ang angkop na paraan ng pagtuturo, mga serbisyong kailangan ng mag-aaral, at mga hakbang para makasali sila nang maayos sa pag-aaral at iba pang school activities.
+          </p>
+
+          <p>
+            Hindi sapat na basta tanggapin ang isang batang may kapansanan sa paaralan kung hindi naman ibinibigay ang suportang kailangan niya para tunay na matuto at makilahok.
+          </p>
+
+          <p>
+            Kasama rin ang Pilipinas sa mga bansang nagratipika sa United Nations Convention on the Rights of Persons with Disabilities noong 2008.
+          </p>
+
+          <p>
+            Sa Article 8 nito, nakasaad ang mga hakbang na dapat gawin ng mga bansa upang labanan ang stereotypes at prejudice, palakasin ang paggalang sa karapatan at dignidad ng mga PWD, at hikayatin ang media na ilarawan sila nang naaayon sa mga prinsipyong ito.
+          </p>
+
+          <blockquote>
+            <p>
+              Mahalagang linawin na ang karapatan ng mga PWD ay hindi simpleng pabor o awa na puwedeng ibigay o bawiin depende sa kagustuhan ng ibang tao.
+            </p>
+          </blockquote>
+
+          <p>
+            Bahagi sila ng lipunang may karapatang makilahok, magpasya, makatanggap ng angkop na suporta, at mamuhay nang may dignidad.
+          </p>
+
+          <p>
+            Hindi kailangang maging kawawa ang isang tao bago kilalanin ang kaniyang karapatan.
+          </p>
+
+          <p>
+            Kaya hindi rin sapat na ipagtanggol ang isang PWD dahil lang mabait siya, may talento, o galing sa isang respetadong pamilya.
+          </p>
+
+          <p>
+            Mahalagang kilalanin ang kaniyang magagandang katangian at kakayahan. Pero hindi dapat doon nakasalalay ang paggalang sa kaniya.
+          </p>
+
+          <h2>
+            KUNG HINDI KILALA, PAREHO PA RIN BA ANG PANININDIGAN?
+          </h2>
+
+          <p>
+            Kung hindi anak ng isang sikat na personalidad ang pinagsalitaan, magiging pareho pa rin ba ang ating paninindigan?
+          </p>
+
+          <p>
+            Kung ordinaryong mamamayan lang siya sa isang maliit na komunidad, walang malaking following, at walang kilalang pamilyang magtatanggol sa kaniya, ganoon pa rin ba tayo kabilis kumondena sa pangungutya?
+          </p>
+
+          <blockquote>
+            <p>
+              Diyan nasusubok kung prinsipyo talaga ang ipinaglalaban natin—o mas malakas lang ang ating reaksiyon kapag kilala ang taong nasaktan.
+            </p>
+          </blockquote>
+
+          <p>
+            May lugar ang paghingi ng tawad at pagtanggap ng pananagutan.
+          </p>
+
+          <p>
+            Pero hindi sapat na basta burahin ang content at umasang matatapos na ang usapan. Mahalagang kilalanin kung ano ang naging mali, unawain kung bakit ito nakasasakit, at ipakita kung ano ang dapat baguhin upang hindi na maulit.
+          </p>
+
+          <p>
+            Kasabay nito, hindi rin kailangang sagutin ang pang-aalipusta ng panibagong pang-aalipusta.
+          </p>
+
+          <p>
+            Puwedeng punahin ang ginawa, humingi ng pananagutan, at magtakda ng makatarungang consequences nang hindi kailangang yurakan ang dignidad ng taong nagkamali.
+          </p>
+
+          <p>
+            At higit sa lahat, hindi dapat mawala sa usapan ang mismong mga taong may kapansanan.
+          </p>
+
+          <p>
+            Hindi sila basta paksa ng debate, simbolo ng awa, o dahilan para mag-away ang magkabilang panig sa social media.
+          </p>
+
+          <p>
+            May sarili silang karanasan, pangangailangan, pananaw, at karapatang marinig.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na inclusion ay hindi lang pagsasalita tungkol sa kanila. Kailangan din silang bigyan ng pagkakataong makilahok sa mga usaping direktang nakaaapekto sa kanilang buhay, sa paraang angkop sa kanilang kakayahan at pangangailangan ng suporta.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa huli, ang pinakamahalagang tanong ay hindi kung gaano kahusay, kayaman, kasikat, o kapaki-pakinabang ang taong pinagsalitaan.
+          </p>
+
+          <p>
+            Ang dapat nating tanungin ay kung bakit may mga taong naniniwalang kailangan munang patunayan ng kapwa ang kaniyang halaga bago siya maging karapat-dapat sa paggalang.
+          </p>
+
+          <p>
+            Ang isang tao ay maaaring magkaroon ng kapansanan, mangailangan ng tulong, hindi makapagtrabaho, hindi makapagsalita, o hindi maabot ang inaasahan ng lipunan.
+          </p>
+
+          <p>
+            Hindi nito binubura ang kaniyang pagkatao. At hindi rin nito binibigyan ang sinuman ng karapatang husgahan ang kaniyang dignidad batay sa mga bagay na hindi niya kayang gawin.
+          </p>
+
+          <p>
+            Hindi kailangang itanghal ang mga PWD bilang pambihirang inspirasyon para kilalaning mahalaga sila.
+          </p>
+
+          <p>
+            Hindi rin kailangang kaawaan sila para ipaglaban ang kanilang karapatan.
+          </p>
+
+          <p>
+            Ang kailangan ay isang lipunang marunong kumilala na hindi pareho ang kakayahan at halaga ng isang tao.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG DIGNIDAD AY HINDI GANTIMPALA SA KAKAYAHAN, PAKINABANG, O TAGUMPAY. KAYA MAN NG ISANG TAO NA IPAGTANGGOL ANG SARILI O HINDI, WALANG SINUMANG MAY KARAPATANG HAMAKIN ANG KANIYANG PAGKATAO. HINDI NIYA KAILANGANG PATUNAYANG MAY SILBI SIYA BAGO SIYA IGALANG.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian at Batayan
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Insidente at mga naging aksiyon</strong>
+            </li>
+
+            <li>
+              <strong>GMA News (2026).</strong> Machong Chismisan dropped by The Pod Network after Josh Aquino remarks.
+            </li>
+
+            <li>
+              <strong>PEP.ph (2026).</strong> Machong Chismisan podcast hosts apologize for mocking Josh Aquino.
+            </li>
+
+            <li>
+              <strong>Datos at pananaliksik</strong>
+            </li>
+
+            <li>
+              <strong>World Health Organization (2023).</strong> Disability.
+            </li>
+
+            <li>
+              <strong>Philippine Statistics Authority (2022).</strong> Functional Difficulty in the Philippines: 2020 Census of Population and Housing.
+            </li>
+
+            <li>
+              <strong>Sasson et al. (2017).</strong> Neurotypical Peers are Less Willing to Interact with Those with Autism based on Thin Slice Judgments. Scientific Reports.
+            </li>
+
+            <li>
+              <strong>Crompton et al. (2025).</strong> Information transfer within and between autistic and non-autistic people. Nature Human Behaviour.
+            </li>
+
+            <li>
+              <strong>Lisboa White, Tecwyn &amp; Petty (2024).</strong> Experiences of Loneliness and Connection for Autistic Young People: A Systematic Review.
+            </li>
+
+            <li>
+              <strong>Paz (2026).</strong> Communicating autism: a qualitative analysis of daily challenges and adaptations. Advances in Autism.
+            </li>
+
+            <li>
+              <strong>Carpio (2025).</strong> Experiences of Parents Having Children with Autism in an Inclusive Classroom.
+            </li>
+
+            <li>
+              <strong>Ford &amp; Ferguson (2004).</strong> Social Consequences of Disparagement Humor: A Prejudiced Norm Theory. Personality and Social Psychology Review.
+            </li>
+
+            <li>
+              <strong>Batas at karapatang pantao</strong>
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution.</strong> Article II, Section 11; Article III, Section 4.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 7277, as amended by RA 9442.</strong> Magna Carta for Persons with Disability; Sections 39–42 at 46.
+            </li>
+
+            <li>
+              <strong>National Council on Disability Affairs.</strong> Implementing Rules and Regulations of RA 9442.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11650 (2022).</strong> Instituting a Policy of Inclusion and Services for Learners with Disabilities in Support of Inclusive Education Act.
+            </li>
+
+            <li>
+              <strong>United Nations.</strong> Convention on the Rights of Persons with Disabilities, Article 8: Awareness-raising.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
