@@ -1,1 +1,1754 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER MUSIC ARTICLE TEMPLATE — VERSION 2.1
+======================================================
 
+FILE:
+_templates/music-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Music articles ng jhElmEr website.
+
+Ang bawat Music article ay nagsisilbing permanenteng
+public archive ng isang original song—kasama ang cover,
+audio, konteksto ng kanta, at buong lyrics.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published Music article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang music-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+
+   music-hindi-tahimik.html
+   music-song-title.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Cover image filename
+   • Cover image alt text
+   • MP3 filename
+   • Audio accessibility label
+   • Story / context paragraphs
+   • Song title bago ang Lyrics
+   • Lyrics
+
+4. Ilagay ang cover image sa:
+
+   articles/images/
+
+5. Ilagay ang MP3 file sa:
+
+   articles/audio/
+
+6. Idagdag ang bagong kanta sa Music Archive:
+
+   ../all-music.html
+
+7. Gawin itong Featured Song sa:
+
+   ../music.html
+
+   Habang hindi pa kumpleto ang unang 10 kanta:
+   ang pinakabagong uploaded song ang Featured Song.
+
+   Kapag kumpleto na ang 10 kanta:
+   ibalik bilang permanenteng Featured Song ang
+   official jhElmEr Theme Song.
+
+8. Hindi kailanman inilalagay ang Music article sa
+   Homepage Latest Article.
+
+   Ang Homepage Latest Article ay para lamang sa:
+
+   • Civic Explainers
+   • Text Slogans
+
+9. Siguraduhing pareho ang Music article link sa:
+
+   • Music Category Page
+   • Complete Music Archive
+
+10. Test bago mag-commit:
+
+   • Header navigation
+   • Header logo clickable scope
+   • Back navigation
+   • Cover image
+   • Audio playback
+   • Story / context
+   • Song title bago ang Lyrics
+   • Lyrics
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Music articles ay inilalagay sa
+/articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang cover images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa Music article ay:
+
+images/filename.png
+images/filename.jpg
+images/filename.webp
+
+Ang MP3 files ay inilalagay sa:
+
+articles/audio/
+
+Kaya ang audio path sa Music article ay:
+
+audio/filename.mp3
+
+HUWAG GAMITIN ANG:
+
+articles/audio/filename.mp3
+
+Dahil nasa loob na ng /articles/ folder ang published
+Music article. Kapag ginamit ang articles/audio/,
+hahanapin ng browser ang maling path na:
+
+articles/articles/audio/filename.mp3
+
+Panatilihin ang eksaktong filename, capitalization,
+spacing, at original file extension.
+
+Ang canonical at Open Graph URL ng bawat published Music article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/music-hindi-tahimik.html
+
+------------------------------------------------------
+MUSIC ARTICLE STRUCTURE
+------------------------------------------------------
+
+COVER IMAGE
+↓
+AUDIO PLAYER
+↓
+STORY / CONTEXT
+↓
+SONG TITLE
+↓
+LYRICS
+
+Magkasama sa iisang media card ang Cover Image at
+Audio Player upang maging tuloy-tuloy ang visual flow.
+
+Walang heading ang Story / Context section.
+
+Ang Song Title ay inilalagay bago ang Lyrics upang
+hindi maulit agad ang pamagat na makikita na sa cover.
+
+Walang Call to Action.
+
+Walang Like, Comment, Subscribe, o Share section.
+
+Ang website ay permanenteng public archive at hindi
+social-media engagement page.
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+<meta
+  name="description"
+  content="Mga Awit ng Paninindigan Medley—isang original reggae medley ni jhElmEr na pinagsasama ang 11 awit tungkol sa prinsipyo, pananagutan, pagkilos, pagpili, at pagmamahal sa bayan. Pakinggan at basahin ang buong lyrics."
+>
+
+<link
+  rel="canonical"
+  href="https://jhelmersimplengtao.com/articles/music-mga-awit-ng-panininindigan.html"
+>
+
+<meta
+  property="og:url"
+  content="https://jhelmersimplengtao.com/articles/music-mga-awit-ng-panininindigan.html"
+>
+
+<title>MGA AWIT NG PANININDIGAN MEDLEY | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="../main.css?v=3"
+  >
+
+  <style>
+    /* =========================================================
+       MUSIC ARTICLE PAGE — VERSION 2.1
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       COVER + AUDIO
+       ↓
+       STORY / CONTEXT
+       ↓
+       SONG TITLE
+       ↓
+       LYRICS
+    ========================================================= */
+
+    .music-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .music-article-page,
+    .music-article-page *,
+    .music-article-page *::before,
+    .music-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 100;
+
+      isolation: isolate;
+
+      border-top:
+        1px solid rgba(213, 173, 54, 0.12);
+
+      border-bottom:
+        1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      position: relative;
+      z-index: 2;
+
+      width: fit-content;
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color:
+        rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+
+      outline: none;
+
+      transform:
+        translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color:
+        rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .music-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .music-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.14);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .music-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.1);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 70px 7% 112px;
+    }
+
+    /* =========================================================
+       COVER + AUDIO MEDIA CARD
+    ========================================================= */
+
+    .article-media-card {
+      width: 100%;
+      margin: 0 0 50px;
+
+      overflow: hidden;
+
+      border:
+        1px solid rgba(23, 23, 23, 0.11);
+
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    /* =========================================================
+       SONG COVER
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      background: #111214;
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       AUDIO PLAYER
+    ========================================================= */
+
+    .song-player-section {
+      width: 100%;
+      margin: 0;
+
+      border-top:
+        1px solid rgba(213, 173, 54, 0.22);
+    }
+
+    .song-player-shell {
+      position: relative;
+
+      width: 100%;
+      padding: 27px 30px 29px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 94% 18%,
+          rgba(213, 173, 54, 0.1),
+          transparent 32%
+        ),
+        #111214;
+    }
+
+    .song-player-shell::after {
+      content: "";
+
+      position: absolute;
+      top: -80px;
+      right: -68px;
+
+      width: 170px;
+      height: 170px;
+
+      border:
+        1px solid rgba(213, 173, 54, 0.13);
+
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .song-player-label {
+      position: relative;
+      z-index: 2;
+
+      margin: 0 0 13px;
+
+      color: #d5ad36;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 0.79rem;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .song-audio {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      height: 48px;
+
+      display: block;
+    }
+
+    .audio-fallback {
+      position: relative;
+      z-index: 2;
+
+      margin: 13px 0 0;
+
+      color:
+        rgba(245, 241, 232, 0.66);
+
+      font-size: 0.78rem;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       STORY / CONTEXT
+    ========================================================= */
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    /* =========================================================
+       LYRICS SECTION
+    ========================================================= */
+
+    .lyrics-section {
+      width: 100%;
+      margin-top: 54px;
+      padding-top: 42px;
+
+      border-top:
+        1px solid rgba(23, 23, 23, 0.14);
+    }
+
+    .lyrics-song-title {
+      margin: 0 0 13px;
+
+      color: #171717;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size:
+        clamp(
+          2.8rem,
+          6vw,
+          4.5rem
+        );
+
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.024em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    .lyrics-heading {
+      margin: 0 0 34px;
+
+      color: #9a7624;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 0.84rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .lyrics-content {
+      color: #393733;
+
+      font-size: 1.03rem;
+      font-weight: 500;
+      line-height: 1.9;
+    }
+
+    .lyrics-stanza {
+      margin: 0 0 2.25em;
+    }
+
+    .lyrics-stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    .lyrics-stanza p {
+      margin: 0;
+    }
+
+    .lyrics-section-label {
+      margin: 0 0 0.72em;
+
+      color: #9a7624;
+
+      font-family:
+        "Barlow Condensed",
+        Arial,
+        sans-serif;
+
+      font-size: 0.79rem;
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 48px 30px 84px;
+      }
+
+      .article-media-card {
+        margin-bottom: 42px;
+
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .song-player-shell {
+        padding: 22px 23px 24px;
+      }
+
+      .song-player-label {
+        margin-bottom: 11px;
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .lyrics-section {
+        margin-top: 46px;
+        padding-top: 35px;
+      }
+
+      .lyrics-song-title {
+        margin-bottom: 11px;
+
+        font-size:
+          clamp(
+            2.55rem,
+            11vw,
+            3.75rem
+          );
+      }
+
+      .lyrics-heading {
+        margin-bottom: 28px;
+      }
+
+      .lyrics-content {
+        font-size: 0.98rem;
+        line-height: 1.86;
+      }
+
+      .lyrics-stanza {
+        margin-bottom: 2em;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 40px 27px 72px;
+      }
+
+      .article-media-card {
+        margin-bottom: 36px;
+
+        border-radius: 12px;
+      }
+
+      .song-player-shell {
+        padding: 19px 17px 21px;
+      }
+
+      .song-player-label {
+        font-size: 0.71rem;
+        letter-spacing: 0.11em;
+      }
+
+      .song-audio {
+        height: 44px;
+      }
+
+      .audio-fallback {
+        font-size: 0.72rem;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .lyrics-section {
+        margin-top: 40px;
+        padding-top: 31px;
+      }
+
+      .lyrics-song-title {
+        margin-bottom: 10px;
+
+        font-size:
+          clamp(
+            2.35rem,
+            12vw,
+            3.25rem
+          );
+      }
+
+      .lyrics-heading {
+        margin-bottom: 25px;
+
+        font-size: 0.75rem;
+      }
+
+      .lyrics-content {
+        font-size: 0.95rem;
+        line-height: 1.83;
+      }
+
+      .lyrics-section-label {
+        font-size: 0.72rem;
+      }
+
+      .lyrics-stanza {
+        margin-bottom: 1.85em;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media
+      (min-width: 700px)
+      and (max-width: 950px)
+      and (max-height: 520px)
+      and (orientation: landscape) {
+
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 42px;
+      }
+
+      .article-media-card {
+        width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .song-player-shell {
+        padding: 21px 24px 23px;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+
+      .lyrics-song-title {
+        font-size:
+          clamp(
+            3rem,
+            7vw,
+            4.15rem
+          );
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="music-article-page">
+
+  <!-- ======================================================
+       HEADER
+  ======================================================= -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a href="../civic-explainers.html">
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a
+        class="active"
+        href="../music.html"
+        aria-current="page"
+      >
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ======================================================
+       ARTICLE BACK NAVIGATION
+  ======================================================= -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Music article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../music.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Music
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-music.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Kanta
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ======================================================
+       MUSIC ARTICLE
+  ======================================================= -->
+
+  <main class="music-article-main">
+
+    <article class="article-container">
+
+      <!-- ==================================================
+           COVER IMAGE + AUDIO PLAYER
+
+           COVER IMAGE:
+           articles/images/
+
+           AUDIO FILE:
+           articles/audio/
+
+           PALITAN ANG:
+           • Image filename
+           • Image alt text
+           • MP3 filename
+           • Audio aria-label
+      =================================================== -->
+
+      <div class="article-media-card">
+
+        <!-- ===============================================
+             COVER IMAGE
+        ================================================ -->
+
+        <figure class="article-image-figure">
+
+    <div class="article-image-frame">
+
+      <img
+        class="article-image"
+        src="images/music-mga-awit-ng-paninindigan.png"
+        alt="Cover image ng Mga Awit ng Paninindigan Medley"
+      >
+
+    </div>
+
+  </figure>
+        
+        <!-- ===============================================
+             AUDIO PLAYER
+
+             TAMANG PATH:
+             audio/song-title.mp3
+
+             HUWAG GAMITIN:
+             articles/audio/song-title.mp3
+        ================================================ -->
+
+        <section
+    class="song-player-section"
+    aria-label="Song audio player"
+  >
+
+    <div class="song-player-shell">
+
+      <p class="song-player-label">
+        Original Song
+      </p>
+
+      <audio
+        class="song-audio"
+        controls
+        preload="metadata"
+        aria-label="Pakinggan ang Mga Awit ng Paninindigan Medley"
+      >
+        <source
+          src="audio/mga-awit-ng-paninindigan.mp3"
+          type="audio/mpeg"
+        >
+
+        Hindi sinusuportahan ng browser mo ang
+        HTML audio player.
+      </audio>
+
+      <p class="audio-fallback">
+        Kapag hindi gumana ang audio player, tiyaking
+        eksaktong tugma ang MP3 filename, extension,
+        capitalization, at file path.
+      </p>
+
+    </div>
+
+  </section>
+
+</div>
+
+      <!-- ==================================================
+           ARTICLE READING AREA
+      =================================================== -->
+
+      <div class="article-reading-area">
+
+        <!-- ===============================================
+             STORY / CONTEXT
+
+             WALANG SECTION HEADING
+
+             PALITAN ANG MGA PARAGRAPH
+        ================================================ -->
+
+        <div class="article-body">
+
+  <p>
+    11 awit. Isang medley. Iisang paninindigan.
+  </p>
+
+  <p>
+    Ang “Mga Awit ng Paninindigan Medley” ang pagsasanib
+    ng 11 awit tungkol sa prinsipyo, pananagutan,
+    pagkilos, pagpili, at pagmamahal sa bayan.
+  </p>
+
+  <p>
+    Mula sa tahimik ngunit matatag na pagtindig,
+    sa mga maling unti-unting nagiging normal,
+    sa pagkilos laban sa puro sigaw, hanggang sa
+    tanong kung saan ka talaga nakatayo—dito
+    nagsasama-sama ang mga mensahe ng buong album
+    sa iisang reggae medley.
+  </p>
+
+  <p>
+    Kasama sa medley:<br>
+    Hindi Tahimik • Hindi Maliit • Tahimik na Sistema
+    • Iba ang Sigaw, Iba ang Galaw • Ipokritong
+    Tagasunod • Alyas Proteksyon • Hindi Kulay
+    • May Pinili • Kung Hindi Ngayon • Bayan Ko Pa Rin
+    • Dala Ko ’To
+  </p>
+
+</div>
+
+        <!-- ===============================================
+             SONG TITLE + LYRICS
+
+             PALITAN ANG:
+             • Song Title
+             • Lahat ng sample lyrics
+
+             Ang Song Title ay nasa bahaging ito upang hindi
+             ito agad maulit sa ibabaw ng cover image.
+
+             Gumamit ng isang .lyrics-stanza para sa bawat:
+
+             • Intro
+             • Verse
+             • Pre-Chorus
+             • Chorus
+             • Bridge
+             • Outro
+
+             Optional ang section labels.
+        ================================================ -->
+        
+<section
+  class="lyrics-section"
+  aria-labelledby="song-lyrics-title"
+>
+
+  <h1
+    class="lyrics-song-title"
+    id="song-lyrics-title"
+  >
+    MGA AWIT NG PANININDIGAN MEDLEY
+  </h1>
+
+  <p class="lyrics-heading">
+    Lyrics
+  </p>
+
+  <div class="lyrics-content">
+
+    <!-- INTRO -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Intro
+      </p>
+
+      <p>Hindi kailangang sumigaw</p>
+      <p>Para malaman kung saan ka nakatayo.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung may mali sa harapan,</p>
+      <p>May paninindigang hindi dapat manahimik.</p>
+
+    </div>
+
+    <!-- HINDI TAHIMIK -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Hindi Tahimik
+      </p>
+
+      <p>Hindi ako maingay,</p>
+      <p>Pero hindi ako tatahimik.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kapag mali ang nasa harapan,</p>
+      <p>Hindi ako pipikit.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Tahimik man ang tinig,</p>
+      <p>May bigat ang paninindigan.</p>
+
+    </div>
+
+    <!-- HINDI MALIIT -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Hindi Maliit
+      </p>
+
+      <p>Sabi mo maliit lang,</p>
+      <p>Isang beses lang naman.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pero ang maling paulit-ulit</p>
+      <p>Nagiging normal kapag pinapalampas.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi maliit</p>
+      <p>Kung konsensya ang kapalit.</p>
+
+    </div>
+
+    <!-- TAHIMIK NA SISTEMA -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Tahimik na Sistema
+      </p>
+
+      <p>Tahimik ang sistema</p>
+      <p>Kapag wala nang nagtatanong.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Mali na kahapon,</p>
+      <p>Ngayo’y normal sa paningin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kapag lahat ay nasanay,</p>
+      <p>Sino pa ang kokontra?</p>
+
+    </div>
+
+    <!-- MEDLEY CHORUS -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Medley Chorus
+      </p>
+
+      <p>Hindi tahimik.</p>
+      <p>Hindi maliit.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung alam mong mali,</p>
+      <p>Huwag mong palampasin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi sigaw lang—</p>
+      <p>Kailangan ng galaw.</p>
+
+    </div>
+
+    <!-- IBA ANG SIGAW, IBA ANG GALAW -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Iba ang Sigaw, Iba ang Galaw
+      </p>
+
+      <p>Ang lakas ng sigaw,</p>
+      <p>Pero nasaan ang kilos?</p>
+
+      <p>&nbsp;</p>
+
+      <p>Ang dali ng puna</p>
+      <p>Kung sarili’y hindi nasusubok.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Iba ang sigaw,</p>
+      <p>Iba ang galaw.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung pagbabago ang gusto,</p>
+      <p>Simulan sa gawa.</p>
+
+    </div>
+
+    <!-- IPOKRITONG TAGASUNOD -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Ipokritong Tagasunod
+      </p>
+
+      <p>Sabi mo katotohanan,</p>
+      <p>Pero tao ang ipinagtatanggol.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Sabi mo prinsipyo,</p>
+      <p>Pero nag-iiba kapag kakampi.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung tama dahil kakampi,</p>
+      <p>Hindi prinsipyo ang sinusundan mo—</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pangalan.</p>
+
+    </div>
+
+    <!-- ALYAS PROTEKSYON -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Alyas Proteksyon
+      </p>
+
+      <p>Palitan man ang pangalan,</p>
+      <p>Hindi nababago ang ginawa.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Takpan man ang mukha,</p>
+      <p>Pananagutan ay hindi nawawala.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Proteksyon ba,</p>
+      <p>O pagtatago?</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kapag bayan ang nagbayad,</p>
+      <p>May karapatang magtanong ang tao.</p>
+
+    </div>
+
+    <!-- HINDI KULAY -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Hindi Kulay
+      </p>
+
+      <p>Hindi pula.</p>
+      <p>Hindi dilaw.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi berde.</p>
+      <p>Hindi asul.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kapag mali, mali—</p>
+      <p>Kahit kakampi.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kapag tama, tama—</p>
+      <p>Kahit kalaban.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Bayan muna</p>
+      <p>Bago ang kulay.</p>
+
+    </div>
+
+    <!-- MAY PINILI -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        May Pinili
+      </p>
+
+      <p>Hindi lahat ng nangyari</p>
+      <p>Ay nasa kamay natin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pero may mga sandaling</p>
+      <p>Tayo mismo ang pipili.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pipikit o tatayo?</p>
+
+      <p>&nbsp;</p>
+
+      <p>May bunga</p>
+      <p>Ang bawat pagpili.</p>
+
+    </div>
+
+    <!-- KUNG HINDI NGAYON -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Kung Hindi Ngayon
+      </p>
+
+      <p>Mamaya na.</p>
+      <p>Bukas na.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi pa panahon.</p>
+      <p>Hintayin muna.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pero ilang “mamaya”</p>
+      <p>Ang nauwi sa wala?</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung hindi ngayon—</p>
+      <p>Kailan?</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung hindi ikaw—</p>
+      <p>Sino?</p>
+
+    </div>
+
+    <!-- BAYAN KO PA RIN -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Bayan Ko Pa Rin
+      </p>
+
+      <p>Bayan ko pa rin,</p>
+      <p>Kahit nakikita ko ang mali.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi pagmamahal</p>
+      <p>Ang magkunwaring walang sugat.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Minsan ang pag-ibig</p>
+      <p>Ay tapang na magsabi ng tapat.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi ako perpekto,</p>
+      <p>Pero hindi ako aalis.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Bayan ko pa rin.</p>
+
+    </div>
+
+    <!-- DALA KO ’TO -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Dala Ko ’To
+      </p>
+
+      <p>Dala ko ’to—</p>
+      <p>Ang hirap at saya.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Dala ko ’to—</p>
+      <p>Ang sugat at pag-asa.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Ang pagkadapa,</p>
+      <p>Ang muling pagtayo.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Taás-noo,</p>
+      <p>Hindi dahil walang mali—</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kundi dahil kaya nating harapin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Saan man ako dalhin—</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pilipinas,</p>
+      <p>Dala ko ’to.</p>
+
+    </div>
+
+    <!-- FINAL MEDLEY CHORUS -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Final Medley Chorus
+      </p>
+
+      <p>Hindi tahimik—</p>
+      <p>May tinig.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi maliit—</p>
+      <p>May bigat.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi sigaw lang—</p>
+      <p>May galaw.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Hindi kulay—</p>
+      <p>May prinsipyo.</p>
+
+      <p>&nbsp;</p>
+
+      <p>May pinili—</p>
+      <p>May pananagutan.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Kung hindi ngayon—</p>
+      <p>Kailan?</p>
+
+      <p>&nbsp;</p>
+
+      <p>Bayan ko pa rin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Dala ko ’to.</p>
+
+    </div>
+
+    <!-- OUTRO -->
+
+    <div class="lyrics-stanza">
+
+      <p class="lyrics-section-label">
+        Outro
+      </p>
+
+      <p>Hindi ako maingay…</p>
+      <p>Pero hindi ako tatahimik.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Bayan ko pa rin.</p>
+
+      <p>&nbsp;</p>
+
+      <p>Pilipinas—</p>
+
+      <p>&nbsp;</p>
+
+      <p>Dala ko ’to.</p>
+
+    </div>
+
+  </div>
+
+</section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ======================================================
+       MOBILE NAVIGATION SCRIPT
+  ======================================================= -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+        </html>
