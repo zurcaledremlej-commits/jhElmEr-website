@@ -1,1 +1,1890 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Kung buhay ang kapalit—may katarungan bang nakamit? Suriin ang customary justice, tradisyonal na ritwal, Indigenous Peoples' rights, Rule of Law, kaligtasan, at dignidad."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-ritwal.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-ritwal.html"
+  >
+
+  <title>KUNG BUHAY ANG KAPALIT—MAY KATARUNGAN BANG NAKAMIT? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          KUNG BUHAY ANG KAPALIT—MAY KATARUNGAN BANG NAKAMIT?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-ritwal.png"
+            alt="Simbolikong visual ng timbangan ng katarungan na nakagapos sa gitna ng mapanganib na tubig habang may mga taong nalulunod, bilang representasyon ng customary justice, tradisyon, Rule of Law, kaligtasan, at dignidad."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Sa isang hindi pagkakaunawaan, ang dapat hanapin ay katotohanan, makatarungang pagpapasya, at paraan upang matapos ang sigalot. Ngunit paano kung ang mismong pamamaraang ginagamit upang magbigay ng resolusyon ay maaari ring maging dahilan ng pagkawala ng buhay?
+          </p>
+
+          <p>
+            Dalawang katutubong magsasaka ang namatay sa Sarangani matapos lumahok sa isang tradisyonal na ritwal upang resolbahin ang alitan sa lupa.
+          </p>
+
+          <p>
+            At habang may mga pamilyang nagdadalamhati, may mga taong ginawang katatawanan ang pagkamatay ng dalawa. May naglaro sa salitang “tabla”—mula sa naging resulta hanggang sa kabaong. May iba namang ginawang punchline ang lupang pinag-awayan, na siya rin daw nilang kinahantungan.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO BAGO GAWING KATATAWANAN ANG TRAHEDYA, HINDI BA MAS MAHALAGANG ITANONG KUNG BAKIT ITO UMABOT SA GANITONG PANGYAYARI—AT PAANO SANA ITO NAIWASAN?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lamang ito tungkol sa alitan sa lupa. Maaari ring magkaroon ng mga sigalot sa pamilya, utang, pamana, pag-aangkin, at iba pang hindi pagkakasundo sa loob ng isang komunidad.
+          </p>
+
+          <p>
+            At hindi rin ito tungkol sa kung dapat bang talikuran ng mga katutubo ang kanilang mga tradisyon.
+          </p>
+
+          <p>
+            Ang mas mahalagang usapin ay kung paano napapanatili ang kanilang kultura at sariling sistema ng pagresolba ng alitan habang tinitiyak na ang mga pamamaraang ginagamit ay makatarungan, may maaasahang batayan, at hindi naglalagay sa panganib ng buhay.
+          </p>
+
+          <p>
+            Dahil hindi sapat na matapos ang isang hindi pagkakaunawaan. Mahalaga rin kung paano ito tinapos—at kung anong naging kapalit ng paghahanap ng katarungan.
+          </p>
+
+          <p>
+            Upang maunawaan ito, kailangang suriin hindi lamang ang isang trahedya, kundi pati ang kahulugan ng mga tradisyonal na ritwal, ang mga karapatang kinikilala ng batas, at ang mga alternatibong maaaring makapigil sa pag-uulit ng ganitong pangyayari.
+          </p>
+
+          <h2>
+            ANG TRAHEDYANG DAPAT MAGBUKAS NG MAS MALAWAK NA PAGTATANONG
+          </h2>
+
+          <p>
+            Noong Oktubre 16, 2026, dalawang katutubong magsasaka ang nasawi matapos lumahok sa ritwal na tinatawag na Sulif sa Glamang River, Barangay Datal Anggas, Alabel, Sarangani.
+          </p>
+
+          <p>
+            Ayon sa mga ulat, may alitan sa lupa na hindi naresolba sa barangay. Sa isinagawang ritwal, nagpatagalan ang dalawang lalaki sa pagpigil ng hininga sa ilalim ng tubig, ngunit kapwa hindi na nakaligtas.
+          </p>
+
+          <p>
+            Sa mga sumunod na ulat ng Bombo Radyo Gensan, kinuwestiyon ng mga kaanak ang tagal ng kanilang paglubog.
+          </p>
+
+          <p>
+            Ayon kay Jun Mansag, pamangkin ng isa sa mga namatay, dalawang minuto lamang umano ang pinapayagan ng kanilang customary rules at dapat nang ituring na tabla ang laban kung walang resulta. Ayon naman kay Michelle Palasanon, anak ng isa pang namatay, dalawa hanggang tatlong minuto lamang umano ang dapat na tagal. Sinabi rin niyang may nagpahayag na lumampas na sa itinakdang oras.
+          </p>
+
+          <p>
+            Mahalagang linawin na mga pahayag ito ng mga kaanak, hindi pa napatunayang opisyal na panuntunan ng ritwal o pinal na resulta ng imbestigasyon.
+          </p>
+
+          <p>
+            May pagkakaiba rin sa mga naiulat na tagal ng paglubog. Kailangan pang tiyakin ang aktuwal na pangyayari, ang mga panuntunang kinikilala ng komunidad, at ang mga desisyong ginawa habang isinasagawa ang ritwal.
+          </p>
+
+          <p>
+            Hindi layunin ng pagsusuring ito na magdeklara kung sino ang nagkasala.
+          </p>
+
+          <p>
+            Ngunit nagbubukas ang insidente ng mga tanong na dapat pag-aralan sa anumang tradisyonal na pamamaraang maaaring maglagay ng buhay sa panganib.
+          </p>
+
+          <p>
+            Kung may sariling panuntunan ang isang ritwal, paano natitiyak na nauunawaan at nasusunod ito? Sino ang may awtoridad na magpatigil kapag may panganib? At sapat ba ang mga panuntunang iyon upang maprotektahan ang mga kalahok?
+          </p>
+
+          <blockquote>
+            <p>
+              Higit sa lahat, kahit may sinusunod na oras, kasunduan, o itinakdang limitasyon, nangangahulugan na ba itong ligtas at makatarungan ang mismong pamamaraan?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lamang ang nangyari sa isang insidente ang dapat nating suriin, kundi pati ang mga prinsipyong maaaring makatulong upang hindi na ito maulit sa iba.
+          </p>
+
+          <h2>
+            ANG CUSTOMARY JUSTICE AY HINDI BASTA KAUGALIAN LAMANG
+          </h2>
+
+          <p>
+            Mahalagang unawain na ang mga katutubo ay may sariling kasaysayan, pagpapahalaga, pamumuno, at tradisyonal na paraan ng pagresolba ng alitan.
+          </p>
+
+          <p>
+            Sa ilang pamayanan, may mahalagang papel ang mga tribal leader, council of elders, kasunduan ng pamilya, at mga kaugaliang nakaugat sa paniniwala at pagkakakilanlan ng komunidad.
+          </p>
+
+          <p>
+            Hindi rin pare-pareho ang kanilang mga panuntunan. Ang kinikilalang kaugalian ng isang pangkat ay hindi dapat awtomatikong ipalagay na sinusunod din ng ibang katutubong pamayanan.
+          </p>
+
+          <p>
+            May tahasang pagkilala ang batas ng Pilipinas sa mga sistemang ito.
+          </p>
+
+          <p>
+            Sa Republic Act No. 8371, o Indigenous Peoples’ Rights Act of 1997 (IPRA), kinikilala ang karapatan ng Indigenous Cultural Communities/Indigenous Peoples (ICCs/IPs) sa sariling kultura, pamamahala, at tradisyonal na sistema ng pagresolba ng alitan.
+          </p>
+
+          <p>
+            Sa Section 15, kinikilala ang kanilang mga justice system, conflict-resolution institutions, peace-building processes, at customary laws, basta naaayon ang mga ito sa pambansang legal na sistema at kinikilalang karapatang pantao.
+          </p>
+
+          <p>
+            Sa Section 16, kinikilala rin ang kanilang karapatang makilahok sa mga desisyong nakaaapekto sa kanilang buhay at kapakanan.
+          </p>
+
+          <p>
+            Samantala, sa Section 63, binibigyang-priyoridad ang naaangkop na customary laws sa mga partikular na usapin tungkol sa property rights, pagmamay-ari, pagmamana, at alitan sa lupa.
+          </p>
+
+          <p>
+            Hindi lamang lupa ang saklaw ng pagkilala sa customary justice. Sa Section 65, kinikilala rin ang paggamit ng customary laws at practices sa pagresolba ng mga alitang kinasasangkutan ng mga katutubo, alinsunod sa iba pang naaangkop na probisyon ng batas.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi kailangang talikuran ng mga katutubo ang kanilang kultura para kilalanin ang kanilang karapatan sa katarungan.
+          </p>
+
+          <p>
+            Ngunit may mahalagang hangganan ang pagkilalang ito.
+          </p>
+
+          <p>
+            Hindi awtomatikong nagiging katanggap-tanggap sa batas ang anumang pamamaraan dahil lamang matagal na itong ginagawa o kinikilala bilang tradisyon.
+          </p>
+
+          <p>
+            Sa Section 21 ng IPRA, tahasang kinikilala ang karapatan ng mga katutubo sa pantay na proteksiyon at mga karapatang tinatamasa ng ibang mamamayan.
+          </p>
+
+          <p>
+            Sa mga kasong Ha Datu Tawahig v. Lapinid noong 2019 at Datu Malingin v. Sandagan noong 2020, nilinaw ng Supreme Court na ang pagiging kasapi ng isang katutubong pamayanan at ang pagkakaroon ng customary justice system ay hindi nagbibigay ng awtomatikong exemption sa criminal prosecution sa ilalim ng pambansang batas.
+          </p>
+
+          <p>
+            Hindi tungkol sa ritwal ng pagkalunod ang mga kasong ito. Ngunit mahalaga ang legal na prinsipyong inilatag:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi maaaring gamitin ang customary laws upang awtomatikong hadlangan ang pagpapatupad ng criminal laws.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin nangangahulugang walang bisa ang pambansang batas kapag ang isang gawain ay nangyari sa ancestral domain.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGGALANG SA TRADISYON AY HINDI PAGTALIKOD SA PANANAGUTAN. AT ANG PAGPAPATUPAD NG BATAS AY HINDI DAPAT MAGING DAHILAN PARA BURAHIN ANG KULTURA.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LAHAT NG RITWAL AY MAGKAKAPAREHO ANG LAYUNIN
+          </h2>
+
+          <p>
+            Upang maging makatarungan ang pagsusuri, mahalagang maunawaan muna ang pagkakaiba ng mga tradisyonal na ritwal.
+          </p>
+
+          <p>
+            Hindi lahat ng ritwal ay ginagamit upang magpasya kung sino ang may kasalanan. May mga seremonyang nauugnay sa pagsasaka, panalangin, pagpapahayag ng pagkakaisa, pagpapanumbalik ng relasyon, at pakikipagkasundo.
+          </p>
+
+          <p>
+            Mayroon ding mga tradisyonal na pagsubok na ginagamit upang tukuyin kung sino ang pinaniniwalaang nagsasabi ng totoo o may nagawang pagkakasala.
+          </p>
+
+          <p>
+            May aktuwal na pananaliksik na nagdodokumento sa ganitong pagkakaiba.
+          </p>
+
+          <p>
+            Sa pag-aaral ni Janevic P. Yama na inilathala noong Hunyo 2025 sa International Journal of Arts, Sciences and Education, sinuri ang mga ritwal ng komunidad ng Blaan sa Pangyan, Sarangani, sa pamamagitan ng mga panayam sa mga nakatatandang may kaalaman sa ritwal at kasaysayan ng kanilang pamayanan.
+          </p>
+
+          <p>
+            Tatlong ritwal ang partikular na naitala:
+          </p>
+
+          <p>
+            Ang Damso na may kaugnayan sa pagsasaka, ang Sadyandi para sa pakikipagkasundo, at ang Sulif na inilarawan sa konteksto ng pagpaparusa at pagtukoy sa pinaniniwalaang may kasalanan.
+          </p>
+
+          <p>
+            Ayon sa mga nakapanayam, ginagamit ang Sadyandi upang maibalik ang pagkakasundo matapos ang hindi pagkakaunawaan, habang ang Sulif ay maaaring gamitin kapag may pinaghihinalaang nagkasala ngunit hindi umaamin.
+          </p>
+
+          <p>
+            Sa mga inilarawang anyo ng Sulif, may pagsubok na gumagamit ng kumukulong tubig at mayroon ding paglubog sa tubig. Sa isang bersiyong naitala, ang unang lumitaw sa ibabaw ang itinuturing na may sala.
+          </p>
+
+          <p>
+            Nakaugat ang ganitong pagsubok sa paniniwalang ang kalikasan mismo ang maghahayag ng katotohanan. May mahalaga ring papel ang mga nakatatanda at lider ng komunidad sa pagpapanatili at pangangasiwa ng tradisyon.
+          </p>
+
+          <p>
+            Mahalaga ang pag-aaral dahil nagbibigay ito ng aktuwal na dokumentasyon ng pananaw at kaugalian ng isang katutubong komunidad bago pa ang insidente sa Alabel.
+          </p>
+
+          <p>
+            Ngunit kailangang unawain ang limitasyon nito.
+          </p>
+
+          <p>
+            Ang pananaliksik ay nakatuon sa mga ritwal sa Pangyan at ginamit din ang mga natuklasan sa pagbuo ng isang dulang nagpapakilala sa kulturang Blaan. Hindi ito forensic investigation, medical safety assessment, o pag-aaral sa legalidad at pagiging maaasahan ng mga ritwal sa pagpapatunay ng pagkakasala.
+          </p>
+
+          <p>
+            Hindi rin nangangahulugang ang naitalang paraan sa Pangyan ay eksaktong kapareho ng ritwal na isinagawa sa Alabel, o na pare-pareho ang mga kaugalian ng lahat ng Blaan at iba pang katutubong pamayanan.
+          </p>
+
+          <p>
+            May pagkakaiba ang pagdodokumento sa isang paniniwala at ang pagpapatunay na tama ang paniniwalang iyon.
+          </p>
+
+          <p>
+            Ang pagkilala sa espirituwal at kultural na kahulugan ng isang ritwal ay hindi awtomatikong nagpapatunay na maaasahan itong paraan upang malaman kung sino ang nagsasabi ng totoo.
+          </p>
+
+          <p>
+            Ganoon din, ang layuning makipagkasundo ay hindi awtomatikong nangangahulugang ligtas ang lahat ng pamamaraang ginagamit sa pakikipagkasundo. Bawat aktuwal na gawain ay kailangang suriin ayon sa panganib nito.
+          </p>
+
+          <p>
+            Dito nagiging mahalagang paghiwalayin ang kultural na kahulugan ng isang tradisyon, ang paniniwalang pinagbabatayan nito, at ang pagiging makatarungan at ligtas ng mismong pamamaraan.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang pag-unawa kung bakit ginagawa ang isang ritwal ay hindi kapareho ng pagpapatunay na dapat itong ipagpatuloy sa anumang paraan.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY PANUNTUNAN ANG RITWAL—PERO SAPAT BA ITO PARA MAGING LIGTAS?
+          </h2>
+
+          <p>
+            May mahalagang pagkakaiba ang orihinal na kahulugan ng isang tradisyon, ang mga panuntunang kinikilala ng komunidad, at ang aktuwal na paraan ng pagsasagawa nito.
+          </p>
+
+          <p>
+            Kailangang maunawaan ang lahat ng ito bago magbigay ng konklusyon tungkol sa isang partikular na pangyayari.
+          </p>
+
+          <p>
+            Ngunit may isa pang pamantayang hindi maaaring balewalain:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang panganib sa buhay.
+            </p>
+          </blockquote>
+
+          <p>
+            May malinaw na siyentipikong batayan kung bakit dapat seryosohin ang matagal na pagpigil ng hininga sa ilalim ng tubig.
+          </p>
+
+          <p>
+            Sa ulat ng US Centers for Disease Control and Prevention (CDC) na inilathala noong 2015, sinuri ang 16 kaso ng fatal at nonfatal drowning na may kaugnayan sa mapanganib na underwater breath-holding behaviors sa New York State mula 1988 hanggang 2011.
+          </p>
+
+          <p>
+            Apat sa 16 na kasong ito ang nauwi sa pagkamatay.
+          </p>
+
+          <p>
+            Kabilang sa mga sinuring gawain ang static apnea, o ang sadyang pagpigil ng hininga habang nananatili sa ilalim ng tubig.
+          </p>
+
+          <p>
+            Maaaring bumaba ang oxygen sa katawan hanggang sa mawalan ng malay ang isang tao habang nakalubog. Maaari itong mangyari maging sa mga taong marunong lumangoy.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayan ang eksaktong mekanismo ng pagkamatay ng dalawang magsasaka sa Sarangani. Hindi rin maaaring gamitin ang apat na pagkamatay sa 16 na kaso upang kalkulahin ang pangkalahatang posibilidad ng pagkamatay sa lahat ng gumagawa ng ganitong pagsubok.
+          </p>
+
+          <p>
+            Ngunit ipinapakita nitong may dokumentadong panganib ang mapanganib na underwater breath-holding behaviors.
+          </p>
+
+          <p>
+            Kaya kahit mapatunayan na may dalawang minuto, tatlong minuto, o anumang kinikilalang limitasyon ang isang ritwal, hindi pa rin nito awtomatikong nasasagot kung ligtas ang pamamaraan.
+          </p>
+
+          <p>
+            Walang itinakdang minutong awtomatikong nagbibigay ng garantiyang ligtas ang mapanganib na pagpigil ng hininga sa ilalim ng tubig.
+          </p>
+
+          <p>
+            At ang pagkakaroon ng mga nanonood, nangangasiwa, o maaaring sumagip ay hindi sapat upang alisin ang panganib.
+          </p>
+
+          <p>
+            Hindi rin ito limitado sa paglubog sa tubig.
+          </p>
+
+          <p>
+            Ang anumang ritwal na gumagamit ng mapanganib na pisikal na pagsubok upang magpasya sa isang alitan ay nangangailangan ng seryosong pagsusuri sa kaligtasan, pagiging makatarungan, at batayan ng magiging resulta.
+          </p>
+
+          <p>
+            Dahil magkaibang bagay ang kultural na kahulugan ng isang gawain at ang kakayahan nitong mapatunayan kung sino ang tama.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tagal ng pagpigil ng hininga ay hindi ebidensiya ng pagmamay-ari ng lupa.<br>
+              Ang kakayahang tiisin ang sakit ay hindi nagpapatunay kung sino ang nagsasabi ng totoo.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagkapanalo sa isang pisikal na pagsubok ay hindi awtomatikong patunay ng kawalan ng kasalanan o pagiging makatarungan ng isang pag-aangkin.
+          </p>
+
+          <p>
+            Maaaring may espirituwal, panrelihiyon, o kultural na paliwanag ang ganitong mga ritwal. Karapat-dapat itong pakinggan at unawain mula sa mismong komunidad.
+          </p>
+
+          <p>
+            Ngunit hindi dapat ipagkamali ang paggalang sa isang paniniwala sa pagtanggap na napatunayan na nito ang katotohanan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA MAY PANUNTUNAN ANG ISANG RITWAL. KAILANGAN DING SURIIN KUNG MAKATARUNGAN, MAAASAHAN, AT LIGTAS ANG MISMONG PAMAMARAAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LANG LUPA ANG PINAGMUMULAN NG MGA SIGALOT
+          </h2>
+
+          <p>
+            Bakit mahalagang palawakin ang usapin sa iba pang uri ng hindi pagkakaunawaan?
+          </p>
+
+          <p>
+            Dahil ang pagresolba ng alitan ay hindi lamang tungkol sa ari-arian. Bahagi rin ito ng pagpapanatili ng kapayapaan, tiwala, at ugnayan ng mga tao sa loob ng isang komunidad.
+          </p>
+
+          <p>
+            May aktuwal na pag-aaral tungkol dito sa Sarangani.
+          </p>
+
+          <p>
+            Sa pananaliksik nina Julnes U. Jumalon, Russtum G. Pelima, at Kloyde A. Caday na inilathala noong 2018 sa Journal of Health Research and Society, sinuri ang mga pamamaraan ng Lupon Tagapamayapa sa Barangay Baliton, Glan, at Barangay Upo, Maitum.
+          </p>
+
+          <p>
+            Kabilang sa mga komunidad na sinuri ang may populasyong Blaan at Tboli.
+          </p>
+
+          <p>
+            Natuklasan na ang alitan sa lupa ang pinakakaraniwang kasong hinaharap ng mga lupon, na sinusundan ng mga usapin sa utang at pananakit.
+          </p>
+
+          <p>
+            Kabilang din sa mga natukoy na pinagmumulan ng sigalot ang hindi pagkakaunawaan, magkakaibang prinsipyo at pagpapahalaga, selos, pagnanakaw, bisyo, pagkamakasarili, at mga nasirang relasyon.
+          </p>
+
+          <p>
+            Sa pagresolba ng mga ito, gumamit ang mga lupon ng collaboration, compromise, spiritual advice, active listening, at iba pang paraan ng komunikasyon.
+          </p>
+
+          <p>
+            Natukoy rin ang mga hadlang gaya ng magkakaibang layunin ng mga panig, kahirapan sa kompromiso, at frustration.
+          </p>
+
+          <p>
+            Mahalaga ang natuklasang ito dahil ipinapakita nitong hindi lang pag-alam kung sino ang may-ari ng isang bagay ang tungkulin ng conflict resolution.
+          </p>
+
+          <p>
+            May mga sigalot na nangangailangan ng pakikinig, pag-unawa sa pinagmulan ng hindi pagkakasundo, pagpapanumbalik ng tiwala, at pagtutulungan upang magkaroon ng katanggap-tanggap na kasunduan.
+          </p>
+
+          <p>
+            Mahalaga ring linawin na ang pag-aaral ay tungkol sa Lupon Tagapamayapa na gumagamit ng mga prosesong nakabatay sa Local Government Code, hindi direktang pagsusuri sa lahat ng ancestral justice mechanisms ng Blaan at Tboli.
+          </p>
+
+          <p>
+            Ngunit nagbibigay ito ng kongkretong halimbawa kung paano maaaring isaalang-alang ang lokal na kultura habang ginagamit ang diyalogo at mapayapang proseso sa pagresolba ng sigalot.
+          </p>
+
+          <p>
+            Dito mahalagang itanong:
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG ANG LAYUNIN AY MALAMAN KUNG SINO ANG TAMA, KAILANGAN BANG PATUNAYAN ITO SA PAMAMARAANG MAAARING MAGDULOT NG MALUBHANG PINSALA O KAMATAYAN?
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY MAS LIGTAS NA PARAAN NANG HINDI BINUBURA ANG TRADISYON
+          </h2>
+
+          <p>
+            Hindi lamang teorya ang posibilidad na pagsamahin ang customary practices at mga pormal na mekanismo ng pagresolba ng alitan.
+          </p>
+
+          <p>
+            Bukod sa pag-aaral sa Sarangani noong 2018, may isa pang kongkretong halimbawa mula sa Benguet.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Judea B. Ballagan at Paul Joseph A. Nuval na inilathala noong Hunyo 2026 sa Mountain Journal of Science and Interdisciplinary Research, sinuri ang siyam na land-dispute cases na naayos mula 2019 hanggang 2021 sa komunidad ng Kalanguya sa Lusod, Kabayan, Benguet.
+          </p>
+
+          <p>
+            Ginamit ang Tongtong, isang tradisyonal na paraan ng diyalogo na pinagsasama ang customary practices, pakikilahok ng pamilya at komunidad, at mga prosesong kinikilala sa ilalim ng Local Government Code.
+          </p>
+
+          <p>
+            Kabilang dito ang mga peace pact, pakikilahok ng pamilya, mediation, conciliation, at iba pang paraan ng pakikipagkasundo.
+          </p>
+
+          <p>
+            Maliit at nakatuon sa isang komunidad ang saklaw ng pag-aaral. Hindi nito pinatutunayang magiging angkop o matagumpay ang parehong pamamaraan sa lahat ng tribo at lahat ng uri ng hindi pagkakaunawaan.
+          </p>
+
+          <p>
+            Ngunit may mahalagang ipinapakita ang mga natuklasan:
+          </p>
+
+          <blockquote>
+            <p>
+              POSIBLENG PANATILIHIN ANG KULTURA HABANG GUMAGAMIT NG MGA PARAANG NAKABATAY SA DIYALOGO, MAKATARUNGANG PAGPAPASYA, AT KAPAKANAN NG KOMUNIDAD.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa isang hiwalay na qualitative study ni Mia Sarah L. Dayaguit na inilathala noong Pebrero 2026 sa Pantao International Journal of the Humanities and Social Sciences, sinuri ang karanasan ng mga residenteng sangkot sa alitan sa lupa sa Malapatan, Sarangani.
+          </p>
+
+          <p>
+            Kabilang sa mga natukoy na suliranin ang kakulangan sa dokumentasyon ng lupa, magkakasalungat na pag-aangkin, at ilang nakagawiang transaksiyon sa mahihirap na pamayanan.
+          </p>
+
+          <p>
+            Naitala rin ang takot at pangamba ng ilang residente dahil sa banta ng karahasan.
+          </p>
+
+          <p>
+            Kabilang sa mga inirekomenda ang pagpapahusay ng land management, mediation, mapping, at pakikilahok ng komunidad.
+          </p>
+
+          <p>
+            Hindi ito pag-aaral sa lahat ng uri ng sigalot. Ngunit ipinapakita nito kung bakit mahalagang unawain ang pinagmumulan ng hindi pagkakaunawaan sa halip na magpokus lamang sa paraan ng pagpapasya kung sino ang mananalo.
+          </p>
+
+          <p>
+            Maging sa ibang mga usapin gaya ng utang, hindi pagkakaunawaan ng pamilya, o tunggalian sa komunidad, mahalaga ang pagtukoy sa pinagmulan ng sigalot at pagbibigay ng pagkakataong mapakinggan ang mga panig.
+          </p>
+
+          <p>
+            Dahil kung ang mismong problema ay hindi nauunawaan, maaari ngang matapos ang isang pagsubok o ritwal nang hindi naman tunay na naresolba ang dahilan ng hindi pagkakasundo.
+          </p>
+
+          <h2>
+            PAANO MAIIWASANG MAULIT ANG GANITONG TRAHEDYA?
+          </h2>
+
+          <p>
+            Hindi sapat na magkaroon lamang ng mas mahigpit na panuntunan sa isang mapanganib na ritwal.
+          </p>
+
+          <p>
+            Mas mahalagang suriin kung kailangan pa bang gamitin ang mismong mapanganib na pamamaraan upang makapagpasya sa isang alitan.
+          </p>
+
+          <p>
+            At hindi rin sapat na sabihing may batas at may mga ahensiyang maaaring lapitan.
+          </p>
+
+          <p>
+            Kailangang matiyak na nauunawaan ng mga komunidad ang kanilang mga karapatan at may mga prosesong tunay nilang maaabot, mapagkakatiwalaan, at magagamit.
+          </p>
+
+          <p>
+            Sa ilalim ng Sections 65 at 66 ng IPRA, may papel ang customary dispute-resolution mechanisms at ang National Commission on Indigenous Peoples (NCIP) sa mga usaping sakop ng batas at hurisdiksiyon nito.
+          </p>
+
+          <p>
+            Sa mga naaangkop na kaso, kinakailangan munang subukang resolbahin ang sigalot sa pamamagitan ng customary mechanisms bago ito iharap sa NCIP.
+          </p>
+
+          <p>
+            Ngunit hindi awtomatikong NCIP ang may hurisdiksiyon sa bawat alitang may kinalaman sa katutubo. Sa Galang v. Wallis noong 2019, ipinaliwanag ng Supreme Court ang mga limitasyon at pagkakaiba ng hurisdiksiyon ng NCIP at regular courts.
+          </p>
+
+          <p>
+            Mahalaga rito ang uri ng usapin, pagkakakilanlan ng mga partidong sangkot, at iba pang legal na kinakailangan.
+          </p>
+
+          <p>
+            Hindi rin nangangahulugang kailangang ipagpatuloy ang anumang mapanganib na customary procedure dahil lamang may patakarang unang subukang resolbahin ang sigalot sa pamamagitan ng customary laws.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang paggalang sa customary justice ay hindi dapat ipakahulugang obligadong lumahok ang isang tao sa gawaing maaaring makapinsala sa kaniyang buhay o karapatan.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya mahalagang magkaroon ng aktuwal na koordinasyon ang mga tribal leader, council of elders, barangay, NCIP, at iba pang kinauukulang institusyon.
+          </p>
+
+          <p>
+            Maaaring kabilang sa mga hakbang ang maagang mediation, malinaw na paliwanag sa mga legal na opsiyon, angkop na dokumentasyon, at mga prosesong nagbibigay ng pagkakataong marinig ang magkabilang panig.
+          </p>
+
+          <p>
+            Sa mga ritwal namang may pisikal na panganib, kailangang pag-aralan kung maaari itong palitan ng mga paraang nagpapanatili sa makabuluhang kultural na aspeto nang hindi inilalagay sa panganib ang mga kalahok.
+          </p>
+
+          <p>
+            Mahalaga rin ang malinaw na paghihiwalay ng tungkulin ng isang tradisyonal na seremonya at ng prosesong ginagamit sa pagpapatunay ng katotohanan.
+          </p>
+
+          <p>
+            Maaaring mapanatili ang mga simbolo, panalangin, pagpapahayag ng kapayapaan, at iba pang kultural na bahagi ng isang kasunduan nang hindi ginagawang sukatan ng katotohanan ang mapanganib na pisikal na pagsubok.
+          </p>
+
+          <p>
+            Gayunman, kahit ang isang ritwal ay nakatuon sa pagkakasundo, kailangan pa ring suriin ang kaligtasan ng bawat aktuwal na gawain nito. Hindi sapat na mapayapa ang layunin kung ang pamamaraan ay may hindi kinakailangang panganib.
+          </p>
+
+          <p>
+            Mahalaga ring pag-usapan ang boluntaryong paglahok.
+          </p>
+
+          <p>
+            Kailangang malaman kung ang isang tao ay tunay na malayang pumapayag, nauunawaan ang posibleng panganib, at may pagkakataong tumanggi o huminto nang walang pamimilit.
+          </p>
+
+          <p>
+            Ngunit kahit boluntaryo ang paglahok, hindi nito awtomatikong ginagawang ligtas ang pamamaraan o inaalis ang anumang posibleng pananagutang itinatakda ng batas.
+          </p>
+
+          <p>
+            Dapat ding makilahok ang mismong mga katutubo sa pagsusuri at pagpapaunlad ng kanilang mga tradisyonal na mekanismo.
+          </p>
+
+          <p>
+            Hindi makatarungang basta idikta ng mga taong hindi kabilang sa komunidad na kailangang talikuran ang kanilang mga kaugalian.
+          </p>
+
+          <p>
+            Mas makabuluhan ang pakikipag-usap sa kanilang mga lider at kasapi upang matukoy kung aling mga proseso ang maaaring panatilihin, alin ang nangangailangan ng pagbabago, at paano masisiguro ang proteksiyon sa karapatan at kaligtasan ng lahat.
+          </p>
+
+          <p>
+            Mahalagang marinig din ang mga pamilyang direktang naaapektuhan, hindi lamang ang mga taong may awtoridad na mamuno sa ritwal o magpasya sa sigalot.
+          </p>
+
+          <p>
+            Dahil ang tunay na layunin ng conflict resolution ay hindi lamang magdeklara kung sino ang nanalo o natalo.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG LAYUNIN AY MATAPOS ANG HINDI PAGKAKAUNAWAAN NANG MAY KATARUNGAN—HINDI ANG MAGKAROON NG PANIBAGONG TAONG MAPAPAHAMAK DAHIL DITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG TRAHEDYA AY GINAWANG PUNCHLINE
+          </h2>
+
+          <p>
+            Habang dapat seryosohin ang mga usaping ito, may isa pang problemang makikita sa naging pagtugon ng ilan sa publiko.
+          </p>
+
+          <p>
+            Dalawa na ang namatay. Ngunit para sa iba, naging pagkakataon pa itong gumawa ng biro.
+          </p>
+
+          <p>
+            May mga naglaro sa salitang “tabla”—mula sa naging resulta hanggang sa kabaong. May iba namang ginawang punchline ang lupang pinag-awayan, na siya rin daw nilang kinahantungan.
+          </p>
+
+          <p>
+            Maaaring tingnan ng ilan ang mga ito bilang simpleng wordplay o dark humor.
+          </p>
+
+          <p>
+            Ngunit may mahalagang pagkakaiba ang paggamit ng katatawanan upang punahin ang isang mapanganib na pamamaraan at ang paggawa ng katatawanan sa mismong pagkamatay ng tao.
+          </p>
+
+          <p>
+            Hindi lahat ng laughter reaction ay awtomatikong nangangahulugang may intensiyong manghamak. Hindi rin lahat ng insensitive na biro ay katumbas ng paglabag sa batas.
+          </p>
+
+          <p>
+            Pero may moral na hangganan ang paggamit ng katatawanan, lalo na kapag tunay na buhay at pagdurusa ng ibang tao ang pinag-uusapan.
+          </p>
+
+          <p>
+            May kaugnay na siyentipikong pag-aaral tungkol dito.
+          </p>
+
+          <p>
+            Sa isang eksperimento nina Lewen Wei at Bingjie Liu na inilathala noong 2020 sa Computers in Human Behavior, na may 375 kalahok sa pinal na pagsusuri, sinuri kung paano naaapektuhan ng pagkakatulad sa ibang tao at ng pagiging pampubliko ng mensahe ang empathy at schadenfreude, o pagkatuwa sa kasawian ng iba.
+          </p>
+
+          <p>
+            Natuklasang ang pagtingin sa isang taong nakaranas ng kamalasan bilang hindi katulad ng sarili ay maaaring magpalakas ng paniniwalang karapat-dapat siya sa kaniyang sinapit. Kaugnay nito ang mas mataas na schadenfreude at mas mababang empathy.
+          </p>
+
+          <p>
+            Hindi partikular sa mga katutubo o sa insidenteng ito ang pag-aaral. Hindi rin nito pinatutunayan ang motibo ng bawat nag-react o nagkomento.
+          </p>
+
+          <p>
+            Ngunit nagbibigay ito ng batayan upang suriin ang isang paraan ng pag-iisip na maaaring makaapekto sa pakikitungo natin sa pagdurusa ng iba:
+          </p>
+
+          <blockquote>
+            <p>
+              KAPAG NANINIWALA TAYONG SILA RIN ANG MAY KASALANAN SA KANILANG SINAPIT, MAS MADALI BA NATING BALEWALAIN ANG KANILANG PAGDURUSA?
+            </p>
+          </blockquote>
+
+          <p>
+            Puwedeng punahin ang isang mapanganib na desisyon nang hindi hinahamak ang taong gumawa nito.<br>
+            Puwedeng kuwestiyunin ang isang ritwal nang hindi hinahamak ang buong tribo.<br>
+            Puwedeng kilalanin ang karapatan ng mga katutubo nang hindi awtomatikong ipinagtatanggol ang lahat ng kanilang kaugalian.
+          </p>
+
+          <p>
+            At puwedeng igiit ang imbestigasyon at pananagutan nang hindi agad nagdedeklara ng salarin.
+          </p>
+
+          <p>
+            Hindi kailangang sumang-ayon sa naging desisyon o pakikilahok ng mga namatay para igalang ang kanilang pagkatao.<br>
+            Hindi rin kailangang gawing perpekto o kawawa ang mga biktima para kilalaning may dignidad silang karapat-dapat igalang.
+          </p>
+
+          <p>
+            Dapat ding tandaan na hindi lamang ang mga namatay ang maaaring maapektuhan ng panghahamak. May mga pamilyang naiwan at mga komunidad na maaaring madamay sa panlalait dahil sa isang pangyayaring hindi kumakatawan sa lahat ng kanilang kultura at tradisyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagkondena sa isang mapanganib na gawain ay hindi lisensiya upang hamakin ang pagkakakilanlan ng isang buong pamayanan.<br>
+              At ang pagkilala sa dignidad ng mga namatay ay hindi nangangahulugang ipinagtatanggol ang pamamaraang kanilang nilahukan.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG TUNAY NA HAMON SA RULE OF LAW, KULTURA, AT DIGNIDAD
+          </h2>
+
+          <p>
+            Ang Rule of Law ay hindi lamang tungkol sa paghahanap ng mapapanagot kapag may nangyaring masama.
+          </p>
+
+          <p>
+            Kabilang dito ang pagprotekta sa mga karapatan, pagbibigay ng makatarungang proseso, at pagtiyak na may mga mekanismong maaaring gamitin ng mga tao bago pa lumala ang kanilang mga alitan.
+          </p>
+
+          <p>
+            Kapag may nasawi sa isang tradisyonal na gawain, mahalagang magkaroon ng maayos na imbestigasyon. Ngunit iba ang paghahanap ng katotohanan sa padalos-dalos na paghusga.
+          </p>
+
+          <p>
+            Hindi sapat na may namatay upang awtomatikong sabihing may kriminal na nagkasala. Kailangang mapatunayan ang mga kinakailangang elemento ng anumang posibleng paglabag sa batas.
+          </p>
+
+          <p>
+            Kasabay nito, hindi rin sapat na sabihing boluntaryo ang paglahok o bahagi ito ng tradisyon upang awtomatikong mawala ang lahat ng tanong tungkol sa kaligtasan at pananagutan.
+          </p>
+
+          <p>
+            Ngunit ang pinakamahalagang hamon ay hindi lamang malaman kung ano ang nangyari sa isang insidente.
+          </p>
+
+          <p>
+            Kailangan ding matukoy kung anong mga pamamaraan ang maaaring gamitin upang hindi na muling umabot sa puntong may buhay na nakataya sa paghahanap ng katarungan.
+          </p>
+
+          <p>
+            Hindi ito simpleng usapin ng pagpili sa pagitan ng tradisyon at modernong batas.<br>
+            Usapin ito ng pagbuo ng mga paraang gumagalang sa kultura, kinikilala ang karapatan ng mga komunidad, at nagbibigay ng tunay na proteksiyon sa tao.
+          </p>
+
+          <p>
+            Dahil ang isang tradisyon ay maaaring maging mahalagang bahagi ng pagkakakilanlan ng isang pamayanan nang hindi nangangahulugang lahat ng nakagawiang pamamaraan ay hindi na maaaring suriin, baguhin, o pagbutihin.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG BURAHIN ANG TRADISYON PARA PROTEKTAHAN ANG BUHAY. NGUNIT HINDI RIN DAPAT ISAKRIPISYO ANG BUHAY PARA LAMANG MAPANATILI ANG ISANG TRADISYON.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung seryoso tayo sa katarungan, hindi dapat matapos ang usapan sa kung sino ang dapat sisihin pagkatapos ng isang trahedya.<br>
+            Dapat ding itanong kung may sapat na kaalaman, tulong, at makatarungang alternatibo ang mga taong humaharap sa mga sigalot.
+          </p>
+
+          <p>
+            Dahil ang sukatan ng isang makatarungang sistema ay hindi lamang kung paano nito tinatapos ang hindi pagkakaunawaan, kundi kung paano nito pinoprotektahan ang mga taong naghahanap ng katarungan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANUMANG HINDI PAGKAKAUNAWAAN AY DAPAT RESOLBAHIN NANG MAY KATARUNGAN—HINDI SA PARAANG BUHAY ANG NAKATAYA.
+            </p>
+          </blockquote>
+
+          <p>
+            At kapag may nawala nang buhay, hindi sapat ang maghanap lamang ng masisisi. Kailangan ding alamin kung paano maiiwasang may panibagong buhay na mawala.
+          </p>
+
+          <p>
+            Hindi tunay na natutugunan ang isang trahedya kung ang mga panganib na maaaring maging dahilan upang maulit ito ay hinahayaang manatili.
+          </p>
+
+          <p>
+            At habang hinahanap ang mga sagot, hindi kailangang gawing katatawanan ang mga namatay.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG KATARUNGAN AY HINDI DAPAT MAGING DAHILAN PARA MAY MAMATAY. AT ANG PAGKAMATAY NG TAO AY HINDI DAPAT MAGING DAHILAN PARA MAWALA ANG ATING PAGGALANG SA KANIYANG PAGKATAO.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Legal Bases and Jurisprudence</strong>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 8371.</strong> Indigenous Peoples’ Rights Act of 1997, Sections 15, 16, 21, 29, 63, 65 at 66.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 7160.</strong> Local Government Code of 1991, Katarungang Pambarangay provisions.
+            </li>
+
+            <li>
+              <strong>Supreme Court.</strong> Ha Datu Tawahig v. Lapinid, G.R. No. 221139, March 20, 2019.
+            </li>
+
+            <li>
+              <strong>Supreme Court.</strong> Datu Malingin v. Sandagan, G.R. No. 240056, October 12, 2020.
+            </li>
+
+            <li>
+              <strong>Supreme Court.</strong> Galang v. Wallis, G.R. No. 223434, July 3, 2019.
+            </li>
+
+            <li>
+              <strong>Socio-Cultural, Ancestral Practices and Conflict Resolution Research</strong>
+            </li>
+
+            <li>
+              <strong>Yama, J. P. (2025).</strong> Blaan Farming Rituals, Reconciliation, and Punitive Practices in Pangyan as Basis for Play Development. International Journal of Arts, Sciences and Education, Special Issue, 113–128.
+            </li>
+
+            <li>
+              <strong>Jumalon, J. U., Pelima, R. G., &amp; Caday, K. A. (2018).</strong> Communications for Peacebuilding: Conflict Resolution Skills and Strategies of Lupon Tagapamayapa in Selected Communities of Sarangani Province. Journal of Health Research and Society.
+            </li>
+
+            <li>
+              <strong>Ballagan, J. B., &amp; Nuval, P. J. A. (2026).</strong> Culturally Informed Legal Practice in Agricultural Land Dispute Resolution: Insights and Evidences of Tongtong Among Kalanguya Indigenous Peoples, Philippines. Mountain Journal of Science and Interdisciplinary Research.
+            </li>
+
+            <li>
+              <strong>Dayaguit, M. S. L. (2026).</strong> Land Conflict Experiences of the Residents in Malapatan, Sarangani Province. Pantao International Journal of the Humanities and Social Sciences.
+            </li>
+
+            <li>
+              <strong>Medical and Social Psychology Research</strong>
+            </li>
+
+            <li>
+              <strong>Boyd, C., et al. (2015).</strong> Fatal and Nonfatal Drowning Outcomes Related to Dangerous Underwater Breath-Holding Behaviors—New York State, 1988–2011. CDC, Morbidity and Mortality Weekly Report.
+            </li>
+
+            <li>
+              <strong>Wei, L., &amp; Liu, B. (2020).</strong> Reactions to Others’ Misfortune on Social Media: Effects of Homophily and Publicness on Schadenfreude, Empathy, and Perceived Deservingness. Computers in Human Behavior, 102, 1–13.
+            </li>
+
+            <li>
+              <strong>Incident Reports</strong>
+            </li>
+
+            <li>
+              <strong>Bombo Radyo Gensan (October 17, 2026).</strong> Pamilya sa duha ka mag-uuma nga namatay sa “Sulif” sa Alabel, nanawagan og hustisya; gikuwestiyon ang gidugayon sa ritwal.
+            </li>
+
+            <li>
+              <strong>GMA News (October 18, 2026).</strong> 2 katutubong magsasaka na nagtuos sa agawan sa lupa, nalunod sa isinagawang ritwal.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
