@@ -1,1 +1,1464 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Bank account mo—puwede na bang basta silipin ng gobyerno? Suriin ang bank secrecy, privacy, congressional inquiries, legal exceptions, at mga limitasyon sa pag-access ng financial records."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-bank-secrecy-law.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-bank-secrecy-law.html"
+  >
+
+  <title>BANK ACCOUNT MO—PUWEDE NA BANG BASTA SILIPIN NG GOBYERNO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+     .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          BANK ACCOUNT MO—PUWEDE NA BANG BASTA SILIPIN NG GOBYERNO?
+        </h1>
+
+            </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-bank-secrecy-law.png"
+            alt="Simbolikong visual ng bank vault, mata ng surveillance, at timbangan ng katarungan bilang representasyon ng bank secrecy, financial privacy, government investigation, legal access, at mga hangganan ng kapangyarihan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Kapag may imbestigasyon sa bank accounts ng isang mataas na opisyal ng gobyerno, hindi lang ang taong iniimbestigahan ang nagiging sentro ng usapan. Pati ang seguridad ng personal na impormasyon at perang ipinagkatiwala ng ordinaryong mamamayan sa bangko ay maaaring pagmulan ng pangamba.
+          </p>
+
+          <p>
+            Lalo itong lumalala kapag may mga pahayag na nagpapahiwatig na puwede na raw basta-basta kunin ng Kongreso ang bank records ng kahit sino, kahit walang pahintulot ng may-ari.
+          </p>
+
+          <p>
+            Pero gaano ito katotoo? Wala na bang proteksiyon ang mga depositor? At kapag may kapangyarihan ang gobyernong humingi ng financial records, ibig bang sabihin ay wala na ring hangganan ang kapangyarihang iyon?
+          </p>
+
+          <p>
+            Mahalagang malinawan ito dahil hindi dapat maging dahilan ng takot ang isang legal na prosesong hindi lubos na nauunawaan.
+          </p>
+
+          <h2>
+            MAY BANK SECRECY LAW—AT HINDI ITO BASTA NAWAWALA.
+          </h2>
+
+          <p>
+            Sa Pilipinas, may Republic Act No. 1405 o Secrecy of Bank Deposits Act. Sa ilalim ng Section 2 nito, itinuturing na confidential ang mga bank deposits na saklaw ng batas. Ipinagbabawal ang basta-bastang pagsisiyasat sa mga ito, maging ng mga opisyal o tanggapan ng gobyerno.
+          </p>
+
+          <p>
+            Hindi ito simpleng polisiya na maaaring balewalain ng isang bangko kapag may makapangyarihang taong humingi ng impormasyon. Batas mismo ang nagtatakda ng proteksiyong ito.
+          </p>
+
+          <p>
+            Pero may mga eksepsiyon.
+          </p>
+
+          <p>
+            Pinapayagan ng RA 1405 ang pagsusuri sa mga deposito kapag may written permission ng depositor, sa mga kaso ng impeachment, sa ilalim ng utos ng competent court para sa mga kasong bribery o dereliction of duty ng public officials, at kapag ang mismong perang nakadeposito ang subject matter ng litigation.
+          </p>
+
+          <p>
+            May iba pang partikular na eksepsiyong ipinahihintulot ng magkakahiwalay na batas.
+          </p>
+
+          <p>
+            Mahalaga ring linawin ang kasaysayan ng RA 1405. Noong 1981, pinalawak ng Presidential Decree No. 1792 ang mga eksepsiyon nito upang payagan ang ilang bank examinations at independent audits sa mga itinakdang kondisyon. Ngunit tahasang pinawalang-bisa ang PD 1792 sa ilalim ng Section 135 ng Republic Act No. 7653 noong 1993.
+          </p>
+
+          <p>
+            Sa desisyon ng Supreme Court sa Ejercito v. Sandiganbayan, nilinaw na bumalik ang Section 2 ng RA 1405 sa orihinal nitong apat na eksepsiyon. Hindi maaaring gamitin ang dating PD 1792 bilang umiiral pang hiwalay na pahintulot sa pagtingin sa bank deposits. Mayroon namang ibang legal na kapangyarihan sa bank supervision at financial investigations na dapat suriin ayon sa kani-kanilang batas.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi absolute ang bank secrecy. Ngunit hindi rin maaaring gamitin ang mga eksepsiyon nito bilang pangkalahatang pahintulot para siyasatin ang kahit anong account nang walang sapat na legal na batayan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG BANK SECRECY AY MAY MGA EKSEPSIYON—PERO ANG EKSEPSIYON AY HINDI BLANKET PERMISSION.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAHIT KONGRESO ANG HUMIHINGI, MAY LIMITASYON PA RIN.
+          </h2>
+
+          <p>
+            Sa Article VI, Section 21 ng 1987 Constitution, binibigyan ng kapangyarihan ang Senado at Kamara na magsagawa ng mga imbestigasyong may kaugnayan sa paggawa ng batas o inquiries in aid of legislation.
+          </p>
+
+          <p>
+            Pero tahasan ding nakasaad na kailangang igalang ang mga karapatan ng mga taong sangkot o naaapektuhan ng mga imbestigasyong ito.
+          </p>
+
+          <p>
+            Mahalagang maunawaan na magkaiba ang ordinaryong congressional inquiry at ang impeachment trial kung saan gumaganap ang Senado bilang impeachment court.
+          </p>
+
+          <p>
+            Ang impeachment ay isa sa mga eksepsiyong tahasang kinikilala ng RA 1405. Samantala, hindi sapat ang isang ordinaryong legislative inquiry para awtomatikong balewalain ang bank secrecy.
+          </p>
+
+          <p>
+            Kahit may subpoena, kailangang may legal na batayan para maipilit ang pagbibigay ng confidential records. Hindi lahat ng dokumentong hinihingi ay awtomatikong dapat ibigay, at maaaring kuwestiyunin ang mga kahilingang lumalampas sa pinapayagan ng batas.
+          </p>
+
+          <p>
+            Hindi rin lahat ng legal na pagsusuri sa bank records ay nangangailangan ng pahintulot ng depositor o ng parehong uri ng court order. Nakadepende ito sa partikular na eksepsiyon at prosesong itinakda ng batas.
+          </p>
+
+          <p>
+            Halimbawa, sa ilalim ng Anti-Money Laundering Act, maaaring magsagawa ang Anti-Money Laundering Council o AMLC ng bank inquiry sa mga kondisyong pinapayagan ng batas. Karaniwang nangangailangan ito ng court order at probable cause, maliban sa mga partikular na sitwasyong may ibang itinakdang proseso.
+          </p>
+
+          <p>
+            Mayroon ding Republic Act No. 12010 o Anti-Financial Account Scamming Act (AFASA), na nagbibigay sa Bangko Sentral ng Pilipinas ng kapangyarihang magsiyasat ng financial accounts na maaaring sangkot sa mga ipinagbabawal na gawain tulad ng money muling at financial account scamming.
+          </p>
+
+          <p>
+            Sa ilalim ng Section 12 nito, maaaring magsagawa ang mga awtorisadong opisyal ng BSP ng financial account inquiry sa mga kasong saklaw ng AFASA. Pinapayagan ito bilang partikular na eksepsiyon sa mga proteksiyon ng bank secrecy at data privacy laws. Ngunit hindi ito nagbibigay ng walang-limitasyong kapangyarihan para basta silipin ang account ng kahit sinong depositor nang walang kaugnayan sa mga paglabag na iniimbestigahan..
+          </p>
+
+          <p>
+            Sa BSP Circular No. 1214, Series of 2025, nakasaad ang mga pamamaraan at safeguard para sa naturang imbestigasyon.
+          </p>
+
+          <p>
+            Sa mga inquiry request mula sa awtorisadong government agencies, kailangang nakasulat at sinumpaan ang kahilingan, malinaw ang layunin at legal na batayan, natutukoy ang account na iniimbestigahan, at may kalakip na ebidensiyang sumusuporta sa posibleng pagkakasangkot nito sa ipinagbabawal na gawain.
+          </p>
+
+          <p>
+            Ang Consumer Account Protection Office o CAPO ng BSP ang sumusuri kung may sapat na batayan bago maglabas ng inquiry order. Pinapayagan din ng regulasyon ang BSP na magsimula ng sarili nitong imbestigasyon sa mga naaangkop na pagkakataon, ayon pa rin sa itinakdang proseso.
+          </p>
+
+          <p>
+            May mga tuntunin din sa ligtas na pagpapadala ng impormasyon, pagkontrol kung sino lamang ang maaaring magkaroon ng access, at limitasyon sa paggamit ng mga nakuhang records. Ipinagbabawal din ng AFASA ang hindi awtorisadong pagbubunyag ng impormasyong nakuha sa ilalim ng naturang imbestigasyon.
+          </p>
+
+          <p>
+            Sa ilalim ng BSP Circular No. 1214, kailangang may umiiral na Information Sharing Agreement sa pagitan ng BSP at ng awtorisadong ahensiya bago tumanggap ang CAPO ng inquiry request mula rito o magbahagi ng financial account information dito; nakasaad sa kasunduang ito ang mga safeguard sa confidentiality, authorized access, seguridad, at limitasyon sa paggamit ng impormasyon.
+          </p>
+
+          <p>
+            Ipinapakita nito na may mga pagkakataong maaaring legal na makuha ang bank records kahit walang pahintulot ng account holder. Ngunit ang gayong kapangyarihan ay may tinukoy na layunin, saklaw, at proseso—hindi basta pangkalahatang karapatang manghimasok.
+          </p>
+
+          <blockquote>
+            <p>
+              Kaya mali ang dalawang magkasalungat na paniniwala: na kailangang laging may pahintulot ng depositor bago masuri ang account, at na puwede itong silipin ng gobyerno anumang oras dahil lamang may kapangyarihan itong mag-imbestiga.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI RIN PARE-PAREHO ANG BATAS SA LAHAT NG URI NG DEPOSITO.
+          </h2>
+
+          <p>
+            May mahalagang pagkakaiba ang mga depositong saklaw ng RA 1405 at ang foreign-currency deposits, gaya ng dollar accounts, na pangunahing pinoprotektahan ng Republic Act No. 6426.
+          </p>
+
+          <p>
+            Mas mahigpit ang confidentiality provision ng RA 6426. Hindi basta nailalapat dito ang impeachment exception ng RA 1405, bagaman may mga hiwalay na batas, tulad ng AMLA, na maaaring magpahintulot ng pagsusuri sa mga partikular na kondisyon.
+          </p>
+
+          <p>
+            Ipinapakita nito kung bakit kailangang alamin muna kung anong uri ng account ang pinag-uusapan, anong batas ang umiiral, at kung anong legal na proseso ang ginagamit.
+          </p>
+
+          <p>
+            Hindi sapat ang sabihing may kapangyarihan ang gobyernong humingi ng bank records. Kailangang malinaw din kung saan nagmumula ang kapangyarihang iyon at hanggang saan lamang ito umaabot.
+          </p>
+
+                    <h2>
+            PAANO NAMAN ANG PERSONAL NA IMPORMASYON NG ORDINARYONG DEPOSITOR?
+          </h2>
+
+          <p>
+            Bukod sa bank secrecy, umiiral ang Republic Act No. 10173 o Data Privacy Act of 2012.
+          </p>
+
+          <p>
+            Itinatakda nito ang mga prinsipyo ng transparency, legitimate purpose, at proportionality sa pagproseso ng personal information. May mga pagkakataong pinapayagan ang paggamit o pagbibigay ng personal data kahit walang consent, gaya ng pagsunod sa isang legal na obligasyon, ngunit nananatili ang mga limitasyon ng naaangkop na batas.
+          </p>
+
+          <p>
+            May Republic Act No. 11765 o Financial Products and Services Consumer Protection Act din, na nag-aatas sa mga financial service provider na pangalagaan ang privacy at personal data ng kanilang mga kliyente.
+          </p>
+
+          <p>
+            Sa ilalim ng BSP Circular No. 1160, inaasahan sa mga bangkong saklaw ng regulasyon ang malinaw na information security guidelines, secure databases, mga protocol sa paghawak ng customer information, at mga mekanismo para sa reklamo at proteksiyon laban sa fraud.
+          </p>
+
+          <p>
+            Hindi dapat basta ibinibigay ang confidential records dahil lamang may nagpakilalang opisyal o may nagpadalang kahilingan. Kailangang masuri ang legal na awtoridad, saklaw ng request, at wastong paraan ng pagbibigay ng impormasyon.
+          </p>
+
+          <p>
+            Pero hindi rin makatotohanang sabihing imposibleng magkaroon ng data breach, insider misconduct, o unauthorized disclosure. May mga proteksiyong itinakda ang batas, ngunit maaari pa ring mangyari ang paglabag sa mga ito.
+          </p>
+
+          <p>
+            At kapag may nangyaring paglabag, mahalagang matukoy kung sino ang responsable at kung anong pananagutan ang naaangkop.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGKAKAROON NG LEGAL NA ACCESS SA IMPORMASYON AY HINDI AUTOMATIKONG KARAPATANG IPAGKALAT ITO.
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaiba ang pagbibigay ng bank records sa isang awtorisadong imbestigasyon, ang pagpapakita ng ebidensiya sa isang pampublikong pagdinig alinsunod sa mga tuntunin, at ang ilegal na pagpapakalat ng confidential documents.
+          </p>
+
+          <p>
+            Hindi rin dapat agad pagbintangan ang isang bangko na nag-leak ng impormasyon dahil lamang may dokumentong lumitaw sa publiko. Kailangang alamin muna ang pinagmulan nito, kung sino ang may awtorisadong access, at kung legal ang paraan ng disclosure.
+          </p>
+
+          <h2>
+            PAREHO BA ANG KARAPATAN NG ORDINARYONG DEPOSITOR AT PUBLIC OFFICIAL?
+          </h2>
+
+          <p>
+            Pareho silang may proteksiyon sa ilalim ng mga naaangkop na batas sa bank secrecy at privacy.
+          </p>
+
+          <p>
+            Ngunit may karagdagang obligasyon ang mga lingkod-bayan pagdating sa financial transparency at public accountability.
+          </p>
+
+          <p>
+            Sa Article XI, Section 1 ng Konstitusyon, malinaw ang prinsipyong public office is a public trust. Sa Section 17 naman, inaatasan ang mga public official na magdeklara ng kanilang assets, liabilities, at net worth, na may mga patakaran sa public disclosure para sa ilang matataas na opisyal.
+          </p>
+
+          <p>
+            Itinatakda rin ng RA 6713 ang paghahain ng Statement of Assets, Liabilities and Net Worth o SALN ng mga saklaw nitong public officials at employees.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na ang bawat bank transaction o buong bank statement ng isang public official ay awtomatikong pampublikong dokumento.
+          </p>
+
+          <p>
+            Pero hindi rin maaaring gamitin ang karapatan sa privacy para hadlangan ang legal na pagsusuri sa mga financial records kapag may sapat na batayan at sinusunod ang naaangkop na proseso.
+          </p>
+
+          <p>
+            At kung may bank accounts ng asawa, kamag-anak, o ibang pribadong indibidwal na may kaugnayan sa isang kaso, hindi rin sila awtomatikong nawawalan ng privacy rights. Kailangang may legal na dahilan at sapat na kaugnayan ang mga hinihinging records.
+          </p>
+
+          <blockquote>
+            <p>
+              MAY KARAPATAN SA PRIVACY ANG PUBLIC OFFICIAL—PERO MAY OBLIGASYON DIN SIYANG MANAGOT SA BAYAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG PAGKUHA NG RECORDS AY HINDI PA PATUNAY NG KASALANAN.
+          </h2>
+
+          <p>
+            Mahalagang linawin din na ang pagkakaroon ng malaking deposito, maraming bank transactions, o paglipat ng malaking halaga ay hindi awtomatikong katibayan ng korupsiyon o money laundering.
+          </p>
+
+          <p>
+            Kailangang suriin ang pinagmulan ng pera, tunay na ownership, kaugnayan ng mga transaksiyon, at iba pang ebidensiyang kailangan sa kaso.
+          </p>
+
+          <p>
+            Sa kabilang banda, hindi rin nangangahulugang hindi na maaaring imbestigahan ang isang account dahil lamang protektado ito ng bank secrecy. Maaari pa rin itong suriin kapag may sapat na legal na batayan at sinusunod ang itinakdang proseso.
+          </p>
+
+          <p>
+            Ang layunin ng isang lehitimong imbestigasyon ay alamin kung ano ang mapatutunayan ng ebidensiya—hindi ang magpalabas ng konklusyong nakabatay lamang sa hinala, laki ng halaga, o pangalan ng taong sangkot.
+          </p>
+
+          <h2>
+            HUWAG GAWING PANAKOT ANG HINDI BUONG IPINALILIWANAG.
+          </h2>
+
+          <p>
+            Kapag may nagsabing wala nang seguridad ang bank accounts ng ordinaryong mamamayan dahil may bank records na hiniling sa isang impeachment trial, dapat munang itanong kung ano ang legal na batayan ng pahayag na iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              May batas bang nagbibigay ng walang-limitasyong access? May sapat bang ebidensiyang ang mga personal na impormasyon ng ordinaryong depositor ay malayang nakukuha? O pinaghalo lamang ang isang partikular na legal na proseso at ang pangkalahatang proteksiyon ng banking system?
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaiba ang legal na pagsusuri sa bank records, pansamantalang pag-hold ng disputed funds, at pag-freeze o pag-forfeit ng ari-arian. May magkakahiwalay na legal na batayan at prosesong kailangang sundin para sa mga ito.
+          </p>
+
+          <p>
+            At hindi rin pareho ang pagkakaroon ng isang posibleng privacy violation at ang pagsasabing wala nang saysay ang lahat ng batas na pumoprotekta sa mga depositor.
+          </p>
+
+          <p>
+            May karapatan ang mga mamamayang magtanong, mag-alala, at humingi ng paliwanag tungkol sa seguridad ng kanilang financial information. Hindi dapat maliitin ang pangambang ito.
+          </p>
+
+          <p>
+            Sa 2025 Consumer Finance and Inclusion Survey ng Bangko Sentral ng Pilipinas, na may 8,784 nakumpletong panayam sa mga respondent na 15 taong gulang pataas, lumabas na 73% ang may kamalayan sa karapatan sa data privacy at protection.
+          </p>
+
+          <p>
+            Ngunit 38% lamang ang may kamalayan sa mga responsibilidad ng financial service providers, habang 22% ang pamilyar sa consumer assistance mechanism ng BSP.
+          </p>
+
+          <p>
+            Hindi sinusukat ng mga numerong ito ang takot ng publiko sa isang partikular na impeachment o kontrobersiya. Ngunit ipinapakita nila ang mahalagang puwang sa kaalaman ng mga mamamayan:
+          </p>
+
+          <p>
+            Maaaring alam nilang may karapatan sila sa privacy, pero hindi pa lubos na nauunawaan ng marami ang mga obligasyon ng financial institutions at kung saan maaaring humingi ng tulong kapag may problema.
+          </p>
+
+          <p>
+            Dito nagiging mahalaga ang tamang pagpapaliwanag. Hindi sapat na sabihing protektado ang pera at impormasyon ng depositor. Kailangang maunawaan din kung paano gumagana ang proteksiyong iyon, kailan ito may legal na eksepsiyon, at ano ang maaaring gawin kapag may paglabag.
+          </p>
+
+          <p>
+            Ngunit may pananagutan din ang sinumang nagpapakalat ng impormasyon, lalo na kung maaari itong makasira sa tiwala ng publiko sa banking system.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang lehitimong pagtatanong tungkol sa privacy ay hindi dapat sagutin ng pananakot. At ang lehitimong paghingi ng accountability ay hindi rin dapat hadlangan gamit ang maling pagpapaliwanag sa batas.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              HINDI DAPAT TAKUTIN ANG ORDINARYONG DEPOSITOR PARA IPAGTANGGOL ANG ISANG OPISYAL. AT HINDI RIN DAPAT BALEWALAIN ANG PRIVACY PARA LAMANG MAPANAGOT ANG ISANG OPISYAL.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang isakripisyo ang isa para kilalanin ang kahalagahan ng isa pa.
+          </p>
+
+          <p>
+            Sa isang lipunang pinamamahalaan ng batas, dapat maprotektahan ang pribadong impormasyon ng mamamayan habang nananatiling posible ang lehitimong imbestigasyon at pananagutan ng mga lingkod-bayan.
+          </p>
+
+          <p>
+            Dahil ang tunay na paninindigan sa karapatan ay hindi dapat nagbabago depende sa kung sino ang iniimbestigahan. At ang paninindigan sa pananagutan ay hindi rin dapat nakadepende sa kung sino ang nais nating maparusahan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG BANK SECRECY AY HINDI PANANGGA SA LAHAT NG IMBESTIGASYON. ANG KAPANGYARIHANG MAG-IMBESTIGA AY HINDI LISENSIYA SA WALANG-LIMITASYONG PANGHIHIMASOK.
+            </p>
+
+            <p>
+              AT ANG PAGGAMIT SA TAKOT NG ORDINARYONG MAMAMAYAN PARA ILIGAW ANG PAG-UNAWA SA BATAS AY HINDI PAGTATANGGOL SA KANILANG KARAPATAN—KUNDI PANLILINLANG SA KANILANG TIWALA.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+               <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>1987 Philippine Constitution.</strong> Articles III, VI at XI.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 1405.</strong> Secrecy of Bank Deposits Act.
+            </li>
+
+            <li>
+              <strong>Presidential Decree No. 1792.</strong> Historical amendment to RA 1405, subsequently repealed.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 7653.</strong> New Central Bank Act, Section 135.
+            </li>
+
+            <li>
+              <strong>Ejercito v. Sandiganbayan, G.R. Nos. 157294–95.</strong> Supreme Court ruling on the repeal of PD 1792.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 6426.</strong> Foreign Currency Deposit Act; at China Banking Corp. v. Court of Appeals.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10173.</strong> Data Privacy Act of 2012.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11765.</strong> Financial Products and Services Consumer Protection Act.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 12010.</strong> Anti-Financial Account Scamming Act (AFASA), Sections 7 at 12–15.
+            </li>
+
+            <li>
+              <strong>BSP Circular No. 1160.</strong> Financial Consumer Protection Regulations.
+            </li>
+
+            <li>
+              <strong>BSP Circular No. 1214, Series of 2025.</strong> Rules on Financial Account Inquiries and Information-Sharing under AFASA.
+            </li>
+
+            <li>
+              <strong>Bangko Sentral ng Pilipinas.</strong> 2025 Consumer Finance and Inclusion Survey, Financial Consumer Protection findings.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 6713.</strong> Code of Conduct and Ethical Standards for Public Officials and Employees.
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10167.</strong> Amendments to the Anti-Money Laundering Act.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
