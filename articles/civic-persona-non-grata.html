@@ -1,1 +1,1627 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+     <meta
+    name="description"
+    content="Persona non grata—hanggang saan ang kapangyarihan nito? Suriin ang diplomatic law, Vienna Convention, immunity, foreign relations, legal limits, at pambansang interes."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-persona-non-grata.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-persona-non-grata.html"
+  >
+
+  <title>PERSONA NON GRATA—HANGGANG SAAN ANG KAPANGYARIHAN NITO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          PERSONA NON GRATA—HANGGANG SAAN ANG KAPANGYARIHAN NITO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-persona-non-grata.png"
+            alt="Simbolikong visual ng isang diplomat sa harap ng gusaling pampamahalaan na may malaking PERSONA NON GRATA stamp, diplomatic documents, Philippine flag, at legal symbolism bilang representasyon ng diplomatic power, legal limits, sovereignty, at national interest."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <p>
+            Kapag may dayuhang diplomat na gumawa ng kontrobersiyal na pahayag o kilos, madaling lumabas ang panawagang: “IDEKLARA SIYANG PERSONA NON GRATA!”
+          </p>
+
+          <p>
+            Pero ano ba talaga ang mangyayari kapag ginawa iyon ng isang bansa? Maaari na bang pauwiin ang isang ambassador kahit walang napatunayang krimen? Mawawala ba agad ang kaniyang diplomatic immunity? At sino ang may karapatang magpasya kung hindi na siya katanggap-tanggap bilang kinatawan ng ibang pamahalaan?
+          </p>
+
+          <p>
+            Sa unang tingin, maaaring isipin na simpleng deklarasyon lamang ito ng hindi pagtanggap. Para bang pagsasabing hindi na welcome ang isang tao. Ngunit sa international diplomacy, may mas malalim itong kahulugan. Isa itong kapangyarihang kinikilala ng international law na may tiyak na proseso, legal na epekto, at posibleng diplomatikong kapalit.
+          </p>
+
+          <p>
+            Kaya bago sabihing dapat nang paalisin ang isang diplomat, o balewalain ang deklarasyon dahil salita lamang daw ito, mahalagang maunawaan kung ano talaga ang pinahihintulutan ng batas, sino ang maaaring gumamit ng kapangyarihang ito, at saan ang mga hangganan nito.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG PERSONA NON GRATA?
+          </h2>
+
+          <p>
+            Ang persona non grata ay terminong Latin na nangangahulugang isang taong hindi katanggap-tanggap o hindi kanais-nais.
+          </p>
+
+          <p>
+            Sa ugnayang diplomatiko, ito ay pormal na deklarasyon ng isang bansa na hindi na nito tinatanggap ang isang dayuhang diplomat bilang kinatawan ng bansang nagpadala sa kaniya.
+          </p>
+
+          <p>
+            Mahalagang maunawaan na ang isang ambassador ay hindi basta pribadong indibidwal na naninirahan o nagtatrabaho sa ibang bansa. Opisyal siyang kinatawan ng kaniyang pamahalaan, na may tungkuling panatilihin ang komunikasyon, ipahayag ang posisyon ng sariling bansa, at pangalagaan ang mga lehitimong interes nito.
+          </p>
+
+          <p>
+            Ngunit ang pagkakaroon ng diplomatikong katayuan ay hindi nangangahulugang walang hanggan ang karapatang manatili sa bansang tumatanggap sa kaniya.
+          </p>
+
+          <blockquote>
+            <p>
+              May karapatan din ang bansang iyon na magtakda kung sino ang patuloy nitong kinikilalang katanggap-tanggap na diplomat.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG BATAYAN SA INTERNATIONAL LAW?
+          </h2>
+
+          <p>
+            Ang pangunahing legal na batayan ay ang Article 9 ng Vienna Convention on Diplomatic Relations of 1961.
+          </p>
+
+          <p>
+            Sa ilalim nito, maaaring ipaalam ng receiving State o bansang tumatanggap sa isang diplomatic mission na ang ambassador o miyembro ng diplomatic staff ay persona non grata.
+          </p>
+
+          <p>
+            May teknikal na pagkakaiba sa mismong Article 9. Ang terminong persona non grata ay ginagamit para sa pinuno ng diplomatic mission at mga miyembro ng diplomatic staff. Para naman sa ibang miyembro ng mission staff, gaya ng administrative, technical, at service staff, ginagamit ang terminong not acceptable. Sa parehong pagkakataon, maaaring kailanganing bawiin ng bansang nagpadala ang taong tinutukoy o wakasan ang kaniyang tungkulin sa misyon.
+          </p>
+
+          <p>
+            Dalawang mahalagang bagay ang nakasaad sa Article 9.
+          </p>
+
+          <p>
+            Una, maaaring gawin ang deklarasyon anumang oras, maging bago pa dumating sa bansa ang diplomat.<br>
+            Ikalawa, hindi obligadong ipaliwanag ng bansang nagdeklara ang dahilan ng kaniyang desisyon.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi kailangang magkaroon muna ng hatol ng hukuman, criminal conviction, o napatunayang paglabag sa batas bago gamitin ang kapangyarihang ito.
+          </p>
+
+          <p>
+            Ngunit may kailangang linawin.
+          </p>
+
+          <p>
+            Ang kawalan ng obligasyong magpaliwanag sa ilalim ng Article 9 ay hindi nangangahulugang walang halaga ang ebidensiya, konteksto, at magiging epekto ng desisyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Magkaiba ang legal na karapatang gumawa ng deklarasyon at ang responsibilidad ng isang pamahalaang tiyaking makatuwiran ang paggamit nito.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAILAN MAAARING IDEKLARANG PERSONA NON GRATA ANG ISANG DIPLOMAT?
+          </h2>
+
+          <p>
+            Walang eksklusibong listahan ng mga paglabag na kailangang mangyari bago magamit ang Article 9.
+          </p>
+
+          <p>
+            Sa aktuwal na diplomatikong praktis, maaaring maiugnay ang deklarasyon sa mga seryosong alegasyon gaya ng espionage, panghihimasok sa internal affairs, o iba pang kilos na itinuturing ng bansang tumatanggap na hindi katanggap-tanggap.
+          </p>
+
+          <p>
+            Maaari rin itong gamitin bilang tugon sa mas malawak na diplomatikong alitan sa pagitan ng mga pamahalaan.
+          </p>
+
+          <p>
+            Hindi nangangahulugang napatunayang nagkasala ang isang diplomat dahil lamang idineklara siyang persona non grata. Hindi rin awtomatikong nangangahulugang ilegal ang bawat pahayag na hindi nagustuhan ng bansang tumatanggap.
+          </p>
+
+          <p>
+            Mahalagang tandaan na bahagi ng trabaho ng mga diplomat ang ipahayag at ipagtanggol ang opisyal na posisyon ng kanilang bansa. Dahil dito, hindi sapat na magkaiba ang pananaw ng dalawang pamahalaan upang awtomatikong ituring na paglabag sa international law ang kilos ng isang diplomat.
+          </p>
+
+          <p>
+            Ngunit may hangganan din ang tungkuling iyon.
+          </p>
+
+          <p>
+            Sa ilalim ng Article 41 ng Vienna Convention, may obligasyon ang mga diplomat na igalang ang mga batas ng bansang tumatanggap sa kanila at huwag makialam sa mga internal affairs nito.
+          </p>
+
+          <p>
+            Kaya sa pagsusuri ng anumang kontrobersiya, mahalagang paghiwalayin ang lehitimong diplomatic representation, hindi naaangkop na pananalita, posibleng panghihimasok, at aktuwal na paglabag sa batas.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi pare-pareho ang mga ito, kahit maaaring humantong ang alinman sa isang diplomatikong pagtatalo.
+            </p>
+          </blockquote>
+
+          <h2>
+            SINO ANG MAY KAPANGYARIHANG MAGDEKLARA NITO SA PILIPINAS?
+          </h2>
+
+          <p>
+            Sa Pilipinas, ang pamamahala sa foreign relations ay saklaw ng ehekutibong sangay ng pamahalaan, sa pangunguna ng Pangulo at sa tulong ng Department of Foreign Affairs o DFA.
+          </p>
+
+          <p>
+            Sa ilalim ng Executive Order No. 292, ang DFA ang pangunahing ahensiyang umaalalay at nagbibigay ng payo sa Pangulo sa pamamahala ng foreign relations ng bansa.
+          </p>
+
+          <p>
+            Maaaring manawagan ang isang senador, maghain ng resolusyon ang Senado, o magpahayag ng posisyon ang iba pang opisyal. Mahalaga ang mga ito sa pampublikong pagsusuri at sa pagpapanagot sa pamahalaan.
+          </p>
+
+          <blockquote>
+            <p>
+              Ngunit hindi awtomatikong nagiging opisyal na deklarasyon ng Republika ng Pilipinas ang isang Senate resolution.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang pormal na diplomatic action ay kailangang manggaling sa pamahalaang may awtoridad na kumatawan sa bansa sa ugnayang panlabas.
+          </p>
+
+          <p>
+            Hindi rin kailangang magpasa muna ang Kongreso ng isang bagong batas upang magamit ang karapatang nakasaad sa Article 9.
+          </p>
+
+          <p>
+            Kaya dapat malinaw kung ang isang opisyal ay nananawagan lamang ng deklarasyon, nagrerekomenda ng diplomatikong hakbang, o kung ang mismong pamahalaan ay nakapagpatupad na nito.
+          </p>
+
+                    <h2>
+            ANO ANG AKTUWAL NA NANGYAYARI KAPAG MAY DEKLARASYON?
+          </h2>
+
+          <p>
+            Sa ilalim ng Article 9, pormal na inaabisuhan ng bansang tumatanggap ang bansang nagpadala sa diplomat na hindi na katanggap-tanggap ang naturang kinatawan.
+          </p>
+
+          <p>
+            Kapag nangyari ito, inaasahan sa bansang nagpadala na bawiin ang diplomat o wakasan ang kaniyang tungkulin sa diplomatic mission.
+          </p>
+
+          <p>
+            Kung tumanggi o nabigong kumilos ang bansang nagpadala sa loob ng makatuwirang panahon, maaaring tumanggi ang bansang tumatanggap na kilalanin pa siya bilang miyembro ng diplomatic mission.
+          </p>
+
+          <p>
+            Walang iisang nakapirming bilang ng araw na itinakda ang Article 9 para sa lahat ng ganitong sitwasyon.
+          </p>
+
+          <p>
+            Mahalaga rin ang pagkakaiba ng pagkansela sa diplomatikong pagkilala at pisikal na pagpapaalis sa isang tao.
+          </p>
+
+          <p>
+            Hindi nangangahulugang sa mismong sandali ng deklarasyon ay maaari nang basta hulihin, ikulong, o sapilitang alisin sa bansa ang diplomat nang hindi isinasaalang-alang ang umiiral na international law.
+          </p>
+
+          <p>
+            May mga tuntunin din tungkol sa kaniyang pag-alis at sa pagtatapos ng kaniyang diplomatic privileges and immunities.
+          </p>
+
+          <h2>
+            PAANO NAMAN ANG DIPLOMATIC IMMUNITY?
+          </h2>
+
+          <p>
+            Ang diplomatic immunity ay proteksiyong ibinibigay sa mga diplomat upang magampanan nila ang kanilang opisyal na tungkulin nang hindi basta napipigilan o naiipit sa legal na proseso ng bansang tumatanggap.
+          </p>
+
+          <p>
+            Ngunit hindi ito pahintulot na lumabag sa batas.
+          </p>
+
+          <p>
+            Sa ilalim ng Vienna Convention, may mga proteksiyon laban sa pag-aresto at sa hurisdiksiyon ng mga hukuman ng receiving State. Maaari ring tahasang isuko ng bansang nagpadala ang ilang immunity ng diplomat alinsunod sa Article 32.
+          </p>
+
+          <p>
+            Dapat paghiwalayin ang tatlong bagay:<br>
+            Ang deklarasyong persona non grata,<br>
+            Ang pagpapabalik o pagtatapos ng tungkulin ng diplomat,<br>
+            At ang pagtatapos ng kaniyang mga naaangkop na diplomatic privileges and immunities.
+          </p>
+
+          <p>
+            Hindi ito iisang hakbang na sabay-sabay at awtomatikong nagaganap. Kung hindi tumugon ang bansang nagpadala sa loob ng makatuwirang panahon, maaari ring tumanggi ang receiving State na kilalanin pa ang naturang diplomat bilang miyembro ng misyon.
+          </p>
+
+          <p>
+            Kapag natapos ang tungkulin ng diplomat, ang kaniyang privileges and immunities ay karaniwang nagtatapos kapag umalis siya sa bansa o lumipas ang makatuwirang panahong ibinigay para makaalis.
+          </p>
+
+          <p>
+            Gayunman, may mahalagang eksepsiyon:
+          </p>
+
+          <p>
+            Ang immunity kaugnay ng mga opisyal na gawaing ginawa niya sa pagganap ng kaniyang tungkulin ay patuloy na umiiral kahit matapos ang kaniyang serbisyo.
+          </p>
+
+          <blockquote>
+            <p>
+              Ito ang dahilan kung bakit hindi dapat ipagkamali ang deklarasyong persona non grata sa criminal conviction, pagkakakulong, o awtomatikong pagkawala ng lahat ng legal na proteksiyon.
+            </p>
+          </blockquote>
+
+          <h2>
+            IBIG BANG SABIHIN, NAPUTOL NA ANG RELASYON NG DALAWANG BANSA?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Ang pagdedeklara ng isang diplomat bilang persona non grata ay hindi awtomatikong nangangahulugang sarado na ang embahada, naputol na ang lahat ng diplomatic relations, o nasa bingit na ng digmaan ang dalawang bansa.
+          </p>
+
+          <p>
+            Maaaring magtalaga ng kapalit na diplomat ang bansang nagpadala, alinsunod sa mga patakaran ng diplomatic accreditation.
+          </p>
+
+          <p>
+            Ngunit maaari itong magdulot ng seryosong tensiyon.
+          </p>
+
+          <p>
+            Maaaring gumanti ang kabilang bansa sa pamamagitan ng katumbas na deklarasyon laban sa sariling mga diplomat ng bansang unang kumilos. Maaari ring maapektuhan ang tiwala at komunikasyon sa pagitan ng kanilang mga pamahalaan.
+          </p>
+
+          <p>
+            Hindi awtomatikong nangyayari ang lahat ng ito, ngunit bahagi ang mga ito ng mga panganib na kailangang paghandaan.
+          </p>
+
+          <p>
+            Mahalagang isaalang-alang ang kaligtasan at interes ng mga mamamayan sa ibang bansa, kabilang ang mga Pilipinong naninirahan o nagtatrabaho roon.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil dito, hindi lamang tanong ng karapatan ang pagdedeklara ng persona non grata. Tanong din ito ng magiging bunga ng paggamit ng karapatang iyon.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG IPINAPAKITA NG MGA AKTUWAL NA KASO AT PAG-AARAL?
+          </h2>
+
+          <p>
+            Hindi lamang sa mga kasunduan at legal na paliwanag makikita ang kahalagahan ng persona non grata. May mga dokumentadong pangyayari at pag-aaral na nagpapakita kung paano ito nagagamit sa aktuwal na diplomatikong relasyon.
+          </p>
+
+          <p>
+            Noong Marso 2018, ipinag-utos ng United Kingdom ang pagpapaalis sa 23 Russian diplomats matapos ang pagkalason kina Sergei at Yulia Skripal sa Salisbury, England, gamit ang nerve agent.
+          </p>
+
+          <p>
+            Ayon sa pamahalaan ng UK, ang mga diplomat na pinaalis ay kinilala nitong mga intelligence officer na hindi hayagang nagpakilala bilang ganoon. Itinanggi naman ng Russia ang pagkakasangkot nito sa pag-atake.
+          </p>
+
+          <p>
+            Bilang tugon, nagdeklara rin ang Russia ng 23 British diplomats bilang persona non grata, at inatasan silang umalis sa loob ng isang linggo.
+          </p>
+
+          <p>
+            Hindi natapos doon ang mga naging hakbang. Nagkaroon din ng mga pagpapaalis sa mga Russian diplomat mula sa iba pang bansa bilang pakikiisa sa naging tugon ng UK.
+          </p>
+
+          <p>
+            Ipinapakita ng kasong ito na ang isang diplomatikong deklarasyon ay maaaring magresulta sa gantihang pagpapaalis ng mga diplomat at mas malawak na tensiyon sa pagitan ng mga pamahalaan.
+          </p>
+
+          <p>
+            Ngunit hindi rin awtomatikong napuputol ang lahat ng ugnayan. Sa kabila ng naging krisis, ipinahayag ng UK na hindi nito layuning tuluyang ihinto ang lahat ng pakikipag-usap sa Russia.
+          </p>
+
+          <p>
+            May mas malawak ding datos tungkol sa paggamit ng deklarasyong ito.
+          </p>
+
+          <p>
+            Sa isang pag-aaral ni Manuel Flores Troche, na inilathala noong 2019 sa Revista Mexicana de Política Exterior, iniulat na mula Disyembre 2016 hanggang Abril 2018, 29 na bansa ang nagdeklara ng mahigit 300 diplomatic representatives bilang persona non grata.
+          </p>
+
+          <p>
+            Kabilang sa mga bansang tinukoy sa pag-aaral ang United States, Russia, at United Kingdom.
+          </p>
+
+          <p>
+            Mahalagang linawin na ang bilang na ito ay para lamang sa partikular na panahong sinuri. Hindi ito kabuuang bilang sa kasaysayan, at hindi rin nangangahulugang ganoon karami ang karaniwang idinedeklara bawat taon.
+          </p>
+
+          <p>
+            Sinuri rin ng pag-aaral kung paano ginagamit ng mga estado ang deklarasyon sa panahon ng matinding diplomatikong tensiyon at kung paano nauugnay ang aktuwal na praktis sa mga tuntunin ng Vienna Convention.
+          </p>
+
+          <p>
+            Hindi lamang pambansang seguridad at alitan sa ibang bansa ang maaaring maging bahagi ng mas malawak na konteksto ng ganitong mga desisyon.
+          </p>
+
+          <p>
+            Sa isa pang pag-aaral nina Anthony Jordan at John P. Tuman, na inilathala noong 2018 sa Latin American Policy, sinuri ang pagpapaalis sa mga diplomat ng United States mula sa mga bansa sa Latin America at Caribbean sa pagitan ng 1991 at 2016.
+          </p>
+
+          <p>
+            Batay sa kanilang statistical analysis, may kaugnayan ang ilang domestic political conditions, kabilang ang mga taon ng presidential election, sa mas mataas na bilang ng mga kasong ang lokal na pamahalaan ang unang nagpaalis ng American diplomat. May nakita rin silang kaugnayan sa ilang partikular na uri ng administrasyon.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang pampolitikang interes ang dahilan ng bawat pagpapaalis. Hindi rin maaaring basta ilapat ang kanilang findings sa Pilipinas o sa lahat ng bansa.
+          </p>
+
+          <p>
+            Ngunit may mahalagang ipinapakita ang mga pag-aaral at kasong ito.
+          </p>
+
+          <p>
+            Ang persona non grata ay maaaring gamitin bilang tugon sa mga usapin ng pambansang seguridad, diplomatikong alitan, o panggigipit sa pagitan ng mga estado. Sa ilang pagkakataon, maaari ring may kaugnayan ang domestic political considerations sa pagpapasyang gamitin ito.
+          </p>
+
+          <blockquote>
+            <p>
+              Kaya mahalagang huwag huminto sa pagtatanong kung may legal na kapangyarihang magdeklara. Dapat ding suriin kung ano ang naging dahilan ng desisyon, ano ang inaasahang makamit, at kung paano nito maaapektuhan ang pambansang interes.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY IBA PA BANG DIPLOMATIKONG HAKBANG BUKOD DITO?
+          </h2>
+
+          <p>
+            Mayroon.
+          </p>
+
+          <p>
+            Maaaring magpatawag ang DFA ng kinatawan ng ibang bansa upang humingi ng paliwanag, magpahayag ng pagtutol, o maghain ng pormal na diplomatic protest.
+          </p>
+
+          <p>
+            Maaari ring humiling ng paglilinaw, pagwawasto, o iba pang hakbang upang matugunan ang kontrobersiya.
+          </p>
+
+          <p>
+            Ang mga hakbang na ito ay hindi pare-pareho ang bigat at legal na epekto.
+          </p>
+
+          <p>
+            Ang diplomatic protest, halimbawa, ay pagpapahayag ng opisyal na pagtutol. Hindi nito awtomatikong tinatapos ang katayuan ng isang diplomat.
+          </p>
+
+          <p>
+            Ang persona non grata naman ay direktang nakaaapekto sa pagtanggap sa diplomat bilang kinatawan ng kaniyang bansa.
+          </p>
+
+          <p>
+            Walang pangkalahatang tuntunin sa Article 9 na kailangang mauna ang lahat ng mas banayad na hakbang bago magdeklara ng persona non grata.
+          </p>
+
+          <p>
+            Gayunman, maaaring piliin ng isang pamahalaan ang paunti-unting diplomatikong pagtugon upang timbangin ang kalubhaan ng pangyayari, pagkakataong maresolba ito, at posibleng epekto sa pambansang interes.
+          </p>
+
+          <p>
+            Ang hindi agarang pagpili sa pinakamabigat na hakbang ay hindi awtomatikong pagsuko. Ngunit ang pagkakaroon lamang ng diplomatic protest ay hindi rin awtomatikong patunay na sapat na ang naging tugon.
+          </p>
+
+          <p>
+            Kailangang suriin kung ano ang layunin ng hakbang at kung ano ang aktuwal nitong nakamit.
+          </p>
+
+          <h2>
+            PAREHO BA ITO SA PERSONA NON GRATA NG MGA LOKAL NA PAMAHALAAN?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Sa Pilipinas, maaaring magpasa ang isang lokal na konseho ng resolusyong nagdedeklara sa isang tao bilang persona non grata.
+          </p>
+
+          <p>
+            Ngunit ang ganitong lokal na resolusyon ay karaniwang pagpapahayag lamang ng hindi pagtanggap o pagkondena. Hindi nito awtomatikong inaalis ang karapatan ng isang tao na pumasok, dumaan, o manirahan sa isang lugar.
+          </p>
+
+          <p>
+            Iba ang national-level diplomatic declaration dahil may partikular itong batayan sa international law at direktang epekto sa pagkilala sa isang dayuhang diplomat.
+          </p>
+
+          <p>
+            May hiwalay ding mga tuntunin para sa mga consular officer sa ilalim ng Article 23 ng Vienna Convention on Consular Relations of 1963.
+          </p>
+
+          <p>
+            At kung ordinaryong dayuhang mamamayan naman ang pinag-uusapan, hindi basta mailalapat sa kaniya ang Article 9 na para sa diplomatic mission. Maaaring pumasok ang magkahiwalay na usapin ng immigration law, visa, at iba pang umiiral na batas.
+          </p>
+
+          <blockquote>
+            <p>
+              Iisang termino ang ginagamit sa iba't ibang pagkakataon, ngunit hindi nangangahulugang iisa rin ang legal na epekto.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG HINDI NAGDEKLARA, MAHINA BA ANG BANSA? KAPAG NAGDEKLARA, MATAPANG NA BA AGAD?
+          </h2>
+
+          <p>
+            Hindi sapat ang isang diplomatikong desisyon upang awtomatikong sagutin ang dalawang tanong na iyon.
+          </p>
+
+          <p>
+            Maaaring magkaroon ng matibay na dahilan upang tanggihan ang isang dayuhang diplomat. Maaari ring may seryosong dahilan upang unahin ang ibang diplomatikong pamamaraan.
+          </p>
+
+          <p>
+            Ang deklarasyong ginawa dahil sa matinding pampublikong galit ay hindi awtomatikong epektibo. Ganoon din, ang desisyong huwag agad magdeklara ay hindi awtomatikong nangangahulugang pinabayaan na ang soberanya ng bansa.
+          </p>
+
+          <blockquote>
+            <p>
+              Mas mahalagang suriin kung malinaw ang layunin, legal ang pamamaraan, naaayon ang tugon sa pangyayari, at napaghandaan ang maaaring maging epekto.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung may pagkondena sa isang diplomat dahil sa kaniyang pananalita o kilos, dapat ding itanong kung pareho ang pamantayang ginagamit sa mga diplomat ng ibang bansa.
+          </p>
+
+          <p>
+            Kung may panawagang magdeklara ng persona non grata, kailangang maipaliwanag sa publiko kung ano ang inaasahang makamit nito at kung paano mapoprotektahan ang pambansang interes.
+          </p>
+
+          <p>
+            Hindi rin sapat na ipagtanggol ang isang diplomat dahil lamang kaalyado ang kaniyang bansa, o kondenahin siya dahil lamang hindi gusto ang pamahalaang kinakatawan niya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang diplomatikong pananagutan ay hindi dapat nakadepende lamang sa kung sino ang kaibigan, kaaway, o kasalukuyang nasa kapangyarihan.
+            </p>
+          </blockquote>
+
+          <h2>
+            SA HULI, PARA SAAN BA ANG KAPANGYARIHANG ITO?
+          </h2>
+
+          <p>
+            Ayon sa Article II, Section 7 ng 1987 Philippine Constitution, dapat itaguyod ng Pilipinas ang isang independent foreign policy na nagbibigay ng pangunahing pagpapahalaga sa national sovereignty, territorial integrity, national interest, at right to self-determination.
+          </p>
+
+          <p>
+            Kasabay nito, kinikilala rin ng Konstitusyon ang kapayapaan, kooperasyon, at international law bilang mahahalagang prinsipyo sa pakikipag-ugnayan sa ibang bansa.
+          </p>
+
+          <p>
+            Hindi kailangang ituring na magkalaban ang pagtatanggol sa soberanya at ang pagpapanatili ng kapayapaan.
+          </p>
+
+          <p>
+            Ang diplomatikong kapangyarihan ay hindi lamang ginagamit upang magpakita ng pagtutol. Bahagi rin ito ng mas malawak na responsibilidad na pangalagaan ang kalayaan, seguridad, at pangmatagalang interes ng bansa.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang PERSONA NON GRATA ay hindi simpleng bansag sa taong ayaw natin. Isa itong seryosong kapangyarihang kinikilala ng international law—may tiyak na legal na epekto, ngunit mayroon ding posibleng diplomatikong kapalit.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang may napatunayang krimen bago ito gamitin. Ngunit hindi rin nangangahulugang dapat itong gamitin sa bawat kontrobersiya.
+          </p>
+
+          <p>
+            At hindi dapat nakasalalay lamang sa ingay ng publiko o sa kapakinabangang pampolitika ang pagpapasya tungkol dito.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG SOBERANYA AY HINDI LANG KARAPATANG TUMANGGI SA ISANG DAYUHANG DIPLOMAT. RESPONSIBILIDAD DIN ITONG MAGPASYA PARA SA INTERES NG BANSA—NANG MAY MALINAW NA BATAYAN, MAINGAT NA PAGTITIMBANG, AT PANANAGUTAN SA MAGIGING EPEKTO.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Legal, Historical at Academic Sources
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>"Vienna Convention on Diplomatic Relations (1961)"</strong> — Articles 9, 31, 32, 39, 41 at 43.
+            </li>
+
+            <li>
+              <strong>"Vienna Convention on Consular Relations (1963)"</strong> — Article 23.
+            </li>
+
+            <li>
+              <strong>"1987 Philippine Constitution"</strong> — Article II, Sections 2 at 7; Article VII, Sections 1 at 16.
+            </li>
+
+            <li>
+              <strong>"Executive Order No. 292 (Administrative Code of 1987)"</strong> — Mandate at functions ng Department of Foreign Affairs.
+            </li>
+
+            <li>
+              <strong>"Republic Act No. 7157 (Philippine Foreign Service Act of 1991)"</strong> — Section 3 at mga probisyon tungkol sa Foreign Service.
+            </li>
+
+            <li>
+              <strong>"DILG Legal Opinion No. 30, s. 2020 (February 7, 2020)"</strong> — Legal na epekto at limitasyon ng local-level persona non grata resolutions.
+            </li>
+
+            <li>
+              <strong>"UK Government — Salisbury Incident Response, March 14, 2018"</strong> — Opisyal na pahayag tungkol sa pagpapaalis sa 23 Russian diplomats.
+            </li>
+
+            <li>
+              <strong>"UK Foreign &amp; Commonwealth Office — March 17, 2018"</strong> — Dokumentasyon ng naging pagganti ng Russia sa pagpapaalis sa 23 British diplomats.
+            </li>
+
+            <li>
+              <strong>"Flores Troche, Manuel (2019) — Revista Mexicana de Política Exterior, No. 115"</strong> — Pagsusuri ng persona non grata declarations, Disyembre 2016 hanggang Abril 2018.
+            </li>
+
+            <li>
+              <strong>"Jordan, Anthony &amp; Tuman, John P. (2018) — Latin American Policy, Vol. 9, Issue 2"</strong> — Explaining Expulsions of U.S. Diplomatic Personnel from Latin America, 1991–2016.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
