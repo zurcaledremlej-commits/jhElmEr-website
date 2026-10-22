@@ -1,1 +1,1430 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Salitang bago sa pandinig—meme na agad? Suriin ang esmiringhoy, mga katutubong wika sa Pilipinas, language prejudice, viral memes, at halaga ng wikang hindi pamilyar sa marami."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-salita-meme.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-salita-meme.html"
+  >
+
+  <title>SALITANG BAGO SA PANDINIG—MEME NA AGAD? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SALITANG BAGO SA PANDINIG—MEME NA AGAD?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-salita-meme.png"
+            alt="Simbolikong visual ng malaking tainga, mga lumilipad na piraso ng teksto, ugat ng wika at kulturang Pilipino bilang representasyon ng bagong salitang naririnig, memes, lokal na wika, kasaysayan, at pag-unawa sa pinagmulan ng salita."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            Isang salitang hindi pamilyar sa marami. Nabanggit sa isang panayam, naging paksa ng katatawanan, at mabilis na kumalat sa social media. Maya-maya, may mga memes, bagong biro, at sari-saring paggamit na nito.
+          </p>
+
+          <p>
+            Pero sa gitna ng tawanan, may isang tanong na mas mahalagang sagutin:<br>
+            Bago ba talaga ang salita—o ngayon lang natin ito narinig?
+          </p>
+
+          <p>
+            Ganiyan ang naging usapin sa salitang “esmiringhoy.” Naging viral ito matapos gamitin sa isang panayam tungkol sa problema ng mag-asawa. Nang ipaliwanag na ang kahulugan nito sa naturang konteksto ay pakikipagtalik o pagsisiping, naging paksa ito ng iba't ibang biro at memes.
+          </p>
+
+          <p>
+            Walang awtomatikong masama sa ganoong katatawanan. Hindi rin makatarungang ipalagay na ang mga nakisali sa memes ay nangungutya na sa wikang pinagmulan nito.
+          </p>
+
+          <p>
+            Pero may mas kawili-wiling natuklasan sa likod ng viral na salita:<br>
+            May nauna na pala itong pagkakatala sa bokabularyong Bisaya, bago pa ito naging popular sa social media.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lahat ng salitang ngayon lang natin narinig ay ngayon lang nabuo. At hindi lahat ng hindi pamilyar sa atin ay gawa-gawa lamang.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito nagiging mas malawak ang usapan.
+          </p>
+
+          <p>
+            Sa bansang may napakaraming katutubong wika, ilan pa kayang salita ang ginagamit na sa ibang komunidad ngunit ngayon lamang natin nakikilala dahil sa social media?
+          </p>
+
+          <h2>
+            HINDI LAHAT NG HINDI PAMILYAR AY WALANG HALAGA
+          </h2>
+
+          <p>
+            Sa Pilipinas, hindi lang iisang wika ang ginagamit. May Cebuano, Ilocano, Hiligaynon, Waray, Kapampangan, Pangasinan, Bikol, at marami pang iba. Bawat isa ay may sariling bokabularyo, ekspresyon, paraan ng pagpapahayag, at kasaysayang kaugnay ng mga komunidad na gumagamit nito.
+          </p>
+
+          <p>
+            Mahalagang linawin na hindi basta mga diyalekto ng Tagalog ang mga wikang ito. Magkakahiwalay silang wika, bagaman maaari rin silang magkaroon ng kani-kaniyang diyalekto o panrehiyong baryasyon.
+          </p>
+
+          <p>
+            Ang diyalekto ay isang anyo o baryasyon ng isang wika na maaaring may pagkakaiba sa punto, bokabularyo, o ilang paraan ng paggamit nito. Samantalang ang magkahiwalay na wika ay maaaring may sariling sistema ng gramatika, mga salita, at estrukturang hindi basta nauunawaan ng nagsasalita ng ibang wika.
+          </p>
+
+          <p>
+            Hindi rin laging simpleng pag-uuri ang pagkakaiba ng wika at diyalekto. Kailangan itong suriin batay sa mga katangiang lingguwistiko, kasaysayan, at pagkakakilanlan ng komunidad.
+          </p>
+
+          <p>
+            Mismong Komisyon sa Wikang Filipino (KWF) ay nakapagtala ng mga dating itinuturing na diyalekto na kinilalang magkakahiwalay na wika matapos ang pananaliksik at pagpapatunay sa mga komunidad, gaya ng Ayángan at Tuwáli sa Ifugao.
+          </p>
+
+          <p>
+            Ayon sa KWF, tinatayang 135 ang katutubong wika sa Pilipinas batay sa pananaliksik nito noong 2024, kabilang ang Chabacano at Filipino Sign Language.
+          </p>
+
+          <p>
+            Sa talaan nito, 52 ang nasa kategoryang ligtas, 42 ang di-ligtas, 16 ang tiyak na nanganganib, 14 ang matinding nanganganib, at 10 ang malubhang nanganganib. Hindi nakasaad sa talaan ng KWF ang kategorya ng Filipino Sign Language sa ganitong pag-uuri.
+          </p>
+
+          <p>
+            Maraming panlipunan, pang-ekonomiya, at pangkulturang salik ang nakaaapekto sa pagpapatuloy ng mga wikang ito. Hindi sapat ang pagiging viral ng isang salita upang masukat ang kalagayan ng buong wikang pinagmulan nito.
+          </p>
+
+          <p>
+            Pero ipinapakita ng pagkakaiba-iba ng ating mga wika na marami pang ekspresyon, kahulugan, at paraan ng pagpapahayag ang maaaring hindi natin alam.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagiging pamilyar sa isang wika ay hindi sukatan ng halaga nito. At ang pagiging popular ng isang salita ay hindi batayan kung gaano ito kahalaga sa mga gumagamit nito.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG WIKA AY NAGIGING BATAYAN NG PANGMAMALIIT
+          </h2>
+
+          <p>
+            May isa pang mahalagang usaping pangwika na dapat maunawaan:<br>
+            Ang pagkiling laban sa paraan ng pagsasalita ng ibang tao.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang ang bawat biro tungkol sa isang lokal na salita ay halimbawa na ng diskriminasyon.
+          </p>
+
+          <p>
+            Ngunit may aktuwal na pananaliksik na nagpapakitang maaaring makaapekto ang panrehiyong punto sa pagtingin ng ibang tao sa nagsasalita.
+          </p>
+
+          <p>
+            Sa isang pag-aaral na inilathala noong 2024 sa English World-Wide, sinuri ang pagtingin ng 982 kalahok sa iba't ibang panrehiyong punto ng Philippine English.
+          </p>
+
+          <p>
+            Lumitaw na mas positibo ang pangkalahatang pagtingin sa Tagalog English accent kumpara sa Cebuano at Ilocano English accents. Mas mababa ang naging pagtataya sa mga nagsasalita gamit ang dalawang huling punto pagdating sa ilang pananaw tungkol sa kakayahan at pagiging kaaya-aya sa lipunan.
+          </p>
+
+          <p>
+            Gumamit ang pag-aaral ng purposive sampling, kaya hindi awtomatikong kumakatawan ang resulta sa opinyon ng lahat ng Pilipino. Panrehiyong punto rin ng Philippine English ang sinuri, hindi ang paggawa ng memes tungkol sa mga lokal na salita.
+          </p>
+
+          <p>
+            Hindi natin maaaring gamitin ang resulta upang ideklarang diskriminasyon ang isang viral joke. Ngunit mahalaga itong batayan upang maunawaan na may mga sitwasyong hinuhusgahan ang tao batay sa kaniyang paraan ng pagsasalita.
+          </p>
+
+          <p>
+            At doon kailangang malinaw ang hangganan.
+          </p>
+
+          <p>
+            Puwedeng matawa sa isang biro tungkol sa kahulugan ng salita nang walang pangmamaliit.
+          </p>
+
+          <p>
+            Pero kapag ang punto, pagbigkas, o lokal na ekspresyon ay ginagamit na dahilan para ituring na ignorante o mababa ang isang tao, ibang usapan na iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi ang katatawanan ang problema. Ang problema ay kapag ang pagkakaiba ng wika ay ginagawang batayan ng paghamak sa kapwa.
+            </p>
+          </blockquote>
+
+          <h2>
+            PUWEDENG MATAWA—AT PUWEDE RING MATUTO
+          </h2>
+
+          <p>
+            Hindi kailangang gawing seryoso ang lahat ng salita. May mga ekspresyong likas na ginagamit sa biruan, may mga salitang may nakakatawang kahulugan, at may mga pagkakataong ang mismong sitwasyon ang nagbibigay ng katatawanan.
+          </p>
+
+          <p>
+            Bahagi rin ng buhay na wika ang mga balbal, euphemism, bagong gamit, at ekspresyong maaaring hindi matatagpuan sa karaniwang bokabularyo ng ibang rehiyon.
+          </p>
+
+          <p>
+            Gaya ng salitang “esmiringhoy,” na naging popular matapos gamitin sa isang panayam at ipaliwanag sa konteksto ng pakikipagtalik.
+          </p>
+
+          <p>
+            Ayon sa historyador na si Nereo Cajilig Luján, hindi ito bagong likha ng social media.
+          </p>
+
+          <p>
+            Sa kaniyang ibinahaging sanggunian, ang English-Visayan Vocabulary (Thesaurus Style) ni Ben E. Garcia, iniulat na makikita sa pahina 99 ang mga salitang “esmiringhay” at “esmiringhoy” sa hanay ng mga terminong may kaugnayan sa concubinage.
+          </p>
+
+          <p>
+            Kasama sa entry ang mga salitang may kaugnayan sa pakikisama, pagsasamang parang mag-asawa, at mga relasyong labas sa kasal. Ngunit hindi nangangahulugang magkakapareho ang kahulugan ng mga ito. Hindi rin nakasaad ang magkakahiwalay na eksaktong depinisyon ng bawat salitang nakalista.
+          </p>
+
+          <p>
+            Ibig sabihin, naitala na ang naturang salita sa isang sangguniang inilathala bago pa ito naging viral. Ngunit hindi pa rin tiyak ang buong etimolohiya nito, kung gaano kalawak ang dating paggamit, at kung paano nabago o lumawak ang kahulugan nito sa paglipas ng panahon.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang iyon:<br>
+            Ang pagiging viral ng isang salita ay hindi nangangahulugang doon pa lamang ito nabuo.
+          </p>
+
+          <p>
+            At dito nagiging interesante ang papel ng social media.
+          </p>
+
+          <p>
+            Ang isang ekspresyong maaaring matagal nang pamilyar sa ilang nagsasalita ng isang wika ay biglang nakikilala ng mas maraming Pilipino dahil lamang sa isang panayam, biro, o viral na video.
+          </p>
+
+          <p>
+            Maaaring magsimula sa katatawanan ang pagkakakilala natin sa isang salita. Pero maaari rin itong humantong sa pag-uusisa tungkol sa tunay nitong kahulugan, gamit, at pinagmulan.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kailangang mawala ang katatawanan para magkaroon ng pagkatuto.
+            </p>
+          </blockquote>
+
+            <blockquote>
+            <p>
+              PUWEDENG MAKISABAY SA BIRO NANG HINDI ISINASARA ANG ISIP SA MAS MALALIM NA KAALAMAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            IPINAGMAMALAKI ANG KULTURA—PERO GAANO NATIN KILALA ANG SARILING MGA WIKA?
+          </h2>
+
+          <p>
+            Madaling sabihin na ipinagmamalaki natin ang kulturang Pilipino.
+          </p>
+
+          <p>
+            Ipinagmamalaki ang mga tradisyon, kasuotan, pagkain, awitin, at makasaysayang lugar. Ipinagdiriwang ang pagkakaiba-iba ng mga rehiyon, lalo na kapag may festival, pagtatanghal, o selebrasyong pangkultura.
+          </p>
+
+          <p>
+            Pero bahagi rin ng kulturang iyon ang mga salitang ginagamit sa pang-araw-araw na buhay—mula sa seryosong usapan hanggang sa mga biruan, kasabihan, at ekspresyong hindi karaniwang naririnig sa ibang lugar.
+          </p>
+
+          <p>
+            Hindi kailangang pormal o malalim ang isang salita para maging bahagi ng buhay na wika. Kahit ang mga kolokyal at nakakatawang ekspresyon ay maaaring magpakita kung paano malikhaing ginagamit ng isang komunidad ang sariling bokabularyo.
+          </p>
+
+          <p>
+            Mismong 1987 Constitution, sa Article XIV, Sections 6, 7, at 9, ay kumikilala sa papel ng mga wika sa pagkakakilanlan at pag-unlad ng bansa.
+          </p>
+
+          <p>
+            Itinatadhana nitong paunlarin at payamanin ang Filipino mula sa mga umiiral na wika ng Pilipinas at iba pang wika. Kinikilala rin nito ang mga wikang panrehiyon bilang pantulong na opisyal na wika sa kani-kanilang rehiyon at ang pangangailangan ng pananaliksik para sa pagpapaunlad at pangangalaga ng mga wika.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang kailangang gawing seryoso ang lahat ng lokal na ekspresyon o ipagbawal ang mga biro tungkol sa mga ito.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang punto ay may kinikilalang pambansang halaga ang pagkakaiba-iba ng ating mga wika.
+            </p>
+          </blockquote>
+
+          <p>
+            Ayon naman sa UNESCO, mahalagang daluyan ang wika ng intangible cultural heritage o pamanang pangkulturang hindi pisikal.
+          </p>
+
+          <p>
+            Sa pamamagitan nito, naipapasa ang mga kuwento, awitin, kasabihan, tradisyon, kaalaman, at pagpapahalaga ng isang komunidad mula sa isang henerasyon patungo sa susunod.
+          </p>
+
+          <p>
+            Kaya kapag humihina ang paggamit ng isang wika, hindi lamang mga salita ang maaaring mawala. Maaari ring maapektuhan ang pagpapatuloy ng mga kuwentong-bayan, tradisyon, at kaalamang nakaugat sa wikang iyon.
+          </p>
+
+          <p>
+            Hindi rin ibig sabihin na kailangang bigyan ng napakalalim na kahulugang pangkultura ang bawat salitang nagiging meme. Magkaiba ang kasaysayan ng isang partikular na ekspresyon at ang mas malawak na pamana ng wikang kinabibilangan nito.
+          </p>
+
+          <p>
+            Pero ang simpleng pagkakilala sa isang lokal na salita ay maaari nang maging simula ng mas malawak na interes sa mga wikang Pilipino.
+          </p>
+
+          <p>
+            Hindi kailangang alam natin ang lahat ng salita para pahalagahan ang pagkakaiba-iba ng ating kultura. Pero hindi rin natin kailangang balewalain ang pagkakataong may bagong matutuhan.
+          </p>
+
+          <h2>
+            ANG DAPAT MATUTUHAN—HINDI LANG ANG BAGONG SALITA
+          </h2>
+
+          <p>
+            May pagkakataong nakatutulong ang social media para makilala ang mga lokal na ekspresyong hindi umaabot sa ibang rehiyon. Ang isang salitang pamilyar sa ilang komunidad ay maaaring biglang pag-usapan sa buong bansa.
+          </p>
+
+          <p>
+            Hindi kailangang ituring na masama ang ganitong paglaganap, kahit nagsimula pa ito sa katatawanan.
+          </p>
+
+          <p>
+            Pero pagkatapos ng memes, maaari ring magkaroon ng pag-uusisa.
+          </p>
+
+          <p>
+            Ano ang kahulugan nito? Saan ito ginagamit? Paano ito nabuo? May iba pa ba itong kahulugan sa ibang lugar?
+          </p>
+
+          <p>
+            Hindi rin kailangang gawing obligasyon ng lahat ng nakisali sa isang biro ang magsaliksik tungkol sa etimolohiya. Ngunit para sa mga gustong umunawa, may pagkakataong lumawak ang kaalaman tungkol sa sariling mga wika.
+          </p>
+
+          <p>
+            At kapag ang isang ekspresyon ay nagmula sa panayam tungkol sa seryosong personal na problema, maaari ring kilalanin ang pagkakaiba ng katatawanan sa isang partikular na bahagi ng usapan at ang tunay na pinagdaraanan ng mga taong sangkot.
+          </p>
+
+          <p>
+            Puwedeng matawa sa isang biro nang hindi hinahamak ang tao.<br>
+            Puwedeng makisabay sa viral trend nang hindi nagkukunwaring alam na agad ang buong kasaysayan ng salita.<br>
+            Puwedeng matuklasan ang isang lokal na ekspresyon sa pamamagitan ng meme at pagkatapos ay mas maunawaan ang wikang pinagmulan nito.
+          </p>
+
+          <p>
+            Sa huli, walang nakakahiya sa hindi pagkakaalam ng isang salita. Walang sinumang Pilipino ang inaasahang alam ang lahat ng wika sa sariling bansa.
+          </p>
+
+          <p>
+            Pero may pagkakaiba ang ngayon lamang nakarinig at ang nag-aakalang bago ring nabuo ang lahat ng hindi niya kilala.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG NAGING MEME AY PANGHAHAMAK. AT HINDI LAHAT NG BAGONG NAGING VIRAL AY BAGONG LIKHA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang mawala ang katatawanan para lumawak ang kaalaman.<br>
+            At hindi kailangang matapos sa katatawanan ang pagkakataong makilala ang sariling kultura.
+          </p>
+
+          <blockquote>
+            <p>
+              MALAWAK ANG KULTURANG PILIPINO. HUWAG MONG GAWING HANGGANAN NG KASAYSAYAN NITO ANG LIMITASYON NG SARILI MONG KAALAMAN.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Komisyon sa Wikang Filipino (KWF).</strong> Listahan ng mga Katutubong Wika ng Pilipinas. Pananaliksik at community validation hanggang 2024. Datos sa 135 katutubong wika, kanilang kalagayan, at mga paglilinaw sa pagkakaiba ng wika at diyalekto.
+            </li>
+
+            <li>
+              <strong>Quinto, Edward Jay M., et al. (2024).</strong> Prejudice towards Regional Accents of Philippine English. <em>English World-Wide</em>, 45(2), 133–154. Pag-aaral sa 982 kalahok tungkol sa pagkiling sa panrehiyong punto ng Philippine English.
+            </li>
+
+            <li>
+              <strong>Garcia, Ben E.</strong> <em>English-Visayan Vocabulary (Thesaurus Style).</em> Iniuugnay sa 1996 ng ulat ng Radar Philippines, ngunit 1997 ang publication year sa katalogo ng National Library of the Philippines. Ang impormasyon tungkol sa pahina 99 at mga salitang “esmiringhay” at “esmiringhoy” ay mula sa iniulat na dokumentasyon ni Nereo Cajilig Luján.
+            </li>
+
+            <li>
+              <strong>Radar Philippines, Oktubre 20, 2026:</strong>
+              <a
+                href="https://radar.ph/esmiringhoy-is-an-old-visayan-term-dictionary-entry-shows/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://radar.ph/esmiringhoy-is-an-old-visayan-term-dictionary-entry-shows/
+              </a>
+            </li>
+
+            <li>
+              <strong>National Library of the Philippines — Bibliographic Record:</strong>
+              <a
+                href="https://www.elib.gov.ph/details.php?uid=f1af3e8371ab712f3ecf4d27135375ab"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.elib.gov.ph/details.php?uid=f1af3e8371ab712f3ecf4d27135375ab
+              </a>
+            </li>
+
+            <li>
+              <strong>GMA News (2026).</strong> 'Esmeringhoy': Word Used in Woman's Interview Goes Viral. Oktubre 20, 2026. Konteksto ng panayam, kahulugan ng salita sa naturang pangyayari, at mga naging biro.
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution.</strong> Article XIV, Sections 6, 7, at 9. Mga probisyon tungkol sa pambansang wika, mga wikang panrehiyon, at pananaliksik at pangangalaga sa mga wika.
+            </li>
+
+            <li>
+              <strong>UNESCO.</strong> Oral Traditions and Expressions, Including Language as a Vehicle of the Intangible Cultural Heritage. Ugnayan ng wika, kaalamang pangkomunidad, at pagpapatuloy ng pamanang pangkultura.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
