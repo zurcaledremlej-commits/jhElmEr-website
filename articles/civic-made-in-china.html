@@ -1,1 +1,1460 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Made in China ang mga gamit, mas malakas ang armas nila—kaya wala na bang saysay ipaglaban ang ating karapatan? Suriin ang trade dependence, military imbalance, West Philippine Sea, international law, at pambansang interes."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-made-in-china.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-made-in-china.html"
+  >
+
+  <title>MADE IN CHINA ANG MGA GAMIT, MAS MALAKAS ANG ARMAS NILA—KAYA WALA NA BANG SAYSAY IPAGLABAN ANG ATING KARAPATAN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          MADE IN CHINA ANG MGA GAMIT, MAS MALAKAS ANG ARMAS NILA—KAYA WALA NA BANG SAYSAY IPAGLABAN ANG ATING KARAPATAN?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-made-in-china.png"
+            alt="Simbolikong visual ng mga shipping container na may Chinese markings, malalaking barkong pandigma, isang maliit na bangkang Pilipino, at timbangan ng katarungan sa ilalim ng dagat bilang representasyon ng trade dependence, military imbalance, West Philippine Sea, international law, at pambansang karapatan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <p>
+            Kapag pinag-uusapan ang karapatan ng Pilipinas sa West Philippine Sea, bakit may mga taong tila mas interesado sa kung saan gawa ang ating mga gamit at kung gaano kalakas ang militar ng China kaysa sa kung ano talaga ang ating karapatan?
+          </p>
+
+          <p>
+            May katotohanan sa pagdepende natin sa kanilang produkto at sa pagiging mas malakas ng kanilang militar. Pero kapag ginagamit ang dalawang realidad na iyon para sabihing wala nang saysay ipaglaban ang ating mga karapatan, kailangan nang kuwestiyunin ang mismong pangangatwiran.
+          </p>
+
+          <p>
+            Sa usapin ng boycott sa Chinese-made products, may ganitong pahayag si dating National Security Adviser Clarita Carlos:
+          </p>
+
+          <p>
+            “Boycott Made in China? Eh, ’yang briefs and panties mo galing dun! Paano na?”
+          </p>
+
+          <p>
+            Sa usapin naman ng maaaring digmaan, madalas ding marinig ang ganitong argumento:
+          </p>
+
+          <p>
+            “Kung makipaggyera tayo sa China, ano naman ang laban natin? Mas malakas ang militar nila!”
+          </p>
+
+          <p>
+            Hindi kailangang itanggi ang realidad sa likod ng dalawang usaping ito. Malaki ang pagdepende natin sa mga produktong galing China, at hindi maikakailang mas malakas ang kanilang militar.
+          </p>
+
+          <p>
+            May mga lehitimong usaping pang-ekonomiya at pang-seguridad na dapat seryosong pag-isipan. Pero ibang usapan kapag ginagamit ang mga katotohanang iyon para ipalagay na wala na tayong magagawa, o wala nang kabuluhan ang pagtatanggol sa ating mga karapatan.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero paano naging dahilan ang dalawang katotohanang iyon para mawalan ng saysay ang ating mga karapatan?
+            </p>
+          </blockquote>
+
+          <h2>
+            MADE IN CHINA—KAYA DAPAT MANAHIMIK?
+          </h2>
+
+          <p>
+            Unahin ang mga produktong Made in China.
+          </p>
+
+          <p>
+            Totoong mahalagang trading partner ang China. Ayon sa Philippine Statistics Authority, 22.7% ng kabuuang halaga ng imported goods ng Pilipinas noong Agosto 2026 ay nagmula rito. China rin ang pinakamalaking pinagmumulan ng ating imports sa buwang iyon.
+          </p>
+
+          <p>
+            Malaking bahagi iyon, pero hindi nangangahulugang halos lahat ng ating ginagamit ay galing China. Ang 22.7% ay bahagi ng halaga ng mga inangkat na produkto, hindi porsiyento ng lahat ng gamit ng mga Pilipino.
+          </p>
+
+          <p>
+            At hindi rin puro damit, cellphone, o appliances ang ating inaangkat. May mga raw materials, industrial components, at kagamitang ginagamit din sa paggawa ng iba pang produkto. Kaya kung total boycott ang pinag-uusapan, hindi sapat ang simpleng panawagang huwag bumili ng Chinese products.
+          </p>
+
+          <p>
+            May posibleng epekto iyon sa presyo ng mga bilihin, supply ng negosyo, produksyon, at kabuhayan ng mga manggagawang Pilipino. Mahalagang pag-aralan ang mga magiging kapalit nito, kasama ang posibilidad ng paghahanap ng ibang suppliers at pagbabawas ng sobrang pagdepende sa iisang bansa.
+          </p>
+
+          <p>
+            Pero ano ang koneksiyon ng tatak sa damit, cellphone, o appliances sa karapatan ng Pilipinas sa sarili nitong maritime resources?
+          </p>
+
+          <blockquote>
+            <p>
+              Ang binibili natin ay produkto. Hindi karapatang manghimasok sa ating mga karapatang pandagat.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang itakwil ang lahat ng produktong Chinese para tutulan ang mga aksiyon ng kanilang pamahalaang lumalabag sa ating karapatan. Magkaibang usapin ang pakikipagkalakalan at ang pagtatanggol sa pambansang interes.
+          </p>
+
+          <p>
+            Puwedeng makipagkalakalan nang hindi sumasang-ayon sa lahat ng ginagawa ng isang trading partner. Puwedeng kumilala ng kapakinabangan sa kanilang produkto habang kinukuwestiyon ang mga aksiyon ng kanilang pamahalaan.
+          </p>
+
+          <p>
+            At hindi rin kailangang kamuhian ang mga mamamayang Chinese para manindigan laban sa mga paglabag.
+          </p>
+
+          <p>
+            Kung ang argumento ay mahirap at maaaring makasama sa ating ekonomiya ang total boycott, may saysay iyong pag-usapan. Pero kung ang konklusyon ay dapat na rin tayong manahimik sa mga paglabag dahil gumagamit tayo ng kanilang produkto, malinaw na may malaking butas sa pangangatwiran.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nagiging tama ang isang paglabag dahil lamang nakikinabang tayo sa kalakalan sa bansang gumawa nito.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAS MALAKAS ANG CHINA—KAYA WALA NANG LABAN?
+          </h2>
+
+          <p>
+            Ngayon, ang pangalawang argumento:<br>
+            Mas malakas ang militar ng China, kaya ano raw ang laban natin?
+          </p>
+
+          <p>
+            Totoong hindi natin kayang basta pantayan ang kanilang military firepower.
+          </p>
+
+          <p>
+            Ayon sa Stockholm International Peace Research Institute o SIPRI, tinatayang US$336 billion ang military expenditure ng China noong 2025. Samantala, nasa US$6.38 billion ang military expenditure ng Pilipinas sa parehong taon, batay sa SIPRI data na inilathala ng World Bank.
+          </p>
+
+          <p>
+            Mahigit 50 beses ang agwat sa military spending.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang eksaktong 50 beses din ang kanilang kakayahan sa bawat uri ng labanan. Hindi pera lamang ang batayan ng military strength. May teknolohiya, kagamitan, pagsasanay, logistics, lokasyon, at iba pang salik na nakaaapekto sa aktuwal na kakayahan ng isang militar.
+          </p>
+
+          <p>
+            Pero sapat ang datos para ipakitang napakalaki ng agwat sa resources ng dalawang bansa.
+          </p>
+
+          <p>
+            At hindi biro ang digmaan. Buhay ng mga sundalo at sibilyan, kabuhayan ng mga pamilya, seguridad, at kinabukasan ng bansa ang nakataya.
+          </p>
+
+          <p>
+            Hindi dapat gawing sukatan ng katapangan ang kahandaang makipagdigma nang hindi pinag-iisipan ang magiging kapalit.
+          </p>
+
+          <p>
+            Pero sino ba ang nagsabing ang tanging paraan para ipaglaban ang ating karapatan ay ang makipagbarilan?
+          </p>
+
+          <p>
+            May diplomasya, international law, maritime enforcement, pagpapalakas ng sariling depensa, at pakikipagtulungan sa ibang bansa. May mga paraang maaaring gamitin upang palakasin ang ating posisyon at mabawasan ang panganib ng armadong komprontasyon.
+          </p>
+
+          <p>
+            Hindi madaling isakatuparan ang mga ito, at wala ring garantiya na agad magbabago ang kilos ng China. Pero hindi rin nangangahulugang wala na tayong magagawa dahil lamang mas malakas ang kanilang militar.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pag-iwas sa digmaan ay hindi katumbas ng pagsuko sa karapatan.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY BATAS—HINDI LANG LAKAS NG SANDATA
+          </h2>
+
+          <p>
+            Noong 2016, naglabas ng desisyon ang arbitral tribunal sa ilalim ng United Nations Convention on the Law of the Sea o UNCLOS.
+          </p>
+
+          <p>
+            Kinilala nito ang mahahalagang sovereign rights ng Pilipinas at natukoy na nilabag ng China ang ilan sa mga ito, kabilang ang panghihimasok sa mga aktibidad na may kaugnayan sa pangingisda at petroleum exploration.
+          </p>
+
+          <p>
+            Mahalagang linawin na hindi pinagpasiyahan ng tribunal kung sino ang may soberanya sa mga pinagtatalunang isla. Hindi rin nito itinakda ang maritime boundary ng dalawang bansa.
+          </p>
+
+          <p>
+            Magkaiba ang sovereignty sa teritoryo at ang sovereign rights sa exclusive economic zone o EEZ. Sa EEZ, may partikular na karapatan ang coastal state sa paggalugad, paggamit, pangangalaga, at pamamahala ng likas na yaman. Hindi ibig sabihin na lahat ng tubig sa loob nito ay sariling teritoryo na maaari nang kontrolin sa lahat ng paraan.
+          </p>
+
+          <p>
+            Pinal at binding ang 2016 award sa ilalim ng UNCLOS. Tinatanggihan ito ng China, at wala ring awtomatikong mekanismong magpapatupad ng desisyon sa pamamagitan ng puwersa.
+          </p>
+
+          <p>
+            Kaya may totoong hamon sa pagpapatupad at pagprotekta sa mga kinilalang karapatan.
+          </p>
+
+          <p>
+            Pero ang hirap sa pagpapatupad ng isang karapatan ay hindi patunay na wala nang karapatang dapat ipagtanggol.
+          </p>
+
+          <p>
+            Hindi nakabatay ang legal na karapatan ng Pilipinas sa dami ng ating barkong pandigma, eroplano, o missile.
+          </p>
+
+          <p>
+            Kung lakas-militar lamang ang magiging sukatan kung sino ang dapat igalang, ano pa ang saysay ng international law? Ibig bang sabihin, kapag maliit at mahina ang isang bansa, puwede nang ipagkait ng mas malakas ang mga karapatan nito?
+          </p>
+
+          <blockquote>
+            <p>
+              Kapag ginawang batayan ng karapatan ang laki ng armas, hindi na batas ang pinaiiral—kundi kapangyarihan ng mas malakas.
+            </p>
+          </blockquote>
+
+          <p>
+            Malinaw din sa ating Konstitusyon ang dalawang prinsipyong dapat sabay na isaalang-alang.
+          </p>
+
+          <p>
+            Sa Article II, Section 2 ng 1987 Constitution, itinatakwil ng Pilipinas ang digmaan bilang instrumento ng pambansang patakaran at kinikilala ang mga pangkalahatang prinsipyo ng international law.
+          </p>
+
+          <p>
+            Sa Section 7 naman, itinatakda ang independent foreign policy, kung saan pangunahing konsiderasyon ang national sovereignty, territorial integrity, national interest, at right to self-determination.
+          </p>
+
+          <blockquote>
+            <p>
+              Kaya hindi kailangang mamili sa pagitan ng padalus-dalos na pakikipagdigma at tahimik na pagtanggap sa mga paglabag.
+            </p>
+          </blockquote>
+
+                    <h2>
+            HINDI LANG ITO USAPIN NG MAPA
+          </h2>
+
+          <p>
+            May mas malalim na dahilan kung bakit mahalaga ang mga karapatang pandagat na ito.
+          </p>
+
+          <p>
+            Hindi lamang ito tungkol sa mga guhit sa mapa, mga legal na dokumento, o kung sinong bansa ang may mas maraming barko.
+          </p>
+
+          <p>
+            May mga Pilipinong direktang nakadepende sa dagat para mabuhay.
+          </p>
+
+          <p>
+            Ayon sa Department of Agriculture, may 453,246 registered fisherfolk sa mga lalawigan at lungsod sa kahabaan ng West Philippine Sea noong Hunyo 30, 2026. Hindi nangangahulugang lahat sila ay nangingisda mismo sa mga pinagtatalunang lugar, pero ipinapakita ng bilang kung gaano kalawak ang sektor na may interes sa ligtas at napapanatiling pangingisda.
+          </p>
+
+          <p>
+            Sa isang qualitative master’s research paper noong 2024 ni Nathan Matthew De Leon Galvez mula sa International Institute of Social Studies ng Erasmus University Rotterdam, sinuri ang karanasan ng mga Filipino fisherfolk sa gitna ng South China Sea conflict.
+          </p>
+
+          <p>
+            Natukoy sa pag-aaral ang mga hamong nakaaapekto sa kanilang kabuhayan, seguridad, at dignidad. Hindi ito nationwide survey, pero nagbibigay ito ng mahalagang pagtingin sa karanasan ng mga mangingisdang kadalasang natatabunan ng usapang geopolitics at military power.
+          </p>
+
+          <p>
+            Dahil para sa isang mangingisda, ang kawalan ng ligtas na access sa fishing ground ay maaaring mangahulugan ng mas maliit na huli, mas malaking gastos, o panganib na kailangang harapin para lamang may maiuwi sa pamilya.
+          </p>
+
+          <p>
+            Para sa pamilyang nakadepende sa pangingisda, hindi lamang pambansang simbolo ang dagat. Pinagmumulan din ito ng pagkain at pang-araw-araw na kita.
+          </p>
+
+          <p>
+            Kaya kapag tinatanong kung may saysay pa bang ipaglaban ang ating mga karapatang pandagat, hindi lamang dignidad ng bansa ang dapat isaalang-alang. Kasama rin ang kabuhayan at seguridad ng mga Pilipinong umaasa sa mga yamang-dagat.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi lang watawat ang may nakataya rito. May mga pamilyang kailangang mabuhay.
+            </p>
+          </blockquote>
+
+          <h2>
+            PATRIOTISM BA ANG PAGTANGGAP SA KAHINAAN?
+          </h2>
+
+          <p>
+            Hindi rin makatwirang tawaging mahina o duwag ang bawat taong nangangamba sa digmaan. Lehitimo ang takot na iyon. Ang dapat kuwestiyunin ay kapag ginagamit na ang takot upang sabihing wala nang kabuluhan ang mga karapatang dapat protektahan.
+          </p>
+
+          <p>
+            May mahalagang ipinapakita ang pananaw ng mismong mga Pilipino.
+          </p>
+
+          <p>
+            Sa OCTA Research survey na isinagawa noong Marso 19–25, 2026, na may 1,200 adult respondents at commissioned ng Armed Forces of the Philippines, 69% ang pumili ng pagpapalawak ng naval patrols at troop presence bilang mahalagang hakbang sa West Philippine Sea. May 66% na pumili ng diplomasya at iba pang mapayapang paraan, habang 64% ang pumili ng military modernization.
+          </p>
+
+          <p>
+            Hindi awtomatikong nangangahulugan ang mga bilang na iisa ang pananaw ng lahat ng respondents o na may sapat nang suporta para sa anumang partikular na military action.
+          </p>
+
+          <p>
+            Pero ipinapakita ng survey na parehong mahalagang konsiderasyon sa publiko ang pagtatanggol sa mga karapatan, mapayapang pamamaraan, at pagpapalakas ng depensa.
+          </p>
+
+          <p>
+            Hindi kailangang magkasalungat ang mga layuning iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagiging makabayan ay hindi nasusukat sa lakas ng pananalita, dami ng produktong bino-boycott, o kahandaang sumabak agad sa digmaan.
+            </p>
+          </blockquote>
+
+          <p>
+            Maaari itong makita sa maingat na pagtatanggol sa pambansang interes, paggalang sa karapatan ng ibang bansa, at pagsisikap na protektahan ang buhay at kabuhayan ng sariling mamamayan.
+          </p>
+
+          <p>
+            At lalong hindi sukatan ng katalinuhan ang pagtatanong kung saan gawa ang underwear ng isang Pilipinong ipinagtatanggol ang maritime rights ng bansa.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nabubura ng tatak ng briefs ang karapatan ng isang bansa. Hindi rin nabubura ng mas malakas na firepower ang bisa ng international law.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG KAHINAAN AY GINAWANG PALUSOT
+          </h2>
+
+          <p>
+            Dito kailangang maging matalas ang ating pag-iisip.
+          </p>
+
+          <p>
+            Ang pagiging praktikal ay nangangahulugang kinikilala ang limitasyon ng ating kakayahan at naghahanap ng makatwirang paraan para protektahan ang pambansang interes. Hindi ito nangangahulugang ginagamit ang ating kahinaan para bigyang-katwiran ang anumang paglabag ng mas malakas na bansa.
+          </p>
+
+          <p>
+            Puwedeng makipagkalakalan nang hindi nagpapasakop.<br>
+            Puwedeng umiwas sa digmaan nang hindi tumatalikod sa karapatan.<br>
+            Puwedeng kilalanin ang lakas ng China nang hindi ipinagpapalagay na tama ang lahat ng ginagawa nito.
+          </p>
+
+          <p>
+            Ang problema ay hindi ang pag-amin na mas malakas sila. Ang problema ay kapag ang lakas nila ang ginagawa nang dahilan para mawalan ng halaga ang ating karapatan.
+          </p>
+
+          <p>
+            Dahil kung tatanggapin natin ang mentalidad na walang saysay manindigan kapag mas mahina tayo, hindi na kailangang agawin ng mas malakas ang ating paninindigan. Tayo na mismo ang nagtatapon nito.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG MAS MALAKAS KA PARA MAGKAROON NG KARAPATAN. AT HINDI DAHIL MAS MAHINA KA, WALA KA NANG KARAPATANG IPAGTANGGOL.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang tunay na usapin ay hindi kung saan gawa ang ating damit o kung ilang missile ang mayroon tayo.<br>
+            Ang tunay na usapin ay kung paano natin poprotektahan ang ating pambansang interes at mga legal na karapatan nang hindi isinasakripisyo nang walang dahilan ang buhay at kinabukasan ng mga Pilipino.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG KARAPATAN NG ISANG BANSA AY HINDI DAPAT NAKASALALAY SA KUNG GAANO KALAKAS ANG BANSANG HUMAHAMON DITO.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Batayan at Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>The Filipino Times.</strong> Clarita Carlos Questions Calls to Boycott China-made Products, October 19, 2026.
+            </li>
+
+            <li>
+              <strong>Philippine Statistics Authority.</strong> International Merchandise Trade Statistics of the Philippines, August 2026 (Preliminary), September 30, 2026.
+            </li>
+
+            <li>
+              <strong>Stockholm International Peace Research Institute.</strong> Trends in World Military Expenditure, 2025, 2026.
+            </li>
+
+            <li>
+              <strong>World Bank, SIPRI Military Expenditure Database.</strong> Military expenditure (current US$), Philippines, 2025.
+            </li>
+
+            <li>
+              <strong>Permanent Court of Arbitration.</strong> The South China Sea Arbitration, July 12, 2016; United Nations Convention on the Law of the Sea, Article 296 at Annex VII, Article 11.
+            </li>
+
+            <li>
+              <strong>Official Gazette.</strong> 1987 Philippine Constitution, Article II, Sections 2 at 7.
+            </li>
+
+            <li>
+              <strong>OCTA Research.</strong> Tugon ng Masa Survey, March 19–25, 2026, reported by Philippine News Agency, June 3, 2026.
+            </li>
+
+            <li>
+              <strong>Department of Agriculture.</strong> West Philippine Sea Livelihoods Rest on Protecting Fisherfolk — DA Usec, July 19, 2026.
+            </li>
+
+            <li>
+              <strong>Nathan Matthew De Leon Galvez.</strong> <em>Fishing in Disputed Waters: Understanding the Impact of the South China Sea Conflict Through the Lens of Filipino Fisherfolk.</em> Master’s Research Paper, International Institute of Social Studies, Erasmus University Rotterdam, December 2024.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
