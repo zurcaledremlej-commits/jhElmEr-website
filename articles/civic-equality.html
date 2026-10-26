@@ -1,1 +1,2333 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Equality ba talaga—o espesyal na pagtrato ang gusto? Suriin ang LGBTQ+ rights, gender identity, biological sex, sports eligibility, legal recognition, religious freedom, discrimination, at hangganan ng equality at accommodation."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-equality.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-equality.html"
+  >
+
+  <title>EQUALITY BA TALAGA—O ESPESYAL NA PAGTRATO ANG GUSTO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          EQUALITY BA TALAGA—O ESPESYAL NA PAGTRATO ANG GUSTO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-equality.png"
+            alt="Simbolikong visual ng timbangan ng katarungan, lalaki at babae, LGBTQ+ symbols, passport, korona, public facility signs, microphones, at mga legal at institutional elements bilang representasyon ng equality, special treatment, gender identity, biological sex, legal recognition, sports, public policy, at pananagutan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            “RESPETUHIN NIYO KAMI!”<br>
+            “BAKIT NAMAN NAMIN KAYO KAILANGANG TANGGAPIN?”
+          </p>
+
+          <p>
+            Dalawang magkaibang sigaw. Pero sa gitna ng lumalawak na usapin tungkol sa LGBTQ+ rights, may isang tanong na kailangang harapin:<br>
+            Ang pagkilala ba sa pantay na dignidad ng isang tao ay nangangahulugang dapat ding aprubahan ng lipunan ang bawat pagbabagong kaniyang ipinaglalaban?
+          </p>
+
+          <p>
+            Hindi na lamang personal na pagtanggap ang pinag-uusapan. Umabot na ang debate sa legal na pagkilala sa relasyon, biological sex at gender identity, mga opisyal na dokumento, CR, women's sports, at mga patakarang may epekto sa iba pang mamamayan.
+          </p>
+
+          <p>
+            May mga pagbabago na naglalayong alisin ang hindi makatarungang pagtrato. May iba namang kailangang pag-aralan dahil may kaakibat na obligasyon, limitasyon, at posibleng epekto sa mga karapatan ng ibang tao.
+          </p>
+
+          <p>
+            Dito kailangang paghiwalayin ang equality at entitlement.
+          </p>
+
+          <p>
+            Hindi dahil mali ang humingi ng karapatan. Kundi dahil magkaiba ang karapatang magsulong ng pagbabago at ang pag-asang dapat itong tanggapin nang walang pagtutol.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG PANTAY NA KARAPATAN ANG HINIHINGI, DAPAT BA LAGING MAG-ADJUST ANG BUONG LIPUNAN—O DAPAT MUNANG PATUNAYAN KUNG BAKIT MAKATARUNGAN ANG BAWAT PAGBABAGO?
+            </p>
+          </blockquote>
+
+          <h2>
+            MULA PAGTANGGAP—HANGGANG SA PAGBABAGO NG MGA INSTITUSYON
+          </h2>
+
+          <p>
+            Hindi na bago ang LGBTQ+ rights movement. Matagal nang may mga panawagan tungkol sa proteksiyon laban sa harassment, patas na oportunidad, karapatang mag-organisa, at legal na pagkilala.
+          </p>
+
+          <p>
+            Noong 1969, naging mahalagang pangyayari sa modernong gay rights movement ang Stonewall uprising sa Amerika.<br>
+            Noong 2001, naging unang bansa ang Netherlands na nagbukas ng civil marriage sa same-sex couples.<br>
+            Noong 2015, kinilala ng U.S. Supreme Court sa Obergefell v. Hodges ang constitutional right ng same-sex couples na magpakasal.
+          </p>
+
+          <p>
+            Kasabay nito, matagal na ring may magkakahiwalay na panawagan tungkol sa transgender recognition, legal documents, healthcare, at paggamit ng mga pasilidad.
+          </p>
+
+          <p>
+            Hindi ito iisang organisasyon na may iisang listahan ng kahilingan. Hindi rin napatutunayang pagkatapos makamit ang isang karapatan ay saka lamang naisip ang susunod.
+          </p>
+
+          <p>
+            Ngunit malinaw ang naging paglawak ng pampublikong debate.
+          </p>
+
+          <blockquote>
+            <p>
+              MULA SA TANONG NA “DAPAT BA SILANG TANGGAPIN?” UMABOT ITO SA “ALING MGA BATAS, DEPINISYON, AT PATAKARAN ANG DAPAT BAGUHIN?”
+            </p>
+          </blockquote>
+
+          <p>
+            At habang lumalawak ang saklaw ng mga panukala, lumalawak din ang mga tanong tungkol sa mga institusyong kailangang mag-adjust.
+          </p>
+
+          <p>
+            Hindi sapat na mahalaga ang isang pagbabago sa grupong humihiling nito. Kailangang ipaliwanag kung bakit ito nararapat, anong problema ang nilulutas, at paano maaapektuhan ang iba.
+          </p>
+
+          <h2>
+            HINDI PARE-PAREHO ANG MGA KARAPATANG PINAG-UUSAPAN
+          </h2>
+
+          <p>
+            Mahalagang huwag pagsama-samahin ang lahat ng LGBTQ+ rights issues.
+          </p>
+
+          <p>
+            Ang sexual orientation ay tungkol sa kung kanino maaaring magkaroon ng romantiko o seksuwal na atraksyon ang isang tao.<br>
+            Ang gender identity ay tungkol naman sa kaniyang sariling karanasan at pagkakakilanlan kaugnay ng gender.
+          </p>
+
+          <p>
+            Magkakaugnay ang ilang isyu, ngunit hindi pareho ang kanilang legal, medikal, at panlipunang implikasyon.
+          </p>
+
+          <p>
+            Halimbawa, ang paghingi ng patas na oportunidad sa trabaho ay ibang usapin sa pagbabago ng sex classification sa isang government document.
+          </p>
+
+          <p>
+            Iba rin ang paggamit ng isang preferred name sa araw-araw na pakikitungo sa pagtatakda ng eligibility sa women's sports.
+          </p>
+
+          <p>
+            At ang panukalang gawing legal ang same-sex marriage ay may ibang epekto sa mga batas tungkol sa pamilya, mana, ari-arian, at iba pang benepisyo.
+          </p>
+
+          <p>
+            Kapag pinagsama ang lahat sa iisang salitang “equality,” nawawala ang mahahalagang pagkakaibang kailangang suriin.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA TAWAGING KARAPATAN ANG ISANG KAHILINGAN PARA MAPATUNAYANG MAKATARUNGAN NA ANG PARAAN NG PAGPAPATUPAD NITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAGKILALA SA GENDER IDENTITY—HANGGANG SAAN ANG OBLIGASYON NG IBA?
+          </h2>
+
+          <p>
+            Ayon sa World Health Organization, magkaiba ang biological sex at gender.
+          </p>
+
+          <p>
+            Ang sex ay tumutukoy sa mga biological at physiological characteristics gaya ng chromosomes, hormones, at reproductive anatomy. Karaniwan itong inuuri bilang male at female, bagama't may mga intersex variations.<br>
+            Ang gender identity naman ay tumutukoy sa malalim at personal na karanasan ng isang tao tungkol sa kaniyang gender, na maaaring tumugma o hindi sa sex assigned at birth.
+          </p>
+
+          <p>
+            Mahalagang maunawaan ang pagkakaibang ito dahil hindi lahat ng patakaran ay may parehong layunin.
+          </p>
+
+          <p>
+            Sa personal na pakikitungo, maaaring gamitin ang pangalan at pagtawag na hinihiling ng isang tao bilang paraan ng paggalang.<br>
+            Sa government documents, kailangang tukuyin kung anong impormasyon ang mahalaga sa layunin ng dokumento.<br>
+            Sa sports, maaaring may mga kategoryang nangangailangan ng sex-based eligibility upang matugunan ang competitive fairness.
+          </p>
+
+          <p>
+            Hindi awtomatikong napapalitan ng gender identity ang lahat ng biological characteristics sa bawat sitwasyon. Ngunit hindi rin nangangahulugang walang lugar ang gender identity sa anumang legal o panlipunang patakaran.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGGALANG SA ISANG TAO AY HINDI AWOTOMATIKONG PAGSANG-AYON NA BAGUHIN ANG BAWAT PATAKARANG MAY KAUGNAYAN SA KANIYANG IDENTIDAD.
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag may panukalang obligahin ang isang institusyon na gumamit ng partikular na classification o recognition, kailangan itong suriin ayon sa layunin ng patakaran, legal na batayan, at epekto sa mga taong saklaw.
+          </p>
+
+          <h2>
+            MULA SA PERSONAL NA PAGKILALA—HANGGANG SA OPISYAL NA DOKUMENTO
+          </h2>
+
+          <p>
+            May malinaw na halimbawa sa Estados Unidos.
+          </p>
+
+          <p>
+            Noong Abril 11, 2022, naging available sa U.S. passport applicants ang X gender marker bilang alternatibo sa M at F.
+          </p>
+
+          <p>
+            Para sa mga sumusuporta, mahalaga ang pagbabagong ito upang ang dokumento ay mas tumugma sa gender identity ng may-ari.<br>
+            Para sa mga tumututol, mahalagang tanong kung ang opisyal na dokumento ay dapat sumasalamin sa sariling pagkakakilanlan o sa biological sex, at kung kailan kailangan ang ganoong impormasyon.
+          </p>
+
+          <p>
+            Noong 2025, binaligtad ng administrasyong Trump ang naturang passport policy at ibinalik ang paggamit ng sex-at-birth markers sa mga bagong pasaporteng saklaw nito.
+          </p>
+
+          <p>
+            Hindi sapat ang katotohanang naipatupad ang isang patakaran para sabihing napatunayan nang makatarungan ito.
+          </p>
+
+          <p>
+            Ngunit ipinapakita ng pagbabago na hindi lamang personal na pagtanggap ang pinagtatalunan. Umabot na ang usapin sa mismong impormasyon at klasipikasyong ginagamit ng pamahalaan.
+          </p>
+
+          <blockquote>
+            <p>
+              MAY PAGKAKAIBA ANG KARAPATANG KILALANIN ANG SARILING IDENTIDAD AT ANG TANONG KUNG ANONG IMPORMASYON ANG KAILANGANG GAMITIN NG ESTADO SA ISANG PARTIKULAR NA DOKUMENTO.
+            </p>
+          </blockquote>
+
+                    <h2>
+            ANG MGA HAKBANG NI PRESIDENT TRUMP
+          </h2>
+
+          <p>
+            Noong Enero 20, 2025, sinabi ni U.S. President Donald Trump sa kaniyang inaugural address na magiging opisyal na patakaran ng kaniyang administrasyon ang pagkilala sa dalawang gender:<br>
+            Male at Female.
+          </p>
+
+          <p>
+            Sa araw ding iyon, nilagdaan niya ang Executive Order 14168, Defending Women From Gender Ideology Extremism and Restoring Biological Truth to the Federal Government.
+          </p>
+
+          <p>
+            Sa mismong executive order, dalawang sex—male at female—ang itinakdang kilalanin sa interpretasyon at aplikasyon ng mga kaugnay na federal executive policies.
+          </p>
+
+          <p>
+            Iniutos din ang pagbabago sa official documents at ilang patakarang gumagamit ng sex-based classifications.
+          </p>
+
+          <p>
+            Sinundan ito noong Pebrero 5, 2025 ng Executive Order 14201, Keeping Men Out of Women's Sports, na nagtakda ng mga hakbang para sa sex-based eligibility sa women's school sports sa ilalim ng mga naaangkop na federal rules.
+          </p>
+
+          <p>
+            Para sa administrasyong Trump, layunin ng mga hakbang na ito na mapanatili ang mga sex-based protections, opportunities, at classifications sa mga partikular na institusyon.<br>
+            Para naman sa mga tumututol, may pangamba na maaari itong magresulta sa mga hindi makatarungang paghihigpit sa transgender individuals.
+          </p>
+
+          <p>
+            May mga legal challenge rin laban sa ilang patakaran.
+          </p>
+
+          <p>
+            Noong Nobyembre 6, 2025, pinayagan ng U.S. Supreme Court na ipatupad ang sex-at-birth passport policy habang nagpapatuloy ang kaugnay na legal na proseso. Hindi iyon pangwakas na pagresolba sa lahat ng constitutional issues.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong binago ng executive orders ang lahat ng state laws sa Amerika.
+          </p>
+
+          <p>
+            Ang malinaw:
+          </p>
+
+          <blockquote>
+            <p>
+              GINAWANG USAPIN NG PAMAMAHALA AT BATAS ANG HANGGANAN NG GENDER-IDENTITY RECOGNITION AT BIOLOGICAL-SEX CLASSIFICATIONS.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi na lamang ito tungkol sa kung paano titingnan ng isang tao ang kaniyang sarili, kundi kung anong pamantayan ang dapat gamitin ng pamahalaan para sa lahat ng saklaw ng isang partikular na patakaran.
+          </p>
+
+          <h2>
+            HINDI LAMANG AMERIKA—MAY IBA PANG BANSANG NAGTAKDA NG SEX-BASED BOUNDARIES
+          </h2>
+
+          <p>
+            Noong Abril 14, 2025, inamyendahan ng Hungary ang Konstitusyon nito upang ilagay ang probisyong ang tao ay male o female.
+          </p>
+
+          <p>
+            Kaugnay ito ng mas malawak na mga patakaran ng pamahalaang Orbán tungkol sa legal sex recognition, pamilya, at mga tradisyonal na pagpapakahulugan sa kasarian.
+          </p>
+
+          <p>
+            Noong Abril 16, 2025, nagpasya naman ang UK Supreme Court sa kasong For Women Scotland v. The Scottish Ministers na biological sex ang kahulugan ng mga salitang sex, man, at woman sa ilalim ng Equality Act 2010.
+          </p>
+
+          <p>
+            Mahalagang limitasyon:<br>
+            Ang desisyong iyon ay interpretasyon ng partikular na batas. Hindi nito inalis ang mga proteksiyon ng transgender individuals laban sa diskriminasyon batay sa gender reassignment.
+          </p>
+
+          <p>
+            Noong Setyembre 26, 2025, nag-apruba ang Slovakia ng constitutional amendment na kumikilala sa dalawang biological sex—male at female. Nagkabisa ito noong Nobyembre 1, 2025.
+          </p>
+
+          <p>
+            Kasama rin sa mga pagbabago ang ibang usapin tungkol sa pamilya, adoption, at national identity.
+          </p>
+
+          <p>
+            Hindi pare-pareho ang mga hakbang na ito.
+          </p>
+
+          <p>
+            Ang Estados Unidos ay gumamit ng executive orders. Ang Hungary at Slovakia ay nagkaroon ng constitutional amendments. Sa United Kingdom, judicial interpretation ng isang batas ang naging sentro.
+          </p>
+
+          <p>
+            May mga sumusuporta sa sex-based classifications dahil sa legal clarity, privacy, at proteksiyon sa mga kategoryang nakabatay sa biological sex.<br>
+            May mga tumututol din dahil sa posibleng epekto sa legal gender recognition at karapatan ng transgender at intersex individuals.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGKAKAROON NG MAGKAKAIBANG PATAKARAN SA MGA BANSANG ITO AY PATUNAY NA HINDI PA TAPOS ANG PAGTATALO TUNGKOL SA HANGGANAN NG GENDER RECOGNITION.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin nangangahulugang makatarungan na agad ang bawat restriksiyon dahil may bansang nagpatupad nito.
+          </p>
+
+          <p>
+            Ang kailangang suriin ay ang partikular na patakaran, layunin, legal na batayan, at aktuwal na epekto.
+          </p>
+
+          <h2>
+            ISANG AKTUWAL NA KASO—KAPAG MAY EPEKTO NA SA IBANG BATAS ANG HINIHINGING PAGBABAGO
+          </h2>
+
+          <p>
+            Noong Disyembre 22, 2022, ipinasa ng Scottish Parliament ang Gender Recognition Reform (Scotland) Bill.
+          </p>
+
+          <p>
+            Layunin nitong gawing mas madali ang pagkuha ng Gender Recognition Certificate. Kabilang sa mga pagbabago ang pagbaba ng minimum age mula 18 tungong 16, pagpapaikli ng kinakailangang panahon bago makakuha ng legal recognition, at pag-aalis ng requirement na magpakita ng medical evidence ng gender dysphoria.
+          </p>
+
+          <p>
+            Para sa mga sumusuporta, mahalaga itong pagbabawas ng mga hadlang sa pagkakaroon ng legal na dokumentong tumutugma sa gender identity.
+          </p>
+
+          <p>
+            Ngunit noong Enero 2023, ginamit ng UK Government ang Section 35 ng Scotland Act 1998 upang pigilan ang bill na maging batas.
+          </p>
+
+          <p>
+            Ayon sa pamahalaan ng UK, may posibleng masamang epekto ang panukala sa pagpapatupad ng Equality Act 2010, kabilang ang mga usapin tungkol sa single-sex associations, equal pay, at iba pang legal obligations.
+          </p>
+
+          <p>
+            Hindi sang-ayon ang Scottish Government sa pagsusuring iyon. Ipinagtanggol nito ang panukala at kinuwestiyon sa korte ang paggamit ng Section 35.
+          </p>
+
+          <p>
+            Noong Disyembre 8, 2023, pinagtibay ng hukuman na legal ang naging paggamit ng kapangyarihang iyon upang harangin ang bill.
+          </p>
+
+          <p>
+            Mahalagang linawin:<br>
+            Hindi nito awtomatikong pinatunayan na magiging mapanganib o hindi makatarungan ang bawat nilalaman ng panukala. Ang pinagpasiyahan ay ang legalidad ng naging paggamit ng kapangyarihang humarang dito.
+          </p>
+
+          <p>
+            Pero ipinapakita ng kaso ang isang mahalagang realidad.
+          </p>
+
+          <blockquote>
+            <p>
+              KAPAG MAY HINIHINGING PAGBABAGO SA LEGAL RECOGNITION, HINDI LANG ANG GUSTO NG APLIKANTE ANG DAPAT SURIIN—KUNDI PATI ANG POSIBLENG EPEKTO NITO SA IBA PANG BATAS AT KARAPATAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi sapat ang sabihing equality ang layunin upang tapos na ang pagsusuri.<br>
+            At hindi rin sapat ang pagsasabing may posibleng panganib nang hindi ipinapakita kung ano ang ebidensiya, gaano ito kalaki, at kung may mas angkop na solusyon.
+          </p>
+
+          <h2>
+            SA WOMEN'S SPORTS—BAKIT MAHALAGA ANG BIOLOGICAL DIFFERENCES?
+          </h2>
+
+          <p>
+            Sa competitive sports, may mga physical at physiological characteristics na maaaring makaapekto sa strength, power, endurance, at iba pang aspeto ng athletic performance.
+          </p>
+
+          <p>
+            Kaya may mga kompetisyong gumagamit ng sex-based categories upang magtakda ng patas na eligibility requirements.
+          </p>
+
+          <p>
+            May isang aktuwal na kontrobersiyang nagpakita kung gaano kaseryoso ang isyung ito.
+          </p>
+
+          <p>
+            Noong Marso 2022, nanalo ang transgender swimmer na si Lia Thomas sa women's 500-yard freestyle sa NCAA Division I Championships sa Estados Unidos.
+          </p>
+
+          <p>
+            Sa parehong kompetisyon, nagtabla naman sina Thomas at Riley Gaines sa ikalimang puwesto sa women's 200-yard freestyle.
+          </p>
+
+          <p>
+            Kinuwestiyon ni Gaines at iba pang mga babaeng atleta ang mga patakaran sa eligibility at shared locker-room facilities. Para sa kanila, kailangang protektahan ang competitive fairness, privacy, at oportunidad ng mga atletang babae.
+          </p>
+
+          <p>
+            Para naman sa mga sumusuporta sa partisipasyon ni Thomas, nakilahok siya sa ilalim ng mga eligibility rules na umiiral noon. Hindi raw makatarungang parusahan ang isang atletang sumunod sa mga patakarang pinahihintulutan ng governing body.
+          </p>
+
+          <p>
+            Noong 2024, ibinasura ng Court of Arbitration for Sport ang legal challenge ni Thomas laban sa World Aquatics eligibility restrictions dahil wala siyang sapat na standing upang kuwestiyunin ang patakaran sa naturang proseso.
+          </p>
+
+          <p>
+            Hindi iyon pangwakas na pasya tungkol sa pagiging makatarungan o diskriminatibo ng mismong sports restrictions.
+          </p>
+
+          <p>
+            Noong Pebrero 6, 2025, binago naman ng NCAA ang patakaran nito. Nilimitahan ang kompetisyon sa women's category sa mga student-athletes na assigned female at birth. Pinahihintulutan pa rin nitong mag-practice sa women's teams ang ilang transgender student-athletes sa ilalim ng mga itinakdang kondisyon.
+          </p>
+
+          <p>
+            Dito makikita ang eksaktong conflict:<br>
+            Ang hinihinging inclusion ng isang atleta ay kailangang timbangin kasama ng layunin ng women's category at interes ng ibang competitors.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG SABIHING “ISAMA SILA” O “IPAGBAWAL SILA” NANG HINDI SINUSURI KUNG ANONG URI NG KOMPETISYON, ANONG MGA PAMANTAYAN, AT ANONG EBIDENSIYA ANG MAY KAUGNAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Noong Marso 26, 2026, nagpatibay ang International Olympic Committee ng bagong patakaran para sa female category sa Olympic at iba pang IOC events mula LA28.
+          </p>
+
+          <p>
+            Sa ilalim nito, gagamitin ang one-time SRY gene screening sa pagtukoy ng eligibility, na may limitadong eksepsiyon para sa ilang differences in sex development.
+          </p>
+
+          <p>
+            Hindi saklaw ng patakarang iyon ang grassroots at recreational sports.
+          </p>
+
+          <p>
+            Mahalaga rin ang sumunod na desisyon ng pinakamataas na hukuman sa Estados Unidos.
+          </p>
+
+          <p>
+            Noong Hunyo 30, 2026, naglabas ang U.S. Supreme Court ng desisyon sa magkaugnay na kasong West Virginia v. B. P. J. at Little v. Hecox.
+          </p>
+
+          <p>
+            Pinag-usapan dito kung maaaring limitahan ng mga estado ang women's at girls' school sports categories batay sa biological sex, kabilang ang mga sitwasyong may transgender athletes na humihiling ng exception sa naturang eligibility rules.
+          </p>
+
+          <p>
+            Nagpasya ang Korte na pinahihintulutan ng Title IX ang pagkakaroon ng magkahiwalay na sports teams batay sa biological sex. Pinagtibay rin nitong hindi lumabag sa Equal Protection Clause ang mga batas ng West Virginia at Idaho na naglilimita sa female sports categories sa biological females.
+          </p>
+
+          <p>
+            Kinilala ng mayorya ng Korte ang competitive fairness at safety bilang mahahalagang layunin ng mga patakarang ito.
+          </p>
+
+          <p>
+            Ipinaliwanag din nitong hindi obligadong magsagawa ang mga estado ng indibidwal na paghahambing ng pisikal at athletic capabilities ng bawat atletang humihiling ng exception batay sa hormone treatment o ibang personal na kalagayan.
+          </p>
+
+          <p>
+            Mahalagang limitasyon:<br>
+            Hindi iniutos ng desisyon na lahat ng estado ay dapat magpatupad ng kaparehong restrictions. Pinagtibay nito ang legalidad ng mga partikular na sex-based classifications na pinag-usapan sa dalawang kaso, hindi ang lahat ng posibleng paghihigpit sa transgender individuals.
+          </p>
+
+          <p>
+            May mga mahistradong tumutol sa bahagi ng pangangatwiran at naging resulta ng desisyon dahil sa mga pangamba tungkol sa equal protection at epekto sa transgender athletes.
+          </p>
+
+          <p>
+            Ngunit malinaw ang isang mahalagang legal na punto.
+          </p>
+
+                    <blockquote>
+            <p>
+              ANG PAGHINGI NG EQUALITY AY HINDI AWOTOMATIKONG NAGBIBIGAY NG KARAPATANG HUMINGI NG EXCEPTION SA BAWAT SEX-BASED ELIGIBILITY RULE.
+            </p>
+          </blockquote>
+
+          <p>
+            Kailangang suriin ang layunin ng kategorya, ang legal na batayan, at ang pagiging makatarungan ng patakaran—hindi lamang ang personal na pagkakakilanlan ng atletang humihiling ng pagbabago.
+          </p>
+
+          <p>
+            Maaari pa ring pag-aralan at kuwestiyunin ang scientific evidence, proportionality, privacy protections, at epekto ng mga patakarang ito.
+          </p>
+
+          <p>
+            Ngunit hindi awtomatikong diskriminasyon ang pagtatanong tungkol sa competitive fairness o ang pagkakaroon ng partikular na eligibility requirements.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PANTAY NA PAGKAKATAON AY HINDI LAGING NANGANGAHULUGANG WALANG PAGKAKAIBA SA MGA PAMANTAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung may hiwalay na kategorya, kailangang maipaliwanag kung bakit ito umiiral at kung makatarungan ang pamantayang ginagamit.
+          </p>
+
+          <h2>
+            SA CR AT MGA PAMPUBLIKONG PASILIDAD—SINO ANG DAPAT MAG-ADJUST?
+          </h2>
+
+          <p>
+            May mga panukalang payagan ang paggamit ng pasilidad ayon sa gender identity. May iba namang naninindigang dapat gamitin ang biological sex sa ilang sex-separated facilities.
+          </p>
+
+          <p>
+            Lehitimong pag-usapan ang privacy, safety, accessibility, at praktikal na pagpapatupad.
+          </p>
+
+          <p>
+            Ngunit hindi sapat ang pangamba lamang upang ipagpalagay na may aktuwal na panganib.
+          </p>
+
+          <p>
+            Sa 2018 peer-reviewed study nina Hasenbush, Flores, at Herman sa Massachusetts, walang natagpuang pagtaas sa mga naitalang assault, sex crimes, at voyeurism incidents sa mga pinag-aralang lugar na maiuugnay sa gender-identity-inclusive public accommodation laws.
+          </p>
+
+          <p>
+            Hindi nito sinasagot ang lahat ng sitwasyon sa Pilipinas o sa ibang bansa. Ngunit nagbibigay ito ng mahalagang ebidensiya na kailangang isaalang-alang sa paggawa ng patakaran.
+          </p>
+
+          <p>
+            Maaari ring suriin kung may angkop na privacy safeguards o iba pang praktikal na paraan upang tugunan ang magkakaibang pangangailangan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG PAG-ADJUST AY PANG-AABUSO. PERO KAILANGAN DING MAIPALIWANAG KUNG BAKIT MAKATARUNGAN ANG ISANG ACCOMMODATION AT PAANO ITO IPATUTUPAD.
+            </p>
+          </blockquote>
+
+          <h2>
+            SAME-SEX MARRIAGE—PAGKILALA BA O PAGBABAGO SA INSTITUSYON?
+          </h2>
+
+          <p>
+            Sa Pilipinas, ang Articles 1 at 2 ng Family Code ay nakabatay sa kasal sa pagitan ng lalaki at babae.
+          </p>
+
+          <p>
+            May mga sumusuporta sa pagbabago dahil sa mga usapin ng property rights, inheritance, legal benefits, at pagkilala sa relasyon ng magkaparehong kasarian.<br>
+            May mga tumututol din dahil sa kanilang pananaw tungkol sa kahulugan at layunin ng kasal.
+          </p>
+
+          <p>
+            Noong 2019, dinismiss ng Philippine Supreme Court ang petisyon sa Falcis v. Civil Registrar General dahil sa mga procedural deficiencies, kabilang ang kawalan ng sapat na standing at aktuwal na kasong maaaring resolbahin.
+          </p>
+
+          <p>
+            Mahalaga ang sinabi ng Korte tungkol sa pangangailangang magkaroon ng mas malawak na public discussion sa kung anong legal recognition at anong mga karapatan at obligasyon ang dapat iugnay rito.
+          </p>
+
+          <p>
+            Hindi nagpasiya ang Korte sa kasong iyon na awtomatikong labag sa Konstitusyon ang lahat ng posibleng anyo ng same-sex marriage. Hindi rin nito ginawang legal ang naturang kasal.
+          </p>
+
+          <p>
+            Iba naman ang panukalang SOGIESC Equality Act na inihain sa Senado noong 2025. Nakatuon ito sa pagbabawal ng mga partikular na uri ng diskriminasyon at hindi kapareho ng panukalang magpapahintulot sa same-sex marriage.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG PAG-IBIG LAMANG PARA IPALIWANAG ANG LAHAT NG LEGAL NA EPEKTO NG KASAL. PERO HINDI RIN SAPAT ANG TRADISYON LAMANG PARA ISARA ANG LAHAT NG TANONG TUNGKOL SA LEGAL NA PAGKILALA.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang kailangang pagdebatehan ay ang eksaktong legal na pagbabago at mga epekto nito.
+          </p>
+
+          <h2>
+            BAKIT HINDI PARE-PAREHO ANG SINUSUPORTAHAN NG PUBLIKO?
+          </h2>
+
+          <p>
+            Sa 2022 survey ng Pew Research Center sa Estados Unidos, 64% ang sumuporta sa mga patakarang nagpoprotekta sa transgender individuals laban sa diskriminasyon sa trabaho, pabahay, at mga pampublikong lugar.
+          </p>
+
+          <p>
+            Sa parehong survey, 58% naman ang sumuporta sa mga patakarang mag-aatas sa transgender athletes na lumahok sa mga team na tumutugma sa kanilang sex at birth.
+          </p>
+
+          <p>
+            Sa 2025 survey, naging 56% ang suporta sa naturang anti-discrimination protections, samantalang umabot sa 66% ang suporta sa sex-at-birth sports restrictions.
+          </p>
+
+          <p>
+            Hindi ito Philippine survey. Hindi rin pinatutunayan ng mga numerong ito na ang LGBTQ+ advocacy mismo ang sanhi ng pagbabago sa public opinion.
+          </p>
+
+          <p>
+            Ngunit malinaw na hindi pare-pareho ang pananaw ng publiko sa magkakaibang transgender-related policies.
+          </p>
+
+          <p>
+            Maaaring may taong sumusuporta sa patas na oportunidad ngunit may agam-agam sa sports eligibility o legal gender recognition.
+          </p>
+
+          <p>
+            Maaaring makatuwiran ang kaniyang dahilan. Maaari ring kuwestiyunin ang dahilan.
+          </p>
+
+          <p>
+            Ang mahalaga ay suriin ang argumento, hindi awtomatikong hatulan ang pagkatao.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI DAHIL SUMUSUPORTA KA SA ISANG KARAPATAN AY OBLIGADO KA NANG SUMUPORTA SA LAHAT NG KAUGNAY NA PANUKALA.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG MAY KUMONTRA—BAKIT MAY MGA NAUWI SA PANGKUKUYOG?
+          </h2>
+
+          <p>
+            Hindi na bago ang public criticism. Ngunit sa social media, mas mabilis at mas malawak itong maaaring kumalat.
+          </p>
+
+          <p>
+            May dalawang kontrobersiyang nagpapakita kung paanong ang debate tungkol sa mga karapatan at patakaran ay maaaring mauwi sa personal na sagutan.
+          </p>
+
+          <p>
+            Noong Hunyo 22, 2025, nagpahayag sina Ricky Reyes at Renee Salud sa Toni Talks ng pagtutol sa same-sex marriage at SOGIE Equality Bill.
+          </p>
+
+          <p>
+            Sinabi ni Salud na may ilang gay individuals na humihingi ng sobra at nagiging entitled. Para naman kay Reyes, dapat panatilihin ang tradisyonal na pagkakaunawa sa kasal at sapat na ang pagtanggap na ibinibigay ng lipunan.
+          </p>
+
+          <p>
+            Umani sila ng batikos, kabilang ang pahayag ng Rainbow Rights Philippines na nagtatanong kung paano masasabing sobra ang hinihinging karapatan kung may mga proteksiyong hindi pa natatamasa ng marami.
+          </p>
+
+          <p>
+            May mga tumugon gamit ang paliwanag tungkol sa batas at magkakaibang karanasan sa lipunan. May iba namang gumamit ng personal na patutsada. Kabilang dito ang tugon ni AC Soriano na pinuna ang mga gupit nina Reyes at Salud sa halip na direktang sagutin ang kanilang argumento.
+          </p>
+
+          <p>
+            Magkaiba ang dalawang uri ng pagsagot.
+          </p>
+
+          <p>
+            Ang pagpapaliwanag kung bakit mali o kulang ang isang pananaw ay lehitimong pakikipagdebate. Ang personal na pang-iinsulto ay hindi nagdaragdag ng ebidensiya, kahit maaari itong saklawin ng kalayaan sa pagpapahayag.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong harassment ang pagkakaroon ng maraming kritiko.
+          </p>
+
+          <p>
+            Muling naging mainit ang usapin noong Oktubre 2026 sa palitan ng mga pahayag nina Imelda Schweighart at transgender personality na si Lars Pacheco.
+          </p>
+
+          <p>
+            Sa Facebook post noong Oktubre 18, sinabi ni Imelda:
+          </p>
+
+          <p>
+            “They can attack you, but you are not allowed to fight back.”
+          </p>
+
+          <p>
+            Pinuna niya ang inaakala niyang one-sided na pagtrato at entitlement. Ngunit sa kaniyang mga sumunod na pahayag, gumamit din siya ng mga pangkalahatang pananalita at insulto laban sa gay at transgender individuals.
+          </p>
+
+          <p>
+            Hindi na lamang patakaran ang kinukuwestiyon sa ilang sinabi niya. Umabot na ito sa pangmamaliit sa pagkatao at identidad ng iba.
+          </p>
+
+          <p>
+            Bumwelta naman si Lars noong Oktubre 20 sa pamamagitan ng komentong gumamit ng salitang “Miss Carriage” upang patamaan ang naging pagkalaglag ng ipinagbubuntis ni Imelda.
+          </p>
+
+          <p>
+            Hindi iyon argumento tungkol sa gender identity o equality. Personal na trahedya ang ginamit na sandata sa sagutan.
+          </p>
+
+          <p>
+            Nagpahayag din si Imelda ng alegasyong nakatanggap siya ng mga bantang sasaktan siya kapag nakita sa publiko. Naiulat ang kaniyang sinabi, ngunit hindi pa sapat iyon upang sabihing independently verified na ang mga banta o kung sino ang nagpadala.
+          </p>
+
+          <p>
+            Dito lumilitaw ang mahalagang pagkakaiba.
+          </p>
+
+          <p>
+            Maaaring makatarungang punahin ang mga mapanlait na sinabi ni Imelda.<br>
+            Maaari ring kondenahin ang paggamit ng kaniyang miscarriage bilang sandata ng pagganti.
+          </p>
+
+          <p>
+            At kung may tunay na pagbabanta ng pananakit, kailangan itong seryosohin at imbestigahan.
+          </p>
+
+                    <blockquote>
+            <p>
+              HINDI NAGIGING TAMA ANG PANGHAHAMAK DAHIL MALI ANG NAUNANG PANGHAHAMAK.
+            </p>
+          </blockquote>
+
+          <p>
+            May kaugnay na research tungkol sa ganitong uri ng online conflict.
+          </p>
+
+          <p>
+            Sa 2024 study nina Chloe Ahn at mga kasamahan sa PNAS Nexus, gumamit ang mga mananaliksik ng tatlong eksperimento upang suriin ang online sanctioning sa mga kontrobersiyal na pampolitikang pahayag.
+          </p>
+
+          <p>
+            Natuklasan nilang may papel ang partisan identity at group norms sa paglahok sa online condemnation.
+          </p>
+
+          <p>
+            May mga taong nag-aatubiling maunang pumuna, ngunit mas handang sumali kapag may nauna nang kumondena.
+          </p>
+
+          <p>
+            Hindi partikular na tungkol sa LGBTQ+ community ang pananaliksik. Ngunit nagbibigay ito ng paliwanag kung bakit ang isang kontrobersiyal na pahayag ay maaaring mauwi sa sunod-sunod na personal at pampublikong pag-atake.
+          </p>
+
+          <p>
+            Dito kailangang maging malinaw ang pagkakaiba.
+          </p>
+
+          <p>
+            Ang maraming taong tumututol ay hindi agad harassment.<br>
+            Ang matinding pagsagot sa isang mapanlait na pahayag ay maaaring lehitimong paggamit ng kalayaan sa pagpapahayag.
+          </p>
+
+          <p>
+            Pero ang pananakot, doxxing, at sadyang personal na harassment ay ibang usapan.
+          </p>
+
+          <p>
+            Hindi rin napapatunayang tama ang isang argumento dahil lamang mas maraming taong sumisigaw laban sa kabilang panig.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG MATIBAY ANG IPINAGLALABAN, SAGUTIN ANG TANONG GAMIT ANG EBIDENSIYA. HUWAG GAWING PAMALIT SA ARGUMENTO ANG PERSONAL NA PANG-AATAKE SA KUMOKONTRA.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung mali naman ang isang pahayag, punahin ang nilalaman nito nang hindi kailangang gumamit ng panghahamak.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG ENTITLEMENT AYON SA PSYCHOLOGY?
+          </h2>
+
+          <p>
+            Sa siyam na pag-aaral nina Campbell at mga kasamahan noong 2004, sinuri ang psychological entitlement—ang paniniwalang nararapat tumanggap ang isang tao ng espesyal o mas paborableng pagtrato.
+          </p>
+
+          <p>
+            Iniugnay ang mas mataas na psychological entitlement sa ilang asal gaya ng selfish choices, competitive decision-making, at aggression matapos makaranas ng ego threat.
+          </p>
+
+          <p>
+            May kaugnay ding konsepto na tinatawag na moral grandstanding.
+          </p>
+
+          <p>
+            Sa anim na pag-aaral nina Grubbs at mga kasamahan noong 2019, sinuri ang paggamit ng moral discourse para sa social status. Nakita ang kaugnayan ng ganitong motibasyon sa mas mataas na interpersonal moral at political conflict.
+          </p>
+
+          <p>
+            Hindi partikular na sinusukat ng mga pag-aaral na ito ang LGBTQ+ community.
+          </p>
+
+          <p>
+            Ngunit mahalaga ang mga ito upang maunawaan kung bakit nagiging problema kapag ang isang tao ay umaasang dapat siyang bigyan ng mas paborableng pagtrato kahit walang sapat na batayan.
+          </p>
+
+          <p>
+            Sa isang advocacy, maaaring makita ang double standard kapag humihingi ng malayang pagpapahayag ngunit ayaw kilalanin ang kaparehong kalayaan ng taong may ibang posisyon.
+          </p>
+
+          <p>
+            Maaari ring maging problema kapag ang bawat tanong tungkol sa epekto ng isang panukala ay tinutugunan ng personal na akusasyon sa halip na paliwanag.
+          </p>
+
+          <p>
+            Gayunman, hindi sapat ang matinding paninindigan o ang paghingi ng accommodation para sabihing entitled na agad ang isang tao.
+          </p>
+
+          <p>
+            Ang kailangang suriin ay ang aktuwal na kahilingan, batayan, pamantayan, at paraan ng pakikitungo sa iba.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG EQUALITY AY HINDI BLANK CHECK PARA SA BAWAT KAGUSTUHAN.
+            </p>
+          </blockquote>
+
+          <p>
+            At hindi rin dapat ipagkamali ang makatwirang accommodation sa espesyal na pribilehiyo dahil lamang may ibang taong kailangang mag-adjust.
+          </p>
+
+          <h2>
+            SA KULTURANG PILIPINO—TANGGAP BA TALAGA O MAY KONDISYON?
+          </h2>
+
+          <p>
+            Sa Pilipinas, matagal nang may mga baklang hinahangaan sa entertainment, beauty industry, negosyo, at iba pang larangan.
+          </p>
+
+          <p>
+            Ngunit hindi nangangahulugang dahil matagumpay ang ilan ay wala nang nakararanas ng hindi makatarungang pagtrato.
+          </p>
+
+          <p>
+            Sa 2020 exploratory study ni Athena Charanne Presto tungkol sa mahihirap na baklang kabataan sa isang rural na komunidad, lumitaw ang mga karanasan ng conditional acceptance at pagbibigay-halaga sa isang tao batay sa kaniyang ambag sa pamilya.
+          </p>
+
+          <p>
+            Hindi kinakatawan ng pag-aaral na ito ang lahat ng bakla sa Pilipinas.
+          </p>
+
+          <p>
+            Ngunit mahalaga itong paalala na ang pagiging visible o popular ay hindi katumbas ng ganap na pantay na oportunidad.
+          </p>
+
+          <p>
+            Sa kabilang panig, hindi rin dapat ipagpalagay na dahil may diskriminasyon ay awtomatikong makatarungan na ang bawat bagong panukala.
+          </p>
+
+          <p>
+            Magkaibang usapin ang pagkilala sa dignidad ng tao at ang pagtatakda ng mga batas at patakarang ipatutupad sa buong lipunan.
+          </p>
+
+          <h2>
+            ANO ANG SINASABI NG BIBLIYA TUNGKOL SA LALAKI, BABAE, AT KASAL?
+          </h2>
+
+          <p>
+            Sa Genesis 1:27, inilalarawan ang paglikha sa tao bilang lalaki at babae.<br>
+            Sa Mateo 19:4–6, bumalik si Jesus sa salaysay ng paglikha sa kaniyang pagtuturo tungkol sa kasal.
+          </p>
+
+          <p>
+            Mahalagang batayan ang mga ito ng tradisyonal na Kristiyanong pananaw tungkol sa lalaki, babae, at pagsasama ng mag-asawa.
+          </p>
+
+          <p>
+            May mga Kristiyanong naninindigang hindi dapat baguhin ang kanilang panrelihiyong pag-unawa sa kasal. May iba ring gumagamit ng magkakaibang theological interpretation upang talakayin ang same-sex relationships.
+          </p>
+
+          <p>
+            Hindi awtomatikong nasasagot ng mga talatang ito ang bawat modernong tanong tungkol sa gender identity, batas, o sports.
+          </p>
+
+          <p>
+            Ngunit may karapatan ang isang tao na manatili sa kaniyang pananampalataya at ipahayag ito nang hindi kailangang hamakin ang ibang tao.
+          </p>
+
+          <p>
+            Sa Marcos 12:31, itinuro rin ni Jesus ang pagmamahal sa kapwa. Sa Santiago 2:1, may babala laban sa pagtatangi.
+          </p>
+
+          <p>
+            At sa ilalim ng Philippine Constitution, kinikilala ang religious freedom, freedom of expression, equal protection, at separation of Church and State.
+          </p>
+
+          <p>
+            Maaaring maging bahagi ng pampublikong debate ang mga paniniwalang panrelihiyon. Ngunit kailangang suriin ang batas ayon sa Konstitusyon at sa karapatan ng lahat ng apektado.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PANANAMPALATAYA AY HINDI LISENSIYA SA PANG-AAPI. AT ANG PAGHAHANGAD NG EQUALITY AY HINDI RIN LISENSIYANG IPAGBAWAL ANG LEHITIMONG PANINIWALA NG IBA.
+            </p>
+          </blockquote>
+
+          <h2>
+            IGALANG ANG TAO. SURIIN ANG PANUKALA. WALANG VIP PASS SA PANANAGUTAN.
+          </h2>
+
+          <p>
+            Hindi obligasyon ng lipunan na awtomatikong aprubahan ang bawat bagong panukalang inihaharap sa pangalan ng LGBTQ+ equality.
+          </p>
+
+          <p>
+            May karapatan ang mga advocates na magmungkahi, mangampanya, makipagdebate, at humingi ng pagbabago sa batas.<br>
+            May karapatan din ang ibang tao na magtanong, tumutol, at humiling ng ebidensiya.
+          </p>
+
+          <p>
+            Kung may panukalang magbabago sa legal na depinisyon, eligibility requirement, o pampublikong patakaran, kailangang malinaw kung bakit ito kailangan at paano maaapektuhan ang lahat ng saklaw nito.
+          </p>
+
+          <p>
+            Hindi sapat ang pagsasabing equality ang layunin upang tapos na ang debate.<br>
+            Hindi rin sapat ang pagsasabing tradisyon ang batayan upang awtomatikong tanggihan ang pagbabago.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SPECIAL PRIVILEGE ANG MAKATANGGAP NG PANTAY NA PROTEKSIYON.<br>
+              PERO HINDI RIN AUTOMATIC EQUALITY ANG BAWAT BAGONG ACCOMMODATION O PAGBABAGONG HINIHINGI.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung may patakarang hindi makatarungan, ipakita ang ebidensiya at dahilan para baguhin ito.<br>
+            Kung may kahilingang hindi patas sa iba, ipakita rin ang eksaktong dahilan at epekto.
+          </p>
+
+          <p>
+            At kung may hindi sumasang-ayon, hindi dapat gawing pamalit sa argumento ang insulto o walang batayang akusasyon.
+          </p>
+
+                    <h2>
+            SA HULI
+          </h2>
+
+          <p>
+            Hindi nasusukat ang equality sa dami ng kahilingang napagbigyan. Hindi rin nasusukat ang pagtatanggol sa tradisyon sa dami ng taong napigilang magkaroon ng karapatan.
+          </p>
+
+          <p>
+            Ang tunay na tanong ay kung patas ang pamantayan, matibay ang ebidensiya, at makatarungan ang epekto sa lahat ng apektado.
+          </p>
+
+          <p>
+            Walang grupong may monopolyo sa respeto.<br>
+            Walang panig na may eksklusibong karapatan sa katotohanan.
+          </p>
+
+          <p>
+            At walang sinuman ang dapat maging ligtas sa makatuwirang pagpuna dahil lamang sa kaniyang identidad, relihiyon, o paniniwala.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG KARAPATAN ANG HINIHINGI, PATUNAYAN ANG BATAYAN—HUWAG IPILIT ANG PAGSANG-AYON.<br>
+              KUNG KARAPATAN ANG TINUTULAN, PATUNAYAN ANG DAHILAN—HUWAG GAMITIN ANG PANINIWALA PARA MANLAPASTANGAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang tunay na pagkakapantay-pantay ay hindi tungkol sa kung sino ang pinakamalakas sumigaw, pinakamaraming napagbigyan, o pinakamaraming napatahimik.
+          </p>
+
+          <blockquote>
+            <p>
+              PANTAY ANG DIGNIDAD. PANTAY ANG KARAPATANG MAGTANONG. AT WALANG SINUMANG EXEMPTED SA PANANAGUTAN.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>U.S. State Department (2022).</strong>
+              <a
+                href="https://2021-2025.state.gov/x-gender-marker-available-on-u-s-passports-starting-april-11/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                X gender marker sa passports.
+              </a>
+            </li>
+
+            <li>
+              <strong>Trump Inaugural Address (2025).</strong>
+              <a
+                href="https://www.whitehouse.gov/remarks/2025/01/the-inaugural-address/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Pahayag tungkol sa two genders.
+              </a>
+            </li>
+
+            <li>
+              <strong>Executive Order 14168 (2025).</strong>
+              <a
+                href="https://www.whitehouse.gov/presidential-actions/2025/01/defending-women-from-gender-ideology-extremism-and-restoring-biological-truth-to-the-federal-government/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Federal sex-based definitions.
+              </a>
+            </li>
+
+            <li>
+              <strong>Executive Order 14201 (2025).</strong>
+              <a
+                href="https://www.whitehouse.gov/presidential-actions/2025/02/keeping-men-out-of-womens-sports/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Women's school sports policy.
+              </a>
+            </li>
+
+            <li>
+              <strong>U.S. Supreme Court, Trump v. Orr (2025).</strong>
+              <a
+                href="https://www.law.cornell.edu/supremecourt/text/25A319"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Passport sex-marker policy.
+              </a>
+            </li>
+
+            <li>
+              <strong>ConstitutionNet, International IDEA (2025).</strong>
+              <a
+                href="https://constitutionnet.org/news/voices/15th-amendment-hungarian-fundamental-law-advancing-illiberal-christian-democracy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hungary constitutional amendment.
+              </a>
+            </li>
+
+            <li>
+              <strong>UK Supreme Court (2025).</strong>
+              <a
+                href="https://www.supremecourt.uk/cases/press-summary/uksc-2024-0042"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                For Women Scotland v. The Scottish Ministers.
+              </a>
+            </li>
+
+            <li>
+              <strong>Slovakia Constitutional Amendment No. 255/2025.</strong>
+              <a
+                href="https://static.slov-lex.sk/static/SK/ZZ/2025/255/vyhlasene_znenie.print.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Recognition of two biological sexes.
+              </a>
+            </li>
+
+            <li>
+              <strong>UK House of Commons Library (2025).</strong>
+              <a
+                href="https://commonslibrary.parliament.uk/research-briefings/cbp-9705/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gender Recognition Reform (Scotland) Bill at Section 35 veto.
+              </a>
+            </li>
+
+            <li>
+              <strong>NCAA (2025).</strong>
+              <a
+                href="https://www.ncaa.org/news/media-center-ncaa-announces-transgender-student-athlete-participation-policy-change/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Official transgender participation policy.
+              </a>
+            </li>
+
+            <li>
+              <strong>Reuters (2024).</strong>
+              <a
+                href="https://www.reuters.com/sports/olympics/transgender-swimmer-lia-thomas-loses-cas-case-overturn-world-aquatics-ban-2024-06-12/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lia Thomas, World Aquatics, at CAS decision.
+              </a>
+            </li>
+
+            <li>
+              <strong>International Olympic Committee (2026).</strong>
+              <a
+                href="https://www.olympics.com/ioc/policy-protection-female-womens-category-in-olympic-sport"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Female category eligibility.
+              </a>
+            </li>
+
+            <li>
+              <strong>U.S. Supreme Court (June 30, 2026).</strong>
+              <a
+                href="https://www.supremecourt.gov/opinions/25pdf/24-43_2b35.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                West Virginia v. B. P. J. at Little v. Hecox, Nos. 24-43 at 24-38; Title IX, Equal Protection Clause, at sex-based eligibility sa women's at girls' school sports.
+              </a>
+            </li>
+
+            <li>
+              <strong>Pew Research Center (2025).</strong>
+              <a
+                href="https://www.pewresearch.org/short-reads/2025/02/26/americans-have-grown-more-supportive-of-restrictions-for-trans-people-in-recent-years/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                U.S. public opinion on transgender-related policies.
+              </a>
+            </li>
+
+            <li>
+              <strong>Rolling Stone Philippines (2025).</strong>
+              <a
+                href="https://rollingstonephilippines.com/state-of-affairs/power/reyes-salud-anti-lgbtq-remarks/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ricky Reyes, Renee Salud, at mga tugon sa kanilang pahayag.
+              </a>
+            </li>
+
+            <li>
+              <strong>LionhearTV (2025).</strong>
+              <a
+                href="https://www.lionheartv.net/2025/07/ac-soriano-ricky-reyes-renee-salud/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Tugon ni AC Soriano.
+              </a>
+            </li>
+
+            <li>
+              <strong>PEP.ph (2026).</strong>
+              <a
+                href="https://www.pep.ph/news/local/194321/imelda-schweighart-homophobic-remarks-a716-20261021-lfrm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Mga pahayag ni Imelda Schweighart at mga naging reaksiyon.
+              </a>
+            </li>
+
+            <li>
+              <strong>Balita / Manila Bulletin (2026).</strong>
+              <a
+                href="https://balita.mb.com.ph/2026/10/21/lars-pacheco-kay-imelda-schweighart-pills-wont-make-you-pregnant/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Tugon ni Lars Pacheco.
+              </a>
+            </li>
+
+            <li>
+              <strong>KAMI (2026).</strong>
+              <a
+                href="https://kami.com.ph/entertainment/192175-imelda-schweighart-nakatanggap-umano-ng-threats-what-community/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Iniulat na alegasyon ni Imelda tungkol sa threats.
+              </a>
+            </li>
+
+            <li>
+              <strong>Ahn, Lelkes &amp; Levendusky (2024).</strong>
+              <a
+                href="https://doi.org/10.1093/pnasnexus/pgae534"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Online sanctioning and identity signaling.
+              </a>
+            </li>
+
+            <li>
+              <strong>Campbell et al. (2004).</strong>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/15271594/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Psychological entitlement.
+              </a>
+            </li>
+
+            <li>
+              <strong>Grubbs et al. (2019).</strong>
+              <a
+                href="https://doi.org/10.1371/journal.pone.0223749"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Moral grandstanding.
+              </a>
+            </li>
+
+            <li>
+              <strong>Hasenbush, Flores &amp; Herman (2018).</strong>
+              <a
+                href="https://doi.org/10.1007/s13178-018-0335-z"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gender-identity-inclusive public accommodation laws.
+              </a>
+            </li>
+
+            <li>
+              <strong>Presto (2020).</strong>
+              <a
+                href="https://openresearch-repository.anu.edu.au/entities/publication/31ad0d83-e60f-41ad-bfb2-89af29fe67da"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Experiences of poor bakla youth in rural Philippines.
+              </a>
+            </li>
+
+            <li>
+              <strong>World Health Organization.</strong>
+              <a
+                href="https://www.who.int/news-room/questions-and-answers/item/gender-and-health"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Sex, gender, at gender identity.
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Family Code.</strong>
+              <a
+                href="https://pcw.gov.ph/executive-order-no-209-the-family-code-of-the-philippines/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Articles 1 at 2.
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Supreme Court, Falcis (2019).</strong>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/65744"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Same-sex marriage petition.
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Senate, SBN 218.</strong>
+              <a
+                href="https://legacy.senate.gov.ph/lis/bill_res.aspx?congress=20&amp;q=SBN-218"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                SOGIESC Equality Act.
+              </a>
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution.</strong>
+              <a
+                href="https://officialgazette.gov.ph/constitutions/1987-constitution/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Equal protection, expression, religion, at separation of Church and State.
+              </a>
+            </li>
+
+            <li>
+              <strong>Magandang Balita Biblia (2005).</strong>
+              Genesis 1:27; Mateo 19:4–6; Marcos 12:31; Santiago 2:1.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
