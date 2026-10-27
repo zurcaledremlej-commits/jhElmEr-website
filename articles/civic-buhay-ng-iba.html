@@ -1,1 +1,1609 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Buhay ng iba ang content—bakit patuloy na may tumatangkilik? Suriin ang viral scandals, public shaming, privacy, cyberlibel, misinformation, creator incentives, audience behavior, at pananagutan sa social media."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-buhay-ng-iba.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-buhay-ng-iba.html"
+  >
+
+  <title>BUHAY NG IBA ANG CONTENT—BAKIT PATULOY NA MAY TUMATANGKILIK? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      ..article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          BUHAY NG IBA ANG CONTENT—BAKIT PATULOY NA MAY TUMATANGKILIK?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-buhay-ng-iba.png"
+            alt="Simbolikong visual ng isang taong nababalutan ng mga smartphone, reactions, comments, shares, litrato, salamin, maskara, at paparazzi-like audience bilang representasyon ng viral scandals, public shaming, privacy, misinformation, creator incentives, audience engagement, at paggamit sa buhay ng iba bilang content."
+          >
+
+        </div>
+
+            </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <p>
+            May bagong pasabog. May pangalan, may screenshots, may detalye ng pribadong buhay. At habang nagtatalo ang mga tao kung sino ang may kasalanan, may isang bagay na halos hindi napapansin:<br>
+            Ang mismong pag-uusap natin ay nagbibigay pa ng atensyon sa naglabas nito.
+          </p>
+
+          <p>
+            May mga pagbubunyag na mahalaga sa publiko—lalo na kung may ebidensiya ng panloloko, pang-aabuso, o katiwalian. Pero kapag hiwalayan, alitan, at personal na kahihiyan na ang paulit-ulit na panghatak, hindi na sapat na itanong kung totoo ang kuwento. Dapat ding itanong kung makatarungan itong ilabas at kung sino ang nakikinabang sa pagkalat nito.
+          </p>
+
+          <blockquote>
+            <p>
+              Dito nagiging mas mabigat ang usapin:<br>
+              Hindi lang kung bakit may gumagawa ng ganitong content, kundi bakit patuloy na may tumatangkilik dito.
+            </p>
+          </blockquote>
+
+          <p>
+            Isang halimbawa ang kontrobersiyal na internet personality na si Xian Gaza, na may sarili ring dokumentadong kasaysayan ng mga usaping legal. Noong 2018, iniulat ng The Philippine Star ang hatol ng isang trial court laban sa kaniya sa 11 counts ng paglabag sa batas tungkol sa bouncing checks. Noong Pebrero 2026, nagreklamo naman si Michelle Dee sa NBI kaugnay ng mga post na umano’y naglalaman ng maling impormasyon tungkol sa kaniya.
+          </p>
+
+          <p>
+            Mahalagang pag-ibahin ang dalawa:<br>
+            Ang iniulat na hatol ng trial court ay hindi katulad ng isang reklamong kailangan pang dumaan sa proseso ng batas. Hindi rin awtomatikong nagiging mali ang lahat ng sinasabi ng isang tao dahil mayroon siyang sariling kontrobersiya.
+          </p>
+
+          <p>
+            Pero may makabuluhang aral sa ganitong sitwasyon:<br>
+            Paano natin sinusukat ang kredibilidad ng isang taong madalas maglantad ng pagkakamali ng iba, habang mayroon din siyang sariling mga gawaing dapat panagutan?
+          </p>
+
+          <h2>
+            HINDI LAHAT NG PAGLALANTAD AY PANANAGUTAN
+          </h2>
+
+          <p>
+            May mahalagang papel ang pagbubunyag ng katiwalian, panloloko, pang-aabuso, at iba pang gawaing maaaring makapinsala sa publiko. Kung may matibay na ebidensiya at malinaw na pampublikong interes, makabuluhang mailabas ang katotohanan.
+          </p>
+
+          <p>
+            Pero ibang usapan ang paggamit sa hiwalayan, alitan sa pamilya, personal na kahihiyan, pribadong mensahe, o hindi pa napatunayang paratang para lamang may bagong pag-usapan.
+          </p>
+
+          <p>
+            Hindi porke sikat ang isang tao ay wala na siyang karapatan sa privacy. At hindi porke may totoong pangyayari ay makatarungan nang ilabas ang bawat detalye nito.
+          </p>
+
+          <p>
+            Sa isang research review nina Nieper at mga kasamahan noong 2022, ipinakitang maaaring makatulong o makasama sa kooperasyon ng mga tao ang pagpapalitan ng impormasyon tungkol sa iba. Mahalaga rito kung tama ang impormasyon at kung paano ito ginagamit.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi lahat ng usapan tungkol sa ibang tao ay walang silbi. Ngunit hindi rin sapat ang dahilan na totoo naman ang kuwento para awtomatikong maging tama ang pagpapakalat nito.
+          </p>
+
+          <blockquote>
+            <p>
+              May pagkakaiba ang paglalantad para protektahan ang publiko at ang pagpapakalat para pagpyestahan ang pagkatao.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY KARAPATANG MAGSALITA—PERO MAY HANGGANAN DIN ANG BATAS
+          </h2>
+
+          <p>
+            Hindi lamang usaping moralidad ang pagbubunyag ng personal na buhay ng ibang tao. May mga batas din sa Pilipinas na kumikilala sa karapatang magpahayag, proteksyon sa pribadong buhay, at pananagutan kapag may nagawang paglabag.
+          </p>
+
+          <p>
+            Sa Civil Code of the Philippines o Republic Act No. 386, nakasaad sa Article 19 na ang paggamit ng sariling karapatan ay dapat may katarungan, katapatan, at good faith. Sa Article 21, maaaring magkaroon ng pananagutang sibil ang taong sadyang nagdulot ng pinsala sa paraang labag sa moralidad, mabuting kaugalian, o public policy.
+          </p>
+
+          <p>
+            Samantala, kinikilala ng Article 26 ang dignidad, personalidad, privacy, at peace of mind ng bawat tao. May mga uri ng panghihimasok sa pribadong buhay na maaaring maging batayan ng paghahabol ng danyos o iba pang legal na remedyo kahit hindi ito kriminal na paglabag.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na lahat ng nakasasakit o nakahihiyang post ay awtomatikong labag sa Civil Code. Kailangang suriin ang mismong ginawa, ang pinsalang naidulot, at ang mga kinakailangan sa ilalim ng batas.
+          </p>
+
+          <p>
+            Mayroon ding Republic Act No. 10175 o Cybercrime Prevention Act of 2012, na sumasaklaw sa cyberlibel sa ilalim ng Section 4(c)(4).
+          </p>
+
+          <p>
+            Maaaring magkaroon ng pananagutang kriminal kapag ang isang online publication ay nakatutugon sa mga legal na elemento ng libel. Ngunit hindi lahat ng matinding pagpuna, negatibong opinyon, o kontrobersiyal na pahayag ay cyberlibel. Mahalaga ang pagkakaiba ng lehitimong kritisismo at mapanirang akusasyong saklaw ng batas.
+          </p>
+
+          <p>
+            Sa Republic Act No. 10173 o Data Privacy Act of 2012, kabilang sa mahahalagang prinsipyo ng pagproseso ng personal na impormasyon ang transparency, legitimate purpose, at proportionality.
+          </p>
+
+          <p>
+            Gayunman, hindi rin awtomatikong paglabag sa Data Privacy Act ang bawat paglalabas ng personal na impormasyon. May mga exemption ang batas, kabilang ang ilang pagproseso para sa journalistic, artistic, literary, at research purposes. Hindi rin nangangahulugan ang mga exemption na walang limitasyon ang paggamit o pagbubunyag ng impormasyon.
+          </p>
+
+          <p>
+            Dito mahalagang maunawaan na may pagkakaiba ang karapatan ng publiko na malaman ang impormasyong may tunay na pampublikong interes at ang simpleng pagnanais na malaman ang bawat pribadong detalye ng buhay ng isang tao.
+          </p>
+
+          <p>
+            Kung may ebidensiya ng panloloko, katiwalian, o pang-aabuso, maaaring may makatarungang dahilan para ilantad ito. Ngunit hindi awtomatikong kailangan ding isapubliko ang mga pribadong detalye na walang kaugnayan sa mismong paglabag.
+          </p>
+
+          <p>
+            Hindi rin dapat gamitin ang privacy bilang panangga laban sa lehitimong pagsisiyasat at pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang kalayaan sa pagpapahayag ay mahalaga. Ganoon din ang karapatan sa dignidad at pribadong buhay. Ang tunay na hamon ay kung paano ipagtatanggol ang katotohanan nang hindi ginagawang dahilan ang pagbubunyag para sa walang-pakundangang panghihimasok at pagpapahiya.
+            </p>
+          </blockquote>
+
+          <h2>
+            BAKIT MADALING KUMALAT ANG ESKANDALO?
+          </h2>
+
+          <p>
+            Hindi lamang ito tungkol sa hilig ng tao sa tsismis. May kinalaman din dito ang paraan ng pagkalat ng impormasyon at ang mga emosyon na nagtutulak sa atin upang magbahagi.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Vosoughi, Roy, at Aral na inilathala sa Science noong 2018, sinuri ang humigit-kumulang 126,000 verified true at false news stories na kumalat sa Twitter mula 2006 hanggang 2017.
+          </p>
+
+          <p>
+            Natuklasang mas mabilis at mas malawak kumalat ang maling impormasyon. Sa dataset na iyon, 70% na mas malamang na ma-retweet ang falsehood kaysa sa katotohanan.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na mali ang bawat viral na eskandalo, o pareho ang resulta sa lahat ng social media platform. Ngunit ipinapakita nito kung bakit hindi dapat gawing sukatan ng katotohanan ang bilis ng pagkalat ng isang kuwento.
+          </p>
+
+          <p>
+            May kaugnay ding pag-aaral na inilathala sa Science noong 2024. Batay sa pagsusuri ng Facebook at Twitter data sa Estados Unidos at sa mga eksperimento, natuklasang ang impormasyong nakapupukaw ng matinding galit ay maaaring maibahagi kahit hindi muna binabasa ng gumagamit ang nilalaman nito.
+          </p>
+
+          <p>
+            Dito nagiging mapanganib ang mga pasabog na mabilis humatak ng emosyon.
+          </p>
+
+          <p>
+            Kapag nakagagalit ang headline, nakakagulat ang akusasyon, o nakakaintriga ang personalidad, madaling mauna ang reaksiyon bago ang pagsusuri.
+          </p>
+
+          <p>
+            At habang abala ang mga tao sa pagkomento kung sino ang tama, sino ang sinungaling, at sino ang dapat mapahiya, maaaring nakakalat na ang impormasyong wala pang sapat na patunay.
+          </p>
+
+                    <h2>
+            HINDI LANG CREATOR ANG NAGPAPALAKAS SA SISTEMA
+          </h2>
+
+          <p>
+            Sa 2026 Digital News Report ng Reuters Institute, 36% ng mga Filipino respondent sa online survey ang nagsabing kumokonsumo sila ng content mula sa mga creator na pangunahing nakatuon sa balita. Samantala, 46% ang nakakakuha rin ng ilang news-related content mula sa mga creator na karaniwang tumatalakay sa ibang paksa.
+          </p>
+
+          <p>
+            Sa parehong ulat, 28% lamang ang nagsabing nagtitiwala sila sa karamihan ng balita sa halos lahat ng pagkakataon. Bahagi ito ng online survey, hindi bilang ng buong populasyon ng Pilipinas.
+          </p>
+
+          <p>
+            Mahalaga ang datos dahil hindi na lamang tradisyonal na mamamahayag ang nakapagpapakalat ng impormasyong nakaaapekto sa pananaw ng publiko.
+          </p>
+
+          <p>
+            May mga content creator na responsible at mahusay magpaliwanag. Pero may mga pagkakataon ding nagmumukhang mapagkakatiwalaan ang isang personalidad dahil lamang palagi siyang nakikita, malakas magsalita, at maraming followers.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi garantiya ng katotohanan ang kasikatan. Hindi rin garantiya ng kredibilidad ang pagiging unang naglabas ng isang kuwento.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa Facebook, kabilang ang likes, comments, views, at viewing behavior sa maraming signal na maaaring gamitin ng recommendation systems upang matukoy kung aling content ang ipapakita sa mga gumagamit.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihing awtomatikong binibigyan ng mas malaking kita ang bawat kontrobersiyal na post. Pero malinaw na ang atensyon at engagement ay may papel sa pag-abot ng content sa mas maraming tao.
+          </p>
+
+          <p>
+            May pag-aaral din ang mga researcher mula sa Yale at iba pang institusyon noong 2021 na nagpapakitang ang positibong feedback sa online expressions of moral outrage ay maaaring magpalakas sa posibilidad na maulit ang ganitong pagpapahayag.
+          </p>
+
+          <p>
+            Kaya dapat nating pag-isipan ang simpleng siklo:<br>
+            May inilabas na pasabog.<br>
+            Maraming nagalit, natuwa, nagkomento, at nagbahagi.<br>
+            Lumawak ang audience.<br>
+            At kung patuloy na nakatatanggap ng atensyon ang katulad na content, may insentibong ulitin ang ganitong paraan.
+          </p>
+
+          <p>
+            Hindi ito patunay na ganoon ang motibo ng bawat creator. Ngunit isa itong mekanismong dapat maunawaan kung gusto nating mabawasan ang pagkalat ng content na nakasentro sa kahihiyan ng iba.
+          </p>
+
+          <h2>
+            KAPAG ANG KAHIHIYAN NG IBA AY NAGIGING LIBANGAN
+          </h2>
+
+          <p>
+            Matagal nang bahagi ng pakikisalamuha ang kuwentuhan tungkol sa buhay ng ibang tao. Hindi ito natatangi sa mga Pilipino, at hindi rin lahat ng ganitong usapan ay masama.
+          </p>
+
+          <p>
+            Nagiging problema kapag nawawala ang hangganan sa pagitan ng pagkamausisa at panghihimasok.
+          </p>
+
+          <p>
+            Kapag may naghiwalay, kailangang malaman ang lahat ng detalye. Kapag may napahiya, nagiging biro. Kapag may alegasyon, may hatol na agad kahit hindi pa naririnig ang kabilang panig.
+          </p>
+
+          <p>
+            Mas madaling pagtawanan ang isang taong hindi natin personal na kilala. Mas madaling manghusga kapag profile picture lamang ang nakikita natin at hindi ang buong taong maaaring maapektuhan ng ating mga salita.
+          </p>
+
+          <p>
+            Ngunit sa likod ng bawat viral na kuwento ay may mga totoong buhay, relasyon, trabaho, pamilya, at reputasyong maaaring maapektuhan.
+          </p>
+
+          <p>
+            Sa isang pag-aaral sa moral ethics nina Billingham at Parr tungkol sa online public shaming, binigyang-diin ang kahalagahan ng pagiging makatarungan, proporsyonal, hindi mapang-abuso, at may paggalang sa privacy.
+          </p>
+
+          <p>
+            Hindi nito ipinagbabawal ang pagpuna. Ipinapaalala lamang nitong hindi lahat ng nagkamali ay nararapat gawing target ng walang-hanggang pampublikong pagpapahiya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pananagutan ay dapat may kaugnayan sa ginawang mali. Hindi ito lisensiya para apakan ang buong pagkatao ng isang tao.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO NAMAN ANG NAGLALANTAD NA MAY SARILI RING ESKANDALO?
+          </h2>
+
+          <p>
+            Hindi makatarungang sabihin na walang karapatang magsalita ang taong may naging pagkakamali. Maaaring totoo ang kaniyang inilalantad kahit may sarili siyang problemang legal o moral.
+          </p>
+
+          <p>
+            Pero hindi rin dapat gawing panangga ang mga pasabog tungkol sa iba upang mawala sa usapan ang mga tanong na dapat niyang sagutin tungkol sa sarili niyang mga gawain.
+          </p>
+
+          <p>
+            Magkaibang bagay ang katotohanan ng isang akusasyon at ang kredibilidad ng taong naglalabas nito. Pareho silang dapat suriin, pero hindi sila dapat paghaluin.
+          </p>
+
+          <p>
+            Hindi sapat ang argumentong may baho ka rin para mapabulaanan ang isang totoong impormasyon. Ganoon din, hindi sapat na minsang may nailantad na tama ang isang creator para pagkatiwalaan na ang lahat ng susunod niyang sasabihin.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na pamantayan ay ebidensiya, patas na pagtrato, pagwawasto kapag nagkamali, at kahandaang managot sa sariling ginawa.
+            </p>
+          </blockquote>
+
+          <p>
+            Dapat ding may malinaw na pagkakaiba ang public accountability at personal na paghihiganti.
+          </p>
+
+          <h2>
+            PAANO NATIN MABABAWASAN ANG GANITONG KULTURA?
+          </h2>
+
+          <p>
+            Hindi sapat na mag-unfollow lamang ng isang kontrobersiyal na personalidad kung patuloy naman nating binibigyan ng parehong atensyon ang ibang gumagawa ng kaparehong content.
+          </p>
+
+          <p>
+            Magsisimula ang pagbabago kapag hindi na basta-basta naniniwala at nagbabahagi ang audience dahil lamang nakakagulat o nakagagalit ang nabasa.
+          </p>
+
+          <p>
+            Bago mag-share, kailangang itanong:<br>
+            May sapat bang ebidensiya?<br>
+            May malinaw bang pampublikong interes?<br>
+            Nakuha ba ang panig ng mga sangkot?<br>
+            May impormasyong pribado na hindi naman kailangang ilantad?
+          </p>
+
+          <p>
+            May batayan ang ganitong pag-iingat. Sa meta-analysis nina Pennycook at Rand noong 2022 na sumaklaw sa 20 eksperimento at 26,863 kalahok, nakita nilang ang simpleng pagpapaalala na isipin ang katumpakan ng impormasyon ay nakatulong upang mabawasan ang intensiyong magbahagi ng maling headlines.
+          </p>
+
+          <p>
+            Hindi ito kumpletong solusyon, pero ipinapakita nitong may halaga ang pag-iisip muna bago magpakalat.
+          </p>
+
+          <p>
+            May responsibilidad din ang mga content creator at media pages. Hindi dapat gawing pamalit sa ebidensiya ang malakas na headline, at hindi dapat ituring na sapat na depensa ang pagsasabing content lang naman kung may napinsalang tao dahil sa maling impormasyon.
+          </p>
+
+          <p>
+            May pananagutan din ang mga platform sa pagpapatupad ng kanilang mga patakaran, pagprotekta sa privacy, at paglimita sa mapaminsalang content. Hindi makatarungang ipasa sa ordinaryong gumagamit ang buong responsibilidad sa problemang pinalalaki rin ng paraan ng pagdistribute ng content.
+          </p>
+
+          <p>
+            Mahalaga ring maituro sa tahanan at paaralan ang digital responsibility. Hindi lamang kung paano gumamit ng social media, kundi kung paano kumilala ng mapagkakatiwalaang impormasyon, gumalang sa privacy, at tumangging makisali sa pang-aalipusta.
+          </p>
+
+                  <h2>
+            ANG MAS MALALIM NA MORAL LESSON
+          </h2>
+
+          <p>
+            Hindi natin kailangang ipagtanggol ang sinumang may maling ginawa. Hindi rin kailangang patahimikin ang mga taong may totoong impormasyong mahalaga sa publiko.
+          </p>
+
+          <p>
+            Ang kailangang baguhin ay ang pag-iisip na basta may nakakagulat na kuwento, karapat-dapat na itong ikalat. Na basta sikat ang nagsasalita, dapat na siyang paniwalaan. At basta may nagawang mali ang isang tao, puwede nang gawing libangan ang kaniyang kahihiyan.
+          </p>
+
+          <p>
+            Kung gusto nating mabawasan ang paglitaw ng mga personalidad na nakasentro sa eskandalo ng ibang tao, hindi sapat na palitan kung sino ang ating sinusubaybayan.
+          </p>
+
+          <p>
+            Kailangan ding baguhin kung anong klase ng content ang pinipili nating bigyan ng halaga.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG MARUNONG MAGLANTAD NG BAHO NG IBA AY MAPAGKAKATIWALAAN.<br>
+              HINDI LAHAT NG NAKAKAGULAT AY KATOTOHANAN.<br>
+              AT HINDI LAHAT NG TOTOO AY KAILANGANG GAWING LIBANGAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa huli, may pananagutan ang taong gumagawa at nagpapakalat ng mapaminsalang content. May responsibilidad din ang mga platform na nagpapalawak ng abot nito. At may pagpipilian ang audience kung makikibahagi ba sa pagpapalakas nito.
+          </p>
+
+          <p>
+            Dahil ang tunay na panganib ay hindi lamang ang pagkakaroon ng isang kontrobersiyal na personalidad.
+          </p>
+
+          <p>
+            Ang mas malaking problema ay kapag nasanay ang lipunan na gawing aliwan ang kahihiyan ng iba—hanggang sa ang pinakamalakas magpasabog ang mas pinakikinggan kaysa sa may pinakamalinaw na ebidensiya.
+          </p>
+
+          <p>
+            At habang mas binibigyan natin ng halaga ang eskandalo kaysa sa katotohanan, patuloy tayong lumilikha ng pagkakataon para sa mga susunod na gagamit ng buhay ng ibang tao upang makakuha ng atensyon.
+          </p>
+
+          <p>
+            Hindi natin kailangang maging tagapagtanggol ng isang tao para igalang ang kaniyang dignidad. At hindi rin natin kailangang maging tagahanga ng isang creator para suriin kung may katotohanan ang kaniyang sinasabi.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MALI AY DAPAT PANAGUTAN.<br>
+              ANG KATOTOHANAN AY DAPAT PATUNAYAN.<br>
+              ANG DIGNIDAD NG TAO AY HINDI DAPAT PAGPIYESTAHAN.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Reuters Institute, University of Oxford.</strong>
+              <em>Digital News Report 2026 – Philippines.</em>
+              <a
+                href="https://reutersinstitute.politics.ox.ac.uk/digital-news-report/2026/philippines"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ulat
+              </a>
+            </li>
+
+            <li>
+              <strong>The Philippine Star.</strong>
+              <em>Scammer convicted over bouncing checks</em> (2018);
+              <em>Michelle Dee files cyberlibel complaints vs Xian Gaza</em> (2026).
+              <a
+                href="https://www.philstar.com/nation/2018/07/01/1829423/scammer-convicted-over-bouncing-checks"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2018 report
+              </a>
+              |
+              <a
+                href="https://www.philstar.com/headlines/2026/02/16/2508409/michelle-dee-files-cyberlibel-complaints-vs-xian-gaza-4-facebook-pages"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2026 report
+              </a>
+            </li>
+
+            <li>
+              <strong>Vosoughi, Roy &amp; Aral (2018).</strong>
+              <em>The Spread of True and False News Online.</em>
+              <em>Science.</em>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/29590045/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>McLoughlin et al. (2024).</strong>
+              <em>Misinformation Exploits Outrage to Spread Online.</em>
+              <em>Science.</em>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/39607912/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Brady et al. (2021).</strong>
+              <em>How Social Learning Amplifies Moral Outrage Expression in Online Social Networks.</em>
+              <em>Science Advances.</em>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/34389534/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Nieper et al. (2022).</strong>
+              <em>When and Why Does Gossip Increase Prosocial Behavior?</em>
+              <em>Current Opinion in Psychology.</em>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/34875505/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Pennycook &amp; Rand (2022).</strong>
+              <em>Accuracy Prompts Are a Replicable and Generalizable Approach for Reducing the Spread of Misinformation.</em>
+              <em>Nature Communications.</em>
+              <a
+                href="https://www.nature.com/articles/s41467-022-30073-5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Billingham &amp; Parr (2026).</strong>
+              <em>Online Public Shaming, the Duties of Social Media Platforms, and the Case for Regulation.</em>
+              <em>Philosophy &amp; Technology.</em>
+              <a
+                href="https://link.springer.com/article/10.1007/s13347-025-01031-y"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Meta AI (2023).</strong>
+              <em>Introducing 22 System Cards That Explain How AI Powers Experiences on Facebook and Instagram.</em>
+              <a
+                href="https://ai.meta.com/blog/how-ai-powers-experiences-facebook-instagram-system-cards/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Technical explanation
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 386.</strong>
+              <em>Civil Code of the Philippines, Articles 19, 21 at 26.</em>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/53360"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court E-Library
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10175.</strong>
+              <em>Cybercrime Prevention Act of 2012, Section 4(c)(4).</em>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/50264"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court E-Library
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10173.</strong>
+              <em>Data Privacy Act of 2012, Sections 4 at 11.</em>
+              <a
+                href="https://privacy.gov.ph/data-privacy-act-/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                National Privacy Commission
+              </a>
+            </li>
+
+            <li>
+              <strong>National Privacy Commission (2023).</strong>
+              <em>Advisory Opinion No. 2023-022, tungkol sa journalistic exemption at pagbalanse ng right to information at data privacy.</em>
+              <a
+                href="https://privacy.gov.ph/wp-content/uploads/2023/12/Advisory-Opinion-No.-2023-022.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NPC Advisory
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
