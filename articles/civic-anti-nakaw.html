@@ -1,1 +1,1582 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Anti-nakaw ang dahilan—hanggang saan puwedeng kapkapan ang empleyado? Suriin ang workplace searches, body frisking, employee privacy, consent, dignity, security policies, management prerogative, at legal safeguards."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-anti-nakaw.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-anti-nakaw.html"
+  >
+
+  <title>ANTI-NAKAW ANG DAHILAN—HANGGANG SAAN PUWEDENG KAPKAPAN ANG EMPLEYADO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+     .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          ANTI-NAKAW ANG DAHILAN—HANGGANG SAAN PUWEDENG KAPKAPAN ANG EMPLEYADO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+           <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-anti-nakaw.png"
+            alt="Simbolikong visual ng mga empleyadong sumasailalim sa security frisking sa workplace, kabilang ang babae-sa-babae at lalaki-sa-lalaki na inspeksyon, CCTV, retail products, at security personnel bilang representasyon ng anti-theft measures, body searches, privacy, dignity, consent, at workplace safeguards."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <p>
+            Bago makapasok o makauwi mula sa trabaho, may mga empleyadong kailangang magbukas ng bag, magpakita ng laman ng bulsa, at dumaan sa security inspection. Sa ilang workplace, hindi roon nagtatapos ang checking. May pagkapkap sa katawan, pagpapataas ng damit, at iba pang mas masusing paghahalughog.
+          </p>
+
+          <p>
+            Ang dahilan:<br>
+            Para maiwasan ang pagnanakaw ng produkto, pera, materyales, o kagamitan ng kompanya.
+          </p>
+
+          <p>
+            May punto naman ang negosyo. Totoong may panganib ng internal theft, at may karapatan ang employer na protektahan ang kaniyang ari-arian. Hindi rin makatarungan sa mga tapat na empleyado kung hahayaan ang pagnanakaw na makaapekto sa operasyon at kabuhayan ng lahat.
+          </p>
+
+          <p>
+            Pero magkaiba ang pag-inspect ng dalang gamit at ang paghawak sa katawan ng manggagawa.
+          </p>
+
+          <p>
+            Kapag umabot na sa pisikal na pagkapkap, mas seryoso na ang usapin ng privacy, pahintulot, at dignidad. Lalo na kung ang empleyado ay nasa sitwasyong maaaring matakot tumanggi dahil sa posibleng epekto nito sa kaniyang trabaho.
+          </p>
+
+          <p>
+            Hindi lahat ng inspeksyon ay pang-aabuso. Pero hindi rin lahat ng tinatawag na security procedure ay awtomatikong makatwiran. At hindi sapat na matagal nang ginagawa ang isang patakaran para sabihing tama ang paraan nito.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na usapin ay hindi lamang kung may karapatang mag-inspect ang kompanya, kundi kung gaano kalayo ang maaari nitong gawin sa ngalan ng seguridad—at kung may sapat na dahilan at proteksiyon sa bawat hakbang.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito bagong usapin. May mga aktuwal nang kaso ng employee searches sa iba't ibang lugar ng trabaho na umabot mismo sa Korte Suprema.
+          </p>
+
+          <p>
+            Sa kasong Firestone Tire and Rubber Co. v. Lariosa (1987), nakatala sa desisyon ng Korte Suprema na sumailalim sa routine security check ang isang factory worker. Kinapkapan siya at sinuri ang kaniyang bag, kung saan natagpuan ang mga materyales ng kompanya. Kinilala ng Korte ang batayan ng kaniyang pagkakatanggal dahil sa napatunayang misconduct.
+          </p>
+
+          <p>
+            Sa National Bookstore v. Court of Appeals (2002), nakatala naman na dalawang empleyado ang sumailalim sa masusing body search ng isang lady guard bago umalis sa trabaho. Naging mahalagang bahagi ito ng pagsusuri sa paratang na may nawawalang pera. Sa huli, pinaboran ng Korte ang mga empleyado sa illegal dismissal case dahil hindi sapat ang ebidensiyang sila ang may pananagutan sa pagkawala.
+          </p>
+
+          <p>
+            Hindi pinasya sa dalawang kasong ito na legal ang lahat ng uri ng body search. Ang ipinapakita ng mga ito ay matagal nang umiiral ang ganitong security practices sa mga aktuwal na lugar ng trabaho.
+          </p>
+
+          <p>
+            Mahalaga rin ang pagkakaiba ng ordinaryong inspeksyon at invasive search.
+          </p>
+
+          <p>
+            Ang pagtingin sa laman ng bag, pag-check ng company-issued items, at pagberipika ng gate pass ay maaaring maging makatwirang bahagi ng seguridad kung malinaw ang patakaran, patas ang pagpapatupad, at may sapat na dahilan.
+          </p>
+
+          <p>
+            Ibang usapan kapag may pisikal nang pagkapkap sa katawan. Mas seryoso kung hinihila ang damit o bahagi ng underwear, pinatataas ang damit upang masilip ang katawan, pinapahawak o pinapagalaw ang sensitibong bahagi, o pinapahubad ang manggagawa.
+          </p>
+
+          <p>
+            Kahit ang pagpapatalon upang malaman kung may nakatagong bagay ay dapat suriin:<br>
+            May ebidensiya bang epektibo ito?<br>
+            Kailangan ba talaga?<br>
+            May mas maayos bang paraan?<br>
+            Ginagawa ba ito nang hindi pinapahiya ang empleyado?
+          </p>
+
+          <blockquote>
+            <p>
+              HABANG MAS SUMASAGAD ANG INSPEKSYON SA KATAWAN AT PERSONAL NA PRIVACY, MAS MABIGAT DAPAT ANG DAHILAN AT MAS MAHIGPIT ANG SAFEGUARDS.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi pareho ang pagtingin sa bag at paghawak sa katawan. Hindi rin pareho ang pagtukoy sa nawawalang produkto at pagtrato sa bawat empleyado na para bang may itinatago.
+          </p>
+
+          <p>
+            May mahalagang international benchmark dito.
+          </p>
+
+          <p>
+            Sa Workplace Code of Conduct and Compliance Benchmarks ng Fair Labor Association, partikular na tinatalakay ang Security Practices and Body Searches.
+          </p>
+
+          <p>
+            Ayon sa H/A.10, katanggap-tanggap ang inspeksyon ng bag at personal na gamit para maiwasan ang theft. Pero ang body search at physical pat-down ay dapat may specific at legitimate reason at may consent ng manggagawa, maliban sa sitwasyong may utos mula sa awtorisadong state official. Nakasaad din na hindi dapat isinasagawa sa publiko ang body search at dapat same-sex ang nagsasagawa nito.
+          </p>
+
+          <p>
+            International workplace standard ito, hindi isang batas na awtomatikong umiiral sa lahat ng kompanya sa Pilipinas. Pero malinaw ang prinsipyong ipinapakita: kahit sa anti-theft security, may hangganang dapat igalang.
+          </p>
+
+          <p>
+            At kahit same-sex ang guard at manggagawa, hindi nito awtomatikong ginagawang katanggap-tanggap ang anumang uri ng paghawak.
+          </p>
+
+          <p>
+            May isa pang komplikasyon:<br>
+            Ang tinatawag na consent.
+          </p>
+
+          <p>
+            Maaaring sabihin ng management na pumayag naman ang empleyado. Hindi tumutol. Kusang pumila. Sumunod sa utos. Baka nakapirma pa sa company policy.
+          </p>
+
+          <p>
+            Pero sapat ba iyon para masabing malaya siyang pumayag?
+          </p>
+
+          <p>
+            Isipin ang isang manggagawang kailangang umuwi nang may dalang suweldo para sa pagkain, renta, pamasahe, at gastusin ng pamilya. Kung ang pagtanggi sa isang inspeksyon ay maaaring magdulot ng reprimand, suspensiyon, o banta sa trabaho, gaano kalaya ang kaniyang pagpili?
+          </p>
+
+          <p>
+            Hindi ibig sabihin na walang bisa ang lahat ng pahintulot ng empleyado. Ang punto ay hindi dapat ipagpalagay na malayang consent ang bawat pagsunod, lalo na kung may malaking agwat sa kapangyarihan ng employer at manggagawa.
+          </p>
+
+          <p>
+            Kahit ang National Privacy Commission, sa Advisory Opinion No. 2019-034 — Consent and Its Withdrawal for Employment Purposes, ay kumikilala sa panganib na maaaring hindi malayang naibibigay ang pahintulot kapag may power imbalance sa employer-employee relationship at posibleng masamang epekto ang pagtanggi.
+          </p>
+
+          <p>
+            Tungkol ito sa consent sa pagproseso ng personal data, hindi direktang tuntunin sa physical body searches. Pero mahalagang paliwanag ito kung bakit hindi dapat awtomatikong ituring na malayang pahintulot ang bawat pagsunod ng isang empleyado.
+          </p>
+
+          <p>
+            Dito pumapasok ang isa pang panganib:<br>
+            Ang unintentional at intentional humiliation o exploitation.
+          </p>
+
+          <p>
+            Maaaring ang intensiyon ng isang patakaran ay pigilan lamang ang pagnanakaw. Pero kung ang resulta ay paulit-ulit na paghawak sa sensitibong bahagi ng katawan, hindi kinakailangang paglantad, o pagpapahiya sa harap ng mga katrabaho, maaari pa rin itong maging degrading kahit walang seksuwal na motibo.
+          </p>
+
+          <p>
+            Mas seryoso kung ang isang tao ay sadyang ginagamit ang kaniyang security authority para manilip, humawak nang hindi kinakailangan, magbigay ng malisyosong komento, o magpahiya.
+          </p>
+
+          <p>
+            Hindi natin dapat awtomatikong tawaging sexual harassment ang lahat ng intrusive inspection. Kailangan pa ring suriin ang aktuwal na kilos, konteksto, ebidensiya, at mga elemento ng batas.
+          </p>
+
+          <p>
+            Pero hindi rin kailangang hintaying mapatunayan ang seksuwal na intensiyon bago kuwestiyunin kung sobra, hindi kinakailangan, o mapang-abuso ang isang pamamaraan.
+          </p>
+
+          <p>
+            At may dahilan para seryosohin ang psychological harm sa lugar ng trabaho.
+          </p>
+
+          <p>
+            Sa 2022 global survey ng International Labour Organization, Lloyd's Register Foundation, at Gallup, 22.8% ng mga taong may trabaho ang nagsabing nakaranas sila ng kahit isang uri ng violence o harassment sa kanilang working life. Kabilang dito ang 17.9% na nakaranas ng psychological violence o harassment at 6.3% na nakaranas ng sexual violence o harassment. Halos kalahati lamang ng mga nakaranas ang nagbahagi ng kanilang karanasan sa ibang tao.
+          </p>
+
+          <p>
+            Hindi ito statistics ng body searches, at hindi rin ito partikular na datos sa Pilipinas. Pero ipinapakita nito na tunay at malawak ang workplace violence at harassment, at may mga karanasang hindi agad naiuulat.
+          </p>
+
+          <p>
+            May kaugnay ding ebidensiya tungkol sa epekto ng monitoring.
+          </p>
+
+          <p>
+            Sa 2023 Work in America Survey ng American Psychological Association, 56% ng mga respondent na nakaaalam na electronically monitored sila sa trabaho ang nagsabing karaniwan silang tense o stressed sa workday, kumpara sa humigit-kumulang 40% ng mga hindi monitored.
+          </p>
+
+          <p>
+            Sa parehong survey, 32% ng monitored workers ang nag-rate sa kanilang mental health bilang poor o fair, kumpara sa 24% ng mga hindi monitored.
+          </p>
+
+          <p>
+            Mahalagang linawin:<br>
+            Electronic monitoring ang pinag-aralan, hindi pisikal na paghahalughog. U.S. workers din ang mga respondent, at correlation ang nakita—hindi patunay na monitoring mismo ang sanhi ng stress.
+          </p>
+
+          <p>
+            Gayunman, mahalagang aral ang hatid nito:<br>
+            Ang security at monitoring practices ay hindi lamang usapin ng pagkontrol sa operasyon. May posible rin itong epekto sa tiwala, pakiramdam ng seguridad, at kalagayan ng mga manggagawa.
+          </p>
+
+          <p>
+            Sa Pilipinas, may legal na hangganan din ang management prerogative.
+          </p>
+
+          <p>
+            Kinikilala ng Korte Suprema ang karapatan ng employer na mamahala, gumawa ng patakaran, at magdisiplina. Ngunit kailangang gamitin ang kapangyarihang ito nang may good faith at pagsasaalang-alang sa karapatan ng mga manggagawa. Hindi ito absolute.
+          </p>
+
+          <p>
+            Sa Civil Code, mahalaga ang Articles 19, 21, at 26 tungkol sa good faith, pananagutan sa mga kilos na salungat sa morals o public policy, at paggalang sa dignidad at privacy ng tao.
+          </p>
+
+          <p>
+            Mas direktang tumutukoy ang Article 32(9) ng Civil Code sa karapatan laban sa unreasonable searches and seizures. Sa Silahis International Hotel v. Soluta (2006), pinagtibay ng Korte Suprema ang civil liability ng mga private parties dahil sa ilegal na paghahalughog sa opisina ng isang unyon.
+          </p>
+
+          <p>
+            Hindi ito kaso ng body search sa empleyado, pero mahalaga ang prinsipyong ipinapakita:<br>
+            Maaaring managot kahit pribadong tao o kompanya kapag nilabag ang karapatan ng iba sa pamamagitan ng isang unreasonable search.
+          </p>
+
+          <p>
+            Sa Republic Act No. 11313 o Safe Spaces Act, ipinagbabawal ang mga gawaing pasok sa depinisyon ng gender-based sexual harassment sa workplace. May tungkulin din ang mga employer na magpatupad ng preventive measures, complaint mechanisms, confidentiality, at proteksiyon laban sa retaliation.
+          </p>
+
+          <p>
+            Ang Republic Act No. 11917 naman ay nagtatakda ng regulasyon at professional standards para sa private security services industry. Hindi ito dapat basahin na nagbibigay ng walang-limitasyong awtoridad sa guard na maghalughog ng katawan.
+          </p>
+
+                    <p>
+            Samantala, ang Data Privacy Act at NPC Circular No. 2024-02 ay mahalaga kapag may CCTV at pagproseso ng personal data. Dapat malinaw ang legitimate purpose, kinakailangan at proportionate ang surveillance, protektado ang footage, at limitado ang access at retention. Ipinagbabawal din ng circular ang CCTV sa mga lugar na may heightened expectation of privacy, gaya ng fitting rooms, toilets, at lactation rooms.
+          </p>
+
+          <p>
+            Mahalaga ring tandaan na niratipikahan ng Pilipinas ang ILO Convention No. 190 noong 2024. Itinataguyod nito ang karapatang magkaroon ng mundo ng paggawa na malaya sa violence at harassment, at ang pangangailangang magkaroon ng mga paraan para maiwasan at matugunan ang mga panganib na ito.
+          </p>
+
+          <p>
+            Magkakaiba ang saklaw at legal requirements ng mga batas at standards na ito. Hindi nila awtomatikong ginagawang ilegal ang bawat frisking. Pero hindi rin nila pinapayagang gawing depensa ang salitang company policy para sa anumang pamamaraan.
+          </p>
+
+          <p>
+            At dito dapat maging responsable ang parehong management at security personnel.
+          </p>
+
+          <p>
+            Hindi rin makatarungang agad sisihin ang bawat security guard. Maaaring may sinusunod silang utos, training, o internal procedure. Kung may problema sa mismong patakaran, kailangang siyasatin ang nagdisenyo, nag-apruba, at nagpapatupad nito.
+          </p>
+
+          <p>
+            Pero hindi rin nawawala ang personal na pananagutan ng sinumang sadyang lumalampas sa awtoridad, nananakot, nanghihipo, o nang-aabuso.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG SEGURIDAD AY RESPONSIBILIDAD NG SISTEMA—HINDI DAHILAN PARA IPASA SA KATAWAN NG MANGGAGAWA ANG LAHAT NG HINALA.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga alternatibong hakbang na puwedeng seryosong pag-aralan at ipatupad.
+          </p>
+
+          <p>
+            Maayos na inventory tracking, stock reconciliation, access controls, documented movement ng produkto, secure employee lockers, transparent bag-inspection procedures, confidential reporting systems, at targeted investigations kapag may makatwirang batayan.
+          </p>
+
+          <p>
+            Hindi haka-haka lamang na maaaring makatulong ang mas mahusay na sistema.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Lamar Pierce, Daniel Snow, at Andrew McAfee na inilathala sa Management Science noong 2015, sinuri ang paggamit ng technology-based theft monitoring sa 392 restaurant locations mula sa limang kompanya sa United States.
+          </p>
+
+          <p>
+            Iniulat ng mga mananaliksik ang makabuluhang pagbaba ng employee theft at pagtaas ng productivity matapos gamitin ang transaction-based monitoring. Sa ulat ng Washington University tungkol sa research, may tinatayang 22% na pagbaba ng theft at humigit-kumulang 7% na pagtaas ng revenue.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang sapat ang ganitong sistema para sa lahat ng factory, supermarket, o warehouse. Hindi rin nito inaalis ang lahat ng privacy risks ng monitoring technology.
+          </p>
+
+          <p>
+            Pero ipinapakita nito na may mga paraang nakatutulong sa theft prevention nang hindi ginagawang pangunahing instrumento ang pisikal na paghahalughog sa katawan.
+          </p>
+
+          <p>
+            Siyempre, maaari pa ring magkaroon ng sitwasyong kailangan ng mas masusing inspeksyon. Pero dapat malinaw kung ano ang batayan, bakit hindi sapat ang mas simpleng paraan, sino ang awtorisadong magsagawa, at paano poprotektahan ang empleyado laban sa unnecessary contact, exposure, discrimination, at humiliation.
+          </p>
+
+          <p>
+            Kung may seryosong alegasyon ng pagnanakaw, dapat evidence-based ang imbestigasyon at may due process. Hindi nararapat na gawing kapalit ng maayos na imbestigasyon ang pagpapahiya sa lahat.
+          </p>
+
+          <p>
+            Dapat ding may ligtas na paraan para makapagreklamo ang manggagawa, lalo na kung ang mismong supervisor o security personnel ang inirereklamo. Maaaring humingi ng tulong sa DOLE para sa mga usaping may kinalaman sa employment, sa National Privacy Commission kung may posibleng data privacy violation, at sa nararapat na awtoridad kung may alegasyon ng harassment o iba pang unlawful conduct.
+          </p>
+
+          <p>
+            Hindi rin dapat basta ipinapakalat ang mga video ng mapanghimasok na inspeksyon. Posibleng makatulong ang recording bilang ebidensiya, pero maaari rin nitong muling ilantad sa kahihiyan ang mga taong dapat protektahan. Mas makabubuting pangalagaan ang kanilang pagkakakilanlan at isumite ang mahalagang ebidensiya sa tamang proseso.
+          </p>
+
+          <p>
+            Sa huli, hindi ito simpleng usapin ng employer laban sa empleyado, o security guard laban sa manggagawa.
+          </p>
+
+          <p>
+            Parehong lehitimo ang pangangailangang protektahan ang ari-arian ng negosyo at ang karapatan ng empleyadong magtrabaho nang may dignidad.
+          </p>
+
+          <p>
+            May karapatan ang employer na magpatupad ng makatwirang seguridad. May obligasyon din ang manggagawa na sumunod sa lehitimong patakaran at huwag magnakaw ng ari-arian ng kompanya.
+          </p>
+
+          <p>
+            Pero hindi nangangahulugang dahil may ilang nagnanakaw, lahat ay dapat tratuhing may kasalanan. At hindi nangangahulugang dahil may karapatang mag-inspect, walang hangganan ang puwedeng galawin, ipakita, o ipagawa sa katawan ng isang tao.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAG-IWAS SA PAGNANAKAW AY LEHITIMONG LAYUNIN. ANG HINDI KINAKAILANGANG PAGPAPAHIYA AY HINDI DAPAT GAWING PARAAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung mapoprotektahan ang negosyo sa mas maingat, patas, at hindi mapanghimasok na pamamaraan, bakit kailangang gawing normal ang mas matinding paghahalughog?
+          </p>
+
+          <p>
+            At kung talagang kinakailangan ang mas masusing inspeksyon, bakit hindi ito samahan ng malinaw na limitasyon, sapat na dahilan, privacy safeguards, at pananagutan sa posibleng pang-aabuso?
+          </p>
+
+          <p>
+            Hindi dapat maging normal ang isang gawain dahil lamang walang manggagawang nangangahas tumutol.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LISENSIYA ANG SEGURIDAD PARA YURAKAN ANG DIGNIDAD.
+            </p>
+
+            <p>
+              ANG PRODUKTO, PUWEDENG BANTAYAN. ANG MANGGAGAWA, DAPAT IGALANG.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Supreme Court.</strong>
+              <em>Firestone Tire and Rubber Co. v. Lariosa, G.R. No. L-70479, February 27, 1987.</em>
+              <a
+                href="https://lawphil.net/judjuris/juri1987/feb1987/gr_l-70479_1987.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court Decision
+              </a>
+            </li>
+
+            <li>
+              <strong>Supreme Court.</strong>
+              <em>National Bookstore, Inc. v. Court of Appeals, G.R. No. 146741, February 27, 2002.</em>
+              <a
+                href="https://lawphil.net/judjuris/juri2002/feb2002/gr_146741_2002.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court Decision
+              </a>
+            </li>
+
+            <li>
+              <strong>Supreme Court.</strong>
+              <em>Silahis International Hotel, Inc. v. Soluta, G.R. No. 163087, February 20, 2006.</em>
+              <a
+                href="https://lawphil.net/judjuris/juri2006/feb2006/gr_163087_2006.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court Decision
+              </a>
+            </li>
+
+            <li>
+              <strong>International Labour Organization, Lloyd's Register Foundation &amp; Gallup.</strong>
+              <em>Experiences of Violence and Harassment at Work: A Global First Survey (2022).</em>
+              <a
+                href="https://www.ilo.org/publications/major-publications/experiences-violence-and-harassment-work-global-first-survey"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Global Survey
+              </a>
+            </li>
+
+            <li>
+              <strong>American Psychological Association.</strong>
+              <em>2023 Work in America Survey: Artificial Intelligence, Monitoring Technology, and Psychological Well-Being.</em>
+              <a
+                href="https://www.apa.org/pubs/reports/work-in-america/2023-work-america-ai-monitoring"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Survey Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Pierce, L., Snow, D. C., &amp; McAfee, A.</strong>
+              <em>Cleaning House: The Impact of Information Technology Monitoring on Employee Theft and Productivity, Management Science 61(10), 2299–2319 (2015).</em>
+              <a
+                href="https://doi.org/10.1287/mnsc.2014.2103"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Fair Labor Association.</strong>
+              <em>Workplace Code of Conduct and Compliance Benchmarks, H/A.10: Security Practices and Body Searches (revised 2023).</em>
+              <a
+                href="https://www.fairlabor.org/wp-content/uploads/2023/11/Code-of-Conduct-and-Compliance-Benchmarks-Updated-October-2023.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Workplace Standard
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 386.</strong>
+              <em>Civil Code of the Philippines, Articles 19, 21, 26, and 32(9).</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra1949/ra_386_1949.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lawphil
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11313.</strong>
+              <em>Safe Spaces Act, Sections 16–19.</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra2019/ra_11313_2019.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lawphil
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 11917.</strong>
+              <em>Private Security Services Industry Act.</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra2022/ra_11917_2022.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lawphil
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10173.</strong>
+              <em>Data Privacy Act of 2012.</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra2012/ra_10173_2012.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Lawphil
+              </a>
+            </li>
+
+            <li>
+              <strong>National Privacy Commission.</strong>
+              <em>Advisory Opinion No. 2019-034, Consent and Its Withdrawal for Employment Purposes (2019), 2019 Compendium of Issuances, pp. 185–193.</em>
+              <a
+                href="https://privacy.gov.ph/wp-content/uploads/2023/05/2019-Compendium_rev-2-Single-1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NPC Advisory
+              </a>
+            </li>
+
+            <li>
+              <strong>National Privacy Commission.</strong>
+              <em>NPC Circular No. 2024-02, Closed-Circuit Television (CCTV) Systems.</em>
+              <a
+                href="https://privacy.gov.ph/wp-content/uploads/2024/08/NPC-Circular-No.-2024-02-CCTV-Systems.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NPC Circular
+              </a>
+            </li>
+
+            <li>
+              <strong>International Labour Organization.</strong>
+              <em>Philippines Ratifies Convention No. 190 (2024).</em>
+              <a
+                href="https://www.ilo.org/resource/news/philippines-ratifies-convention-no-190-violence-and-harassment-world-work"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ILO Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Department of Labor and Employment.</strong>
+              <em>Single Entry Approach (SEnA) / Request for Assistance.</em>
+              <a
+                href="https://arms.dole.gov.ph/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                DOLE SEnA
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
