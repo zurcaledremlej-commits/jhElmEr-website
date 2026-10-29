@@ -1,1 +1,1500 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Christmas party performance—pakikisama ba, o pamimilit na ginawang tradisyon? Suriin ang forced performances, workplace pressure, employee consent, management prerogative, psychological safety, labor rights, at karapatang tumanggi."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-pakikisama-pamimilit.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-pakikisama-pamimilit.html"
+  >
+
+  <title>CHRISTMAS PARTY PERFORMANCE—PAKIKISAMA BA, O PAMIMILIT NA GINAWANG TRADISYON? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          CHRISTMAS PARTY PERFORMANCE—PAKIKISAMA BA, O PAMIMILIT NA GINAWANG TRADISYON?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-pakikisama-pamimilit.png"
+            alt="Simbolikong visual ng empleyadong tila kinokontrol ng mga tali na parang marionette habang nasa Christmas party, kasama ang mga katrabaho at nakatataas bilang representasyon ng workplace pressure, forced performance, pakikisama, pamimilit, consent, at karapatang tumanggi."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <p>
+            “New hire ka? Kayo ang sasayaw.”<br>
+            “Bawal ang KJ dito.”<br>
+            “Lahat dapat sumali.”<br>
+            “Kapag hindi ka nag-perform, may penalty.”
+          </p>
+
+          <p>
+            Pamilyar ang ganitong mga linya sa maraming empleyado. Tuwing may Christmas party, may mga inaatasang sumayaw, kumanta, o gumawa ng presentation. May mga excited at kusang sumasali. Pero mayroon ding nahihiya, hindi komportable, o talagang ayaw—ngunit napapasunod dahil sa pressure mula sa mga katrabaho o nakatataas.
+          </p>
+
+          <p>
+            Sa sobrang tagal nang nakasanayan, maaaring isipin ng ilan na bahagi na talaga ito ng pagiging empleyado. Kapag ikaw ang bagong hire, para bang kailangan mong dumaan sa entablado bago ka tanggaping bahagi ng grupo.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero may mahalagang tanong na bihirang itanong:<br>
+              KAILAN PA NAGING OBLIGASYON SA TRABAHO ANG PAGPAPASAYA SA MGA KATRABAHO?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi masama ang Christmas party. Hindi rin masama ang group presentation, kantahan, sayawan, o biruan. Ang problema ay nagsisimula kapag ang dapat sana'y kasiyahan ay ginagawang obligasyong may kapalit na pananakot, parusa, pagpapahiya, o pinag-iinitan ng nakatataas.
+          </p>
+
+          <p>
+            At hindi lamang ito usapin ng pagiging mahiyain, introvert, o marunong makisama. May malinaw na batayan ang karapatan ng empleyado sa ilalim ng mga umiiral na patakaran sa paggawa.
+          </p>
+
+          <p>
+            Noong Oktubre 21, 2026, iniulat ng PhilSTAR Life ang paalala ni Department of Labor and Employment (DOLE)-Central Visayas information officer Roberto Cabardo na hindi dapat piliting sumayaw o mag-perform ang mga empleyado sa Christmas parties. Ayon sa kaniya, maaari itong maituring na bullying. Walang problema kung kusang-loob ang pagsali ng empleyado, ngunit hindi ito dapat ipilit.
+          </p>
+
+          <p>
+            Hindi rin ito unang pagkakataong nilinaw ng DOLE ang usapin. Noong Disyembre 12, 2025, iniulat ng Philippine News Agency ang pahayag ng ahensiya na dapat igalang ng mga kumpanya ang paniniwala, relihiyon, at personal na kagustuhan ng kanilang mga empleyado sa mga holiday activity.
+          </p>
+
+          <p>
+            Ayon sa DOLE, hindi dapat pilitin ang empleyadong lumahok sa pagtatanghal na wala naman sa kaniyang trabaho o job description. Kung may pagbabanta ng disciplinary action dahil sa pagtanggi, maaaring maghain ng angkop na reklamo at humingi ng kaukulang remedyo.
+          </p>
+
+          <p>
+            Mahalagang maunawaan ang legal na batayan nito.
+          </p>
+
+          <p>
+            Sa ilalim ng Article 297 ng Labor Code, kabilang sa mga posibleng just cause para sa dismissal ang willful disobedience sa legal na utos ng employer na may kaugnayan sa trabaho.
+          </p>
+
+          <p>
+            Ngunit hindi sapat na basta may utos at may tumangging sumunod.
+          </p>
+
+          <p>
+            Sa desisyon ng Supreme Court sa Malcaba v. ProHealth Pharma Philippines, Inc. (G.R. No. 209085, June 6, 2018), ipinaliwanag na para maging batayan ng dismissal ang willful disobedience, kailangang sinadya ang pagsuway at ang nilabag na utos ay makatuwiran, legal, naipaalam sa empleyado, at may kaugnayan sa tungkuling kinuha siyang gawin.
+          </p>
+
+          <p>
+            Ang Article 297 ay tumutukoy sa mga just cause for dismissal. Ang pagiging makatarungan ng iba pang disciplinary action ay kailangang suriin din ayon sa batas, company rules, due process, at aktuwal na pangyayari.
+          </p>
+
+          <p>
+            May karapatan ang management na magtakda ng patakaran at mag-atas ng mga lehitimong gawain. Pero hindi ibig sabihin nito na lahat ng ipinag-uutos ay awtomatikong makatarungan o maaaring gawing batayan ng parusa.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG UTOS NG NAKATATAAS AY NAGIGING LEHITIMONG OBLIGASYON DAHIL LAMANG GALING ITO SA MANAGEMENT.
+            </p>
+          </blockquote>
+
+          <p>
+            Magkaiba ang pag-uutos na gawin ang isang tungkuling bahagi ng trabaho at pagpilit na sumayaw o kumanta sa isang ordinaryong Christmas party.
+          </p>
+
+          <p>
+            Siyempre, may mga trabahong ang mismong tungkulin ay pagtatanghal, pagho-host, o entertainment. Iba ang ganitong sitwasyon at kailangang suriin ang employment contract, aktuwal na tungkulin, at kaugnay na patakaran.
+          </p>
+
+          <p>
+            Pero kung ang empleyado ay kinuha bilang accountant, cashier, warehouse staff, clerk, technician, o iba pang tungkuling walang kinalaman sa entertainment, hindi basta nagiging bahagi ng kaniyang job description ang pagsasayaw dahil lamang nakalagay ang pangalan niya sa Christmas party program.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong nagiging makatarungan ang penalty dahil may nakasulat na company policy. Kailangang may legal at makatuwirang batayan ang patakaran at ang anumang disiplinang ipapataw.
+          </p>
+
+          <p>
+            Mahalaga ring paghiwalayin ang pagdalo sa isang opisyal na company activity at ang personal na pag-perform sa entablado. Hindi awtomatikong pareho ang obligasyon sa dalawang ito.
+          </p>
+
+          <p>
+            May isa pang dimensiyong dapat maintindihan:<br>
+            Ang oras ng empleyado.
+          </p>
+
+          <p>
+            Sa Article 84 ng Labor Code, kabilang sa hours worked ang oras na kinakailangang nasa tungkulin o itinakdang lugar ng trabaho ang isang empleyado, at oras na pinahihintulutan siyang magtrabaho.
+          </p>
+
+          <p>
+            Sa Book III, Rule I, Section 6 ng Omnibus Rules Implementing the Labor Code, hindi binibilang bilang working time ang pagdalo sa lectures, meetings, training programs, at mga katulad na aktibidad kung natutugunan ang lahat ng tatlong kondisyon: ginagawa ito sa labas ng regular working hours, tunay na boluntaryo ang pagdalo, at walang ginagawang productive work.
+          </p>
+
+          <p>
+            Hindi tahasang tumutukoy sa Christmas parties ang probisyong ito, kaya hindi ito awtomatikong batayan ng overtime pay o ng karapatang tumanggi sa bawat party activity. Mahalaga pa ring suriin kung ang oras ay ipinag-utos ng employer at kung saklaw ang empleyado ng working-time rules.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang awtomatikong may overtime pay ang bawat Christmas party. Kailangang suriin kung saklaw ang empleyado ng mga patakaran sa working hours, kung ano ang aktuwal na ipinagawa, at kung kinakailangang ibigay ang oras na iyon sa employer.
+          </p>
+
+          <p>
+            Pero ipinapakita nito na may legal na pagkakaiba ang isang aktibidad na tunay na boluntaryo at isang aktibidad na ipinag-uutos.
+          </p>
+
+          <p>
+            Kung sinasabi ng kumpanya na optional ang isang aktibidad pero may parusa sa hindi pagsali, makatuwirang kuwestiyunin kung gaano ito katunay na boluntaryo.
+          </p>
+
+          <p>
+            Dito pumapasok ang mas malalim na problema sa workplace culture.
+          </p>
+
+          <p>
+            Hindi lahat ng pamimilit ay nakasulat sa memorandum. Hindi lahat ay direktang nagsasabing tatanggalin ka sa trabaho.
+          </p>
+
+          <p>
+            Minsan, nasa mga katagang “Huwag kang KJ,” “Ganyan talaga rito,” o “Baka mapag-initan ka ni boss” ang pressure.
+          </p>
+
+          <p>
+            Minsan, walang opisyal na penalty pero may panunukso, pagpapahiya, o paulit-ulit na pangungulit. May mga empleyadong pumapayag hindi dahil gusto nila kundi dahil ayaw nilang mapag-initan, mapag-usapan, o makasira sa relasyon nila sa taong may impluwensiya sa kanilang trabaho.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na bawat biro o pangungulit ay agad nang ilegal na harassment. Mahalaga ang konteksto, dalas, epekto, at aktuwal na asal. Ngunit hindi rin dapat balewalain ang pressure dahil lamang walang pormal na parusang ipinataw.
+          </p>
+
+          <p>
+            May kaugnayan dito ang mga pag-aaral tungkol sa psychological safety—ang pakiramdam ng mga tao na maaari silang magsalita, magtanong, o magpahayag ng pagtutol nang hindi natatakot sa negatibong pagtrato.
+          </p>
+
+          <p>
+            Sa meta-analysis nina Frazier at mga kasamahan, na inilathala sa Personnel Psychology noong 2017, pinagsama ang 136 independent samples na kumakatawan sa mahigit 22,000 indibidwal at halos 5,000 grupo. Sinuri ng pag-aaral ang mga salik na may kaugnayan sa psychological safety at ang koneksiyon nito sa mga resulta sa trabaho, kabilang ang performance at mga positibong asal sa organisasyon.
+          </p>
+
+          <p>
+            Samantala, sa 2023 research review ni Elizabeth Wolfe Morrison sa Annual Review of Organizational Psychology and Organizational Behavior, tinalakay ang daan-daang pag-aaral tungkol sa employee voice and silence—kung bakit nagsasalita ang mga manggagawa tungkol sa kanilang mga alalahanin, kung bakit pinipili ng ilan na manahimik, at kung ano ang maaaring maging epekto nito sa mga tao at organisasyon.
+          </p>
+
+          <p>
+            May isa pang meta-analysis na inilathala nina Martin Hagger at Kaylyn McAnally Star noong 2026 sa Stress and Health. Mula sa 192 pag-aaral, nakita ang mga ugnayang umaayon sa self-determination theory:<br>
+            Ang suportang ibinibigay sa mga sikolohikal na pangangailangan ng empleyado, kabilang ang autonomy o kakayahang magkaroon ng sariling pagpapasya, ay may kaugnayan sa mas kanais-nais na motivation, well-being, at workplace outcomes.
+          </p>
+
+                    <p>
+            Hindi direktang pag-aaral tungkol sa Christmas parties ang mga research na ito. Hindi rin nila sinusukat kung ilang empleyadong Pilipino ang napipilitang mag-perform. Ngunit nagbibigay ang mga ito ng matibay na konteksto kung bakit mahalaga ang kalayaang makapagpahayag ng pagtanggi at kung bakit hindi sapat na sukatan ng tunay na pagsang-ayon ang simpleng pagsunod.
+          </p>
+
+          <p>
+            Dahil sa totoong buhay, maaaring magmukhang masaya ang isang taong sumasayaw sa harap ng mga katrabaho habang ang tunay niyang iniisip ay kung ano ang mangyayari kapag tumanggi siya.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGPAYAG DAHIL GUSTO AY IBA SA PAGPAYAG DAHIL TAKOT SA KAPALIT NG PAGTANGGI.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito rin kailangang maging maingat sa paggamit ng salitang bullying.
+          </p>
+
+          <p>
+            Ang paalala ng DOLE na maaaring maituring na bullying ang sapilitang Christmas party performance ay hindi nangangahulugang bawat hindi komportableng presentation ay awtomatikong isang hiwalay na krimen.
+          </p>
+
+          <p>
+            Mahalaga kung may pagbabanta, pagpapahiya, diskriminasyon, hindi makatarungang parusa, o iba pang paglabag. Mahalaga rin kung anong batas at remedyo ang angkop sa partikular na pangyayari.
+          </p>
+
+          <p>
+            Halimbawa, maaaring maging kaugnay ang Republic Act No. 11313 o Safe Spaces Act kung may mga elementong saklaw ng gender-based sexual harassment sa workplace, gaya ng hindi kanais-nais na asal na seksuwal o nakabatay sa kasarian. Hindi awtomatikong saklaw nito ang bawat sapilitang sayaw o ordinaryong pagtatalo tungkol sa party participation.
+          </p>
+
+          <p>
+            Mas seryoso rin ang sitwasyon kung ginagamit ang pagtanggi bilang dahilan upang sistematikong pahirapan ang empleyado sa kaniyang trabaho.
+          </p>
+
+          <p>
+            Sa Bartolome v. Toyota Quezon Avenue, Inc. (G.R. No. 254465, April 3, 2024), kinilala ng Supreme Court ang constructive dismissal sa kasong kinasangkutan ng hostile behavior, pagpapahiya, at iba pang pagkilos ng management na nagresulta sa hindi na matiis na kalagayan sa trabaho.
+          </p>
+
+          <p>
+            Hindi tungkol sa Christmas party ang kasong iyon. Ngunit ipinapakita nito na ang panggigipit sa empleyado ay maaaring magkaroon ng seryosong legal na epekto kapag umabot sa antas na para bang wala na siyang makatuwirang pagpipilian kundi umalis sa trabaho.
+          </p>
+
+          <p>
+            Hindi rin nangangahulugang constructive dismissal agad kapag may boss na nagbiro o nagalit dahil sa pagtangging sumayaw. Kailangang patunayan ang mga kinakailangang elemento batay sa kabuuan ng pangyayari.
+          </p>
+
+          <p>
+            Kaya para sa empleyadong nakararanas ng ganitong pressure, may praktikal na mga hakbang.
+          </p>
+
+          <p>
+            Maaaring magsimula sa maayos at malinaw na pagtanggi. Hindi kailangan ng mahabang paliwanag kung hindi komportable sa pag-perform. Maaari ring itanong kung boluntaryo ba ang activity at kung may opisyal na patakaran o parusa para sa hindi pagsali.
+          </p>
+
+          <p>
+            Kung may pagbabanta, mahalagang itago ang mga kaugnay na mensahe, memo, attendance instruction, o iba pang dokumento. Isulat din ang mahahalagang detalye ng mga insidente habang sariwa pa sa alaala.
+          </p>
+
+          <p>
+            Kung may HR department, grievance mechanism, o unyon na maaaring lapitan, maaari itong gamitin upang humingi ng paglilinaw at proteksiyon. Kung hindi maresolba, maaaring humingi ng tulong sa DOLE o sa angkop na labor office.
+          </p>
+
+          <p>
+            May Single Entry Approach o SEnA na nagbibigay ng 30-day conciliation-mediation process para sa maraming labor disputes. Maaari ring umabot sa Labor Arbiter o NLRC ang mga kasong saklaw ng kanilang hurisdiksiyon, depende sa uri ng reklamo. Hindi awtomatikong may damages o panalo sa kaso dahil lamang may naitalang pagtanggi; nakabatay ang remedyo sa mga ebidensiya at naaangkop na batas.
+          </p>
+
+          <p>
+            Mahalaga ring tandaan na ang mga nabanggit na probisyon sa Labor Code tungkol sa private employment ay hindi dapat basta ipagpalagay na pareho ang aplikasyon sa lahat ng empleyado ng gobyerno, na saklaw din ng mga naaangkop na civil service rules.
+          </p>
+
+          <p>
+            Pero higit sa mga legal na remedyo, may mas malaking tanong para sa mga namamahala at nag-oorganisa ng ganitong mga aktibidad.
+          </p>
+
+          <p>
+            Kung ang layunin ay teamwork at camaraderie, bakit kailangang maging sapilitan ang pagtatanghal?
+          </p>
+
+          <p>
+            Hindi ba maaaring magpalista ng gustong sumali? Hindi ba maaaring magbigay ng ibang paraan ng pakikibahagi—gaya ng pag-aayos ng venue, pagtulong sa programa, o simpleng pakikisalamuha—nang hindi ginagawang kaparusahan ang pagtangging mag-perform?
+          </p>
+
+          <p>
+            At kung talagang walang gustong sumali, hindi ba mas makabuluhang baguhin ang programa kaysa piliting mag-entertain ang mga taong hindi komportable?
+          </p>
+
+          <p>
+            Hindi rin ibig sabihin ng pagiging introvert, mahiyain, o hindi mahilig sa entablado na wala nang pakikisama ang isang tao. May mga empleyadong tahimik sa party pero maaasahan sa trabaho. May mga hindi marunong sumayaw pero mahusay makipagtulungan. May mga hindi mahilig kumanta pero laging handang tumulong kapag may kailangang tapusin.
+          </p>
+
+          <p>
+            Hindi dapat sukatin ang pagiging mabuting katrabaho sa kakayahang magpatawa o magpasaya ng audience.
+          </p>
+
+          <p>
+            Maging ang mga kasamang empleyado ay may pananagutan sa paghubog ng maayos na workplace culture. Hindi kailangang makisali sa pagpapahiya sa taong tumatanggi. Hindi rin kailangang gawing katatawanan ang kaniyang personal na hangganan.
+          </p>
+
+          <p>
+            At hindi kailangang gawing kaaway ang management para maipagtanggol ang karapatan ng manggagawa. May mga employer at organizer na may mabuting intensiyon at gusto lamang magkaroon ng masayang pagsasama-sama. Ngunit kailangang makita na ang mabuting intensiyon ay hindi sapat na dahilan para balewalain ang pagtanggi ng iba.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAKIKISAMA AY HINDI DAPAT PATUNAYAN SA PAMAMAGITAN NG PAGSUNOD SA LAHAT NG GUSTO NG NAKATATAAS.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin naman dapat gamitin ang karapatang tumanggi bilang palusot para pabayaan ang mga lehitimong tungkulin. Ang pagiging empleyado ay may kasamang responsibilidad, at may karapatan ang management na magpatupad ng makatuwirang patakaran.
+          </p>
+
+          <p>
+            Pero ang responsibilidad sa trabaho at ang personal na pagsali sa isang entertainment activity ay hindi basta dapat paghaluin.
+          </p>
+
+          <p>
+            Ang diw Christmas party ay pagdiriwang, pagkilala sa mga nagawa sa buong taon, at pagkakataong magkaroon ng mas magaan na samahan.
+          </p>
+
+          <p>
+            Kung may gustong sumayaw, hayaan siyang mag-enjoy. Kung may gustong kumanta, bigyan siya ng pagkakataon. Kung may ayaw mag-perform, hindi kailangang iparamdam na kulang siyang empleyado o masamang katrabaho.
+          </p>
+
+          <p>
+            Dapat masaya ang pagsali dahil may kalayaang pumili—hindi dahil may takot sa maaaring mangyari kapag hindi sumunod.
+          </p>
+
+          <p>
+            At kung matagal na itong ginagawa sa isang kumpanya, hindi iyon sapat na dahilan upang hindi na ito kuwestiyunin.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG NAKASANAYAN AY MAKATARUNGAN. HINDI LAHAT NG PUMAPAYAG AY TUNAY NA GUSTO. AT HINDI LAHAT NG TUMATANGGI AY WALANG PAKIKISAMA.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang magandang samahan ay hindi nasusukat sa dami ng napilitang umakyat sa entablado, kundi sa paggalang na naipapakita kahit may taong piniling hindi sumali.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG KAILANGANG TAKUTIN, PARUSAHAN, O PAHIYAIN ANG EMPLEYADO PARA MAKISAYA, HINDI NA KASIYAHAN ANG IPINAGDIRIWANG—KUNDI KAPANGYARIHANG PILITING SUMUNOD ANG TAONG DAPAT MAY KALAYAANG TUMANGGI.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>PhilSTAR Life (October 21, 2026).</strong>
+              <em>Forced to sing or dance at the office Christmas party? DOLE calls it bullying.</em>
+              <a
+                href="https://philstarlife.com/news-and-views/181164-dole-bullying-forced-to-dance-sing-christmas-party"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PhilSTAR Life Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine News Agency (December 12, 2025).</strong>
+              <em>Companies told: Don't force workers to join party games, activities</em> (PNA report republished by SunStar).
+              <a
+                href="https://www.sunstar.com.ph/manila/companies-told-dont-force-workers-to-join-party-games-activities"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PNA Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Supreme Court E-Library.</strong>
+              <em>Malcaba v. ProHealth Pharma Philippines, Inc., G.R. No. 209085 (June 6, 2018).</em>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/64254"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court Decision
+              </a>
+            </li>
+
+            <li>
+              <strong>Supreme Court E-Library.</strong>
+              <em>Omnibus Rules Implementing the Labor Code, Book III, Rule I, Sections 3–6.</em>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/85819"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Implementing Rules
+              </a>
+            </li>
+
+            <li>
+              <strong>Supreme Court of the Philippines (September 27, 2024).</strong>
+              <em>SC: Employer’s Insulting Words, Hostile Behavior Toward an Employee Constitute Constructive Dismissal.</em>
+              <a
+                href="https://sc.judiciary.gov.ph/sc-employers-insulting-words-hostile-behavior-toward-an-employee-constitute-constructive-dismissal/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Supreme Court Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Commission on Women.</strong>
+              <em>Republic Act No. 11313: Safe Spaces Act, Sections 16–17.</em>
+              <a
+                href="https://pcw.gov.ph/republic-act-11313-safe-spaces-act/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Safe Spaces Act
+              </a>
+            </li>
+
+            <li>
+              <strong>Frazier et al. (2017).</strong>
+              <em>Psychological Safety: A Meta-Analytic Review and Extension, Personnel Psychology.</em>
+              <a
+                href="https://doi.org/10.1111/peps.12183"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research
+              </a>
+            </li>
+
+            <li>
+              <strong>Morrison (2023).</strong>
+              <em>Employee Voice and Silence: Taking Stock a Decade Later, Annual Review of Organizational Psychology and Organizational Behavior.</em>
+              <a
+                href="https://doi.org/10.1146/annurev-orgpsych-120920-054654"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research Review
+              </a>
+            </li>
+
+            <li>
+              <strong>Hagger &amp; Star (2026).</strong>
+              <em>Self-Determination Theory and Workplace Outcomes: A Meta-Analysis, Stress and Health.</em>
+              <a
+                href="https://doi.org/10.1002/smi.70151"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Meta-Analysis
+              </a>
+            </li>
+
+            <li>
+              <strong>Department of Labor and Employment.</strong>
+              <em>About Single Entry Approach (SEnA).</em>
+              <a
+                href="https://dole.gov.ph/sena-contents/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                DOLE SEnA
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
