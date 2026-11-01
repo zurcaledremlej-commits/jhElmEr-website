@@ -1,1 +1,1582 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Pag-alaala o pakitang-tao? Suriin kung kailan ang pagdalaw sa puntod ay nagiging personal na paggunita, tradisyon, social pressure, o sukatan ng pagmamahal sa paningin ng ibang tao."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-pagalaala-pakitangtao.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-pagalaala-pakitangtao.html"
+  >
+
+  <title>PAG-ALAALA O PAKITANG-TAO? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          PAG-ALAALA O PAKITANG-TAO?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-pagalaala-pakitangtao.png"
+            alt="Simbolikong visual ng pagdalaw sa puntod, paggunita sa yumao, social pressure, pampublikong pagpapakita ng pagluluksa, at tanong kung ang tradisyon ay nagiging sukatan ng pagmamahal sa paningin ng ibang tao."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <blockquote>
+            <p>
+              PAGDALAW SA PUNTOD—PAG-ALAALA PA BA SA YUMAO, O PAGPAPATUNAY NG PAGMAMAHAL SA PANINGIN NG MGA BUHAY?
+            </p>
+          </blockquote>
+
+          <p>
+            “HINDI KA MAN LANG DUMALAW?”
+          </p>
+
+          <p>
+            Isang simpleng tanong na maaaring may kasamang mabigat na panghuhusga. Para bang kapag hindi ka nakita sa sementeryo, nakalimutan mo na ang namatay. At kapag nakita kang naroon—may dalang bulaklak, kandila, at nag-aayos ng puntod—mas madaling paniwalaang mahalaga pa rin siya sa iyo.
+          </p>
+
+          <p>
+            Pero kailan naging sukatan ng pagmamahal ang pagdalaw? At kailan naging patunay ng paglimot ang hindi pagpunta?
+          </p>
+
+          <p>
+            Tuwing Undas, nakasanayan na ng maraming pamilyang Pilipino ang pagpunta sa sementeryo. Naglilinis ng puntod, nagdadala ng bulaklak, nagsisindi ng kandila, nananalangin, at nagsasama-sama upang alalahanin ang mga mahal sa buhay na pumanaw na.
+          </p>
+
+          <p>
+            Para sa marami, pagkakataon ito upang balikan ang mga alaala, ipagpatuloy ang nakagisnang tradisyon, at makasama ang mga kapamilyang bihirang makita. Walang likas na masama sa mga gawaing ito.
+          </p>
+
+          <p>
+            Ngunit hindi pare-pareho ang dahilan ng bawat tao. May dumadalaw dahil tunay na nangungulila. May nagpapatuloy ng tradisyong mahalaga sa pamilya. May nakararamdam ng pressure na pumunta dahil ayaw mapintasan. At may hindi nakararating, kahit hindi naman nababawasan ang pagmamahal at pag-alaala sa yumao.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na pakitang-tao ang lahat ng bumibisita. Hindi rin nangangahulugang walang pagpapahalaga ang hindi nakadalaw. Ngunit kapag ang pagmamahal ay nagsisimulang sukatin sa presensiya, gastos, larawan, o opinyon ng ibang tao, kailangang itanong kung ano na ang tunay na pinahahalagahan natin.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TRADISYONG DAPAT NAGPAPANATILI NG ALAALA AY HINDI DAPAT MAGING PAGSUSULIT KUNG SINO ANG MAS MAPAGMAHAL.
+            </p>
+          </blockquote>
+
+          <p>
+            Upang maunawaan kung bakit nagkakaroon ng ganitong paghusga, kailangang balikan ang pinagmulan ng tradisyon, ang kahulugan nito sa pamilyang Pilipino, ang sinasabi ng mga pag-aaral tungkol sa pagdadalamhati, at ang mismong itinuturo ng Banal na Kasulatan tungkol sa tunay na hangarin sa likod ng ating mga ginagawa.
+          </p>
+
+          <h2>
+            SAAN NANGGALING ANG TRADISYON?
+          </h2>
+
+          <p>
+            Sa kalendaryong Katoliko, magkaiba ang Nobyembre 1, All Saints' Day, at Nobyembre 2, All Souls' Day. Ang una ay pagdiriwang para sa lahat ng banal; ang ikalawa ay nakalaan sa paggunita at pananalangin para sa mga pumanaw.
+          </p>
+
+          <p>
+            Ayon sa Vatican News, mayroon nang ebidensiya ng paggunita at pananalangin ng mga Kristiyano para sa mga yumao noong ikalawang siglo. Noong taong 998, itinakda ni Abbot Odilo ng Cluny ang Nobyembre 2 bilang araw ng paggunita sa mga namatay sa mga monasteryo sa ilalim ng kaniyang pamamahala.
+          </p>
+
+          <p>
+            Ibig sabihin, may mahabang kasaysayang panrelihiyon ang paggunita sa yumao. Hindi ito nagsimula bilang paligsahan sa pagpapaganda ng puntod o pagpapakita sa ibang tao ng pagmamahal.
+          </p>
+
+          <p>
+            Sa Pilipinas, nagkaroon din ang Undas ng malalim na kahulugang pampamilya at pangkultura. Hindi lamang ang puntod ang pinupuntahan. Nagiging lugar din ang sementeryo ng muling pagkikita, pagkukuwentuhan, at pag-alala sa pinagsamahan ng mga nabubuhay at mga pumanaw.
+          </p>
+
+          <p>
+            Ngunit kailangang paghiwalayin ang tradisyon, paniniwalang panrelihiyon, at pamimilit ng lipunan. Ang isang gawaing may magandang pinagmulan ay maaari pa ring magkaroon ng hindi magandang paraan ng pagpapatupad.
+          </p>
+
+          <h2>
+            HINDI LANG PANINIWALA—MAY SOSYOLOHIYA RIN ANG UNDAS.
+          </h2>
+
+          <p>
+            Noong 2013, nagsagawa si Joy Carmella Caunin C. Papa ng isang undergraduate thesis sa sosyolohiya sa University of the Philippines Los Baños tungkol sa sementeryo, mga kaugalian, at kahulugan ng Undas sa Cabuyao, Laguna.
+          </p>
+
+          <p>
+            Gumamit ang pag-aaral ng obserbasyon, panayam, at mga pampublikong rekord.
+          </p>
+
+          <p>
+            Kabilang sa mga natuklasan na ang tradisyon ay may malaking impluwensiya sa mga ginagawa ng tao sa sementeryo; ang mga puntod at lapida ay nagpapakita ng pagpapahalaga sa relihiyon at pamilya; at ang mga pagkakaiba sa libingan ay may kaugnayan din sa kalagayang sosyoekonomiko.
+          </p>
+
+          <p>
+            Nakita rin sa pag-aaral na ang Undas ay hindi lamang paggunita sa namatay. Isa rin itong pagtitipon ng pamilya at paraan ng pagpapanatili ng ugnayan sa alaala ng yumao.
+          </p>
+
+          <p>
+            Mahalaga ang natuklasang ito dahil ipinapakita nitong hindi simpleng ritwal ang pagdalaw. May kahulugan ito sa relasyon, pagkakakilanlan, at kultura ng pamilya.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero may isa ring mahalagang realidad:<br>
+              HINDI PARE-PAREHO ANG KAKAYAHAN NG MGA TAONG GUSTONG MAGBIGAY-GALANG.
+            </p>
+          </blockquote>
+
+          <p>
+            May pamilyang kayang magpaganda ng puntod, bumili ng mamahaling bulaklak, at bumiyahe taon-taon. May pamilyang sapat lamang ang pera para sa araw-araw na pagkain. May nagtatrabaho sa malayo, may karamdaman, may kailangang alagaan, at may hindi makauwi kahit gustong-gusto.
+          </p>
+
+          <p>
+            Kung gagawing sukatan ng pagmamahal ang nakikitang paggastos at presensiya, madaling mapagkamalang kawalan ng pagpapahalaga ang kakulangan sa pera o pagkakataon.
+          </p>
+
+          <p>
+            Hindi ito makatarungan.
+          </p>
+
+          <p>
+            Ang pag-aaral sa Cabuyao ay hindi pambansang survey at hindi patunay na ganito ang lahat ng pamilyang Pilipino. Ngunit nagbibigay ito ng aktuwal na batayan upang maunawaan na ang Undas ay may mga dimensiyong panlipunan, pangkultura, at pangkabuhayan—hindi lamang panrelihiyon.
+          </p>
+
+          <h2>
+            MAY SIKOLOHIKAL NA KAHULUGAN ANG PAGDALAW.
+          </h2>
+
+          <p>
+            Sa sikolohiya ng pagdadalamhati, may konseptong tinatawag na continuing bonds—ang pagpapanatili ng emosyonal at simbolikong ugnayan sa isang taong namatay na.
+          </p>
+
+          <p>
+            Maaaring kabilang dito ang pagbalik sa mga alaala, pag-iingat ng larawan o personal na gamit, pagpapatuloy ng magagandang aral ng yumao, at pagdalaw sa lugar na mahalaga sa kanilang pinagsamahan.
+          </p>
+
+          <p>
+            Sa isang systematic review nina Helen Hewson at mga kasama, na unang nailathala online noong 2023 at lumabas sa journal volume noong 2024, 79 na pag-aaral mula sa 319 na na-screen ang isinama sa pagsusuri. Lumitaw na ang pagpapanatili ng ganitong ugnayan ay maaaring may kasamang kaginhawahan, kalungkutan, pagbuo ng kahulugan sa pagkawala, at pagpapatuloy ng sariling pagkakakilanlan.
+          </p>
+
+          <p>
+            Hindi pare-pareho ang epekto nito sa lahat. Hindi rin napatunayang ang isang partikular na paraan ng pag-alala ay laging mas mabuti kaysa sa iba.
+          </p>
+
+          <p>
+            May isa pang review noong 2025 tungkol sa mourning rituals sa East at Southeast Asia. Sinuri nito ang sampung pag-aaral at binigyang-diin ang papel ng pamilya, mga kaugaliang pangkultura, at pagpapanatili ng ugnayan sa yumao sa pagharap sa pagkawala.
+          </p>
+
+          <p>
+            Kaya hindi makatarungang sabihing walang kabuluhan ang pagdalaw sa sementeryo dahil wala na ang taong dinadalaw.
+          </p>
+
+          <blockquote>
+            <p>
+              KAHIT PUMANAW NA ANG ATING MGA MAHAL SA BUHAY, MAAARI PA RING MANATILI ANG MGA ALAALA, PAGMAMAHAL, AT BAKAS NA INIWAN NILA SA ATING BUHAY.
+            </p>
+          </blockquote>
+
+          <p>
+            May taong nakakaramdam ng kapayapaan habang nagdarasal sa tabi ng puntod. May taong mas nararamdaman ang pagkawala kapag bumibisita. May iba namang pinipiling alalahanin ang yumao sa tahanan o sa mga lugar na mahalaga sa kanilang pinagsamahan.
+          </p>
+
+          <p>
+            Walang iisang paraan ng pagdadalamhati na dapat ipilit sa lahat.
+          </p>
+
+                    <h2>
+            KAILAN NAGIGING PARA NA SA PANINGIN NG IBANG TAO?
+          </h2>
+
+          <p>
+            Dito pumapasok ang social pressure—ang impluwensiya ng inaasahan, opinyon, o posibleng paghusga ng mga taong nakapaligid sa atin.
+          </p>
+
+          <p>
+            Halimbawa, may taong gustong dumalaw dahil nangungulila. Ngunit may maaari ring pumunta dahil ayaw mapagsabihang pinababayaan ang puntod. May nakikisama sa taunang pagdalaw upang hindi mapintasan ng kamag-anak, kahit iba ang personal niyang paraan ng paggunita.
+          </p>
+
+          <p>
+            Magkaiba ang kusang pagpapahalaga at ang pagsunod dahil natatakot mapahiya o mapintasan.
+          </p>
+
+          <p>
+            Hindi rin kailangang ipagpalagay na ang taong sumunod sa inaasahan ng pamilya ay wala nang tunay na pagmamahal. Maaaring sabay na umiiral ang pagnanais na alalahanin ang yumao at ang takot sa sasabihin ng iba.
+          </p>
+
+          <p>
+            Ngunit kapag ang pangunahing batayan na ng pagpunta ay kung ano ang iisipin ng ibang tao, unti-unting naililipat ang sentro ng gawain.
+          </p>
+
+          <blockquote>
+            <p>
+              Mula sa PAG-ALAALA SA YUMAO, nagiging PAGPAPATUNAY SA MGA BUHAY.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lamang ito haka-hakang usapin sa panahon ng social media.
+          </p>
+
+          <p>
+            Sa isang qualitative meta-synthesis na inilathala noong 2025 nina Molly Price, Edith Maria Steffen, at Karina Stengaard Kamp, pinagsama ang mga natuklasan mula sa pitong pag-aaral tungkol sa paggamit ng social media upang mapanatili ang ugnayan sa namatay.
+          </p>
+
+          <p>
+            Nakita nila na nakatutulong ang digital platforms sa pagbabahagi ng alaala at sama-samang pagdadalamhati. Ngunit may mga kalahok din sa mga pag-aaral na nakaramdam ng pressure na mag-post dahil baka kuwestiyunin ng iba ang katapatan ng kanilang kalungkutan kung hindi nila ito ipapakita online.
+          </p>
+
+          <p>
+            Isang mahalagang punto ito:<br>
+            Maaaring magkaroon ng inaasahang pampublikong pagpapahayag ng pagdadalamhati, kahit hindi naman iyon ang gustong paraan ng mismong nagluluksa.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayan na karamihan ng pumupunta sa sementeryo ay pakitang-tao na. Hindi rin ito direktang sukatan ng asal ng buong populasyon ng Pilipinas.
+          </p>
+
+          <p>
+            Pero pinatutunayan nitong may dokumentadong sitwasyon kung saan ang pagdadalamhati ay naaapektuhan ng pangangailangang makita at kilalanin ng ibang tao.
+          </p>
+
+          <h2>
+            KUNG MAY LARAWAN AT POST, PAKITANG-TAO NA BA?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Sa isang pag-aaral noong 2025 nina Marc Kenneth Cabañero at Ma Teresa Tricia Guison-Bautista, nagsagawa ng malalalim na panayam sa sampung Pilipinong nakaranas ng pagkawala ng mahal sa buhay.
+          </p>
+
+          <p>
+            Nakita sa kanilang mga salaysay na nagagamit ang Facebook upang maipahayag ang kalungkutan, mapanatili ang mga alaala, at makatanggap ng emosyonal na suporta.
+          </p>
+
+          <p>
+            Maliit at kwalitatibo ang pag-aaral, kaya hindi ito maaaring gawing batayan sa pagsasabing pare-pareho ang motibo ng lahat ng Pilipinong nagpo-post.
+          </p>
+
+          <p>
+            Ngunit mahalaga itong panimbang sa mabilis na akusasyong ang anumang pampublikong pagpapakita ng pagdadalamhati ay pagpapapansin lamang.
+          </p>
+
+          <p>
+            Maaaring ang isang larawan ay simpleng alaala. Maaaring ang isang post ay mensahe para sa mga kamag-anak na malayo. Maaaring ang pagbabahagi ng kalungkutan ay paraan ng paghingi ng suporta.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PATUNAY NG KAPLASTIKAN ANG PAGPO-POST. PERO HINDI RIN PATUNAY NG MAS MALALIM NA PAGMAMAHAL ANG DAMI NG POST.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang problema ay hindi ang camera, bulaklak, kandila, o social media.<br>
+            Ang problema ay kapag ginagamit ang mga ito bilang sukatan upang maliitin ang pagmamahal ng iba, magpaligsahan sa pagpapahalaga, o makakuha ng paghanga na siyang nagiging pangunahing layunin ng paggunita.
+          </p>
+
+          <h2>
+            ANO TALAGA ANG SINASABI NG BANAL NA KASULATAN?
+          </h2>
+
+          <p>
+            May malinaw na pagkakaiba sa Biblia sa pagitan ng paggalang sa yumao at paggawa ng isang mabuting bagay para lamang mapuri ng mga tao.
+          </p>
+
+          <p>
+            Sa Marcos 16:1–2, nagpunta sina Maria Magdalena, Maria na ina ni Santiago, at Salome sa libingan ni Jesus upang lagyan ng pabango ang kaniyang katawan.
+          </p>
+
+          <p>
+            Ipinapakita ng salaysay ang kanilang pagmamalasakit. Ngunit hindi ito utos na kailangang pumunta sa sementeryo taon-taon upang patunayan ang pagmamahal sa namatay.
+          </p>
+
+          <p>
+            Wala ring tuwirang utos sa Biblia na ang pagmamahal sa yumao ay dapat sukatin sa pagdalaw tuwing Nobyembre 1 o 2.
+          </p>
+
+          <p>
+            Sa Mateo 6:1, nagbabala si Jesus tungkol sa paggawa ng mabuti para lamang makita at mapuri ng ibang tao. Sa mga kasunod na talata, tinukoy niya ang pakitang-taong paglilimos at pananalangin.
+          </p>
+
+          <p>
+            Hindi sementeryo ang direktang paksa ng talata. Ngunit ang prinsipyong itinuturo nito ay malinaw: kailangang suriin ang tunay na hangarin sa likod ng isang gawaing mukhang mabuti.
+          </p>
+
+          <p>
+            Sa Mateo 23:5, pinuna rin ni Jesus ang mga gawaing panrelihiyong ginagawa para sa paghanga ng tao.
+          </p>
+
+          <p>
+            At sa Mateo 23:29–32, tinuligsa niya ang mga mapagkunwaring pinunong panrelihiyon na nagpapaganda ng mga libingan ng mga propeta, habang hindi nila tunay na pinaninindigan ang aral at katuwirang ipinagtanggol ng mga ito.
+          </p>
+
+          <p>
+            Mahalagang linawin ang orihinal na konteksto:<br>
+            Hindi nito ipinagbabawal ang pagpapaganda ng puntod. Ang tinutuligsa ay ang pagkukunwari at ang hindi pagkakatugma ng panlabas na pagpaparangal at tunay na paninindigan.
+          </p>
+
+          <blockquote>
+            <p>
+              Sa ating usapin, nagbibigay ito ng mabigat na paalala:<br>
+              HINDI SAPAT ANG MAGANDANG PAGPAPARANGAL KUNG ANG LAYUNIN AY MAGMUKHANG MAPAGMAHAL SA PANINGIN NG IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Samantala, sa 1 Samuel 16:7, nang pumili ang Diyos ng magiging hari ng Israel, ipinakita niyang hindi tulad ng tao ang kaniyang pagtingin. Panlabas na anyo ang nakikita ng tao, ngunit sa puso tumitingin ang Diyos.
+          </p>
+
+          <p>
+            Hindi ito talatang direktang tumatalakay sa Undas. Ngunit ang prinsipyo nito ay may kinalaman sa ating paghusga sa panlabas na pagpapakita.
+          </p>
+
+          <p>
+            Maaaring maraming nakakita sa taong bumisita sa puntod, ngunit hindi nila lubos na alam ang kaniyang hangarin.<br>
+            Maaari ring walang nakakita sa taong tahimik na nagbalik-tanaw sa mga alaala ng kaniyang namayapang magulang, asawa, anak, o kapatid.
+          </p>
+
+          <p>
+            Hindi natin maaaring sukatin ang nilalaman ng kanilang puso batay lamang sa nakikita natin.
+          </p>
+
+          <p>
+            Kaugnay nito, sa 1 Corinto 4:5, may paalala laban sa padalus-dalos na paghatol sa mga nakatagong hangarin ng iba.
+          </p>
+
+          <blockquote>
+            <p>
+              Kaya may dalawang pagkakamaling dapat iwasan:<br>
+              ang husgahang walang pagmamahal ang hindi nakadalaw, at ang awtomatikong sabihing pakitang-tao ang taong nakadalaw at nagbahagi ng larawan.
+            </p>
+          </blockquote>
+
+                    <h2>
+            PAANO NAMAN ANG PANANALANGIN PARA SA NAMATAY?
+          </h2>
+
+          <p>
+            Sa pananampalatayang Katoliko, may doktrina tungkol sa paggunita at pananalangin para sa yumao.
+          </p>
+
+          <p>
+            Sa Catechism of the Catholic Church, talata 958, itinuturo ang paggalang sa alaala ng mga namatay at ang pakikipag-ugnayan ng mga kasapi ng Simbahan sa pamamagitan ng pananampalataya. Sa talata 1032, binibigyang-diin ang mga panalangin at Misa para sa mga yumao.
+          </p>
+
+          <p>
+            May pagkakaiba sa pagtanggap at pagpapaliwanag sa mga turong ito sa ibang mga denominasyong Kristiyano, kabilang ang paggamit ng 2 Macabeo bilang batayang biblikal.
+          </p>
+
+          <p>
+            Ngunit mahalagang ihiwalay ang pananalangin at paggunita ayon sa pananampalataya sa paggawang obligadong magpakita sa sementeryo upang hindi mapintasan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGDALAW SA PUNTOD AY HINDI DAPAT GAMITING PANUKAT NG PANANAMPALATAYA O PAGMAMAHAL NG IBANG TAO.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang paggunita ay maaaring may panrelihiyong kahulugan. Ang pagdalaw ay maaaring mahalagang kaugaliang pampamilya. Pero hindi nangangahulugang may karapatang manghusga ang sinumang nakadalo laban sa taong hindi nakapunta.
+          </p>
+
+          <h2>
+            ANG MAS MASAKIT NA TANONG: NOONG BUHAY PA SILA, PAANO NATIN SILA PINAHALAGAHAN?
+          </h2>
+
+          <p>
+            Sa 1 Juan 3:17–18, binibigyang-diin na ang tunay na pag-ibig ay hindi lamang sinasabi; ipinapakita rin ito sa gawa, lalo na sa pagtugon sa pangangailangan ng kapwa.
+          </p>
+
+          <p>
+            Ang direktang konteksto nito ay ang pagmamahal at pagtulong sa mga taong nangangailangan habang nabubuhay pa sila.
+          </p>
+
+          <p>
+            Dito natin maaaring suriin ang isa pang bahagi ng ating nakasanayang pagpapahalaga.
+          </p>
+
+          <p>
+            May mga pagkakataong handa tayong gumastos para sa bulaklak, kandila, puntod, at magarbong paggunita. Ngunit gaano tayo kahandang maglaan ng oras, makinig, umunawa, tumulong, at magpakita ng malasakit habang nabubuhay pa ang mga mahal natin?
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang ang pagdalaw sa sementeryo ay pagtatakip sa naging pagkukulang noon. Hindi rin makatarungang sisihin ang taong nagdadalamhati dahil lamang may mga bagay siyang hindi na nagawa o nasabi noong nabubuhay pa ang kaniyang mahal sa buhay.
+          </p>
+
+          <p>
+            Lahat tayo ay maaaring magkaroon ng pagkukulang at pagsisisi.
+          </p>
+
+          <blockquote>
+            <p>
+              Ngunit may mahalagang aral dito para sa mga mayroon pang pagkakataon:<br>
+              HUWAG NATING HINTAYING PUNTOD NA ANG MADADALAW BAGO NATIN BIGYAN NG PANAHON ANG TAONG MAAARI PA NATIN MAKASAMA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang hintayin ang kamatayan bago matutong magpasalamat. Hindi kailangang magkaroon ng lapida bago ipahayag ang pagpapahalaga. At hindi kailangang maging alaala na lamang ang isang tao bago natin bigyang-pansin ang kaniyang pangangailangan.
+          </p>
+
+          <p>
+            Ang pagmamahal sa yumao ay maaaring magpatuloy sa paggunita. Ngunit ang pagmamahal sa nabubuhay ay may mga pagkakataong kailangang samantalahin habang naririyan pa sila.
+          </p>
+
+          <h2>
+            HINDI DAPAT MAGING OBLIGASYONG MAGPATUNAY ANG TRADISYON.
+          </h2>
+
+          <p>
+            Ang pagpunta sa sementeryo ay maaaring para sa yumao at para rin sa mga nabubuhay.
+          </p>
+
+          <p>
+            Para sa yumao, bilang pagpaparangal sa kaniyang alaala. Para sa mga nabubuhay, bilang pagkakataong magluksa, manalangin ayon sa pananampalataya, magkasama-sama, at balikan ang mga taong naging bahagi ng kanilang buhay.
+          </p>
+
+          <p>
+            Walang kailangang ipagbangga sa dalawang layuning iyon.
+          </p>
+
+          <p>
+            Nagiging problema lamang kapag ang pagdalaw ay pinaghaharian ng takot sa sasabihin ng iba, paghahangad ng papuri, o paniniwalang ang taong hindi nakadalaw ay mas kaunti ang pagmamahal.
+          </p>
+
+          <p>
+            Kung nais ng isang tao na bumisita, igalang siya. Kung hindi siya makapunta, huwag agad siyang husgahan. Kung nais niyang magbahagi ng larawan, hindi kailangang kuwestiyunin ang kaniyang katapatan. Kung mas pinili niyang manahimik, hindi ibig sabihin ay nakalimot na siya.
+          </p>
+
+          <p>
+            At kung may pagkakataong kailangan nating tanungin ang sarili nating dahilan, gawin natin ito nang walang pagkukunwari.
+          </p>
+
+          <blockquote>
+            <p>
+              Kung wala bang ibang makakakita, nanaisin pa rin nating dumalaw?<br>
+              Kung wala bang magtatanong kung bakit hindi tayo pumunta, gugustuhin pa rin ba nating alalahanin ang yumao sa ganitong paraan?<br>
+              Kung walang larawang maipapakita, papuring matatanggap, o taong kailangang patunayan, mananatili pa rin ba ang pagpapahalaga?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito pagsusulit na may iisang tamang sagot. Isa itong paanyayang maging tapat sa ating sariling hangarin.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGDALAW SA PUNTOD AY MAAARING TRADISYON. ANG PAG-ALAALA AY MAAARING PERSONAL. PERO ANG PAGMAMAHAL AY HINDI DAPAT GAWING PALIGSAHAN O OBLIGASYONG MAGPALIWANAG SA IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil sa huli, hindi ang dami ng bulaklak, kinis ng lapida, dalas ng pagbisita, o bilang ng nakakita ang makapagsasabi kung gaano natin minahal ang isang tao.
+          </p>
+
+          <p>
+            At kung may isang bagay tayong dapat matutuhan sa pagdalaw sa puntod, iyon ay ang katotohanang hindi habang-panahon ay may pagkakataon tayong iparamdam ang pagmamahal sa mga taong nabubuhay pa.
+          </p>
+
+          <blockquote>
+            <p>
+              HUWAG GAWING PATUNAY SA MGA BUHAY ANG PAGDALAW SA MGA YUMAO. AT HUWAG HINTAYING YUMAO ANG MGA BUHAY BAGO NATIN IPADAMA ANG PAGMAMAHAL NA KAYA PA NATING IBIGAY NGAYON.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              Ang puntod ay lugar ng paggunita—hindi sukatan ng pagmamahal.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / Batayan
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Vatican News.</strong>
+              <em>Commemoration of All the Faithful Departed (All Souls' Day).</em>
+              Kasaysayan at kahulugan ng Nobyembre 2.
+            </li>
+
+            <li>
+              <strong>Catechism of the Catholic Church.</strong>
+              <em>§§958 at 1032.</em>
+              Paggunita at pananalangin para sa yumao.
+            </li>
+
+            <li>
+              <strong>Papa, J. C. C. C. (2013).</strong>
+              <em>Rest in Feast: A Community Study of the Cemetery, Social Practices and Their Meanings in Cabuyao, Laguna.</em>
+              University of the Philippines Los Baños.
+            </li>
+
+            <li>
+              <strong>Hewson, H., et al. (2023).</strong>
+              <em>The Impact of Continuing Bonds Following Bereavement: A Systematic Review.</em>
+              Death Studies.
+            </li>
+
+            <li>
+              <strong>Death Studies (2025).</strong>
+              <em>Mourning Rituals Impact Grief Outcomes in East and Southeast Asia: A Mixed-Methods Review.</em>
+            </li>
+
+            <li>
+              <strong>Price, M., Steffen, E. M., &amp; Kamp, K. S. (2025).</strong>
+              <em>How Do People Use Social Media to Maintain Continuing Bonds in Bereavement? A Qualitative Meta-Synthesis.</em>
+              OMEGA.
+            </li>
+
+            <li>
+              <strong>Cabañero, M. K. F., &amp; Guison-Bautista, M. T. T. (2025).</strong>
+              <em>Virtual Mourning: How Filipinos Utilize Facebook to Express Grief and Seek Support.</em>
+              OMEGA.
+            </li>
+
+            <li>
+              <strong>Banal na Kasulatan, Magandang Balita Biblia (MBB05).</strong>
+              <em>Marcos 16:1–2; Mateo 6:1–6; Mateo 23:5, 29–32; 1 Samuel 16:7; 1 Corinto 4:5; 1 Juan 3:17–18.</em>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
