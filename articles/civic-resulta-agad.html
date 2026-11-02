@@ -1,1 +1,2203 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Resulta lang nakikita? Isang fact-based na pagsusuri sa kahirapan, pag-ahon, disiplina, personal na pananagutan, pagnenegosyo, paglikha ng kayamanan, at mga hadlang at oportunidad na humuhubog sa tagumpay."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-resulta-agad.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-resulta-agad.html"
+  >
+
+  <title>RESULTA LANG NAKIKITA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          RESULTA LANG NAKIKITA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-resulta-agad.jpg"
+            alt="Simbolikong visual ng magkakaibang landas ng kahirapan at tagumpay, pagbuo ng kayamanan, pagnenegosyo, disiplina, panganib, oportunidad, at mga prosesong hindi agad nakikita sa likod ng kasalukuyang kalagayan ng isang tao."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <blockquote>
+            <p>
+              “MADALING MAGING MAHIRAP AT MANATILING MAHIRAP—PERO MAHIRAP MAGING MAYAMAN AT MANATILING MAYAMAN.”
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              NAKITA MO ANG BAHAY, SASAKYAN, NEGOSYO, AT KAYAMANAN. PERO ALAM MO BA KUNG PAANO NAKARATING DOON ANG TAO?
+            </p>
+          </blockquote>
+
+          <p>
+            Madaling mapansin ang mga benepisyo ng pagiging mayaman. Ang kakayahang bumili ng gusto, mamuhay nang komportable, at magkaroon ng mga oportunidad na hindi basta naaabot ng karaniwang manggagawa.
+          </p>
+
+          <p>
+            Pero sa likod ng kayamanang sariling pinundar, ilang taon kaya ang ginugol sa pagtatrabaho, pagpapasya, pagharap sa panganib, at pagsisimulang muli matapos mabigo?
+          </p>
+
+          <p>
+            At kapag nakuha na ang tagumpay, gaano kadali o kahirap panatilihing kumikita ang negosyong nagdala sa kanya roon?
+          </p>
+
+          <p>
+            “MAHIRAP MAGING MAHIRAP.”
+          </p>
+
+          <p>
+            Totoo. Walang dapat magmaliit sa hirap ng taong araw-araw na iniisip kung saan kukuha ng pagkain, pambayad ng kuryente, pang-aral ng anak, at panggastos kapag may nagkasakit.
+          </p>
+
+          <p>
+            Pero bakit kapag mayaman ang pinag-uusapan, may mga taong para bang ang nakikita na lamang ay ang kaginhawahang tinatamasa niya ngayon?
+          </p>
+
+          <p>
+            Parang sapat nang makitang matagumpay ang isang tao para ipagpalagay na magaan ang kanyang pinagdaanan. Hindi na tinatanong kung saan siya nagsimula, ano ang kanyang isinugal, ilang beses siyang nabigo, at paano niya naabot ang kanyang kasalukuyang kalagayan.
+          </p>
+
+          <p>
+            Siyempre, hindi lahat ng mayaman ay nagsimula sa wala. May mga nagmana ng kayamanan at may mga nabigyan ng malalaking bentahe. Pero hindi rin makatarungang ipagpalagay na walang mabigat na pinagdaanan ang mga taong tunay na nagtayo ng sarili nilang kabuhayan.
+          </p>
+
+          <p>
+            At ganoon din sa mahihirap. Hindi sapat na makita ang kanilang kasalukuyang kakulangan para husgahan ang kanilang sipag, mga desisyon, o kakayahang umasenso.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG NAKIKITA MO AY ANG KASALUKUYANG KALAGAYAN—HINDI ANG BUONG PINAGMULAN, PROSESO, AT PINAGDAANAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito pumapasok ang sentrong argumento ng usapin.
+          </p>
+
+          <p>
+            Ang pagiging mahirap, ang pag-ahon sa kahirapan, ang paglikha ng kayamanan, at ang pagpapanatili nito ay apat na magkakaibang bagay na hindi dapat basta pagsamahin sa iisang paghuhusga.
+          </p>
+
+          <p>
+            Hindi rin ito paligsahan kung sino ang mas maraming problema. Magkaiba ang kahirapang dulot ng kakulangan sa pangunahing pangangailangan at ang mga hamong kaakibat ng pagbuo at pamamahala ng isang matagumpay na negosyo.
+          </p>
+
+          <p>
+            Kaya unahin natin ang unang bahagi ng pahayag—dahil dito madalas nagsisimula ang maling pagkaunawa.
+          </p>
+
+          <h2>
+            MADALING MAGING MAHIRAP—PERO HINDI MADALING MABUHAY NANG MAHIRAP.
+          </h2>
+
+          <p>
+            Hindi mo kailangang gumawa ng isang malaking pagkakamali para mapunta sa kahirapan.
+          </p>
+
+          <p>
+            Maaari kang ipinanganak sa pamilyang kapos sa kabuhayan. Maaari kang mawalan ng trabaho, magkasakit, mawalan ng pinagkakakitaan dahil sa kalamidad, o magkaroon ng gastusing mas malaki kaysa sa iyong ipon.
+          </p>
+
+          <p>
+            At kahit nagsusumikap kang magtrabaho, hindi nito awtomatikong ginagarantiya na sapat ang iyong kikitain para makaahon.
+          </p>
+
+          <p>
+            Ayon sa Philippine Statistics Authority (PSA), umabot sa 15.5% o humigit-kumulang 17.54 milyong Pilipino ang nasa ilalim ng pambansang poverty threshold noong 2023. Para sa pamilyang may limang miyembro, tinatayang ₱13,873 bawat buwan ang minimum na kailangan upang matugunan ang batayang pangangailangan sa pagkain at iba pang mahahalagang gastusin.
+          </p>
+
+          <p>
+            Poverty threshold pa lamang iyan—hindi sukatan ng komportable o masaganang pamumuhay.
+          </p>
+
+          <p>
+            Mas malawak naman ang panganib na ipinapakita ng isang pag-aaral ng Philippine Institute for Development Studies (PIDS) na inilathala nitong 2026, gamit ang datos mula 2018, 2021, at 2023.
+          </p>
+
+          <p>
+            Tinatayang 30% ng mga sambahayang Pilipino ang bulnerable sa income poverty, kumpara sa 10.9% na opisyal na family poverty incidence noong 2023.
+          </p>
+
+          <p>
+            Magkaiba ang dalawang sukatan. Ang poverty incidence ay tumutukoy sa mga sambahayang mahirap ayon sa itinakdang pamantayan, samantalang ang vulnerability ay pagtataya ng panganib na mapunta sa kahirapan.
+          </p>
+
+          <p>
+            Sa mga sambahayang tinukoy na bulnerable, 86% ang nakararanas ng pabagu-bagong kita. Mas mataas din ang tinatayang vulnerability sa kanayunan—43%—kumpara sa 20% sa mga urban area.
+          </p>
+
+          <blockquote>
+            <p>
+              Ano ang ipinapakita ng mga datos na ito?<br>
+              HINDI DAHIL HINDI MAHIRAP ANG ISANG PAMILYA NGAYON, LIGTAS NA ITO SA KAHIRAPAN BUKAS.
+            </p>
+          </blockquote>
+
+          <p>
+            Maaaring may trabaho, may maliit na negosyo, at may regular na kinikita ang isang pamilya. Pero kapag kulang ang ipon, walang sapat na proteksiyong pinansiyal, at dumating ang isang mabigat na problema, maaaring mabilis na maubos ang kanilang pinaghirapan.
+          </p>
+
+          <p>
+            Ito ang dahilan kung bakit may mga taong nahihirapang makaahon kahit hindi naman sila tumitigil sa pagtatrabaho.
+          </p>
+
+          <p>
+            Sa pag-aaral ng Organisation for Economic Co-operation and Development (OECD) noong 2018, ginamit ang konseptong sticky floors upang ilarawan ang mga hadlang na pumipigil sa pag-angat ng mga nasa mababang antas ng ekonomiya.
+          </p>
+
+          <p>
+            Kapag kulang ang pinag-aralan, oportunidad, puhunan, suporta, at access sa mas maayos na trabaho, maaaring maipasa sa susunod na henerasyon ang ekonomikong kawalan ng bentahe.
+          </p>
+
+          <blockquote>
+            <p>
+              KAYA HINDI DAHIL NANATILING MAHIRAP ANG ISANG TAO, IBIG SABIHIN AY PINILI NIYANG MANATILING MAHIRAP.
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalagang malinaw iyan.
+          </p>
+
+          <h2>
+            PERO LAHAT BA NG PANANATILI SA KAHIRAPAN AY DAHIL LAMANG SA KAKULANGAN NG OPORTUNIDAD?
+          </h2>
+
+          <p>
+            Hindi rin.
+          </p>
+
+          <blockquote>
+            <p>
+              May isa pang realidad na hindi dapat balewalain:<br>
+              ANG SARILING DIREKSIYON, DISIPLINA, MGA GAWI, AT PAULIT-ULIT NA PAGPAPASYA AY MAY TUNAY NA EPEKTO SA KABUHAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga taong may pagkakataong matuto, magtrabaho, o magdagdag ng kakayahan, pero paulit-ulit na ipinagpapaliban ang dapat gawin.
+          </p>
+
+          <p>
+            May mga taong may kakayahang magtabi ng kahit kaunting pera, pero inuuna ang hindi kinakailangang paggastos. May pagkakataong pagbutihin ang kabuhayan, ngunit mas pinipiling ipagpatuloy ang nakasanayang gawi kahit nakikita na ang masamang epekto nito.
+          </p>
+
+          <p>
+            Mayroon ding nalulubog sa mapaminsalang pagsusugal, hindi kinakailangang pangungutang, at paggastos nang lampas sa kakayahang magbayad.
+          </p>
+
+          <p>
+            Ang mga ito ay maaaring magpahina sa kakayahang makaipon, magpundar, magbayad ng obligasyon, at makabangon mula sa problemang pinansiyal.
+          </p>
+
+          <p>
+            Hindi lamang ito usapin ng opinyon.
+          </p>
+
+          <p>
+            Sa fact sheet ng World Health Organization (WHO) noong 2024 tungkol sa gambling, binigyang-diin na ang mapaminsalang pagsusugal ay maaaring magtulak sa kahirapan dahil naililihis nito ang perang para sana sa pagkain, serbisyo, at iba pang pangunahing pangangailangan.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihing lahat ng taong nagsusugal ay nagiging mahirap. Ang punto ay may mga gawaing may malinaw na panganib at aktuwal na pinsalang pinansiyal kapag naging mapaminsala.
+          </p>
+
+          <p>
+            May kaugnay ding pag-aaral tungkol sa financial discipline sa Pilipinas.
+          </p>
+
+          <p>
+            Noong 2006, inilathala nina Nava Ashraf, Dean Karlan, at Wesley Yin sa Quarterly Journal of Economics ang pag-aaral na Tying Odysseus to the Mast: Evidence from a Commitment Savings Product in the Philippines.
+          </p>
+
+          <p>
+            Gamit ang randomized study, inalok ang ilang kliyente ng bangko ng savings account na naglilimita sa pag-withdraw hanggang maabot ang itinakdang layunin o petsa.
+          </p>
+
+          <p>
+            Pagkaraan ng 12 buwan, iniulat ng mga mananaliksik ang malaking pagtaas sa average savings balances ng grupong inalok ng produkto kumpara sa control group, na may tinatayang 81-percentage-point na epekto sa kanilang pagsusuri.
+          </p>
+
+          <p>
+            Hindi ito patunay na yayaman ang lahat ng disiplinadong mag-ipon. Pero ipinapakita nito na ang malinaw na layunin at konkretong sistemang tumutulong sa pagpipigil sa paggastos ay maaaring magpabuti ng pag-iipon.
+          </p>
+
+          <p>
+            Sa isang meta-analysis na inilathala noong 2021 tungkol sa financial self-control strategies, pinagsama ang resulta ng 29 pag-aaral. Natuklasang ang iba't ibang estratehiya sa pagpipigil sa paggastos ay may makabuluhang epekto sa pagbawas ng gastos at pagtaas ng ipon, na may katamtamang laki ng epekto sa kabuuan.
+          </p>
+
+          <p>
+            Mahalagang ebidensiya ito na ang paghawak sa sariling pera ay hindi lamang tungkol sa dami ng kinikita, kundi pati sa paraan ng paggastos, pagpaplano, at paggamit ng mga estratehiyang nakatutulong sa pagtupad ng layunin.
+          </p>
+
+          <p>
+            Pero kailangang malinaw din na hindi lahat ay may perang maaaring ipunin. May mga pamilyang kahit matipid ay kulang pa rin ang kita para sa pangunahing pangangailangan.
+          </p>
+
+          <p>
+            Kaya hindi sapat ang simpleng payong mag-ipon. Kailangang isaalang-alang kung may natitira pa ba talagang pera matapos matugunan ang mahahalagang gastusin.
+          </p>
+
+          <p>
+            Sa World Development Report 2015: Mind, Society, and Behavior, ipinaliwanag din ng World Bank na ang mga nakasanayang gawi, impluwensiya ng kapaligiran, at paraan ng pagpapasya ay may epekto sa mga desisyong pangkabuhayan.
+          </p>
+
+          <p>
+            Kinikilala rin ng ulat na ang mismong matinding kahirapan at araw-araw na pag-aalala sa kakulangan ay maaaring magpahirap sa pag-iisip at pagpaplano.
+          </p>
+
+          <p>
+            Ibig sabihin, may papel ang personal na pagpapasya, pero hindi rin ito nangyayari sa isang mundong pare-pareho ang sitwasyon at oportunidad ng lahat.
+          </p>
+
+          <blockquote>
+            <p>
+              MAY PAGKAKAIBA ANG TAONG GUSTONG UMAHON PERO KULANG SA PAGKAKATAON, AT ANG TAONG MAY TUNAY NA PAGKAKATAONG KUMILOS PERO PAULIT-ULIT NA PINIPILING HUWAG GAWIN ANG KAILANGAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin kasalanan ang maging kuntento sa simple at marangal na pamumuhay. Hindi obligasyon ng lahat na maging milyonaryo.
+          </p>
+
+          <p>
+            Ang pinag-uusapan dito ay ang pagiging kuntento sa mga nakapipinsalang gawi, kawalan ng pagsisikap na baguhin ang mga bagay na kaya namang baguhin, at paulit-ulit na pagpapasyang nagpapahina sa sariling kabuhayan.
+          </p>
+
+          <h2>
+            MAS MADALING MAGPABAYA NGAYON KAYSA PANINDIGAN ANG DISIPLINANG KAILANGAN SA LOOB NG MARAMING TAON.
+          </h2>
+
+          <p>
+            Mas madaling ipagpaliban ang isang mahalagang gawain kaysa tapusin ito.
+          </p>
+
+          <p>
+            Mas madaling ubusin ang perang hawak kaysa pigilan ang sarili sa paggastos kapag may kakayahan namang magtabi.
+          </p>
+
+          <p>
+            Mas madaling magpatuloy sa nakasanayang bisyong nakapipinsala kaysa harapin ang hirap ng pagbabago.
+          </p>
+
+          <p>
+            Mas madaling manatiling walang malinaw na direksiyon kaysa magtakda ng layunin at panindigan ang mga hakbang para makamit iyon.
+          </p>
+
+          <p>
+            Pero ang pagiging mas madaling gawin ng isang bagay ay hindi nangangahulugang wala itong mabigat na kapalit.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI MO KAILANGANG GAWIN ANG LAHAT NG MALI PARA MASIRA ANG IYONG KABUHAYAN. MINSAN, SAPAT NA ANG PAULIT-ULIT NA PAGPAPABAYA SA MGA BAGAY NA KAYA MO NAMANG AYUSIN.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi lahat ng tamad, may bisyo, o walang direksiyon ay awtomatikong mahirap. Pero kapag pinabayaan ang mga pagkakataong kaya namang gamitin, patuloy na inubos ang pera sa mapanirang bisyo, at hindi binago ang mga gawi na sumisira sa sariling kabuhayan, mas tumataas ang panganib na mahulog at manatili sa kahirapan.
+          </p>
+
+          <p>
+            At hindi lahat ng disiplinado ay yumayaman. Pero ang disiplina, malinaw na direksiyon, at tuloy-tuloy na pagkilos ay mahahalagang sangkap sa pagbuo ng sariling tagumpay.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG KAHIRAPAN AY SARILING GAWA. PERO HINDI RIN LAHAT NG PANANATILI SA KAHIRAPAN AY WALANG KAUGNAYAN SA SARILING PAGPAPASYA.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga hadlang na hindi kayang kontrolin ng isang tao. Mayroon ding mga desisyong kaya niyang baguhin.
+          </p>
+
+          <p>
+            Ang una ay nangangailangan ng oportunidad, suporta, at makatarungang patakaran. Ang ikalawa ay nangangailangan din ng personal na pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI PUWEDENG GAMITING PALUSOT ANG KAHIRAPAN PARA BIGYANG-KATWIRAN ANG LAHAT NG PAGPAPABAYA. PERO HINDI RIN PUWEDENG GAMITING PALUSOT ANG PERSONAL NA PAGKAKAMALI PARA IPAGWALANG-BAHALA ANG MGA HADLANG NA HINDI KONTROLADO NG TAO.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung mahirap ang makaahon mula sa kahirapan, hindi rin nangangahulugang simple lamang ang kabaligtarang proseso—ang paglikha ng malaking kayamanan mula sa limitadong pinagkukunan.
+          </p>
+
+                    <h2>
+            MAHIRAP MAGING MAYAMAN—LALO NA KUNG IKAW MISMO ANG NAGPUNDAR NG IYONG TAGUMPAY.
+          </h2>
+
+          <p>
+            Madaling sabihin ang “magsipag ka lang,” “magnegosyo ka,” o “galingan mo ang diskarte.”
+          </p>
+
+          <p>
+            Pero hindi naman lahat ng nagtatrabaho nang matagal ay yumayaman. Hindi rin lahat ng nagnenegosyo ay nagtatagumpay.
+          </p>
+
+          <p>
+            Para makabuo ng isang negosyong may kakayahang lumikha ng malaking kayamanan, hindi sapat ang pagkakaroon ng produkto o serbisyo.
+          </p>
+
+          <p>
+            Kailangan ng mga mamimiling handang magbayad, maayos na operasyon, sapat na kapital, kontrol sa gastusin, maaasahang mga manggagawa, at kakayahang makipagsabayan sa kumpetisyon.
+          </p>
+
+          <p>
+            Kailangan ding makagawa ng mga desisyon kahit walang kasiguraduhan kung kikita o malulugi.
+          </p>
+
+          <p>
+            Pero may isa pang bagay na madaling sabihin at mahirap panindigan: DISIPLINA.
+          </p>
+
+          <p>
+            Hindi sapat na may pangarap kang yumaman.
+          </p>
+
+          <p>
+            Kailangang may direksiyon, konkretong plano, kakayahang sumunod sa sariling layunin, at kahandaang baguhin ang mga paraang hindi gumagana.
+          </p>
+
+          <p>
+            Hindi sapat ang isang araw na masipag. Kailangang may pagpapatuloy sa mga gawaing talagang nakatutulong sa pag-unlad ng kabuhayan.
+          </p>
+
+          <p>
+            Hindi sapat ang isang magandang desisyon. Kailangang marunong ding humarap sa mga maling desisyon, matuto mula rito, at umiwas sa paulit-ulit na pagkakamaling maaaring sumira sa naipundar.
+          </p>
+
+          <p>
+            At hindi sapat ang pagtatrabaho nang matagal kung wala namang malinaw na layunin o hindi epektibo ang paraan ng pagtatrabaho.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LANG DAMI NG ORAS ANG MAHALAGA—KUNDI KUNG ANO ANG NALILIKHA, NAPAPABUTI, AT NAIPUPUNDAR SA ORAS NA IYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa meta-analysis nina Andreas Rauch at Michael Frese na inilathala noong 2007 sa European Journal of Work and Organizational Psychology, nakita ang makabuluhang ugnayan ng ilang katangiang angkop sa entrepreneurship—tulad ng paghahangad na makamit ang mga layunin, pagiging proactive, kakayahang gumawa ng bago, pagtitiwala sa sariling kakayahan, at kakayahang humarap sa stress—sa pagtatayo at tagumpay ng negosyo.
+          </p>
+
+          <p>
+            Hindi ito garantiya ng pagyaman. Pero sinusuportahan nito ang kahalagahan ng mindset at mga katangiang may kaugnayan sa aktuwal na pagpapatakbo ng negosyo.
+          </p>
+
+          <p>
+            Sa pagsusuri naman nina Annamaria Lusardi at Olivia Mitchell na inilathala sa Journal of Economic Literature noong 2014, binigyang-diin ang kahalagahan ng financial literacy sa pag-unawa at pagpapasya tungkol sa pag-iipon, pangungutang, pagpaplano, at pamumuhunan.
+          </p>
+
+          <p>
+            Hindi ka awtomatikong yayaman dahil marunong kang humawak ng pera. Pero ang hindi pag-unawa sa utang, interes, panganib, at pangmatagalang pagpaplano ay maaaring magdulot ng mga pagkakamaling mabigat ang epekto sa iyong kabuhayan.
+          </p>
+
+          <p>
+            Isipin ang isang taong nagsimula sa maliit na negosyo.
+          </p>
+
+          <p>
+            Maaaring siya ang bumibili ng paninda, naghahatid ng produkto, naghahanap ng customer, nag-aasikaso ng reklamo, nagbabantay ng imbentaryo, at nag-iisip kung paano palalaguin ang negosyo.
+          </p>
+
+          <p>
+            Kapag lumaki ang operasyon, hindi nawawala ang responsibilidad. Nagbabago lamang ang anyo nito.
+          </p>
+
+          <p>
+            May mga empleyadong kailangang pasahurin, supplier na kailangang bayaran, kagamitan na kailangang ayusin, buwis na kailangang asikasuhin, at mga desisyong maaaring makaapekto hindi lamang sa kita ng may-ari kundi pati sa kabuhayan ng ibang tao.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI DAHIL MALAKI ANG BENTA AY MALAKI NA ANG TUBO. HINDI DAHIL MALAKI ANG NEGOSYO AY WALANG UTANG O PANGANIB.
+            </p>
+          </blockquote>
+
+          <p>
+            At hindi dahil abala ang isang tao buong araw ay garantiya nang magiging matagumpay siya.
+          </p>
+
+          <p>
+            May mga pagkakataong ang ilang taong paghahanda, pagtitipid, at pagtatrabaho ay hindi pa rin sapat para mailigtas ang isang negosyo mula sa pagkalugi.
+          </p>
+
+          <p>
+            Hindi lamang ito haka-haka tungkol sa panganib ng pagnenegosyo.
+          </p>
+
+          <p>
+            Sa datos ng U.S. Bureau of Labor Statistics, 34.7% lamang ng mga private-sector business establishments na nagsimula noong Marso 2013 ang nanatiling operational pagsapit ng Marso 2023.
+          </p>
+
+          <p>
+            Ibig sabihin, humigit-kumulang isa sa bawat tatlong establisimyentong kabilang sa pangkat na iyon ang umabot sa sampung taon.
+          </p>
+
+          <p>
+            Datos ito ng Estados Unidos, hindi ng Pilipinas. Hindi rin nangangahulugang lahat ng nagsara ay nalugi o naubos ang personal na kayamanan ng may-ari. Pero malinaw nitong ipinapakita na hindi awtomatikong nagtatagal ang isang negosyong naitatag.
+          </p>
+
+          <p>
+            May isa pang pag-aaral na mas direktang tumingin sa panganib na pinapasan ng mga negosyanteng nagtatayo ng kumpanya.
+          </p>
+
+          <p>
+            Sa American Economic Review noong 2010, inilathala nina Robert E. Hall at Susan E. Woodward ang pag-aaral na The Burden of the Nondiversifiable Risk of Entrepreneurship.
+          </p>
+
+          <p>
+            Sinuri nila ang mga negosyanteng may venture-capital backing—mga founder ng kumpanyang may namumuhunang investor na umaasang kikita mula sa paglago at eventual sale o public listing ng negosyo.
+          </p>
+
+          <p>
+            Sa kanilang pagsusuri, halos tatlo sa bawat apat na negosyante ang walang natanggap na cash proceeds sa tinatawag na exit—ang yugto kung saan nagtatapos ang investment sa startup, gaya ng pagbebenta ng kumpanya, pagpasok nito sa stock market, o pagsasara nang wala nang halaga ang ownership stake ng founder.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na walang natanggap na anumang suweldo ang mga founder na iyon habang nagpapatakbo ng kumpanya. Ang tinutukoy ay ang perang natanggap nila mula sa kanilang ownership stake sa exit.
+          </p>
+
+          <p>
+            Mahalaga ring malinaw na nakatuon ang pag-aaral sa venture-backed entrepreneurs. Hindi maaaring gamitin ang resulta bilang estadistika para sa lahat ng maliliit na negosyo o lahat ng taong nagsisikap yumaman.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero malinaw ang aral:<br>
+              MAAARING MALAKI ANG POTENSIYAL NA GANTIMPALA SA ENTREPRENEURSHIP—NGUNIT HINDI ITO GARANTISADO, AT HINDI PANTAY-PANTAY ANG KINALALABASAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Maaaring may mga negosyanteng nakapagbuhos ng panahon, talento, at malaking pagsisikap ngunit hindi nakakuha ng inaasahang gantimpala. May ilan namang nakamit ang pambihirang tagumpay.
+          </p>
+
+          <p>
+            Kaya hindi sapat ang makitang may ilang bilyonaryong nagtagumpay upang ipagpalagay na madali ang prosesong pinagdaanan nila—o na lahat ng gumawa ng kaparehong pagsisikap ay magkakaroon ng kaparehong resulta.
+          </p>
+
+          <p>
+            Sa Pilipinas, ayon sa 2024 MSME statistics na binanggit ng Department of Trade and Industry (DTI), 99.63% ng mga nakalistang business establishments ay micro, small, at medium enterprises. Nakapagbigay ang mga ito ng humigit-kumulang 6.25 milyong trabaho, katumbas ng 66.58% ng employment na naitala sa mga establisimyentong saklaw ng datos.
+          </p>
+
+          <p>
+            Hindi lahat ng negosyanteng ito ay mayaman. Marami ang maliit lamang ang kapital at limitado lamang ang kinikita.
+          </p>
+
+          <p>
+            Pero ipinapakita nito kung gaano kalawak ang papel ng maliliit at katamtamang negosyo sa kabuhayan ng mga manggagawa at sa ekonomiya.
+          </p>
+
+          <blockquote>
+            <p>
+              KAYA BAGO MO TAWAGING MADALI ANG PAGYAMAN NG ISANG TAONG SARILING SIKAP ANG PAGPAPATAYO NG NEGOSYO, TANUNGIN MO MUNA: ALAM MO BA TALAGA ANG KANYANG PINAGSIMULAN AT PINAGDAANAN?
+            </p>
+          </blockquote>
+
+          <p>
+            Ilang taong hindi naging sapat ang kinita? Ilang planong hindi natuloy? Ilang produktong hindi tinangkilik? Ilang pagkakamaling kinailangang itama? Ilang pagkakataong nanganganib ang kapital?
+          </p>
+
+          <p>
+            Ilang beses niyang kinailangang piliin ang pangmatagalang layunin kaysa agarang kaginhawahan?
+          </p>
+
+          <p>
+            Ilang desisyong hindi niya maaaring basta ipagpaliban dahil may negosyong kailangang patakbuhin at mga taong umaasa sa operasyon nito?
+          </p>
+
+          <p>
+            Hindi kailangang mag-imbento ng kuwento ng puyat at sakripisyo para sa bawat mayaman.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang punto ay simple:<br>
+              ANG MARANGYANG BUHAY NA NAKIKITA NGAYON AY HINDI SAPAT NA EBIDENSIYA UPANG SABIHING NAGING MADALI ANG KANYANG PAGLALAKBAY PATUNGO ROON.
+            </p>
+          </blockquote>
+
+                    <h2>
+            PERO KAPAG MAYAMAN NA, MAHIRAP PA RIN BANG MANATILING MAYAMAN?
+          </h2>
+
+          <p>
+            Dito kailangan ng mas malalim na pag-unawa.
+          </p>
+
+          <p>
+            Kung ang pinag-uusapan ay isang negosyong patuloy na kailangang palaguin at panatilihing kumikita, may mga hamong hindi basta nawawala.
+          </p>
+
+          <p>
+            Maaaring magbago ang pangangailangan ng mga customer. Maaaring magkaroon ng bagong kakumpitensiya, tumaas ang gastusin, masira ang supply chain, o mawalan ng halaga ang dating matagumpay na produkto.
+          </p>
+
+          <p>
+            Ang negosyong kumikita ngayon ay hindi ligtas sa pagkalugi bukas.
+          </p>
+
+          <p>
+            Hindi rin sapat na ulitin lamang ang mga estratehiyang naging epektibo noon. May mga negosyong kailangang magbago upang manatiling may kakayahang kumita.
+          </p>
+
+          <p>
+            Dito nagiging mahalaga ang pagpapatuloy ng mga disiplinang nakatulong sa pagbuo ng negosyo.
+          </p>
+
+          <p>
+            Kailangang bantayan ang gastusin, suriin ang mga panganib, pangalagaan ang kapital, at kilalanin kung kailan kailangang baguhin ang isang desisyon.
+          </p>
+
+          <p>
+            Hindi dapat ipagpalagay na dahil malaki ang kinita noong nakaraang taon ay ligtas na ang negosyo sa susunod.
+          </p>
+
+          <p>
+            May mga negosyong lumalaki ang kita pero nanganganib pa ring malugi dahil sa maling pangungutang, labis na paggastos, o pagpapalawak nang walang sapat na paghahanda.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG DISIPLINANG NAKATULONG SA PAGBUO NG NEGOSYO AY MAAARI RING KAILANGAN SA PAGPAPATULOY NITO. HINDI NATATAPOS ANG PANANAGUTAN SA UNANG MALAKING TAGUMPAY.
+            </p>
+          </blockquote>
+
+          <p>
+            At dito lalong bumibigat ang hamon ng pagpapanatili ng tagumpay.
+          </p>
+
+          <p>
+            Hindi sapat na minsan kang naging mahusay sa pagpapasya. Kailangang patuloy mong suriin kung tama pa rin ang ginagawa mo.<br>
+            Hindi sapat na minsan kang naging disiplinado sa pera. Kailangang alam mo pa rin kung paano pamahalaan ang lumalaking gastos, utang, puhunan, at panganib.<br>
+            Hindi sapat na matagumpay ang negosyo noong nagsisimula pa lamang. Kailangang kaya nitong harapin ang pagbabago at kumpetisyon.
+          </p>
+
+          <p>
+            Pero may mahalagang pagkakaiba ang pagpapanatili ng matagumpay na negosyo at pagpapanatili ng personal na kayamanan.
+          </p>
+
+          <p>
+            Ang isang taong nakapag-ipon na ng malaking ari-arian, may sari-saring investment, at may sapat na reserbang pera ay maaaring mas protektado laban sa pagkalugi kaysa sa negosyanteng halos lahat ng kapital ay nakataya sa iisang negosyo.
+          </p>
+
+          <p>
+            Maaari ring kumita ang kayamanan mula sa renta, interes, dividends, at pagtaas ng halaga ng mga ari-arian.
+          </p>
+
+          <p>
+            Ayon sa OECD sa pag-aaral nito tungkol sa inheritance taxation noong 2021, nananatiling mataas ang wealth inequality sa maraming bansa, at ang pagmamana ng kayamanan ay isa sa mga salik na nakapagpapalakas sa konsentrasyon nito.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi pare-pareho ang hirap ng pagpapanatili ng kayamanan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG NEGOSYO AY MAAARING PATULOY NA IPAGLABAN. PERO ANG NAIPONG KAYAMANAN AY MAAARI RING MAGBIGAY NG KAKAYAHANG HINDI NA MULING MAGSIMULA SA WALA.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya mali ring ipagpilitang lahat ng mayaman ay araw-araw na nakikipaglaban sa kaparehong panganib na hinarap nila noong nagsisimula pa lamang.
+          </p>
+
+          <p>
+            May mga mayamang nakikinabang sa minanang ari-arian, malalaking investment, eksklusibong oportunidad, at mga koneksiyong hindi basta naaabot ng karaniwang manggagawa.
+          </p>
+
+          <p>
+            Mayroon ding mga taong yumaman dahil sa panlilinlang, pang-aabuso, korupsiyon, o hindi makatarungang gawain.
+          </p>
+
+          <p>
+            Hindi kailangang ipagtanggol ang ganitong mga paraan para kilalanin ang lehitimong tagumpay ng mga taong marangal na nagsumikap.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG MAYAMAN AY SELF-MADE. HINDI LAHAT NG SELF-MADE AY NAGTAGUMPAY DAHIL SA SIPAG LAMANG. AT HINDI LAHAT NG MAHIRAP AY KULANG SA DISKARTE.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga pagkakataong ang isang masipag na tao ay hindi nagtatagumpay dahil sa mga hadlang na lampas sa kanyang kontrol.
+          </p>
+
+          <p>
+            Mayroon ding mga taong nakapagtagumpay dahil nagsabay ang kakayahan, tamang pagkakataon, suporta, kapital, mabuting pagpapasya, at swerte.
+          </p>
+
+          <p>
+            Hindi nito binabawasan ang kanilang pagsisikap. Nililinaw lamang nito na mas komplikado ang tunay na pagbuo ng kayamanan kaysa sa karaniwang kuwentong basta magsipag at yayaman ka.
+          </p>
+
+          <h2>
+            DITO NAGIGING MAPANLINLANG ANG ISANG PANIG LANG NG KUWENTO.
+          </h2>
+
+          <p>
+            Kapag mahirap ang tao, madaling makita ang kakulangan niya sa pera.<br>
+            Kapag mayaman, madaling makita ang sobra niyang pera.
+          </p>
+
+          <p>
+            Pero hindi awtomatikong nakikita sa kanilang kasalukuyang kalagayan ang mga dahilan kung bakit sila naroon.
+          </p>
+
+          <p>
+            May mahihirap na buong buhay nang nagsusumikap ngunit hindi nabibigyan ng pagkakataong makaahon.<br>
+            May mga taong ang sariling pagpapabaya, mapaminsalang gawi, at paulit-ulit na maling pagpapasya ay nakapagpalala sa kanilang kalagayang pinansiyal.
+          </p>
+
+          <p>
+            May mga mayamang nagsimula sa wala at nagtayo ng lehitimong kabuhayan sa loob ng maraming taon.<br>
+            May mga mayamang ipinanganak nang may bentahe.
+          </p>
+
+          <p>
+            At may mga negosyanteng kahit nagtrabaho nang matindi ay hindi pa rin nagtagumpay.
+          </p>
+
+          <p>
+            Walang iisang kuwento na maaaring ipataw sa kanilang lahat.
+          </p>
+
+          <p>
+            Hindi rin dapat gawing paligsahan kung sino ang mas maraming problema.
+          </p>
+
+          <p>
+            Ang kakulangan sa pagkain, tirahan, gamot, at pangunahing pangangailangan ay may direktang epekto sa kalusugan, seguridad, at dignidad ng tao. Hindi ito maaaring itumbas lamang sa pangkaraniwang problema ng pagpapatakbo ng negosyo.
+          </p>
+
+          <p>
+            Pero hindi rin nangangahulugan na dahil mas may proteksiyon at oportunidad ang isang mayaman ngayon, wala nang saysay ang hirap at panganib na hinarap niya noong binubuo pa lamang ang kanyang kabuhayan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGKILALA SA HIRAP NG MAHIRAP AY HINDI NANGANGAILANGANG BURAHIN ANG SAKRIPISYO NG TAONG NAGTAGUMPAY.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagkilala sa sakripisyo ng taong nagtagumpay ay hindi lisensiya para sisihin ang mahirap sa lahat ng kanyang problema.
+          </p>
+
+          <p>
+            Kung seryoso tayong gustong magkaroon ng lipunang mas maraming umaangat, hindi sapat na mag-away tungkol sa kung sino ang mas nahihirapan.
+          </p>
+
+          <p>
+            Kailangang may maayos na trabaho at makatarungang pasahod, de-kalidad na edukasyon, abot-kayang serbisyong pangkalusugan, proteksiyon laban sa malalaking sakuna, at mas patas na pagkakataong makapagnegosyo.
+          </p>
+
+          <p>
+            Kailangan ding mabawasan ang hindi makatarungang hadlang sa kapital, kumpetisyon, at pagpasok sa merkado.
+          </p>
+
+          <p>
+            Ito ang mga uri ng repormang binibigyang-diin din ng World Bank sa pagsusuri nito sa kahirapan at pagbuo ng mas matatag na middle class sa Pilipinas.
+          </p>
+
+          <p>
+            Pero kahit magkaroon ng mga reporma, hindi nito inaalis ang kahalagahan ng sariling pagkilos.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG MAGHINTAY NG MAS MAGANDANG OPORTUNIDAD KUNG HINDI MO RIN GAGAMITIN ANG OPORTUNIDAD KAPAG DUMATING ITO.
+            </p>
+          </blockquote>
+
+          <p>
+            At hindi sapat ang pagnanais na umunlad kung ang mga gawi at desisyong pumipigil sa sariling pag-unlad ay ayaw namang baguhin.
+          </p>
+
+          <h2>
+            ANO ANG SINASABI NG BATAS TUNGKOL SA KAHIRAPAN, PAGNENEGOSYO, AT KAYAMANAN?
+          </h2>
+
+          <p>
+            Hindi lamang personal na opinyon o usaping moral ang pagkilala sa kahalagahan ng pagnenegosyo, pagkakaroon ng oportunidad, at pagtugon sa kahirapan.
+          </p>
+
+          <p>
+            May malinaw na batayan ang mga ito sa mga batas at sa mismong Konstitusyon ng Pilipinas.
+          </p>
+
+          <p>
+            Sa Article XII, Section 1 ng 1987 Constitution, kabilang sa mga layunin ng pambansang ekonomiya ang mas patas na pamamahagi ng oportunidad, kita, at kayamanan, pati ang pagtaas ng produksiyon at kalidad ng buhay ng mamamayan—lalo na ng mga kapos sa kabuhayan.
+          </p>
+
+          <p>
+            Sa Article XII, Section 6, kinikilala ang karapatan ng mga indibidwal at pribadong grupo na magmay-ari, magtatag, at magpatakbo ng negosyo. Pero malinaw rin ang prinsipyo na may panlipunang tungkulin ang paggamit ng ari-arian at kailangang mag-ambag ang mga kalahok sa ekonomiya sa kabutihang panlahat.
+          </p>
+
+          <p>
+            Ibig sabihin, kinikilala ang pribadong pagnenegosyo at karapatang magmay-ari, ngunit hindi hiwalay ang mga ito sa pananagutang panlipunan at sa tungkulin ng Estado na itaguyod ang makatarungang pamamahagi ng oportunidad.
+          </p>
+
+          <p>
+            Sa Article XIII, Sections 1 at 2, binibigyang-prayoridad ang social justice, pagbawas ng hindi pagkakapantay-pantay, at paglikha ng mga oportunidad na nakabatay sa sariling pagkukusa at kakayahang magsikap.
+          </p>
+
+          <p>
+            Samantala, sa Article XIII, Section 3, kinikilala ang karapatan ng manggagawa sa makataong kondisyon sa trabaho, seguridad sa panunungkulan, at living wage. Kinikilala rin ang karapatan ng negosyo sa makatwirang balik sa puhunan at sa pagpapalawak at paglago.
+          </p>
+
+          <blockquote>
+            <p>
+              Mahalagang punto ito:<br>
+              HINDI MAGKAKALABAN SA PRINSIPYO NG KONSTITUSYON ANG KARAPATAN NG MANGGAGAWA AT ANG LEHITIMONG PAGLAGO NG NEGOSYO.
+            </p>
+          </blockquote>
+
+          <p>
+            Pareho silang kinikilala, kasama ang kani-kanilang karapatan at pananagutan.
+          </p>
+
+          <p>
+            Sa Republic Act No. 10644 o Go Negosyo Act, partikular sa Section 2, kinikilala ang papel ng micro, small, at medium enterprises sa paglikha ng trabaho, pagpapataas ng kita ng mahihirap na pamilya, pagbuo ng ari-arian, at pagbawas ng kahirapan.
+          </p>
+
+          <p>
+            Itinatakda rin ng batas bilang patakaran ng Estado ang pagpapagaan sa mga hadlang sa pagtatatag ng MSMEs.
+          </p>
+
+          <p>
+            Hindi nito ginagarantiya na yayaman ang lahat ng magnenegosyo. Kinikilala lamang nito na ang pagnenegosyo ay isa sa mahahalagang daan sa paglikha ng kabuhayan at oportunidad.
+          </p>
+
+          <p>
+            Sa Republic Act No. 8425 o Social Reform and Poverty Alleviation Act, kabilang sa Section 3 ang pagkilala sa kahirapan bilang kalagayang may kinalaman hindi lamang sa kita na mas mababa sa poverty threshold, kundi pati sa kawalan ng kakayahang patuloy na matugunan ang pangunahing pangangailangan sa pagkain, kalusugan, edukasyon, tirahan, at iba pang mahahalagang aspeto ng buhay.
+          </p>
+
+          <p>
+            Kaya hindi sapat na sabihing magsipag na lamang ang mahirap. Kailangang tugunan din ang mga hadlang na nagpapahirap sa kanyang pag-angat.
+          </p>
+
+          <p>
+            At hindi rin tama na tratuhing walang kabuluhan ang marangal na pagbuo ng negosyo at kayamanan, dahil kinikilala rin ng batas ang kahalagahan ng pamumuhunan, paglikha ng trabaho, at pag-unlad ng kabuhayan.
+          </p>
+
+                    <blockquote>
+            <p>
+              ANG LAYUNIN AY HINDI ANG GAWING MAHIRAP ANG MAYAMAN O IPAHIYA ANG MATAGUMPAY—KUNDI PALAWAKIN ANG PAGKAKATAON PARA MAS MARAMI ANG MAKAAHON AT MAGTAGUMPAY SA MAKATARUNGANG PARAAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito usapin ng pagpili kung mahirap o mayaman ang dapat kampihan.
+          </p>
+
+          <p>
+            Usapin ito ng pag-unawa kung paano nagkakaroon ng kahirapan, bakit mahirap makaahon, paano nakakalikha ng kayamanan, at ano ang nagpapanatili o sumisira sa naabot na tagumpay.
+          </p>
+
+          <p>
+            At saan pumapasok ang pananagutan?<br>
+            Ang lehitimong tagumpay ay dapat kilalanin. Pero ang kayamanan ay hindi dapat gawing pananggalang laban sa pananagutan. May tungkulin ang mga may-ari ng negosyo na igalang ang karapatan ng manggagawa, sumunod sa batas, at magbayad ng wastong buwis.
+          </p>
+
+          <p>
+            Ganoon din, ang kahirapan ay hindi dapat gawing batayan para ipagpalagay na walang kakayahan, sipag, o ambisyon ang isang tao.
+          </p>
+
+          <p>
+            Pero kung may pagkakataon at kakayahan ang isang tao na baguhin ang mga gawi niyang nakapipinsala sa sariling kabuhayan, may pananagutan din siyang harapin ang mga iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG KAYAMANAN AY HINDI AUTOMATIKONG PATUNAY NG KASIPAGAN. ANG KAHIRAPAN AY HINDI AUTOMATIKONG PATUNAY NG KATAMARAN. PERO ANG MGA DESISYON AT DISIPLINA AY MAY TUNAY NA PAPEL SA PAGBUO O PAGKASIRA NG KABUHAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya balikan natin ang pahayag:
+          </p>
+
+          <blockquote>
+            <p>
+              “MADALING MAGING MAHIRAP AT MANATILING MAHIRAP—PERO MAHIRAP MAGING MAYAMAN AT MANATILING MAYAMAN.”
+            </p>
+          </blockquote>
+
+          <p>
+            Kung ang ibig sabihin ng unang bahagi ay mas madaling malagay sa kahirapan at manatiling nakapailalim sa mga hadlang kapag kulang ang oportunidad at proteksiyon, may matibay na batayan iyon.
+          </p>
+
+          <p>
+            Pero hindi roon nagtatapos ang argumento.
+          </p>
+
+          <p>
+            Maaari ring magpalala ng kahirapan ang kawalan ng direksiyon, hindi pagkilos sa kabila ng pagkakataon, mapaminsalang bisyo, hindi maayos na paghawak ng pera, at mga nakasanayang desisyong hindi nakatutulong sa pag-unlad.
+          </p>
+
+          <blockquote>
+            <p>
+              MAS MADALING MAGPABAYA KAYSA MAGPUNDAR. MAS MADALING IPAGPALIBAN ANG PAGBABAGO KAYSA PANINDIGAN ITO. MAS MADALING UBOSIN ANG NAIPON KAYSA MULING BUUIN ANG NAWALA.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero hindi lahat ay may parehong ipon, oportunidad, o kakayahang pumili. Kaya kailangang suriin ang aktuwal na sitwasyon bago magpataw ng pananagutan sa isang tao.
+          </p>
+
+          <p>
+            Kung ang ibig sabihin naman ng ikalawang bahagi ay mahirap bumuo ng malaking kayamanan mula sa limitadong pinagkukunan at patuloy na pamahalaan ang negosyong lumikha nito, may matibay din itong batayan.
+          </p>
+
+          <p>
+            Hindi lamang ito tungkol sa dami ng oras na ginugol sa pagtatrabaho.
+          </p>
+
+          <p>
+            Tungkol din ito sa kalidad ng mga desisyon, malinaw na direksiyon, pagpipigil sa sarili, kakayahang matuto, pagharap sa panganib, at disiplina sa loob ng maraming taon.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG PANGARAP PARA MAGTAGUMPAY. HINDI SAPAT ANG ISANG ARAW NA SIPAG PARA MAGPUNDAR. AT HINDI SAPAT ANG ISANG TAONG MALAKI ANG KITA PARA SABIHING LIGTAS NA ANG NEGOSYO HABAMBUHAY.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero kung gagawin itong absolutong paghahambing na mas mahirap ang buhay ng mayaman kaysa mahirap, o mas mahirap sa lahat ng mayaman ang manatiling mayaman, lumalampas na iyon sa kayang patunayan ng ebidensiya.
+          </p>
+
+          <p>
+            Ang ipinapakita ng mga datos at pag-aaral ay ang magkakaibang mekanismo at panganib sa likod ng kahirapan, paglikha ng kayamanan, at pagpapanatili ng matagumpay na negosyo.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MAS MALALIM NA KATOTOHANAN:<br>
+              MAAARING MADALING MAHULOG SA KAHIRAPAN DAHIL SA KAWALAN NG OPORTUNIDAD, MALALAKING DAGOK SA BUHAY, O MGA DESISYONG NAKAPIPINSALA SA SARILING KABUHAYAN. MAHIRAP UMAHON, MAHIRAP BUMUO NG KAYAMANAN MULA SA WALA, AT HINDI GARANTISADONG MANANATILING MATAGUMPAY ANG NEGOSYONG NAKAPAGPAYAMAN SA IYO.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya bago ka humusga sa buhay ng iba, suriin mo muna kung ano ang tunay mong nalalaman.
+          </p>
+
+          <p>
+            Kapag nakakita ka ng mahirap, hindi mo alam kung ilang taon na siyang nagsusumikap para makaalis sa kanyang kalagayan.
+          </p>
+
+          <p>
+            Hindi mo rin alam kung ang kanyang kasalukuyang sitwasyon ay dulot ng mga hadlang na hindi niya kontrolado, mga desisyong maaari niyang baguhin, o pinagsamang epekto ng dalawa.
+          </p>
+
+          <p>
+            Kapag nakakita ka ng mayaman, hindi mo rin awtomatikong alam kung minana niya ang kanyang kayamanan, marangal niya itong pinaghirapan, o nakuha sa paraang dapat panagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG KASALUKUYANG NAKIKITA MO AY PATUNAY NG NAKARAANG PINAGDAANAN NG ISANG TAO.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung ang nakikita mo lamang sa mayaay ang bahay, sasakyan, negosyo, at benepisyo ng kanyang tagumpay, habang hindi mo man lang isinasaalang-alang ang posibilidad na may mabigat siyang pinagdaanan para makamit iyon, kulang ang batayan ng iyong paghusga.
+          </p>
+
+          <p>
+            Ganoon din kung ang nakikita mo lamang sa mahirap ay ang kanyang kasalukuyang kakulangan, habang binabalewala mo ang mga hadlang na maaaring pumipigil sa kanyang pag-angat.
+          </p>
+
+          <p>
+            Pero hindi rin makatarungang balewalain ang kahalagahan ng personal na pananagutan sa ngalan ng pag-unawa sa kahirapan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG KAHIRAPAN AY KASALANAN NG MAHIRAP. PERO HINDI RIN LAHAT NG PAGKAKAPIT SA KAHIRAPAN AY MAAARING ISISI SA IBA.<br>
+              HINDI LAHAT NG KAYAMANAN AY BUNGA NG DISIPLINA. PERO HINDI RIN MAKATARUNGANG BURAHIN ANG DISIPLINANG TUNAY NA NAKATULONG SA PAGBUO NG TAGUMPAY.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              HINDI KA NAGIGING MAS MAKATARUNGAN SA PAGBUBURA NG HIRAP NG ISA PARA LANG BIGYANG-HALAGA ANG HIRAP NG KABILANG PANIG.
+            </p>
+          </blockquote>
+
+          <p>
+            At lalong hindi nagiging malalim ang iyong pag-unawa kapag mas interesado kang pagtibayin ang sarili mong paniniwala kaysa alamin ang buong katotohanan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG HIRAP NA HINDI MO NARANASAN AY HINDI AUTOMATIKONG HIRAP NA HINDI NANGYARI.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              KUNG ANG RESULTA LANG ANG KAYA MONG TINGNAN, PERO HINDI ANG PINAGMULAN AT PROSESO—HINDI MO NAUUNAWAAN ANG TAGUMPAY O KAHIRAPAN.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              NAKAKITA KA LANG NG KALAGAYAN, PERO NAGKUNWARI KA NANG ALAM MO ANG BUONG KATOTOHANAN.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              HINDI IYAN MALALIM NA PAG-IISIP. KAMANGMANGANG NAGPAPANGGAP NA KARUNUNGAN.
+            </p>
+          </blockquote>
+
+          </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Philippine Statistics Authority.</strong>
+              <a
+                href="https://psa.gov.ph/statistics/poverty/node/1684064820"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2023 Full-Year Official Poverty Statistics.
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Institute for Development Studies.</strong>
+              <a
+                href="https://www.pids.gov.ph/publication/discussion-papers/the-middle-class-and-vulnerability-to-income-poverty-implications-for-social-protection-in-the-philippines"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Middle Class and Vulnerability to Income Poverty (2026).
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank.</strong>
+              <a
+                href="https://www.worldbank.org/en/news/press-release/2026/06/04/philippines-can-end-poverty-and-build-a-middle-class-society-by-2040-but-only-with-urgent-reforms"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Building the Filipino Middle Class (2026).
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank.</strong>
+              <a
+                href="https://www.worldbank.org/en/publication/wdr2015"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                World Development Report 2015: Mind, Society, and Behavior.
+              </a>
+            </li>
+
+            <li>
+              <strong>World Health Organization.</strong>
+              <a
+                href="https://www.who.int/news-room/fact-sheets/detail/gambling/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Gambling Fact Sheet (2024).
+              </a>
+            </li>
+
+            <li>
+              <strong>Ashraf, N., Karlan, D., &amp; Yin, W.</strong>
+              <a
+                href="https://doi.org/10.1162/qjec.2006.121.2.635"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Tying Odysseus to the Mast: Evidence from a Commitment Savings Product in the Philippines.
+              </a>
+              <em>Quarterly Journal of Economics</em> (2006).
+            </li>
+
+            <li>
+              <strong>PubMed.</strong>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/34237109/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                A Meta-Analysis of Financial Self-Control Strategies (2021).
+              </a>
+            </li>
+
+            <li>
+              <strong>Rauch, A., &amp; Frese, M.</strong>
+              <a
+                href="https://doi.org/10.1080/13594320701595438"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Let's Put the Person Back into Entrepreneurship Research: A Meta-analysis (2007).
+              </a>
+            </li>
+
+            <li>
+              <strong>Lusardi, A., &amp; Mitchell, O. S.</strong>
+              <a
+                href="https://doi.org/10.1257/jel.52.1.5"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Economic Importance of Financial Literacy: Theory and Evidence (2014).
+              </a>
+            </li>
+
+            <li>
+              <strong>U.S. Bureau of Labor Statistics.</strong>
+              <a
+                href="https://www.bls.gov/opub/ted/2024/34-7-percent-of-business-establishments-born-in-2013-were-still-operating-in-2023.htm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Business Establishment Survival, 2013–2023.
+              </a>
+            </li>
+
+            <li>
+              <strong>Hall, R. E., &amp; Woodward, S. E.</strong>
+              <a
+                href="https://www.aeaweb.org/articles?id=10.1257/aer.100.3.1163"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                The Burden of the Nondiversifiable Risk of Entrepreneurship.
+              </a>
+              <em>American Economic Review</em> (2010).
+            </li>
+
+            <li>
+              <strong>Philippine Information Agency / Department of Trade and Industry.</strong>
+              <a
+                href="https://pia.gov.ph/news/msmes-must-invest-in-community-preparedness-business-dti-says/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2024 Philippine MSME Statistics.
+              </a>
+            </li>
+
+            <li>
+              <strong>OECD.</strong>
+              <a
+                href="https://www.oecd.org/en/publications/broken-elevator-how-to-promote-social-mobility_9789264301085-en.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                A Broken Social Elevator? How to Promote Social Mobility (2018).
+              </a>
+            </li>
+
+            <li>
+              <strong>OECD.</strong>
+              <a
+                href="https://www.oecd.org/en/publications/inheritance-taxation-in-oecd-countries_e2879a7d-en.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Inheritance Taxation in OECD Countries (2021).
+              </a>
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution.</strong>
+              <a
+                href="https://officialgazette.gov.ph/constitutions/1987-constitution/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Articles XII at XIII, Official Gazette.
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10644 — Go Negosyo Act.</strong>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/59644"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Section 2.
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 8425 — Social Reform and Poverty Alleviation Act.</strong>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/4057"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Section 3.
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
