@@ -1,1 +1,1888 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+     <meta
+    name="description"
+    content="Saan ba talaga ang hangganan ng kahirapan? Isang fact-based na pagsusuri sa poverty threshold, ₱96 daily equivalent, opisyal na poverty statistics, methodology, international comparisons, at mga limitasyon ng pagsukat sa tunay na kalagayan ng mga pamilya."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-poverty-threshold.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-poverty-threshold.html"
+  >
+
+  <title>SAAN BA TALAGA ANG HANGGANAN NG KAHIRAPAN? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SAAN BA TALAGA ANG HANGGANAN NG KAHIRAPAN?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-poverty-threshold.png"
+            alt="Simbolikong visual ng pamilyang kapos sa araw-araw, mabibigat na gastusin, limitadong kita, at estadistikal na hangganan ng kahirapan bilang representasyon ng agwat sa pagitan ng poverty threshold at tunay na financial security."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+        <div class="article-body">
+
+          <p>
+            May hangganang itinatakda ang estadistika kung sino ang maituturing na mahirap at sino ang hindi na kabilang sa opisyal na bilang. Pero kapag nalampasan na ng kita ng isang pamilya ang hangganang iyon, ibig bang sabihin ay sapat na ang kanilang kinikita para sa pang-araw-araw na pangangailangan?
+          </p>
+
+          <p>
+            Paano kung nakakaraos nga sa pagkain, pero kapos sa upa, kuryente, pamasahe, gamot, at pag-aaral ng mga anak? Paano kung isang pagkakasakit o pagkawala lamang ng trabaho ang pagitan nila sa muling pagkalubog sa kahirapan?
+          </p>
+
+          <p>
+            Dito nagiging mahalagang maunawaan ang pagkakaiba ng hindi na maituturing na mahirap ayon sa opisyal na estadistika at pagkakaroon ng sapat at matatag na kabuhayan. Hindi awtomatikong magkapareho ang dalawa.
+          </p>
+
+          <p>
+            Kamakailan, naging kontrobersiyal ang datos na humigit-kumulang ₱96 kada tao bawat araw bilang pambansang poverty threshold. May mga nagalit dahil tila napakababa nito para sa totoong gastusin. May mga nagtanggol naman dahil opisyal itong datos ng Philippine Statistics Authority (PSA).
+          </p>
+
+          <p>
+            Ngunit hindi sapat na husgahan ang isang numero dahil lamang mababa ito sa ating inaasahan. Hindi rin sapat na sabihing tama ang lahat ng interpretasyong ikinakabit dito dahil opisyal ang pinagmulan.
+          </p>
+
+          <p>
+            Ang mas mahalagang tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              PAANO BA TALAGA ITINATAKDA ANG HANGGANANG ITO, GAANO ITO MAAASAHAN, AT ANO ANG HINDI NITO KAYANG SUKATIN?
+            </p>
+          </blockquote>
+
+          <p>
+            Para masagot iyan, kailangan nating unawain ang tinatawag na National Average Daily Per Capita Poverty Threshold—kung paano ito kinukuwenta, anong mga pangangailangan ang isinasaalang-alang, ano ang sinasabi ng mga pag-aaral, at paano ito maihahambing sa ginagamit na sukatan ng ibang developing countries.
+          </p>
+
+          <p>
+            Dahil kung hindi natin nauunawaan ang pinagmulan, saklaw, at limitasyon ng isang datos, madali itong magamit sa maling konklusyon—maging sa paninira o sa pagtatanggol.
+          </p>
+
+          <h2>
+            ANO ANG NATIONAL AVERAGE DAILY PER CAPITA POVERTY THRESHOLD?
+          </h2>
+
+          <p>
+            Mahaba at teknikal ang pangalan, pero may malinaw itong kahulugan.
+          </p>
+
+          <p>
+            Ang national average ay pambansang average. Hindi ibig sabihin na pare-pareho ang halaga ng pangunahing pangangailangan sa lahat ng lugar sa Pilipinas.
+          </p>
+
+          <p>
+            Ang daily ay pang-araw-araw na katumbas ng threshold. Hindi ito awtomatikong aktuwal na arawang sahod, kita, o gastusin ng bawat Pilipino.
+          </p>
+
+          <p>
+            Ang per capita ay bawat tao. Sa pagsukat ng kahirapan, karaniwang hinahati ang kabuuang kita ng pamilya sa bilang ng mga miyembro upang makuha ang per capita family income.
+          </p>
+
+          <p>
+            Ang poverty threshold naman ay ang tinatayang minimum na kita para matugunan ang pangunahing pangangailangan sa pagkain at iba pang mahahalagang gastusin, batay sa opisyal na methodology.
+          </p>
+
+          <p>
+            Sa madaling salita:
+          </p>
+
+          <blockquote>
+            <p>
+              ANG POVERTY THRESHOLD AY ESTADISTIKAL NA HANGGANAN SA PAGSUKAT NG KAHIRAPAN—HINDI GARANTIYA NG MAGINHAWA O DISENTENG PAMUMUHAY.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito minimum wage. Hindi rin ito rekomendasyon na ₱96 lamang ang dapat gastusin ng isang tao sa buong araw.
+          </p>
+
+          <h2>
+            SAAN GALING ANG ₱96?
+          </h2>
+
+          <p>
+            Batay sa preliminary 2025 Official Poverty Statistics ng PSA na inilabas noong Agosto 21, 2026, ang national average poverty threshold para sa pamilyang may limang miyembro ay humigit-kumulang ₱14,634 bawat buwan.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang ₱35,121 na taunang poverty threshold bawat tao, o ₱96.22 kada araw kapag hinati sa 365 araw.
+          </p>
+
+          <p>
+            Kaya may totoong estadistikal na basehan ang ₱96.
+          </p>
+
+          <p>
+            Pero dito nagsisimula ang madalas na maling interpretasyon.
+          </p>
+
+          <p>
+            Isipin ang pamilyang may limang miyembro. Kung iisa lamang ang nagtatrabaho at kumikita siya ng ₱96 kada araw, hindi ibig sabihin na nalampasan na ng buong pamilya ang poverty threshold.
+          </p>
+
+          <p>
+            Ang sinusuri ay ang kabuuang kita ng pamilya kaugnay ng bilang ng mga miyembro at ang naaangkop na poverty threshold sa kanilang lugar.
+          </p>
+
+          <p>
+            Halimbawa, kung ₱15,000 ang kabuuang buwanang kita ng pamilyang may lima, katumbas ito ng ₱3,000 bawat tao kada buwan.
+          </p>
+
+          <p>
+            Bahagya itong mas mataas sa national average per capita threshold noong 2025, na humigit-kumulang ₱2,927 bawat buwan.
+          </p>
+
+          <p>
+            Ngunit kahit lumampas sila sa national average, kailangang isaalang-alang ang partikular na threshold sa kanilang lugar bago tukuyin ang opisyal na classification.
+          </p>
+
+          <p>
+            At kahit ma-classify silang nonpoor, maaari pa rin silang mahirapang magbayad ng upa, kuryente, tubig, pagkain, pamasahe, gamot, at gastusin sa pag-aaral.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGLAMPAS SA POVERTY LINE AY HINDI KATUMBAS NG PAGKAKAROON NG FINANCIAL SECURITY.
+            </p>
+          </blockquote>
+
+          <p>
+            May malinaw ding dahilan kung bakit hindi dapat gamitin ang national average na para bang eksaktong halaga ito sa bawat probinsya.
+          </p>
+
+          <p>
+            Sa CALABARZON, halimbawa, umabot sa ₱16,324 kada buwan ang average poverty threshold para sa pamilyang may limang miyembro noong 2025—mas mataas kaysa pambansang average.
+          </p>
+
+          <p>
+            Ipinapakita nito na may pagkakaiba sa lokal na presyo at tinatayang minimum na pangangailangan.
+          </p>
+
+          <h2>
+            PAANO KINUKUWENTA ANG POVERTY THRESHOLD?
+          </h2>
+
+          <p>
+            Hindi basta nag-iimbento ng numero ang PSA.
+          </p>
+
+          <p>
+            Gumagamit ang Pilipinas ng Cost of Basic Needs approach, kung saan tinatantiya ang minimum na kailangan para sa pangunahing food at non-food requirements.
+          </p>
+
+          <p>
+            Sa pagkain, gumagamit ng reference food bundles na isinasaalang-alang ang nutritional requirements, karaniwang pagkain sa lugar, at mga presyo.
+          </p>
+
+          <p>
+            Ayon sa PSA, nakabatay ang food requirements sa average na 2,000 kilocalories bawat tao bawat araw, 100% adequacy para sa energy at protein, at 80% para sa iba pang nutrients.
+          </p>
+
+          <p>
+            Nakikipag-ugnayan din ang PSA sa Food and Nutrition Research Institute sa pagbuo ng mga food bundle.
+          </p>
+
+          <p>
+            Hindi naman basta isang presyo ng ulam ang ginagamit. Tinitingnan ang mga sangkap, lokal na presyo, at ang tinatayang pinakamababang gastos sa food bundle na pumapasa sa itinakdang nutritional standards.
+          </p>
+
+          <p>
+            Mula rito, binubuo ang food threshold.
+          </p>
+
+          <p>
+            Pagdating sa non-food requirements, mas komplikado.
+          </p>
+
+          <p>
+            Kabilang sa tinatantiya ang mga pangunahing gastusin para sa pabahay, damit, tubig, kuryente, transportasyon, komunikasyon, edukasyon, kalusugan, at iba pang pangangailangan.
+          </p>
+
+          <p>
+            Ngunit hindi nito kinukuwenta nang paisa-isa ang aktuwal na buwanang bill ng bawat pamilya.
+          </p>
+
+          <p>
+            Sa halip, ginagamit ang spending patterns ng isang reference group ng mga pamilya upang matantiya ang non-food component.
+          </p>
+
+          <p>
+            Sa inilathalang technical notes ng PSA, ginamit sa naunang methodology ang food-to-total-basic-expenditure ratio na 0.6983, mula sa mga FIES noong 2000, 2003, 2006, at 2009. Ayon sa PSA OpenSTAT, ginagamit ang ratio na ito mula 2009 at dokumentado ang paggamit nito hanggang 2023. Hindi dapat ipagpalagay na iyon din ang eksaktong ratio na ginamit sa 2025 nang walang kumpirmasyon sa pinakahuling technical documentation.
+          </p>
+
+          <p>
+            Mahalaga ang usaping ito dahil maaaring magbago ang spending patterns habang nagbabago ang ekonomiya, teknolohiya, presyo ng serbisyo, at pangangailangan ng mga pamilya.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TANONG AY HINDI LANG KUNG TAMA ANG COMPUTATION. DAPAT DING TANUNGIN KUNG ANG MGA BATAYAN NITO AY ANGKOP PA SA KASALUKUYANG PAMUMUHAY.
+            </p>
+          </blockquote>
+
+                   <h2>
+            PAANO NAMAN NALALAMAN KUNG ILAN ANG MAHIHIRAP?
+          </h2>
+
+          <p>
+            Ginagamit ng PSA ang Family Income and Expenditure Survey o FIES.
+          </p>
+
+          <p>
+            Sa survey na ito, kinakalap ang impormasyon tungkol sa kita at gastusin ng mga pamilya.
+          </p>
+
+          <p>
+            Hindi lamang sahod ang maaaring kabilang sa family income. May kita mula sa negosyo, sakahan, remittances, pensiyon, ilang natatanggap na tulong o regalo, at iba pang pinagkukunan. May mga noncash at imputed components din, kabilang ang tinatayang rental value ng owner-occupied housing.
+          </p>
+
+          <p>
+            Ang 2025 FIES ay isinagawa noong Hulyo 2025 at Enero 2026 upang makuha ang datos para sa dalawang kalahati ng 2025.
+          </p>
+
+          <p>
+            Pagkatapos, ikinukumpara ang per capita family income sa naaangkop na poverty threshold upang matantiya kung ilang pamilya at indibidwal ang nasa ilalim nito.
+          </p>
+
+          <p>
+            Ayon sa PSA, bumaba ang poverty incidence among individuals mula 15.5% noong 2023 tungong 9.7% noong 2025.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang 11.08 milyong Pilipinong nasa ilalim pa rin ng opisyal na poverty threshold noong 2025.
+          </p>
+
+          <p>
+            Mayroon ding 6.4% poverty incidence among families, o tinatayang 1.90 milyong pamilya.
+          </p>
+
+          <p>
+            Mahalagang datos ang pagbaba ng poverty incidence. Hindi ito dapat basta tanggihan dahil hindi natin gusto ang resulta.
+          </p>
+
+          <p>
+            Ngunit kailangan ding maunawaan na ang 9.7% ay porsiyento ng populasyong nasa ilalim ng partikular na opisyal na poverty line.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nito sinasabing 90.3% ng mga Pilipino ay mayroon nang sapat na ipon, matatag na trabaho, o kakayahang harapin ang biglaang gastusin.
+            </p>
+          </blockquote>
+
+          <h2>
+            GAANO KARELIABLE ANG POVERTY STATISTICS?
+          </h2>
+
+          <p>
+            Dito kailangang paghiwalayin ang dalawang bagay:<br>
+            ang reliability ng datos at ang adequacy ng mismong sukatan.
+          </p>
+
+          <p>
+            May pormal na survey procedures, statistical sampling, estimation methods, at measures of precision ang PSA. Ang opisyal na poverty statistics ay hindi simpleng opinyon o hula.
+          </p>
+
+          <p>
+            Ngunit tulad ng ibang household surveys, maaari itong magkaroon ng sampling error, maling pag-alaala o pag-uulat ng kita, at iba pang measurement limitations.
+          </p>
+
+          <p>
+            May mga pamilya ring hindi regular ang kita. Maaaring malaki ang natanggap sa isang panahon ngunit kapos sa ibang buwan.
+          </p>
+
+          <p>
+            Higit sa lahat, may limitasyon ang paggamit sa kabuuang kita ng pamilya bilang sukatan ng kalagayan ng bawat miyembro.
+          </p>
+
+          <p>
+            Hindi nito awtomatikong ipinapakita kung patas ang paghahati ng resources sa loob ng bahay o kung may miyembrong hindi natutugunan ang pangangailangan.
+          </p>
+
+          <p>
+            At kahit tama ang nakalap na kita, nananatili ang mas malaking tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              SAPAT BA ANG ITINAKDANG POVERTY LINE UPANG MAKILALA ANG LAHAT NG TAONG TALAGANG NAGHIHIRAP SA BUHAY?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi iyon masasagot ng survey precision lamang.
+          </p>
+
+          <p>
+            Maaaring reliable ang pagbilang sa mga taong nasa ilalim ng isang threshold, habang makatuwiran pa ring kuwestiyunin kung gaano kataas o kababa ang threshold.
+          </p>
+
+          <h2>
+            MAY GANITO RIN BA SA IBANG DEVELOPING COUNTRIES?
+          </h2>
+
+          <p>
+            Oo.
+          </p>
+
+          <p>
+            Hindi natatangi sa Pilipinas ang paggamit ng national poverty line. May mga katulad na sukatan sa Indonesia, Thailand, Vietnam, at marami pang bansa.
+          </p>
+
+          <p>
+            Pero mahalagang maintindihan na hindi pare-pareho ang methodology.
+          </p>
+
+          <p>
+            Para mas madaling makita ang mga halaga, narito ang ilang halimbawa na tinantiya sa Philippine pesos.
+          </p>
+
+          <p>
+            Ginamit ang indicative exchange-rate conversions mula sa Bank Indonesia noong Nobyembre 2, 2026. Ang mga katumbas na arawang halaga ay kinalkula mula sa buwanang poverty lines gamit ang average na 365 araw kada taon.
+          </p>
+
+          <h3>
+            PILIPINAS — ₱96.22 BAWAT TAO KADA ARAW
+          </h3>
+
+          <p>
+            Ang 2025 national average ay humigit-kumulang ₱2,927 bawat tao kada buwan.
+          </p>
+
+          <p>
+            Income-based ang opisyal na poverty classification.
+          </p>
+
+          <h3>
+            INDONESIA — HUMIGIT-KUMULANG ₱70 BAWAT TAO KADA ARAW
+          </h3>
+
+          <p>
+            Noong Marso 2025, iniulat ng Statistics Indonesia o BPS ang national poverty line na Rp609,160 bawat tao kada buwan.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang ₱2,134 bawat buwan o ₱70 bawat araw gamit ang nasabing conversion.
+          </p>
+
+          <p>
+            May food at non-food components din ang kanilang poverty line, ngunit household consumption expenditure ang pangunahing ginagamit sa pagsukat.
+          </p>
+
+          <h3>
+            THAILAND — HUMIGIT-KUMULANG ₱191 BAWAT TAO KADA ARAW
+          </h3>
+
+          <p>
+            Ayon sa National Economic and Social Development Council ng Thailand, nasa 3,078 baht bawat tao kada buwan ang kanilang national poverty line noong 2024.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang ₱5,804 bawat buwan o ₱191 bawat araw.
+          </p>
+
+          <p>
+            Nakabatay rin ang Thailand sa gastos sa pangunahing pagkain at non-food needs, at gumagamit ng consumption expenditure sa poverty classification.
+          </p>
+
+          <h3>
+            VIETNAM — HUMIGIT-KUMULANG ₱122 HANGGANG ₱162 BAWAT TAO KADA ARAW
+          </h3>
+
+          <p>
+            Sa poverty standard na ginagamit pa rin para sa 2026, ang monthly per capita income criterion ay 1.5 milyong Vietnamese dong sa rural areas at 2 milyong dong sa urban areas.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang ₱3,704 hanggang ₱4,939 bawat buwan, o ₱122 hanggang ₱162 bawat araw.
+          </p>
+
+          <p>
+            Pero may malaking pagkakaiba sa sistema ng Vietnam.
+          </p>
+
+          <p>
+            Hindi lamang income criterion ang tinitingnan sa kanilang multidimensional poverty classification. Isinasama rin ang kakulangan sa access sa mga pangunahing serbisyong panlipunan, gaya ng edukasyon, kalusugan, pabahay, malinis na tubig, at iba pa.
+          </p>
+
+          <p>
+            Kaya hindi sapat na kunin lamang ang income criterion para ituring itong ganap na katumbas ng Philippine income-based poverty threshold.
+          </p>
+
+          <h2>
+            MAHALAGANG PAGLILINAW SA COMPARISON
+          </h2>
+
+          <p>
+            Hindi ibig sabihin na dahil ₱70 ang converted poverty line ng Indonesia, mas madaling mabuhay roon kaysa Pilipinas. Hindi rin ibig sabihin na dahil halos ₱191 ang Thailand, dalawang beses na mas mataas ang aktuwal na gastusin nila.
+          </p>
+
+          <p>
+            Magkakaiba ang mga reference year, lokal na presyo, income o expenditure methodology, at saklaw ng mga pangangailangang kasama sa computation.
+          </p>
+
+          <p>
+            Ang ordinaryong foreign-exchange conversion ay nagpapakita lamang ng katumbas na halaga sa piso sa isang partikular na petsa.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI ITO SUKATAN NG MAGKAPAREHONG PURCHASING POWER.
+            </p>
+          </blockquote>
+
+          <p>
+            Para sa mas patas na international comparison, gumagamit ang World Bank ng Purchasing Power Parity o PPP—isang paraan upang maisaalang-alang ang pagkakaiba ng presyo ng mga produkto at serbisyo sa bawat bansa.
+          </p>
+
+          <h2>
+            ANO ANG SINASABI NG WORLD BANK?
+          </h2>
+
+          <p>
+            Noong Hunyo 2025, inilabas ng World Bank ang updated international poverty lines gamit ang 2021 PPP.
+          </p>
+
+          <p>
+            Ang mga benchmark ay:<br>
+            $3.00 bawat tao kada araw para sa extreme poverty benchmark.<br>
+            $4.20 bawat tao kada araw para sa lower-middle-income economies.<br>
+            $8.30 bawat tao kada araw para sa upper-middle-income economies.
+          </p>
+
+          <p>
+            Hindi ito ordinaryong US dollars na basta imumultiply sa kasalukuyang dollar-to-peso exchange rate. Mga international dollars ito na ina-adjust para sa purchasing power.
+          </p>
+
+          <p>
+            Hindi rin ito tatlong minimum wage standards o garantisadong disenteng budget. Mga benchmark ito para sa international poverty measurement.
+          </p>
+
+          <p>
+            Mahalaga ang kanilang pagkakaiba dahil hindi pare-pareho ang ginagamit na pamantayan sa iba't ibang antas ng pag-unlad ng ekonomiya.
+          </p>
+
+          <p>
+            At dito nagiging mas makabuluhan ang pagsusuri sa Pilipinas.
+          </p>
+
+                    <h2>
+            MAY RESEARCH BA NA NAGKUKUWESTIYON SA ATING POVERTY LINE?
+          </h2>
+
+          <p>
+            Meron—at hindi lamang ito pangkaraniwang reaksiyon sa social media.
+          </p>
+
+          <p>
+            Noong Setyembre 28, 2026, naglabas ang Philippine Institute for Development Studies o PIDS ng policy note nina Jose Ramon Albert at Mohammad Mahmoud na may pamagat na Why the Official Poverty Line Needs Reexamining as Consumption Patterns Change.
+          </p>
+
+          <p>
+            Ayon sa kanilang pagsusuri, ang Philippine national poverty threshold na ginamit sa pag-aaral ay katumbas ng humigit-kumulang $4.08 bawat tao kada araw sa PPP terms.
+          </p>
+
+          <p>
+            Mas mababa ito sa $4.20 lower-middle-income benchmark at malayo sa $8.30 upper-middle-income benchmark ng World Bank.
+          </p>
+
+          <p>
+            Mahalaga rin ang konteksto na noong 2026 ay na-reclassify ang Pilipinas bilang upper-middle-income economy.
+          </p>
+
+          <p>
+            Hindi nito awtomatikong pinawawalang-bisa ang opisyal na national poverty line, ngunit nagbibigay ito ng dahilan upang suriin kung ang kasalukuyang threshold ay naaayon pa sa antas ng ekonomiya at nagbabagong pangangailangan.
+          </p>
+
+          <p>
+            Sa pag-aaral ng PIDS, bumuo ang mga mananaliksik ng ASEAN-4 comparative benchmark mula sa average ng national poverty lines ng Pilipinas, Indonesia, Thailand, at Vietnam. Bagama't kasama ang Pilipinas sa pagkukuwenta, lumabas na humigit-kumulang 40% na mas mataas ang average na ito kaysa sa poverty threshold ng Pilipinas lamang. Hindi ito opisyal na ASEAN poverty standard, kundi benchmark na ginamit para sa paghahambing.
+          </p>
+
+          <p>
+            Mas mabigat ang naging resulta nang subukan nilang gamitin ang alternative threshold sa 2023 poverty data.
+          </p>
+
+          <p>
+            Mula sa opisyal na 15.5% poverty incidence noong 2023, tinatayang aabot sa 34.9% ang poverty incidence kung gagamitin ang mas mataas na ASEAN-4 benchmark.
+          </p>
+
+          <p>
+            Katumbas ito ng humigit-kumulang 21.9 milyong karagdagang tao na mapapasama sa poverty count sa alternative computation.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO MAHALAGANG HINDI RIN ITO BALUKTUTIN.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang 34.9% ay resulta ng research scenario gamit ang 2023 data. Hindi ito bagong opisyal na poverty rate ng PSA, at hindi ito maaaring basta ikabit sa 2025 statistics.
+          </p>
+
+          <p>
+            Hindi rin ibig sabihin na may biglang 21.9 milyong taong naging mahirap sa totoong buhay.
+          </p>
+
+          <p>
+            Ang ipinapakita ng sensitivity analysis ay kung paano nagbabago ang bilang ng mga kinikilalang mahirap kapag binago ang poverty line.
+          </p>
+
+          <p>
+            At iyon mismo ang malaking aral:
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG MABABA ANG HANGGANANG GINAGAMIT SA PAGBILANG, MAS KAUNTI ANG MABIBILANG NA NASA ILALIM NITO. KUNG ITINAAS ANG HANGGANAN, MAS MARAMI ANG MAAARING MAPABILANG—KAHIT WALANG NAGBAGO SA AKTUWAL NILANG KITA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito awtomatikong manipulasyon. Katangian ito ng poverty measurement na nangangailangang maunawaan at masusing suriin.
+          </p>
+
+          <h2>
+            HINDI LANG KITA ANG PUWEDENG SUKATIN
+          </h2>
+
+          <p>
+            May isa pang mahalagang datos mula mismo sa PSA.
+          </p>
+
+          <p>
+            Noong Agosto 27, 2026, inilabas nito ang 2024 National Multidimensional Poverty Index results.
+          </p>
+
+          <p>
+            Ayon sa report, 12.8% ng mga Pilipino ang nabibilang sa multidimensionally poor noong 2024.
+          </p>
+
+          <p>
+            Gumagamit ang sukatan ng 17 indicators sa apat na dimensions:<br>
+            edukasyon, kalusugan at nutrisyon, pabahay, tubig at sanitasyon, at trabaho.
+          </p>
+
+          <p>
+            Hindi dapat direktang ihambing ang 12.8% noong 2024 sa 9.7% income-based poverty incidence noong 2025 na para bang pareho ang survey year at methodology.
+          </p>
+
+          <p>
+            Pero mahalaga ang pagkakaroon ng dalawang magkaibang sukatan.
+          </p>
+
+          <p>
+            Ipinapakita nitong maging ang opisyal na statistical system ay kumikilala na hindi lamang kita ang maaaring gamiting batayan sa pag-unawa sa kahirapan.
+          </p>
+
+          <blockquote>
+            <p>
+              Maaaring lumampas sa monetary poverty line ang isang pamilya ngunit makaranas pa rin ng kakulangan sa mahahalagang serbisyo, pabahay, o iba pang kondisyon ng pamumuhay.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO NGAYON ANG TAMANG PAGBASA SA ₱96?
+          </h2>
+
+          <p>
+            May malinaw na sagot.
+          </p>
+
+          <p>
+            Totoo ang ₱96 bilang rounded daily equivalent ng national average per capita poverty threshold sa 2025.
+          </p>
+
+          <p>
+            Totoo ring ginagamit ang poverty threshold upang matukoy kung ang isang pamilya o indibidwal ay kabilang sa mahihirap ayon sa opisyal na income-based statistics.
+          </p>
+
+          <p>
+            Ngunit mali ang interpretasyong sapat nang kumita ang isang manggagawa ng ₱96 kada araw para awtomatikong hindi na maituturing na mahirap ang kaniyang buong pamilya.
+          </p>
+
+          <p>
+            Mali rin ang paggamit sa poverty threshold para ipahayag na kaya nang mabuhay nang disente at walang problema ang lahat ng lumampas sa halagang iyon.
+          </p>
+
+          <p>
+            Sa kabilang banda, hindi makatarungang tawaging gawa-gawa o walang batayan ang numero dahil lamang mababa ito sa inaasahan natin.
+          </p>
+
+          <p>
+            Ang lehitimong kritisismo ay dapat nakatuon sa aktuwal na methodology, mga assumptions, lokal na presyo, at mga pangangailangang maaaring hindi sapat na nasasaklaw.
+          </p>
+
+          <p>
+            Kailangang malinaw din kung ang pinupuna ay ang datos, ang paraan ng pagsukat, ang interpretasyon, o ang paggamit nito sa politika.
+          </p>
+
+          <p>
+            Dahil magkakaibang usapin ang mga iyon.
+          </p>
+
+          <h2>
+            ANO ANG DAPAT PANAGUTAN NG PAMAHALAAN?
+          </h2>
+
+          <p>
+            Hindi sapat na maglabas lamang ng poverty incidence at ipagdiwang ang pagbaba nito.
+          </p>
+
+          <p>
+            Dapat malinaw sa publiko kung paano itinatakda ang poverty threshold, kailan nire-review ang mga reference assumptions, at paano isinasaalang-alang ang mga pagbabago sa gastusin at pangangailangan.
+          </p>
+
+          <p>
+            Dapat ding pag-aralan kung sapat pa ang mga food at non-food requirements, kung may mga kahinaang dapat baguhin sa income-based measurement, at paano gagamitin ang multidimensional data upang mas makilala ang mga pamilyang nananatiling vulnerable.
+          </p>
+
+          <p>
+            Hindi kailangan ng gobyerno na itanggi ang limitasyon ng sariling estadistika para kilalanin ang naitalang pag-unlad.
+          </p>
+
+          <p>
+            At hindi rin kailangang balewalain ang pagbaba ng poverty incidence para igiit na marami pa ring Pilipinong nahihirapan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TUNAY NA PAG-UNLAD AY HINDI LANG ANG PAGKONTI NG MGA TAONG NASA ILALIM NG POVERTY LINE. MAHALAGA RIN KUNG GAANO KATATAG ANG KABUHAYAN NG MGA NAKALAMPAS DITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG MAS MALAKING PROBLEMA: DATOS NA GINAGAMIT SA PANINIRA
+          </h2>
+
+          <p>
+            Dito dapat maging malinaw ang pananagutan ng bawat panig.
+          </p>
+
+          <p>
+            Kapag kinuha ang isang totoong numero, tinanggal ang context, at ipinakalat na para bang iyon ang buong paliwanag, maaaring maging mapanlinlang ang mensahe.<br>
+            Kapag ikinabit ang interpretasyon sa litrato o pangalan ng isang opisyal na para bang direktang sinabi niya iyon, kailangang may mapakitang orihinal na pahayag o mapagkakatiwalaang ebidensiya.
+          </p>
+
+          <p>
+            Hindi sapat ang larawan at malaking quotation marks.
+          </p>
+
+          <p>
+            Pero hindi rin tama na gamitin ang official statistics para patahimikin ang mga taong nagtatanong kung sapat ba talaga ang minimum na ginagamit sa pagsukat ng kahirapan.
+          </p>
+
+          <p>
+            Hindi lahat ng kumukuwestiyon ay naninira.<br>
+            Hindi rin lahat ng nagtatanggol sa pagiging tama ng datos ay nagtatakip sa kahirapan.
+          </p>
+
+          <p>
+            Ang dapat kondenahin ay ang sinasadyang pagbaluktot sa impormasyon, maging ang layunin ay manira, magmukhang tama, o pagtakpan ang isang problemang dapat harapin.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil hindi porket totoong numero ang ginamit ay awtomatikong totoo na rin ang mensaheng ikinabit dito.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG HATOL
+          </h2>
+
+          <blockquote>
+            <p>
+              MAY BATAYAN ANG ₱96 SA ESTADISTIKA. MAY BATAYAN DIN ANG PAGKUWESTIYON KUNG SAPAT PA BA ANG POVERTY THRESHOLD SA TUNAY NA BUHAY.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              HINDI NAGIGING PEKE ANG DATOS DAHIL AYAW MO SA GOBYERNO. HINDI RIN NAGIGING MAGINHAWA ANG BUHAY NG TAO DAHIL SINABI NG ESTADISTIKA NA HINDI NA SIYA MAHIRAP.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              KAPAG SINADYA MONG ALISIN ANG KONTEKSTO PARA MAGMUKHANG MASAMA ANG ISANG PANIG, HINDI KA NAGLILINAW—NANLILINLANG KA.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              KAPAG GINAMIT MO NAMAN ANG OPISYAL NA NUMERO PARA BALEWALAIN ANG TUNAY NA PINAGDARAANAN NG MGA TAO, HINDI MO RIN NAUUNAWAAN ANG LIMITASYON NG DATOS NA IPINAGTATANGGOL MO.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang kahirapan ay hindi natatapos sa paglampas sa isang linya sa estadistika.
+          </p>
+
+          <p>
+            At ang katotohanan ay hindi nakukuha sa pagpili lamang ng numerong pabor sa gusto nating paniwalaan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG POVERTY THRESHOLD AY SUKATAN NG KAHIRAPAN—HINDI SUKATAN NG KABUUANG HALAGA, DIGNIDAD, O KARAPATAN NG TAONG MAGHANGAD NG MAS MAAYOS NA BUHAY.
+            </p>
+          </blockquote>
+          
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES / REFERENCES
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Philippine Statistics Authority (PSA).</strong> 2025 Full-Year Official Poverty Statistics, August 21, 2026.
+              <a
+                href="https://psa.gov.ph/content/proportion-poor-families-reduced-64-percent-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/content/proportion-poor-families-reduced-64-percent-2025
+              </a>
+            </li>
+
+            <li>
+              <strong>PSA.</strong> Technical Notes on the Official Poverty Estimation Methodology.
+              <a
+                href="https://psa.gov.ph/statistics/poverty-sae/technical-notes"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/statistics/poverty-sae/technical-notes
+              </a>
+            </li>
+
+            <li>
+              <strong>PSA.</strong> Poverty Threshold — Official Definition.
+              <a
+                href="https://psa.gov.ph/content/poverty-threshold-pt-0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/content/poverty-threshold-pt-0
+              </a>
+            </li>
+
+            <li>
+              <strong>PSA.</strong> 2024 National Multidimensional Poverty Index, released August 27, 2026.
+              <a
+                href="https://psa.gov.ph/statistics/poverty"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/statistics/poverty
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Institute for Development Studies (PIDS).</strong> Albert, J. R. G., &amp; Mahmoud, M. A. (2026). <em>Why the Official Poverty Line Needs Reexamining as Consumption Patterns Change.</em> Policy Notes PN 2026-17.
+              <a
+                href="https://doi.org/10.62986/pn2026.17"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.62986/pn2026.17
+              </a>
+            </li>
+
+            <li>
+              <strong>Statistics Indonesia (BPS).</strong> Poverty Rate Continues to Decline, July 25, 2025.
+              <a
+                href="https://www.bps.go.id"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.bps.go.id
+              </a>
+            </li>
+
+            <li>
+              <strong>Thailand National Economic and Social Development Council (NESDC).</strong> <em>Poverty and Inequality Report 2024</em>, published 2025.
+              <a
+                href="https://www.nesdc.go.th/wordpress/wp-content/uploads/2025/09/Final-Report-2024_as-of-20250912.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.nesdc.go.th/wordpress/wp-content/uploads/2025/09/Final-Report-2024_as-of-20250912.pdf
+              </a>
+            </li>
+
+            <li>
+              <strong>Government of Vietnam.</strong> Decree 351/2025/ND-CP — National Multidimensional Poverty Standards for 2026–2030.
+              <a
+                href="https://baochinhphu.vn/chuan-ngheo-da-chieu-quoc-gia-giai-doan-2026-2030-102251231152402888.htm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://baochinhphu.vn/chuan-ngheo-da-chieu-quoc-gia-giai-doan-2026-2030-102251231152402888.htm
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank.</strong> June 2025 Update to Global Poverty Lines.
+              <a
+                href="https://www.worldbank.org/en/news/factsheet/2025/06/05/june-2025-update-to-global-poverty-lines"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.worldbank.org/en/news/factsheet/2025/06/05/june-2025-update-to-global-poverty-lines
+              </a>
+            </li>
+
+            <li>
+              <strong>Bank Indonesia.</strong> Foreign Exchange Reference Rates, November 2, 2026, ginamit para sa illustrative peso conversions.
+              <a
+                href="https://www.bi.go.id/en/statistik/informasi-kurs/transaksi-bi/default.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.bi.go.id/en/statistik/informasi-kurs/transaksi-bi/default.aspx
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
