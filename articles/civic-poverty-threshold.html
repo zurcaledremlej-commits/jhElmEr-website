@@ -134,19 +134,19 @@ END OF DEVELOPER NOTES
     content="width=device-width, initial-scale=1.0"
   >
 
-<link
-  rel="icon"
-  type="image/png"
-  sizes="192x192"
-  href="/favicon.png"
->
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="192x192"
+    href="/favicon.png"
+  >
 
-<link
-  rel="shortcut icon"
-  href="/favicon.ico"
->
-   
-     <meta
+  <link
+    rel="shortcut icon"
+    href="/favicon.ico"
+  >
+
+  <meta
     name="description"
     content="Saan ba talaga ang hangganan ng kahirapan? Isang fact-based na pagsusuri sa poverty threshold, ₱96 daily equivalent, opisyal na poverty statistics, methodology, international comparisons, at mga limitasyon ng pagsukat sa tunay na kalagayan ng mga pamilya."
   >
@@ -454,6 +454,20 @@ END OF DEVELOPER NOTES
       margin: 2em 0 0.7em;
 
       font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    /*
+       PESO SIGN FALLBACK
+
+       Barlow Condensed may fail to render the Philippine peso
+       glyph on some mobile browsers. Only the ₱ character inside
+       headings and blockquotes uses Inter as a safe fallback.
+    */
+
+    .peso-sign {
+      font-family: "Inter", Arial, Helvetica, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0;
     }
 
     .article-body ul,
@@ -925,13 +939,7 @@ END OF DEVELOPER NOTES
 
     <article class="article-container">
 
-      <!-- ===================================
-           ARTICLE TITLE
-
-           PALITAN SA BAWAT BAGONG ARTICLE
-      =================================== -->
-
-            <header class="article-header">
+      <header class="article-header">
 
         <h1 class="article-title">
           SAAN BA TALAGA ANG HANGGANAN NG KAHIRAPAN?
@@ -939,18 +947,7 @@ END OF DEVELOPER NOTES
 
       </header>
 
-      <!-- ===================================
-           MAIN IMAGE
-
-           ILAGAY ANG IMAGE SA:
-           articles/images/
-
-           PALITAN ANG:
-           • filename
-           • alt text
-      =================================== -->
-
-            <figure class="article-image-figure">
+      <figure class="article-image-figure">
 
         <div class="article-image-frame">
 
@@ -965,12 +962,6 @@ END OF DEVELOPER NOTES
       </figure>
 
       <div class="article-reading-area">
-
-        <!-- ===================================
-             FULL ARTICLE BODY
-
-             PALITAN ANG MGA PARAGRAPH
-        =================================== -->
 
         <div class="article-body">
 
@@ -1051,7 +1042,7 @@ END OF DEVELOPER NOTES
           </p>
 
           <h2>
-            SAAN GALING ANG ₱96?
+            SAAN GALING ANG <span class="peso-sign">₱</span>96?
           </h2>
 
           <p>
@@ -1174,7 +1165,7 @@ END OF DEVELOPER NOTES
             </p>
           </blockquote>
 
-                   <h2>
+          <h2>
             PAANO NAMAN NALALAMAN KUNG ILAN ANG MAHIHIRAP?
           </h2>
 
@@ -1296,7 +1287,7 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            PILIPINAS — ₱96.22 BAWAT TAO KADA ARAW
+            PILIPINAS — <span class="peso-sign">₱</span>96.22 BAWAT TAO KADA ARAW
           </h3>
 
           <p>
@@ -1308,7 +1299,7 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            INDONESIA — HUMIGIT-KUMULANG ₱70 BAWAT TAO KADA ARAW
+            INDONESIA — HUMIGIT-KUMULANG <span class="peso-sign">₱</span>70 BAWAT TAO KADA ARAW
           </h3>
 
           <p>
@@ -1324,7 +1315,7 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            THAILAND — HUMIGIT-KUMULANG ₱191 BAWAT TAO KADA ARAW
+            THAILAND — HUMIGIT-KUMULANG <span class="peso-sign">₱</span>191 BAWAT TAO KADA ARAW
           </h3>
 
           <p>
@@ -1340,7 +1331,7 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            VIETNAM — HUMIGIT-KUMULANG ₱122 HANGGANG ₱162 BAWAT TAO KADA ARAW
+            VIETNAM — HUMIGIT-KUMULANG <span class="peso-sign">₱</span>122 HANGGANG <span class="peso-sign">₱</span>162 BAWAT TAO KADA ARAW
           </h3>
 
           <p>
@@ -1420,7 +1411,7 @@ END OF DEVELOPER NOTES
             At dito nagiging mas makabuluhan ang pagsusuri sa Pilipinas.
           </p>
 
-                    <h2>
+          <h2>
             MAY RESEARCH BA NA NAGKUKUWESTIYON SA ATING POVERTY LINE?
           </h2>
 
@@ -1536,7 +1527,7 @@ END OF DEVELOPER NOTES
           </blockquote>
 
           <h2>
-            ANO NGAYON ANG TAMANG PAGBASA SA ₱96?
+            ANO NGAYON ANG TAMANG PAGBASA SA <span class="peso-sign">₱</span>96?
           </h2>
 
           <p>
@@ -1647,7 +1638,7 @@ END OF DEVELOPER NOTES
 
           <blockquote>
             <p>
-              MAY BATAYAN ANG ₱96 SA ESTADISTIKA. MAY BATAYAN DIN ANG PAGKUWESTIYON KUNG SAPAT PA BA ANG POVERTY THRESHOLD SA TUNAY NA BUHAY.
+              MAY BATAYAN ANG <span class="peso-sign">₱</span>96 SA ESTADISTIKA. MAY BATAYAN DIN ANG PAGKUWESTIYON KUNG SAPAT PA BA ANG POVERTY THRESHOLD SA TUNAY NA BUHAY.
             </p>
           </blockquote>
 
@@ -1682,16 +1673,10 @@ END OF DEVELOPER NOTES
               ANG POVERTY THRESHOLD AY SUKATAN NG KAHIRAPAN—HINDI SUKATAN NG KABUUANG HALAGA, DIGNIDAD, O KARAPATAN NG TAONG MAGHANGAD NG MAS MAAYOS NA BUHAY.
             </p>
           </blockquote>
-          
+
         </div>
 
-        <!-- ===================================
-             SOURCES / REFERENCES
-
-             PALITAN SA BAWAT BAGONG ARTICLE
-        =================================== -->
-
-                <section
+        <section
           class="article-sources"
           aria-labelledby="sources-heading"
         >
@@ -1885,4 +1870,4 @@ END OF DEVELOPER NOTES
 
 </body>
 
-</html>
+   </html>
