@@ -1,1 +1,1755 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Buhay pa, may burol na—bakit? Isang fact-based na paliwanag sa living funeral, kasaysayan nito, kaugnayan sa relihiyon, sinasabi ng mga pag-aaral, at mga aral ng Biblia tungkol sa pagmamahal, dignidad, at pagharap sa kamatayan."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-burol.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-burol.html"
+  >
+
+  <title>BUHAY PA, MAY BUROL NA—BAKIT? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          BUHAY PA, MAY BUROL NA—BAKIT?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-burol.png"
+            alt="Simbolikong visual ng isang buhay na taong pinararangalan sa isang living funeral, napapalibutan ng pamilya, bulaklak, kabaong, gamot, at mga sagisag ng pagharap sa buhay at kamatayan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+              <div class="article-reading-area">
+
+        <div class="article-body">
+
+          <h2>
+            LIVING FUNERAL—ANO BA TALAGA ITO, SAAN NAGMULA, AT ANO ANG SINASABI NG BIBLIA?
+          </h2>
+
+          <p>
+            Karaniwan, kapag may burol, iisa ang agad nating naiisip: may namatay na. May mga bulaklak, panalangin, pagbabahagi ng alaala, at mga mensahe ng pagmamahal at pasasalamat na hindi na maririnig ng taong pinararangalan.
+          </p>
+
+          <p>
+            Pero paano kung buhay pa ang taong iyon? Naririnig pa niya ang bawat mensahe, nakikita ang mga taong nagmamahal sa kaniya, at maaari pa siyang magsalita, magpasalamat, o magpaalam?
+          </p>
+
+          <blockquote>
+            <p>
+              Bakit may mga taong pinipiling magkaroon ng sariling burol habang nabubuhay pa? Pagpapahalaga ba ito sa buhay, paghahanda sa kamatayan, o isang seremonyang may mas malalim na kultural at panrelihiyong kahulugan?
+            </p>
+          </blockquote>
+
+          <p>
+            Ito ang tinatawag na living funeral—isang seremonyang maaaring magmukhang tradisyonal na burol, ngunit ginagawa habang nabubuhay pa ang taong pinararangalan.
+          </p>
+
+          <p>
+            Naging usap-usapan ito sa Pilipinas matapos ang living funeral ng komedyanteng si Ate Gay, o Gil Aducal Morales, noong Oktubre 15, 2026, sa Biñan, Laguna. Nagkaroon ng pagkakataon ang kaniyang pamilya at mga kaibigan na personal na maipahayag ang pagmamahal, pasasalamat, at mga alaala habang kasama pa nila siya. Pumanaw siya noong Nobyembre 1, 2026, labingpitong araw matapos ang pagtitipon.
+          </p>
+
+          <p>
+            Ngunit hindi nagsimula kay Ate Gay ang ganitong gawain. At hindi rin sapat ang pagkakahawig nito sa isang burol upang agad sabihing tama, mali, makabuluhan, o salungat sa pananampalataya.
+          </p>
+
+          <p>
+            Bago tayo humanga, mag-alinlangan, o humusga, mahalagang alamin muna kung ano talaga ang living funeral, saan ito nagmula, ano ang sinasabi ng mga pag-aaral, at kung may direktang batayan ba ito sa Banal na Kasulatan.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG LIVING FUNERAL?
+          </h2>
+
+          <p>
+            Ang living funeral, na tinatawag ding pre-funeral o living wake sa ilang pagkakataon, ay isang pagtitipong nagbibigay-pugay sa isang taong nabubuhay pa.
+          </p>
+
+          <p>
+            Maaaring may mga larawan, bulaklak, musika, panalangin, talumpati, at pagbabahagi ng alaala. May mga pagkakataong ginagamit din ang mga simbolong karaniwang makikita sa tradisyonal na burol.
+          </p>
+
+          <p>
+            Ang malaking pagkakaiba: sa ordinaryong funeral, hindi na maririnig ng yumao ang mga mensahe. Sa living funeral, maaari pa niyang marinig, matanggap, at sagutin ang mga ito.
+          </p>
+
+          <p>
+            Hindi kinakailangang may kabaong, punerarya, pari, o pastor. Hindi rin kailangang may malubhang karamdaman ang taong pinararangalan. Nag-iiba ang anyo depende sa layunin, kultura, pananampalataya, at kagustuhan ng mismong tao.
+          </p>
+
+          <p>
+            Para sa ilan, pagkakataon itong magpasalamat. Para sa iba, paraan ito ng pamamaalam, pakikipagkasundo, o pagharap sa katotohanang may hangganan ang buhay.
+          </p>
+
+          <p>
+            Pero mahalagang tandaan: hindi lahat ng living funeral ay magkapareho ng layunin, at hindi rin lahat ng tinatawag na celebration of life ay living funeral. May mga celebration of life na ginagawa pagkatapos ng kamatayan.
+          </p>
+
+          <h2>
+            DATI NA BA ITONG GINAGAWA?
+          </h2>
+
+          <p>
+            Oo. May dokumentadong kasaysayan ang makabagong living funeral ilang dekada bago ito naging usap-usapan sa Pilipinas.
+          </p>
+
+          <p>
+            Sa isang pag-aaral ni Mark Rowe na inilathala noong 2000 sa Japanese Journal of Religious Studies, binanggit ang living funeral o seizensō na naging kilala sa Japan dahil kay Mizunoe Takiko noong 1992. Nais niyang maisagawa ang kaniyang funeral habang nabubuhay pa upang personal na mapasalamatan ang mga taong tumulong sa kaniya.
+          </p>
+
+          <p>
+            Mahalaga ang detalyeng ito dahil ipinapakitang hindi lamang ang paghahanda sa kamatayan ang maaaring dahilan ng isang living funeral. Maaari rin itong maging paraan ng pagkilala sa mga taong naging bahagi ng buhay.
+          </p>
+
+          <p>
+            Sa South Korea naman, iniulat ng Reuters noong Nobyembre 2019 na mahigit 25,000 katao ang nakilahok sa mga simulated living funeral ng Hyowon Healing Center mula nang magbukas ito noong 2012.
+          </p>
+
+          <p>
+            May mga kalahok na humihiga sa kabaong upang magnilay tungkol sa kamatayan, mga relasyon, at kung paano nila ginagamit ang kanilang buhay.
+          </p>
+
+          <p>
+            Ngunit hindi iyon katulad ng lahat ng living funeral. Sa South Korean program, higit na nakasentro ang karanasan sa personal na pagninilay. Sa ibang seremonya, ang sentro ay pagbibigay-pugay at pakikipag-ugnayan sa pamilya.
+          </p>
+
+          <p>
+            Ang 25,000 ay bilang na iniulat para sa isang partikular na programa, hindi estadistika ng lahat ng nagsasagawa ng living funeral sa South Korea. Hindi rin ito patunay na epektibo ang seremonya para sa bawat kalahok.
+          </p>
+
+          <p>
+            Sa paglipas ng panahon, nakilala rin ang iba’t ibang anyo ng living funeral sa United States, United Kingdom, Hong Kong, at iba pang lugar.
+          </p>
+
+          <blockquote>
+            <p>
+              Samakatuwid, hindi ito simpleng bagong trend na nilikha ng social media. May dokumentadong kasaysayan itong kaugnay ng pagbabago ng kultura, mga ritwal sa kamatayan, at paraan ng pagpapahalaga sa buhay.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY KAUGNAYAN BA ITO SA RELIHIYON?
+          </h2>
+
+          <p>
+            Mayroon sa ilang tradisyon, ngunit hindi lahat ng living funeral ay relihiyosong seremonya.
+          </p>
+
+          <p>
+            Sa kasaysayan ng Japanese Buddhism, may kaugaliang tinatawag na gyakushū, kung saan nagsasagawa ng ilang ritwal habang nabubuhay pa ang tao bilang bahagi ng espirituwal na paghahanda sa kamatayan at kabilang-buhay.
+          </p>
+
+          <p>
+            May kaugnayan ang ilang modernong Japanese living funeral sa ganitong tradisyon. Ngunit hindi makatarungang sabihing eksaktong pareho ang lahat ng sinaunang Buddhist practices at ang modernong living funeral.
+          </p>
+
+          <p>
+            Sa isang pag-aaral ni Yuen-Ki Tang na inilathala noong Abril 2026 sa The Australian Journal of Anthropology, tinalakay ang pagbabago ng mga ritwal sa kamatayan, kabilang ang pagsasama ng makasaysayang simbolo at mas personal na paraan ng pagbabahagi ng kuwento ng buhay.
+          </p>
+
+          <p>
+            Ipinapakita nito na maaaring magbago ang kahulugan ng isang kaugalian habang nagbabago ang lipunan.
+          </p>
+
+          <p>
+            May mga living funeral na may panrelihiyong ritwal. Mayroon ding simpleng pagtitipon ng pamilya na walang partikular na paniniwalang espirituwal na kaakibat.
+          </p>
+
+          <p>
+            Hindi sapat ang pangalan, dekorasyon, o pagkakahawig sa isang ritwal upang matukoy ang tunay na paniniwala at layunin ng mga kalahok.
+          </p>
+
+          <p>
+            Kung nais nating suriin ang isang seremonya ayon sa pananampalataya, dapat alamin kung ano talaga ang ginagawa, anong paniniwala ang ipinahahayag, at kung may anumang ritwal na sumasalungat sa pinaniniwalaan ng taong nakikilahok.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi makatarungang sabihing pagsamba agad sa ibang diyos ang isang pagtitipong may bulaklak at pagbibigay-pugay. Ngunit mali rin na balewalain ang mga partikular na panrelihiyong ritwal kung mayroon talaga ang seremonya.
+            </p>
+          </blockquote>
+
+                    <h2>
+            ANO NAMAN ANG SINASABI NG BANAL NA KASULATAN?
+          </h2>
+
+          <p>
+            Walang tuwirang utos sa Biblia na magsagawa ng modernong living funeral. Wala rin itong tahasang pagbabawal sa isang simpleng pagtitipong nagbibigay ng pagmamahal, pasasalamat, at pagpapahalaga sa taong nabubuhay pa.
+          </p>
+
+          <p>
+            Ngunit hindi nangangahulugang walang mahalagang aral ang Biblia tungkol dito.
+          </p>
+
+          <p>
+            Sa Mga Taga-Roma 12:9–10, itinuturo ang tunay na pagmamahalan at pagbibigay-halaga sa kapwa.
+          </p>
+
+          <p>
+            Ang konteksto nito ay pamumuhay ng mga mananampalataya sa pagmamahal, hindi ang pagdaraos ng funeral. Gayunman, ang pagpapahalaga sa isang tao habang nabubuhay pa siya ay naaayon sa aral na iyon.
+          </p>
+
+          <p>
+            Sa 1 Mga Taga-Tesalonica 5:11, hinihikayat ang mga mananampalataya na palakasin ang loob ng bawat isa at magtulungan.
+          </p>
+
+          <p>
+            Mahalaga ito lalo na sa taong dumaranas ng karamdaman, panghihina, o matinding pagsubok. Ang presensiya ng pamilya at mga kaibigan, panalangin, pakikinig, at pagpapalakas ng loob ay maaaring maging mahalagang pagpapakita ng malasakit.
+          </p>
+
+          <p>
+            Sa Ang Mangangaral 7:2, binibigyang-diin ang pagpunta sa bahay ng namatayan dahil dapat alalahanin ng mga nabubuhay na sila rin ay mamamatay.
+          </p>
+
+          <p>
+            Hindi nito ipinag-uutos ang living funeral. Ang pangunahing diwa ay ang pagharap sa katotohanan ng kamatayan at ang karunungang maaaring makuha mula sa pagninilay tungkol dito.
+          </p>
+
+          <p>
+            Sa Mga Awit 90:12, ipinapanalangin ang karunungang maunawaan ang kaiklian ng buhay. Sa Santiago 4:14, ipinapaalala na hindi natin alam ang mangyayari bukas at panandalian lamang ang ating buhay.
+          </p>
+
+          <p>
+            Ang mga talatang ito ay hindi tungkol sa pagtatanghal ng sariling burol. Tungkol ang mga ito sa tamang pagtingin sa buhay, panahon, at ating pagiging may hangganan.
+          </p>
+
+          <p>
+            May pangyayari rin sa Marcos 14:3–9 kung saan binuhusan ng mamahaling pabango si Jesus habang nabubuhay pa siya. Sa talata 8, iniugnay ni Jesus ang ginawa ng babae sa paghahanda para sa kaniyang paglilibing.
+          </p>
+
+          <p>
+            Ngunit mahalagang maging tapat sa konteksto: hindi ito isang living funeral sa modernong kahulugan. Hindi ito inilarawan bilang sariling burol ni Jesus o isang pagtitipon ng mga taong nagbibigay ng eulogy tungkol sa kaniyang buhay.
+          </p>
+
+          <p>
+            Hindi dapat piliting gawing direktang biblikal na batayan ng living funeral ang pangyayaring iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang makatarungang konklusyon: may mga aral sa Biblia na maaaring maiugnay sa pagmamahal, pagpapahalaga, pagharap sa kamatayan, at pagpapalakas ng loob. Ngunit hindi nito ginagawang obligadong seremonyang Kristiyano ang living funeral.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO NAMAN ITO TINITINGNAN SA PANANAMPALATAYANG KATOLIKO?
+          </h2>
+
+          <p>
+            Mahalagang paghiwalayin ang personal na pagtitipon at ang opisyal na funeral rites ng Simbahan.
+          </p>
+
+          <p>
+            Sa Catechism of the Catholic Church, talata 1684–1690, inilalarawan ang Christian funeral bilang liturhikong pagdiriwang kaugnay ng taong pumanaw na, na nakasentro sa pananampalataya sa muling pagkabuhay at panalangin para sa yumao.
+          </p>
+
+          <p>
+            Ang Catholic funeral ay isang liturhikong pagdiriwang, bagaman hindi ito mismo sakramento.
+          </p>
+
+          <blockquote>
+            <p>
+              Samakatuwid, hindi maaaring ituring na katumbas o awtomatikong pamalit sa opisyal na Catholic funeral rites ang isang living funeral habang nabubuhay pa ang tao.
+            </p>
+          </blockquote>
+
+          <p>
+            Para naman sa mga may malubhang karamdaman, may ibang itinuturo at isinasagawa ang Simbahan.
+          </p>
+
+          <p>
+            Sa Santiago 5:14–15, binabanggit ang pananalangin ng mga pinuno ng iglesya para sa maysakit at pagpapahid ng langis sa pangalan ng Panginoon.
+          </p>
+
+          <p>
+            Kaugnay nito ang sakramento ng Anointing of the Sick. Ayon sa Catechism, talata 1514–1515, hindi lamang ito para sa taong nasa mismong sandali na ng kamatayan.
+          </p>
+
+          <p>
+            Mahalagang pagkakaiba iyon: may mga gawaing espirituwal para sa maysakit na hindi kailangang tawaging living funeral.
+          </p>
+
+          <p>
+            Kaya kung may mga Kristiyanong nais magsama-sama upang manalangin, magpasalamat, at magbigay-lakas ng loob sa isang mahal sa buhay, hindi nangangahulugang gumagawa na sila ng opisyal na funeral rite.
+          </p>
+
+          <p>
+            Ngunit kung may partikular na ritwal na pinag-aalinlanganan dahil sa pananampalataya, makatuwirang suriin ito at humingi ng gabay sa kanilang kinikilalang pinunong panrelihiyon.
+          </p>
+
+          <h2>
+            ANO TALAGA ANG SINASABI NG MGA PAG-AARAL?
+          </h2>
+
+          <p>
+            May pananaliksik na tumutulong ipaliwanag kung bakit maaaring maging makabuluhan ang ganitong pagtitipon. Pero kailangang maging malinaw sa limitasyon ng ebidensiya.
+          </p>
+
+          <p>
+            Sa pag-aaral ni Yuen-Ki Tang noong 2025 sa Australian and New Zealand Journal of Family Therapy, sinuri ang isang living funeral sa Hong Kong gamit ang mga panayam, obserbasyon, at video recordings.
+          </p>
+
+          <p>
+            Lumabas sa pagsusuri ang kahalagahan ng mga kuwentong pampamilya, hindi nasabing damdamin, tunggalian sa relasyon, at pagkakataong makapagpahayag ng pagpapahalaga.
+          </p>
+
+          <p>
+            Ngunit isang pamilya lamang ang pangunahing saklaw ng pag-aaral. Kinilala mismo ng mananaliksik na hindi maaaring basta ilapat ang mga natuklasan sa lahat ng pamilya at kultura.
+          </p>
+
+          <p>
+            Sa isa pang publikasyon ni Tang noong 2026, ang parehong living funeral sa Hong Kong—na dinaluhan ng humigit-kumulang 12 bisita—ang sinuri upang maunawaan kung paano ginagamit ang ganitong seremonya sa pagbuo ng kahulugan sa personal na karanasan at mga relasyon. Samakatuwid, magkaugnay at nakabatay sa iisang kaso ang dalawang publikasyon, hindi sa dalawang independiyenteng seremonya.
+          </p>
+
+          <p>
+            Mahalaga ang mga pag-aaral na ito sa pag-unawa sa seremonya, ngunit hindi sila malalaking clinical trials. Hindi rin nila pinatutunayang lahat ng living funeral ay nakapagpapabuti ng relasyon o kalusugang pangkaisipan.
+          </p>
+
+          <p>
+            May mas matibay na pananaliksik tungkol sa isang kaugnay ngunit magkaibang usapin: ang kahalagahan ng pag-uusap at paggalang sa kagustuhan ng taong may malubhang karamdaman.
+          </p>
+
+          <p>
+            Sa isang randomized controlled trial nina Karen Detering at mga kasamahan na inilathala sa BMJ noong 2010, lumahok ang 309 matatandang pasyente sa isang ospital sa Australia.
+          </p>
+
+          <p>
+            Sa 56 na kalahok na pumanaw sa loob ng anim na buwang follow-up, mas madalas na nalaman at nasunod ang kanilang mga kagustuhan tungkol sa pangangalaga sa huling yugto ng buhay sa grupong nagkaroon ng maayos na advance care planning: 25 sa 29, o 86%, kumpara sa 8 sa 27, o 30%, sa karaniwang pangangalaga.
+          </p>
+
+          <p>
+            Mas mababa rin ang naiulat na stress, anxiety, at depression sa mga kaanak ng mga pumanaw sa intervention group.
+          </p>
+
+          <p>
+            Ngunit malinaw ang saklaw ng pag-aaral: advance care planning ang sinuri, hindi living funeral. Hindi maaaring gamitin ang mga numerong iyon bilang patunay na ganoon din ang epekto ng seremonya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang ipinapakita ng datos ay ang kahalagahan ng pagbibigay-boses sa pasyente at malinaw na pag-uusap tungkol sa kaniyang mga pangangailangan at kagustuhan.
+            </p>
+          </blockquote>
+
+          <p>
+            Ayon naman sa World Health Organization, ang palliative care ay hindi lamang tungkol sa gamot o pisikal na sakit. Kabilang dito ang pagtugon sa emosyonal, panlipunan, at espirituwal na pangangailangan ng pasyente at pamilya.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang kailangan ng living funeral. Ang ibig sabihin, mahalaga ang buong pagkatao ng pasyente—hindi lamang ang kaniyang karamdaman.
+          </p>
+
+          <h2>
+            AT DITO DAPAT MAGING MAS MALALIM ANG ATING PAG-UNAWA.
+          </h2>
+
+          <p>
+            Maaaring napakaganda ng isang pagtitipong puno ng bulaklak, mensahe, at pagmamahal.
+          </p>
+
+          <p>
+            Pero ang isang taong may malubhang karamdaman ay maaari ring mangailangan ng sapat na pagkain, gamot, tulong sa gastusin, pahinga, maayos na pangangalaga, at taong handang makinig kahit walang kamera.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kailangang pumili sa pagitan ng emosyonal na suporta at praktikal na tulong. Maaaring kapwa mahalaga ang mga ito.
+            </p>
+          </blockquote>
+
+          <p>
+            Ngunit kung inuuna natin ang magarbong pagpapahayag ng pagmamahal habang napapabayaan ang pangunahing pangangailangan ng tao, may dahilan upang tanungin kung ano talaga ang ating binibigyang-halaga.
+          </p>
+
+                    <h2>
+            SA KULTURANG PILIPINO, BAKIT MADALING MAGING EMOSYONAL ANG GANITONG USAPIN?
+          </h2>
+
+          <p>
+            Malalim ang lugar ng lamay, pakikiramay, pakikidalamhati, at pagtutulungan sa maraming pamayanang Pilipino.
+          </p>
+
+          <p>
+            Sa isang discussion paper ng University of the Philippines Center for Integrative and Development Studies noong 2024, tinalakay ang pakikipagkapwa at mga pagpapahayag ng pakikiramay sa online spaces. Ipinakikita nito kung paano nagiging paraan ng pagkakaisa at pakikibahagi sa pinagdaraanan ng iba ang mga ganitong gawain.
+          </p>
+
+          <p>
+            May pag-aaral din noong 2025 nina Marc Kenneth Cabañero at Sarah Namoco tungkol sa Filipino grief sa Facebook, na tumalakay sa patuloy na ugnayang emosyonal sa yumao sa pamamagitan ng digital mourning.
+          </p>
+
+          <p>
+            Hindi tungkol sa living funeral ang mga pag-aaral na iyon. Ngunit nakatutulong silang ipaliwanag kung bakit malakas ang reaksiyon natin sa mga seremonyang may kinalaman sa pagkawala, alaala, pamilya, at pagmamahal.
+          </p>
+
+          <p>
+            Sa ating kultura, madalas na mahalaga hindi lamang ang ginagawa natin kundi pati ang mensaheng ipinahihiwatig nito sa pamilya at komunidad.
+          </p>
+
+          <p>
+            Kaya kapag ang isang seremonya ay kahawig ng burol ngunit buhay pa ang tao, maaaring magkaroon ng magkaibang reaksiyon.
+          </p>
+
+          <p>
+            May makakakita rito bilang makabuluhang pagkakataong magpasalamat. May makakaramdam ng takot, pag-aalinlangan, o hindi pagiging komportable. May maaaring magtanong kung ito ba ay tama sa pananampalataya.
+          </p>
+
+          <p>
+            Hindi kailangang pare-pareho ang reaksiyon ng lahat.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang paggalang sa pinili ng iba ay hindi nangangahulugang kailangan mo ring gawin iyon. At ang hindi mo pagpili sa ganitong seremonya ay hindi patunay na kulang ang pagmamahal mo.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY MAHALAGA RING USAPIN NG KAGUSTUHAN, DIGNIDAD, AT PRIVACY.
+          </h2>
+
+          <p>
+            Hindi sapat na sabihin ng pamilya o mga kaibigan na maganda ang kanilang intensiyon. Mahalaga ring isaalang-alang kung ano ang nais at kaya ng mismong taong pinararangalan.
+          </p>
+
+          <p>
+            Kung gusto niyang makasama ang kaniyang pamilya at marinig ang mga mensahe, mahalagang igalang iyon.<br>
+            Kung ayaw niyang makakita ng kabaong, funeral decorations, o seremonyang nagpapaalala sa kaniyang kamatayan, dapat ding igalang iyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi dapat gawing emosyonal na obligasyon ang isang living funeral. Hindi dapat pilitin ang taong maysakit na makilahok sa isang seremonyang ayaw niya dahil lamang nais ng iba na magkaroon ng pagkakataong magpaalam.
+            </p>
+          </blockquote>
+
+          <p>
+            May usapin din ng privacy, lalo na kapag inilalabas sa social media ang mga litrato, video, mensahe, at sensitibong detalye tungkol sa kalusugan.
+          </p>
+
+          <p>
+            Sa paalala ng National Privacy Commission noong 2024, binigyang-diin ang responsableng pagbabahagi ng mga larawan at video na may personal na impormasyon, kabilang ang pagsunod sa mga prinsipyo ng transparency, legitimate purpose, at proportionality sa ilalim ng Data Privacy Act.
+          </p>
+
+          <p>
+            Hindi nangangahulugang bawal ang lahat ng pag-post ng ganitong pagtitipon. Ngunit hindi rin awtomatikong maaaring ilantad ang bawat pribadong sandali dahil lamang may seremonya o may interes ang publiko.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagiging pampubliko ng isang tao ay hindi pahintulot para ang bawat bahagi ng kaniyang paghihirap ay gawing pampublikong content.
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalaga rin ang pagiging responsible sa pagbabalita.
+          </p>
+
+          <p>
+            Noong Oktubre 31, 2026, kinailangang pabulaanan ng pamilya ni Ate Gay ang kumakalat na maling balita tungkol sa kaniyang diumano’y pagpanaw. Kinabukasan, Nobyembre 1, kinumpirma ng pamilya ang kaniyang aktuwal na pagpanaw.
+          </p>
+
+          <p>
+            Ipinapakita ng magkasunod na pangyayaring ito kung bakit hindi dapat pangunahan ang pamilya sa pag-aanunsiyo ng kamatayan ng isang taong patuloy pang nabubuhay at lumalaban.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi pakikiramay ang pagpapakalat ng hindi beripikadong balita. Maaari lamang itong magdagdag sa bigat na dinaranas ng pamilya.
+            </p>
+          </blockquote>
+
+          <h2>
+            PERO MAY MAS MALAKING TANONG: KAILANGAN BA TALAGANG MAY LIVING FUNERAL PARA MAIPADAMA ANG PAGMAMAHAL?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Maaaring maging makabuluhan ang living funeral para sa isang taong kusang pumili nito. Ngunit hindi ito kailangan upang mapatunayan ang pagmamahal, pananampalataya, o pagpapahalaga sa pamilya.
+          </p>
+
+          <p>
+            May mga pamilyang walang kakayahang magdaos ng malaking pagtitipon. May mga anak na nagtatrabaho sa malayo. May mga kaibigang tahimik lamang na tumutulong. May mga taong hindi komportable sa pampublikong pagpapahayag ng damdamin.
+          </p>
+
+          <p>
+            Hindi makatarungang husgahan ang kanilang pagmamahal dahil lamang wala silang ginawang seremonya.<br>
+            Hindi rin makatarungang maliitin ang tunay na pagdadalamhati ng mga naiwan pagkatapos ng kamatayan. Ang pag-iyak at pagbibigay-pugay sa burol ay hindi awtomatikong pakitang-tao dahil hindi na ito maririnig ng yumao.
+          </p>
+
+          <p>
+            May saysay din ang funeral para sa mga naulila. Isa itong pagkakataong magluksa, magdasal, makiramay, at magpaalam.
+          </p>
+
+          <p>
+            Ang problema ay hindi ang pagbibigay-pugay pagkatapos ng kamatayan.<br>
+            Ang dapat kuwestiyunin ay ang pagpapahalagang sa salita lamang nakikita, ngunit nawawala kapag kailangan na ng tunay na malasakit at pagkilos.
+          </p>
+
+          <p>
+            Maaari nating ipahayag ang pagmamahal nang walang seremonya. Maaari tayong humingi ng tawad habang may pagkakataon pang makipag-usap. Maaari tayong magpasalamat nang hindi naghihintay ng espesyal na okasyon.
+          </p>
+
+          <p>
+            Maaari rin tayong magpakita ng malasakit sa pamamagitan ng pagdalaw, pag-aalaga, pagtulong, pakikinig, at paggalang sa pasya ng isang taong nahihirapan.
+          </p>
+
+          <blockquote>
+            <p>
+              At hindi dapat gawing sukatan ng pagmamahal ang dami ng taong dumalo, haba ng talumpati, halaga ng bulaklak, o dami ng nakapanood online.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG HATOL: HINDI ANG SEREMONYA ANG SUKATAN NG PAGMAMAHAL.
+          </h2>
+
+          <p>
+            Kung may taong kusang pumili ng living funeral upang marinig ang mga mensahe ng mga mahal niya sa buhay, hindi makatarungang husgahan agad ang kaniyang pagkatao o pananampalataya.<br>
+            Kung may taong tumanggi rito dahil sa personal, kultural, o panrelihiyong paniniwala, hindi rin makatarungang sabihing hindi niya nauunawaan ang pagmamahal.
+          </p>
+
+          <p>
+            Hindi lahat ng mukhang burol ay nangangahulugang may namatay na. Hindi lahat ng seremonyang may kaugnayan sa kamatayan ay pagsamba. Ngunit hindi rin lahat ng may magandang intensiyon ay awtomatikong tama ang paraan.
+          </p>
+
+          <p>
+            Kailangang suriin ang layunin, mismong gawain, pananampalataya, kagustuhan ng taong kasangkot, at epekto nito sa kaniyang dignidad at kapakanan.
+          </p>
+
+          <p>
+            At kung may aral man ang living funeral na maaari nating dalhin sa pang-araw-araw na buhay, ito ang kahalagahan ng pagpaparamdam sa kapwa na mahalaga siya habang may pagkakataon pa.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG MAGKAROON NG BUROL HABANG BUHAY PARA MASABING MAHALAGA KA.<br>
+              PERO HUWAG DING HINTAYING NASA BUROL NA ANG ISANG TAO BAGO MO IPAALAM NA MAHALAGA SIYA SA BUHAY MO.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang maging magarbo ang pagpapahalaga. Hindi kailangang maging pampubliko. At lalong hindi kailangang maging content.
+          </p>
+
+          <p>
+            Ang tunay na malasakit ay hindi lamang nasusukat sa mga salitang nasabi sa isang seremonya, kundi sa paggalang, presensiya, at pag-aarugang ipinakita habang may pagkakataon.
+          </p>
+
+          <p>
+            At kahit walang living funeral, posible pa ring maisabuhay ang pinakamahalagang paalala nito:
+          </p>
+
+          <blockquote>
+            <p>
+              HABANG BUHAY PA, MAGPAHALAGA NA. HINDI LANG SA SALITA—KUNDI SA PAGTRATO AT PAG-AALAGA.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+               <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES / SANGGUNIAN
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Philippine Entertainment Portal (2026).</strong> Ate Gay holds “living funeral” amid cancer journey; Comedian Ate Gay dies at 55 after cancer battle.
+              <a
+                href="https://www.pep.ph/news/local/194263/ate-gay-living-funeral-a712-20261015"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PEP Living Funeral
+              </a>
+              |
+              <a
+                href="https://www.pep.ph/news/local/194462/comedian-ate-gay-dies-a712-20261101"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PEP Death Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Entertainment Portal (October 31, 2026).</strong> Ate Gay’s family threatens action over false death reports.
+              <a
+                href="https://www.pep.ph/pepalerts/cabinet-files/194449/ate-gay-false-death-reports-a734-20261031"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                PEP False Death Reports
+              </a>
+            </li>
+
+            <li>
+              <strong>Rowe, M. (2000).</strong> <em>Stickers for Nails: The Ongoing Transformation of Roles, Rites, and Symbols in Japanese Funerals.</em> <em>Japanese Journal of Religious Studies</em>, 27(3–4).
+              <a
+                href="https://nirc.nanzan-u.ac.jp/journal/6/article/1041/pdf/download"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Research paper
+              </a>
+            </li>
+
+            <li>
+              <strong>Reuters (2019).</strong> <em>Dying for a better life: South Koreans fake their funerals for life lessons.</em>
+              <a
+                href="https://www.euronews.com/2019/11/06/dying-for-a-better-life-south-koreans-fake-their-funerals-for-life-lessons"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Report
+              </a>
+            </li>
+
+            <li>
+              <strong>Tang, Y.-K. (2025).</strong> <em>Exploring family dynamics in living funerals: Rituals to relationships.</em> <em>Australian and New Zealand Journal of Family Therapy.</em>
+              <a
+                href="https://doi.org/10.1002/anzf.1618"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1002/anzf.1618
+              </a>
+            </li>
+
+            <li>
+              <strong>Tang, Y.-K. (2026).</strong> <em>Narrative reconstruction of the self: Living funerals as rituals of trauma and transformation.</em> <em>The Australian Journal of Anthropology.</em>
+              <a
+                href="https://doi.org/10.1111/taja.70073"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1111/taja.70073
+              </a>
+            </li>
+
+            <li>
+              <strong>Detering, K. M., et al. (2010).</strong> <em>The impact of advance care planning on end of life care in elderly patients: Randomised controlled trial.</em> <em>BMJ</em>, 340:c1345.
+              <a
+                href="https://doi.org/10.1136/bmj.c1345"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1136/bmj.c1345
+              </a>
+            </li>
+
+            <li>
+              <strong>World Health Organization (2020).</strong> <em>Palliative care.</em>
+              <a
+                href="https://www.who.int/news-room/fact-sheets/detail/palliative-care"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.who.int/news-room/fact-sheets/detail/palliative-care
+              </a>
+            </li>
+
+            <li>
+              <strong>University of the Philippines CIDS (2024).</strong> <em>Understanding Pakikipagkapwa Through Analytics: Exploring Filipino Relational Communication in Online Spaces.</em>
+              <a
+                href="https://cids.up.edu.ph/wp-content/uploads/2024/10/Understanding-Pakikipagkapwa-Through-Analytics-Exploring-Filipino-Relational-Communication-in-Online-Spaces.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                UP CIDS discussion paper
+              </a>
+            </li>
+
+            <li>
+              <strong>Cabañero, M. K. F., &amp; Namoco, S. O. (2025).</strong> <em>Virtual Mourning in a Collectivist Culture: A Hermeneutic Phenomenology of Filipino Grief and Continuing Bonds on Facebook.</em>
+              <a
+                href="https://doi.org/10.1177/00302228251363017"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1177/00302228251363017
+              </a>
+            </li>
+
+            <li>
+              <strong>National Privacy Commission (2024).</strong> <em>Reminder on Sharing Photos and Videos Containing Personal Data.</em>
+              <a
+                href="https://privacy.gov.ph/reminder-on-sharing-photos-and-videos-containing-personal-data/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                NPC advisory
+              </a>
+            </li>
+
+            <li>
+              <strong>Vatican.</strong> <em>Catechism of the Catholic Church</em>, 1514–1515 at 1684–1690.
+              <a
+                href="https://www.vatican.va/content/catechism/en/part_two/section_two/chapter_two/article_5/ii_who_receives_and_who_administers_this_sacrament.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Anointing of the Sick
+              </a>
+              |
+              <a
+                href="https://www.vatican.va/content/catechism/en/part_two/section_two/chapter_four/article_2/ii_the_celebration_of_funerals.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Christian Funerals
+              </a>
+            </li>
+
+            <li>
+              <strong>Banal na Kasulatan, Magandang Balita Biblia (2005):</strong> Mga Taga-Roma 12:9–10; 1 Mga Taga-Tesalonica 5:11; Ang Mangangaral 7:2; Mga Awit 90:12; Santiago 4:14–15 at 5:14–15; Marcos 14:3–9.
+              <a
+                href="https://www.bible.com/bible/144/ROM.12.MBB05"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                YouVersion MBB05
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
