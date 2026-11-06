@@ -1,1 +1,1776 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+     <meta
+    name="description"
+    content="Sa hayop may habag—sa kapwa may paghamak? Isang fact-based na pagsusuri sa selective empathy, moral hypocrisy, dobleng pamantayan, animal welfare, dignidad ng tao, at pananagutan sa pagtrato sa kapwa."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-hayop-kapwa.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-hayop-kapwa.html"
+  >
+
+  <title>SA HAYOP MAY HABAG—SA KAPWA MAY PAGHAMAK? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SA HAYOP MAY HABAG—SA KAPWA MAY PAGHAMAK?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-hayop-kapwa.png"
+            alt="Simbolikong visual ng isang taong marangyang nag-aalaga sa kaniyang alagang aso habang nasa likuran ang isang kasambahay na tila minamaliit, bilang representasyon ng selektibong empatiya at dobleng pamantayan sa pagtrato sa hayop at kapwa."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+               <div class="article-body">
+
+          <h2>
+            SELEKTIBONG EMPATIYA, DOBLENG PAMANTAYAN, AT PAGHAMAK SA KAPWA
+          </h2>
+
+          <p>
+            Kapag may asong sinaktan o pusang pinabayaan, galit tayo. Kapag may hayop na minamalupitan, gusto nating managot ang gumawa. At kapag may pet owner na niloko sa serbisyong ipinagkatiwala niya para sa kaniyang alaga, makatarungan ang panawagan para sa hustisya.
+          </p>
+
+          <p>
+            Dapat lang.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO PAANO KUNG ANG TAONG MATINDING KUMOKONDENA SA PAGMAMALUPIT SA HAYOP AY SIYA RING NANGMAMALIIT NG KASAMBAHAY, NAMAMAHIYA NG EMPLEYADO, O NANG-AAPI NG TAONG ITINUTURING NIYANG MAS MABABA?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ba dapat kuwestiyunin kung bakit may habag siya sa isang nilalang, pero nawawala ang batayang paggalang kapag kapwa tao na ang kaharap?
+          </p>
+
+          <p>
+            Hindi ito pag-atake sa mga pet lover. Hindi rin masama ang mahalin ang aso o pusa na parang sariling pamilya. May mga taong handang gumastos nang malaki para sa kalusugan ng kanilang alaga, nagluluksa kapag namatay ito, at ipinaglalaban ang kapakanan ng mga hayop na inaabuso. Walang mali sa mga iyon.
+          </p>
+
+          <p>
+            Ang problema ay hindi kung gaano mo kamahal ang iyong alaga. Ang problema ay kung ginagamit mong patunay ng mabuting pagkatao ang malasakit na ipinapakita mo, habang may mga taong hinahamak, inaapi, o tinatrato mong parang walang dignidad.
+          </p>
+
+          <p>
+            At hindi rin ito simpleng usapin ng pagiging mabait o masama. May mas malalim na tanong tungkol sa kung bakit kayang maging napakamaalalahanin ng isang tao sa kaniyang alaga, pero nagbabago ang kaniyang pakikitungo kapag ang kaharap ay isang manggagawa, mahirap, o taong wala siyang inaasahang pakinabang.
+          </p>
+
+          <p>
+            Dito pumapasok ang usapin ng selektibong empatiya, moral hypocrisy, at dobleng pamantayan sa pagtrato sa mga may buhay.
+          </p>
+
+          <h2>
+            HINDI PAGMAMAHAL SA HAYOP ANG DAPAT KONDENAHIN
+          </h2>
+
+          <p>
+            Noong Oktubre 2026, nabalita ang pagkakatagpo ng mga labi ng 26 na aso at tatlong pusa na itinapon sa San Jose del Monte, Bulacan. Iniugnay ang insidente sa mga reklamo laban sa isang pet cremation service na umano'y hindi tumupad sa ipinangakong serbisyo.
+          </p>
+
+          <p>
+            Noong Nobyembre 6, 2026, naiulat na nagsampa ang National Bureau of Investigation (NBI) ng mga reklamo laban sa apat na indibidwal kaugnay ng umano'y estafa at mga paglabag sa Ecological Solid Waste Management Act. Hindi pa ito pinal na hatol, at kailangang dumaan sa nararapat na legal na proseso ang mga alegasyon.
+          </p>
+
+          <p>
+            Mahalagang linawin na hindi awtomatikong animal cruelty ang hindi wastong pagtatapon ng labi ng hayop na patay na nang tanggapin para sa cremation. Maaaring magkahiwalay ang mga usapin ng panloloko sa pet owner, wastong pagtatapon ng labi, at mga paglabag sa animal welfare.
+          </p>
+
+          <p>
+            Makatwiran ang galit ng mga naapektuhang pet owner. Hindi simpleng bagay ang pagkawala ng alagang minahal at inalagaan sa loob ng maraming taon. Lalong mabigat kung ang isang serbisyong pinagkatiwalaan sa panahon ng pagdadalamhati ay mapatunayang nanloko.
+          </p>
+
+          <p>
+            Dapat panagutin ang mga mapatutunayang nanamantala sa kanilang tiwala. Dapat ding patuloy na kondenahin ang aktuwal na pagmamalupit sa mga hayop, may may-ari man ang mga ito o wala.
+          </p>
+
+          <p>
+            Pero ang pangyayaring ito ay nagbubukas din ng mas malawak na usapin tungkol sa ating pamantayan ng malasakit.
+          </p>
+
+          <p>
+            Kung kinikilala natin ang sakit ng pagkawala ng isang minamahal na alaga, bakit may mga pagkakataong binabalewala natin ang sakit at kahihiyang nararanasan ng kapwa nating tao?
+          </p>
+
+          <p>
+            Kung mariin nating kinokondena ang pagpapabaya sa hayop, bakit may mga taong kayang magpakita ng ganoong habag ngunit walang pag-aatubiling mang-abuso ng mga taong umaasa sa kanila?
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG BAWASAN ANG PAGMAMAHAL SA HAYOP. ANG DAPAT ITUWID AY ANG PANINIWALANG SAPAT NA ANG PAGMAMAHAL SA ALAGA PARA BALEWALAIN ANG MASAMANG PAGTRATO SA KAPWA.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG SINASABI NG PANANALIKSIK TUNGKOL SA MALASAKIT SA HAYOP AT TAO?
+          </h2>
+
+          <p>
+            Mahalagang linawin na walang sapat na batayan para sabihing ang mga taong labis na nagmamahal sa kanilang alaga ay likas na mas walang malasakit sa tao.
+          </p>
+
+          <p>
+            Sa katunayan, may pananaliksik na nagpapakita na maaaring magkaugnay ang dalawang uri ng malasakit.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Faner at mga kasama, na inilathala sa Frontiers in Psychology noong 2024, sinuri ang 343 Filipino adult pet owner, karamihan ay kabataang babae na may college education background.
+          </p>
+
+          <p>
+            Natuklasan nilang may positibong ugnayan ang pet attachment, empathy toward animals, at prosocial attitudes toward humans—o mga saloobing pumapabor sa pagtulong at pagmamalasakit sa kapwa.
+          </p>
+
+          <p>
+            Sa kanilang pagsusuri, humigit-kumulang 6.5% ng pagkakaiba-iba sa prosocial attitudes ng mga kalahok ang naipaliwanag ng pet attachment. Makabuluhan ang ugnayan sa estadistika, ngunit limitado ang lakas nito.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang awtomatikong nagiging mabuting tao ang isang pet owner dahil lamang mahal niya ang kaniyang alaga. Cross-sectional ang pag-aaral, gumamit ng convenience sampling, at hindi kumakatawan ang mga kalahok sa lahat ng Pilipino.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero mahalaga ang ipinapakita nito: HINDI KAILANGANG MAGKOMPETENSIYA ANG MALASAKIT SA HAYOP AT MALASAKIT SA TAO. POSIBLENG MAGKASABAY ANG DALAWA.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa isa pang pag-aaral ni Elizabeth Paul noong 2000, sinuri ang empathy toward humans at empathy toward animals sa 514 adult participants.
+          </p>
+
+          <p>
+            May natagpuang positibo ngunit katamtaman lamang ang lakas ng ugnayan sa dalawang uri ng empatiya (Kendall's tau = 0.26).
+          </p>
+
+          <p>
+            Ibig sabihin, magkaugnay ang mga ito, pero hindi sila eksaktong magkapareho. Ang taong madaling maantig sa paghihirap ng hayop ay hindi awtomatikong magkakaroon ng parehong reaksiyon sa lahat ng taong nahihirapan.
+          </p>
+
+          <p>
+            Mahalaga ito sa mismong argumento natin.
+          </p>
+
+          <p>
+            Hindi makatarungang sabihing mapagkunwari ang isang tao dahil lamang mas malapit ang loob niya sa kaniyang alaga kaysa sa ibang tao.
+          </p>
+
+          <p>
+            Pero hindi rin makatarungang gamitin niya ang pagiging mapagmahal sa hayop bilang sapat na patunay ng kaniyang mabuting pagkatao kung may aktuwal siyang ginagawang pang-aabuso sa kapwa.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG PAGIGING PET LOVER PARA TAWAGING MABUTING TAO. PERO HINDI RIN SAPAT ANG PAGIGING PET LOVER PARA PAGBINTANGANG MAPAGKUNWARI.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang dapat suriin ay kung nagtutugma ang ipinagmamalaking malasakit at aktuwal na pag-uugali.
+          </p>
+
+          <h2>
+            BAKIT MAY HABAG SA ALAGA PERO MAY PAGHAMAK SA KAPWA?
+          </h2>
+
+          <p>
+            Hindi laging pantay ang ating empatiya.
+          </p>
+
+          <p>
+            Mas madali tayong maantig sa paghihirap ng isang nilalang na malapit sa atin. Maaari ring mas mabilis tayong makaramdam ng malasakit sa mga taong kapareho natin ng karanasan, interes, o grupong kinabibilangan.
+          </p>
+
+          <p>
+            Sa limang eksperimento nina Cikara at mga kasama, na inilathala noong 2014 sa Journal of Experimental Social Psychology, sinuri kung paano naaapektuhan ng pagkakakilanlan sa grupo, kompetisyon, at relasyon ng mga grupo ang empatiya.
+          </p>
+
+          <p>
+            Ipinakita ng kanilang pananaliksik na maaaring humina ang empatiya sa mga taong itinuturing na kabilang sa ibang grupo. Sa ilang sitwasyon, maaari ring magkaroon ng negatibong reaksiyon sa kanilang tagumpay o pagdurusa.
+          </p>
+
+          <p>
+            Hindi ito direktang pag-aaral tungkol sa mga pet lover at sa kanilang pakikitungo sa kapwa. Pero nakatutulong itong ipaliwanag ang mas malawak na konsepto ng selective empathy—ang posibilidad na maimpluwensiyahan ng ating mga pagkiling kung kanino tayo mas madaling magpakita ng habag.
+          </p>
+
+          <p>
+            Sa isang pet owner, natural na mas matindi ang emosyonal na ugnayan sa alagang araw-araw niyang kasama kaysa sa isang estranghero.
+          </p>
+
+          <p>
+            Hindi iyon awtomatikong dobleng pamantayan.
+          </p>
+
+          <p>
+            Nagiging problema kapag ginagamit ang pagkakaibang iyon upang bigyang-katwiran ang paghamak sa ibang tao.
+          </p>
+
+          <p>
+            Maaaring hindi mo mahal ang isang kasambahay gaya ng pagmamahal mo sa iyong aso. Pero hindi ibig sabihin nito na maaari mo siyang sigawan, hiyain, o tratuhin na parang wala siyang dignidad.
+          </p>
+
+          <p>
+            Maaaring hindi ka malapit sa delivery rider na naghatid ng pagkain ng iyong alaga. Pero hindi ito dahilan para murahin o maliitin siya dahil lamang nagkamali siya sa serbisyo.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGMAMAHAL AY MAAARING MAS MATINDI SA ILAN. PERO ANG BATAYANG PAGGALANG AY HINDI DAPAT NAWAWALA DAHIL LAMANG HINDI MO MAHAL ANG IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito nagiging malinaw na hindi ang pagkakaroon ng espesyal na pagmamahal sa alaga ang problema.
+          </p>
+
+          <p>
+            Ang problema ay kapag ang espesyal na pagmamahal na iyon ay kasabay ng sadyang paghamak sa kapwa.
+          </p>
+
+                           <h2>
+            KAPAG ANG PAGIGING MAHABAGIN AY IPINAGMAMALAKI—PERO HINDI ISINASABUHAY SA KAPWA
+          </h2>
+
+          <p>
+            May isa pang mahalagang konsepto sa psychology: moral hypocrisy.
+          </p>
+
+          <p>
+            Sa tatlong pag-aaral nina C. Daniel Batson at mga kasama noong 1999, sinuri kung paano maaaring mapanatili ng isang tao ang paniniwalang makatarungan siya kahit hindi tumutugma ang kaniyang aktuwal na ginagawa sa pamantayang moral na iyon.
+          </p>
+
+          <p>
+            Sa mga eksperimento tungkol sa pagiging patas, may mga kalahok na gumamit ng pamamaraang mukhang makatarungan ngunit nauwi pa rin sa pagpabor sa sarili. Ipinakita rin ng pananaliksik ang kahalagahan ng paghahambing ng sariling asal sa mga pamantayang ipinapahayag.
+          </p>
+
+          <p>
+            Hindi ito pag-aaral tungkol sa pet ownership. At hindi rin sapat ang isang magkasalungat na reaksiyon para matiyak ang tunay na intensiyon ng isang tao.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero mahalaga ang aral nito sa ating usapin: MAY PAGKAKAIBA ANG PAGPAPAKILALANG MAHABAGIN, ANG PANINIWALANG MAHABAGIN KA, AT ANG AKTUWAL NA PAGIGING MAKATARUNGAN SA PAGTRATO SA IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Isipin ang isang taong halos hindi makatulog kapag may sakit ang kaniyang aso, pero pinagtatawanan ang kasambahay na humihiling ng pahinga dahil masama ang pakiramdam.
+          </p>
+
+          <p>
+            O isang taong galit na galit kapag may asong sinaktan, pero walang pag-aalinlangang namamahiya ng empleyadong nagkamali sa trabaho.
+          </p>
+
+          <p>
+            O isang taong ipinagmamalaki ang kaniyang pagmamahal sa mga nilalang na mahina at walang kalaban-laban, pero ginagamit ang kaniyang pera, posisyon, o impluwensiya upang patahimikin ang manggagawang nangangambang mawalan ng kabuhayan.
+          </p>
+
+          <p>
+            Mga halimbawa ito ng posibleng dobleng pamantayan, hindi paglalarawan sa lahat ng pet owner.
+          </p>
+
+          <p>
+            Sa bawat sitwasyon, hindi problema ang pagmamahal sa alaga. Mabuti ang pag-aalaga sa hayop.
+          </p>
+
+          <p>
+            Ang problema ay ang taong kayang maging napakamaingat sa damdamin at kapakanan ng kaniyang alaga, pero hindi man lang magpakita ng batayang paggalang sa taong nasa ilalim ng kaniyang kapangyarihan.
+          </p>
+
+          <p>
+            Hindi nabubura ng isang kabutihan ang pananagutan sa ibang ginawang mali.
+          </p>
+
+          <p>
+            At hindi dahil may isang nilalang kang buong pusong minamahal ay sapat na iyon para sabihing maayos ang pagtrato mo sa lahat ng may buhay.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG ANG PAGIGING MAHABAGIN AY PRINSIPYO MO, BAKIT KAYA MONG IPAGLABAN ANG KAPAKANAN NG IYONG ALAGA HABANG IKAW MISMO ANG HUMAHAMAK SA KAPWA?
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG TAONG MAHIRAP AY MAS MADALING BALEWALAIN
+          </h2>
+
+          <p>
+            Dito pumapasok ang isa pang mahalagang bahagi ng dobleng pamantayan: ang impluwensiya ng katayuan sa buhay sa paraan ng pagtingin natin sa paghihirap ng iba.
+          </p>
+
+          <p>
+            Hindi sapat na sabihing may isang taong mas mahal ang kaniyang alaga kaysa sa ibang tao. Kailangang suriin kung may kasama itong paniniwalang mas mababa ang halaga ng isang taong mahirap, manggagawa, o umaasa sa kaniya.
+          </p>
+
+          <p>
+            Sa pananaliksik nina Nathan Cheek at Eldar Shafir tungkol sa thick skin bias, na unang nailathala online noong 2020, nagsagawa sila ng 18 pag-aaral, kabilang ang isang survey sa nationally representative sample sa United States.
+          </p>
+
+          <p>
+            Natuklasan nilang may tendensiyang maliitin ng mga tao ang epekto ng masasakit na karanasan sa mga taong may mababang socioeconomic status kumpara sa mga taong mas mataas ang katayuan na dumaraan sa kaparehong sitwasyon.
+          </p>
+
+          <p>
+            Parang may maling paniniwalang dahil sanay sa hirap ang mahirap, mas kaya na rin niyang tiisin ang pang-aabuso, pagkabigo, at pagdurusa.
+          </p>
+
+          <p>
+            Hindi ito direktang pagsukat sa mga Pilipino, at hindi rin nito sinuri kung paano tratuhin ng mga pet owner ang kanilang empleyado.
+          </p>
+
+          <p>
+            Pero may malinaw itong kaugnayan sa ating pangunahing argumento.
+          </p>
+
+          <p>
+            Isipin ang isang taong napakaingat kapag nakakaramdam ng discomfort ang kaniyang alaga. Kapag nanghihina ito, agad niyang inaalam ang dahilan at naghahanap ng paraan upang mapagaan ang kalagayan nito.
+          </p>
+
+          <p>
+            Pero kapag ang kasambahay ay pagod o may karamdaman, ang sagot ay: “Trabaho mo iyan. Dapat kayanin mo.”
+          </p>
+
+          <p>
+            Kapag ang alaga ay natatakot, ginagawa niya ang lahat para mapanatag ito.
+          </p>
+
+          <p>
+            Pero kapag ang empleyado ay nanginginig sa takot dahil sa paninigaw at pamamahiya, hindi niya iniisip kung gaano kabigat ang nararamdaman nito.
+          </p>
+
+          <p>
+            Hindi kailangang magkapareho ang pangangailangan ng hayop at tao para makitang may problema sa ganitong pakikitungo.
+          </p>
+
+          <p>
+            Ang punto ay hindi kung sino ang mas dapat alagaan.
+          </p>
+
+          <p>
+            Ang punto ay kung bakit kinikilala ang sakit at takot ng isang minamahal na alaga, habang binabalewala ang sakit at takot ng kapwang itinuturing na mas mababa.
+          </p>
+
+          <p>
+            Hindi nababawasan ang epekto ng pangmamaliit dahil lamang sanay ang isang tao sa mabigat na trabaho.
+          </p>
+
+          <p>
+            Hindi nawawala ang dignidad ng manggagawa dahil maliit ang kaniyang sahod.
+          </p>
+
+          <p>
+            At hindi nagiging katanggap-tanggap ang pang-aabuso dahil lamang may kapangyarihan ang isang tao na magpasahod o magtanggal ng empleyado.
+          </p>
+
+          <p>
+            Mahalaga ring hindi baluktutin ang pananaliksik. Hindi nito pinatutunayang lahat ng mayayaman ay mapangmata, o lahat ng mahihirap ay mahabagin. May mabubuti at mapang-abuso sa iba't ibang antas ng lipunan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGIGING MAHIRAP AY HINDI EBIDENSIYA NA MAS KAYA MONG TIISIN ANG PANG-AABUSO. AT ANG PAGIGING MAYAMAN AY HINDI LISENSIYA PARA IPARANAS ITO SA IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung kaya mong kilalaning hindi dapat magdusa ang iyong alaga, bakit mo babalewalain ang paghihirap ng kapwa dahil lamang sa kaniyang katayuan sa buhay?
+          </p>
+
+          <h2>
+            MAY BATAS SA PAGPROTEKTA SA HAYOP—MAY BATAS DIN SA PAGPROTEKTA SA DIGNIDAD NG TAO
+          </h2>
+
+          <p>
+            Hindi lamang personal na opinyon ang pagkondena sa pagmamalupit sa hayop at pang-aabuso sa kapwa.
+          </p>
+
+          <p>
+            Sa Pilipinas, pinoprotektahan ng Republic Act No. 8485 o Animal Welfare Act of 1998, na inamyendahan ng Republic Act No. 10631, ang kapakanan ng mga hayop.
+          </p>
+
+          <p>
+            Kabilang sa mga layunin nito ang pagpigil sa pang-aabuso, pagmamalupit, pagpapabaya, at hindi kinakailangang paghihirap ng mga hayop.
+          </p>
+
+          <p>
+            Mahalagang batas ito. Hindi dapat gawing katanggap-tanggap ang pagmamalupit sa hayop dahil lamang walang may-ari, hindi mahalaga sa isang tao, o hindi kayang ipagtanggol ang sarili nito.
+          </p>
+
+          <p>
+            Pero may isa pang mahalagang tanong.
+          </p>
+
+          <blockquote>
+            <p>
+              PAANO KUNG ANG TAONG MARIING SUMUSUPORTA SA PAGPROTEKTA SA MGA HAYOP AY SIYA RING LUMALABAG SA BATAYANG PAGGALANG NA DAPAT IBINIBIGAY SA KANIYANG KAPWANG TAO?
+            </p>
+          </blockquote>
+
+          <p>
+            Sa Article II, Section 11 ng 1987 Philippine Constitution, kinikilala ng Estado ang dignidad ng bawat tao at ang paggalang sa karapatang pantao.
+          </p>
+
+          <p>
+            May partikular ding proteksiyon para sa mga kasambahay sa Republic Act No. 10361 o Batas Kasambahay.
+          </p>
+
+          <p>
+            Sa Section 5 nito, ipinagbabawal ang pang-aabuso, pisikal na karahasan, harassment, at mga gawaing nagpapababa sa dignidad ng domestic worker. May mga probisyon din tungkol sa kanilang pangunahing pangangailangan, pahinga, kalusugan, at privacy.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihin na magkapareho ang legal na katayuan o lahat ng karapatan ng tao at hayop. Magkaiba ang kanilang proteksiyon at ang mga batayan nito.
+          </p>
+
+          <p>
+            Hindi rin lahat ng hindi magandang pakikitungo ay awtomatikong krimen. Nakadepende ang legal na pananagutan sa aktuwal na kilos at naaangkop na batas.
+          </p>
+
+          <p>
+            Pero malinaw ang dapat nating maunawaan.
+          </p>
+
+          <p>
+            May karapatan kang ipaglaban ang kapakanan ng iyong alaga. May karapatan ka ring magtakda ng makatwirang pamantayan sa trabaho at magreklamo kapag may maling serbisyo.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO HINDI KASAMA SA MGA KARAPATANG IYON ANG MANG-ABUSO, MANGHAMAK, O YURAKAN ANG DIGNIDAD NG IBANG TAO.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang maging kaibigan mo ang iyong kasambahay para igalang mo siya.
+          </p>
+
+          <p>
+            Hindi kailangang maging kapamilya mo ang empleyado para makitungo ka nang maayos.
+          </p>
+
+          <p>
+            At hindi kailangang mahalin mo ang isang manggagawa gaya ng pagmamahal mo sa iyong alaga para kilalaning may dignidad din siya.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG KAYA MONG IGALANG ANG KAPAKANAN NG HAYOP DAHIL ALAM MONG HINDI ITO DAPAT PAGMALUPITAN, BAKIT HINDI MO KAYANG PANINDIGAN ANG PAGGALANG SA DIGNIDAD NG KAPWA MONG TAO?
+            </p>
+          </blockquote>
+
+                           <h2>
+            HINDI RIN DAPAT GAMITIN ANG TAO PARA BALEWALAIN ANG HAYOP
+          </h2>
+
+          <p>
+            Mahalagang tingnan din ang kabilang panig.
+          </p>
+
+          <p>
+            Hindi makatarungang kondenahin ang isang tao dahil lamang malaki ang ginagastos niya sa kaniyang alaga o mas malapit ang loob niya sa hayop kaysa sa ilang tao.
+          </p>
+
+          <p>
+            Personal ang ugnayan sa alaga. May mga taong itinuturing itong pamilya dahil matagal na nila itong kasama, inalagaan, at minahal.
+          </p>
+
+          <p>
+            Hindi awtomatikong nangangahulugang wala silang pagmamahal sa kapwa.
+          </p>
+
+          <p>
+            At hindi rin kailangang pilitin ang lahat na magkaroon ng parehong emosyonal na relasyon sa mga hayop.
+          </p>
+
+          <p>
+            Pero hindi rin makatarungan ang taong nagsasabing mas mahalaga ang tao habang siya mismo ay nananakit, nagpapabaya, o nagmamalupit ng hayop.
+          </p>
+
+          <p>
+            Kung kinokondena natin ang paghamak sa tao, hindi dapat gamitin ang argumento tungkol sa dignidad ng tao para bigyang-katwiran ang pagmamalupit sa hayop.
+          </p>
+
+          <p>
+            Magkaiba ang legal at moral na katayuan ng tao at hayop. Hindi rin obligado ang bawat isa na maglaan ng parehong pera, oras, o tulong sa lahat ng nangangailangan.
+          </p>
+
+          <p>
+            Pero walang kinakailangang pagpili sa pagitan ng dalawang prinsipyong ito: hindi dapat basta pagmalupitan ang hayop, at hindi dapat hamakin o abusuhin ang kapwa tao.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG APIHIN ANG HAYOP UPANG PATUNAYANG MAHALAGA SA IYO ANG TAO. AT HINDI RIN KAILANGANG HAMAKIN ANG KAPWA UPANG PATUNAYANG MAHAL MO ANG HAYOP.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang tunay na problema ay hindi ang pagkakaroon ng espesyal na malasakit.
+          </p>
+
+          <p>
+            Ang problema ay ang paggamit sa espesyal na malasakit na iyon upang takpan, ipagwalang-bahala, o bigyang-katwiran ang kalupitan sa iba.
+          </p>
+
+          <h2>
+            ANG TUNAY NA PAGSUBOK SA MALASAKIT
+          </h2>
+
+          <p>
+            Madaling magpakita ng pagmamahal sa isang nilalang na malapit sa ating puso.
+          </p>
+
+          <p>
+            Mas mahirap panindigan ang paggalang kapag ang kaharap natin ay taong hindi natin gusto, hindi natin kauri, o wala tayong inaasahang kapalit.
+          </p>
+
+          <p>
+            Maaaring mas komportable kang kasama ang iyong aso kaysa sa ilang tao.
+          </p>
+
+          <p>
+            Maaaring mas malapit ang loob mo sa iyong pusa kaysa sa ibang kakilala.
+          </p>
+
+          <p>
+            Walang awtomatikong mali roon.
+          </p>
+
+          <p>
+            Hindi mo obligasyong maging malapit, magtiwala, o magkaroon ng parehong emosyonal na pagmamahal sa lahat.
+          </p>
+
+          <p>
+            Pero ibang usapan ang personal na distansiya sa sadyang paghamak.
+          </p>
+
+          <p>
+            Maaari kang umiwas sa taong hindi mo pinagkakatiwalaan nang hindi siya inaabuso. Maaari kang magtakda ng hangganan nang hindi minamaliit ang kaniyang pagkatao.
+          </p>
+
+          <p>
+            At maaari mong mahalin ang iyong alaga nang buong puso habang iginagalang ang mga taong wala kang personal na ugnayan.
+          </p>
+
+          <p>
+            Doon nasusukat ang pagkakapare-pareho ng ipinapahayag na prinsipyo at aktuwal na ginagawa.
+          </p>
+
+          <p>
+            Hindi sapat na maingat kang hindi masaktan ang iyong alaga kung ikaw naman mismo ang nananakit ng kapwa.
+          </p>
+
+          <p>
+            Hindi sapat na ipinagtatanggol mo ang mga hayop laban sa pagmamalupit kung binibigyang-katwiran mo ang pang-aabuso sa mga taong itinuturing mong mas mababa.
+          </p>
+
+          <p>
+            At hindi rin sapat na ipinagmamalaki mong mahalaga ang dignidad ng tao kung balewala naman sa iyo ang paghihirap ng mga hayop na kaya mong saktan o pabayaan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG KABUTIHANG IPINAPAKITA MO AY NABUBURA NG ISANG PAGKAKAMALI. PERO HINDI RIN NABUBURA NG KABUTIHAN MO SA ISA ANG PANANAGUTAN MO SA KALUPITAN SA IBA.
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalaga ang buong larawan ng pag-uugali ng isang tao, hindi lamang ang bahaging maganda niyang ipinakikita.
+          </p>
+
+          <h2>
+            AT DITO DAPAT MAGTAPOS ANG DOBLENG PAMANTAYAN.
+          </h2>
+
+          <p>
+            MAHAL MO ANG ALAGA MO NA PARANG PAMILYA? WALANG MALI ROON.
+          </p>
+
+          <p>
+            IPINAGLALABAN MO ANG MGA HAYOP LABAN SA PAGMAMALUPIT? DAPAT LANG.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO KUNG KAYA MONG MAGPAKITA NG HABAG SA HAYOP HABANG HINAHAMAK AT INAAPI MO ANG KAPWA MONG TAO, HINDI MO MAAARING GAMITING PATUNAY NG MABUTING PAGKATAO ANG PAGMAMAHAL MO SA IYONG ALAGA.
+            </p>
+          </blockquote>
+
+          <p>
+            Ganoon din sa taong ipinagmamalaki ang pagpapahalaga sa dignidad ng tao pero siya mismo ang nananakit ng hayop.
+          </p>
+
+          <p>
+            Walang sinuman ang nagiging mabuting tao dahil lamang sa isang uri ng kabutihang ipinapakita niya, habang binabalewala ang iba niyang pananagutan.
+          </p>
+
+          <p>
+            Hindi nangangahulugang kailangan nating pantay-pantay mahalin ang lahat.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO WALANG TAO ANG NAWAWALAN NG DIGNIDAD DAHIL HINDI MO SIYA MAHAL. AT WALANG HAYOP ANG NAGIGING KARAPAT-DAPAT PAGMALUPITAN DAHIL HINDI MO ITO ALAGA.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa huli, hindi ang sobrang pagmamahal sa hayop ang dapat kondenahin.
+          </p>
+
+          <p>
+            Ang dapat kondenahin ay ang pagmamalupit sa hayop, pang-aabuso sa tao, at ang dobleng pamantayang ginagamit para bigyang-katwiran ang alinman sa dalawa.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG ANG MALASAKIT MO AY NAWAWALA AT NAPAPALITAN NG PAGHAMAK KAPAG HINDI MAHALAGA SA IYO ANG KAHARAP MO—HINDI LANG ANG PAGMAMAHAL MO ANG DAPAT SURIIN, KUNDI ANG PAMANTAYAN MO SA PAGTRATO SA MGA MAY BUHAY.
+            </p>
+          </blockquote>
+
+        </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES / BATAYAN
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Faner, J. M. V., et al. (2024).</strong> <em>Pet attachment and prosocial attitude toward humans: the mediating role of empathy to animals.</em> <em>Frontiers in Psychology.</em>
+              <a
+                href="https://doi.org/10.3389/fpsyg.2024.1391606"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.3389/fpsyg.2024.1391606
+              </a>
+            </li>
+
+            <li>
+              <strong>Paul, E. S. (2000).</strong> <em>Empathy with Animals and with Humans: Are They Linked?</em> <em>Anthrozoös.</em>
+              <a
+                href="https://doi.org/10.2752/089279300786999699"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.2752/089279300786999699
+              </a>
+            </li>
+
+            <li>
+              <strong>Cikara, M., Bruneau, E., Van Bavel, J. J., &amp; Saxe, R. (2014).</strong> <em>Their pain gives us pleasure: How intergroup dynamics shape empathic failures and counter-empathic responses.</em> <em>Journal of Experimental Social Psychology.</em>
+              <a
+                href="https://doi.org/10.1016/j.jesp.2014.06.007"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1016/j.jesp.2014.06.007
+              </a>
+            </li>
+
+            <li>
+              <strong>Batson, C. D., et al. (1999).</strong> <em>Moral hypocrisy: Appearing moral to oneself without being so.</em> <em>Journal of Personality and Social Psychology.</em>
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/10510506/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pubmed.ncbi.nlm.nih.gov/10510506/
+              </a>
+            </li>
+
+            <li>
+              <strong>Cheek, N. N., &amp; Shafir, E. (2020 online; 2024 journal issue).</strong> <em>The thick skin bias in judgments about people in poverty.</em> <em>Behavioural Public Policy.</em>
+              <a
+                href="https://doi.org/10.1017/bpp.2020.33"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1017/bpp.2020.33
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 8485, as amended by RA 10631 — Animal Welfare Act.</strong> Supreme Court E-Library.
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/58330"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/2/58330
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 10361 — Batas Kasambahay, Sections 5–7.</strong> Philippine Commission on Women.
+              <a
+                href="https://pcw.gov.ph/republic-act-no-10361-domestic-workers-act-or-batas-kasambahay/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pcw.gov.ph/republic-act-no-10361-domestic-workers-act-or-batas-kasambahay/
+              </a>
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution, Article II, Section 11.</strong> Official Gazette.
+              <a
+                href="https://officialgazette.gov.ph/constitutions/1987-constitution/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://officialgazette.gov.ph/constitutions/1987-constitution/
+              </a>
+            </li>
+
+            <li>
+              <strong>GMA News, October 31 and November 2, 2026.</strong> Reports on the Bulacan pet-remains incident and NBI investigation.
+            </li>
+
+            <li>
+              <strong>Philstar, October 31 and November 6, 2026.</strong> Reports on the crematorium complaints, PAWS legal position, and complaints filed by the NBI.
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
