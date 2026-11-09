@@ -1,1 +1,1646 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Umaalis ang Pilipino, pumapasok ang dayuhan—ano ang hindi natin nakikita? Isang fact-based na pagsusuri sa migration, OFWs, foreign investment, trabaho, sahod, oportunidad, at tunay na kalayaan ng Pilipinong pumili kung aalis o mananatili."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-system-failed.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-system-failed.html"
+  >
+
+  <title>UMAALIS ANG PILIPINO, PUMAPASOK ANG DAYUHAN—ANO ANG HINDI NATIN NAKIKITA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          UMAALIS ANG PILIPINO, PUMAPASOK ANG DAYUHAN—ANO ANG HINDI NATIN NAKIKITA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-system-failed.png"
+            alt="Simbolikong visual ng pamilyang Pilipinong naghahandang mangibang-bansa habang makikita sa paligid ang airport departure, industriya, dayuhang pamumuhunan, paggawa, negosyo, at mga sagisag ng oportunidad at kabuhayan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            May Pilipinong umaalis ng bansa para magtrabaho at maghanap ng mas magandang kinabukasan. May dayuhang nagdadala naman ng puhunan upang magtayo o magpalawak ng negosyo sa Pilipinas.
+          </p>
+
+          <p>
+            May umaalis dahil hindi sapat ang oportunidad dito. May umaalis kahit may maayos nang trabaho. May pumapasok naman dahil may nakikitang merkado, potensiyal na kita, at pagkakataong magnegosyo.
+          </p>
+
+          <blockquote>
+            <p>
+              IISANG BANSA ANG PINAG-UUSAPAN—PERO BAKIT MAGKAIBA ANG DIREKSIYON NG MGA NAGHAHANAP NG OPORTUNIDAD?
+            </p>
+          </blockquote>
+
+          <p>
+            May kumakalat na pahayag na ang pag-alis ng mga Pilipino para magtrabaho sa ibang bansa ay hindi na pangarap, kundi patunay ng isang failed system.
+          </p>
+
+          <p>
+            May totoong problemang maaaring tinutukoy ang ganitong pahayag. Maraming Pilipino ang naghahanap ng mas mataas na sahod, mas maayos na kondisyon sa trabaho, at mas magandang kinabukasan dahil hindi sapat ang nakukuha nilang oportunidad sa Pilipinas.
+          </p>
+
+          <p>
+            Pero sapat na ba ang pag-alis para ideklarang palpak ang buong sistema? Kung ganoon, paano natin ipaliliwanag na maging ang mga mamamayan ng mayayamang bansa ay lumilipat din sa ibang bansa? At kung may mga dayuhang namumuhunan sa Pilipinas, ibig sabihin bang maayos na ang lahat dito?
+          </p>
+
+          <p>
+            Ang problema sa ganitong mga pahayag ay hindi ang pagkilala sa kakulangan ng sistema. Ang problema ay kapag ginagawang pangkalahatang hatol ang isang pangyayaring may iba't ibang dahilan.
+          </p>
+
+          <p>
+            Hindi lahat ng umaalis ay walang maayos na buhay sa sariling bansa. Hindi rin lahat ng nananatili ay may sapat na oportunidad. At hindi lahat ng pumapasok na dayuhang puhunan ay patunay na maganda na ang kabuhayan ng ordinaryong mamamayan.
+          </p>
+
+          <h2>
+            MIGRATION AY HINDI LANG PAGTAKAS SA KAHIRAPAN.
+          </h2>
+
+          <p>
+            Sa pag-aaral ni Hein de Haas na A Theory of Migration: The Aspirations–Capabilities Framework, na inilathala sa Comparative Migration Studies noong 2021, ipinaliwanag na ang migration ay may kaugnayan sa dalawang mahalagang bagay: ang pagnanais ng tao na lumipat (aspirations) at ang kakayahan niyang maisakatuparan iyon (capabilities).
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito. Maaaring gustong mangibang-bansa ng isang tao dahil naghihirap siya. Pero maaari rin dahil mayroon siyang sapat na edukasyon, kakayahan, impormasyon, koneksiyon, o perang kailangan upang makahanap ng oportunidad sa ibang lugar.
+          </p>
+
+          <p>
+            Hindi rin palaging humihina ang migration kapag umuunlad ang isang bansa. Sa naunang pag-aaral ni de Haas noong 2007, ipinaliwanag na ang pag-unlad ay maaari pang magpalawak ng kakayahan at pagnanais ng mga taong lumipat, lalo na sa maikli hanggang katamtamang panahon.
+          </p>
+
+          <p>
+            Isipin ang isang propesyonal na may maayos nang trabaho sa Pilipinas pero tinanggap ang alok sa ibang bansa dahil mas malawak ang career development. O isang negosyanteng kayang mamuhunan dito pero piniling magbukas din ng negosyo sa ibang bansa dahil may nakitang bagong merkado.
+          </p>
+
+          <p>
+            Hindi awtomatikong kabiguan ng sariling bansa ang mga desisyong iyon.
+          </p>
+
+          <p>
+            Pero ibang usapan ang isang manggagawang may kakayahan at karanasan ngunit hindi makakita ng trabahong sapat ang sahod para sa pangunahing pangangailangan ng pamilya.
+          </p>
+
+          <blockquote>
+            <p>
+              PAREHO SILANG UMALIS. PERO HINDI IBIG SABIHING PAREHO ANG DAHILAN AT KALAYAAN NILANG PUMILI.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO BA TALAGA ANG SINASABI NG DATOS TUNGKOL SA MGA OFW?
+          </h2>
+
+          <p>
+            Ayon sa Philippine Statistics Authority (PSA), tinatayang 2.05 milyong Overseas Filipino Workers ang nagtrabaho sa ibang bansa sa reference period na Abril hanggang Setyembre 2025. Mas mababa ito sa 2.19 milyong naitala para sa kaparehong panahon noong 2024.
+          </p>
+
+          <p>
+            Sa parehong 2025 survey, 41.8% ng mga OFW ay nasa tinatawag na elementary occupations—mga trabahong karaniwang kinapapalooban ng routine at manual tasks tulad ng paglilinis, pagtulong sa paghahanda ng pagkain, at iba pang mahahalagang serbisyo. Hindi nangangahulugang mababa ang dignidad o halaga ng mga trabahong ito.
+          </p>
+
+          <p>
+            May mahalagang limitasyon ang datos: sinusukat nito ang OFWs ayon sa saklaw at reference period ng survey, hindi ang lahat ng Pilipinong permanenteng naninirahan sa ibang bansa. Hindi rin nito direktang sinasabi kung bakit umalis ang bawat isa.
+          </p>
+
+          <p>
+            Mas may malinaw na impormasyon tungkol sa mga dahilan ang pag-aaral ng Boston Consulting Group (BCG) na The Filipino Abroad, na inilathala noong Hunyo 2026.
+          </p>
+
+          <p>
+            Batay sa survey nito sa 1,337 OFWs sa United States, Middle East, Asia, at United Kingdom, 69% ang nagbanggit ng mas mataas na potensiyal na kita bilang isa sa pangunahing dahilan ng pagtatrabaho abroad. Nasa 41% naman ang nagbanggit ng pagtugon sa pangangailangan ng pamilya at edukasyon ng mga anak.
+          </p>
+
+          <p>
+            Sa parehong survey, 30% ang nagbanggit ng kakulangan sa oportunidad sa trabaho sa Pilipinas, habang 31% naman ang nagbanggit ng personal growth o independence. Kabilang ang mga ito sa mga pangunahing dahilang pinili ng respondents, at maaaring higit sa isa ang kanilang sagot. Ipinapakita nitong may magkakaibang dahilan sa likod ng pag-alis—mula sa limitadong lokal na oportunidad hanggang sa sariling hangaring umunlad.
+          </p>
+
+          <p>
+            Survey ito ng mga OFW sa mga piling destinasyon, kaya hindi dapat ipagpalagay na eksaktong kumakatawan ang porsiyento sa lahat ng OFWs sa buong mundo.
+          </p>
+
+          <p>
+            Sa hiwalay na Tugon ng Masa survey ng OCTA Research noong Marso 2026, sa 1,200 adult Filipinos, 57% ang nagsabing bukas silang magtrabaho o manirahan sa ibang bansa kung magkakaroon ng pagkakataon. Sa mga handang lumipat, 67% ang nagbanggit ng mas magandang oportunidad sa trabaho, 61% ng mas mataas na sahod, at 58% ng mas magandang kalidad ng buhay.
+          </p>
+
+          <p>
+            Gayunman, ang pagiging bukas sa migration ay hindi nangangahulugang tiyak na aalis. Hindi rin patunay na walang trabaho o naghihirap ang lahat ng sumagot.
+          </p>
+
+          <p>
+            Ano ang makikita natin?
+          </p>
+
+          <p>
+            Malaking bahagi ng pagnanais mangibang-bansa ay may kinalaman sa ekonomiya. Pero ang paghahanap ng mas magandang oportunidad ay hindi laging nangangahulugang wala nang oportunidad sa sariling bansa.
+          </p>
+
+          <p>
+            Maaaring mayroon kang trabaho pero may mas magandang alok sa ibang lugar. Maaari ka ring may trabaho ngunit kapos pa rin sa pangunahing gastusin.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI MAGKAPAREHO ANG PAGPILI SA MAS MAGANDA AT ANG PAGPILI DAHIL KULANG ANG NATITIRANG OPSIYON.
+            </p>
+          </blockquote>
+
+          <p>
+            May isa pang datos na dapat pag-isipan.
+          </p>
+
+          <p>
+            Sa 2018 National Migration Survey ng PSA, 25% ng mga sambahayan sa pinakamataas na wealth quintile ang may kasalukuyan o dating OFW member, kumpara sa 4% lamang sa pinakamababang wealth quintile.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang mayaman na ang mga sambahayang iyon bago nagkaroon ng OFW. Maaaring nakatulong ang remittances upang umangat ang kanilang kabuhayan. Maaari ring mas may kakayahan ang ilang pamilya na sagutin ang mga kinakailangan sa pangingibang-bansa. Hindi sapat ang datos para paghiwalayin ang mga posibleng paliwanag na ito.
+          </p>
+
+          <p>
+            Pero malinaw ang isang bagay: hindi kasing-simple ng paniniwalang ang pinakamahihirap lamang ang umaalis.
+          </p>
+
+          <h2>
+            KUNG PATUNAY NG PALPAK NA SISTEMA ANG PAG-ALIS, BAKIT MAY UMAALIS DIN SA MAYAYAMANG BANSA?
+          </h2>
+
+          <p>
+            Ayon sa OECD International Migration Outlook 2025, may mga mamamayan ng high-income countries na lumipat sa ibang mga bansang kasapi ng Organisation for Economic Co-operation and Development (OECD) noong 2023.
+          </p>
+
+          <p>
+            Kabilang dito ang humigit-kumulang 145,000 German citizens, 104,000 American citizens, 85,000 British citizens, at 22,000 Japanese citizens.
+          </p>
+
+          <p>
+            Mga naitalang paglipat ito sa OECD destinations, hindi bilang ng mga manggagawang umalis lamang upang magtrabaho. Hindi rin ito direktang maihahambing sa bilang ng OFWs ng PSA dahil magkaiba ang saklaw at paraan ng pagsukat.
+          </p>
+
+          <p>
+            Gayunman, mahalaga ang ipinapakita nito: ang pagiging maunlad na bansa ay hindi nangangahulugang wala nang mamamayang naghahanap ng buhay o oportunidad sa ibang lugar.
+          </p>
+
+          <p>
+            Maaaring may trabaho sa Germany pero mas magandang career opportunity sa Switzerland. Maaaring may negosyo sa United Kingdom pero nais palawakin ang operasyon sa United States. Maaaring may magandang kalidad ng buhay sa Japan pero nais ng isang tao na mag-aral, magtrabaho, o manirahan sa ibang kultura.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na walang problema ang mga bansang iyon. May kani-kaniya rin silang suliranin sa sahod, pabahay, trabaho, buwis, at kalidad ng pamumuhay.
+          </p>
+
+          <p>
+            Ngunit ipinapakita nito na ang pagkakaroon ng emigrants ay hindi natatanging katangian ng mahihirap o hindi maunlad na bansa.
+          </p>
+
+          <p>
+            Sa World Development Report 2023: Migrants, Refugees, and Societies, kinilala rin ng World Bank na maraming bansa, anuman ang antas ng kita, ang sabay na pinagmumulan at destinasyon ng migrants.
+          </p>
+
+          <blockquote>
+            <p>
+              Kaya hindi sapat na itanong kung may umaalis. Kailangang itanong kung bakit, sino ang umaalis, anong oportunidad ang hinahanap, at anong mga kondisyon ang kanilang iniiwan.
+            </p>
+          </blockquote>
+
+                            <h2>
+            AT BAKIT MAY MGA DAYUHANG NAMUMUHUNAN SA PILIPINAS KUNG PALPAK DAW ANG SISTEMA?
+          </h2>
+
+          <p>
+            Dahil hindi pareho ang economic calculations ng manggagawa, investor, negosyante, at pamilyang naghahanap ng tirahan.
+          </p>
+
+          <p>
+            Ang isang foreign investor ay maaaring makakita ng potensiyal na tubo dahil sa laki ng merkado, lokasyon, labor supply, supply chain, o pangangailangan ng mga mamimili sa Pilipinas.
+          </p>
+
+          <p>
+            Ang isang Pilipinong manggagawa naman ay maaaring makakita ng mas mataas na sahod at mas magandang benepisyo sa ibang bansa.
+          </p>
+
+          <p>
+            Hindi magkasalungat ang mga desisyong iyon.
+          </p>
+
+          <p>
+            Sa katunayan, ayon sa datos ng Bangko Sentral ng Pilipinas na sinuri rin ng Congressional Policy and Budget Research Department, may US$7.8 bilyong net foreign direct investment (FDI) inflows ang Pilipinas noong 2025, bagaman 17.1% itong mas mababa kaysa noong 2024.
+          </p>
+
+          <p>
+            Ang FDI ay sukatan ng direktang pamumuhunan mula sa ibang bansa. Hindi ito bilang ng mga dayuhang proprietors na personal na lumipat dito. Hindi rin lahat ng naitalang investment ay bagong pabrika o bagong trabaho.
+          </p>
+
+          <p>
+            Ipinapakita ng datos na may mga dayuhang interesadong mamuhunan sa ekonomiya ng Pilipinas. Pero hindi nito pinatutunayang maganda ang lahat ng kondisyon sa paggawa at pagnenegosyo.
+          </p>
+
+          <p>
+            Maaari ring makinabang ang isang investor sa mga kondisyong hindi gaanong kapaki-pakinabang sa manggagawa. Ang mas mababang labor cost, halimbawa, ay maaaring maging kaakit-akit sa negosyo ngunit hindi awtomatikong magandang balita sa empleyadong umaasa sa sahod.
+          </p>
+
+          <p>
+            Kaya parehong mali ang dalawang madaling konklusyon: na walang oportunidad dito dahil may mga Pilipinong umaalis, at na maayos na ang lahat dahil may foreign investors na pumapasok.
+          </p>
+
+          <blockquote>
+            <p>
+              MAY MGA OPORTUNIDAD SA PILIPINAS. PERO HINDI IBIG SABIHING PANTAY-PANTAY ANG NAKIKINABANG.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY TUNAY BANG PROBLEMA SA SISTEMA? OO—AT MAY DATOS DIN PARA RIYAN.
+          </h2>
+
+          <p>
+            Sa Philippines Growth and Jobs Report 2025 ng World Bank, kinilala ang mahahalagang pag-unlad ng bansa mula 2010. Mahigit 11.7 milyong trabaho ang nadagdag, at tumaas nang 24% sa average ang real wages, o sahod matapos isaalang-alang ang epekto ng pagbabago ng presyo.
+          </p>
+
+          <p>
+            Hindi puwedeng basta sabihing walang nangyayaring pag-unlad kung may datos na nagpapakita ng pagtaas ng trabaho at kita.
+          </p>
+
+          <p>
+            Pero may kasunod na problema sa parehong pag-aaral.
+          </p>
+
+          <p>
+            Tatlo sa bawat apat na nadagdag na trabaho ay nasa non-tradable sectors, o mga sektor na karaniwang nakatuon sa lokal na merkado at hindi direktang nakikipagkompetensiya sa pandaigdigang kalakalan. Tinukoy rin ang mga hamon sa productivity, kompetisyon, business regulation, at technology adoption.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na walang halaga ang mga trabahong nalikha. Mahalaga ang pagdami ng trabaho, pero mahalaga rin kung sapat ang kita, maayos ang kondisyon, at may pagkakataong umunlad ang mga manggagawa. Hindi lang bilang ng trabaho ang dapat tumaas, kundi pati ang kalidad ng mga oportunidad.
+          </p>
+
+          <p>
+            Sa OECD Economic Surveys: Philippines 2026, tinukoy na humigit-kumulang dalawang-katlo ng employed population ang nasa informal employment, batay sa depinisyong ginagamit sa pag-aaral. Marami sa kanila ang walang kumpleto o sapat na social at labor protections.
+          </p>
+
+          <p>
+            Hindi ito kapareho ng unemployment. May trabaho ang mga taong ito, ngunit maaaring kulang sa seguridad, pension coverage, at iba pang proteksiyon.
+          </p>
+
+          <p>
+            Dito may malinaw na structural problem na dapat pagtuunan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA MAY TRABAHO ANG ISANG TAO. MAHALAGA RIN KUNG SAPAT ANG KITA, MAAYOS ANG KONDISYON, AT MAY SEGURIDAD ANG KABUHAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya maaaring parehong totoo na umuunlad ang ekonomiya at marami pa ring manggagawang hindi sapat ang nakukuhang benepisyo mula sa pag-unlad.
+          </p>
+
+          <p>
+            Hindi rin lahat ng suliranin ay maaaring isisi lamang sa gobyerno. May papel ang pribadong sektor sa sahod, pamumuhunan, productivity, at kalidad ng trabaho. May epekto rin ang global demand, teknolohiya, inflation, kompetisyon, at mga kondisyong hindi lubos na kontrolado ng alinmang bansa.
+          </p>
+
+          <p>
+            Pero hindi dahilan ang pagiging komplikado ng ekonomiya upang alisin ang pananagutan ng mga institusyon sa paggawa ng mga polisiyang magpapalawak ng disenteng oportunidad at proteksiyon.
+          </p>
+
+          <h2>
+            MALAKI ANG NAIAMBAG NG MGA OFW—PERO HINDI LANG PERA ANG DAPAT BILANGIN.
+          </h2>
+
+          <p>
+            Ayon sa BSP, umabot sa humigit-kumulang US$35.63 bilyon ang cash remittances na dumaan sa mga bangko noong 2025.
+          </p>
+
+          <p>
+            Malaking tulong ito sa maraming pamilya at sa ekonomiya. Nakapagpapaaral ng mga anak, nakapagpapagamot, nakapagpapatayo ng bahay, nakapagsisimula ng negosyo, at nakasasagot sa pang-araw-araw na pangangailangan.
+          </p>
+
+          <p>
+            Pero hindi dapat dito matapos ang pagsusuri.
+          </p>
+
+          <p>
+            Sa pag-aaral ng Philippine Institute for Development Studies (PIDS) noong 2023 na Long-Term Effects of Labor Migration in the Philippines: “Napakasakit, Kuya Eddie!”, tinalakay ang mga ekonomikong pakinabang at panlipunang gastusin ng labor migration, kabilang ang epekto sa pamilya, mga anak, at personal na kalagayan ng OFWs.
+          </p>
+
+          <p>
+            May pakinabang ang remittances, pero may kapalit ding pisikal na pagkakalayo, mga hamon sa relasyon, at pagkawala ng ilang uri ng pang-araw-araw na suporta sa pamilya.
+          </p>
+
+          <p>
+            May posibilidad din ng brain drain kapag nawawala sa lokal na workforce ang mahahalagang skilled professionals, lalo na kung kulang na ang kanilang serbisyo sa sariling bansa.
+          </p>
+
+          <p>
+            Gayunman, hindi rin awtomatikong negatibo ang lahat ng epekto. Maaaring makabuo ng bagong kakayahan, kaalaman, network, at puhunan ang mga migrant na maaari nilang magamit sa Pilipinas o maibahagi sa iba.
+          </p>
+
+          <p>
+            Hindi lahat ng umaalis ay permanenteng nawawala sa ekonomiya ng sariling bansa. Hindi rin lahat ay nakakabalik sa kondisyong kanilang inaasahan.
+          </p>
+
+          <blockquote>
+            <p>
+              KAYA ANG OFW AY HINDI LANG REMITTANCE SENDER, HINDI LANG BIKTIMA NG SISTEMA, AT HINDI LANG SIMBOLO NG TAGUMPAY. TAO SIYANG MAY SARILING DAHILAN, PANGARAP, SAKRIPISYO, AT MGA LIMITASYONG KINAKAHARAP.
+            </p>
+          </blockquote>
+
+                          <h2>
+            ANO NGA BA ANG DAPAT NA SUKATAN NG ISANG MAAYOS NA SISTEMA?
+          </h2>
+
+          <p>
+            Hindi sapat ang simpleng bilang ng mga umaalis at pumapasok.
+          </p>
+
+          <p>
+            Mas makabuluhang suriin kung may disenteng trabaho, sapat na sahod, makatarungang oportunidad, maaasahang serbisyo, proteksiyon sa manggagawa, at posibilidad na umunlad ang kabuhayan nang hindi kailangang isakripisyo ang mahahalagang pangangailangan.
+          </p>
+
+          <p>
+            Hindi rin kailangang pigilan ang migration para lamang masabing matagumpay ang bansa.
+          </p>
+
+          <p>
+            Ang isang propesyonal na may maayos na buhay sa Pilipinas ngunit pumiling magtrabaho abroad para sa mas malaking career opportunity ay hindi awtomatikong patunay ng kabiguan.
+          </p>
+
+          <p>
+            Pero ang isang skilled worker na nais manatili sa Pilipinas ngunit napipilitang tanggapin ang trabaho sa malayo dahil hindi sapat ang lokal na kita at benepisyo ay naglalantad ng problemang hindi dapat balewalain.
+          </p>
+
+          <p>
+            Sa unang sitwasyon, maaaring mas malawak na oportunidad ang nangingibabaw. Sa ikalawa, maaaring mas makitid ang pagpipiliang iniiwan ng lokal na kondisyon.
+          </p>
+
+          <p>
+            At sa maraming totoong buhay, maaaring magkasabay ang dalawang ito.
+          </p>
+
+          <p>
+            Ang mahalagang sukatan ay hindi kung nagawang pigilan ng isang bansa ang pag-alis ng mamamayan nito, kundi kung gaano kalawak ang tunay na pagpipilian ng mga taong nais manatili o umalis.
+          </p>
+
+          <p>
+            Hindi rin dapat gawing simpleng moral test ang desisyon ng mga tao. Walang obligasyong manatili ang isang Pilipino upang patunayan ang pagmamahal sa bayan. Wala ring obligasyong mangibang-bansa upang mapatunayang ambisyoso o responsable siya sa pamilya.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MALAYANG PAGPILI AY HINDI LANG PAGKAKAROON NG KARAPATANG UMALIS. KASAMA RITO ANG PAGKAKAROON NG MAKATUWIRANG OPORTUNIDAD UPANG MANATILI.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya kung may nagsasabing sapat nang patunay ng failed system ang pangingibang-bansa ng mga Pilipino, kailangang tanungin: sapat ba ang mismong pag-alis upang husgahan ang buong sistema, o kailangan ding suriin ang mga kondisyon ng trabaho, sahod, oportunidad, at kabuhayang nakaaapekto sa kanilang desisyon?
+          </p>
+
+          <p>
+            At kung may nagsasabing normal lang ang migration kaya walang dapat baguhin sa Pilipinas, kailangang itanong din: paano niya ipaliliwanag ang mga pag-aaral tungkol sa kakulangan ng disenteng trabaho, mababang job quality, at limitadong social protection?
+          </p>
+
+          <p>
+            Hindi sapat ang simpleng pagkukumpara sa ibang bansa upang burahin ang mga problema sa Pilipinas. Pero hindi rin sapat ang mga problemang iyon upang ipaliwanag ang bawat desisyong mangibang-bansa.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI BAWAT PILIPINONG UMAALIS AY PATUNAY NA PALPAK ANG SISTEMA. PERO HINDI RIN DAHILAN ANG PAGIGING NORMAL NG PANGINGIBANG-BANSA PARA BALEWALAIN ANG MGA PROBLEMA SA TRABAHO, SAHOD, AT OPORTUNIDAD SA SARILING BANSA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin patunay ng ganap na tagumpay ang pagpasok ng foreign investors, at hindi patunay ng kawalan ng problema ang pagkakaroon ng mga mamamayang pinipiling manatili.
+          </p>
+
+          <p>
+            Ang migration ay isang pandaigdigang pangyayaring hinuhubog ng personal na ambisyon, pamilya, kakayahan, pangangailangan, oportunidad, at mga kondisyong panlipunan at pang-ekonomiya.
+          </p>
+
+          <p>
+            May mga umaalis dahil may magandang oportunidad sa labas. May mga umaalis dahil hindi sapat ang oportunidad sa loob. May mga nananatili dahil maayos ang kanilang kabuhayan. Mayroon ding nananatili dahil hindi nila kayang tustusan ang pag-alis.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG ANG PAG-ALIS LANG ANG BATAYAN MO NG KABIGUAN, HINDI MO SINUSURI ANG SISTEMA—BINIBIGYAN MO LANG NG HATOL ANG DESISYON NG TAO.
+            </p>
+          </blockquote>
+
+          <p>
+            At kung ginagamit mo naman ang pagiging normal ng migration upang ipagwalang-bahala ang tunay na kakulangan sa oportunidad, hindi mo rin sinusuri ang sistema—iniiwasan mo lang ang problemang dapat harapin.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MAHALAGANG TANONG AY HINDI LANG KUNG BAKIT MAY MGA PILIPINONG UMAALIS—KUNDI KUNG MAY TUNAY SILANG PAGPIPILIAN: UMALIS PARA SA MAS MAGANDANG OPORTUNIDAD, O MANATILI DAHIL MAY DISENTENG KABUHAYAN AT KINABUKASANG MAAARING BUUIN SA SARILING BANSA.
+            </p>
+          </blockquote>
+
+                </div>  
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES / RESEARCH REFERENCES
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Philippine Statistics Authority</strong> —
+              <em>2025 Survey on Overseas Filipinos.</em>
+              <a
+                href="https://psa.gov.ph/content/results-2025-survey-overseas-filipinos-preliminary-results"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/content/results-2025-survey-overseas-filipinos-preliminary-results
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Statistics Authority</strong> —
+              <em>2018 National Migration Survey.</em>
+              <a
+                href="https://psa.gov.ph/statistics/national-migration-survey"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/statistics/national-migration-survey
+              </a>
+            </li>
+
+            <li>
+              <strong>Boston Consulting Group</strong> —
+              <em>The Filipino Abroad (2026).</em>
+              <a
+                href="https://www.bcg.com/publications/2026/philippines-the-filipino-abroad"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.bcg.com/publications/2026/philippines-the-filipino-abroad
+              </a>
+            </li>
+
+            <li>
+              <strong>OCTA Research</strong> —
+              <em>57% of Filipinos Open to Opportunities Abroad (2026).</em>
+              <a
+                href="https://octaresearch.com/tnm/57-of-filipinos-open-to-opportunities-abroad-as-better-jobs-and-higher-wages-drive-migration-aspirations/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://octaresearch.com/tnm/57-of-filipinos-open-to-opportunities-abroad-as-better-jobs-and-higher-wages-drive-migration-aspirations/
+              </a>
+            </li>
+
+            <li>
+              <strong>Hein de Haas</strong> —
+              <em>A Theory of Migration: The Aspirations–Capabilities Framework (2021).</em>
+              <a
+                href="https://doi.org/10.1186/s40878-020-00210-4"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1186/s40878-020-00210-4
+              </a>
+            </li>
+
+            <li>
+              <strong>Hein de Haas</strong> —
+              <em>Turning the Tide? Why Development Will Not Stop Migration (2007).</em>
+              <a
+                href="https://doi.org/10.1111/j.1467-7660.2007.00435.x"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1111/j.1467-7660.2007.00435.x
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank</strong> —
+              <em>Philippines Growth and Jobs Report 2025.</em>
+              <a
+                href="https://www.worldbank.org/en/country/philippines/publication/philippines-growth-and-jobs-report-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.worldbank.org/en/country/philippines/publication/philippines-growth-and-jobs-report-2025
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank</strong> —
+              <em>World Development Report 2023: Migrants, Refugees, and Societies.</em>
+              <a
+                href="https://www.worldbank.org/en/publication/wdr2023"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.worldbank.org/en/publication/wdr2023
+              </a>
+            </li>
+
+            <li>
+              <strong>OECD</strong> —
+              <em>International Migration Outlook 2025 at Economic Surveys: Philippines 2026.</em>
+              <a
+                href="https://www.oecd.org/en/publications/international-migration-outlook-2025_ae26c893-en.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.oecd.org/en/publications/international-migration-outlook-2025_ae26c893-en.html
+              </a>
+            </li>
+
+            <li>
+              <strong>OECD</strong> —
+              <em>Strengthening Formal Employment and Social Protection (2026).</em>
+              <a
+                href="https://www.oecd.org/en/publications/oecd-economic-surveys-philippines-2026_f0e0c581-en/full-report/strengthening-formal-employment-and-social-protection_9c646caa.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.oecd.org/en/publications/oecd-economic-surveys-philippines-2026_f0e0c581-en/full-report/strengthening-formal-employment-and-social-protection_9c646caa.html
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Institute for Development Studies</strong> —
+              <em>Long-Term Effects of Labor Migration in the Philippines (2023).</em>
+              <a
+                href="https://doi.org/10.62986/dp2023.17"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.62986/dp2023.17
+              </a>
+            </li>
+
+            <li>
+              <strong>Bangko Sentral ng Pilipinas</strong> —
+              <em>Overseas Filipino Cash Remittances at Foreign Direct Investment Statistics.</em>
+              <a
+                href="https://www.bsp.gov.ph/statistics/external/ofw2.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.bsp.gov.ph/statistics/external/ofw2.aspx
+              </a>
+            </li>
+
+            <li>
+              <strong>Congressional Policy and Budget Research Department</strong> —
+              <em>2025 Foreign Direct Investments (2026).</em>
+              <a
+                href="https://cpbrd.congress.gov.ph/ff2026-18-2025-foreign-direct-investments/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://cpbrd.congress.gov.ph/ff2026-18-2025-foreign-direct-investments/
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
