@@ -1,1 +1,1665 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Sino ang nagpapalakas sa kultura ng pagsipsip? Isang fact-based na pagsusuri sa sycophancy, pakikisama, utang na loob, political clientelism, ingratiation, psychological safety, merit, at kultura ng pagpapabor sa Pilipinas."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-kultura-ng-pagsipsip.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-kultura-ng-pagsipsip.html"
+  >
+
+  <title>SINO ANG NAGPAPALAKAS SA KULTURA NG PAGSIPSIP? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SINO ANG NAGPAPALAKAS SA KULTURA NG PAGSIPSIP?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+           <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-kultura-ng-pagsipsip.png"
+            alt="Simbolikong visual ng kulturang pagsipsip kung saan mga taong may maskara at dalang regalo ang umaakyat patungo sa makapangyarihang lider, habang nasa ibaba ang karaniwang manggagawa at mamamayang naiiwan, bilang representasyon ng pagpapabor, patronage, at gantimpala sa personal na katapatan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <h2>
+            SYCOPHANCY, PAKIKISAMA, UTANG NA LOOB, AT KULTURA NG PAGPAPABOR SA PILIPINAS
+          </h2>
+
+          <p>
+            May mga pagkakataong mas napapakinggan ang papuring gustong marinig ng makapangyarihan kaysa ang pagpuna na kailangan niyang marinig.
+          </p>
+
+          <p>
+            May mga taong mahusay sa kanilang ginagawa pero hindi gaanong napapansin. Mayroon namang mahusay makisama, magbigay ng papuri, at sumang-ayon sa nakatataas—kahit hindi naman palaging tama ang pinupuri o sinasang-ayunan nila.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na laging nauuna ang sipsip kaysa sa may kakayahan. Pero sa mga lugar na mas pinahahalagahan ang personal na katapatan kaysa sa patas na pamantayan, may pagkakataong nagiging kalamangan ang pagiging malapit sa makapangyarihan.
+          </p>
+
+          <p>
+            Kaya kung gusto nating maintindihan kung bakit may puwang ang pagsipsip, hindi sapat na ang mga gumagawa nito lamang ang sisihin. Kailangan ding siyasatin kung paano ginagamit ang kapangyarihan—kung anong pag-uugali ang ginagantimpalaan, at kung bakit may mga taong umiiwas sa makatuwirang pagtutuwid.
+          </p>
+
+          <h2>
+            BAKIT MAY MGA SITWASYONG MAS KAPAKI-PAKINABANG ANG PAGSANG-AYON KAYSA ANG PAGTUTUWID?
+          </h2>
+
+          <p>
+            Dito pumapasok ang tinatawag na sycophancy.
+          </p>
+
+          <p>
+            Ang sycophant ay taong labis o hindi tapat ang pagpuri sa isang makapangyarihang tao, karaniwan upang makuha ang pabor o pakinabang mula rito.
+          </p>
+
+          <p>
+            Sa simpleng salita, ito ang oportunistang pagsipsip.
+          </p>
+
+          <p>
+            Hindi ito basta paggalang sa nakatataas. Hindi rin simpleng pagsang-ayon sa isang lider. Ang mahalagang pagkakaiba ay ang motibo at paraan—ginagamit ang papuri, pagsang-ayon, o pagpapakitang-loob upang makakuha ng personal na kalamangan, kahit kailangang isantabi ang tapat na paghusga.
+          </p>
+
+          <p>
+            At kung susuriin ang ating lipunan, hindi lamang ito tungkol sa ugali ng isang tao.
+          </p>
+
+          <p>
+            Tungkol din ito sa kapaligirang nagbibigay ng puwang sa ganoong pag-uugali.
+          </p>
+
+          <h2>
+            PAKIKISAMA—KAILAN ITO NAGIGING PAGPAPAKITANG-LOOB?
+          </h2>
+
+          <p>
+            Mahalagang bahagi ng pakikipagkapwa ng mga Pilipino ang pakikisama.
+          </p>
+
+          <p>
+            Nakakatulong ito upang mapanatili ang maayos na ugnayan, pagtutulungan, at pag-unawa sa kapwa. Hindi masama ang marunong makibagay, umiwas sa hindi kailangang alitan, o gumalang sa opinyon ng iba.
+          </p>
+
+          <p>
+            Pero nagkakaroon ng problema kapag ang pakikisama ay nagiging dahilan upang hindi na maituwid ang mali.
+          </p>
+
+          <p>
+            May mga sitwasyong mas pinipiling manahimik kaysa magsalita dahil baka mapag-initan, mawalan ng oportunidad, o masabihang walang utang na loob.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Maria Guadalupe C. Salanga at Homer J. Yabut noong 2017, sinuri ang iba’t ibang pagpapakahulugan at manipestasyon ng pakikisama batay sa mga karanasan at pananaw ng mga kalahok na estudyante. Ipinapakita ng ganitong pag-aaral na kailangang unawain ang konsepto batay sa konteksto at aktuwal na pakikitungo, hindi basta ituring na negatibong katangian.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI MASAMA ANG PAKIKISAMA. ANG PROBLEMA AY KAPAG GINAGAMIT ITO UPANG PATAHIMIKIN ANG MAY MAKATWIRANG TUTOL.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin dapat agad tawaging sipsip ang taong umiiwas sa pagtatalo. May mga nananahimik dahil sa takot o pangangailangang protektahan ang kanilang kabuhayan.
+          </p>
+
+          <p>
+            Magkaiba ang kusang pagsipsip para sa pakinabang at ang pagkakailangang makibagay dahil sa hindi pantay na kapangyarihan.
+          </p>
+
+          <h2>
+            UTANG NA LOOB—PASASALAMAT BA O HABAMBUHAY NA PAGTALIMA?
+          </h2>
+
+          <p>
+            Malalim din sa kulturang Pilipino ang utang na loob.
+          </p>
+
+          <p>
+            Kapag may tumulong sa atin sa panahon ng pangangailangan, natural lamang na makaramdam ng pasasalamat at hangaring makabawi.
+          </p>
+
+          <p>
+            Pero paano kung ang tulong ay nagiging batayan upang asahan ang walang-kondisyong pagsunod?
+          </p>
+
+          <p>
+            Paano kung ang pagtutuwid sa maling ginagawa ng tumulong ay itinuturing nang pagtataksil?
+          </p>
+
+          <p>
+            Tinalakay ni Jacklyn A. Cleofas sa kaniyang pag-aaral noong 2019 ang utang na loob bilang isang posibleng mabuting pagpapahalagang Pilipino, ngunit kinilala rin ang panganib nitong maiugnay sa nepotismo, patronage politics, at iba pang kawalang-katarungan kung hindi ito iuugnay sa pagiging makatarungan.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito.
+          </p>
+
+          <p>
+            Maaaring tumanaw ng utang na loob nang hindi kailangang ipagtanggol ang lahat ng ginagawa ng taong tumulong sa atin.
+          </p>
+
+          <p>
+            Maaaring kilalanin ang kabutihan ng isang lider nang hindi kailangang pagtakpan ang kaniyang pagkakamali.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PASASALAMAT AY HINDI KONTRATA NG HABAMBUHAY NA PAGPAPASAKOP.
+            </p>
+          </blockquote>
+
+          <h2>
+            SA PULITIKA—KAPAG ANG SERBISYO AY NAGIGING PERSONAL NA PABOR
+          </h2>
+
+          <p>
+            Mas lumalalim ang usapin kapag ang ganitong relasyon ay pumapasok sa pulitika at pamamahala.
+          </p>
+
+          <p>
+            May tawag ang mga mananaliksik sa sistemang nag-uugnay ng suporta at katapatan sa mga kapalit na pakinabang: political clientelism o patron-client politics.
+          </p>
+
+          <p>
+            Hindi ito eksaktong kapareho ng sycophancy. Ang sycophancy ay nakasentro sa oportunistang pagpuri at pagpapakitang-loob; ang clientelism ay mas malawak na ugnayang may palitan ng suporta, impluwensiya, at mga pakinabang.
+          </p>
+
+          <p>
+            Pero maaari silang magsanib kapag ang pagiging malapit at tapat sa isang makapangyarihang personalidad ay nagiging daan sa oportunidad o espesyal na pagtrato.
+          </p>
+
+          <p>
+            Sa pag-aaral ni Julio C. Teehankee noong 2012, ipinaliwanag ang nagpapatuloy na impluwensiya ng clientelism sa organisasyon ng mga partidong pampolitika sa Pilipinas.
+          </p>
+
+          <p>
+            May mas tiyak ding datos tungkol sa kung paano gumagana ang ganitong ugnayan.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Nico Ravanilla at Allen Hicken noong 2023, gumamit sila ng survey sa 900 botante sa isang lungsod sa Pilipinas. Natuklasan nilang mas madalas na tinatarget ng mga kampanya ang mahihirap para sa mga pamimigay na may kaugnayan sa eleksiyon, at may impluwensiya rin ang ugnayang pampamilya sa kung sino ang pinupuntirya.
+          </p>
+
+          <p>
+            Lumabas din na ang pagkakaroon ng koneksiyon sa mga pormal na organisasyon, gaya ng samahan ng mga manggagawa, ay maaaring makatulong upang mabawasan ang takot ng botante na maparusahan kapag hindi niya nasuklian ang natanggap na pabor.
+          </p>
+
+          <p>
+            Hindi nito direktang sinusukat ang pagsipsip. Pero ipinapakita nito kung paano maaaring makaapekto ang pangangailangan, personal na koneksiyon, at takot sa paggalaw ng mga tao sa loob ng sistemang may hindi pantay na kapangyarihan.
+          </p>
+
+          <p>
+            May mas konkreto pang halimbawa.
+          </p>
+
+          <p>
+            Sa pag-aaral nina Vincen Gregory Yu at mga kasama noong 2023 tungkol sa kontra-partido politics sa Philippine healthcare, lumitaw mula sa kanilang qualitative fieldwork ang mga sitwasyong naaapektuhan ng pampolitikang pagkakakilanlan ang pagtatalaga ng mga health worker at pamamahagi ng ilang serbisyong pangkalusugan.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang ganito ang lahat ng lokal na pamahalaan. Pero ipinapakita nito na ang problema ng personal na katapatan at pampolitikang pagpapabor ay maaaring magkaroon ng tunay na epekto sa serbisyo publiko.
+          </p>
+
+          <p>
+            At dito nagiging mas seryoso ang usapin.
+          </p>
+
+          <p>
+            Kapag ang tulong na dapat nakabatay sa pangangailangan ay naiuugnay sa pampolitikang katapatan, ang mamamayan ay maaaring mapilitang makipaglapit sa makapangyarihan upang makuha ang serbisyong nararapat niyang matanggap.
+          </p>
+
+          <p>
+            Hindi lahat ng tumatanggap ng tulong ay sipsip. Hindi rin lahat ng tumutulong na opisyal ay naghahanap ng kapalit.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO ANG SERBISYONG PUBLIKO AY HINDI DAPAT GAWING GANTIMPALA SA PAGIGING TAPAT SA ISANG PULITIKO.
+            </p>
+          </blockquote>
+
+                    <h2>
+            SA TRABAHO—KAPAG MAS MABIGAT ANG PABOR KAYSA KAKAYAHAN
+          </h2>
+
+          <p>
+            Hindi lamang sa pulitika maaaring makita ang ganitong problema.
+          </p>
+
+          <p>
+            Sa isang opisina, negosyo, organisasyon, o institusyon, maaaring magkaroon ng kulturang mas pinapakinggan ang laging sumasang-ayon kaysa ang taong nagtatanong o nagmumungkahi ng pagwawasto.
+          </p>
+
+          <p>
+            Kapag nangyayari ito, may panganib na ang mga desisyon ay hindi na sapat na nasusuri.
+          </p>
+
+          <p>
+            Maaaring hindi agad napapansin ang pagkakamali dahil walang gustong magsabi. Maaaring hindi naririnig ang mas mahusay na mungkahi dahil nanggaling ito sa taong hindi malapit sa namumuno.
+          </p>
+
+          <p>
+            At maaari ring mawalan ng gana ang mga empleyadong nagsisikap kung nakikita nilang mas mahalaga ang koneksiyon kaysa malinaw na pamantayan sa pagkilala at pag-angat.
+          </p>
+
+          <p>
+            May psychological research na tumutulong ipaliwanag kung bakit maaaring makaapekto sa paghusga ng iba ang pagpapakitang-loob. Bagaman mas malawak ang ingratiation kaysa sa mismong pagsipsip, mahalaga ang mga pag-aaral tungkol dito upang maunawaan kung paano nakaiimpluwensiya ang ganitong mga paraan sa pagtingin ng ibang tao.
+          </p>
+
+          <p>
+            Sa meta-analysis ni Randall A. Gordon noong 1996 na sumaklaw sa 69 pag-aaral, natuklasang may maliit na positibong epekto ang ingratiation—o mga paraang ginagamit upang makuha ang pabor ng iba—sa performance evaluations. Mas malakas ang positibong epekto nito sa personal na pagkagusto ng ibang tao sa gumagawa nito.
+          </p>
+
+          <p>
+            Nag-iiba ang resulta depende sa ginagamit na paraan, kung gaano kahalata ang pambobola, at sa sitwasyong pinaggagamitan nito.
+          </p>
+
+          <p>
+            Ibig sabihin, may mga pagkakataong maaaring makaapekto sa paghusga ng ibang tao ang pagpapakitang-loob, kahit hindi nito awtomatikong pinatutunayang mas mahusay o mas karapat-dapat ang taong gumagawa nito.
+          </p>
+
+          <p>
+            Mga posibleng manipestasyon ito ng isang hindi maayos na kultura sa trabaho—hindi patunay na ganito ang lahat ng institusyon.
+          </p>
+
+          <p>
+            Mahalagang kilalanin din na may mga lider na pinahahalagahan ang tapat na puna at may mga empleyadong nakaaangat dahil sa tunay na kakayahan, disiplina, at mahusay na pakikitungo sa kapwa.
+          </p>
+
+          <p>
+            Ang dapat tutulan ay hindi ang magandang relasyon sa nakatataas, kundi ang hindi patas na sistemang ginagawang kapalit ng karapatan o oportunidad ang personal na pagpapakitang-loob.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG KAKAYAHAN AY DAPAT KILALANIN DAHIL SA GINAWA—HINDI DAHIL SA GALING MAGPALUGOD SA MAKAPANGYARIHAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            SA SOCIAL MEDIA—KAPAG ANG PAGTATANONG AY TINUTURING NA PAGKAKAMPI SA KALABAN
+          </h2>
+
+          <p>
+            May isa pang lugar kung saan kailangang suriin ang ganitong pag-uugali: ang ating mga pampublikong usapan.
+          </p>
+
+          <p>
+            Kapag may pinupuring personalidad, may mga tagasuportang handang kilalanin ang kaniyang mabubuting nagawa. Walang mali roon.
+          </p>
+
+          <p>
+            Pero may problema kapag ang bawat makatuwirang puna ay agad itinuturing na paninira, at ang bawat tanong ay nilalagyan ng motibong pampulitika.
+          </p>
+
+          <p>
+            Sa ganitong kalagayan, nawawala ang pagkakaiba ng pagsuporta sa isang tao at pagtatanggol sa lahat ng kaniyang ginagawa.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong tama ang pumupuna. May mga kritisismong walang sapat na ebidensiya, may maling impormasyon, at may sadyang paninira.
+          </p>
+
+          <p>
+            Kaya hindi dapat gawing sukatan ng katotohanan ang pagiging kakampi o kalaban.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG MAY GINAWANG TAMA, KILALANIN. KUNG MAY GINAWANG MALI, PANAGUTIN. HINDI DAPAT NAGBABAGO ANG PAMANTAYAN DAHIL LAMANG SA KUNG SINO ANG GUMAWA.
+            </p>
+          </blockquote>
+
+          <h2>
+            PERO BAKIT MAY MGA TAONG SUMISIPSIP?
+          </h2>
+
+          <p>
+            Hindi iisa ang dahilan.
+          </p>
+
+          <p>
+            May mga taong naghahangad ng promosyon, koneksiyon, impluwensiya, proteksiyon, o materyal na pakinabang.
+          </p>
+
+          <p>
+            May iba namang nasanay sa kapaligirang ang pagiging malapit sa namumuno ay mahalagang paraan upang mapanatili ang kanilang posisyon.
+          </p>
+
+          <p>
+            May mga tao rin namang hindi naghahanap ng espesyal na pabor, kundi umiiwas lamang sa posibleng parusa, alitan, o pagkawala ng kabuhayan. Hindi dapat agad ipagkamali ang ganitong pananahimik sa kusang pagsipsip.
+          </p>
+
+          <p>
+            Mahalaga rito ang tinatawag sa psychology na psychological safety—ang pakiramdam na ligtas magsalita, magtanong, o umamin ng pagkakamali nang hindi kailangang matakot sa kahihiyan o hindi makatarungang pagtrato.
+          </p>
+
+          <p>
+            Sa pag-aaral ni Amy Edmondson noong 1999 sa 51 work teams, natuklasan ang ugnayan ng psychological safety at pagkatuto ng mga pangkat. Sa malawak na research review naman ni Elizabeth Wolfe Morrison noong 2023, tinalakay kung bakit pinipili ng mga empleyadong magsalita o manahimik, kabilang ang mga panganib na nakikita nila sa pagbibigay ng impormasyon o puna.
+          </p>
+
+          <p>
+            Ipinapakita ng mga pag-aaral na mahalagang isaalang-alang ang kapaligiran sa pag-unawa sa pananahimik ng tao. Hindi sapat na sabihing wala siyang paninindigan kung may tunay siyang dahilan upang matakot sa maaaring mangyari kapag nagsalita.
+          </p>
+
+          <p>
+            Hindi makatarungang pagsama-samahin ang lahat ng ito sa iisang paghatol.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero may mas mahalagang tanong:<br>
+              SINO ANG NAGBIBIGAY NG GANTIMPALA SA GANITONG SISTEMA?
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil hindi lamang ang taong sumisipsip ang dapat suriin.
+          </p>
+
+          <p>
+            May pananagutan din ang makapangyarihang taong kusang nagbibigay ng espesyal na pagtrato dahil sa personal na papuri, pagsang-ayon, o katapatan.
+          </p>
+
+          <p>
+            Kapag mas gusto ng isang lider na laging pinupuri kaysa tapat na pinapayuhan, maaari siyang mapalibutan ng mga taong umiiwas maghatid ng hindi magandang balita.
+          </p>
+
+          <p>
+            Kapag pinaparusahan ang makatuwirang pagtutuwid, natututo ang iba na mas ligtas ang manahimik o sumang-ayon.
+          </p>
+
+          <p>
+            At kapag ginagantimpalaan ang personal na pagpapakitang-loob sa halip na patas na pagganap, lalo itong nagiging kaakit-akit sa mga naghahanap ng kalamangan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG KULTURA NG PAGSIPSIP AY HINDI LAMANG PINANANATILI NG MGA SUMISIPSIP. MAAARI RIN ITONG PALAKASIN NG MGA NAMUMUNONG MAS GUSTONG SAMBAHIN KAYSA PANAGUTIN.
+            </p>
+          </blockquote>
+
+                      <h2>
+            ANO ANG SINASABI NG ATING MGA BATAS?
+          </h2>
+
+          <p>
+            May malinaw na pamantayang dapat sundin sa serbisyo publiko.
+          </p>
+
+          <p>
+            Sa Republic Act No. 6713 o Code of Conduct and Ethical Standards for Public Officials and Employees, itinatakda na dapat unahin ng mga opisyal at kawani ng gobyerno ang interes ng publiko kaysa pansariling interes.
+          </p>
+
+          <p>
+            Kabilang din sa mga pamantayan nito ang propesyonalismo, makatarungang pagtrato, political neutrality, at paglalagay ng katapatan sa bayan higit sa katapatan sa tao o partido.
+          </p>
+
+          <p>
+            Samantala, itinatakda ng Article IX-B, Section 2(2) ng 1987 Constitution na ang mga pagtatalaga sa civil service ay dapat nakabatay sa merit and fitness, alinsunod sa mga nakasaad na tuntunin at eksepsiyon nito.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na ang simpleng pambobola ay awtomatikong paglabag sa batas.
+          </p>
+
+          <p>
+            Pero malinaw na hindi dapat manaig ang personal na pagpapabor laban sa mga pamantayang legal at etikal sa pampublikong tungkulin.
+          </p>
+
+          <p>
+            Ang tunay na hamon ay kung paano naisasabuhay ang mga prinsipyong ito sa aktuwal na pamamahala.
+          </p>
+
+          <h2>
+            PAANO HINDI MAGIGING NORMAL ANG PAGSIPSIP?
+          </h2>
+
+          <p>
+            Hindi sapat na pagalitan lamang ang mga taong tinatawag nating sipsip.
+          </p>
+
+          <p>
+            Kailangang may patas at malinaw na pamantayan sa pagtatalaga, promosyon, pagkilala, at pamamahagi ng pampublikong serbisyo.
+          </p>
+
+          <p>
+            Kailangang may puwang ang makatuwirang pagtatanong, may maayos na paraan ng pag-uulat ng maling gawain, at may pananagutan ang mga gumagamit ng kapangyarihan upang magbigay ng hindi nararapat na pabor.
+          </p>
+
+          <p>
+            Mahalaga rin ang sariling paninindigan.
+          </p>
+
+          <p>
+            Maaari tayong gumalang nang hindi nagpapanggap na sumasang-ayon. Maaari tayong makisama nang hindi nakikisangkot sa mali. Maaari tayong magpasalamat nang hindi isinusuko ang kakayahang humusga.
+          </p>
+
+          <p>
+            At maaari tayong sumuporta sa isang lider nang hindi ginagawang personal na kaaway ang sinumang may makatuwirang tanong.
+          </p>
+
+          <p>
+            Hindi kailangang bastusin ang nakatataas upang maging matapat. Hindi rin kailangang sumipsip upang maging magalang.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGGALANG AY HINDI BULAG NA PAGSUNOD. ANG KATAPATAN AY HINDI WALANG-KONDISYONG PAGTATANGGOL. AT ANG PAKIKISAMA AY HINDI LISENSIYA UPANG KUNSINTIHIN ANG MALI.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa huli, hindi ang simpleng pagkakaroon ng mga taong mahilig mambola ang pinakamalalim na suliranin.
+          </p>
+
+          <p>
+            Mas malalim ang problema kapag ang mga institusyon mismo ay nagbibigay ng dahilan upang maniwala ang tao na mas makabubuti ang pagiging malapit sa makapangyarihan kaysa pagiging karapat-dapat.
+          </p>
+
+          <p>
+            Dahil kung ang katotohanan ay kailangang isantabi para makakuha ng pabor, at ang makatuwirang pagtutuwid ay kailangang pigilan para manatiling ligtas, hindi na lamang ito usapin ng personal na ugali.
+          </p>
+
+          <p>
+            Usapin na ito ng kapangyarihan, katarungan, at pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG YUMUYUKO AY SIPSIP—MAY MGA YUMUYUKO DAHIL SA TAKOT AT PANGANGAILANGAN.
+            </p>
+
+            <p>
+              PERO ANG KUSANG NAGBEBENTA NG KATOTOHANAN PARA SA PERSONAL NA PABOR, AT ANG MAKAPANGYARIHANG GUMAGANTIMPALA SA GANITONG PAG-UUGALI, AY PAREHONG MAY PANANAGUTAN.
+            </p>
+
+            <p>
+              DAHIL ANG LIPUNANG MAS NAGGAGANTIMPALA SA PAGSIPSIP KAYSA SA INTEGRIDAD AY HINDI LANG NAGPAPALAKAS NG MGA OPORTUNISTA—NAGPAPATATAG DIN ITO NG KAPANGYARIHANG AYAW MAGPATUWID.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Cambridge Dictionary</strong> — Sycophant, depinisyon.
+              <a
+                href="https://dictionary.cambridge.org/dictionary/english/sycophant"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://dictionary.cambridge.org/dictionary/english/sycophant
+              </a>
+            </li>
+
+            <li>
+              <strong>Salanga, M. G. C., &amp; Yabut, H. J. (2017).</strong>
+              Ang Pangkaraniwang Pagpapakahulugan at Behavioral na Manipestasyon ng Pakikisama.
+              <em>Diwa E-Journal, 5</em>, 93–107.
+              <a
+                href="https://www.pssp.org.ph/diwa/diwa-e-journal-tomo-5-nobyembre-2017-ang-pangkaraniwang-pagpapakahulugan-at-behavioral-na-manipestasyon-ng-pakikisama/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.pssp.org.ph/diwa/diwa-e-journal-tomo-5-nobyembre-2017-ang-pangkaraniwang-pagpapakahulugan-at-behavioral-na-manipestasyon-ng-pakikisama/
+              </a>
+            </li>
+
+            <li>
+              <strong>Cleofas, J. A. (2019).</strong>
+              Towards a Practical and Empirically Grounded Account of Útang-na-Loób as a Filipino Virtue.
+              <em>Kritika Kultura, 33/34</em>, 156–179.
+              <a
+                href="https://doi.org/10.13185/1656-152x.1800"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.13185/1656-152x.1800
+              </a>
+            </li>
+
+            <li>
+              <strong>Teehankee, J. C. (2012).</strong>
+              Clientelism and Party Politics in the Philippines.
+              <em>Party Politics in Southeast Asia</em>, 186–214.
+              <a
+                href="https://animorepository.dlsu.edu.ph/faculty_research/610/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://animorepository.dlsu.edu.ph/faculty_research/610/
+              </a>
+            </li>
+
+            <li>
+              <strong>Ravanilla, N., &amp; Hicken, A. (2023).</strong>
+              Poverty, Social Networks, and Clientelism.
+              <em>World Development, 162</em>, 106128.
+              <a
+                href="https://doi.org/10.1016/j.worlddev.2022.106128"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1016/j.worlddev.2022.106128
+              </a>
+            </li>
+
+            <li>
+              <strong>Yu, V. G., Lasco, G., David, C. C., &amp; Baysic, I. S. (2023).</strong>
+              ‘Kontra-partido’: Untangling Oppositional Local Politics and Healthcare Devolution in the Philippines.
+              <em>Health Policy and Planning, 38(7)</em>, 840–850.
+              <a
+                href="https://doi.org/10.1093/heapol/czad039"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1093/heapol/czad039
+              </a>
+            </li>
+
+            <li>
+              <strong>Gordon, R. A. (1996).</strong>
+              Impact of Ingratiation on Judgments and Evaluations: A Meta-Analytic Investigation.
+              <em>Journal of Personality and Social Psychology, 71(1)</em>, 54–70.
+              <a
+                href="https://doi.org/10.1037/0022-3514.71.1.54"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1037/0022-3514.71.1.54
+              </a>
+            </li>
+
+            <li>
+              <strong>Edmondson, A. (1999).</strong>
+              Psychological Safety and Learning Behavior in Work Teams.
+              <em>Administrative Science Quarterly, 44(2)</em>, 350–383.
+              <a
+                href="https://doi.org/10.2307/2666999"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.2307/2666999
+              </a>
+            </li>
+
+            <li>
+              <strong>Morrison, E. W. (2023).</strong>
+              Employee Voice and Silence: Taking Stock a Decade Later.
+              <em>Annual Review of Organizational Psychology and Organizational Behavior, 10</em>, 79–107.
+              <a
+                href="https://doi.org/10.1146/annurev-orgpsych-120920-054654"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1146/annurev-orgpsych-120920-054654
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 6713 (1989), Sections 2 and 4.</strong>
+              <a
+                href="https://officialgazette.gov.ph/1989/02/20/republic-act-no-06713/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://officialgazette.gov.ph/1989/02/20/republic-act-no-06713/
+              </a>
+            </li>
+
+            <li>
+              <strong>1987 Philippine Constitution, Article IX-B, Section 2(2).</strong>
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/3/353"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/3/353
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+        </html>
