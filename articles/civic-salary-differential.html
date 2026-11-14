@@ -1,1 +1,1698 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Tapos na sa puwesto, may bayad pa rin—bakit? Isang fact-based na pagsusuri sa salary differential, delayed government compensation, LGU salary adjustments, payroll controls, audit trail, COA requirements, at patas na pagpapatupad sa mga kawani ng gobyerno."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-salary-differential.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-salary-differential.html"
+  >
+
+  <title>TAPOS NA SA PUWESTO, MAY BAYAD PA RIN—BAKIT? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          TAPOS NA SA PUWESTO, MAY BAYAD PA RIN—BAKIT?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+           <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-salary-differential.png"
+            alt="Simbolikong visual ng salary differential sa gobyerno na may timbangan, orasan, mga dokumento, pera, bakanteng upuan ng opisyal, at kaban ng bayan bilang representasyon ng delayed compensation, legal na pagkakautang, audit trail, at pananagutan sa pampublikong pondo."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <h2>
+            KAILAN ITO LEGAL NA KULANG NA SAHOD, BAKIT UMAABOT NG ILANG TAON ANG PAGBABAYAD, AT PAANO MASISIGURONG PANTAY ANG PAGPAPATUPAD NITO SA MGA KAWANI NG GOBYERNO?
+          </h2>
+
+          <p>
+            Tapos na ang termino. Wala na sa dating opisina. Pero may natanggap pang bayad mula sa dating pinagsilbihang lokal na pamahalaan.
+          </p>
+
+          <p>
+            Sa unang tingin, mapapatanong ang ordinaryong mamamayan: Bakit may bayad pa kung hindi na siya nanunungkulan doon? May pagkakautang bang ngayon lamang binayaran, o may transaksiyong kailangang mas mabusising ipaliwanag?
+          </p>
+
+          <p>
+            Muling naging mahalaga ang tanong na ito matapos talakayin sa impeachment trial ang tinatawag na salary differential. Ayon sa iniharap na paliwanag, ang natanggap na pera ay hindi panibagong sahod para sa kasalukuyang serbisyo, kundi kulang na kompensasyon mula sa nakaraang panunungkulan na ngayon lamang naibayad.
+          </p>
+
+          <p>
+            Posibleng legal ang ganitong pagbabayad. Pero hindi sapat na matagal nang pinagkakautangan ang isang opisyal para awtomatikong masabing tama ang anumang halagang inilabas.
+          </p>
+
+          <p>
+            At kung may dating opisyal na nababayaran makalipas ang ilang taon, paano naman ang ibang kwalipikadong empleyado ng LGU? Pareho ba ang patakarang sinusunod, ang requirements na hinihingi, at ang pamantayan sa pagproseso ng kanilang claims?
+          </p>
+
+          <p>
+            Dito kailangang malinawan ang publiko. Hindi lamang kung bakit may tumatanggap pa ng bayad matapos umalis sa puwesto, kundi kung paano napapatunayang legal, tama, at patas ang pagbabayad mula sa kaban ng bayan.
+          </p>
+
+          <blockquote>
+            <p>
+              MAGKAIBA ANG KARAPATANG MAKATANGGAP NG KULANG NA SAHOD AT ANG OBLIGASYONG PATUNAYANG WASTO ANG PAGLALABAS NG PERA NG BAYAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO BA TALAGA ANG SALARY DIFFERENTIAL?
+          </h2>
+
+          <p>
+            Sa pinakasimpleng paliwanag, ang salary differential ay ang diperensiya sa pagitan ng suweldong legal na dapat matanggap ng isang empleyado at ng aktuwal na suweldong naibayad sa kanya.
+          </p>
+
+          <p>
+            Halimbawa, may kawani ng munisipyo na tumatanggap ng ₱25,000 kada buwan. Nagkaroon ng legal at awtorisadong salary adjustment na nagtaas ng kanyang sahod sa ₱27,000, epektibo mula Enero.
+          </p>
+
+          <p>
+            Kung anim na buwan pa ring ₱25,000 ang naibayad sa kanya, may kulang na ₱2,000 kada buwan. Sa anim na buwan, katumbas iyon ng ₱12,000 na salary differential, bago isaalang-alang ang anumang naaangkop na deductions at adjustments.
+          </p>
+
+          <p>
+            Hindi ito bonus. Hindi rin ito pabuya dahil mahusay ang kanyang trabaho. Pagbabayad ito sa bahagi ng sahod na dapat na niyang natanggap batay sa legal na salary rate at effectivity date.
+          </p>
+
+          <p>
+            Maaaring magkaroon nito dahil sa salary standardization, promotion, step increment, o pagwawasto ng maling salary computation.
+          </p>
+
+          <p>
+            Pero may kondisyon. Hindi sapat na may bagong batas na nagtataas ng sahod. Kailangang legal ding naging epektibo ang partikular na salary adjustment sa ahensiya o LGU na pinag-uusapan.
+          </p>
+
+          <h2>
+            SINO ANG MAY KARAPATAN DITO SA GOBYERNO?
+          </h2>
+
+          <p>
+            Sa ilalim ng Republic Act No. 11466 o Salary Standardization Law of 2019, saklaw ng mga itinakdang salary adjustments ang iba't ibang posisyon sa gobyerno, kabilang ang mga kwalipikadong regular, contractual, at casual personnel, pati mga elective at appointive officials.
+          </p>
+
+          <p>
+            Sa LGUs, maaari ring magkaroon ng adjustments sa buwanang honoraria ng mga barangay official at personnel, ngunit may sariling patakaran ang mga ito.
+          </p>
+
+          <p>
+            Hindi naman awtomatikong saklaw ng parehong salary schedule ang mga job order at contract of service workers na walang employer-employee relationship sa pamahalaan. Mahalaga ang pagkakaibang ito dahil hindi pare-pareho ang legal na uri ng pagkakatalaga ng lahat ng nagtatrabaho sa gobyerno.
+          </p>
+
+          <p>
+            Kaya maaaring parehong nagtatrabaho sa munisipyo ang dalawang tao ngunit magkaiba ang naaangkop na compensation rules. Hindi agad diskriminasyon ang ganitong pagkakaiba kung may wastong legal na batayan.
+          </p>
+
+          <p>
+            Ang hindi makatarungan ay kung may dalawang empleyadong parehong saklaw ng isang aprubadong adjustment, ngunit ang isa ay nabigyan ng benepisyong ipinagkait sa isa nang walang sapat na dahilan.
+          </p>
+
+          <h2>
+            BAKIT HINDI AGAD NAIPATUTUPAD ANG SALARY INCREASE SA MGA LGU?
+          </h2>
+
+          <p>
+            Dito kailangang pag-ibahin ang national government at local government.
+          </p>
+
+          <p>
+            Ang RA 11466 ay nagtakda ng apat na salary tranches para sa national government mula Enero 2020 hanggang Enero 2023. Pero para sa LGUs, ang pagpapatupad ay nakadepende rin sa kanilang financial capacity at sa mga kondisyong itinakda ng batas.
+          </p>
+
+          <p>
+            Sa ilalim ng Section 10 ng RA 11466 at ng DBM Local Budget Circular No. 121, kinakailangan ang awtorisasyon ng sanggunian, naaangkop na salary schedule, pagsunod sa Personnel Services limitation, at pondong manggagaling sa LGU.
+          </p>
+
+          <p>
+            May mga limitasyon din ayon sa income classification. Halimbawa, sa ilalim ng RA 11466, 100% ng national salary schedule ang ceiling para sa first-class province at city, samantalang 90% para sa first-class municipality.
+          </p>
+
+          <p>
+            Ngunit sa Executive Order No. 64 noong 2024, maaari nang ganap na gamitin ng LGU ang national salary schedule kahit lampas sa karaniwang ceiling, basta nasunod ang mga kundisyon sa pondo, budgetary authorization, at uniform implementation. Kailangang gamitin ang patakarang naaangkop sa panahon ng salary adjustment na pinag-uusapan.
+          </p>
+
+          <p>
+            Sa Section 325(a) ng Local Government Code, ang pangkalahatang Personnel Services ceiling ay 45% ng tinukoy na regular income base para sa first- hanggang third-class LGUs at 55% para sa fourth-class o mas mababa, alinsunod sa mga naaangkop na exemption at espesyal na patakaran.
+          </p>
+
+          <p>
+            Ibig sabihin, kahit may awtorisadong pagtaas ng sahod sa pambansang antas, hindi awtomatikong pareho ang buong halagang maipatutupad sa bawat LGU.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO MAY MAHALAGANG PANUNTUNAN: KAPAG PARTIAL IMPLEMENTATION ANG PINAHIHINTULUTAN DAHIL SA LIMITADONG PONDO, KAILANGANG UNIFORM ANG PORSIYENTO NG SALARY SCHEDULE NA IPATUTUPAD SA MGA SAKLAW NA POSISYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi nito ibig sabihing pare-pareho ang halagang matatanggap ng mayor, accountant, administrative aide, at health worker. Magkakaiba ang kanilang salary grades, steps, responsibilidad, at posibleng espesyal na patakaran.
+          </p>
+
+          <p>
+            Ang ibig sabihin, hindi maaaring basta pumili ng isang opisyal na bibigyan ng mas mataas na porsiyento habang hindi sinusunod ang parehong awtorisadong salary schedule para sa iba pang saklaw na posisyon.
+          </p>
+
+          <p>
+            Mahalagang sukatin ang pagiging patas batay sa naaangkop na salary rate at patakaran, hindi lamang sa pagkakapareho ng numerong nakikita sa payslip.
+          </p>
+
+          <h2>
+            BAKIT UMAABOT NG ILANG TAON ANG SALARY DIFFERENTIAL?
+          </h2>
+
+          <p>
+            May mga legal at administratibong dahilan kung bakit maaaring maantala ang pagbabayad.
+          </p>
+
+          <p>
+            Maaaring hindi agad naaprubahan ang salary schedule, hindi pa naipagkakaloob ang kinakailangang appropriation, o kulang ang pondong maaaring gamitin sa ilalim ng Personnel Services limitation.
+          </p>
+
+          <p>
+            Maaari ring magkaroon ng problema sa personnel records, Notice of Salary Adjustment, payroll computation, certifications, leave records, o supporting documents. Posible ring maantala ang proseso kapag kailangang itama ang maling computation at i-reconcile ang payroll sa accounting records.
+          </p>
+
+          <p>
+            Sa karaniwang proseso, kailangang magtugma ang impormasyon mula sa Human Resource Management Office, Budget Office, Accounting Office, at Treasury bago maisagawa ang nararapat na pagbabayad.
+          </p>
+
+          <p>
+            Pero may dalawang magkaibang sitwasyong hindi dapat paghaluin.
+          </p>
+
+          <p>
+            Una, maaaring may legal nang salary entitlement ngunit naantala lamang ang pagproseso o pagbabayad nito. Kung ganoon, maaaring magkaroon ng valid na back pay kahit natapos na ang serbisyo ng empleyado, basta nasunod ang mga naaangkop na patakaran.
+          </p>
+
+          <p>
+            Ikalawa, maaaring huli lamang inaprubahan o ipinatupad ang bagong salary rate. Sa ganitong kaso, hindi awtomatikong may pagkakautang para sa lahat ng naunang buwan. Kailangang tingnan kung anong petsa talaga naging legal at awtorisado ang adjustment, at kung pinapayagan ang retroactive implementation.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito.
+          </p>
+
+          <p>
+            Kung taong 2023 lamang naging legal na epektibo ang isang salary increase, hindi sapat na sabihing may salary standardization law na noong 2020 para awtomatikong mag-claim ng buong diperensiya mula 2020.
+          </p>
+
+          <p>
+            Gayundin, hindi lahat ng pagkaantala ay bunga ng katiwalian. Pero hindi rin nagiging katanggap-tanggap ang bawat pagkaantala dahil lamang sinabing may kulang na dokumento.
+          </p>
+
+          <p>
+            Kung taon ang inabot, makatuwirang itanong kung anong eksaktong dokumento ang kulang, kailan ito unang hiniling, sino ang responsable sa paghahanda, at kailan ito nakumpleto.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG LEGAL NA DAHILAN NG PAGKAANTALA AY DAPAT KAYANG PATUNAYAN. HINDI SAPAT NA ULIT-ULITING SABIHING MATAGAL TALAGA ANG PROSESO.
+            </p>
+          </blockquote>
+
+                            <h2>
+            MAY AKTUWAL BANG RESEARCH TUNGKOL SA MGA PROBLEMANG ITO?
+          </h2>
+
+          <p>
+            May mahahalagang pag-aaral tungkol sa hindi pantay na kakayahan ng mga LGU na tustusan at ipatupad ang compensation policies.
+          </p>
+
+          <p>
+            Sa isang World Bank–Asian Development Bank study noong 2004 na pinamagatang Decentralization in the Philippines: Strengthening Local Government Financing and Resource Management, naitala na may mga LGU noon na nahihirapang tustusan ang centrally mandated salary increases.
+          </p>
+
+          <p>
+            Kabilang sa mga problemang inilarawan ang pagkakaiba-iba ng kakayahang pinansyal ng LGUs, pagkaantala sa salary increases at allowances, at paggamit ng ibang employment arrangements upang tugunan ang limitasyon sa gastusin.
+          </p>
+
+          <p>
+            Makasaysayang ebidensiya ito ng mga suliranin sa lokal na pamamahala. Hindi ito awtomatikong paglalarawan ng bawat LGU sa kasalukuyan.
+          </p>
+
+          <p>
+            May mas bagong pag-aaral din ang Philippine Institute for Development Studies (PIDS) noong 2025 tungkol sa compensation at pagsunod ng LGUs sa Magna Carta benefits ng public health workers.
+          </p>
+
+          <p>
+            Batay sa pagsusuri nito sa 2014–2022 LGU Health Scorecard data, ang naitalang compliance noong 2022 sa mga sinuring benepisyo ay 79.4% sa first-class LGUs at 64.7% sa fifth-class LGUs.
+          </p>
+
+          <p>
+            Hindi salary differential claims ang sinusukat ng mga numerong ito. Mga benepisyo ng public health workers ang pinag-aaralan. Pero ipinapakita nila ang isang mahalagang realidad: maaaring magkaiba ang aktuwal na pagpapatupad ng compensation-related obligations sa iba't ibang LGU.
+          </p>
+
+          <p>
+            Dito pumapasok ang mas malawak na usapin ng fiscal capacity, administrative performance, at patas na pag-access sa mga benepisyong ipinagkakaloob ng batas.
+          </p>
+
+          <p>
+            Hindi sapat na may nakasulat na benepisyo. Mahalaga ring masubaybayan kung naipatutupad ito, kanino, kailan, at kung may mga kwalipikadong hindi pa nakatatanggap.
+          </p>
+
+          <h2>
+            BAKIT MAHALAGA ANG PAYROLL RECORDS AT AUDIT TRAIL?
+          </h2>
+
+          <p>
+            Hindi dapat nakadepende sa personal na paliwanag ng isang opisyal ang katotohanan ng government payroll transaction.
+          </p>
+
+          <p>
+            May pag-aaral na Public Financial Management and Accountability Assessment noong 2016 na sinuportahan ng World Bank at iba pang development partners. Sa pagsusuri nito sa national government, nakakuha ng B+ assessment ang payroll controls.
+          </p>
+
+          <p>
+            Sinuri rito ang pagkakatugma ng personnel at payroll records, pamamahala sa salary changes, internal controls, at payroll audits. May mga umiiral na kontrol, ngunit kinilala rin ang ilang kahinaan sa pagpapatupad.
+          </p>
+
+          <p>
+            Hindi ito kasalukuyang audit rating ng lahat ng LGU. Gayunman, malinaw ang prinsipyong ginagamit sa ganitong pagsusuri: kailangang maihambing ang personnel records sa payroll at may dokumentadong batayan ang bawat pagbabagong nakaaapekto sa sahod.
+          </p>
+
+          <p>
+            Sa isang salary differential claim, dapat matukoy ang dating salary rate, bagong awtorisadong rate, covered period, anumang leave without pay, aktuwal na naibayad, at natitirang legal na obligasyon.
+          </p>
+
+          <p>
+            Dapat ding masundan ang pagproseso mula sa salary adjustment authority at supporting records hanggang sa approved payroll, disbursement voucher, accounting entries, at patunay ng pagbabayad.
+          </p>
+
+          <p>
+            May documentary requirements na itinakda ang COA Circular No. 2012-001 para sa mga karaniwang government transactions, kabilang ang salary differentials dahil sa promotion o step increment. Naglabas ng updated requirements sa COA Circular No. 2023-004, ngunit sinuspinde ang aplikasyon nito sa ilalim ng COA Circular No. 2024-004 noong Marso 14, 2024, retroactive sa Hulyo 1, 2023. Muling ipinatupad ang Circular No. 2012-001 habang hinihintay ang revised guidelines.
+          </p>
+
+          <p>
+            Kaya kailangang tukuyin kung aling documentary requirements ang legal na naaangkop sa petsa at uri ng transaksiyon. Hindi maaaring basta gamitin ang mas bagong circular bilang pamantayan sa isang naunang pagbabayad kung hindi pa ito umiiral o hindi ito naaangkop noong panahong iyon.
+          </p>
+
+          <h2>
+            PAANO KUNG MAY BINAGO SA DISBURSEMENT VOUCHER?
+          </h2>
+
+          <p>
+            Hindi lahat ng correction sa government document ay falsification.
+          </p>
+
+          <p>
+            May mga pagkakataong kinakailangang itama ang maling petsa, amount, o payroll description. Maaari itong maging lehitimong accounting correction kung ginawa sa wastong paraan, may awtorisasyon, at suportado ng orihinal na records.
+          </p>
+
+          <p>
+            Pero hindi rin maliit na bagay ang pagbabago sa taong saklaw ng pagbabayad.
+          </p>
+
+          <p>
+            Kung ang dokumento ay dating tumutukoy sa isang taon ngunit binago upang tumukoy sa ibang panahon, mahalagang matukoy kung kailan ginawa ang correction, sino ang nag-awtorisa, at kung tugma ito sa underlying payroll at salary adjustment records.
+          </p>
+
+          <p>
+            Dahil dito maaaring nakasalalay kung ang ibinayad ay para sa nakaraang serbisyo o para sa panahong nasa ibang posisyon na ang tumanggap.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG PAGBABAGO SA DOKUMENTO AY PANDARAYA. PERO KAPAG MAHAHALAGANG DETALYE NG PAGBABAYAD ANG BINAGO, HINDI SAPAT ANG PALIWANAG LAMANG—KAILANGAN ANG MALINAW NA BATAYAN, WASTONG AWTORISASYON, AT MGA DOKUMENTONG MAGPAPATUNAY.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG WALA RAW COA DISALLOWANCE, TAPOS NA BA ANG USAPIN?
+          </h2>
+
+          <p>
+            Hindi ganoon kasimple.
+          </p>
+
+          <p>
+            Ang Commission on Audit ang may mahalagang tungkulin sa pagsusuri ng paggamit ng pampublikong pondo. Maaari itong mag-isyu ng Notice of Suspension kapag may kailangang linawin o suportahang transaksiyon, at Notice of Disallowance kapag may paggastos na hindi pinahihintulutan batay sa naaangkop na audit findings.
+          </p>
+
+          <p>
+            Kung walang naitalang disallowance, mahalagang impormasyon iyon sa pagsusuri.
+          </p>
+
+          <p>
+            Pero magkaiba ang kawalan ng Notice of Disallowance at ang pagkakaroon ng isang pinal at tiyak na legal na paghatol sa lahat ng isyung kaugnay ng transaksiyon.
+          </p>
+
+          <p>
+            Hindi rin awtomatikong patunay ng iregularidad ang pagkakaroon ng audit question o observation. Maaaring may paliwanag o dokumentong kailangan pang suriin.
+          </p>
+
+          <p>
+            Ang tamang batayan ay ang kabuuang audit record, mga patakaran, orihinal na dokumento, at anumang pinal na pasya ng kinauukulang awtoridad.
+          </p>
+
+                            <h2>
+            POSIBLE BANG MAKATANGGAP NG BAYAD MULA SA DATING POSISYON KAHIT NASA BAGONG OPISINA NA?
+          </h2>
+
+          <p>
+            Posible, depende sa tunay na katangian ng bayad at sa mga naaangkop na constitutional at statutory restrictions.
+          </p>
+
+          <p>
+            Kung may dati nang legal na pagkakautang para sa serbisyong naibigay bago lumipat ng posisyon, hindi awtomatikong nagiging bagong sahod sa kasalukuyang trabaho ang delayed payment na iyon.
+          </p>
+
+          <p>
+            Pero dapat ding suriin ang mga limitasyon sa kompensasyon ng public officials.
+          </p>
+
+          <p>
+            Ipinagbabawal ng Article IX-B, Section 8 ng 1987 Constitution ang additional, double, o indirect compensation maliban kung partikular na pinahihintulutan ng batas. May mas tiyak ding pagbabawal sa ibang emoluments para sa Pangulo at Bise Presidente habang nanunungkulan sa ilalim ng Article VII, Section 6.
+          </p>
+
+          <p>
+            Hindi sapat na dalawang government office ang lumabas sa income records sa parehong taon upang awtomatikong masabing ilegal ang lahat ng natanggap.
+            Pero hindi rin sapat na tawaging back pay ang isang halaga upang matiyak na hindi ito saklaw ng anumang constitutional prohibition.
+          </p>
+
+          <p>
+            Kailangang alamin kung kailan naging legal na karapatan ang naturang bayad, anong panahon at serbisyo ang saklaw nito, kung tama ang halagang kinuwenta, at kung pinahihintulutan ng mga naaangkop na batas ang pagbabayad nito.
+          </p>
+
+          <h2>
+            PAANO NATIN MALALAMAN KUNG PATAS ANG PAGBAYAD SA LAHAT NG KWALIPIKADONG EMPLEYADO NG LGU?
+          </h2>
+
+          <p>
+            Ito ang isa sa pinakamahalagang tanong na hindi masasagot sa pamamagitan lamang ng pagtingin sa payroll ng isang opisyal.
+          </p>
+
+          <p>
+            Kailangan ang mas malawak na pagsusuri.
+          </p>
+
+          <p>
+            Sino ang saklaw? Dapat may kumpletong listahan ng mga posisyong kwalipikado sa partikular na salary adjustment, kasama ang applicable salary grade, step, employment status, at panahong saklaw.
+          </p>
+
+          <p>
+            Ano ang aprubadong salary schedule? Dapat maipakita ang pag-apruba ng lokal na konseho, ang ordinansang naglalaan ng pondo, ang petsa kung kailan nagsimulang ipatupad ang salary adjustment, at kung buong salary rate o pare-parehong porsiyento lamang ng itinakdang salary schedule ang ipinatupad.
+          </p>
+
+          <p>
+            Ilan na ang nabayaran? Kailangang malaman kung ilang kwalipikadong kawani ang nakatanggap na, magkano ang kabuuang naibayad, ilan ang pending, at bakit hindi pa napoproseso ang iba.
+          </p>
+
+          <p>
+            Pareho ba ang dokumentaryong pamantayan? Kung may mga empleyadong naantala dahil sa kulang na requirements, dapat malinaw kung ano ang mga iyon at kung pare-parehong ipinatutupad ang naaangkop na patakaran.
+          </p>
+
+          <p>
+            Pareho ba ang prayoridad sa pagproseso? Makatuwirang ihambing kung kailan naging kumpleto ang claims, kailan ito naaprubahan, at kailan naibayad. Hindi sapat na petsa ng payout lamang ang ihambing dahil maaaring magkaiba ang oras ng pagkakumpleto ng dokumento.
+          </p>
+
+          <p>
+            Hindi kailangang ilabas sa publiko ang lahat ng pribadong detalye ng bawat empleyado para magawa ito. Maaaring magbigay ang LGU ng aggregate report ayon sa opisina, position group, covered period, bilang ng claims, at payment status, habang pinoprotektahan ang personal na impormasyong saklaw ng Data Privacy Act.
+          </p>
+
+          <p>
+            Mahalaga rin ang mga annual budget at financial reports na inilalathala sa ilalim ng DILG Full Disclosure Policy. Ngunit ang mga pangkalahatang budget report ay hindi awtomatikong nagpapatunay na nabayaran na ang lahat ng kwalipikadong empleyado.
+          </p>
+
+          <p>
+            Kailangan pa ring i-reconcile ang mga iyon sa awtorisadong payroll at personnel records.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGIGING PATAS AY HINDI NAPATUTUNAYAN DAHIL MAY ISANG OPISYAL NA NABAYARAN. NAPATUTUNAYAN ITO SA PAGTUTUGMA NG PATAKARAN AT AKTUWAL NA PAGPAPATUPAD SA LAHAT NG SAKLAW NITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG ARAL MULA SA IMPEACHMENT HEARING?
+          </h2>
+
+          <p>
+            Sa pagdinig noong Nobyembre 10, 2026, iniharap ang paliwanag na ang ₱64,194.72 na natanggap ni Vice President Sara Duterte mula sa Davao City government noong 2023 ay net salary differentials para sa kanyang panunungkulan bilang mayor noong 2020 at 2021.
+          </p>
+
+          <p>
+            Ayon sa iniharap na payroll figures, ₱31,718.64 ang para sa 2020 at ₱32,476.08 para sa 2021.
+          </p>
+
+          <p>
+            Ang paliwanag ng testigo ay naantala ang pagbabayad dahil sa pagkumpleto ng supporting documents. Tinanong naman sa pagdinig ang tagal ng pagkaantala, corrections sa disbursement vouchers, at pagkakatugma ng mga dokumento sa tax records.
+          </p>
+
+          <p>
+            Nabanggit din ang ₱82,327.45 na gross compensation sa BIR record. Hindi ito maaaring basta ihambing bilang kaparehong halaga ng ipinakitang payroll differential nang hindi sinusuri kung gross o net ang mga numero, anong compensation components ang kasama, at paano ginawa ang deductions.
+          </p>
+
+          <p>
+            Sinabi rin ng testigo na may ibang empleyadong hindi pa nakatatanggap dahil sa hindi kumpletong requirements, ngunit hindi niya makumpirmang lahat ng kwalipikado ay nabayaran na.
+          </p>
+
+          <p>
+            Mahalaga ang mga testimonya at dokumentong ito, pero ang mga ito ay ebidensiyang dapat suriin, hindi awtomatikong pinal na hatol sa legalidad o ilegalidad ng transaksiyon.
+          </p>
+
+          <p>
+            Dito lalong nagiging makabuluhan ang tanong tungkol sa kabuuang payroll implementation ng LGU.
+          </p>
+
+          <p>
+            Kung may naantalang salary differential ang isang mataas na opisyal, ilang iba pang kwalipikadong kawani ang nagkaroon ng kaparehong pagkaantala? May records bang magpapakita na ang bawat isa ay naproseso ayon sa iisang legal na patakaran? Kung may pagkakaiba sa pagproseso, ano ang dokumentadong dahilan?
+          </p>
+
+          <p>
+            Hindi sapat ang paghihinala upang patunayan ang paboritismo. Pero hindi rin sapat ang pangkalahatang katiyakan na patas ang sistema kung wala namang maipakitang datos.
+          </p>
+
+          <h2>
+            BAKIT DAPAT ITONG PAKIALAMAN NG ORDINARYONG MAMAMAYAN?
+          </h2>
+
+          <p>
+            Dahil ang sahod ng mga public officials at employees ay hindi pribadong perang kusang ipinapamigay ng sinumang namumuno.
+          </p>
+
+          <p>
+            Bahagi ito ng pampublikong pondong dapat gamitin ayon sa batas, aprubadong budget, at wastong accounting procedures.
+          </p>
+
+          <p>
+            Hindi dapat parusahan ang isang kawani sa pamamagitan ng hindi pagbabayad sa legal niyang sahod dahil lamang nagretiro, lumipat ng opisina, o natapos na ang kanyang termino.
+          </p>
+
+          <p>
+            Pero hindi rin dapat magkaroon ng espesyal na pagtrato sa isang opisyal dahil sa kanyang ranggo, impluwensiya, o koneksiyon.
+          </p>
+
+          <p>
+            Ang salary differential ay hindi likas na katiwalian. Isa itong lehitimong paraan ng pagwawasto sa kulang na kompensasyon.
+          </p>
+
+          <p>
+            Ang dapat suriin ay kung tunay na may legal na pagkakautang, kung tama ang halagang kinuwenta, kung awtorisado ang pondo at pagbabayad, at kung makatarungan ang pagpapatupad sa lahat ng kwalipikado.
+          </p>
+
+          <p>
+            Mahalaga ang internal payroll controls, malinaw na mga tala, at independent audit dahil hindi sapat ang tiwala lamang sa paliwanag ng sinumang may hawak ng kapangyarihan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI MASAMA ANG HABULIN ANG SAHOD NA LEGAL NA DAPAT MATANGGAP. ANG DAPAT BANTAYAN AY KUNG MAY NAKATATANGGAP NG HINDI DAPAT, O MAY NAPAGKAKAITAN NG DAPAT NAMAN SA KANYA.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa gobyerno, may karapatan ang empleyado sa wastong kompensasyon. May karapatan din ang mamamayan na maningil ng malinaw na pananagutan sa paggasta.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG MAY LEGAL NA PAGKAKAUTANG, BAYARAN. KUNG MAY PAGKAANTALA, IPALIWANAG. KUNG MAY PAGKAKAIBA SA PAGTRATO, PATUNAYAN ANG BATAYAN. AT KUNG MAY IREGULARIDAD, PANAGUTIN ANG RESPONSABLE.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              DAHIL ANG KABAN NG BAYAN AY HINDI PONDO NG MGA NAKAUPO. PONDO ITO NG MAMAMAYAN—AT ANG PAGSUNOD SA BATAS AY HINDI DAPAT NAKADEPENDE SA TAAS NG POSISYON NG TATANGGAP.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            SOURCES
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>Republic Act No. 11466</strong> —
+              <em>Salary Standardization Law of 2019, Sections 2, 10, 11, 13–15.</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra2020/ra_11466_2020.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://lawphil.net/statutes/repacts/ra2020/ra_11466_2020.html
+              </a>
+            </li>
+
+            <li>
+              <strong>Republic Act No. 7160</strong> —
+              <em>Local Government Code, Section 325.</em>
+              <a
+                href="https://officialgazette.gov.ph/1991/10/10/republic-act-no-7160/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://officialgazette.gov.ph/1991/10/10/republic-act-no-7160/
+              </a>
+            </li>
+
+            <li>
+              <strong>DBM Local Budget Circular No. 121 (2020) at No. 143 (2022)</strong> —
+              <em>LGU salary schedule implementation and uniform partial adjustment.</em>
+              <a
+                href="https://www.dbm.gov.ph/wp-content/uploads/Issuances/2020/Local-Budget-Circular/LOCAL-BUDGET-CIRCULAR-NO-121.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.dbm.gov.ph/wp-content/uploads/Issuances/2020/Local-Budget-Circular/LOCAL-BUDGET-CIRCULAR-NO-121.pdf
+              </a>
+            </li>
+
+            <li>
+              <strong>Executive Order No. 64 (2024), Section 4</strong> —
+              <em>Updated salary schedule, LGU income-class ceilings, full adoption exception, at uniform implementation.</em>
+              <a
+                href="https://lawphil.net/executive/execord/eo2024/eo_64_2024.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://lawphil.net/executive/execord/eo2024/eo_64_2024.html
+              </a>
+            </li>
+
+            <li>
+              <strong>DBM Local Budget Circular No. 160 (2024)</strong> —
+              <em>Implementation ng updated LGU salary schedule sa ilalim ng EO 64.</em>
+              <a
+                href="https://www.dbm.gov.ph/wp-content/uploads/Issuances/2024/Local-Budget-Circular/LOCAL-BUDGET-CIRCULAR-NO-160.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.dbm.gov.ph/wp-content/uploads/Issuances/2024/Local-Budget-Circular/LOCAL-BUDGET-CIRCULAR-NO-160.pdf
+              </a>
+            </li>
+
+            <li>
+              <strong>Commission on Audit</strong> —
+              <em>Circular Nos. 2012-001 at 2023-004, documentary requirements for government transactions.</em>
+              <a
+                href="https://www.coa.gov.ph/wpfd_file/coa-circular-no-2023-004-june-14-2023/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.coa.gov.ph/wpfd_file/coa-circular-no-2023-004-june-14-2023/
+              </a>
+            </li>
+
+            <li>
+              <strong>Commission on Audit</strong> —
+              <em>Circular No. 2024-004, suspension ng aplikasyon ng Circular No. 2023-004 at reinstatement ng Circular No. 2012-001.</em>
+              <a
+                href="https://www.coa.gov.ph/wpfd_file/coa-circular-no-2024-004-march-14-2024/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.coa.gov.ph/wpfd_file/coa-circular-no-2024-004-march-14-2024/
+              </a>
+            </li>
+
+            <li>
+              <strong>Philippine Institute for Development Studies (2025)</strong> —
+              <em>Challenges and Policy Options in Health Human Resource Compensation, Magna Carta Compliance, and Salary Standardization.</em>
+              <a
+                href="https://doi.org/10.62986/dp2025.15"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.62986/dp2025.15
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank–ADB (2004)</strong> —
+              <em>Decentralization in the Philippines: Strengthening Local Government Financing &amp; Resource Management.</em>
+              <a
+                href="https://documents1.worldbank.org/curated/en/794951468143968070/pdf/261041PH0rev.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://documents1.worldbank.org/curated/en/794951468143968070/pdf/261041PH0rev.pdf
+              </a>
+            </li>
+
+            <li>
+              <strong>World Bank and development partners (2016)</strong> —
+              <em>Philippines Public Financial Management and Accountability Assessment, PI-23 Payroll Controls.</em>
+              <a
+                href="https://documents1.worldbank.org/curated/en/402191467282734103/pdf/105753-REVISED-P145123-PUBLIC-Report-2016-Philippines-PEFA-Assessment-2016-June-30-FIN.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://documents1.worldbank.org/curated/en/402191467282734103/pdf/105753-REVISED-P145123-PUBLIC-Report-2016-Philippines-PEFA-Assessment-2016-June-30-FIN.pdf
+              </a>
+            </li>
+
+            <li>
+              <strong>GMA News, November 2026</strong> —
+              <em>Testimony and documents concerning the salary-differential issue in the impeachment proceedings.</em>
+              <a
+                href="https://www.gmanetwork.com/news/topstories/nation/1009045/sara-duterte-s-p64-000-davao-payout-not-reflected-in-2024-itr-prosecution-says/story/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.gmanetwork.com/news/topstories/nation/1009045/sara-duterte-s-p64-000-davao-payout-not-reflected-in-2024-itr-prosecution-says/story/
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
