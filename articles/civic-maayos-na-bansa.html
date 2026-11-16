@@ -1,1 +1,2536 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="Gusto natin ng maayos na bansa—pero tayo, maayos ba? Isang fact-based na Civic Explainer tungkol sa pananagutan ng gobyerno at mamamayan sa basura, pabahay, kalsada, flood control, tubig, enerhiya, public transport, maintenance, at pangangalaga sa pampublikong pasilidad."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-maayos-na-bansa.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-maayos-na-bansa.html"
+  >
+
+  <title>GUSTO NATIN NG MAAYOS NA BANSA—PERO TAYO, MAAYOS BA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          GUSTO NATIN NG MAAYOS NA BANSA—PERO TAYO, MAAYOS BA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-maayos-na-bansa.png"
+            alt="Simbolikong visual ng isang sirang rebulto na nakaturo sa gitna ng maruming komunidad, tambak na basura, baha, sira-sirang pampublikong kapaligiran, at mga simbolo ng pabahay, pera, at pamahalaan bilang representasyon ng magkaugnay na pananagutan ng gobyerno at mamamayan sa pagpapanatili ng maayos na bansa."
+          >
+
+        </div>
+
+            </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Gusto natin ng malinis na kapaligiran, pero may mga taong kung saan-saan nagtatapon ng basura. Gusto natin ng maayos na pabahay, pero may mga pasilidad na napapabayaan, sinisira, o pinagkakakitaan. Gusto natin ng maluwag na kalsada, pero may ginagawang pribadong garahe ang daanang para sana sa lahat.
+          </p>
+
+          <p>
+            At kapag nakita natin ang malilinis na lugar, modernong imprastraktura, at maayos na serbisyo sa ibang bansa, iisa ang madalas nating tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              “BAKIT SA KANILA NAGAGAWA, PERO SA ATIN HINDI?”
+            </p>
+          </blockquote>
+
+          <p>
+            “Bakit sa Japan, may malalaking flood-control facilities?”
+          </p>
+
+          <p>
+            “Bakit sa Singapore, maayos ang public housing at water system?”
+          </p>
+
+          <p>
+            “Bakit sa South Korea, organisado ang waste management?”
+          </p>
+
+          <p>
+            “Bakit sa ibang bansa, may malawakang solar facilities, maayos na transportasyon, at malilinis na pampublikong lugar?”
+          </p>
+
+          <p>
+            “Bakit sa kanila meron, pero sa Pilipinas na sagana sa likas na yaman, wala o kulang?”
+          </p>
+
+          <p>
+            Mga tanong na may batayan. Hindi masamang magkumpara, at hindi rin mali ang humiling ng mas mahusay na pamamahala.
+          </p>
+
+          <p>
+            May malaking pananagutan ang gobyerno. Ito ang may kapangyarihan, pampublikong pondo, at pangunahing obligasyong magplano, magtayo, magpatakbo, at magpanatili ng mga sistemang kailangan ng mamamayan.
+          </p>
+
+          <p>
+            Pero hindi rin sapat na gobyerno lamang ang laging sinusuri natin.
+          </p>
+
+          <p>
+            Dahil may pagkakaiba ang imprastrakturang hindi naitayo, pasilidad na hindi maayos ang pagkakagawa, at pasilidad na naitayo nang maayos pero kalauna'y sinira, inabuso, o pinabayaang masira.
+          </p>
+
+          <p>
+            May mga problemang nangangailangan ng bilyong pisong pamumuhunan, mahusay na pagpaplano, at matatag na institusyon.
+          </p>
+
+          <p>
+            Pero mayroon ding mga problemang lalong lumalala dahil sa simpleng hindi pagsunod sa batas, kawalan ng pakialam sa kapwa, at pag-una sa pansariling kaginhawaan.
+          </p>
+
+          <blockquote>
+            <p>
+              NAKIKITA NATIN ANG MGA MAGAGANDANG PASILIDAD SA IBANG BANSA. PERO GAANO NATIN NAKIKITA ANG MGA PATAKARAN, SISTEMA NG PAGPAPANATILI, AT PAKIKIISA NG MGA MAMAMAYANG GUMAGAMIT NITO?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang ipalagay na mas mabuti ang lahat ng mamamayan sa ibang bansa. May mga lumalabag din sa kanila.
+          </p>
+
+          <p>
+            Pero mahalagang maunawaan na ang mga sistemang mahusay na gumagana ay hindi lamang itinatayo. Pinamamahalaan, minementina, sinusunod, at sama-samang pinangangalagaan ang mga ito.
+          </p>
+
+          <p>
+            Kaya hindi lang dapat itanong kung bakit wala tayong katulad ng mayroon sila.
+          </p>
+
+          <p>
+            Dapat din nating itanong: Kung mayroon na tayo, paano natin ito ginagamit? Paano natin ito pinananatili? At anong mga ginagawa natin ang mismong nakapagpapalala sa problemang lagi nating inirereklamo?
+          </p>
+
+          <p>
+            Hindi ito pag-alis ng pananagutan sa gobyerno.
+          </p>
+
+          <p>
+            Ito ay pagharap sa buong larawan ng problema—mula sa mga institusyong may obligasyong magbigay ng maayos na serbisyo hanggang sa mga mamamayang may pananagutang gamitin at pangalagaan ito.
+          </p>
+
+          <p>
+            At walang mas madaling makitang halimbawa nito kaysa sa isang problemang araw-araw nating nakakaharap: ang basurang basta na lamang itinatapon kung saan-saan.
+          </p>
+
+          <h2>
+            “BAKIT SA SOUTH KOREA, ORGANISADO ANG BASURA? SA ATIN, KUNG SAAN-SAAN NA LANG ITINATAPON!”
+          </h2>
+
+          <p>
+            Sa South Korea, gumagamit ang ilang komunidad ng Radio Frequency Identification o RFID-based food-waste collection system.
+          </p>
+
+          <p>
+            Sa sistemang ito, naitatala kung gaano karaming food waste ang itinatapon ng bawat sambahayan. Ang kaukulang disposal fee ay nakabatay sa bigat ng basurang itinapon.
+          </p>
+
+          <p>
+            Ayon sa Korea Environment Corporation, ang mga lokal na pamahalaan ang nangangasiwa sa field equipment habang may integrated data system para sa pamamahala ng food-waste information.
+          </p>
+
+          <p>
+            Hindi lamang ito simpleng pagsasabing huwag magkalat.
+          </p>
+
+          <p>
+            May teknolohiya, pasilidad, sistema ng koleksiyon, pagsukat, singil, at malinaw na pananagutan.
+          </p>
+
+          <p>
+            Sa Pilipinas, mayroon na tayong Republic Act 9003 o Ecological Solid Waste Management Act.
+          </p>
+
+          <p>
+            Sa Section 48 nito, malinaw na ipinagbabawal ang littering at pagtatapon ng basura sa mga pampublikong lugar, kabilang ang kalsada, sidewalk, kanal, estero, at parke.
+          </p>
+
+          <p>
+            May itinatakda rin itong waste segregation, collection systems, at Materials Recovery Facilities o MRFs.
+          </p>
+
+          <p>
+            Ayon sa Philippine Statistics Authority, umabot sa 20,458 ang naitalang MRFs noong 2025, at 375 naman ang sanitary landfills.
+          </p>
+
+          <p>
+            Sa parehong taon, tinatayang 60,760 tonelada ng basura bawat araw ang nalilikha sa bansa, batay sa waste-generation projection.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na lahat ng pasilidad na ito ay pantay-pantay ang kapasidad o mahusay ang operasyon. Ang dami ng pasilidad ay hindi awtomatikong sukatan ng kalidad ng serbisyo.
+          </p>
+
+          <p>
+            Pero may mas simpleng katotohanang kailangan ding harapin.
+          </p>
+
+          <p>
+            Ilang beses tayong nakakakita ng plastik, bote, food wrappers, sigarilyo, at iba pang kalat na basta na lamang iniiwan kung saan-saan?
+          </p>
+
+          <p>
+            May kumakain sa sasakyan, pagkatapos ay inihahagis ang basura sa labas.
+          </p>
+
+          <p>
+            May naglalakad at basta nagtatapon ng balat ng kendi o plastic cup.
+          </p>
+
+          <p>
+            May mga taong ginagawang tapunan ang bakanteng lote, kanal, estero, o gilid ng kalsada.
+          </p>
+
+          <p>
+            At may mga pagkakataong kahit may tamang tapunan, pinipili pa ring iwan ang basura sa pinakamalapit na lugar.
+          </p>
+
+          <p>
+            Pagkatapos, kapag marumi ang paligid, gobyerno agad ang sinisisi.
+          </p>
+
+          <p>
+            Kapag bumara ang kanal, puro reklamo sa drainage.
+          </p>
+
+          <p>
+            Kapag bumaha, lahat ng galit ay ibinubuhos sa flood-control projects.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO KUNG TAYO MISMO ANG SADYANG NAGTAPON NG BASURA SA KANAL, HINDI BA MAY PANANAGUTAN DIN TAYO SA PAGBARA NITO?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ibig sabihin na basura lamang ang sanhi ng pagbaha.
+          </p>
+
+          <p>
+            May mas malalaking salik tulad ng drainage capacity, land-use planning, malakas na pag-ulan, at kondisyon ng mga ilog at watershed.
+          </p>
+
+          <p>
+            Hindi rin patas na sisihin ang mga residente kung walang regular na koleksiyon o sapat na pasilidad para sa basura.
+          </p>
+
+          <p>
+            Obligasyon ng lokal na pamahalaan na magpatupad ng epektibong waste-management system.
+          </p>
+
+          <p>
+            Pero kung may tamang tapunan, koleksiyon, at malinaw na patakaran, hindi na maipapasa sa gobyerno ang kusang pagtatapon kung saan-saan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG BASURANG NAKIKITA NATIN AY PATUNAY NG KAPALPAKAN NG GOBYERNO. MAY BASURANG NAROROON DAHIL MAY TAONG SADYANG NAGTAPON AT WALANG PAKIALAM KUNG SINO ANG MAGLILINIS.
+            </p>
+          </blockquote>
+
+          <p>
+            At mas malalim ang epekto nito kaysa sa simpleng kalat.
+          </p>
+
+          <p>
+            Sa 2021 replication study nina Bergquist at mga kasamahan, na inilathala sa Journal of Environmental Psychology, nakitang mas mababa ang littering sa malinis na kapaligiran kaysa sa kapaligirang marami nang kalat.
+          </p>
+
+          <p>
+            Ipinapakita nito na ang nakikitang asal sa paligid ay may epekto sa susunod na pag-uugali ng mga tao.
+          </p>
+
+          <p>
+            Kapag normal ang kalat, may panganib na maging normal din ang pagtatapon.
+          </p>
+
+          <p>
+            Kapag pinananatiling malinis ang paligid at nasusunod ang mga patakaran, mas napapalakas ang pamantayan ng kalinisan.
+          </p>
+
+          <p>
+            Kaya hindi sapat na maghintay lamang ng tagapaglinis.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG BASURANG HAWAK MO AY PANANAGUTAN MO HANGGANG MAITAPON MO ITO NANG TAMA. HINDI ITO AWTOMATIKONG NAGIGING PROBLEMA NG GOBYERNO SA SANDALING AYAW MO NA ITONG HAWAKAN.
+            </p>
+          </blockquote>
+
+          <h2>
+            “BAKIT SA SINGAPORE, MAAYOS ANG PUBLIC HOUSING? SA ATIN, MAGANDA LANG KAPAG BAGO!”
+          </h2>
+
+          <p>
+            Sa Singapore, malaking bahagi ng populasyon ang nakatira sa mga pabahay ng Housing &amp; Development Board o HDB.
+          </p>
+
+          <p>
+            Ayon sa Singapore Department of Statistics, 77.2% ng resident households ang nakatira sa HDB dwellings noong 2025.
+          </p>
+
+          <p>
+            Pero ang mahalagang aral ay hindi lamang kung gaano karaming housing units ang naitayo.
+          </p>
+
+          <p>
+            May malinaw silang sistema para sa pangangalaga ng mga gusali at common areas.
+          </p>
+
+          <p>
+            Ayon sa HDB, ang mga Town Council ang namamahala at nagpapanatili ng mga common property tulad ng corridors, elevators, lighting, open spaces, at iba pang pasilidad.
+          </p>
+
+          <p>
+            May regular maintenance, inspections, repairs, at mga mekanismo para magbigay ng feedback ang mga residente.
+          </p>
+
+          <p>
+            May kanya-kanyang responsibilidad ang homeowners, Town Councils, at HDB.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi natatapos ang proyekto sa pagtatayo at turnover ng unit.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TUNAY NA TAGUMPAY NG PABAHAY AY HINDI LAMANG KUNG MAGANDA ITO SA ARAW NG PAGBUBUKAS. KUNDI KUNG MAAYOS PA RIN ITONG TIRHAN PAGKATAPOS NG MARAMING TAONG PAGGAMIT.
+            </p>
+          </blockquote>
+
+          <p>
+            Sa Pilipinas, mayroon ding socialized housing at relocation projects.
+          </p>
+
+          <p>
+            Pero may mga proyektong nahaharap sa problema sa lokasyon, kabuhayan, serbisyo, imprastraktura, at pamamahala ng komunidad.
+          </p>
+
+          <p>
+            Sa pag-aaral ng Asian Development Bank tungkol sa Southville 7 sa Laguna, ipinakita kung paano nakaapekto sa resettlement ang kakulangan sa pangunahing serbisyo, oportunidad sa trabaho, at community integration.
+          </p>
+
+          <p>
+            Kaya hindi makatarungang ipalagay na kapag nasira o napabayaan ang isang housing project, residente na agad ang may kasalanan.
+          </p>
+
+          <p>
+            May mga pagkakataong may depekto ang konstruksiyon, kulang ang maintenance funds, hindi malinaw ang responsibilidad sa pagkukumpuni, o hindi sapat ang serbisyo.
+          </p>
+
+          <p>
+            Pero may isa pang sitwasyong hindi dapat palampasin.
+          </p>
+
+          <p>
+            Paano kung maayos ang pagkakagawa ng pabahay, may malinaw na patakaran, at may gumaganang maintenance system—pero ang ilang nakatira ay patuloy na naninira, nagtatapon ng basura, at sumasakop sa mga espasyong para sana sa lahat?
+          </p>
+
+          <p>
+            May corridor na ginagawang bodega.
+          </p>
+
+          <p>
+            May common area na ginagawang personal na extension ng bahay.
+          </p>
+
+          <p>
+            May pader at pasilidad na sinisira o binabago nang walang pahintulot.
+          </p>
+
+          <p>
+            May mga lugar na hindi nililinis at pinababayaang maipon ang kalat.
+          </p>
+
+          <p>
+            May mga patakarang sadyang binabalewala dahil nakasanayan nang walang sumusunod.
+          </p>
+
+          <p>
+            Pagkalipas ng ilang taon, kapag pumangit ang komunidad, magtatanong kung bakit hindi na maayos ang lugar.
+          </p>
+
+          <blockquote>
+            <p>
+              PERO PAANO MANANATILING MAAYOS ANG ISANG PASILIDAD KUNG ANG MGA TAONG GUMAGAMIT NITO AY HINDI HANDANG PANGALAGAAN ITO?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi nangangahulugang lahat ng residente sa mga pabahay ay pabaya.
+          </p>
+
+          <p>
+            Marami ang nagsisikap magpanatili ng maayos na tahanan at komunidad.
+          </p>
+
+          <p>
+            Pero hindi rin puwedeng maging dahilan ang pagiging benepisyaryo upang mawala ang pananagutang sumunod sa makatarungang alituntunin.
+          </p>
+
+          <p>
+            May legal na batayan din ito.
+          </p>
+
+          <p>
+            Sa Republic Act 9904 o Magna Carta for Homeowners and Homeowners' Associations, kinikilala ang mga karapatan at tungkulin ng mga kasapi ng homeowners' associations.
+          </p>
+
+          <p>
+            Kabilang dito ang pagbabayad ng naaangkop na dues at assessments, paglahok sa mga pagpupulong at gawain ng asosasyon, at pagsunod sa mga wastong patakaran.
+          </p>
+
+          <p>
+            May kapangyarihan din ang mga asosasyong saklaw ng batas na pangasiwaan ang paggamit, pagkukumpuni, at pagpapanatili ng common areas, alinsunod sa kanilang legal na awtoridad at wastong proseso.
+          </p>
+
+          <p>
+            Hindi nito inaalis ang obligasyon ng developer, pamahalaan, o kinauukulang maintenance provider sa mga bagay na sila ang may responsibilidad.
+          </p>
+
+          <p>
+            Pero ipinapakita nitong hindi lamang pagmamay-ari o pagtanggap ng bahay ang usapin.
+          </p>
+
+          <p>
+            Kasama rito ang pamumuhay sa isang komunidad.
+          </p>
+
+          <h3>
+            AT MAY MAS MALALA PANG ANYO NG PANG-AABUSO: ANG PAGGAWANG NEGOSYO SA PABAHAY NA INILAAN PARA SA MGA NANGANGAILANGAN.
+          </h3>
+
+          <p>
+            Hindi lamang ito haka-haka.
+          </p>
+
+          <p>
+            Noong Enero 22, 2022, iniulat ng Philippine News Agency na 472 government housing units sa Zamboanga City Roadmap to Recovery and Reconstruction o Z3R resettlement sites ang natuklasang ilegal na naibenta sa ibang indibidwal.
+          </p>
+
+          <p>
+            Batay sa pagsusuri ng City Land Management and Housing Division, katumbas ito ng humigit-kumulang 20% ng permanent housing units sa naturang mga resettlement site.
+          </p>
+
+          <p>
+            Ayon sa ulat, pinag-aaralan ng lokal na pamahalaan ang mga legal na hakbang laban sa mga sangkot.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang lahat ng government housing beneficiaries ay gumagawa ng ganito.
+          </p>
+
+          <p>
+            Hindi rin ito pambansang estadistika ng housing abuse o katibayan ng pinal na hatol ng korte laban sa bawat taong sangkot.
+          </p>
+
+          <p>
+            Pero malinaw itong dokumentadong halimbawa ng problemang hindi dapat balewalain.
+          </p>
+
+          <p>
+            May mga pabahay na inilaan upang magkaroon ng disenteng tirahan ang mga kwalipikadong pamilyang nawalan o walang sariling bahay.
+          </p>
+
+          <p>
+            Kapag ilegal itong ibinebenta, inililipat, o ipinauupa upang pagkakitaan, nalilihis ang benepisyo mula sa orihinal na layunin ng programa.
+          </p>
+
+          <p>
+            May malinaw ding legal na batayan.
+          </p>
+
+          <p>
+            Sa Republic Act 7279, Section 14, may limitasyon sa pagbebenta, paglilipat, pagsasangla, o pagpapaupa ng mga lupa, improvements, at rights na saklaw ng socialized housing program.
+          </p>
+
+          <p>
+            Ang pinahihintulutang paglilipat ay nakabatay sa mga kwalipikasyong itinakda ng batas at ng kinauukulang ahensiya.
+          </p>
+
+          <p>
+            Ang ilegal na paglilipat ay maaaring maging null and void at may kaukulang konsekuwensiyang itinatakda ng batas.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na lahat ng pagpapaupa o paglilipat sa anumang government housing program ay awtomatikong ilegal.
+          </p>
+
+          <p>
+            Kailangang suriin ang mismong batas, uri ng housing award, kontrata, at pinahihintulutang arrangements.
+          </p>
+
+          <p>
+            Pero kung malinaw na ipinagbabawal ang pagbebenta o pagpapaupa at ginagawa pa rin ito upang kumita, hindi na simpleng usapin ng kahirapan ang pinag-uusapan.
+          </p>
+
+                            <blockquote>
+            <p>
+              PANG-AABUSO NA IYON SA BENEPISYONG INILAAN PARA SA ISANG LEHITIMONG PANGANGAILANGAN.
+            </p>
+          </blockquote>
+
+          <p>
+            At may pananagutan din ang mga ahensiyang dapat nagsusuri ng beneficiaries, nagmomonitor ng occupancy, at nagpapatupad ng mga kondisyon ng housing award.
+          </p>
+
+          <p>
+            Dapat ding tanungin kung bakit may mga benepisyaryong umaalis o naglilipat ng tirahan.
+          </p>
+
+          <p>
+            Maaaring may kaugnayan ito sa kawalan ng trabaho, layo sa kabuhayan, at kakulangan sa pangunahing serbisyo.
+          </p>
+
+          <p>
+            Hindi pare-pareho ang dahilan ng bawat kaso.
+          </p>
+
+          <p>
+            Pero hindi rin dapat gawing normal ang sadyang pananamantala sa programang pinondohan upang makatulong sa nangangailangan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA BIGYAN ANG TAO NG MAAYOS NA TIRAHAN KUNG WALANG SISTEMANG MAGPAPANATILI RITO. AT HINDI RIN SAPAT ANG MAAYOS NA SISTEMA KUNG MAY MGA RESIDENTENG SADYANG SINISIRA, INAABUSO, O PINAGKAKAKITAAN ANG MGA BENEPISYO AT PASILIDAD NA INILAAN PARA SA LAHAT.
+            </p>
+          </blockquote>
+
+          <h2>
+            “BAKIT SA IBANG BANSA, MALUWAG ANG KALSADA AT MAAYOS ANG SIDEWALK? SA ATIN, MAY KOTSE, PERO SA KALSADA ANG GARAHE!”
+          </h2>
+
+          <p>
+            Ito ang isa sa mga pinakasimpleng halimbawa ng pansariling kaginhawaang nagiging problema ng kapwa.
+          </p>
+
+          <p>
+            May mga pampublikong kalsadang hindi ganun kalapad, pero lalo pang sumisikip dahil sa mga sasakyang nakaparada sa mga ipinagbabawal o nakahahadlang na lugar.
+          </p>
+
+          <p>
+            May mga bangketang ginawa para sa pedestrian, pero ginagawang paradahan.
+          </p>
+
+          <p>
+            May mga daanang sinasakop ng permanenteng gamit, paninda, o pribadong istruktura.
+          </p>
+
+          <p>
+            Kapag may dumaraang sasakyan, nagkakasiksikan.
+          </p>
+
+          <p>
+            Kapag may batang naglalakad papasok sa paaralan, napipilitang bumaba sa kalsada dahil walang madaanan.
+          </p>
+
+          <p>
+            Kapag may emergency vehicle, nababawasan ang espasyong kailangan para makadaan nang mabilis.
+          </p>
+
+          <p>
+            At kapag may clearing operations, may mga nagagalit dahil nasanay nang gamitin ang pampublikong espasyo para sa sariling pangangailangan.
+          </p>
+
+          <p>
+            Hindi lahat ng on-street parking ay ipinagbabawal.
+          </p>
+
+          <p>
+            May mga lugar na maaaring magpark alinsunod sa lokal na regulasyon at mga karatula.
+          </p>
+
+          <p>
+            Pero malinaw ang Republic Act 4136 sa mga ipinagbabawal na parking locations, partikular sa Section 46.
+          </p>
+
+          <p>
+            Sa Section 52 naman, ipinagbabawal ang pagmamaneho o pagparada sa sidewalk, path, o alley na hindi nakalaan para sa vehicular traffic o parking.
+          </p>
+
+          <p>
+            May DILG Barangay Road Clearing Operations o BaRCO rin na naglalayong alisin ang mga obstruction sa mga pampublikong daanan.
+          </p>
+
+          <p>
+            Kaya hindi lamang ito usapin ng personal na opinyon.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAMPUBLIKONG KALSADA AY HINDI AWTOMATIKONG NAGIGING PRIBADONG GARAHE DAHIL LAMANG NASA TAPAT ITO NG BAHAY MO.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung sadyang ilegal o nakahahadlang ang pagparada, hindi nagiging tama ang gawain dahil matagal na itong ginagawa.
+          </p>
+
+          <p>
+            Hindi rin sapat na sabihing wala kang sariling garahe upang gawing permanenteng pasanin ng mga dumaraan ang problema sa paradahan.
+          </p>
+
+          <p>
+            May pananagutan din ang pamahalaan sa urban planning, maayos na parking regulations, transport alternatives, at patas na pagpapatupad ng batas.
+          </p>
+
+          <p>
+            Pero hindi puwedeng gamiting palusot ang mga pagkukulang sa pagpaplano upang gawing normal ang sadyang pagsakop sa daanang pampubliko.
+          </p>
+
+          <blockquote>
+            <p>
+              GUSTO NATIN NG MALUWAG NA KALSADA, PERO MAY MGA TAONG AYAW BITAWAN ANG ESPASYONG HINDI NAMAN PARA SA KANILA.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang ganitong pag-iisip ay hindi lamang nakikita sa parking.
+          </p>
+
+          <p>
+            Makikita rin ito sa pagtatapon ng basura, pagharang sa mga daanan, pagsira sa pampublikong pasilidad, at paggamit ng koneksiyon upang makalusot sa patakaran.
+          </p>
+
+          <p>
+            Ang pansariling kaginhawaan ay inuuna kahit may ibang mahihirapan.
+          </p>
+
+          <h2>
+            “BAKIT SA JAPAN, MAY MALALAKING FLOOD-CONTROL SYSTEM? SA ATIN, PAULIT-ULIT ANG BAHA!”
+          </h2>
+
+          <p>
+            May malalaking flood-management infrastructure ang Japan, kabilang ang Metropolitan Area Outer Underground Discharge Channel sa Saitama.
+          </p>
+
+          <p>
+            Ayon sa Ministry of Land, Infrastructure, Transport and Tourism ng Japan, ang sistemang ito ay may humigit-kumulang 6.3 kilometrong underground tunnel, na itinayo sa lalim na umaabot sa halos 50 metro sa ilalim ng lupa.
+          </p>
+
+          <p>
+            Dinisenyo ito upang ilipat ang sobrang tubig mula sa mas maliliit na ilog patungo sa mas malaking daluyan at mabawasan ang panganib ng pagbaha.
+          </p>
+
+          <p>
+            Sa Netherlands naman, ipinatupad ang Room for the River Programme mula 2006 hanggang 2019.
+          </p>
+
+          <p>
+            Ayon sa Rijkswaterstaat, isinagawa ang mga hakbang sa 34 lokasyon, na may kabuuang halagang humigit-kumulang €2.3 bilyon.
+          </p>
+
+          <p>
+            Layunin nitong mapabuti ang flood safety at kalidad ng pamumuhay ng tinatayang apat na milyong tao.
+          </p>
+
+          <p>
+            Hindi lamang ito simpleng pagtatayo ng mas matataas na flood barriers.
+          </p>
+
+          <p>
+            Kabilang dito ang pagbibigay ng mas malawak na espasyo sa mga ilog, pagbabago ng ilang floodplains, at mas mahusay na river management.
+          </p>
+
+          <p>
+            Hindi ito simpleng usapin ng mas disiplinadong mamamayan.
+          </p>
+
+          <p>
+            Kailangan ng engineering expertise, malaking puhunan, watershed management, land-use planning, at mahabang panahon ng pagpapatupad.
+          </p>
+
+          <p>
+            May flood-control projects din sa Pilipinas, pero kailangang suriin ang kalidad, kapasidad, maintenance, at aktuwal na epekto ng mga ito.
+          </p>
+
+          <p>
+            Ang pagbabara ng kanal dahil sa basura ay isa sa mga problemang maaaring palalain ng maling asal.
+          </p>
+
+          <p>
+            Pero hindi nito kayang ipaliwanag ang lahat ng pagbaha.
+          </p>
+
+          <blockquote>
+            <p>
+              KAILANGAN NG MAAYOS NA FLOOD-CONTROL SYSTEM. KAILANGAN DIN NG MGA MAMAMAYANG HINDI SADYANG NAGTATAPON NG BASURA SA MGA DALUYANG GINAWA UPANG PROTEKTAHAN SILA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito pagpili kung sino lang ang sisisihin.
+          </p>
+
+          <p>
+            Dalawang magkaibang responsibilidad ang kailangang sabay na gampanan.
+          </p>
+
+          <h2>
+            “BAKIT SA IBANG BANSA, MAY MALAWAKANG SOLAR FACILITIES AT MAAASAHANG KURYENTE? SA ATIN, KULANG PA RIN!”
+          </h2>
+
+          <p>
+            May solar farms at renewable-energy programs na rin sa Pilipinas.
+          </p>
+
+          <p>
+            Pero malaki pa rin ang agwat sa ilang karatig-bansa.
+          </p>
+
+          <p>
+            Ayon sa Renewable Capacity Statistics 2026 ng International Renewable Energy Agency o IRENA, sa pagtatapos ng 2025 ay umabot sa 3,892 megawatts ang installed solar photovoltaic capacity ng Pilipinas.
+          </p>
+
+          <p>
+            Sa Vietnam naman, umabot ito sa 19,252 megawatts sa parehong panahon—halos limang ulit ng kapasidad ng Pilipinas.
+          </p>
+
+          <p>
+            Hindi nangangahulugang limang ulit din ang aktuwal na kuryenteng nalilikha.
+          </p>
+
+          <p>
+            Magkaiba ang installed capacity at electricity generation.
+          </p>
+
+          <p>
+            Pero malinaw nitong ipinakikita ang agwat sa lawak ng naitayong solar infrastructure.
+          </p>
+
+          <p>
+            Ang pagpapalawak nito ay nangangailangan ng higit pa sa masaganang sikat ng araw.
+          </p>
+
+          <p>
+            Kailangan ng puhunan, maayos na transmission infrastructure, regulatory approvals, energy storage at iba pang paraan ng pagbalanse ng supply, at mahusay na koordinasyon ng electricity system.
+          </p>
+
+          <p>
+            Ganoon din sa maaasahang kuryente.
+          </p>
+
+          <p>
+            Hindi sapat na may power plant.
+          </p>
+
+          <p>
+            Kailangan din ng maayos na transmission, distribution, at maintenance.
+          </p>
+
+          <p>
+            Ayon sa pagsusuri ng World Bank gamit ang datos noong Hulyo 2024, pangalawa ang Pilipinas sa pinakamataas na average electricity tariff sa ASEAN, kasunod ng Singapore.
+          </p>
+
+          <p>
+            Binanggit sa pagsusuri ang epekto ng subsidies, limitadong kompetisyon sa ilang bahagi ng electricity sector, domestic taxation, at mahahabang regulatory processes.
+          </p>
+
+          <p>
+            Mahalagang tandaan na magkakaiba rin ang subsidies at electricity-pricing structures ng bawat bansa.
+          </p>
+
+          <p>
+            Pero malinaw na may mga hadlang sa sistema na hindi kayang solusyunan ng ordinaryong konsumer sa pagtitipid lamang.
+          </p>
+
+          <p>
+            Pangunahing pananagutan ng mga institusyon at energy-sector operators ang maayos na serbisyo.
+          </p>
+
+          <p>
+            Pero may pananagutan din ang mga konsumer sa ligtas na paggamit, pag-iwas sa ilegal na koneksiyon, at hindi pagsira o pang-aabuso sa mga pasilidad.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG RESPONSABLENG KONSUMO AY MAHALAGA. PERO HINDI ITO KAPALIT NG MATATAG NA ENERGY INFRASTRUCTURE AT PATAS NA PAMAMAHALA.
+            </p>
+          </blockquote>
+
+          <h2>
+            “BAKIT SA SINGAPORE, MAAYOS ANG TUBIG? SA ATIN, MARAMING ILOG PERO MAY MGA LUGAR NA HIRAP SA SUPPLY!”
+          </h2>
+
+          <p>
+            Bumuo ang Singapore ng Four National Taps na binubuo ng local catchment water, imported water, reclaimed water o NEWater, at desalinated water.
+          </p>
+
+          <p>
+            Sa pamamagitan ng advanced treatment technology at pangmatagalang water planning, napalawak nila ang mga mapagkukunan ng maaasahang supply.
+          </p>
+
+          <p>
+            Samantala, hindi awtomatikong nagiging malinis na inuming tubig ang maraming ilog at ulan sa Pilipinas.
+          </p>
+
+          <p>
+            Batay sa WHO/UNICEF Joint Monitoring Programme data, 48.5% ng populasyon ng Pilipinas ang gumagamit ng safely managed drinking water services noong 2024.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang ang natitirang populasyon ay walang anumang access sa tubig.
+          </p>
+
+          <p>
+            Ang safely managed ay mas mataas na pamantayan: tubig mula sa improved source, available kapag kailangan, nasa sariling tirahan o bakuran, at walang kontaminasyong sinusukat ng pamantayan.
+          </p>
+
+          <p>
+            Kailangan ng treatment plants, pipelines, reservoirs, leakage management, sanitation, at pangangalaga sa watershed.
+          </p>
+
+          <p>
+            Hindi rin kayang solusyunan ng ordinaryong pamilya ang kawalan ng pipeline sa kanilang lugar.
+          </p>
+
+          <p>
+            Pero may pananagutan din ang komunidad sa hindi pagtatapon ng basura o wastewater sa mga pinagkukunan ng tubig at sa hindi pagsira sa water facilities.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG MARAMING TUBIG SA KALIKASAN KUNG WALA ANG SISTEMANG MAGHAHATID NITO NANG LIGTAS. AT HINDI RIN SAPAT ANG SISTEMANG IYON KUNG HINAHAYAANG MAKONTAMINA O MASIRA ANG MGA PASILIDAD NA NAGPAPATAKBO RITO.
+            </p>
+          </blockquote>
+
+                            <h2>
+            “BAKIT SA IBANG BANSA, MAS MAAYOS ANG PUBLIC TRANSPORT AT MGA PAMPUBLIKONG PASILIDAD?”
+          </h2>
+
+          <p>
+            Hindi lamang malalaking gusali at modernong sasakyan ang dahilan kung bakit gumagana ang isang transport system.
+          </p>
+
+          <p>
+            Kailangan ng magkakaugnay na railway lines, bus routes, sidewalks, traffic management, maintenance, at maayos na urban planning.
+          </p>
+
+          <p>
+            Sa 2026 OECD infrastructure assessment ng Pilipinas, binigyang-diin ang mga kakulangan sa transport connectivity at mataas na logistics costs.
+          </p>
+
+          <p>
+            Batay sa datos na ginamit nito para sa 2023, apat lamang ang operational urban rail lines na may pinagsamang 76.9 kilometro.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na wala nang kasunod na pagpapalawak o na ito lamang ang kabuuang railway infrastructure sa bansa.
+          </p>
+
+          <p>
+            Pero ipinakikita nito kung gaano kalaki ang kailangang habulin sa urban mobility.
+          </p>
+
+          <p>
+            Hindi sapat ang road widening kung nananatiling kapos ang pampublikong transportasyon.
+          </p>
+
+          <p>
+            Hindi rin sapat ang pagtatayo ng sidewalks, pedestrian facilities, at public parks kung hinahayaang harangan, sirain, o sakupin ang mga ito.
+          </p>
+
+          <p>
+            May pananagutan ang pamahalaan na magtayo at magpanatili ng maayos na pampublikong imprastraktura.
+          </p>
+
+          <p>
+            Pero may pananagutan din ang mga gumagamit na huwag gawing pribadong espasyo ang mga pasilidad na ginawa para sa lahat.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAMPUBLIKONG PASILIDAD AY HINDI NAGIGING PERSONAL NA PAG-AARI DAHIL LAMANG MALAPIT ITO SA BAHAY MO, ARAW-ARAW MO ITONG GINAGAMIT, O MATAGAL KA NANG NAKIKINABANG DITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            PERO ANO BA TALAGA ANG NAGPAPANATILI SA ISANG MAAYOS NA BANSA?
+          </h2>
+
+          <p>
+            Hindi lamang ang taas ng mga gusali.
+          </p>
+
+          <p>
+            Hindi lamang ang lawak ng mga kalsada.
+          </p>
+
+          <p>
+            Hindi lamang ang dami ng solar panels, flood-control projects, housing units, at waste-management facilities.
+          </p>
+
+          <p>
+            Mahalaga ang mga ito, pero hindi sapat.
+          </p>
+
+          <p>
+            Kailangan ng maayos na pamamahala, pangmatagalang maintenance, patas na pagpapatupad ng batas, transparent na paggamit ng pondo, at pakikilahok ng mamamayan.
+          </p>
+
+          <p>
+            Sa mga pag-aaral ni Elinor Ostrom tungkol sa pamamahala ng pinagsasaluhang likas na yaman, ipinakita ang kahalagahan ng malinaw na patakaran, pagmomonitor, pakikilahok ng mga gumagamit, at mga mekanismo upang tugunan ang paglabag.
+          </p>
+
+          <p>
+            Ang mga prinsipyong ito ay mahalaga ring pagbatayan sa pag-unawa sa sama-samang pangangalaga ng mga pasilidad at espasyong ginagamit ng komunidad, bagaman hindi direktang pag-aaral sa lahat ng uri ng pampublikong imprastraktura ang kanyang pananaliksik.
+          </p>
+
+          <p>
+            Kapag may common area, sino ang magpapanatili nito?
+          </p>
+
+          <p>
+            Kapag may nasirang pasilidad, sino ang mag-uulat, mag-aayos, at mananagot?
+          </p>
+
+          <p>
+            Kapag may lumalabag sa patakaran, patas ba ang pagpapatupad?
+          </p>
+
+          <p>
+            Kapag may kailangang pondohan para sa maintenance, malinaw ba ang pananagutan at paggamit ng pera?
+          </p>
+
+          <p>
+            At kapag may nakikitang maling gawain, lagi na lang ba itong palalampasin dahil ayaw makialam?
+          </p>
+
+          <blockquote>
+            <p>
+              DITO NAGKAKAIBA ANG INDIBIDWAL NA DISIPLINA AT SAMA-SAMANG PANANAGUTAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang indibidwal na disiplina ay ang sariling pagpiling sumunod sa patakaran kahit walang nagbabantay.
+          </p>
+
+          <p>
+            Ang sama-samang pananagutan naman ay ang pagkakaroon ng organisadong paraan upang mapangalagaan ang mga bagay na pinagsasaluhan ng komunidad.
+          </p>
+
+          <p>
+            Hindi sapat na may ilang residenteng masipag maglinis kung ang iba ay patuloy na nagkakalat at walang epektibong sistema para tugunan ito.
+          </p>
+
+          <p>
+            Hindi sapat na may isang taong nag-uulat ng sirang pasilidad kung walang malinaw na responsableng magkukumpuni.
+          </p>
+
+          <p>
+            Hindi sapat na may homeowners' association kung walang transparency sa pondo, malinaw na maintenance plan, at patas na pagpapatupad ng mga patakaran.
+          </p>
+
+          <p>
+            At hindi rin sapat na may barangay ordinansa kung hindi ito ipinapatupad nang pare-pareho.
+          </p>
+
+          <p>
+            Sa pananaliksik ni Ostrom tungkol sa matagumpay na pamamahala ng mga pinagsasaluhang yaman, mahalagang katangian ng mga matatag na sistema ang partisipasyon ng mga gumagamit sa pagbuo ng patakaran, pagmomonitor sa pagsunod, at angkop na pagtugon sa mga paglabag.
+          </p>
+
+          <p>
+            Hindi nito ibig sabihin na iisang modelo ang angkop sa lahat ng komunidad.
+          </p>
+
+          <p>
+            Ipinakikita nitong mahalaga ang pagkakaroon ng mga patakarang nauunawaan, kinikilala, at sama-samang pinananatili ng mga taong nakikinabang.
+          </p>
+
+          <p>
+            Makikita rin ang ganitong prinsipyo sa Singapore HDB system.
+          </p>
+
+          <p>
+            Hindi lamang iniiwan sa bawat residente ang buong responsibilidad sa common areas. May Town Councils na nangangasiwa sa maintenance, may pondong inilalaan, at may malinaw na paghahati ng tungkulin.
+          </p>
+
+          <p>
+            May sistema ang pamamahala, at may responsibilidad ang mga residente.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGKAKAISA AY HINDI LANG PAGSASAMA-SAMA KAPAG MAY CLEANUP DRIVE. NAKIKITA RIN ITO SA ARAW-ARAW NA PAGGALANG SA MGA PATAKARAN, PAKIKILAHOK SA MAINTENANCE, AT HINDI PAGKUNSINTI SA MGA GAWAING NAKASISIRA SA KOMUNIDAD.
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag may common facility, hindi sapat na sabihing gobyerno naman ang nagpagawa nito.
+          </p>
+
+          <p>
+            Kapag may nasirang ilaw, playground, drainage cover, o iba pang pasilidad, kailangang may sistemang mapagsusumbungan at may malinaw na responsableng kikilos.
+          </p>
+
+          <p>
+            Kapag may nakitang sadyang naninira, hindi dapat maging normal ang pananahimik o pagbibigay ng palusot dahil kakilala ang gumagawa.
+          </p>
+
+          <p>
+            At kapag may pondong kinokolekta para sa maintenance, kailangan ding may transparency at pananagutan sa paggamit nito.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI NABUBUO ANG MAAYOS NA KOMUNIDAD SA ISANG TAONG DISIPLINADO LAMANG. KAILANGAN NG MGA TAONG HANDANG MAKIPAGTULUNGAN, AT NG SISTEMANG NAGPAPATIBAY SA KANILANG SAMA-SAMANG PANANAGUTAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang kaayusan ng isang komunidad ay hindi lamang resulta ng pagkakaroon ng batas.
+          </p>
+
+          <p>
+            Kailangan din nitong maging normal ang pagsunod sa makatarungang patakaran, pag-aalaga sa pinagsasaluhang pasilidad, at hindi pagkunsinti sa malinaw na paglabag.
+          </p>
+
+          <p>
+            Hindi rin kailangang isipin na likas na mas mabuti ang ugali ng mga mamamayan ng ibang bansa.
+          </p>
+
+          <p>
+            May basura, vandalism, illegal parking, at paglabag din sa ibang mga lipunan.
+          </p>
+
+          <p>
+            Ang mahalagang pagkakaiba sa mga sistemang mahusay na gumagana ay may mga mekanismong nagpapadali sa tamang gawain, nagpapahirap sa pang-aabuso, at nagpapanagot sa lumalabag.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG DISIPLINA AY HINDI LANG DAHIL TAKOT MAHULI. MAS MATIBAY ITO KAPAG NAIINTINDIHAN NG TAO NA ANG PAMPUBLIKONG KAAYUSAN AY MAY PAKINABANG SA LAHAT—KASAMA SIYA.
+            </p>
+          </blockquote>
+
+          <h2>
+            AT DITO PAPASOK ANG MAS MALAWAK NA PANANAGUTAN NATIN BILANG MAMAMAYAN.
+          </h2>
+
+          <p>
+            Madalas nating sabihing dapat matino ang mga namumuno.
+          </p>
+
+          <p>
+            Tama.
+          </p>
+
+          <p>
+            Dapat mahusay silang mamahala, gumamit ng pondo, magbigay ng serbisyo, at managot sa mga pagkukulang.
+          </p>
+
+          <p>
+            Pero hindi ba dapat maging mapanuri rin tayo sa pagpili at pagsubaybay sa mga taong pinagkakatiwalaan natin ng kapangyarihan?
+          </p>
+
+          <p>
+            Hindi nangangahulugang lahat ng botante ay may pananagutan sa lahat ng pagkakamali ng nanalong opisyal.
+          </p>
+
+          <p>
+            At hindi rin dapat isisi sa mahihirap na botante ang sistemang gumagamit sa kanilang pangangailangan.
+          </p>
+
+          <p>
+            Pero hindi maikakaila na mahalaga ang pagboto, pakikilahok sa mga pampublikong usapin, pag-unawa sa mga programa, at patuloy na paniningil ng pananagutan.
+          </p>
+
+          <p>
+            Hindi rin dapat ipagtanggol ang isang opisyal sa lahat ng pagkakataon dahil lamang sinuportahan natin siya.
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG GUSTO NATIN NG MAAYOS NA PAMAMAHALA, HINDI DAPAT MABAGO ANG PAMANTAYAN NATIN NG TAMA AT MALI DEPENDE SA KUNG SINO ANG NAKAUPO O KUNG SINO ANG NAKIKINABANG.
+            </p>
+          </blockquote>
+
+          <p>
+            Ganoon din sa pang-araw-araw na buhay.
+          </p>
+
+          <p>
+            Hindi dapat maging tama ang illegal parking dahil sariling sasakyan natin.
+          </p>
+
+          <p>
+            Hindi dapat maging katanggap-tanggap ang maling pagtatapon dahil wala namang nakatingin.
+          </p>
+
+          <p>
+            Hindi dapat balewalain ang pagkasira ng pasilidad dahil gobyerno naman ang gumastos.
+          </p>
+
+          <p>
+            Hindi dapat angkinin ang common area dahil matagal na nating ginagamit.
+          </p>
+
+          <p>
+            At hindi dapat ikagalit ang patas na pagpapatupad ng batas dahil ngayon lamang tayo naapektuhan.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL HINDI LAHAT NG PROBLEMA SA LIPUNAN AY NANGANGAILANGAN NG BILYONG PISONG PROYEKTO PARA HINDI NATIN PALALAIN.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga bagay na nagsisimula sa hindi pagtatapon ng basura kung saan-saan.
+          </p>
+
+          <p>
+            Sa hindi pagharang sa pampublikong daanan.
+          </p>
+
+          <p>
+            Sa hindi pagsira sa pasilidad.
+          </p>
+
+          <p>
+            Sa paggalang sa kapwa gumagamit ng espasyo.
+          </p>
+
+          <p>
+            Sa pakikilahok sa maintenance at mga makatarungang patakaran ng komunidad.
+          </p>
+
+          <p>
+            At sa hindi pagkunsinti sa malinaw na paglabag dahil kakilala, kaibigan, o kamag-anak natin ang gumagawa.
+          </p>
+
+          <p>
+            Hindi nito kayang palitan ang pangangailangan sa mahusay na pamamahala.
+          </p>
+
+          <p>
+            Pero mahalaga ang mga ito upang gumana at mapanatili ang mga sistemang pinondohan para sa lahat.
+          </p>
+
+          <h2>
+            KAYA MALI ANG DALAWANG MADALING PALUSOT.
+          </h2>
+
+          <p>
+            Mali ang sabihing gobyerno ang may kasalanan sa lahat, kaya wala nang kailangang baguhin sa sariling asal at pananagutan.
+          </p>
+
+          <p>
+            Mali rin ang sabihing mamamayan lamang ang problema, kaya wala nang dapat panagutan ang mga namumuno.
+          </p>
+
+          <p>
+            Hindi magkapantay ang kapangyarihan ng dalawang panig.
+          </p>
+
+          <p>
+            Ang pamahalaan ang may pangunahing obligasyong magbigay ng maayos na imprastraktura, serbisyo, regulasyon, at pagpapatupad ng batas.
+          </p>
+
+          <p>
+            Hindi responsibilidad ng ordinaryong tao na magtayo ng pambansang railway, water-treatment plant, o flood-control tunnel gamit ang sariling pera.
+          </p>
+
+          <p>
+            Pero ang isang taong kusang nagtatapon ng basura sa kanal, naninira ng pasilidad, o ilegal na sumasakop sa pampublikong kalsada ay hindi maaaring magkunwaring wala siyang pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI KAILANGANG MAYAMAN KA PARA HUWAG MAGKALAT. HINDI KAILANGANG MAY POSISYON KA PARA HUWAG MANIRA NG PAMPUBLIKONG PASILIDAD. AT HINDI KAILANGANG MAGING POLITIKO KA PARA IRESPETO ANG KARAPATAN NG KAPWA SA DAANANG PARA SA LAHAT.
+            </p>
+          </blockquote>
+
+          <p>
+            Pero kailangan ng gobyernong nagbibigay ng makatotohanang paraan para sumunod ang tao, nagpapatupad ng batas nang patas, at hindi nagtatago sa likod ng salitang disiplina upang takasan ang sariling kakulangan.
+          </p>
+
+          <h2>
+            ANG HINDI NATIN DAPAT KALIMUTAN
+          </h2>
+
+          <p>
+            Kapag nakakakita tayo ng magagandang pasilidad sa ibang bansa, hindi lamang dapat natin tanungin kung bakit hindi iyon maitayo rito.
+          </p>
+
+          <p>
+            Dapat din nating tanungin kung paano nila ito pinananatili.
+          </p>
+
+          <p>
+            Sino ang nangangasiwa?
+          </p>
+
+          <p>
+            Sino ang nagbabayad para sa maintenance?
+          </p>
+
+          <p>
+            Paano ipinapatupad ang mga patakaran?
+          </p>
+
+          <p>
+            Paano nakikilahok ang mga residente?
+          </p>
+
+          <p>
+            At paano nagiging normal sa komunidad ang paggalang sa mga bagay na pinagsasaluhan?
+          </p>
+
+          <p>
+            Dahil kahit makapagtayo tayo ng magagandang pabahay, malalaking parke, maayos na kalsada, at modernong pasilidad, hindi sapat ang konstruksiyon kung hindi ito napapanatili.
+          </p>
+
+          <p>
+            Hindi rin magiging matagumpay ang maintenance kung sadyang inaabuso ang mga pasilidad at walang epektibong pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA MAGALING ANG GOBYERNONG NAGPATAYO. KAILANGAN DING MAAYOS ANG MGA INSTITUSYONG NAGPAPATAKBO AT NAGPAPANATILI—AT RESPONSABLE ANG MGA TAONG GUMAGAMIT.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya sa susunod na sabihin nating:
+          </p>
+
+          <p>
+            “Bakit sa ibang bansa, malinis?”
+          </p>
+
+          <p>
+            Tanungin din natin kung paano natin tinatapon ang sarili nating basura.
+          </p>
+
+          <p>
+            “Bakit sa ibang bansa, maayos ang pabahay?”
+          </p>
+
+          <p>
+            Tanungin din natin kung paano pinananatili ang mga gusali at common areas pagkatapos tirhan.
+          </p>
+
+          <p>
+            “Bakit sa ibang bansa, maluwag ang daanan?”
+          </p>
+
+          <p>
+            Tanungin din natin kung iginagalang ba natin ang sidewalk, kalsada, at espasyong para sa publiko.
+          </p>
+
+          <p>
+            At kapag tinanong natin kung bakit mas mahusay ang ilang sistema ng ibang bansa, huwag nating kalimutang suriin ang kanilang pagpaplano, pondo, maintenance, at mga institusyong nagpapatupad ng patakaran.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI LAHAT NG PAGKUKULANG NG PILIPINAS AY KASALANAN NG MAMAMAYAN. PERO HINDI RIN LAHAT NG PROBLEMANG INIREREKLAMO NATIN AY WALANG KINALAMAN SA SARILI NATING MGA KILOS.
+            </p>
+          </blockquote>
+
+          <p>
+            May mga proyektong kailangang itayo.
+          </p>
+
+          <p>
+            May mga batas na kailangang ipatupad.
+          </p>
+
+          <p>
+            May mga institusyong kailangang ayusin.
+          </p>
+
+          <p>
+            At may mga asal na kailangang tigilan.
+          </p>
+
+          <p>
+            MADALING MAINGGIT SA MAAYOS NA BANSANG ITINATAYO NG IBA.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MAS MAHIRAP AY MAGING BAHAGI NG PAGBUO AT PAGPAPANATILI NG MAAYOS NA BANSANG GUSTO NATIN PARA SA SARILI.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang kaunlaran ay hindi lamang nakikita sa dami ng bagong imprastraktura.
+          </p>
+
+          <p>
+            Nakikita rin ito sa kakayahan ng mga institusyon at mamamayan na panatilihing kapaki-pakinabang ang mga bagay na mayroon na.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA HINGIN NATIN ANG MGA PASILIDAD AT SISTEMANG MAYROON SA IBANG BANSA. KAILANGAN DIN NATIN ANG MGA PAMANTAYAN NG PANANAGUTANG NAGPAPAGANA AT NAGPAPANATILI SA MGA IYON.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              DAHIL KUNG ANG GUSTO LAMANG NATIN AY MAAYOS NA BANSA, PERO AYAW NATING ITIGIL ANG MGA GAWAING NAKASISIRA RITO, HINDI LANG GOBYERNO ANG KAILANGAN NATING SURIIN. KASAMA RIN ANG SARILI NATIN.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              <strong>WASTE MANAGEMENT AT BEHAVIORAL RESEARCH</strong>
+            </li>
+
+            <li>
+              Republic Act 9003 — <em>Ecological Solid Waste Management Act</em>, Section 48
+              (<a
+                href="https://lawphil.net/statutes/repacts/ra2001/ra_9003_2001.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://lawphil.net/statutes/repacts/ra2001/ra_9003_2001.html</a>)
+            </li>
+
+            <li>
+              Philippine Statistics Authority — <em>Environment Statistics: Residuals, 2025</em>
+              (<a
+                href="https://psa.gov.ph/statistics/environment-statistics/highlights/component-3-residuals"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://psa.gov.ph/statistics/environment-statistics/highlights/component-3-residuals</a>)
+            </li>
+
+            <li>
+              Korea Environment Corporation — <em>RFID-Based Food Wastes Management System</em>
+              (<a
+                href="https://www.keco.or.kr/en/lay1/S295T387C404/contents.do"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.keco.or.kr/en/lay1/S295T387C404/contents.do</a>)
+            </li>
+
+            <li>
+              Bergquist et al. (2021) — <em>Replicating the Focus Theory of Normative Conduct</em>, Journal of Environmental Psychology
+              (<a
+                href="https://www.sciencedirect.com/science/article/pii/S0272494421000268"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.sciencedirect.com/science/article/pii/S0272494421000268</a>)
+            </li>
+
+            <li>
+              <strong>PUBLIC HOUSING, MAINTENANCE AT HOUSING ABUSE</strong>
+            </li>
+
+            <li>
+              Singapore Department of Statistics — <em>Resident Households, 2025</em>
+              (<a
+                href="https://www.singstat.gov.sg/find-data/explore-data-themes/households/resident-households"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.singstat.gov.sg/find-data/explore-data-themes/households/resident-households</a>)
+            </li>
+
+            <li>
+              Singapore HDB — <em>Functions of HDB Branches and Town Councils</em>
+              (<a
+                href="https://www.hdb.gov.sg/managing-my-home/renovation-and-maintenance/home-maintenance/function-of-hdb-branches-and-town-councils"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.hdb.gov.sg/managing-my-home/renovation-and-maintenance/home-maintenance/function-of-hdb-branches-and-town-councils</a>)
+            </li>
+
+            <li>
+              Asian Development Bank — <em>Southville 7: Making Resettlement Work</em>
+              (<a
+                href="https://www.adb.org/publications/southville-7-making-resettlement-work"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.adb.org/publications/southville-7-making-resettlement-work</a>)
+            </li>
+
+            <li>
+              Philippine News Agency (January 22, 2022) — <em>472 Government Housing Units in Zamboanga City Reported Sold Illegally</em>
+              (<a
+                href="https://www.pna.gov.ph/articles/1166118"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.pna.gov.ph/articles/1166118</a>)
+            </li>
+
+            <li>
+              Republic Act 7279 — <em>Urban Development and Housing Act</em>, Section 14
+              (<a
+                href="https://lawphil.net/statutes/repacts/ra1992/ra_7279_1992.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://lawphil.net/statutes/repacts/ra1992/ra_7279_1992.html</a>)
+            </li>
+
+            <li>
+              Republic Act 9904 — <em>Magna Carta for Homeowners and Homeowners' Associations</em>
+              (<a
+                href="https://lawphil.net/statutes/repacts/ra2010/ra_9904_2010.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://lawphil.net/statutes/repacts/ra2010/ra_9904_2010.html</a>)
+            </li>
+
+            <li>
+              <strong>ROAD USE AT PUBLIC FACILITIES</strong>
+            </li>
+
+            <li>
+              Republic Act 4136 — <em>Land Transportation and Traffic Code</em>, Sections 46 and 52
+              (<a
+                href="https://lawphil.net/statutes/repacts/ra1964/ra_4136_1964.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://lawphil.net/statutes/repacts/ra1964/ra_4136_1964.html</a>)
+            </li>
+
+            <li>
+              DILG — <em>Barangay Road Clearing Operations</em>
+              (<a
+                href="https://sites.google.com/dilg.gov.ph/kauswagan-elibrary/barco"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://sites.google.com/dilg.gov.ph/kauswagan-elibrary/barco</a>)
+            </li>
+
+            <li>
+              OECD (2026) — <em>The Philippines: Accelerating Sustainable Infrastructure Investments</em>
+              (<a
+                href="https://www.oecd.org/en/publications/accelerating-sustainable-infrastructure-investments_031d486e-en/full-report/the-philippines_c11b72ab.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.oecd.org/en/publications/accelerating-sustainable-infrastructure-investments_031d486e-en/full-report/the-philippines_c11b72ab.html</a>)
+            </li>
+
+            <li>
+              <strong>FLOOD CONTROL, WATER AT ENERGY INFRASTRUCTURE</strong>
+            </li>
+
+            <li>
+              Japan MLIT — <em>Metropolitan Area Outer Underground Discharge Channel</em>
+              (<a
+                href="https://www.ktr.mlit.go.jp/edogawa/edogawa00576.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.ktr.mlit.go.jp/edogawa/edogawa00576.html</a>)
+            </li>
+
+            <li>
+              Rijkswaterstaat — <em>Netherlands Room for the River Programme</em>
+              (<a
+                href="https://www.rijkswaterstaat.nl/en/projects/iconic-structures/room-for-the-river"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.rijkswaterstaat.nl/en/projects/iconic-structures/room-for-the-river</a>)
+            </li>
+
+            <li>
+              IRENA (2026) — <em>Renewable Capacity Statistics 2026</em>
+              (<a
+                href="https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.irena.org/Publications/2026/Mar/Renewable-capacity-statistics-2026</a>)
+            </li>
+
+            <li>
+              World Bank (2024) — <em>Philippines First Energy Transition and Climate Resilience</em>
+              (<a
+                href="https://documents1.worldbank.org/curated/en/099102724233599901/pdf/P1813891fc101a0f180f51f6ec48391dd8.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://documents1.worldbank.org/curated/en/099102724233599901/pdf/P1813891fc101a0f180f51f6ec48391dd8.pdf</a>)
+            </li>
+
+            <li>
+              Singapore PUB — <em>Four National Taps</em>
+              (<a
+                href="https://www.pub.gov.sg/Resources/News-Room/PressReleases/2024/12/From-waste-to-resource---Managing-trade-effluent-discharge"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.pub.gov.sg/Resources/News-Room/PressReleases/2024/12/From-waste-to-resource---Managing-trade-effluent-discharge</a>)
+            </li>
+
+            <li>
+              Our World in Data — <em>Safely Managed Drinking Water, WHO/UNICEF JMP Data</em>
+              (<a
+                href="https://ourworldindata.org/grapher/proportion-using-safely-managed-drinking-water"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://ourworldindata.org/grapher/proportion-using-safely-managed-drinking-water</a>)
+            </li>
+
+            <li>
+              <strong>COLLECTIVE RESPONSIBILITY AT COMMUNITY GOVERNANCE</strong>
+            </li>
+
+            <li>
+              Nobel Prize — <em>Elinor Ostrom: Economic Governance and Common Resources</em>
+              (<a
+                href="https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/facts/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.nobelprize.org/prizes/economic-sciences/2009/ostrom/facts/</a>)
+            </li>
+
+            <li>
+              Royal Swedish Academy of Sciences — <em>Economic Governance: The Organization of Cooperation</em>
+              (<a
+                href="https://www.nobelprize.org/uploads/2018/06/popular-economicsciences2009.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >https://www.nobelprize.org/uploads/2018/06/popular-economicsciences2009.pdf</a>)
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
