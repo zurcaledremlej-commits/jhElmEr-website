@@ -1,1 +1,2298 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="ASEAN Summit hosting sa Pilipinas—isang fact-based na pagsusuri sa diplomatic benefits, economic activity, public spending, procurement risks, tourism, agreements, accountability, at tunay na pakinabang sa bansa."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-asean-summit-hosting.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-asean-summit-hosting.html"
+  >
+
+  <title>ASEAN SUMMIT HOSTING: ANO ANG PAKINABANG NG BANSA? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          ASEAN SUMMIT HOSTING: ANO ANG PAKINABANG NG BANSA?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-asean-summit-hosting.png"
+            alt="Simbolikong visual ng ASEAN Summit hosting sa Pilipinas na may mga lider sa summit table, bandila ng Pilipinas at ASEAN, malaking timbangan na may investment at trade sa isang panig at government spending at infrastructure sa kabila, sirang simbolo ng piso, at mga ordinaryong mamamayan bilang representasyon ng benepisyo, gastos, economic impact, at pananagutan sa pampublikong pondo."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Kapag ang Pilipinas ang nagho-host ng ASEAN Summit, hindi lang mga dayuhang lider ang dumarating. Kasama rin ang malalaking paghahanda, mahigpit na seguridad, international media coverage, at malaking pondong inilaan para sa hosting at mga kaugnay na gawain.
+          </p>
+
+          <p>
+            Maraming ipinapangakong benepisyo—mas matibay na relasyon sa ibang bansa, dagdag na oportunidad sa negosyo, investment, turismo, at trabaho.
+          </p>
+
+          <p>
+            Pero pagkatapos ng mga pagpupulong, pormal na pagtanggap, at pag-alis ng mga delegado, ano ang tunay na naiiwan para sa Pilipinas?
+          </p>
+
+          <p>
+            May mga kasunduang pinagtibay, pero alin ang aktuwal na naipatupad? May mga negosyong kumita, pero gaano kalaki ang naging pakinabang sa ekonomiya? At sa malaking pondong inilaan ng gobyerno, paano natin malalaman kung makatwiran ang gastos at kung may mga transaksiyong dapat kuwestiyunin?
+          </p>
+
+          <p>
+            Hindi tamang ipagpalagay na pag-aaksaya lamang ng pera ang international summits. Pero hindi rin sapat na sabihing matagumpay ang hosting dahil maayos ang pagtitipon, maraming dumalo, at maganda ang naging imahe ng bansa.
+          </p>
+
+          <blockquote>
+            <p>
+              DAHIL ANG TUNAY NA PAKINABANG NG ISANG INTERNATIONAL SUMMIT AY HINDI LANG NASUSUKAT SA GANDA NG PAGTITIPON, KUNDI SA MGA RESULTANG NAIDUDULOT NITO SA BANSA AT SA PANANAGUTAN SA PERANG GINASTOS.
+            </p>
+          </blockquote>
+
+          <p>
+            Para maintindihan kung may tunay na balik sa Pilipinas ang ganitong mga pagtitipon, kailangang suriin ang mga benepisyo, gastos, panganib ng kurapsyon, at mga naging resulta ng mga nakaraang hosting.
+          </p>
+
+          <p>
+            Pero bago timbangin kung sulit ang mga ito, mahalagang maintindihan muna kung bakit nagho-host ang Pilipinas at ano ang papel nito sa ASEAN.
+          </p>
+
+          <h2>
+            BAKIT BA NAGHO-HOST ANG PILIPINAS NG ASEAN SUMMIT?
+          </h2>
+
+          <p>
+            Ang Association of Southeast Asian Nations o ASEAN ay isang samahan ng mga bansa sa Southeast Asia na nagtutulungan sa ekonomiya, seguridad, kalakalan, at iba pang usaping may epekto sa rehiyon.
+          </p>
+
+          <p>
+            Ang ASEAN Summit ang pinakamataas na pagpupulong para sa paggawa ng mahahalagang desisyon at pagtatakda ng direksiyon ng samahan.
+          </p>
+
+          <p>
+            Mahalagang malaman na hindi basta personal na desisyon ng isang presidente ang pagho-host nito.
+          </p>
+
+          <p>
+            Sa ilalim ng Article 31 ng ASEAN Charter, umiikot taun-taon ang chairmanship sa mga miyembrong bansa. Ang bansang humahawak ng chairmanship ang karaniwang namumuno at nagho-host ng ASEAN Summits at mga kaugnay na pagpupulong.
+          </p>
+
+          <p>
+            Kaya ang hosting ay bahagi ng ating responsibilidad bilang miyembro ng ASEAN, hindi lamang isang promotional event na maaaring basta piliin o tanggihan ayon sa kagustuhan ng nakaupong administrasyon.
+          </p>
+
+          <p>
+            Pero hindi rin nangangahulugang dahil responsibilidad ito ay wala nang dapat kuwestiyunin sa budget, procurement, o lawak ng paghahanda.
+          </p>
+
+          <blockquote>
+            <p>
+              Magkaibang usapin ang obligasyong mag-host at ang responsibilidad na tiyaking makatwiran, episyente, at maayos ang paggamit ng pera ng bayan.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG TUNAY NA BENEPISYO NG PAGHO-HOST?
+          </h2>
+
+          <h3>
+            Diplomatic influence at pakikilahok sa mahahalagang desisyon
+          </h3>
+
+          <p>
+            Isa sa pinakamahalagang benepisyo ang pagkakataong mas magkaroon ng papel ang Pilipinas sa paghubog ng agenda ng mga regional discussions.
+          </p>
+
+          <p>
+            Kapag tayo ang ASEAN chair, nagkakaroon ang bansa ng mas malaking responsibilidad sa pag-oorganisa ng mga pag-uusap, pagbuo ng posibleng pagkakasunduan, at pagtulong sa paghahanap ng magkakatugmang posisyon ng mga miyembro.
+          </p>
+
+          <p>
+            Mahalaga ito sa mga usaping tulad ng South China Sea, maritime security, regional trade, migrant workers, food security, at pagtugon sa mga krisis.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na maaaring ipilit ng Pilipinas ang anumang gusto nito. Nakabatay sa konsultasyon at consensus ang maraming mahahalagang desisyon sa ASEAN.
+          </p>
+
+          <p>
+            Pero may halaga ang pagkakaroon ng pagkakataong maipuwesto sa agenda ang mga usaping mahalaga sa ating pambansang interes.
+          </p>
+
+          <p>
+            Lalo na kung ang problemang kinakaharap ng Pilipinas ay hindi kayang lutasin sa loob lamang ng ating teritoryo.
+          </p>
+
+          <h3>
+            Mga kasunduang may epekto sa mga Pilipino
+          </h3>
+
+          <p>
+            Hindi lahat ng resulta ng international summit ay puro seremonya.
+          </p>
+
+          <p>
+            Isang halimbawa ang ASEAN Declaration on the Protection and Promotion of the Rights of Migrant Workers na pinagtibay sa Cebu noong 2007.
+          </p>
+
+          <p>
+            Layunin nitong palakasin ang pagtutulungan ng mga bansang ASEAN sa pangangalaga sa mga migrant worker.
+          </p>
+
+          <p>
+            Pagkaraan ng sampung taon, sa ASEAN Summit sa Manila noong 2017, pinagtibay naman ang ASEAN Consensus on the Protection and Promotion of the Rights of Migrant Workers.
+          </p>
+
+          <p>
+            Ayon sa International Labour Organization o ILO, ang 2017 agreement ay bunga ng maraming taong negosasyon mula noong 2007 declaration.
+          </p>
+
+          <p>
+            May malinaw na kaugnayan ito sa mga Pilipinong nagtatrabaho sa ibang bansa, lalo na sa mga bansang bahagi ng ASEAN.
+          </p>
+
+          <p>
+            Pero kailangang linawin ang isang mahalagang limitasyon.
+          </p>
+
+          <p>
+            Ang 2017 ASEAN Consensus ay hindi isang legally binding agreement. Hindi nito awtomatikong nababago ang domestic labor laws o ginagarantiyahan ang pagpapatupad ng lahat ng karapatang nakasaad dito.
+          </p>
+
+          <p>
+            Kailangan pa rin ang kaukulang batas, patakaran, koordinasyon, at aktuwal na implementasyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ipinapakita nito ang dalawang katotohanan: may mahahalagang kasunduang nabubuo sa international summits, ngunit hindi katumbas ng aktuwal na proteksiyon ang pagpirma lamang sa dokumento.
+            </p>
+          </blockquote>
+
+          <h3>
+            Pagkakataon para sa negosyo at trabaho
+          </h3>
+
+          <p>
+            Kapag may international summit, kailangan ng accommodation, pagkain, transportasyon, security services, event production, communication systems, at iba pang produkto at serbisyo.
+          </p>
+
+          <p>
+            May mga hotel, restaurant, transport operator, local supplier, at manggagawang maaaring kumita mula sa mga pangangailangang ito.
+          </p>
+
+          <p>
+            Tunay na economic activity ang mga transaksiyong iyon.
+          </p>
+
+          <p>
+            Pero hindi lahat ng perang ginastos sa summit ay nangangahulugang bagong perang pumasok sa ekonomiya.
+          </p>
+
+          <p>
+            Halimbawa, kapag nagbayad ang gobyerno ng isang hotel gamit ang pondo mula sa buwis, nagkaroon ng kita ang hotel. Ngunit ang naturang bayad ay paggastos din ng pondong maaari sanang gamitin sa ibang pampublikong serbisyo.
+          </p>
+
+          <p>
+            Mahalagang ibukod ang perang ginastos ng gobyerno sa karagdagang perang dala ng foreign delegates at mga business transaction na hindi sana nangyari kung walang summit.
+          </p>
+
+          <p>
+            Kailangan ding malaman kung gaano karaming trabaho ang pansamantala lamang at kung may mga oportunidad na nanatili pagkatapos ng event.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang pagkakaroon ng economic activity ay hindi pa awtomatikong patunay ng net economic gain.
+            </p>
+          </blockquote>
+
+          <h3>
+            Tourism promotion at international exposure
+          </h3>
+
+          <p>
+            May pagkakataon ding ipakilala ang Pilipinas sa international media, foreign delegates, business representatives, at mga posibleng turista.
+          </p>
+
+          <p>
+            Maaari itong makatulong sa pagkilala sa ating mga destinasyon, kultura, at kakayahang mag-organisa ng malalaking pagtitipon.
+          </p>
+
+          <p>
+            Pero dito kailangang maging maingat sa pagbibigay ng kredito.
+          </p>
+
+          <p>
+            Ayon sa Department of Tourism, ganito ang bilang ng international visitor arrivals sa Pilipinas:
+          </p>
+
+          <p>
+            2014 — humigit-kumulang 4.83 milyon
+          </p>
+
+          <p>
+            2015 — 5.36 milyon
+          </p>
+
+          <p>
+            2016 — 5.97 milyon
+          </p>
+
+          <p>
+            2017 — 6.62 milyon
+          </p>
+
+          <p>
+            2019 — 8.26 milyon
+          </p>
+
+          <p>
+            Nag-host ang Pilipinas ng APEC noong 2015 at ASEAN noong 2017.
+          </p>
+
+          <p>
+            Makikita na patuloy na lumago ang international visitor arrivals sa mga sumunod na taon.
+          </p>
+
+          <p>
+            Pero tumataas na rin ang turismo bago pa ang mga summit na iyon.
+          </p>
+
+          <p>
+            Hindi natin maaaring ipagpalagay na ang pagtaas ng tourist arrivals ay direktang bunga ng hosting.
+          </p>
+
+          <p>
+            Maraming ibang salik ang nakaaapekto rito: international flights, visa policies, tourism campaigns, exchange rates, economic conditions sa ibang bansa, at pangkalahatang pag-unlad ng travel industry.
+          </p>
+
+          <p>
+            Ang kailangan ay pag-aaral na makapaghihiwalay sa mga turistang dumating dahil sa summit at sa mga bibisita pa rin sana kahit hindi tayo nag-host.
+          </p>
+
+          <p>
+            Kung walang ganitong pagsusuri, hindi sapat ang paglago ng turismo upang patunayang nabawi ang hosting expenses.
+          </p>
+
+          <h2>
+            ANO NAMAN ANG SINASABI NG MGA RESEARCH AT STUDIES?
+          </h2>
+
+          <p>
+            Mahalagang paghiwalayin ang economic benefits ng pagiging bahagi ng ASEAN at ang economic benefits ng mismong pagho-host ng summit.
+          </p>
+
+          <p>
+            Magkaugnay ang dalawang usapin, pero hindi sila pareho.
+          </p>
+
+          <p>
+            Sa pag-aaral ng Philippine Institute for Development Studies (PIDS), ASEAN Economic Community through the Years: Benchmarking, Emerging Trends, and Future Pathways, nakita na may mga pakinabang ang mas malalim na ASEAN economic integration.
+          </p>
+
+          <p>
+            Kabilang dito ang mga oportunidad sa trade, regional cooperation, investment, at mas malawak na market access.
+          </p>
+
+          <p>
+            Pero hindi pantay ang mga benepisyong ito.
+          </p>
+
+          <p>
+            Ayon sa PIDS, nananatiling hamon sa Pilipinas ang competitiveness, infrastructure, digital readiness, regulatory barriers, at kakayahan ng iba't ibang sektor na pakinabangan ang regional integration.
+          </p>
+
+          <p>
+            Tinataya rin ng mga mananaliksik na humigit-kumulang 46% ng mga target na kanilang sinuri sa ilalim ng Philippine Development Plan 2023–2028 ay malamang na hindi matugunan, partikular sa ilang mahahalagang sektor.
+          </p>
+
+          <p>
+            Hindi ibig sabihin nito na ang ASEAN ang dahilan ng mga kakulangang iyon. Ipinapakita lamang na hindi awtomatikong nagiging pakinabang sa lahat ang regional cooperation.
+          </p>
+
+          <p>
+            Kahit lumawak ang oportunidad sa kalakalan, hindi agad makikinabang ang isang maliit na negosyong hirap sa logistics, mataas na production costs, o kulang sa kakayahang makipagkompetensiya.
+          </p>
+
+          <p>
+            Kahit may investment opportunities, kailangan pa rin ng maayos na imprastraktura, malinaw na regulasyon, skilled workers, at maaasahang pampublikong serbisyo.
+          </p>
+
+          <p>
+            At kahit may regional agreements, kailangan pa rin ng domestic implementation.
+          </p>
+
+          <p>
+            May mahalagang aral din mula sa Organisation for Economic Co-operation and Development o OECD.
+          </p>
+
+          <p>
+            Sa pag-aaral nitong Major Events as Catalysts for Tourism, binigyang-diin na kailangang sukatin ang economic, social, at environmental impacts ng malalaking international events bago, habang, at pagkatapos isagawa ang mga ito.
+          </p>
+
+          <p>
+            Hindi sapat ang projected benefits bago ang event. Dapat may aktuwal na pagsusuri pagkatapos upang makita kung natupad ang mga inaasahang resulta.
+          </p>
+
+          <blockquote>
+            <p>
+              Sa madaling salita, ang magandang inaasahan ay hindi pa katumbas ng napatunayang pakinabang.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagiging matagumpay ng isang summit bilang diplomatic event ay hindi awtomatikong nangangahulugang matagumpay rin ito bilang public investment.
+          </p>
+
+                            <h2>
+            MAGKANO BA TALAGA ANG GASTOS?
+          </h2>
+
+          <p>
+            Isang konkretong halimbawa ang pondong inilaan para sa Philippine ASEAN Chairmanship at mga kaugnay na pagpupulong para sa taong 2026.
+          </p>
+
+          <p>
+            Batay sa General Appropriations Acts para sa 2025 at 2026:
+          </p>
+
+          <p>
+            2025 — ₱5.400 bilyon
+          </p>
+
+          <p>
+            2026 — ₱17.495734 bilyon
+          </p>
+
+          <blockquote>
+            <p>
+              PINAGSAMANG PARTIKULAR NA ALOKASYON PARA SA ASEAN HOSTING AT RELATED MEETINGS: ₱22.895734 BILYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Batay sa General Appropriations Acts para sa 2025 at 2026:
+          </p>
+
+          <p>
+            2025 — ₱5.400 bilyon
+          </p>
+
+          <p>
+            2026 — ₱17.495734 bilyon
+          </p>
+
+          <blockquote>
+            <p>
+              PINAGSAMANG PARTIKULAR NA ALOKASYON PARA SA ASEAN HOSTING AT RELATED MEETINGS: ₱22.895734 BILYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito maliit na halaga.
+          </p>
+
+          <p>
+            Sa 2026 allocation lamang, kabilang ang humigit-kumulang:
+          </p>
+
+          <p>
+            Office of the President — ₱10.784 bilyon
+          </p>
+
+          <p>
+            Philippine National Police — ₱1.933 bilyon
+          </p>
+
+          <p>
+            Bureau of Fire Protection — ₱739 milyon
+          </p>
+
+          <p>
+            Department of Information and Communications Technology — ₱526 milyon
+          </p>
+
+          <p>
+            Department of Tourism — ₱482 milyon
+          </p>
+
+          <p>
+            May pondo rin ang iba pang implementing agencies para sa seguridad, komunikasyon, koordinasyon, transportasyon, at mga kaugnay na pangangailangan.
+          </p>
+
+          <p>
+            Pero may isang napakahalagang paglilinaw.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG APPROVED BUDGET AY HINDI PAREHO SA ACTUAL EXPENDITURE.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang ₱22.9 bilyon ay pondong inilaan, hindi patunay na buong halagang iyon ay nagastos.
+          </p>
+
+          <p>
+            Hindi rin ito budget para lamang sa ilang araw ng isang summit.
+          </p>
+
+          <p>
+            Saklaw nito ang year-long ASEAN chairmanship, mga pagpupulong, paghahanda, logistics, security requirements, at iba pang kaugnay na gawain.
+          </p>
+
+          <p>
+            Sa pahayag ng Malacañang noong Nobyembre 12, 2026, nilinaw na wala pang pinal na tala ng kabuuang aktuwal na ginastos para sa ASEAN hosting at handa ang pamahalaang magsumite ng mga ulat at sumailalim sa audit.
+          </p>
+
+          <p>
+            Kaya hindi makatuwirang agad sabihing naubos o ninakaw ang buong ₱22.9 bilyon.
+          </p>
+
+          <p>
+            Pero hindi rin makatuwirang ituring na sapat na paliwanag ang simpleng pagsasabing maraming pagpupulong at security requirements ang pinaglaanan nito.
+          </p>
+
+          <p>
+            Kailangan pa ring makita ang breakdown ng bawat gastusin, mga kontrata, aktuwal na binayaran, at mga natipid o hindi nagamit na pondo.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang pagkakaroon ng approved appropriation ay nagpapahintulot sa paggastos ayon sa batas, ngunit hindi nito awtomatikong pinatutunayang makatwiran ang bawat presyo at maayos ang bawat transaksiyon.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY KASAYSAYAN BA NG PROCUREMENT IRREGULARITIES SA MGA GANITONG EVENT?
+          </h2>
+
+          <p>
+            Meron. At hindi ito dapat ituring na simpleng haka-haka lamang.
+          </p>
+
+          <h3>
+            Cebu ASEAN Summit 2007 — Decorative lamppost controversy
+          </h3>
+
+          <p>
+            Noong naghahanda ang Cebu para sa ASEAN Summit, naging kontrobersiyal ang pagbili at pag-install ng decorative lampposts at streetlights.
+          </p>
+
+          <p>
+            Sa kasong Radaza v. Court of Appeals, naitala sa desisyon ng Korte Suprema ang resulta ng fact-finding investigation ng Office of the Ombudsman.
+          </p>
+
+          <p>
+            Ayon sa ulat, ang ilang presyong nakasaad sa government estimates ay umabot nang hanggang sampung beses ng mga presyong inihambing mula sa importation documents at supplier quotations.
+          </p>
+
+          <p>
+            Nakakita ang investigating team ng prima facie evidence of overpricing at nagrekomenda ng pagsasampa ng mga kaso.
+          </p>
+
+          <p>
+            Mahalagang linawin na ang ganitong investigative finding ay hindi katumbas ng final conviction ng lahat ng inakusahan.
+          </p>
+
+          <p>
+            Pero sapat itong dokumentadong halimbawa upang ipakitang may tunay na panganib ng overpriced procurement sa malalaking international events.
+          </p>
+
+          <h3>
+            ASEAN Summit 2017 — ₱38.8 milyong kuwestiyonableng disbursements
+          </h3>
+
+          <p>
+            Sa audit ng Commission on Audit (COA) sa Presidential Communications Operations Office, tinukoy ang humigit-kumulang ₱38.8 milyong disbursements na may procurement irregularities kaugnay ng 2017 ASEAN hosting.
+          </p>
+
+          <p>
+            Kabilang dito ang pag-rent ng ilang IT equipment sa halagang humigit-kumulang ₱4.04 milyon.
+          </p>
+
+          <p>
+            Ayon sa audit, mas makatitipid sana ang gobyerno kung binili ang naturang equipment sa tinatayang ₱3.07 milyon.
+          </p>
+
+          <p>
+            May mga natukoy rin ang COA na paghahati ng procurement contracts at iba pang paglabag sa umiiral na procurement rules noong panahong iyon.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang lahat ng pondong ginastos sa 2017 summit ay anomalya.
+          </p>
+
+          <p>
+            Pero ipinapakita nitong kahit ang isang lehitimong international event ay maaaring magkaroon ng kuwestiyonableng transaksiyon sa pagpapatupad.
+          </p>
+
+          <h3>
+            APEC 2015 — Mahigit ₱2.5 bilyong hindi pa nali-liquidate
+          </h3>
+
+          <p>
+            Sa COA findings na iniulat noong 2016, mahigit ₱2.5 bilyong APEC-related funds ang hindi pa maayos na nali-liquidate o na-account sa itinakdang audit cutoff.
+          </p>
+
+          <p>
+            Hindi nangangahulugang ninakaw ang buong halagang iyon.
+          </p>
+
+          <p>
+            Ang unliquidated funds ay maaaring may kulang na liquidation reports, supporting documents, o accounting requirements.
+          </p>
+
+          <p>
+            Ngunit kailangan pa rin itong resolbahin at maipaliwanag.
+          </p>
+
+          <p>
+            Dahil ang malaking halagang hindi agad ma-account nang maayos ay isang seryosong usapin sa transparency at financial accountability.
+          </p>
+
+          <p>
+            Ang aral mula sa mga kasong ito ay hindi na lahat ng international hosting ay kurapsyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang ipinapakita ng mga ito ay may totoong procurement at accountability risks na kailangang bantayan sa bawat administrasyong nangangasiwa sa ganitong mga pagtitipon.
+            </p>
+          </blockquote>
+
+          <h2>
+            ILANG BESES NANG NAG-HOST ANG PILIPINAS, AT ANO ANG NAGING RESULTA?
+          </h2>
+
+          <p>
+            Hindi bago sa Pilipinas ang pagho-host ng malalaking international summits.
+          </p>
+
+          <p>
+            Sa kasaysayan ng ASEAN, kabilang sa mahahalagang Philippine hosting cycles ang 1987, 1999, 2006–2007, 2017, at 2026.
+          </p>
+
+          <p>
+            Magkaiba ang pormal na ASEAN chairmanship, regular summit, at informal summit, kaya kailangang isaalang-alang ang pagkakaibang ito kapag binibilang ang mga hosting event.
+          </p>
+
+          <h3>
+            1987 — Manila, sa panahon ni Corazon Aquino
+          </h3>
+
+          <p>
+            Pinagtibay ang Manila Declaration of 1987, na naglatag ng mahahalagang commitment sa regional solidarity, peaceful settlement of disputes, economic cooperation, at iba pang usapin.
+          </p>
+
+          <p>
+            May dokumentadong diplomatic at institutional result.
+          </p>
+
+          <p>
+            Pero hindi sapat ang available na datos upang matukoy ang partikular na dagdag na kita ng Pilipinas na direktang bunga lamang ng hosting.
+          </p>
+
+          <h3>
+            1999 — Manila, sa panahon ni Joseph Estrada
+          </h3>
+
+          <p>
+            Ginanap ang Third ASEAN Informal Summit at mga kaugnay na pagpupulong.
+          </p>
+
+          <p>
+            Isa sa pinakamahalagang resulta ang Joint Statement on East Asia Cooperation na nagpatibay sa direksiyon ng ASEAN Plus Three cooperation kasama ang China, Japan, at South Korea.
+          </p>
+
+          <p>
+            Ayon sa opisyal na kasaysayan ng ASEAN Plus Three, mahalagang yugto ang 1999 Manila meeting sa pagpapatatag ng mekanismong ito.
+          </p>
+
+          <p>
+            Ito ay dokumentadong institutional achievement, pero hindi pa rin direktang sukatan ng economic return ng hosting budget.
+          </p>
+
+          <h3>
+            2007 — Cebu, sa panahon ni Gloria Macapagal-Arroyo
+          </h3>
+
+          <p>
+            Kabilang sa mahahalagang resulta ang Cebu Declaration na nagpabilis sa target na pagtatatag ng ASEAN Community pagsapit ng 2015, at ang deklarasyon para sa proteksiyon ng migrant workers.
+          </p>
+
+          <p>
+            May mahahalagang regional commitments na nagmula sa summit.
+          </p>
+
+          <p>
+            Pero kasama rin sa naging kasaysayan nito ang lamppost procurement controversy.
+          </p>
+
+          <p>
+            Ipinapakita nitong maaaring magkasabay ang diplomatikong tagumpay at mga problemang kailangang imbestigahan sa paggastos.
+          </p>
+
+          <h3>
+            2017 — Manila at iba pang lugar, sa panahon ni Rodrigo Duterte
+          </h3>
+
+          <p>
+            Pinagtibay ang ASEAN Consensus on Migrant Workers at iba pang regional agreements.
+          </p>
+
+          <p>
+            May malinaw na diplomatic output, kabilang ang pagpapatuloy ng mga negosasyong nagsimula pa noong 2007.
+          </p>
+
+          <p>
+            Ngunit lumitaw din ang COA findings sa ilang procurement transactions.
+          </p>
+
+          <p>
+            Muli, kailangang magkaibang suriin ang mga napagkasunduan sa summit at ang pagiging maayos ng paggamit ng public funds.
+          </p>
+
+          <h3>
+            2026 — Cebu at Metro Manila, sa panahon ni Ferdinand Marcos Jr.
+          </h3>
+
+          <p>
+            Naglaan ang pamahalaan ng halos ₱22.9 bilyon sa loob ng dalawang budget year para sa ASEAN chairmanship at related meetings.
+          </p>
+
+          <p>
+            Naganap ang 48th ASEAN Summit sa Cebu noong Mayo 8, 2026. Nagsimula naman ang 49th ASEAN Summit at mga kaugnay na pagpupulong sa Metro Manila noong Nobyembre 15, 2026, na may nakatakdang mga aktibidad hanggang Nobyembre 17.
+          </p>
+
+          <p>
+            Dahil hindi pa tapos ang buong hosting cycle noong inilabas ang mga nabanggit na budget at audit-related reports, hindi pa maaaring magbigay ng kumpletong pagsusuri sa final expenditure at pangmatagalang economic impact nito.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang makatarungang assessment ay kailangang ibatay sa final accounting, COA findings, actual commitments, at mga resultang masusukat pagkatapos ng mga pagpupulong.
+            </p>
+          </blockquote>
+
+                            <h2>
+            PAANO NAMAN ANG APEC?
+          </h2>
+
+          <p>
+            Dalawang beses nang nag-host ang Pilipinas ng APEC Economic Leaders' Meeting: noong 1996 at 2015.
+          </p>
+
+          <p>
+            Hindi pareho ang ASEAN at APEC, pero pareho silang may international economic cooperation agenda at malawak na paghahanda mula sa host.
+          </p>
+
+          <p>
+            Noong 1996 sa Subic, pinagtibay ang Manila Action Plan for APEC, na naglatag ng mga hakbang para sa trade at investment liberalization at business facilitation.
+          </p>
+
+          <p>
+            Noong 2015 sa Manila, pinagtibay ang mga regional commitment para sa inclusive growth, economic integration, at mas malawak na partisipasyon ng maliliit na negosyo.
+          </p>
+
+          <p>
+            Ayon sa isang pag-aaral ng PIDS tungkol sa APEC, humigit-kumulang ₱10 bilyon ang inilaan ng gobyerno para sa 2015 hosting.
+          </p>
+
+          <p>
+            May nagawang mga regional commitments at may economic activities na nauugnay sa mga pagpupulong.
+          </p>
+
+          <p>
+            Pero hindi ito katumbas ng isang kumpletong independent cost-benefit study na nagpapatunay kung magkano ang net return sa bawat pisong ginastos.
+          </p>
+
+          <p>
+            At hindi rin makatarungang direktang paghambingin ang mga nominal budget ng 1996, 2007, 2015, 2017, at 2026 nang hindi isinasaalang-alang ang inflation, lawak ng mga pagpupulong, security requirements, at pagkakaiba ng accounting coverage.
+          </p>
+
+          <h2>
+            HINDI LANG GASTOS SA VENUE ANG DAPAT BILANGIN
+          </h2>
+
+          <p>
+            May isa pang mahalagang bahagi ng hosting na madalas hindi nabibigyan ng sapat na pansin: ang epekto nito sa ordinaryong mamamayan.
+          </p>
+
+          <p>
+            Kapag may international summit, maaaring magkaroon ng road closures, pagbabago sa transport routes, mahigpit na security restrictions, at pansamantalang suspensiyon ng ilang aktibidad sa mga apektadong lugar.
+          </p>
+
+          <p>
+            May mga negosyong maaaring kumita dahil sa mga delegado.
+          </p>
+
+          <p>
+            Pero mayroon ding maaaring mawalan ng kita dahil hindi makapasada, hindi makapagtinda, hindi makapasok sa trabaho, o pansamantalang hindi makapag-operate.
+          </p>
+
+          <p>
+            Bilang halimbawa, noong Nobyembre 12, 2026, nagbigay ang DSWD ng ₱10,000 cash assistance at family food packs sa bawat isa sa 1,462 vendors sa Baclaran, Parañaque, na naapektuhan ng pansamantalang pagsasara ng kanilang mga negosyo dahil sa security preparations para sa ASEAN Summit.
+          </p>
+
+          <p>
+            Ipinapakita nitong may mga kabuhayang direktang naaapektuhan ng event preparations.
+          </p>
+
+          <p>
+            Hindi sapat na bilangin lamang ang kinita ng mga hotel, restaurant, at event supplier.
+          </p>
+
+          <p>
+            Kailangang isama rin sa pagsusuri ang nawawalang kita ng mga apektadong manggagawa at negosyo, mga karagdagang gastusin ng gobyerno, at iba pang epekto sa komunidad.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang economic benefit ng isang grupo ay hindi awtomatikong nangangahulugang net benefit para sa buong lipunan.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO BA TALAGA MALALAMAN KUNG SULIT ANG PAGHO-HOST?
+          </h2>
+
+          <p>
+            May tatlong magkaibang sukatan na dapat maintindihan.
+          </p>
+
+          <h3>
+            Diplomatic success
+          </h3>
+
+          <p>
+            Nagkaroon ba ng mahahalagang pag-uusap, pagkakasunduan, at progreso sa mga usaping mahalaga sa bansa?
+          </p>
+
+          <h3>
+            Economic activity
+          </h3>
+
+          <p>
+            May mga negosyong kumita ba, mga serbisyong nagamit, at mga oportunidad sa trabaho o negosyo na nalikha?
+          </p>
+
+          <h3>
+            Net public benefit
+          </h3>
+
+          <p>
+            Pagkatapos ibawas o isaalang-alang ang lahat ng gastos at nawalang oportunidad, may napatunayan bang kabuuang pakinabang sa bansa?
+          </p>
+
+          <p>
+            Posibleng matagumpay ang isang summit sa diplomacy at magkaroon ng economic activity, pero hindi pa rin sapat ang ebidensiya upang sabihing nabawi nito ang buong public expenditure.
+          </p>
+
+          <p>
+            Mayroon ding mga diplomatikong benepisyong mahirap bigyan ng eksaktong halagang piso, tulad ng mas matibay na koordinasyon sa seguridad o mas maayos na relasyon sa ibang bansa.
+          </p>
+
+          <p>
+            Kaya hindi rin tama na gawing simpleng negosyo ang pagho-host na para bang kailangan nitong direktang kumita nang higit sa budget upang magkaroon ng anumang halaga.
+          </p>
+
+          <p>
+            Pero ang hirap sukatin ng ilang benepisyo ay hindi dapat maging dahilan upang hindi na sukatin ang mga bagay na maaari namang masukat.
+          </p>
+
+          <p>
+            Sa pamantayang inilatag ng OECD para sa malalaking international events, mahalaga ang pagsusuri bago at pagkatapos ng event, malinaw na performance indicators, at pangmatagalang evaluation.
+          </p>
+
+          <blockquote>
+            <p>
+              Sa ganitong paraan, mas matutukoy kung alin ang tunay na resulta, alin ang inaasahan pa lamang, at alin ang hindi natupad.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO ANG DAPAT HINGIN NG PUBLIKO SA GOBYERNO?
+          </h2>
+
+          <p>
+            Hindi sapat ang simpleng announcement na matagumpay ang summit.
+          </p>
+
+          <p>
+            Kailangan ng malinaw na public accounting.
+          </p>
+
+          <p>
+            Dapat malaman kung magkano ang approved budget, magkano ang aktuwal na inilabas, magkano ang nagastos, at magkano ang hindi nagamit.
+          </p>
+
+          <p>
+            Kailangang makita kung sinu-sino ang nakakuha ng government contracts, paano napili ang mga supplier, at kung makatwiran ang presyo ng mga produkto at serbisyo.
+          </p>
+
+          <p>
+            Mahalaga ring malaman kung may mga nabiling equipment o inayos na pasilidad na maaari pang gamitin pagkatapos ng event.
+          </p>
+
+          <p>
+            Kung may mga kasunduang pangkalakalan o investment commitments, kailangan ang follow-through: alin ang natuloy, magkano ang aktuwal na investment, ilang trabaho ang nalikha, at kailan naramdaman ang benepisyo?
+          </p>
+
+          <p>
+            Kung may mga usaping may kinalaman sa migrant workers, maritime security, o regional cooperation, kailangan ding makita ang mga hakbang sa implementasyon.
+          </p>
+
+          <p>
+            At kung may mga gastos o pinsalang dinanas ang mga ordinaryong mamamayan dahil sa paghahanda, dapat maisama rin ang mga iyon sa evaluation.
+          </p>
+
+          <p>
+            Hindi ito labis na pagdududa.
+          </p>
+
+          <p>
+            Bahagi ito ng normal na pananagutan sa paggamit ng pampublikong pondo.
+          </p>
+
+          <p>
+            Sa katunayan, may partikular na reporting at posting requirements sa 2026 General Appropriations Act para sa financial at physical accomplishments ng Office of the President.
+          </p>
+
+          <p>
+            Ibig sabihin, may legal at budgetary framework na maaaring gamiting batayan ng pagsusuri.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang kailangan ay malinaw na pagsunod, sapat na dokumentasyon, at makabuluhang public scrutiny.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAILAN NAGIGING PROBLEMA ANG INTERNATIONAL HOSTING?
+          </h2>
+
+          <p>
+            Hindi problema ang pagpapakita ng kagandahan ng Pilipinas.
+          </p>
+
+          <p>
+            Hindi rin problema ang pagtanggap sa foreign leaders, pagsunod sa diplomatic protocol, o paggastos para sa makatwirang seguridad at maayos na organisasyon.
+          </p>
+
+          <p>
+            Nagiging problema kapag ang pagpapaganda ng imahe ay ginagamit na pamalit sa pagharap sa mga tunay na suliranin.
+          </p>
+
+          <p>
+            Kapag ang mga proyekto ay inuuna dahil lamang makikita ng mga bisita, pero hindi malinaw kung makikinabang pa rito ang ordinaryong mamamayan pagkatapos ng summit.
+          </p>
+
+          <p>
+            Kapag may malaking public expenditure pero kulang ang malinaw na breakdown at supporting documents.
+          </p>
+
+          <p>
+            Kapag ang announcement ng investment ay ipinapakitang para bang pera nang aktuwal na pumasok.
+          </p>
+
+          <p>
+            Kapag ang pagpirma sa isang kasunduan ay ipinapakitang para bang naipatupad na ang lahat ng nakapaloob dito.
+          </p>
+
+          <p>
+            At kapag ang diplomatic success ay ginagawang sapat na dahilan upang hindi na kuwestiyunin ang financial accountability.
+          </p>
+
+          <p>
+            Hindi awtomatikong nangangahulugang may kurapsyon ang mga ganitong sitwasyon. Pero may sapat na dahilan upang humingi ng masusing pagsusuri.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang pampublikong pondo ay hindi nawawalan ng obligasyong ma-audit dahil lamang ginamit ito para sa isang international event.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG MAS MALAWAK NA TANONG
+          </h2>
+
+          <p>
+            Mahalaga ang pagiging aktibo ng Pilipinas sa international community.
+          </p>
+
+          <p>
+            Hindi natin kayang ihiwalay ang sarili sa mga usaping nakaaapekto sa ekonomiya, seguridad, kalakalan, at kabuhayan ng mga Pilipino.
+          </p>
+
+          <p>
+            May halaga ang regional cooperation, at may mga konkretong kasunduang nagmula sa mga nakaraang ASEAN at APEC meetings.
+          </p>
+
+          <p>
+            Pero hindi rin dapat gawing sukatan ng pag-unlad ang ganda ng pagtanggap sa mga dayuhang lider.
+          </p>
+
+          <p>
+            Hindi dahil nakapag-host ng international summit ay maayos na ang ekonomiya.
+          </p>
+
+          <p>
+            Hindi dahil may foreign delegates ay may garantiya nang bagong investment.
+          </p>
+
+          <p>
+            Hindi dahil may napirmahang kasunduan ay awtomatikong protektado na ang mga manggagawa.
+          </p>
+
+          <p>
+            At hindi dahil may malaking approved budget ay makatwiran na ang bawat ginastos.
+          </p>
+
+          <p>
+            Ang tunay na halaga ng hosting ay kailangang tingnan sa dalawang panig: kung ano ang naiaambag nito sa pangmatagalang interes ng Pilipinas, at kung paano pinangangalagaan ang perang ginamit upang maisagawa ito.
+          </p>
+
+          <p>
+            Hindi kailangang mamili sa pagitan ng pakikipag-ugnayan sa ibang bansa at pananagutan sa sariling mamamayan.
+          </p>
+
+          <p>
+            Dapat magkasama ang dalawa.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PAGHO-HOST NG INTERNATIONAL SUMMIT AY HINDI AUTOMATIKONG PAG-AKSAYA NG PERA. PERO HINDI RIN AUTOMATIKONG TAGUMPAY DAHIL LANG MAAYOS ANG EVENT AT MAGANDA ANG PRESENTASYON NG BANSA.
+            </p>
+          </blockquote>
+
+          <p>
+            MAY HALAGA ANG DIPLOMASYA—PERO HINDI ITO EXEMPTED SA PANANAGUTAN.
+          </p>
+
+          <p>
+            MAY BENEPISYO ANG MGA KASUNDUAN—PERO KAILANGANG MAKITA ANG AKTUWAL NA IMPLEMENTASYON.
+          </p>
+
+          <p>
+            MAY PAGKAKATAON SA EKONOMIYA—PERO KAILANGANG MAIPAKITA KUNG SINO ANG NAKINABANG AT KUNG ANO ANG NAGING KAPALIT.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TAGUMPAY NG ISANG SUMMIT AY HINDI LANG NASA GANDA NG IPINAKITA NATIN SA MUNDO. NASA MGA RESULTANG NAIDUDULOT NITO SA PILIPINAS—AT SA MALINAW NA PANANAGUTAN SA BAWAT PISONG GINASTOS PARA RITO.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+               <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Mga Sanggunian at Batayan
+          </h2>
+
+          <ul class="sources-list">
+
+            <li class="source-group-title">
+              <strong>ASEAN Secretariat</strong>
+            </li>
+
+            <li>
+              ASEAN Charter — Articles 7, 20, 31 at 32.
+              <a
+                href="https://asean.org/about-asean/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/about-asean/
+              </a>
+            </li>
+
+            <li>
+              ASEAN Summit official records —
+              <a
+                href="https://asean.org/about-asean/asean-summit/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/about-asean/asean-summit/
+              </a>
+            </li>
+
+            <li>
+              1987 Manila Declaration —
+              <a
+                href="https://asean.org/manila-declaration-philippines-15-december-1987/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/manila-declaration-philippines-15-december-1987/
+              </a>
+            </li>
+
+            <li>
+              1999 Informal Summit —
+              <a
+                href="https://asean.org/speechandstatement/3rd-informal-summit-manila-27-28-november-1999/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/speechandstatement/3rd-informal-summit-manila-27-28-november-1999/
+              </a>
+            </li>
+
+            <li>
+              2007 Cebu Summit documents —
+              <a
+                href="https://asean.org/12th-asean-summit/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/12th-asean-summit/
+              </a>
+            </li>
+
+            <li>
+              2017 ASEAN Migrant Workers Consensus —
+              <a
+                href="https://asean.org/book/asean-consensus-on-the-protection-and-promotion-of-the-rights-of-migrant-workers-2/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://asean.org/book/asean-consensus-on-the-protection-and-promotion-of-the-rights-of-migrant-workers-2/
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>International Labour Organization</strong>
+            </li>
+
+            <li>
+              ASEAN leaders sign Migrant Workers Consensus (2017) —
+              <a
+                href="https://www.ilo.org/resource/news/asean-leaders-sign-consensus-protection-and-promotion-rights-migrant"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.ilo.org/resource/news/asean-leaders-sign-consensus-protection-and-promotion-rights-migrant
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Philippine Institute for Development Studies</strong>
+            </li>
+
+            <li>
+              ASEAN Economic Community through the Years (2025), discussion paper —
+              <a
+                href="https://www.pids.gov.ph/publication/discussion-papers/asean-economic-community-through-the-years-benchmarking-emerging-trends-and-future-pathways"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.pids.gov.ph/publication/discussion-papers/asean-economic-community-through-the-years-benchmarking-emerging-trends-and-future-pathways
+              </a>
+            </li>
+
+            <li>
+              Analyzing Trends in APEC Using Data Analytics (2022) —
+              <a
+                href="https://pidswebs.pids.gov.ph/CDN/PUBLICATIONS/pidsdps2204.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pidswebs.pids.gov.ph/CDN/PUBLICATIONS/pidsdps2204.pdf
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Department of Budget and Management / Congress</strong>
+            </li>
+
+            <li>
+              FY 2025 General Appropriations Act —
+              <a
+                href="https://www.dbm.gov.ph/index.php/2025/general-appropriations-act-gaa-fy-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.dbm.gov.ph/index.php/2025/general-appropriations-act-gaa-fy-2025
+              </a>
+            </li>
+
+            <li>
+              FY 2026 General Appropriations Act —
+              <a
+                href="https://www.dbm.gov.ph/wp-content/uploads/GAA/GAA2026/DBM-OFFICIAL-GAZETTE-FY-2026_VOLUME-1-A.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.dbm.gov.ph/wp-content/uploads/GAA/GAA2026/DBM-OFFICIAL-GAZETTE-FY-2026_VOLUME-1-A.pdf
+              </a>
+            </li>
+
+            <li>
+              House Resolution No. 911 (2026), citing FY 2025 and FY 2026 ASEAN appropriations —
+              <a
+                href="https://docs.congress.hrep.online/legisdocs/basic_20/HR00911.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://docs.congress.hrep.online/legisdocs/basic_20/HR00911.pdf
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Department of Tourism</strong>
+            </li>
+
+            <li>
+              Tourism Investment Situationer — Historical Visitor Arrivals, 2014–2018 —
+              <a
+                href="https://tieza.gov.ph/wp-content/uploads/2020/06/1.-Tourism-Investment-Situationer-in-the-Philippines-DOT-Region-1.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://tieza.gov.ph/wp-content/uploads/2020/06/1.-Tourism-Investment-Situationer-in-the-Philippines-DOT-Region-1.pdf
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Department of Social Welfare and Development</strong>
+            </li>
+
+            <li>
+              DSWD chief oversees payout of ₱10,000 cash assistance to 1,462 affected Baclaran vendors (November 12, 2026) —
+              <a
+                href="https://www.dswd.gov.ph/dswd-chief-oversees-payout-of-p10k-cash-aid-ffps-to-1462-baclaran-vendors-affected-by-asean-summit-security-preps/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.dswd.gov.ph/dswd-chief-oversees-payout-of-p10k-cash-aid-ffps-to-1462-baclaran-vendors-affected-by-asean-summit-security-preps/
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Supreme Court of the Philippines</strong>
+            </li>
+
+            <li>
+              Radaza v. Court of Appeals, G.R. No. 177135 (2008) —
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/47379"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/47379
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Commission on Audit findings, as reported</strong>
+            </li>
+
+            <li>
+              Philstar, 2017 ASEAN procurement irregularities (2019) —
+              <a
+                href="https://www.philstar.com/headlines/2019/06/25/1929328/coa-reminds-pcoo-address-illegal-asean-summit-disbursements"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.philstar.com/headlines/2019/06/25/1929328/coa-reminds-pcoo-address-illegal-asean-summit-disbursements
+              </a>
+            </li>
+
+            <li>
+              Philstar, 2015 APEC liquidation findings (2016) —
+              <a
+                href="https://www.philstar.com/metro/2016/07/16/1603328/coa-p25-b-apec-funds-still-be-liquidated"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.philstar.com/metro/2016/07/16/1603328/coa-p25-b-apec-funds-still-be-liquidated
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>APEC</strong>
+            </li>
+
+            <li>
+              1996 Leaders' Declaration —
+              <a
+                href="https://www.apec.org/Meeting-Papers/Leaders-Declarations/1996/1996_aelm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.apec.org/Meeting-Papers/Leaders-Declarations/1996/1996_aelm
+              </a>
+            </li>
+
+            <li>
+              2015 Leaders' Declaration —
+              <a
+                href="https://www.apec.org/Meeting-Papers/Leaders-Declarations/2015/2015_aelm"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.apec.org/Meeting-Papers/Leaders-Declarations/2015/2015_aelm
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>OECD</strong>
+            </li>
+
+            <li>
+              Major Events as Catalysts for Tourism (2017) —
+              <a
+                href="https://doi.org/10.1787/a0e8a96f-en"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1787/a0e8a96f-en
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+      </html>
