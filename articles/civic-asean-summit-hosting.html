@@ -452,9 +452,13 @@ END OF DEVELOPER NOTES
 
     .article-body h3 {
       margin: 2em 0 0.7em;
-
       font-size: clamp(1.55rem, 3vw, 2.05rem);
     }
+
+     .article-body h3 .peso-sign {
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 800;
+}
 
     .article-body ul,
     .article-body ol {
@@ -588,6 +592,20 @@ END OF DEVELOPER NOTES
       border-radius: 50%;
       background: #d5ad36;
     }
+
+     .sources-list li.source-group-title {
+  padding-left: 0;
+
+  color: #66615a;
+
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.sources-list li.source-group-title::before {
+  content: none;
+  display: none;
+}
 
     .sources-list a {
       color: #5b4930;
@@ -1456,8 +1474,8 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            ASEAN Summit 2017 — ₱38.8 milyong kuwestiyonableng disbursements
-          </h3>
+  ASEAN Summit 2017 — <span class="peso-sign">₱</span>38.8 milyong kuwestiyonableng disbursements
+</h3>
 
           <p>
             Sa audit ng Commission on Audit (COA) sa Presidential Communications Operations Office, tinukoy ang humigit-kumulang ₱38.8 milyong disbursements na may procurement irregularities kaugnay ng 2017 ASEAN hosting.
@@ -1484,8 +1502,8 @@ END OF DEVELOPER NOTES
           </p>
 
           <h3>
-            APEC 2015 — Mahigit ₱2.5 bilyong hindi pa nali-liquidate
-          </h3>
+  APEC 2015 — Mahigit <span class="peso-sign">₱</span>2.5 bilyong hindi pa nali-liquidate
+</h3>
 
           <p>
             Sa COA findings na iniulat noong 2016, mahigit ₱2.5 bilyong APEC-related funds ang hindi pa maayos na nali-liquidate o na-account sa itinakdang audit cutoff.
