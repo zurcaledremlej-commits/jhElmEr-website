@@ -1,1 +1,2570 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="MAY PANGANIB—TUTOL AGAD? Isang fact-based na Civic Explainer tungkol sa Pax Silica, environmental risks, semiconductor investment, kalikasan, komunidad, technology transfer, safeguards, at responsableng pag-unlad."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-tutol-agad.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-tutol-agad.html"
+  >
+
+  <title>MAY PANGANIB—TUTOL AGAD? | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+        font-size: clamp(2.8rem, 15vw, 4.2rem);
+      }
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          MAY PANGANIB—TUTOL AGAD?
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-tutol-agad.png"
+            alt="Simbolikong visual ng Pax Silica at responsableng pag-unlad na nagpapakita ng tensiyon sa pagitan ng high-tech industry, kalikasan, tubig, lupa, kabuhayan, at mga komunidad, bilang representasyon ng pangangailangang timbangin ang oportunidad, panganib, proteksiyon, at pananagutan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <h2>
+            PAX SILICA, KALIKASAN, AT ANG PAGKAKATAONG HINDI DAPAT BASTA TALIKURAN
+          </h2>
+
+          <p>
+            May planong magtayo ng bagong industriya. May pangakong trabaho, investment, at mas makabagong teknolohiya.
+          </p>
+
+          <p>
+            Pero may kasamang panganib sa kalikasan, likas-yaman, at kabuhayan ng mga komunidad.
+          </p>
+
+          <p>
+            Kaya tutol agad?
+          </p>
+
+          <p>
+            Sa kabilang panig, may mga naniniwalang basta magdadala ng malaking investment at trabaho, dapat nang suportahan.
+          </p>
+
+          <p>
+            Kaya payag agad?
+          </p>
+
+          <blockquote>
+            <p>
+              PAREHONG KULANG ANG DALAWANG SAGOT NA WALANG SAPAT NA PAGSUSURI.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil hindi lahat ng panganib ay nangangahulugang dapat nang itigil ang isang oportunidad. At hindi rin lahat ng pangako ng pag-unlad ay sapat na dahilan para tanggapin ang posibleng pinsala.
+          </p>
+
+          <p>
+            May mga bansang humarap sa ganitong hamon. Hindi nila basta tinalikuran ang mahahalagang industriya dahil may environmental risks. Namuhunan sila sa teknolohiya, nagpatupad ng mas mahihigpit na pamantayan, at gumawa ng mga sistemang naglalayong makuha ang economic benefits habang binabawasan ang pinsala.
+          </p>
+
+          <p>
+            Hindi naging perpekto ang resulta. May mga panganib na nanatili. Pero may mga konkretong pag-unlad na napatunayan sa pamamagitan ng aktuwal na datos at research.
+          </p>
+
+          <p>
+            At dito pumapasok ang mas mahalagang tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              BAKIT HANGGANG SA PAGTUKOY LANG NG PANGANIB ANG PAG-IISIP NATIN, KUNG DAPAT DIN NATING PAG-ARALAN KUNG PAANO ITO MAPANGANGASIWAAN AT KUNG ANONG PAGKAKATAON ANG MAAARI NATING MAPAKINABANGAN?
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ibig sabihin nito na dapat payagan ang anumang proyekto, gaano man kalaki ang maaaring pinsala.
+          </p>
+
+          <p>
+            May mga karapatan at likas-yamang hindi maaaring basta isakripisyo. May mga panganib na kailangang pigilan, at may mga proyektong dapat baguhin o tanggihan kapag hindi kayang matugunan ang mga kinakailangang proteksiyon.
+          </p>
+
+          <p>
+            Pero mayroon ding mga oportunidad na maaaring mawala kapag pagtanggi agad ang sagot, kahit hindi pa nasusuri ang mga posibleng solusyon.
+          </p>
+
+          <p>
+            Ito ang mas malawak na pananaw na kailangan sa usapin ng Pax Silica.
+          </p>
+
+          <p>
+            Hindi lamang kung dapat ba tayong maging pabor o tutol.
+          </p>
+
+          <p>
+            Kundi kung paano makagagawa ng matalinong pagpapasya—isang desisyong nakabatay sa ebidensiya, may malinaw na proteksiyon, at may tunay na pananagutan.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang responsableng pag-unlad ay hindi basta pagpayag. Pero hindi rin ito basta pagtanggi.
+            </p>
+          </blockquote>
+
+          <p>
+            Bago natin husgahan ang oportunidad, mahalagang maunawaan muna kung ano talaga ang Pax Silica, ano ang posibleng pakinabang nito sa Pilipinas, at anong mga aral ang makukuha natin sa mga bansang humarap na sa kahalintulad na hamon.
+          </p>
+
+          <h2>
+            ANO BA TALAGA ANG PAX SILICA?
+          </h2>
+
+          <p>
+            Ang Pax Silica ay isang international initiative na pinangungunahan ng United States upang bumuo ng mas matatag at ligtas na supply chains para sa mahahalagang industriya.
+          </p>
+
+          <p>
+            Kabilang dito ang critical minerals, advanced manufacturing, semiconductor production, artificial intelligence infrastructure, enerhiya, at logistics.
+          </p>
+
+          <p>
+            Mahalagang linawin na hindi iisang pabrika o construction project ang buong Pax Silica.
+          </p>
+
+          <p>
+            Isa itong mas malawak na framework ng kooperasyon sa pagitan ng mga bansa.
+          </p>
+
+          <p>
+            Ang isa sa mga planong kaugnay nito sa Pilipinas ay ang humigit-kumulang 4,000-acre o 1,620-hectare industrial hub sa New Clark City, Capas, Tarlac.
+          </p>
+
+          <p>
+            Ayon sa BCDA, layunin nitong makaakit ng semiconductor at advanced manufacturing investments, hindi magtayo ng malaking data center sa mismong iminungkahing industrial hub.
+          </p>
+
+          <p>
+            Ang inaasahang oportunidad ay makapasok ang Pilipinas sa mas mataas na antas ng paggawa ng mga produktong teknolohikal.
+          </p>
+
+          <p>
+            Pero kailangang malinaw ang pagkakaiba:
+          </p>
+
+          <blockquote>
+            <p>
+              Ang plano ay hindi pa aktuwal na pabrikang kumikita. Ang interes ng investor ay hindi pa investment na naipapasok. At ang ipinapangakong trabaho ay hindi pa trabahong nalilikha.
+            </p>
+          </blockquote>
+
+          <p>
+            Posibleng malaki ang pakinabang. Posible ring hindi matupad ang lahat ng inaasahan.
+          </p>
+
+          <p>
+            Kaya ang dapat suriin ay hindi lamang kung maganda ang konsepto, kundi kung makatuwiran at kapaki-pakinabang ang aktuwal na magiging pagpapatupad nito.
+          </p>
+
+          <h2>
+            HINDI TAYO NAGSISIMULA SA WALA
+          </h2>
+
+          <p>
+            May mahalagang dahilan kung bakit seryosong pag-aralan ang ganitong pagkakataon.
+          </p>
+
+          <p>
+            May matagal nang semiconductor at electronics industry ang Pilipinas.
+          </p>
+
+          <p>
+            Ayon sa Philippine Statistics Authority, sa 2025 national accounts data, umabot sa 61.4% ng kabuuang exports of goods ang electronic products, habang 43.4% ang bahagi ng semiconductor components at devices.
+          </p>
+
+          <p>
+            Hindi ito maliit na industriya na ngayon lamang natin susubukang pasukin.
+          </p>
+
+          <p>
+            May umiiral nang manufacturing operations, export relationships, teknikal na manggagawa, at karanasan ang bansa sa electronics supply chain.
+          </p>
+
+          <p>
+            Ang mas malaking tanong ay kung paano tayo makaaangat mula sa kasalukuyang mga gawain tungo sa mas mataas na value-added production, engineering, research, design, at mas komplikadong manufacturing.
+          </p>
+
+          <p>
+            Bakit mahalaga ito?
+          </p>
+
+          <p>
+            Dahil hindi magkakapareho ang pakinabang ng bawat bahagi ng isang industriya.
+          </p>
+
+          <p>
+            May malaking pagkakaiba ang pagiging lugar kung saan ina-assemble ang produkto at pagiging bansang may sariling engineering capabilities, specialized suppliers, research facilities, at kakayahang bumuo ng teknolohiya.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na walang halaga ang assembly at testing. Mahalaga ang mga ito.
+          </p>
+
+          <p>
+            Pero hindi kailangang doon lamang manatili ang ambisyon ng Pilipinas.
+          </p>
+
+          <h2>
+            SINGAPORE: NANG GAWING SOLUSYON ANG ISANG MALAKING LIMITASYON
+          </h2>
+
+          <p>
+            Isa sa pinakamalapit na halimbawa ang Singapore.
+          </p>
+
+          <p>
+            Limitado ang sariling freshwater resources ng bansang ito. Samantala, ang semiconductor manufacturing ay nangangailangan ng napakalaking dami ng malinis na tubig.
+          </p>
+
+          <p>
+            Sa paggawa ng semiconductor chips, ginagamit ang ultrapure water upang linisin ang mga wafer at alisin ang napakaliit na contaminants na maaaring makasira sa produkto.
+          </p>
+
+          <p>
+            May seryosong hamon dito.
+          </p>
+
+          <p>
+            Paano palalaguin ang isang water-intensive industry nang hindi napapabayaan ang pangangailangan ng buong bansa sa tubig?
+          </p>
+
+          <p>
+            Hindi basta tinalikuran ng Singapore ang semiconductor industry.
+          </p>
+
+          <p>
+            Namuhunan ito sa advanced water treatment, NEWater, industrial recycling, at mga patakarang nagtatakda kung paano dapat gamitin at muling gamitin ang tubig.
+          </p>
+
+          <p>
+            Mula Enero 2024, ipinataw ng Singapore ang minimum na 50% water recycling requirement para sa mga bagong kwalipikadong front-end semiconductor wafer fabrication projects na gumagamit ng hindi bababa sa 60,000 cubic meters ng tubig kada taon.
+          </p>
+
+          <p>
+            Hindi lamang ito boluntaryong pangako ng mga kumpanya.
+          </p>
+
+          <p>
+            Isa itong aktuwal na regulatory requirement.
+          </p>
+
+          <p>
+            Kasabay nito, ayon sa Singapore Economic Development Board, ang semiconductor industry ay kumakatawan sa humigit-kumulang 6% ng GDP ng Singapore at nagbibigay ng trabaho sa mahigit 35,000 katao.
+          </p>
+
+          <p>
+            Mahalagang maging eksakto: hindi pinatutunayan ng dalawang datos na ito na walang naging environmental cost ang industriya, o na water recycling lamang ang dahilan ng paglago nito.
+          </p>
+
+          <p>
+            Ang pinatutunayan ay may isang bansang nagawang magpalago ng mahalagang high-tech industry habang nagpapatupad ng konkretong pamantayan sa paggamit ng limitadong likas-yaman.
+          </p>
+
+          <p>
+            At iyon ang aral.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI NILA HINAYAANG ANG KAKULANGAN SA TUBIG ANG MAGTAKDA NG HANGGANAN NG KANILANG AMBISYON. GUMAWA SILA NG SISTEMANG NAGTATAKDA KUNG PAANO UUNLAD NANG MAS RESPONSABLE ANG INDUSTRIYA.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ibig sabihin na kayang kopyahin agad ng Pilipinas ang buong sistema ng Singapore.
+          </p>
+
+          <p>
+            Ibig sabihin, may aktuwal nang mga pamamaraang dapat pag-aralan, subukan, at iangkop sa ating sariling kalagayan.
+          </p>
+
+                            <h2>
+            TAIWAN: ANG TEKNOLOHIYA AY PWEDE RING GAMITING PANLABAN SA PINSALA
+          </h2>
+
+          <p>
+            Isa pang halimbawa ang Taiwan, tahanan ng isa sa pinakamahalagang semiconductor industries sa mundo.
+          </p>
+
+          <p>
+            Hindi rin ligtas sa environmental challenges ang industriya nito.
+          </p>
+
+          <p>
+            Kailangan ng tubig, kuryente, kemikal, at maayos na waste management para sa semiconductor manufacturing.
+          </p>
+
+          <p>
+            Pero hindi tumigil ang mga kumpanya sa dating paraan ng paggamit ng resources.
+          </p>
+
+          <p>
+            Ayon sa 2024 Annual Report ng Taiwan Semiconductor Manufacturing Company o TSMC, gumagamit ang kumpanya ng reclaimed water sa semiconductor production.
+          </p>
+
+          <p>
+            Sa mga manufacturing operations nito sa Tainan, ang paggamit ng reclaimed water ay nakatulong upang mabawasan nang 31% ang paggamit ng city water, habang umabot sa 17% ang reclaimed-water replacement rate sa mga fab nito sa Taiwan.
+          </p>
+
+          <p>
+            May mahalagang pagkakaiba ang water recycling at aktuwal na pagbawas ng tubig na kinukuha mula sa pangunahing supply. Kaya hindi dapat ipagpalagay na ang mataas na recycling rate ay nangangahulugang wala nang bagong tubig na kailangan.
+          </p>
+
+          <p>
+            Pero ipinapakita ng karanasan ng TSMC na may tunay na paraan upang mabawasan ang pagdepende sa conventional water supplies.
+          </p>
+
+          <p>
+            May ebidensiya rin mula sa mismong proseso ng paggawa ng chips.
+          </p>
+
+          <p>
+            Sa isang 2026 research paper sa Sustainable Chemistry, gumamit ang mga mananaliksik ng primary data mula sa 300-millimeter semiconductor pilot line upang pag-aralan ang alternatibong wet-cleaning process.
+          </p>
+
+          <p>
+            Sa kanilang life-cycle assessment, nakitaan ang iminungkahing proseso ng humigit-kumulang 55% na mas mababang environmental footprint, kabilang ang 31% na bawas sa ultrapure water consumption at 67% na bawas sa electricity use para sa partikular na cleaning process.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang kayang bawasan agad ng 55% ang kabuuang environmental impact ng isang semiconductor factory.
+          </p>
+
+          <p>
+            Ang resulta ay para sa isang partikular na proseso at may mga kondisyong kailangang matugunan bago ito mailapat sa malawakang produksyon.
+          </p>
+
+          <p>
+            Pero malinaw ang ipinapakita ng pag-aaral:
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PANGANIB NA DALA NG ISANG INDUSTRIYA AY HINDI LAGING NAKAPIRMING KATOTOHANAN. MAY MGA PINSALANG NABABAWASAN DAHIL SA PANIBAGONG TEKNOLOHIYA AT MAS MAHUSAY NA PARAAN NG PRODUKSYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Kaya mahalagang pag-aralan kung aling mga solusyon ang napatunayan na, alin ang nasa testing stage pa lamang, at alin ang talagang angkop sa kondisyon ng Pilipinas.
+          </p>
+
+          <p>
+            Hindi sapat ang sabihing may available na teknolohiya. Kailangang patunayang kaya itong ipatupad, pondohan, panatilihin, at bantayan.
+          </p>
+
+          <h2>
+            ICELAND: NANG HINDI GINAWANG HADLANG SA PAG-UNLAD ANG PANGANIB NG GEOTHERMAL ENERGY
+          </h2>
+
+          <p>
+            Hindi lamang sa semiconductor industry makikita ang ganitong aral.
+          </p>
+
+          <p>
+            Isang mahalagang halimbawa ang Iceland.
+          </p>
+
+          <p>
+            May malawak na geothermal resources ang bansang ito dahil sa kakaibang geological conditions nito.
+          </p>
+
+          <p>
+            Pero ang geothermal energy, bagaman renewable at karaniwang mas mababa ang greenhouse gas emissions kaysa sa fossil fuels, ay hindi awtomatikong walang environmental impact.
+          </p>
+
+          <p>
+            Maaaring maglabas ng hydrogen sulfide, isang gas na may masangsang na amoy at maaaring makapinsala sa kalusugan at imprastraktura.
+          </p>
+
+          <p>
+            May mga panganib din sa geothermal wastewater, underground reservoirs, at posibleng induced seismicity kaugnay ng ilang drilling at fluid-injection activities.
+          </p>
+
+          <p>
+            Kung ang tanging batayan ay ang pagkakaroon ng panganib, madaling sabihing huwag nang palawakin ang paggamit ng geothermal resources.
+          </p>
+
+          <p>
+            Pero iba ang ginawa ng Iceland.
+          </p>
+
+          <p>
+            Namuhunan ito sa geothermal district heating, power generation, engineering, monitoring, at mga teknolohiyang naglalayong mabawasan ang environmental impacts ng industriya.
+          </p>
+
+          <p>
+            Ayon sa Icelandic National Energy Authority, humigit-kumulang 90% ng enerhiyang ginagamit sa domestic heating ng Iceland noong 2020 ay nagmula sa geothermal energy.
+          </p>
+
+          <p>
+            Sa halip na patuloy na umasa nang malaki sa imported fossil fuels para sa pagpainit ng mga tahanan, nagamit nila ang sariling geothermal resources para sa isang pangunahing pangangailangan ng populasyon.
+          </p>
+
+          <p>
+            Pero hindi doon nagtapos ang kanilang innovation.
+          </p>
+
+          <p>
+            Sa Hellisheiði geothermal power plant, binuo at ginamit ang Carbfix technology.
+          </p>
+
+          <p>
+            Sa prosesong ito, kinukuha ang carbon dioxide at hydrogen sulfide mula sa geothermal gas streams, tinutunaw sa tubig, at ini-inject sa angkop na basalt formations sa ilalim ng lupa upang maisailalim sa mineralization.
+          </p>
+
+          <p>
+            May aktuwal nang resulta.
+          </p>
+
+          <p>
+            Ayon sa operational report ng Carbfix noong Setyembre 2026, sa loob ng isang taong monitoring period mula Hulyo 2025 hanggang Hunyo 2026, 99.6% ng carbon dioxide na pumasok sa Silverstone capture system ang natunaw sa tubig at naipadala para sa underground mineral storage.
+          </p>
+
+          <p>
+            Mahalagang linawin na ito ay capture efficiency ng gas na pumasok sa partikular na sistema, hindi nangangahulugang 99.6% ng lahat ng emissions ng buong geothermal facility ay awtomatikong naalis.
+          </p>
+
+          <p>
+            May hiwalay ding scientific evidence tungkol sa aktuwal na pagbawas ng hydrogen sulfide emissions.
+          </p>
+
+          <p>
+            Ayon sa isang research paper na iniharap sa World Geothermal Congress 2020+1, noong 2018 ay humigit-kumulang 9,500 toneladang hydrogen sulfide ang nagmula sa geothermal reservoir ng Hellisheiði power plant.
+          </p>
+
+          <p>
+            Sa daming iyon, humigit-kumulang 7,000 tonelada ang nakolekta at naibalik sa ilalim ng lupa sa pamamagitan ng capture at reinjection system.
+          </p>
+
+          <p>
+            Dahil dito, humigit-kumulang 2,500 tonelada ang nailabas sa atmosphere noong taong iyon.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito.
+          </p>
+
+          <p>
+            Ang kabuuang gas na nagmumula sa geothermal reservoir ay hindi katumbas ng gas na aktuwal na nailalabas sa hangin. Ang malaking bahagi ng hydrogen sulfide ay napigilang mailabas dahil sa teknolohiyang ginamit.
+          </p>
+
+          <p>
+            May karagdagang ebidensiya mula sa isang pag-aaral na inilathala sa Atmospheric Environment noong 2026.
+          </p>
+
+          <p>
+            Natuklasang bumaba nang humigit-kumulang 30% ang average hourly at daily maximum hydrogen sulfide concentrations sa tatlong monitoring sites sa capital region pagkatapos ng mga mitigation efforts.
+          </p>
+
+          <p>
+            Pero may mahalagang limitasyon.
+          </p>
+
+          <p>
+            Ayon din sa pag-aaral, may mga pagkakataong lumalampas pa rin sa health at odor guidelines ang hydrogen sulfide concentrations. May kontribusyon din ang ibang geothermal facilities at natural geothermal emissions.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi pa nawawala ang lahat ng panganib.
+          </p>
+
+          <p>
+            Pero may nasusukat na pagbawas sa pinsala dahil sa patuloy na pag-unlad ng teknolohiya at pollution controls.
+          </p>
+
+          <p>
+            At dito mahalaga ang halimbawa ng Iceland.
+          </p>
+
+          <p>
+            Hindi nila itinuring na dahilan para tuluyang talikuran ang geothermal development ang pagkakaroon ng environmental risks.
+          </p>
+
+          <p>
+            Hindi rin nila ipinagpalagay na dahil renewable ang geothermal energy ay hindi na kailangang bantayan ang mga epekto nito.
+          </p>
+
+          <blockquote>
+            <p>
+              GINAMIT NILA ANG TEKNOLOHIYA PARA MAPAKINABANGAN ANG LIKAS-YAMAN, AT MULING GINAMIT ANG TEKNOLOHIYA PARA BAWASAN ANG PINSALANG KAUGNAY NG PAGGAMIT NITO.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi ito patunay na mas mabuti ang bawat geothermal project sa lahat ng pagkakataon.
+          </p>
+
+          <p>
+            Pero ipinapakita nito na ang mahusay na resource management ay hindi natatapos sa pagkilala sa panganib.
+          </p>
+
+          <p>
+            Kabilang din dito ang pagbuo ng solusyon, pagsukat sa resulta, pagwawasto sa kakulangan, at patuloy na pagpapahusay ng sistema.
+          </p>
+
+          <p>
+            At iyan ang mahalagang aral para sa Pax Silica.
+          </p>
+
+          <p>
+            Hindi sapat na malaman kung gaano karaming tubig, enerhiya, o industrial chemicals ang kakailanganin.
+          </p>
+
+          <p>
+            Dapat ding alamin kung paano maaaring bawasan ang paggamit, pagbutihin ang efficiency, at pigilan ang polusyon sa pamamagitan ng mga teknolohiyang napatunayan at mga pamantayang mahigpit na ipinatutupad.
+          </p>
+
+          <h2>
+            NORWAY: NANG ANG KITA SA LIKAS-YAMAN AY GINAWANG PANGMATAGALANG PAMBANSANG PAKINABANG
+          </h2>
+
+          <p>
+            May isa pang mahalagang aral mula sa Norway.
+          </p>
+
+          <p>
+            Hindi ito direktang halimbawa ng semiconductor manufacturing, kundi ng pamamahala sa isang industriyang may malaking economic value at seryosong environmental consequences.
+          </p>
+
+          <p>
+            Sa loob ng maraming dekada, nakinabang ang Norway sa offshore oil and gas production sa North Sea at iba pang bahagi ng Norwegian continental shelf.
+          </p>
+
+          <p>
+            Pero hindi ligtas sa panganib ang petroleum industry.
+          </p>
+
+          <p>
+            May posibilidad ng oil spills, marine pollution, pagkasira ng ecosystem, at malalaking greenhouse gas emissions.
+          </p>
+
+          <p>
+            Sa katunayan, ayon sa Norwegian petroleum authorities, umabot sa humigit-kumulang 10.8 milyong tonelada ng carbon dioxide equivalent ang greenhouse gas emissions mula sa petroleum activities noong 2025.
+          </p>
+
+          <p>
+            Katumbas ito ng halos isang-kapat ng kabuuang domestic greenhouse gas emissions ng Norway.
+          </p>
+
+          <p>
+            Hindi pa kasama rito ang buong emissions na nalilikha kapag sinusunog ng mga bumibili sa ibang bansa ang na-export na langis at gas.
+          </p>
+
+          <p>
+            Kaya hindi makatuwirang sabihing walang malaking environmental cost ang industriya.
+          </p>
+
+          <p>
+            Pero mahalaga ring pag-aralan kung paano pinamahalaan ng Norway ang economic benefits nito.
+          </p>
+
+          <p>
+            Sa halip na hayaang mapunta lamang sa panandaliang paggastos ang malaking kita mula sa petroleum, itinatag nito ang Government Petroleum Fund noong 1990, na kalauna'y naging bahagi ng Government Pension Fund Global.
+          </p>
+
+          <p>
+            Ang layunin ay mapamahalaan ang kita mula sa likas-yaman para sa kapakanan ng kasalukuyan at susunod na mga henerasyon.
+          </p>
+
+          <p>
+            May malinaw itong fiscal framework.
+          </p>
+
+          <p>
+            Sa ilalim ng fiscal rule, ang paggamit ng pondo para sa national budget ay ginagabayan ng inaasahang pangmatagalang real return ng fund, na kasalukuyang tinatayang nasa 3% kada taon, sa halip na basta gastusin ang mismong naipong kapital.
+          </p>
+
+          <p>
+            Ayon sa Norges Bank Investment Management, umabot sa humigit-kumulang NOK 21.27 trilyon ang halaga ng Government Pension Fund Global sa pagtatapos ng 2025.
+          </p>
+
+          <p>
+            Hindi lahat ng halagang iyon ay direktang kinita mula sa pagkuha ng langis at gas.
+          </p>
+
+          <p>
+            Lumaki rin ang fund sa pamamagitan ng investment returns at naapektuhan ng pagbabago sa exchange rates.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito dahil ipinapakita na ang pangmatagalang pamamahala sa kita ay bahagi mismo ng tagumpay.
+          </p>
+
+          <p>
+            Hindi lamang dahil may likas-yamang maaaring kunin.
+          </p>
+
+          <p>
+            Kundi dahil may sistemang nagtatakda kung paano hahawakan ang kita, paano ito mapananatili, at paano mapakikinabangan ng mga susunod na henerasyon.
+          </p>
+
+          <p>
+            Nakatulong ang petroleum revenues sa financing ng public services at welfare state ng Norway.
+          </p>
+
+          <p>
+            Kasabay nito, gumagamit din ang bansa ng environmental regulations, emissions pricing, monitoring, at teknolohiya upang bawasan ang ilang epekto ng petroleum operations.
+          </p>
+
+          <p>
+            Pero kailangang malinaw ang hangganan ng paghahambing.
+          </p>
+
+          <p>
+            Ang malaking sovereign wealth fund ay hindi patunay na nabayaran o nalampasan na ang lahat ng environmental at climate costs ng oil and gas industry.
+          </p>
+
+          <p>
+            Nananatili ang seryosong usapin ng fossil fuel dependence at climate change.
+          </p>
+
+          <p>
+            Ang malinaw na napatunayan ng Norway ay ang kakayahang gawing pangmatagalang economic resource ang kita mula sa isang industriyang may malaking panganib, sa pamamagitan ng matatag na institusyon at disiplinadong pamamahala.
+          </p>
+
+          <p>
+            At napakahalaga nito para sa Pilipinas.
+          </p>
+
+          <p>
+            Dahil kahit makapasok tayo sa isang napakalaking international technology initiative, hindi awtomatikong nangangahulugang magiging malaki at pangmatagalan ang pakinabang ng bansa.
+          </p>
+
+          <p>
+            Mahalaga kung sino ang may hawak ng teknolohiya.
+          </p>
+
+          <p>
+            Sino ang makikinabang sa kita.
+          </p>
+
+          <p>
+            Anong bahagi ng industriya ang mapupunta sa mga Pilipino.
+          </p>
+
+          <p>
+            Gaano karaming kaalaman at kakayahan ang maiiwan sa bansa.
+          </p>
+
+          <p>
+            At paano titiyaking ang public resources na gagamitin para sa proyekto ay may makatarungang kapalit.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT NA MAYAMAN SA LIKAS-YAMAN ANG ISANG BANSA. HINDI RIN SAPAT NA MAY MALAKING INVESTMENT NA PAPASOK. ANG MAS MAHALAGA AY KUNG GAANO KAHUSAY NAIPAPAKINABANG ANG OPORTUNIDAD PARA SA PANGMATAGALANG KAPAKANAN NG MAMAMAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Ito ang aral mula sa Norway na maaaring ilapat sa Pax Silica.
+          </p>
+
+          <p>
+            Hindi lamang kung paano maaakit ang international investors.
+          </p>
+
+          <p>
+            Kundi kung paano matitiyak na ang investment ay magbubunga ng mas mataas na kalidad ng trabaho, mas malakas na lokal na industriya, mas mahusay na teknolohiya, at pangmatagalang economic capabilities.
+          </p>
+
+          <p>
+            Hindi kailangang gayahin ang petroleum industry ng Norway upang matutunan ang aral nito sa economic governance.
+          </p>
+
+          <p>
+            Ang dapat matutunan ay kung paano hindi sasayangin ang isang mahalagang oportunidad.
+          </p>
+
+                            <h2>
+            BAKIT HINDI SAPAT ANG PURO PAGTANGGI?
+          </h2>
+
+          <p>
+            Isipin natin kung ang bawat industriyang may environmental risk ay agad tatanggihan nang hindi na pinag-aaralan ang mga posibleng solusyon.
+          </p>
+
+          <p>
+            Hindi na kailangang suriin kung may mas ligtas na lokasyon.
+          </p>
+
+          <p>
+            Hindi na kailangang pag-aralan kung kayang bawasan ang paggamit ng tubig.
+          </p>
+
+          <p>
+            Hindi na kailangang alamin kung may mas malinis na teknolohiya.
+          </p>
+
+          <p>
+            Hindi na kailangang pag-usapan kung paano magiging kapaki-pakinabang ang industriya sa mga manggagawa at lokal na negosyo.
+          </p>
+
+          <p>
+            Basta may panganib, tapos na ang usapan.
+          </p>
+
+          <p>
+            Pero hindi ganiyan gumagana ang responsableng pagpapasya.
+          </p>
+
+          <p>
+            Sa kahit anong malaking proyekto, kailangang pag-aralan ang posibilidad ng pinsala, ang lawak nito, ang posibilidad na mangyari, at kung gaano ito kahirap o imposibleng itama.
+          </p>
+
+          <p>
+            Pagkatapos, ihambing ang mga posibleng benepisyo sa mga gastos at panganib na matitira kahit matapos ipatupad ang mga proteksiyon.
+          </p>
+
+          <p>
+            May mga panganib na kayang mabawasan.
+          </p>
+
+          <p>
+            May mga panganib na nangangailangan ng pagbabago sa disenyo o lokasyon.
+          </p>
+
+          <p>
+            At may mga panganib na hindi katanggap-tanggap dahil maaaring magdulot ng malubha, hindi na maibabalik, o labag sa karapatang pinsala.
+          </p>
+
+          <p>
+            Sa ganitong sitwasyon, makatuwiran ang pagtanggi.
+          </p>
+
+          <p>
+            Ang punto ay hindi ipilit na dapat matuloy ang lahat ng proyekto.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG PUNTO AY HINDI DAPAT PAGPALITIN ANG PAGKILALA SA PANGANIB AT ANG AGARANG PAGHATOL NA WALA NANG POSIBLENG RESPONSABLENG SOLUSYON.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi rin makatarungang tawaging takot sa pag-unlad ang lahat ng nagtatanong tungkol sa tubig, lupa, kabuhayan, at kalikasan.
+          </p>
+
+          <p>
+            Ang seryosong pagtutol na nakabatay sa ebidensiya ay mahalagang bahagi ng pagpapasya.
+          </p>
+
+          <p>
+            Pero ang pagtutol na ayaw nang pag-aralan ang anumang alternatibo ay maaari ring magsara ng oportunidad bago pa malaman kung may mas mabuting paraan.
+          </p>
+
+          <h2>
+            ANG PAGKAKATAONG MAKAUNA—MAY HALAGA, PERO HINDI GARANTIYA
+          </h2>
+
+          <p>
+            May tinatawag na first-mover advantage sa economics at business strategy.
+          </p>
+
+          <p>
+            Sa ilang industriya, nakikinabang ang mga mas maagang nakapasok dahil nauuna silang makabuo ng karanasan, relasyon sa suppliers, specialized workforce, at market position.
+          </p>
+
+          <p>
+            Kapag may lumalaking high-tech supply chain, mahalagang malaman kung paano makakakuha ng magandang posisyon ang isang bansa bago maging mas mahigpit ang kompetisyon.
+          </p>
+
+          <p>
+            Pero hindi totoo na lahat ng unang pumapasok ay nagtatagumpay.
+          </p>
+
+          <p>
+            Sa isang pag-aaral nina Peter Golder at Gerard Tellis na inilathala sa Journal of Marketing Research, sinuri ang humigit-kumulang 500 brands sa 50 product categories. Natuklasang halos kalahati ng mga pioneer brands ang nabigo.
+          </p>
+
+          <p>
+            Pag-aaral ito sa mga produkto at kumpanya, hindi direktang sukatan ng tagumpay ng isang bansa. Pero mahalaga ang aral: hindi sapat ang pagiging una para maging matagumpay.
+          </p>
+
+          <p>
+            Minsan, ang mga nahuhuli ay nakikinabang pa dahil napag-aaralan nila ang pagkakamali ng mga nauna.
+          </p>
+
+          <p>
+            Kaya sa Pax Silica, hindi dapat simpleng habulin ang pagkakataong mauna.
+          </p>
+
+          <p>
+            Mas mahalagang itanong:
+          </p>
+
+          <p>
+            Makakakuha ba tayo ng technology transfer?
+          </p>
+
+          <p>
+            Magkakaroon ba ng mas maraming skilled Filipino engineers, technicians, at researchers?
+          </p>
+
+          <p>
+            Makakapasok ba ang lokal na negosyo sa supply chain?
+          </p>
+
+          <p>
+            Magkakaroon ba ng sariling kakayahang gumawa, magdisenyo, at magpaunlad ng teknolohiya?
+          </p>
+
+          <p>
+            O magiging lugar lamang tayo ng operasyon habang limitado ang kaalamang naiiwan at malaking bahagi ng pakinabang ay napupunta sa labas ng bansa?
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI SAPAT ANG MAKASALI SA INDUSTRIYA. DAPAT MAY MALINAW NA PLANO KUNG PAANO AANGAT ANG POSISYON NG PILIPINAS SA LOOB NITO.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LAHAT NG FOREIGN INVESTMENT AY AUTOMATIKONG NAGDUDULOT NG PAG-UNLAD
+          </h2>
+
+          <p>
+            May mahalagang paliwanag dito ang World Bank.
+          </p>
+
+          <p>
+            Sa World Development Report 2024: The Middle-Income Trap, binigyang-diin na hindi sapat ang patuloy na pag-akit ng investment para umangat ang isang ekonomiya.
+          </p>
+
+          <p>
+            Kailangang matutunan at maipalaganap ang modernong teknolohiya mula sa ibang bansa, at habang lumalakas ang kakayahan ng ekonomiya, dapat ding umunlad ang sariling innovation.
+          </p>
+
+          <p>
+            Ito ang tinatawag na investment, infusion, at innovation strategy.
+          </p>
+
+          <p>
+            May kaparehong aral ang OECD research tungkol sa foreign direct investment.
+          </p>
+
+          <p>
+            Maaaring magdala ng mas mataas na productivity at technology transfer ang foreign companies, lalo na kung may ugnayan sila sa domestic suppliers at lokal na negosyo.
+          </p>
+
+          <p>
+            Pero hindi awtomatikong nangyayari ang ganitong benepisyo.
+          </p>
+
+          <p>
+            Kailangan ng mga lokal na kumpanyang may sapat na kakayahan, mga manggagawang may tamang skills, at mga patakarang tumutulong upang maipasa at magamit ang bagong kaalaman.
+          </p>
+
+          <p>
+            Sa madaling salita, hindi dahil may dayuhang kumpanyang nagtayo ng pabrika ay bigla nang magiging technologically advanced ang buong bansa.
+          </p>
+
+          <p>
+            Kailangang paghandaan kung paano makikinabang ang mga Pilipino.
+          </p>
+
+          <p>
+            Kung walang malinaw na plano para rito, maaaring magkaroon ng investment at exports nang hindi naaabot ang buong potensiyal para sa pangmatagalang pag-unlad.
+          </p>
+
+          <h2>
+            PERO PAANO ANG KALIKASAN AT MGA KOMUNIDAD?
+          </h2>
+
+          <p>
+            Dito kailangang maging mas mahigpit.
+          </p>
+
+          <p>
+            May aktuwal na mga usaping dapat sagutin tungkol sa iminungkahing Pax Silica industrial hub sa New Clark City.
+          </p>
+
+          <p>
+            Kabilang ang paggamit ng tubig, pangangailangan sa kuryente, posibleng industrial wastewater, epekto sa sakahan, at karapatan ng mga komunidad sa lupa.
+          </p>
+
+          <p>
+            Ayon sa BCDA, hindi kukunin ng proyekto ang tubig mula sa kasalukuyang community water supply. May plano itong gumamit ng surface-water harvesting, treatment, storage, at recycling systems.
+          </p>
+
+          <p>
+            Mahalagang plano iyon.
+          </p>
+
+          <p>
+            Pero ang ipinapangakong water management system ay hindi pa katumbas ng napatunayang sapat at ligtas na water supply.
+          </p>
+
+          <p>
+            Kailangan pa ring malaman kung gaano karaming tubig ang gagamitin, saan ito manggagaling sa tagtuyot, paano maaapektuhan ang ibang gumagamit ng tubig, at ano ang mangyayari kapag pumalya ang recycling o treatment facilities.
+          </p>
+
+          <p>
+            Noong Agosto 2026, sinabi ng DENR sa pagdinig sa Kongreso na wala pang naisumiteng malinaw na project-specific description at environmental impact assessment para sa iminungkahing hub. Nilinaw din na ang naunang Environmental Compliance Certificate ay para sa mas malawak na New Clark City development plan, at hindi awtomatikong clearance para sa bawat industriyang itatayo roon.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaibang ito.
+          </p>
+
+          <p>
+            Hindi puwedeng sabihing ligtas na ang isang semiconductor facility dahil lamang may environmental clearance ang master development plan ng lugar.
+          </p>
+
+          <p>
+            May sarili itong teknikal na pangangailangan at environmental impacts na kailangang suriin ayon sa naaangkop na batas.
+          </p>
+
+          <p>
+            May seryoso ring usapin sa lupa.
+          </p>
+
+          <p>
+            Sa isang ulat ng Human Rights Watch noong Nobyembre 2026, inilahad ang pangamba ng ilang Aeta at magsasaka sa Capas tungkol sa posibleng pagkawala ng kanilang tahanan, lupang sinasaka, pinagkukunan ng tubig, at kabuhayan.
+          </p>
+
+          <p>
+            Hindi lamang pangkalahatang pangamba ang usaping ito.
+          </p>
+
+          <p>
+            Ayon sa ulat, kinumpirma ng dating BCDA president na humigit-kumulang 40 kabahayan ng Aeta Hungey, na tinatayang may 200 residente, ang maaaring maapektuhan ng relokasyon.
+          </p>
+
+          <p>
+            May hiwalay ding liham ang BCDA noong Hulyo 16, 2026 na tumutukoy sa 92 affected persons sa Barangay O'Donnell, kabilang ang mga magsasaka sa Sitio Binyayan.
+          </p>
+
+          <p>
+            Hindi dapat basta pagsamahin ang dalawang bilang bilang iisang total, dahil magkahiwalay ang lokasyon at batayan ng mga tala.
+          </p>
+
+          <p>
+            Ipinapakita ng mga detalyeng ito na may mga partikular na residente at komunidad na kailangang isama sa seryosong pagsusuri ng proyekto.
+          </p>
+
+          <p>
+            Kaya hindi sapat ang pangakong walang maiiwan. Kailangang malinaw kung sino ang maaapektuhan, anong mga karapatan ang kinikilala, at kung paano maiiwasan ang pagkawala ng kabuhayan at access sa mahahalagang resources.
+          </p>
+
+          <p>
+            Nauna namang sinabi ng BCDA na ang iminungkahing industrial development ay nasa labas ng ancestral domains at may mga programang nakalaan para sa mga komunidad na maaapektuhan.
+          </p>
+
+          <p>
+            Magkakaiba ang mga pahayag at kailangang suriin ang ebidensiya, aktuwal na hangganan ng lupa, kasaysayan ng paninirahan, at legal na katayuan ng mga karapatan.
+          </p>
+
+          <p>
+            Hindi puwedeng ipagpalagay na walang karapatan ang isang katutubong komunidad dahil lamang wala pa silang pormal na Certificate of Ancestral Domain Title.
+          </p>
+
+          <p>
+            Kinikilala ng Indigenous Peoples Rights Act o Republic Act No. 8371 ang mga karapatang nakabatay sa native title at ancestral occupation, at may mga legal na proseso para sa pagkilala at pagprotekta sa mga ito.
+          </p>
+
+          <p>
+            Kung naaangkop ang Free, Prior and Informed Consent, hindi iyon maaaring palitan ng simpleng pangako ng trabaho o relokasyon.
+          </p>
+
+          <p>
+            Hindi rin sapat ang perang kabayaran lamang kung hindi maayos na natutugunan ang pagkawala ng kabuhayan, tahanan, access sa resources, at iba pang legal na karapatan.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI DAPAT MAGING PRESYO NG PAG-UNLAD ANG KARAPATANG HINDI NAMAN PUWEDENG BASTA BILHIN O ISANTABI.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang makatuwirang tugon sa mga ganitong isyu ay hindi awtomatikong pagkansela ng buong oportunidad.
+          </p>
+
+          <p>
+            Pero hindi rin pagpapatuloy na parang wala nang kailangang patunayan.
+          </p>
+
+          <p>
+            Maaaring kailangang baguhin ang lokasyon, bawasan ang lawak, palitan ang disenyo, magdagdag ng proteksiyon, o alisin ang partikular na industriyang hindi angkop sa lugar.
+          </p>
+
+          <p>
+            Kung may paglabag sa batas o hindi katanggap-tanggap na pinsalang hindi kayang maiwasan, dapat pigilan ang apektadong proyekto.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang mahalaga ay nakabatay ang desisyon sa ebidensiya, karapatan, at malinaw na pamantayan—hindi lamang sa pangako o pangamba.
+            </p>
+          </blockquote>
+
+                            <h2>
+            ANO ANG DAPAT HINGIN BAGO TAYO PUMAYAG?
+          </h2>
+
+          <p>
+            Hindi sapat ang pangakong may environmental safeguards.
+          </p>
+
+          <p>
+            Dapat may mga kondisyong nasusukat, sinusuri, at naipatutupad.
+          </p>
+
+          <p>
+            Sa tubig, dapat malinaw ang kabuuang pangangailangan, aktuwal na pagkukunan, magiging epekto sa mga kabahayan at agrikultura, water recycling targets, at independent monitoring ng wastewater.
+          </p>
+
+          <p>
+            Hindi sapat na sabihing recycled ang tubig kung hindi rin malinaw kung gaano karaming bagong tubig ang kailangan at kung ligtas ang itinatapong industrial effluent.
+          </p>
+
+          <p>
+            Sa kuryente, dapat malaman kung gaano kalaki ang dagdag na pangangailangan, saan manggagaling ang supply, magkano ang magiging gastos, at paano maiiwasang maipasa sa ordinaryong consumers ang hindi makatarungang bahagi ng gastos.
+          </p>
+
+          <p>
+            Sa lupa at komunidad, dapat malinaw ang legal na hangganan ng proyekto, ang umiiral na land rights, ang tunay na lawak ng maaapektuhan, at ang mga karapatang kailangang kilalanin bago anumang pagkuha ng lupa o relokasyon.
+          </p>
+
+          <p>
+            Sa trabaho, dapat may malinaw na plano para sa kalidad ng employment, skills training, pakikipag-ugnayan sa mga unibersidad, at pag-angat ng mga Pilipino sa mas mataas na antas ng teknikal na trabaho.
+          </p>
+
+          <p>
+            Sa investment, dapat makita ang tunay na halaga ng commitments, ang gastos ng gobyerno sa imprastraktura at incentives, ang inaasahang pakinabang, at ang aktuwal na resultang ihahambing sa mga ipinangako.
+          </p>
+
+          <p>
+            Sa kasunduan at paggamit ng pampublikong lupa, dapat malinaw kung gaano katagal ang lease, magkano ang magiging bayad, anong incentives ang ibibigay, at anong obligasyon ang papasanin ng gobyerno.
+          </p>
+
+          <p>
+            Mahalaga ito dahil sa panukalang ipinadala ng BCDA noong Abril 2026, inalok ang humigit-kumulang 4,000-acre site na walang upa sa unang dalawang taon bilang in-kind contribution ng Pilipinas.
+          </p>
+
+          <p>
+            Ang annual lease rate mula sa ikatlong taon ay nakasaad pang pag-uusapan sa hiwalay na kasunduan.
+          </p>
+
+          <p>
+            Hindi ito dapat ipagkamaling pinal nang napagkasunduang lease arrangement.
+          </p>
+
+          <p>
+            Noong Nobyembre 2026, patuloy pa ang negosasyon sa master agreement para sa iminungkahing industrial hub.
+          </p>
+
+          <p>
+            Kaya kailangang ilantad at suriin ang pinal na mga kondisyon bago magkaroon ng mga obligasyong hindi na madaling baguhin.
+          </p>
+
+          <p>
+            Dapat ding tiyaking nananatili ang kapangyarihan ng Pilipinas na magpatupad ng sariling batas, environmental standards, at pananagutan.
+          </p>
+
+          <p>
+            Hindi sapat na may malaking investor na papasok. Kailangang mapatunayan na makatarungan ang mga kondisyong ibibigay kapalit ng paggamit ng pampublikong resources.
+          </p>
+
+          <p>
+            At sa pananagutan, dapat may regular na public reporting, independent inspections, malinaw na penalties, sapat na pondo para sa environmental rehabilitation, at kapangyarihang ipatigil ang operasyon kapag nilabag ang mga kondisyon.
+          </p>
+
+          <p>
+            Hindi dapat nakadepende ang proteksiyon sa kusang loob lamang ng kumpanya o sa magandang relasyon nito sa pamahalaan.
+          </p>
+
+          <p>
+            Ang dapat na prinsipyo ay simple:
+          </p>
+
+          <blockquote>
+            <p>
+              KUNG KAYANG PATUNAYAN ANG PAKINABANG AT KAYANG SUNDIN ANG MGA PROTEKSIYON, BIGYAN NG PAGKAKATAON. KUNG MAY KAKULANGAN, ITAMA. KUNG MAY PAGLABAG, PANAGUTIN. KUNG HINDI KAYANG IWASAN ANG HINDI KATANGGAP-TANGGAP NA PINSALA, HUWAG ITULOY ANG APEKTADONG PROYEKTO.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LANG ANG PANGANIB NG PAGPAPATULOY ANG DAPAT SUKATIN
+          </h2>
+
+          <p>
+            May isang bahagi ng usapan na hindi rin dapat balewalain.
+          </p>
+
+          <p>
+            May gastos ang maling pagpapasya.
+          </p>
+
+          <p>
+            Kapag pinayagan ang proyektong hindi napag-aralan nang maayos, maaaring magdulot ito ng pinsala sa kalikasan, pagkawala ng kabuhayan, at paggastos ng publiko sa problemang dapat sana ay naiwasan.
+          </p>
+
+          <p>
+            Pero may gastos din ang hindi pagkuha sa isang pagkakataong posibleng makapagpalakas ng industriya.
+          </p>
+
+          <p>
+            Maaaring mawala ang ilang investor, skilled jobs, research partnerships, at oportunidad para sa lokal na negosyo.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na siguradong mangyayari ang mga benepisyong ito kung itutuloy ang Pax Silica.
+          </p>
+
+          <p>
+            Ang ibig sabihin ay dapat isama sa pagsusuri ang parehong posibilidad: ang pinsalang maaaring idulot ng proyekto at ang benepisyong maaaring mawala kung basta ito tatalikuran.
+          </p>
+
+          <p>
+            Mahalagang tiyaking pareho ang pamantayang ginagamit sa pagsusuri.
+          </p>
+
+          <p>
+            Hindi makatuwirang gawing tiyak na katotohanan ang lahat ng posibleng pinsala habang itinuturing na walang halaga ang lahat ng posibleng benepisyo.
+          </p>
+
+          <p>
+            Hindi rin makatuwirang gawing siguradong resulta ang lahat ng ipinapangakong benepisyo habang itinuturing na maliit lamang ang mga panganib.
+          </p>
+
+          <p>
+            At may hangganan ang ganitong paghahambing.
+          </p>
+
+          <p>
+            Hindi lahat ng pinsala ay puwedeng tumbasan ng mas malaking kita. Ang karapatan ng mga tao at mga legal na proteksiyon ay hindi dapat isantabi dahil lamang mukhang positibo ang kabuuang economic projection.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG RESPONSABLENG PAGPAPASYA AY HINDI PAGBIBILANG LAMANG NG PROS AT CONS. PAGTUKOY DIN ITO KUNG ALING MGA PINSALA ANG KAYANG BAWASAN, ALIN ANG HINDI DAPAT PAYAGAN, AT ALING MGA BENEPISYO ANG MAY TUNAY NA EBIDENSIYANG MAAARING MAKAMIT.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG MAS MALAWAK NA PANANAW SA PAG-UNLAD
+          </h2>
+
+          <p>
+            Hindi natin kailangang maging bulag na tagasuporta ng Pax Silica upang kilalanin ang oportunidad nito.
+          </p>
+
+          <p>
+            Hindi rin kailangang maging kalaban ng pag-unlad ang sinumang humihingi ng proteksiyon sa kalikasan at mga komunidad.
+          </p>
+
+          <p>
+            Ang dapat nating iwasan ay ang pagtingin na dalawa lamang ang pagpipilian: tanggapin ang lahat o tanggihan ang lahat.
+          </p>
+
+          <p>
+            May mas responsableng landas.
+          </p>
+
+          <p>
+            Pag-aralan ang oportunidad.
+          </p>
+
+          <p>
+            Tukuyin ang panganib.
+          </p>
+
+          <p>
+            Ihambing ang mga posibleng paraan.
+          </p>
+
+          <p>
+            Itakda ang hindi maaaring labaging proteksiyon.
+          </p>
+
+          <p>
+            Makipagnegosasyon para sa mas malaking pakinabang ng Pilipinas.
+          </p>
+
+          <p>
+            At tiyaking may tunay na pananagutan ang mga magpapatupad.
+          </p>
+
+          <p>
+            Mahalaga ang pagiging maingat. Pero hindi dapat maging dahilan ang pag-iingat upang tumigil na tayong maghanap ng solusyon.
+          </p>
+
+          <p>
+            Mahalaga ang pagkakaroon ng ambisyon. Pero hindi dapat maging dahilan ang ambisyon upang balewalain ang karapatan at kaligtasan ng mga tao.
+          </p>
+
+          <p>
+            Ang pinakamahalagang tanong ay hindi kung sino ang mas malakas sumigaw ng YES o NO.
+          </p>
+
+          <p>
+            Ang tanong ay kung sino ang may malinaw na plano, sapat na ebidensiya, at makatwirang pamantayan upang makapagpasya para sa pangmatagalang kapakanan ng bansa.
+          </p>
+
+          <p>
+            Dahil sa dulo, hindi lang ang proyektong itatayo ang mahalaga.
+          </p>
+
+          <p>
+            Mahalaga rin kung anong uri ng industriya ang maiiwan, anong kakayahan ang matututunan ng mga Pilipino, anong trabaho ang malilikha, at kung mananatiling ligtas ang mga likas-yaman at komunidad na nakapaligid dito.
+          </p>
+
+          <blockquote>
+            <p>
+              HINDI DAHIL MAY PANGANIB AY DAPAT NANG TALIKURAN ANG PAGKAKATAON.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              HINDI PAGIGING RESPONSABLE ANG BASTA PAGTANGGI. PERO HINDI RIN PAG-UNLAD ANG BASTA PAGPAYAG.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              ANG PAGPROTEKTA SA KALIKASAN AY HINDI DAPAT GAMITING DAHILAN PARA ISARA ANG LAHAT NG PAGKAKATAON. AT ANG PANGAKO NG PAG-UNLAD AY HINDI DAPAT GAMITING LISENSIYA PARA SIRAIN ANG KALIKASAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi natin kailangang katakutan ang bawat bagong industriya.
+          </p>
+
+          <p>
+            Pero hindi rin natin kailangang pagkatiwalaan ang bawat nangangako ng pag-unlad.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG TUNAY NA PAG-UNLAD AY HINDI NASUSUKAT SA DAMI NG PROYEKTONG PINAYAGAN O TINANGGIHAN. NASUSUKAT ITO SA MGA PAGKAKATAONG MATALINONG NAPAKINABANGAN, MGA PANGANIB NA RESPONSABLENG NAPANGASIWAAN, AT MGA KARAPATAN AT LIKAS-YAMANG HINDI ISINAKRIPISYO.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li class="source-group-title">
+              <strong>Pax Silica at Philippine context</strong>
+            </li>
+
+            <li>
+              Philippine Information Agency / BCDA — BCDA Clarifies Misconceptions on Pax Silica Project in New Clark City (2026)
+              <a
+                href="https://pia.gov.ph/news/luzon/cl/bcda-clarifies-misconceptions-on-pax-silica-project-in-new-clark-city/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pia.gov.ph/news/luzon/cl/bcda-clarifies-misconceptions-on-pax-silica-project-in-new-clark-city/
+              </a>
+            </li>
+
+            <li>
+              Philippine Statistics Authority — National Accounts: Exports of Goods, Percent Share, 2025
+              <a
+                href="https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__2B__NA__AN__4EOG/0252B5BEGA4.px/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://openstat.psa.gov.ph/PXWeb/pxweb/en/DB/DB__2B__NA__AN__4EOG/0252B5BEGA4.px/
+              </a>
+            </li>
+
+            <li>
+              Philippine Daily Inquirer — No Clear Project Description, Eco Assessment Yet for Pax Silica—DENR (2026)
+              <a
+                href="https://newsinfo.inquirer.net/2293110/no-clear-project-description-eco-assessment-yet-for-pax-silica-denr"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://newsinfo.inquirer.net/2293110/no-clear-project-description-eco-assessment-yet-for-pax-silica-denr
+              </a>
+            </li>
+
+            <li>
+              Human Rights Watch — Philippines: US Tech Hub to Displace Hundreds (November 16, 2026)
+              <a
+                href="https://www.hrw.org/news/2026/11/16/philippines-us-tech-hub-to-displace-hundreds"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.hrw.org/news/2026/11/16/philippines-us-tech-hub-to-displace-hundreds
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Pax Silica proposed agreement at lease arrangements</strong>
+            </li>
+
+            <li>
+              BCDA — Proposal for a Pax Silica Coordination Office in Clark, official letter dated April 9, 2026, published through the Philippine Board of Investments
+              <a
+                href="https://boi.gov.ph/wp-content/uploads/2026/05/BCDA-Letter-to-US-Dept-of-State-re-Pax-Silica-Proposal_.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://boi.gov.ph/wp-content/uploads/2026/05/BCDA-Letter-to-US-Dept-of-State-re-Pax-Silica-Proposal_.pdf
+              </a>
+            </li>
+
+            <li>
+              Philstar — US Official Says Immunity for Pax Silica Clark Hub 'Taken Out of Context' (May 26, 2026)
+              <a
+                href="https://www.philstar.com/headlines/2026/05/26/2530687/us-official-says-immunity-pax-silica-clark-hub-taken-out-context"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.philstar.com/headlines/2026/05/26/2530687/us-official-says-immunity-pax-silica-clark-hub-taken-out-context
+              </a>
+            </li>
+
+            <li>
+              BusinessMirror — Pax Silica Still Has a Master Agreement to Settle—Exec (November 11, 2026)
+              <a
+                href="https://businessmirror.com.ph/2026/11/11/pax-silica-still-has-a-master-agreement-to-settle-exec/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://businessmirror.com.ph/2026/11/11/pax-silica-still-has-a-master-agreement-to-settle-exec/
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Singapore at Taiwan — semiconductor manufacturing at resource management</strong>
+            </li>
+
+            <li>
+              Singapore Economic Development Board — How Is Singapore Developing Semiconductor Talent? (2025)
+              <a
+                href="https://www.edb.gov.sg/en/business-insights/insights/how-is-singapore-developing-semiconductor-talent-to-meet-industry-needs.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.edb.gov.sg/en/business-insights/insights/how-is-singapore-developing-semiconductor-talent-to-meet-industry-needs.html
+              </a>
+            </li>
+
+            <li>
+              Singapore PUB — New Recycling Requirements (2023; implemented 2024)
+              <a
+                href="https://www.pub.gov.sg/Resources/News-Room/PressReleases/2023/03/New-recycling-requirements"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.pub.gov.sg/Resources/News-Room/PressReleases/2023/03/New-recycling-requirements
+              </a>
+            </li>
+
+            <li>
+              TSMC — 2024 Annual Report, Water Management
+              <a
+                href="https://investor.tsmc.com/static/annualReports/2024/english/ebook/files/basic-html/page159.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://investor.tsmc.com/static/annualReports/2024/english/ebook/files/basic-html/page159.html
+              </a>
+            </li>
+
+            <li>
+              Gocyla et al. — Reducing the Environmental Impact of Wet Chemical Processes for Advanced Semiconductor Manufacturing, Sustainable Chemistry (2026)
+              <a
+                href="https://doi.org/10.3390/suschem7010008"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.3390/suschem7010008
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Iceland — geothermal development at environmental mitigation</strong>
+            </li>
+
+            <li>
+              Icelandic National Energy Authority — District Heating: Geothermal Energy Use
+              <a
+                href="https://orkustofnun.is/en/natural_resources/district_heating"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://orkustofnun.is/en/natural_resources/district_heating
+              </a>
+            </li>
+
+            <li>
+              Carbfix — Carbfix Technology Achieves 99.6% Capture Efficiency for CO₂ from ON Power's Hellisheiði Power Plant (2026)
+              <a
+                href="https://www.carbfix.com/newsmedia/carbfix-technology-achieves-99.6-capture-efficienc"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.carbfix.com/newsmedia/carbfix-technology-achieves-99.6-capture-efficienc
+              </a>
+            </li>
+
+            <li>
+              Sigfússon et al. — Improving Air Quality with NCG Gas Capture and Reinjection at the Hellisheidi Power Plant, Proceedings World Geothermal Congress 2020+1
+              <a
+                href="https://www.worldgeothermal.org/pdf/IGAstandard/WGC/2020/02059.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.worldgeothermal.org/pdf/IGAstandard/WGC/2020/02059.pdf
+              </a>
+            </li>
+
+            <li>
+              Andradóttir &amp; Anderson — Effects of Hydrogen Sulfide Mitigation Efforts on Air Quality Near Geothermal Power Plants in Cold Climate, Atmospheric Environment (2026)
+              <a
+                href="https://doi.org/10.1016/j.atmosenv.2026.122247"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1016/j.atmosenv.2026.122247
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Norway — petroleum revenues, economic governance at environmental impacts</strong>
+            </li>
+
+            <li>
+              Norges Bank Investment Management — Annual Report 2025: Government Pension Fund Global
+              <a
+                href="https://www.nbim.no/en/news-and-insights/reports/2025/annual-report-2025/web-report-annual-report-2025"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.nbim.no/en/news-and-insights/reports/2025/annual-report-2025/web-report-annual-report-2025
+              </a>
+            </li>
+
+            <li>
+              Norwegian Petroleum Directorate / Ministry of Energy — Management of Revenues
+              <a
+                href="https://www.norskpetroleum.no/en/economy/management-of-revenues/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.norskpetroleum.no/en/economy/management-of-revenues/
+              </a>
+            </li>
+
+            <li>
+              Norwegian Petroleum — Emissions to Air: Petroleum Sector
+              <a
+                href="https://www.norskpetroleum.no/en/environment-and-technology/emissions-to-air/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.norskpetroleum.no/en/environment-and-technology/emissions-to-air/
+              </a>
+            </li>
+
+            <li>
+              OECD — Economic Surveys: Norway 2026, Preparing for Long-Term Challenges
+              <a
+                href="https://www.oecd.org/en/publications/oecd-economic-surveys-norway-2026_5cc02644-en/full-report/preparing-for-long-term-challenges_b3a8411e.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.oecd.org/en/publications/oecd-economic-surveys-norway-2026_5cc02644-en/full-report/preparing-for-long-term-challenges_b3a8411e.html
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>Economic development, investment at batas</strong>
+            </li>
+
+            <li>
+              World Bank — World Development Report 2024: The Middle-Income Trap
+              <a
+                href="https://www.worldbank.org/en/publication/wdr2024"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.worldbank.org/en/publication/wdr2024
+              </a>
+            </li>
+
+            <li>
+              OECD — FDI Qualities Policy Toolkit: Policies for Improving Productivity and Innovation
+              <a
+                href="https://www.oecd.org/en/publications/fdi-qualities-policy-toolkit_7ba74100-en/full-report/component-6.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.oecd.org/en/publications/fdi-qualities-policy-toolkit_7ba74100-en/full-report/component-6.html
+              </a>
+            </li>
+
+            <li>
+              Golder &amp; Tellis — Pioneer Advantage: Marketing Logic or Marketing Legend?, Journal of Marketing Research (1993)
+              <a
+                href="https://doi.org/10.1177/002224379303000203"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://doi.org/10.1177/002224379303000203
+              </a>
+            </li>
+
+            <li>
+              Republic Act No. 8371 — Indigenous Peoples Rights Act of 1997
+              <a
+                href="https://lawphil.net/statutes/repacts/ra1997/ra_8371_1997.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://lawphil.net/statutes/repacts/ra1997/ra_8371_1997.html
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+  </html>
