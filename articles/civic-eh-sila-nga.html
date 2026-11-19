@@ -1,1 +1,1750 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="“EH SILA NGA? MAS MALALA PA!” — “BAKIT KAMI LANG? GANUN DIN NAMAN SILA!” Isang fact-based na Civic Explainer tungkol sa whataboutism, partisan bias, political accountability, double standards, logical fallacies, at patas na pagsusuri sa ebidensiya."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-eh-sila-nga.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-eh-sila-nga.html"
+  >
+
+  <title>“EH SILA NGA? MAS MALALA PA!” — “BAKIT KAMI LANG? GANUN DIN NAMAN SILA!” | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+           <header class="article-header">
+
+        <h1 class="article-title">
+          “EH SILA NGA? MAS MALALA PA!” — “BAKIT KAMI LANG? GANUN DIN NAMAN SILA!”
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+           <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-eh-sila-nga.png"
+            alt="Simbolikong visual ng whataboutism na nagpapakita ng dalawang magkabilang panig na parehong nagtuturuan habang nasa gitna ang nakagapos at bitak na simbolo ng katarungan, may mga dokumento sa magkabilang timbangan at mga mamamayang naghihintay ng sagot, bilang representasyon ng paglilihis, partisan bias, double standards, ebidensiya, at pananagutan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                  <h2>
+            WHATABOUTISM: KAPAG ANG PAGTATANGGOL SA PANIG AY MAS MAHALAGA KAYSA SA KATOTOHANAN
+          </h2>
+
+          <p>
+            Sa pulitika, may mga taong napakabilis maningil ng pananagutan kapag kalaban ang pinag-uusapan. Pero kapag sariling panig na ang kinukuwestiyon, biglang nagiging depensa ang pagkakamali ng iba.
+          </p>
+
+          <p>
+            May itinatanong tungkol sa posibleng maling paggamit ng pondo, pero ang sagot ay tungkol sa korapsiyon ng nakaraang administrasyon. May kinukuwestiyong aksiyon ng isang opisyal, pero ang ibinabalik ay mga kasalanan umano ng kabilang partido.
+          </p>
+
+          <p>
+            Parang naging paligsahan na kung sino ang mas maraming kasalanan, kahit ang orihinal na tanong ay hindi pa nasasagot.
+          </p>
+
+          <p>
+            Pero kahit totoong may mas malalang pagkakamali ang iba, hindi nito pinatutunayang walang dapat ipaliwanag ang sariling panig. At kahit may hindi patas na pagtrato sa magkakatulad na kaso, hindi iyon dahilan upang balewalain ang ebidensiyang kailangang suriin.
+          </p>
+
+          <p>
+            May lugar ang pagkuwestiyon sa double standards at selective enforcement. Pero ibang usapan ang paghahanap ng pantay na pananagutan sa paggamit ng pagkakamali ng iba upang makaiwas sa sariling isyu.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil kung argumento ang iniharap, pero kasalanan ng iba ang isinagot, ano talaga ang napabulaanan?
+            </p>
+          </blockquote>
+
+          <p>
+            Dito pumapasok ang isang problema sa pampublikong diskurso: ang paggamit ng ibang pagkakamali hindi upang linawin ang katotohanan, kundi upang ilayo ang usapan sa tanong na kailangang sagutin.
+          </p>
+
+          <p>
+            At iyan ang sentro ng whataboutism—isang paraan ng pangangatwirang maaaring magmukhang matapang na rebuttal, kahit wala naman talagang nasagot sa orihinal na argumento.
+          </p>
+
+          <h2>
+            KAPAG ANG TANONG AY SINAGOT NG IBANG TANONG
+          </h2>
+
+          <p>
+            Sa pinakasimpleng paliwanag, ang whataboutism ay isang paraan ng paglilihis sa kritisismo sa pamamagitan ng pagtuturo sa pagkakamali ng iba.
+          </p>
+
+          <p>
+            Halimbawa:
+          </p>
+
+          <p>
+            May alegasyong ginamit sa maling paraan ang pondo ng isang ahensiya.
+          </p>
+
+          <p>
+            Ang makatuwirang tugon ay alamin kung may sapat na ebidensiya, ano ang paliwanag ng mga sangkot, at kung may nalabag na batas.
+          </p>
+
+          <p>
+            Pero kapag ang sagot ay tungkol agad sa ibang opisyal na may kaparehong alegasyon, hindi pa rin nito nasasagot ang orihinal na usapin.
+          </p>
+
+          <p>
+            Maaaring may pagkakamali rin ang kabilang panig. Maaaring mas malaki pa ang kanilang naging paglabag.
+          </p>
+
+          <blockquote>
+            <p>
+              Pero kailan naging katibayan ng pagiging inosente ng isang tao ang pagkakasala ng iba?
+            </p>
+          </blockquote>
+
+          <p>
+            Kung may sampung taong nagnakaw, hindi nagiging tama ang pagnanakaw ng pang-labing-isa.
+          </p>
+
+          <p>
+            At kung may sampung opisyal na dapat imbestigahan, hindi dahilan iyon para huwag nang imbestigahan ang pang-labing-isa.
+          </p>
+
+          <p>
+            Hindi nawawala ang sariling pananagutan dahil marami pang ibang posibleng mananagot.
+          </p>
+
+          <h2>
+            HINDI LAHAT NG REBUTTAL AY MAY LOHIKA
+          </h2>
+
+          <p>
+            Sa pag-aaral ng pangangatwiran, malapit ang whataboutism sa ilang informal logical fallacies.
+          </p>
+
+          <h3>
+            TU QUOQUE — “KAYO RIN NAMAN!”
+          </h3>
+
+          <p>
+            Sa halip na sagutin ang argumento, ibinabaling ang atensiyon sa pagkakamali o pagiging ipokrito ng nagsasalita.
+          </p>
+
+          <h3>
+            RED HERRING — PAGLILIHIS SA PAKSA
+          </h3>
+
+          <p>
+            Nagpapasok ng ibang usapin upang mailayo ang diskusyon sa pangunahing tanong.
+          </p>
+
+          <h3>
+            FALSE EQUIVALENCE — MALING PAGPAPANTAY
+          </h3>
+
+          <p>
+            Ginagawang magkatumbas ang dalawang pangyayari kahit magkaiba ang ebidensiya, bigat, o konteksto ng mga ito.
+          </p>
+
+          <p>
+            Hindi lahat ng whataboutism ay awtomatikong gumagamit ng tatlong fallacy na ito. Depende iyon sa mismong argumento.
+          </p>
+
+          <p>
+            Sa pag-aaral ni Tracy Bowell na Whataboutisms: The Good, the Bad and the Ugly (2023), ipinaliwanag na maraming ganitong argumento ang mahina dahil inililihis ang usapan, ngunit may mga pagkakataong makatuwiran ang paghahambing kapag tunay na mahalaga ang pagkakapareho o pagkakaiba ng mga kaso.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi sapat na may binanggit na ibang pagkakamali upang agad itong tawaging fallacy. Kailangang suriin kung may direktang kaugnayan iyon sa tanong o ginagamit lamang upang umiwas sa pagsagot.
+          </p>
+
+          <p>
+            Pero malinaw ang pangunahing problema: ang pagbanggit ng pagkakamali ng iba ay hindi sapat na sagot sa ebidensiyang nakaharap sa iyo.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang argumento ay dapat sinusukat sa katibayan at lohika, hindi sa kulay ng partidong pinagmulan nito.
+            </p>
+          </blockquote>
+
+          <h2>
+            KAPAG ANG PULITIKA AY NAGING PAGTATANGGOL SA SARILING KAMPO
+          </h2>
+
+          <p>
+            Dito nagiging mas seryoso ang problema.
+          </p>
+
+          <p>
+            May mga taong napakabilis makakita ng katiwalian kapag kalaban ang sangkot, pero napakaraming hinihinging dahilan para magduda kapag kaalyado na ang pinag-uusapan.
+          </p>
+
+          <p>
+            Kapag kalaban, sapat na ang alegasyon upang agad maniwala.
+          </p>
+
+          <p>
+            Kapag kaalyado, kahit may dokumento, kailangan munang humanap ng paraan upang kuwestiyunin ang naglalabas nito.
+          </p>
+
+          <p>
+            Kapag kalaban ang nagkamali, pananagutan ang sigaw.
+          </p>
+
+          <p>
+            Kapag sariling panig ang nasasangkot, biglang nagiging mahalaga ang pagkakamali ng lahat ng naunang administrasyon.
+          </p>
+
+          <p>
+            Hindi ito patas na pamantayan.
+          </p>
+
+          <p>
+            Ito ang panganib kapag ang pagkampi sa politiko ay nagsisimulang pumalit sa sariling paghatol.
+          </p>
+
+          <p>
+            May kaugnayan dito ang tinatawag na motivated reasoning at partisan bias. Ipinapakita ng mga pag-aaral sa political psychology na may tendensiya ang mga tao na higit na tanggapin ang impormasyong pumapabor sa kanilang grupong politikal.
+          </p>
+
+          <h2>
+            AT HINDI LANG ITO OPINYON. MAY AKTUWAL NA RESEARCH TUNGKOL DITO.
+          </h2>
+
+          <p>
+            Sa pag-aaral nina Peter Ditto at mga kasamahan, At Least Bias Is Bipartisan (2019), pinagsama at sinuri ang resulta ng 51 experimental studies na may mahigit 18,000 participants.
+          </p>
+
+          <p>
+            Ang sinuri nila ay kung paano hinuhusgahan ng mga taong may magkakaibang paniniwalang politikal ang impormasyong pumapabor o sumasalungat sa kanilang panig.
+          </p>
+
+          <p>
+            Sa 51 experimental studies na sinuri, parehong lumitaw ang partisan bias sa mga liberal at konserbatibong kalahok. Sa pinagsamang resulta, walang nakitang statistically significant na pagkakaiba sa average na antas ng bias ng dalawang grupo.
+          </p>
+
+          <p>
+            Gayunman, kinuwestiyon nina Jonathan Baron at John Jost (2019) kung sapat ang mga eksperimento upang makapagbigay ng mas malawak na konklusyong magkapantay ang partisan bias ng dalawang panig. Tumugon naman ang grupo nina Ditto at ipinagtanggol ang kanilang metodolohiya at mga natuklasan.
+          </p>
+
+          <p>
+            Ibig sabihin, may ebidensiya ng partisan bias sa dalawang grupo, pero hindi nito awtomatikong pinatutunayang magkapareho ang antas ng bias ng lahat ng liberal at konserbatibo sa bawat usapin at sitwasyon.
+          </p>
+
+          <p>
+            Ano ang ibig sabihin nito sa simpleng paliwanag?
+          </p>
+
+          <p>
+            Kapag pareho ang impormasyon, maaari itong mas madaling tanggapin kapag pabor sa sariling paniniwala, at mas mahigpit na kuwestiyunin kapag salungat dito.
+          </p>
+
+          <p>
+            Hindi dahil awtomatikong mas matibay ang ebidensiya, kundi dahil maaaring naiimpluwensiyahan ng pagkakakampi ang paghusga natin.
+          </p>
+
+          <p>
+            Mahalagang limitasyon: hindi direktang sinukat ng pag-aaral na ito ang whataboutism o ang pag-uugali ng mga botanteng Pilipino. Ang ipinakita nito ay isang mas malawak na mekanismo ng political bias na maaaring makatulong ipaliwanag kung bakit nagiging mahirap ang patas na pagtalakay sa mga usaping politikal.
+          </p>
+
+          <p>
+            Hindi rin ibig sabihin na lahat ng tagasuporta ay bulag o sadyang nanlilinlang.
+          </p>
+
+          <p>
+            Pero kapag hindi na kayang ilapat ang parehong pamantayan sa kaalyado at kalaban, hindi na patas ang pagsusuri.
+          </p>
+
+          <p>
+            At ang pinakamabigat na tanong:
+          </p>
+
+          <blockquote>
+            <p>
+              Kung mali ang isang gawain kapag kalaban ang gumawa, bakit nagiging katanggap-tanggap kapag sariling panig na?
+            </p>
+          </blockquote>
+
+                  <h2>
+            ANG PAGIGING IPAKRITO NG PUMUPUNA AY HINDI AUTOMATIC NA NAGPAPAWALANG-BISA SA KRITISISMO
+          </h2>
+
+          <p>
+            Oo, mahalagang kuwestiyunin ang double standards.
+          </p>
+
+          <p>
+            Kung may taong galit sa korapsiyon ng isang administrasyon pero tahimik sa kaparehong paglabag ng kaniyang mga kaalyado, makatuwirang kuwestiyunin ang kaniyang pagkakapare-pareho sa prinsipyo.
+          </p>
+
+          <p>
+            Pero may dalawang magkaibang usapin dito.
+          </p>
+
+          <p>
+            Una, kung patas ba ang taong pumupuna.
+          </p>
+
+          <p>
+            Ikalawa, kung totoo ba ang kaniyang pinupuna.
+          </p>
+
+          <p>
+            Maaaring ipokrito ang isang tao ngunit tama ang inilalahad niyang ebidensiya.
+          </p>
+
+          <p>
+            Maaaring mabuti ang reputasyon ng isang tao ngunit mali ang kaniyang argumento.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi nagiging kasinungalingan ang isang katotohanan dahil lamang hindi natin gusto ang taong nagsabi nito.
+            </p>
+
+            <p>
+              At hindi rin nagiging katotohanan ang isang kasinungalingan dahil lamang kaalyado natin ang nagsasalita.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY PAGKAKAIBA ANG WHATABOUTISM SA PAGHINGI NG PANTAY NA PANANAGUTAN
+          </h2>
+
+          <p>
+            Hindi lahat ng paghahambing ng dalawang kaso ay whataboutism.
+          </p>
+
+          <p>
+            Kapag ang tanong ay kung bakit magkaiba ang pagtrato sa dalawang opisyal na may magkakatulad na kaso, maaaring lehitimong usapin iyon ng selective enforcement.
+          </p>
+
+          <p>
+            Kailangang suriin kung talagang magkapareho ang kanilang sitwasyon, ebidensiya, legal na batayan, at proseso.
+          </p>
+
+          <p>
+            Ang makatarungang paghahambing ay naghahanap ng iisang pamantayan.
+          </p>
+
+          <p>
+            Ang whataboutism naman, kapag ginagamit bilang palusot, ay naghahanap ng ibang masisisi upang makaiwas sa kasalukuyang tanong.
+          </p>
+
+          <p>
+            Malaki ang pagkakaiba.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na panawagan sa pantay na pananagutan ay hindi “Bakit kami lang?” kundi “Bakit hindi lahat ng may sapat na batayan ay panagutin?”
+            </p>
+          </blockquote>
+
+          <p>
+            Dito nasusubok kung prinsipyo ba talaga ang ipinaglalaban o panig lamang ang pinoprotektahan.
+          </p>
+
+          <h2>
+            HINDI PUWEDENG PALITAN NG LOYALTY ANG ACCOUNTABILITY
+          </h2>
+
+          <p>
+            Sa Pilipinas, malinaw ang prinsipyong nakasaad sa Article XI, Section 1 ng 1987 Constitution:
+          </p>
+
+          <blockquote>
+            <p>
+              “Public office is a public trust.”
+            </p>
+          </blockquote>
+
+          <p>
+            Ang mga pampublikong opisyal ay may pananagutan sa sambayanan.
+          </p>
+
+          <p>
+            Sa Republic Act No. 6713, itinatakda rin ang mga pamantayan ng integridad, propesyonalismo, katapatan, pagpapahalaga sa interes ng publiko, at paninindigan sa demokrasya.
+          </p>
+
+          <p>
+            Kabilang dito ang prinsipyo ng paglalagay ng katapatan sa bansa nang higit sa katapatan sa tao o partido.
+          </p>
+
+          <p>
+            Hindi direktang ipinagbabawal ng mga batas na ito ang whataboutism sa karaniwang pampublikong diskusyon.
+          </p>
+
+          <p>
+            Ang ipinapakita nila ay mas mahalagang prinsipyo: hindi dapat mapalitan ng personal o partidistang katapatan ang tungkuling managot sa publiko.
+          </p>
+
+          <p>
+            Hindi rin nangangahulugang may kasalanan agad ang opisyal dahil lamang may alegasyon laban sa kaniya.
+          </p>
+
+          <p>
+            May due process. May presumption of innocence sa mga kasong kriminal. Kailangan ang ebidensiya at wastong proseso.
+          </p>
+
+          <p>
+            Pero hindi rin makatarungang ituring na pag-atake ang bawat lehitimong tanong tungkol sa paggamit ng pampublikong kapangyarihan at pondo.
+          </p>
+
+          <p>
+            Ang pagtatanong ay hindi awtomatikong paninira.
+          </p>
+
+          <p>
+            Ang paghingi ng paliwanag ay hindi awtomatikong pang-uusig.
+          </p>
+
+          <p>
+            At ang pananagutan ay hindi dapat nakadepende sa kung sino ang nakaupo sa puwesto.
+          </p>
+
+          <h2>
+            KAPAG NORMAL NA ANG PAGLILIHIS, SINO ANG NAKIKINABANG?
+          </h2>
+
+          <p>
+            Isipin ang isang diskusyon tungkol sa umano'y maling paggamit ng pondo.
+          </p>
+
+          <p>
+            Sa unang minuto, pinag-uusapan ang mga dokumento at halagang kailangang ipaliwanag.
+          </p>
+
+          <p>
+            Pagkalipas ng ilang sagutan, nag-aaway na tungkol sa pagkakamali ng nakaraang administrasyon.
+          </p>
+
+          <p>
+            Maya-maya, pinagdedebatehan na kung aling partido ang mas maraming anomalya.
+          </p>
+
+          <p>
+            Hanggang sa tuluyang mawala sa usapan ang orihinal na pondong kailangang ipaliwanag.
+          </p>
+
+          <p>
+            Walang nalinaw. Walang naresolba. Walang napatunayan.
+          </p>
+
+          <p>
+            Pero naging abala ang magkabilang kampo sa paghahanap ng kasalanan ng isa't isa.
+          </p>
+
+          <p>
+            Dito makikita ang panganib ng whataboutism sa pampublikong diskurso.
+          </p>
+
+          <h2>
+            AT MAY RESEARCH NA NAGPAPAKITANG MAAARI TALAGANG MAKAAPEKTO SA OPINYON NG TAO ANG GANITONG PARAAN NG PANGANGATWIRAN.
+          </h2>
+
+          <p>
+            Sa pag-aaral nina Wilfred Chow at Dov Levin na The Diplomacy of Whataboutism and US Foreign Policy Attitudes (2024), nagsagawa sila ng dalawang survey experiment sa Estados Unidos.
+          </p>
+
+          <p>
+            Ang unang eksperimento noong 2021 ay may 2,452 adult participants, at ang sumunod noong 2022 ay may 3,200 participants.
+          </p>
+
+          <p>
+            Sinuri nila kung paano naaapektuhan ng whataboutism ang pananaw ng mga tao kapag pinupuna ng gobyerno ng Estados Unidos ang mga paglabag ng ibang bansa, at ang kabilang bansa ay tumutugon sa pamamagitan ng pagtuturo sa mga katulad na pagkakamali ng Estados Unidos.
+          </p>
+
+          <p>
+            Sa unang eksperimento, kumpara sa sitwasyong walang tugon mula sa bansang pinupuna, ang whataboutism na tumutukoy sa katulad at kamakailang pagkakamali ng Estados Unidos ay nagresulta sa:
+          </p>
+
+          <ul>
+            <li>
+              18 percentage points na pagbaba sa suporta sa posisyon ng gobyerno ng Estados Unidos.
+            </li>
+
+            <li>
+              10 percentage points na pagbaba sa suporta sa pagpapataw ng economic sanctions laban sa bansang pinupuna.
+            </li>
+          </ul>
+
+          <p>
+            Para mas madaling maintindihan, ang pagbaba ng 18 percentage points ay katumbas ng pagbabago mula 60% patungong 42%, halimbawa lamang ito ng sukat ng pagbabago at hindi ang aktuwal na panimulang porsiyento ng pag-aaral.
+          </p>
+
+          <p>
+            Ano ang mahalagang natuklasan?
+          </p>
+
+          <p>
+            Maaaring humina ang suporta ng audience sa isang kritisismo kapag naipaalala sa kanila ang pagkakamali ng mismong pumupuna.
+          </p>
+
+          <p>
+            Mas malakas ang naging epekto kapag ang itinurong pagkakamali ay kamakailan at may malinaw na pagkakatulad sa orihinal na isyu. Mas mahina naman ang epekto kapag malayo ang kaugnayan ng dalawang pangyayari.
+          </p>
+
+          <p>
+            Ipinakita rin ng follow-up experiment na hindi awtomatikong nawawala ang epekto ng whataboutism kapag sinagot ito ng panibagong paliwanag. Nag-iiba ang resulta depende sa isyu at sa uri ng sagot.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang tama ang whataboutism bilang argumento. Ipinapakita lamang na maaari itong maging epektibo sa pag-impluwensiya sa opinyon ng audience.
+          </p>
+
+          <p>
+            May karagdagang pag-aaral noong 2026 nina Chow, Levin, at Atsushi Tago sa Japan at United Kingdom. Sa kanilang mga survey experiment, nakita rin na maaaring pahinain ng whataboutism ang suporta ng mga respondent sa ilang aksiyon ng Estados Unidos at sa mga sanction na pinangungunahan nito.
+          </p>
+
+          <p>
+            Mahalagang tandaan na mga international diplomatic scenario ang sinuri sa mga pag-aaral na ito. Hindi nila direktang sinukat ang whataboutism sa Philippine elections, local politics, o mga comment section ng social media.
+          </p>
+
+          <p>
+            Gayunman, nagbibigay ang mga ito ng aktuwal na ebidensiya na ang ganitong uri ng pangangatwiran ay may kakayahang makaapekto sa pampublikong pananaw sa ilang sitwasyon.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kailangang mapabulaanan ang ebidensiya para mawala ito sa sentro ng atensiyon. Minsan, sapat nang mailipat ang usapan.
+            </p>
+          </blockquote>
+
+          <p>
+            At kapag nasanay ang publiko sa ganitong pagtatalo, maaaring mas lumakas ang kampihan kaysa ang makatwirang paghingi ng paliwanag.
+          </p>
+
+          <p>
+            Kapag ang bawat alegasyon ay sinasagot lamang ng panibagong alegasyon, parami nang parami ang pinag-aawayan pero pakonti nang pakonti ang nasasagot.
+          </p>
+
+                  <h2>
+            HINDI MO KAILANGANG IPAGTANGGOL ANG BAWAT GAWA NG POLITIKONG SINUSUPORTAHAN MO
+          </h2>
+
+          <p>
+            Maaaring suportahan ang isang opisyal dahil sa kaniyang mga programa, nagawa, o pananaw.
+          </p>
+
+          <p>
+            Hindi nangangahulugang kailangan nang ipagtanggol ang lahat ng kaniyang desisyon.
+          </p>
+
+          <p>
+            Puwedeng kilalanin ang kaniyang nagawang mabuti habang kinukuwestiyon ang kaniyang posibleng pagkakamali.
+          </p>
+
+          <p>
+            Puwedeng hindi sumang-ayon sa kaniyang mga kritiko habang kinikilalang may punto sila kapag may sapat na ebidensiya.
+          </p>
+
+          <p>
+            Puwedeng kuwestiyunin ang kabilang partido nang hindi itinatago ang pagkukulang ng sariling panig.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi pagtataksil ang pagkilala sa pagkakamali ng isang taong sinuportahan natin.
+            </p>
+
+            <p>
+              Ang suporta ay hindi habambuhay na kontrata para isuko ang sariling pag-iisip.
+            </p>
+          </blockquote>
+
+          <p>
+            At ang pagiging kritikal ay hindi nangangahulugang kailangang laging kumontra. Nangangahulugan itong handang tumanggap ng tama at tumanggi sa mali, saanmang panig ito manggaling.
+          </p>
+
+          <h2>
+            KUNG GUSTONG MAKIPAGDEBATE, SAGUTIN ANG ARGUMENTO
+          </h2>
+
+          <p>
+            Kapag may seryosong alegasyon, ito ang mga tanong na dapat harapin:
+          </p>
+
+          <ul>
+            <li>
+              Ano ang eksaktong sinasabing paglabag?
+            </li>
+
+            <li>
+              Ano ang ebidensiyang sumusuporta o sumasalungat dito?
+            </li>
+
+            <li>
+              Ano ang paliwanag ng taong sangkot?
+            </li>
+
+            <li>
+              Ano ang naaangkop na batas, proseso, at pamantayan?
+            </li>
+
+            <li>
+              Pareho ba ang pamantayang ginagamit natin sa ibang katulad na kaso?
+            </li>
+          </ul>
+
+          <p>
+            Hindi kailangang manalo sa lahat ng argumento.
+          </p>
+
+          <p>
+            Hindi rin kahinaan ang sabihing kulang pa ang impormasyon upang makapagpasya.
+          </p>
+
+          <p>
+            Mas makabuluhan ang pag-aming hindi pa alam ang buong katotohanan kaysa sa pag-iimbento ng depensang walang kaugnayan sa tanong.
+          </p>
+
+          <p>
+            At kung may ibang kasong dapat ding imbestigahan, ilatag iyon nang hiwalay, kasama ang kaukulang ebidensiya.
+          </p>
+
+          <blockquote>
+            <p>
+              Dahil ang maayos na rebuttal ay sumasagot. Hindi basta nagtuturo sa iba.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG HULING TANONG AY PARA SA ATING LAHAT
+          </h2>
+
+          <p>
+            Madaling makakita ng mali sa taong hindi natin gusto.
+          </p>
+
+          <p>
+            Mas mahirap kilalanin ang parehong pagkakamali sa taong matagal na nating ipinagtatanggol.
+          </p>
+
+          <p>
+            Pero doon nasusubok ang tunay na paninindigan.
+          </p>
+
+          <p>
+            Hindi sa dami ng kayang ipamukhang kasalanan ng kalaban.
+          </p>
+
+          <p>
+            Hindi sa husay mang-insulto sa comment section.
+          </p>
+
+          <p>
+            Hindi sa dami ng tagasuportang sasang-ayon sa atin.
+          </p>
+
+          <p>
+            Kundi sa kakayahang tumingin sa ebidensiya nang hindi agad tinatanong kung anong partido ang makikinabang.
+          </p>
+
+          <p>
+            Dahil kung ang ipinaglalaban natin ay katotohanan, dapat handa tayong tanggapin ito kahit hindi pabor sa atin.
+          </p>
+
+          <p>
+            Kung ang ipinaglalaban natin ay pananagutan, dapat pareho ang pamantayan kahit sino ang masangkot.
+          </p>
+
+          <p>
+            At kung ang ipinaglalaban natin ay maayos na pamamahala, hindi sapat ang paniningil sa kalaban habang ang sariling panig ay binibigyan ng walang katapusang dahilan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG MALI AY HINDI NAGIGING TAMA DAHIL MAY MAS MALALA PANG MALI.
+            </p>
+
+            <p>
+              ANG EBIDENSIYA AY HINDI NAWAWALAN NG BIGAT DAHIL AYAW NATIN SA NAGLALAHAD NITO.
+            </p>
+
+            <p>
+              AT ANG PANANAGUTAN AY HINDI NABUBURA SA TATLONG SALITANG “EH SILA NGA?”
+            </p>
+          </blockquote>
+
+          <p>
+            Kapag ang bawat pagkakamali ng sariling panig ay sinasagot natin ng pagkakamali ng iba, hindi natin napagtatanggol ang katotohanan.
+          </p>
+
+          <p>
+            Pinapalitan lamang natin ang pamantayan ng katarungan ng paligsahan sa kung sino ang mas maraming kasalanan.
+          </p>
+
+          <p>
+            Hindi sapat na alam nating mali ang ginagawa ng kalaban. Dapat kaya rin nating kilalanin ang mali kahit tayo mismo ang matamaan.
+          </p>
+
+          <p>
+            Dahil ang mamamayang may paninindigan ay hindi kailangang mamili kung kaninong pagkakamali ang papalampasin.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang dapat piliin ay ang pamantayang hindi nagbabago depende sa kung sino ang sangkot.
+            </p>
+          </blockquote>
+
+      </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+        <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            Sources / References
+          </h2>
+
+          <ul class="sources-list">
+
+            <li>
+              Pangalan ng opisyal na dokumento, batas,
+              desisyon, ulat, o pangunahing sanggunian.
+            </li>
+
+            <li>
+              Pangalan ng opisyal na ahensiya, institusyon,
+              hukuman, o organisasyong pinagmulan.
+            </li>
+
+            <li>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Ilagay rito ang opisyal na source link.
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
