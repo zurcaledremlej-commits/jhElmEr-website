@@ -1,1 +1,2191 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="CHECKPOINT: PARA SA SEGURIDAD, HINDI SA PANANAKOT. Isang fact-based na Civic Explainer tungkol sa police checkpoints, karapatan ng motorista, legal na search, paggamit ng puwersa, crime prevention, police accountability, at tamang pagpapatupad ng batas."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-checkpoint.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-checkpoint.html"
+  >
+
+  <title>CHECKPOINT: PARA SA SEGURIDAD, HINDI SA PANANAKOT | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          CHECKPOINT: PARA SA SEGURIDAD, HINDI SA PANANAKOT
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-checkpoint.png"
+            alt="Simbolikong visual ng police checkpoint na nagpapakita ng timbangan ng katarungan, police badge, helmet, posas, harang sa kalsada, pulis at motorista sa gitna ng checkpoint, bilang representasyon ng seguridad, karapatan ng mamamayan, legal na pagpapatupad ng batas, at pananagutan ng kapulisan."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Kapag may checkpoint sa kalsada, may mga motoristang kampante dahil alam nilang may nagbabantay laban sa kriminalidad. Pero may ilan ding kinakabahan kahit wala silang ginagawang mali, dahil hindi nila alam kung hanggang saan ang puwedeng gawin ng mga pulis.
+          </p>
+
+          <p>
+            May mga taong naniniwalang kapag marami ang checkpoint, mas ligtas ang komunidad. Mayroon ding tumitinging ang bawat checkpoint ay pagkakataon para sa pananakot, kotong, o pang-aabuso.
+          </p>
+
+          <p>
+            Pero hindi sapat ang alinman sa dalawang pananaw na ito.
+          </p>
+
+          <p>
+            Ang checkpoint ay isang lehitimong instrumento ng law enforcement. Maaari itong makatulong sa pagpigil ng kriminalidad, paghuli ng mga suspek, at pagpapanatili ng kaayusan. Ngunit ang kapangyarihang gamitin ito ay may malinaw na hangganan.
+          </p>
+
+          <p>
+            Hindi porket may uniporme at baril ang isang tao ay maaari na niyang gawin ang anumang gusto niya.
+          </p>
+
+          <p>
+            At hindi rin porket may karapatan ang isang motorista ay maaari na niyang balewalain ang lehitimong utos ng awtoridad.
+          </p>
+
+          <blockquote>
+            <p>
+              Dito kailangang malinaw ang dalawang bagay: ang karapatan ng mamamayan at ang pananagutan ng nagpapatupad ng batas.
+            </p>
+          </blockquote>
+
+          <h2>
+            BAKIT MAY CHECKPOINT?
+          </h2>
+
+          <p>
+            Hindi lamang paghuli sa mga lumalabag sa batas ang layunin ng checkpoint.
+          </p>
+
+          <p>
+            Bahagi rin ito ng tinatawag na preventive policing, o mga hakbang na ginagawa upang mabawasan ang pagkakataong magkaroon ng krimen bago pa ito mangyari.
+          </p>
+
+          <p>
+            Maaaring gamitin ang checkpoint sa paghahanap ng ninakaw na sasakyan, pagharang sa tumatakas na suspek, pagsugpo sa ilegal na pagdadala ng armas, pagpapatupad ng batas-trapiko, at pagtugon sa partikular na banta sa seguridad.
+          </p>
+
+          <p>
+            May iba pang checkpoint na isinasagawa para sa road safety, election security, o operasyon kasama ang ibang ahensiya ng pamahalaan.
+          </p>
+
+          <p>
+            Sa ilalim ng Republic Act No. 6975, may tungkulin ang Philippine National Police na panatilihin ang peace and order, pigilan at imbestigahan ang kriminalidad, at protektahan ang buhay at ari-arian ng publiko.
+          </p>
+
+          <p>
+            Pinagtitibay naman ng RA 8551 ang pagiging community-oriented at service-oriented ng PNP.
+          </p>
+
+          <p>
+            Ibig sabihin, hindi lamang pagpapatupad ng batas ang trabaho ng kapulisan. Kabilang din dito ang paglilingkod at pagprotekta sa komunidad.
+          </p>
+
+          <p>
+            Mahalaga ang checkpoint dahil hindi lahat ng krimen ay nalulutas sa pamamagitan ng pagdating ng pulis matapos ang insidente.
+          </p>
+
+          <p>
+            May mga pagkakataong ang maagap na pagharang, pagkilala sa kahina-hinalang aktibidad, at mabilis na koordinasyon ay nakatutulong upang hindi na makapaminsala ang isang kriminal.
+          </p>
+
+          <p>
+            Pero mahalagang tandaan:
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat na may checkpoint. Dapat may malinaw na dahilan kung bakit ito kailangan, may tamang paraan ng pagpapatupad, at may pananagutan kapag nagkaroon ng paglabag.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI BASTA-BASTA NAGTATAYO NG CHECKPOINT
+          </h2>
+
+          <p>
+            May opisyal na proseso ang Philippine National Police para sa checkpoint operations.
+          </p>
+
+          <p>
+            Sa Revised PNP Operational Procedures (2021), Chapter 3, Rule 2.2, ang pagtatatag ng checkpoint ay nangangailangan ng awtorisasyon ng naaangkop na pinuno ng territorial PNP unit.
+          </p>
+
+          <p>
+            May kailangang koordinasyon, pagtatalaga ng tauhan, at malinaw na responsibilidad ng checkpoint team.
+          </p>
+
+          <p>
+            Sa standard checkpoint, nakasaad sa manual ang minimum na walong tauhan na may nakatalagang team leader, verifiers, spotter, at security personnel.
+          </p>
+
+          <p>
+            Mahalaga rin ang malinaw na signage, sapat na ilaw, nakikitang police vehicle, wastong uniporme, at pagkakakilanlan ng mga pulis.
+          </p>
+
+          <p>
+            Dapat may babala sa paparating na motorista at impormasyon tungkol sa police unit at contact number ng team leader.
+          </p>
+
+          <p>
+            Hindi lamang ito para sa maayos na itsura ng operasyon.
+          </p>
+
+          <p>
+            Ang warning signs at sapat na ilaw ay mahalaga upang maiwasan ang biglang pagpreno, aksidente, at pagkalito, lalo na sa gabi.
+          </p>
+
+          <p>
+            Ang malinaw na pagkakakilanlan naman ng mga pulis ay mahalaga upang matiyak ng publiko kung sino ang nagpapatupad ng batas at kung kanino maaaring humingi ng paliwanag o magsampa ng reklamo.
+          </p>
+
+          <p>
+            Inaatasan din ang checkpoint personnel na makitungo nang magalang, ipaliwanag ang dahilan ng operasyon, at isagawa ang inspeksiyon sa paraang may pinakamaliit na kinakailangang abala.
+          </p>
+
+          <p>
+            May hiwalay na patakaran para sa emergency o hasty checkpoint.
+          </p>
+
+          <p>
+            Kung may agarang pangangailangang harangin ang isang tumatakas na suspek, maaaring hindi pa kumpleto ang standard checkpoint equipment. Ngunit kailangan pa ring magkaroon ng paunang babala, koordinasyon, at mga hakbang upang mapanatili ang kaligtasan ng publiko.
+          </p>
+
+          <p>
+            Kaya hindi awtomatikong ilegal ang isang checkpoint dahil lamang kulang ang regular na signage o tauhan. Kailangang alamin ang uri at aktuwal na kalagayan ng operasyon.
+          </p>
+
+          <p>
+            Pero hindi rin maaaring gamiting palusot ang salitang emergency para balewalain ang mga kinakailangang safety precaution.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang kapangyarihang magpatupad ng checkpoint ay may kasamang tungkuling tiyaking ligtas at maayos ang mismong operasyon.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY CHECKPOINT. IBIG BANG SABIHIN, PUWEDE NANG HALUGHUGIN ANG LAHAT?
+          </h2>
+
+          <p>
+            Hindi.
+          </p>
+
+          <p>
+            Ito ang isa sa pinakamahalagang dapat maunawaan ng ordinaryong mamamayan.
+          </p>
+
+          <p>
+            Sa Article III, Section 2 ng 1987 Philippine Constitution, protektado ang bawat tao laban sa unreasonable searches and seizures.
+          </p>
+
+          <p>
+            Kinilala ng Korte Suprema sa Valmonte v. De Villa na hindi awtomatikong labag sa Konstitusyon ang police checkpoint.
+          </p>
+
+          <p>
+            Ngunit ang karaniwang inspeksiyon ay dapat limitado at hindi labis na nakikialam sa pribadong buhay ng motorista.
+          </p>
+
+          <p>
+            Sa Caballes v. Court of Appeals at People v. Sapla, muling binigyang-diin ang pagkakaiba ng routine visual inspection at masusing paghahalughog.
+          </p>
+
+          <p>
+            Ang pagtingin sa nakikitang bahagi ng sasakyan, o paggamit ng flashlight nang hindi binubuksan ang mga pinto, ay maaaring bahagi ng ordinaryong visual inspection.
+          </p>
+
+          <p>
+            Iba na ang sapilitang pagbubukas ng bag, paghahalughog sa nakatagong compartment, o pagsasagawa ng body search nang walang hiwalay na legal na batayan.
+          </p>
+
+          <p>
+            Ang isang mas masusing search ay maaaring mangailangan ng search warrant o makatugon sa kinikilalang exception, gaya ng valid consent, probable cause sa naaangkop na moving-vehicle search, o iba pang sitwasyong pinahihintulutan ng batas.
+          </p>
+
+          <p>
+            Ang probable cause ay hindi simpleng hinala, personal na kutob, o panghuhusga batay sa pananamit at itsura.
+          </p>
+
+          <p>
+            Kailangan itong suportahan ng mga tiyak na pangyayaring makapagbibigay sa isang makatwirang tao ng batayan upang maniwalang may kaugnayan sa krimen ang taong o bagay na susuriin.
+          </p>
+
+          <p>
+            Mahalaga ring paghiwalayin ang ordinaryong visual checkpoint inspection at ang lehitimong pagberipika ng lisensiya, rehistro, at dokumentong kinakailangan sa ilalim ng batas-trapiko.
+          </p>
+
+          <p>
+            Hindi nangangahulugang ipinagbabawal ang lahat ng dokumentong hinihingi ng awtorisadong traffic enforcer.
+          </p>
+
+          <p>
+            Ngunit hindi rin nagiging walang-limitasyon ang search authority dahil lamang nahinto ang motorista para sa traffic inspection.
+          </p>
+
+          <p>
+            Kung may makatwirang tanong tungkol sa isang intrusive search, maaaring magtanong nang magalang tungkol sa dahilan at legal na batayan nito.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagsunod sa lehitimong checkpoint ay hindi nangangahulugang isinusuko na natin ang lahat ng ating karapatan.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO KUNG HINDI HUMINTO ANG MOTORISTA?
+          </h2>
+
+          <p>
+            May responsibilidad ding sumunod ang mga dumaraan sa mga legal at malinaw na utos sa checkpoint.
+          </p>
+
+          <p>
+            Kapag sinenyasan na huminto, ang ligtas at tamang gawin ay magmenor, huminto sa naaangkop na lugar, at makipagtulungan sa lehitimong inspeksiyon.
+          </p>
+
+          <p>
+            Ang sadyang pagtakas ay maaaring magdulot ng karagdagang legal na problema at panganib sa motorista, pulis, at ibang gumagamit ng kalsada.
+          </p>
+
+          <p>
+            Ngunit may mahalagang pagkakaiba ang hindi paghinto at ang aktuwal na pag-atake.
+          </p>
+
+          <p>
+            May motoristang maaaring hindi nakapansin sa checkpoint.
+          </p>
+
+          <p>
+            May maaaring naguluhan sa senyas, lalo na kapag madilim o hindi malinaw ang lugar.
+          </p>
+
+          <p>
+            May maaari ring sadyang tumakas upang umiwas sa legal na inspeksiyon.
+          </p>
+
+          <p>
+            At mayroon ding maaaring aktuwal na gumagamit ng sasakyan o armas upang manakit ng ibang tao.
+          </p>
+
+          <p>
+            Hindi puwedeng ipagpalagay na pare-pareho ang antas ng panganib sa lahat ng sitwasyong ito.
+          </p>
+
+          <p>
+            Sa PNP Operational Procedures, may mga itinakdang hakbang kapag hindi huminto ang isang motorista, kabilang ang pursuit operation, pagbibigay ng babala, at koordinasyon sa ibang police unit.
+          </p>
+
+          <p>
+            Ang paggamit ng puwersa ay mayroon ding sariling pamantayan.
+          </p>
+
+          <p>
+            Dapat itong kinakailangan, makatwiran, at naaayon sa aktuwal na banta o paglaban. Hindi ito maaaring maging simpleng pagpaparusa dahil hindi nasunod ang utos.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang hindi paghinto sa checkpoint ay hindi awtomatikong pahintulot na manakit.
+            </p>
+          </blockquote>
+
+          <p>
+            Kung may nagawang paglabag ang motorista, may legal na proseso para panagutin siya.
+          </p>
+
+          <p>
+            Hindi dapat palitan ng galit, paghihiganti, o pisikal na pagpaparusa ang prosesong iyon.
+          </p>
+
+          <p>
+            Mayroon ding partikular na pamantayan sa paggamit ng lethal force. Hindi nagiging makatwiran ang paggamit ng baril dahil lamang tumakas o hindi sumunod ang isang tao.
+          </p>
+
+          <p>
+            Kailangan pa ring suriin ang aktuwal na banta sa buhay at kaligtasan at ang mga legal na kondisyon sa paggamit ng naturang puwersa.
+          </p>
+
+                            <h2>
+            ANO NAMAN ANG RESPONSIBILIDAD NG ORDINARYONG MAMAMAYAN?
+          </h2>
+
+          <p>
+            Hindi sapat na alam lamang natin ang ating mga karapatan. Kailangan ding alam natin ang ating responsibilidad.
+          </p>
+
+          <p>
+            Kapag may lehitimong checkpoint, hindi kailangang makipagmatigasan.
+          </p>
+
+          <p>
+            Magmenor at huminto kapag maayos na sinenyasan. Sundin ang mga ligtas at legal na tagubilin. Ihanda ang mga dokumentong kinakailangan para sa pagmamaneho.
+          </p>
+
+          <p>
+            Kung may tanong, magtanong nang mahinahon.
+          </p>
+
+          <p>
+            Kung may nakikitang paglabag ng pulis, maaaring itala ang pangalan, oras, lokasyon, at iba pang mahalagang detalye. Maaaring magdokumento ng police encounter kung ligtas at naaayon sa batas, nang hindi hinahadlangan ang operasyon.
+          </p>
+
+          <p>
+            Hindi kailangang makipagsigawan o makipagbuno para lamang igiit ang karapatan.
+          </p>
+
+          <p>
+            Kung kaduda-duda ang checkpoint, maaaring humingi ng pagkakakilanlan at magpaberipika sa pinakamalapit na police station o sa 911 kapag may seryosong pangamba sa seguridad.
+          </p>
+
+          <p>
+            Iwasan ang biglang pagharurot o mapanganib na maniobra na maaaring mapagkamalang pagtakas o magdulot ng aksidente.
+          </p>
+
+          <p>
+            At kung may aktuwal na paglabag, gamitin ang legal na proseso sa pagreklamo.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kahinaan ang mahinahong pakikipagtulungan. Hindi rin kawalan ng respeto ang pagtatanong tungkol sa sariling karapatan.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang mahalaga ay walang pananakot, walang pananakit, at walang sadyang paghadlang sa lehitimong pagpapatupad ng batas.
+          </p>
+
+          <h2>
+            NAKABABAWAS BA TALAGA NG KRIMEN ANG PRESENSIYA NG PULIS?
+          </h2>
+
+          <p>
+            May siyentipikong batayan ang tinatawag na deterrence, o pagpigil sa kriminalidad sa pamamagitan ng pagtaas ng inaakalang posibilidad na mahuli ang lumalabag sa batas.
+          </p>
+
+          <p>
+            Kapag may nakikitang pulis sa isang lugar, maaaring magdalawang-isip ang taong nagpaplanong gumawa ng krimen.
+          </p>
+
+          <p>
+            Ngunit may mahalagang limitasyon ang argumentong ito.
+          </p>
+
+          <p>
+            Hindi lahat ng police visibility ay may pare-parehong epekto.
+          </p>
+
+          <p>
+            Sa isang systematic review at meta-analysis noong 2024, sinuri nina Brandon Turchan at Anthony Braga ang 32 studies na may 38 tests tungkol sa hot spots policing at violent crime.
+          </p>
+
+          <p>
+            Natuklasan nilang ang mga lugar na ginamitan ng ganitong uri ng targeted policing ay may average na 24% mas mababang violent crime kumpara sa mga lugar na may karaniwang policing.
+          </p>
+
+          <p>
+            Mas malaki ang naiulat na epekto ng problem-oriented policing strategies, na may tinatayang 35% reduction, kumpara sa mas tradisyonal na policing strategies na may 16%.
+          </p>
+
+          <p>
+            Ano ang ibig sabihin nito?
+          </p>
+
+          <p>
+            Mas epektibo ang police intervention kapag alam kung saan nakasentro ang krimen at kung anong partikular na problema ang kailangang solusyunan.
+          </p>
+
+          <p>
+            Hindi sapat ang basta pagdaragdag ng pulis kung walang malinaw na layunin.
+          </p>
+
+          <p>
+            Sinusuportahan ito ng iba pang pag-aaral.
+          </p>
+
+          <p>
+            Ayon sa UK College of Policing, sa isang systematic review noong 2019 na sumaklaw sa 65 studies at 78 tests, 62 sa 78 tests ang nag-ulat ng pagbaba ng krimen sa mga lugar na tinarget ng hot spots policing kumpara sa mga lugar na hindi tinarget.
+          </p>
+
+          <p>
+            Ipinakita rin ng kanilang pagsusuri na mas mahina o hindi pare-pareho ang ebidensiya para sa basta random patrol na walang partikular na crime-prevention focus.
+          </p>
+
+          <p>
+            Mahalaga rito ang pagtukoy sa mga lugar na mataas ang kriminalidad, pagpili ng naaangkop na intervention, at pagsusuri kung talagang nababawasan ang insidente.
+          </p>
+
+          <p>
+            Pero kailangang malinaw ang isang bagay.
+          </p>
+
+          <p>
+            Ang mga bilang na ito ay hindi direktang resulta ng lahat ng police checkpoints sa Pilipinas.
+          </p>
+
+          <p>
+            Karamihan sa mga pag-aaral ay tungkol sa targeted patrol at hot spots policing sa ibang bansa.
+          </p>
+
+          <p>
+            Hindi tamang sabihin na kapag naglagay tayo ng checkpoint sa isang barangay ay awtomatikong bababa ng 24% ang kriminalidad doon.
+          </p>
+
+          <p>
+            Iba ang patrol, iba ang targeted law enforcement operation, at iba rin ang ordinaryong checkpoint.
+          </p>
+
+          <p>
+            Magkakaugnay ang layunin ng mga ito, pero hindi awtomatikong pareho ang bisa.
+          </p>
+
+          <h2>
+            MAY EBIDENSIYA RIN PARA SA ROAD SAFETY CHECKPOINTS
+          </h2>
+
+          <p>
+            Sa mga pag-aaral na sinuri ng US National Highway Traffic Safety Administration, ang publicized sobriety checkpoint programs ay naugnay sa humigit-kumulang 9% pagbaba ng alcohol-related fatal crashes.
+          </p>
+
+          <p>
+            May hiwalay ding meta-analysis na nag-ulat ng tinatayang 17% pagbaba ng alcohol-related crashes.
+          </p>
+
+          <p>
+            Mahalaga ang ganitong datos dahil ipinapakita nitong maaaring makapagligtas ng buhay ang sistematikong checkpoint program na nakatuon sa isang partikular na panganib, gaya ng drunk driving.
+          </p>
+
+          <p>
+            Ngunit hindi ito nangangahulugang pareho ang resulta sa lahat ng bansa at lahat ng uri ng checkpoint.
+          </p>
+
+          <p>
+            May kani-kaniyang batas, enforcement procedures, kondisyon ng kalsada, at sitwasyon ang bawat lugar.
+          </p>
+
+          <p>
+            Ang matibay na aral dito ay simple:
+          </p>
+
+          <blockquote>
+            <p>
+              Kapag ang checkpoint ay may malinaw na layunin, nakabatay sa ebidensiya, at maayos na ipinatutupad, maaari itong maging kapaki-pakinabang na bahagi ng public safety.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAS MARAMING CHECKPOINT, MAS LIGTAS NA BA ANG BARANGAY?
+          </h2>
+
+          <p>
+            Hindi awtomatiko.
+          </p>
+
+          <p>
+            Maaaring senyales ng aktibong law enforcement ang madalas na checkpoint.
+          </p>
+
+          <p>
+            Pero maaari rin itong indikasyon na may partikular na problema sa seguridad na sinusubukang tugunan.
+          </p>
+
+          <p>
+            Kaya hindi puwedeng bilangin lamang ang mga checkpoint at gawing sukatan iyon ng peace and order.
+          </p>
+
+          <p>
+            Mas mahalagang alamin kung nabawasan ang aktuwal na krimen, may naharang bang tunay na banta, at kung may naprotektahang buhay.
+          </p>
+
+          <p>
+            Mahalaga rin kung gaano karaming reklamo ang naitala, kung may mga paglabag sa procedure, at kung nababawasan o nadaragdagan ang hindi kinakailangang abala sa publiko.
+          </p>
+
+          <p>
+            Halimbawa, kung maraming checkpoint sa isang lugar ngunit patuloy ang nakawan, maaaring kailanganing tingnan ang oras ng insidente, lugar na pinangyayarihan, CCTV coverage, street lighting, at bilis ng police response.
+          </p>
+
+          <p>
+            Baka mas kailangan ng regular na patrol sa mga lugar na madalas pagnakawan kaysa sa checkpoint na nakapuwesto sa kalsadang hindi naman doon dumaraan ang karamihan sa mga suspek.
+          </p>
+
+          <p>
+            Mahalaga rin ang intelligence gathering, mahusay na imbestigasyon, at kooperasyon ng komunidad.
+          </p>
+
+          <p>
+            Maaaring magkaroon ng pansamantalang deterrence effect ang presensiya ng pulis. Ngunit kung hindi natutugunan ang dahilan ng paulit-ulit na kriminalidad, maaaring bumalik ang problema kapag nawala ang presensiya nila.
+          </p>
+
+          <p>
+            Hindi lang dapat nakikita ang mga pulis.
+          </p>
+
+          <blockquote>
+            <p>
+              Dapat may malinaw na dahilan kung bakit sila naroon at may nasusukat na resulta sa kanilang ginagawa.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG PROBLEMANG HINDI LAGING NAKIKITA: TAKOT SA PULIS IMBES NA SA KRIMINAL
+          </h2>
+
+          <p>
+            May isa pang mahalagang epekto ang police visibility na hindi direktang nakikita sa crime statistics.
+          </p>
+
+          <p>
+            Ito ang tiwala ng mamamayan.
+          </p>
+
+          <p>
+            Sa isang pag-aaral na inilathala noong 2022 sa Justice Quarterly, gumamit ang mga mananaliksik ng survey mula sa mahigit 1,000 residente at taong nagtatrabaho sa mahigit 100 crime hot spots sa dalawang lungsod sa United States.
+          </p>
+
+          <p>
+            Mas positibo ang pananaw sa kapulisan ng mga respondent na nakakakita ng mas madalas na patrol at mabuting pakikipag-ugnayan ng pulis sa komunidad.
+          </p>
+
+          <p>
+            Samantala, mas negatibo ang kanilang pananaw kapag mas nakikita ang matitinding investigative at enforcement activities.
+          </p>
+
+          <p>
+            Hindi nito pinatutunayang bawat checkpoint ay nagpapababa o nagpapataas ng tiwala.
+          </p>
+
+          <p>
+            Pero ipinapakita nito na mahalaga kung paano nakikipag-ugnayan ang kapulisan sa mga tao.
+          </p>
+
+          <p>
+            May malaking pagkakaiba ang presensiyang nagbibigay ng kapanatagan at presensiyang nagdudulot ng pangamba.
+          </p>
+
+          <p>
+            Kapag ang unang karanasan ng ordinaryong motorista sa pulis ay paninigaw, pangmamaliit, o pananakot, maaaring masira ang kanyang tiwala kahit wala siyang ginawang paglabag.
+          </p>
+
+          <p>
+            At kapag nawawala ang tiwala, maaaring maapektuhan ang kahandaan ng komunidad na magreport ng krimen, magbigay ng impormasyon, o tumulong bilang saksi.
+          </p>
+
+          <p>
+            Hindi ibig sabihin na kailangang maging maluwag ang mga pulis sa mga tunay na lumalabag sa batas.
+          </p>
+
+          <p>
+            Ang ibig sabihin, maaaring pagsabayin ang mahigpit na enforcement at makataong pakikitungo.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kailangang takutin ang inosenteng mamamayan upang maging epektibo laban sa kriminalidad.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang disiplina ay hindi nasusukat sa lakas ng boses.
+          </p>
+
+          <p>
+            Ang awtoridad ay hindi nasusukat sa tindi ng pananakot.
+          </p>
+
+          <p>
+            At ang pagiging mahusay na pulis ay hindi nasusukat sa dami ng taong napapasunod dahil sa takot.
+          </p>
+
+                            <h2>
+            KAPAG ANG MAY UNIPORME ANG UMAABUSO, SINO ANG MANANAGOT?
+          </h2>
+
+          <p>
+            Hindi sapat ang sabihing may karapatan ang mamamayan kung hindi naman malinaw kung paano niya maipagtatanggol ang karapatang iyon.
+          </p>
+
+          <p>
+            May mga taong nag-aalangan magsampa ng reklamo laban sa pulis dahil natatakot silang balikan, gipitin, o hindi pakinggan.
+          </p>
+
+          <p>
+            May pangamba rin tungkol sa posibleng pagtatakipan ng magkakabaro.
+          </p>
+
+          <p>
+            Hindi makatarungang sabihing lahat ng pulis ay nagtatakipan. Marami ring pulis ang maayos na gumaganap sa kanilang tungkulin at may mga mekanismo para sa internal investigation.
+          </p>
+
+          <p>
+            Ngunit hindi rin dapat maliitin ang panganib ng conflict of interest kapag ang isang institusyon ay nag-iimbestiga ng sarili nitong mga tauhan.
+          </p>
+
+          <p>
+            Kaya mahalaga ang pagkakaroon ng mga complaint mechanism sa labas ng mismong police unit.
+          </p>
+
+          <p>
+            Sa ilalim ng RA 6975 at RA 8551, may iba't ibang tanggapan na maaaring lapitan.
+          </p>
+
+          <h3>
+            National Police Commission o NAPOLCOM
+          </h3>
+
+          <p>
+            Maaaring lapitan para sa mga administratibong reklamong may kinalaman sa police misconduct at iba pang paglabag sa disiplina. May sariling mekanismo ito para sa pagsusuri at imbestigasyon ng mga reklamo laban sa PNP personnel.
+          </p>
+
+          <h3>
+            People's Law Enforcement Board o PLEB
+          </h3>
+
+          <p>
+            Ito ay isang lokal na disciplinary body na may partisipasyon ng mga sibilyan at may kapangyarihang dinggin ang mga kasong nasa saklaw ng hurisdiksiyon nito laban sa mga pulis. Maaaring magtanong sa city o municipal government kung saan matatagpuan ang PLEB.
+          </p>
+
+          <h3>
+            PNP Internal Affairs Service o IAS
+          </h3>
+
+          <p>
+            Ito ang internal investigative and disciplinary mechanism ng PNP.
+          </p>
+
+          <p>
+            Sa ilalim ng RA 8551, may mga sitwasyong kailangang awtomatikong imbestigahan ng IAS, kabilang ang insidenteng may namatay, nagkaroon ng serious physical injury, o may human rights violation sa police operation.
+          </p>
+
+          <h3>
+            Commission on Human Rights o CHR
+          </h3>
+
+          <p>
+            Maaaring lapitan para sa human rights complaints, independent fact-finding, documentation, at naaangkop na referral o tulong.
+          </p>
+
+          <h3>
+            Office of the Prosecutor at Office of the Ombudsman
+          </h3>
+
+          <p>
+            Para sa mga kasong maaaring magbunga ng criminal liability, maaaring humingi ng legal na tulong sa paghahain ng reklamo sa naaangkop na prosecutorial o Ombudsman office, depende sa uri ng pagkakasala at hurisdiksiyon.
+          </p>
+
+          <p>
+            Maaari ring lumapit sa Public Attorney's Office kung kwalipikado para sa libreng legal assistance.
+          </p>
+
+          <p>
+            Mahalagang malaman na magkaiba ang administrative at criminal accountability.
+          </p>
+
+          <p>
+            Ang administrative case ay nakatuon sa paglabag sa disiplina at pamantayan ng serbisyo. Maaari itong mauwi sa suspension, demotion, o dismissal kapag napatunayan.
+          </p>
+
+          <p>
+            Ang criminal case ay nakatuon sa paglabag sa batas penal at maaaring magresulta sa kaukulang parusang kriminal.
+          </p>
+
+          <p>
+            Posible ring magkaroon ng pananagutang sibil para sa danyos.
+          </p>
+
+          <p>
+            Ngunit ang eksaktong kaso at parusa ay kailangang ibatay sa ebidensiya at sa mga elementong hinihingi ng batas.
+          </p>
+
+          <p>
+            Hindi sapat na viral ang video para awtomatikong mapatunayang guilty ang isang pulis.
+          </p>
+
+          <p>
+            Hindi rin sapat na pulis ang inirereklamo para agad pagdudahan ang salaysay ng biktima.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang patas na imbestigasyon ay hindi proteksiyon lamang sa inaakusahan. Proteksiyon din ito upang makamit ng biktima ang pananagutang nakabatay sa ebidensiya.
+            </p>
+          </blockquote>
+
+          <h2>
+            PAANO KUNG MAY PANANAKIT, PANANAKOT, O ILIGAL NA SEARCH?
+          </h2>
+
+          <p>
+            Kung may nasugatan, unahin ang kaligtasan at medikal na atensiyon.
+          </p>
+
+          <p>
+            Mahalagang magkaroon ng medical certificate, diagnostic results kung kinakailangan, at malinaw na dokumentasyon ng pinsala.
+          </p>
+
+          <p>
+            Isulat ang oras, petsa, eksaktong lugar, pagkakakilanlan ng mga sangkot, at pagkakasunod-sunod ng pangyayari habang sariwa pa ang mga detalye.
+          </p>
+
+          <p>
+            Itabi ang orihinal na video at larawan. Huwag baguhin ang raw footage. Hanapin at kausapin ang mga posibleng saksi.
+          </p>
+
+          <p>
+            Kung may CCTV sa lugar, mahalagang agad na humiling na mapreserba ito dahil maaaring awtomatikong mabura ang lumang recordings.
+          </p>
+
+          <p>
+            Maaari ring humingi ng legal na tulong upang matukoy at ma-request ang checkpoint records, deployment information, incident reports, at available body-camera recordings, alinsunod sa umiiral na mga patakaran.
+          </p>
+
+          <p>
+            Kapag maghahain ng reklamo, mahalagang magkaroon ng complaint affidavit, mga supporting document, at kinakailangang certification. Humingi ng receiving copy o docket number upang masubaybayan ang kaso.
+          </p>
+
+          <p>
+            Kung may pagbabanta, pamimilit, o pagtatangkang pagtakpan ang pangyayari, mahalagang idokumento at ipagbigay-alam din ito sa naaangkop na awtoridad.
+          </p>
+
+          <p>
+            Kung menor de edad ang biktima, kailangan ding ingatan ang kanyang pagkakakilanlan at kapakanan. Hindi dapat basta ilantad ang mukha at personal na impormasyon ng bata para lamang mapalakas ang isang viral post.
+          </p>
+
+          <p>
+            At kung may posibleng overlapping jurisdiction ng mga disciplinary body, makabubuting humingi ng legal na gabay upang maiwasan ang procedural problems sa paghahain ng reklamo.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang ebidensiya ay hindi lamang para patunayang may ginawang mali. Mahalaga rin ito upang matukoy kung sino ang may pananagutan, ano ang aktuwal na nangyari, at kung ano ang dapat itama.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI DAPAT MATAPOS SA PAGSUSPENDE NG ISANG PULIS ANG ACCOUNTABILITY
+          </h2>
+
+          <p>
+            Kapag may seryosong insidente sa checkpoint, kailangang suriin hindi lamang ang direktang ginawa ng isang tauhan.
+          </p>
+
+          <p>
+            Mahalaga ring malaman kung may wastong awtorisasyon ang operasyon, maayos ang deployment, sapat ang briefing, at nasunod ang mga safety requirement.
+          </p>
+
+          <p>
+            Sino ang team leader?
+          </p>
+
+          <p>
+            Ano ang eksaktong operational objective?
+          </p>
+
+          <p>
+            May malinaw bang warning signs at sapat na ilaw?
+          </p>
+
+          <p>
+            Anong instructions ang ibinigay sa mga tauhan?
+          </p>
+
+          <p>
+            May naitalang insidente, police report, o available recording?
+          </p>
+
+          <p>
+            Kung may nasugatan, anong medikal na tulong ang ibinigay?
+          </p>
+
+          <p>
+            At kung may mga nakitang paglabag, sino ang may responsibilidad na tugunan ang mga ito?
+          </p>
+
+          <p>
+            Sa PNP Operational Procedures, may pananagutan ang checkpoint team leader sa pagganap at asal ng kanyang mga tauhan.
+          </p>
+
+          <p>
+            Sa RA 8551, may probisyon din para sa pagsusuri ng posibleng pagkukulang ng immediate supervisor sa ilang IAS investigations.
+          </p>
+
+          <p>
+            Hindi ito nangangahulugang awtomatikong guilty ang bawat nakatataas kapag nagkamali ang isang pulis.
+          </p>
+
+          <p>
+            Ngunit hindi rin dapat awtomatikong matapos ang pagsusuri sa pinakamababang ranggong direktang sangkot.
+          </p>
+
+          <p>
+            Kung may pagkukulang sa supervision, training, deployment, o pagpapatupad ng patakaran, kailangang matukoy iyon.
+          </p>
+
+          <p>
+            Dahil kung ang problema ay hindi lamang asal ng isang indibidwal kundi pagkukulang din ng operasyon, maaaring maulit ang parehong insidente kahit palitan ang tauhan.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na accountability ay hindi lamang pagpaparusa matapos ang abuso. Kabilang din dito ang pag-aayos ng sistemang dapat sana ay nakapigil sa abuso.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LAHAT NG MALI SA CHECKPOINT AY ABUSO. PERO HINDI RIN LAHAT NG ABUSO AY PUWEDENG TAKPAN NG SALITANG OPERASYON.
+          </h2>
+
+          <p>
+            Mahalaga ang pagkakaibang ito.
+          </p>
+
+          <p>
+            Hindi agad pang-aabuso ang paghingi ng lisensiya kapag bahagi ito ng legal na traffic enforcement.
+          </p>
+
+          <p>
+            Hindi agad harassment ang maayos na pagpatigil sa motorista sa isang awtorisadong checkpoint.
+          </p>
+
+          <p>
+            Hindi rin palaging ilegal ang pagdagdag ng security measures kapag may tunay na agarang banta.
+          </p>
+
+          <p>
+            Ngunit ibang usapan ang pananakit na walang kinakailangang legal na dahilan.
+          </p>
+
+          <p>
+            Ibang usapan ang sapilitang paghahalughog nang walang sapat na batayan.
+          </p>
+
+          <p>
+            Ibang usapan ang kotong, pagbabanta, diskriminasyon, o paggamit ng uniporme para takutin ang ordinaryong mamamayan.
+          </p>
+
+          <p>
+            At ibang usapan din kapag may lumabag na motorista ngunit sa halip na sundin ang legal na proseso ay ginamitan siya ng hindi makatwirang puwersa.
+          </p>
+
+          <p>
+            Hindi nawawala ang karapatan ng isang tao dahil nagkamali siya.
+          </p>
+
+          <p>
+            Hindi rin nawawala ang karapatan ng isang pulis sa due process dahil inirereklamo siya.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang batas ay kailangang ipatupad nang patas sa magkabilang panig.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANONG KLASENG CHECKPOINT ANG DAPAT NATIN HANGARIN?
+          </h2>
+
+          <p>
+            Checkpoint na may malinaw na layunin, hindi basta pagpapakita ng puwersa.
+          </p>
+
+          <p>
+            Checkpoint na may maayos na signage at safety measures, hindi nakalilitong harang sa kalsada.
+          </p>
+
+          <p>
+            Checkpoint na may propesyonal na pulis, hindi naghahanap ng pagkakataong manakot o manghiya.
+          </p>
+
+          <p>
+            Checkpoint na may legal na inspeksiyon, hindi walang-limitasyong paghahalughog.
+          </p>
+
+          <p>
+            Checkpoint na may maayos na dokumentasyon at pananagutan, hindi operasyong mahirap siyasatin kapag may nagreklamo.
+          </p>
+
+          <blockquote>
+            <p>
+              At higit sa lahat, checkpoint na ang tagumpay ay nasusukat sa kaligtasang naibibigay nito sa komunidad, hindi lamang sa dami ng nahuhuli o pinatitigil.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi kailangang mawala ang checkpoints upang maprotektahan ang karapatang pantao.
+          </p>
+
+          <p>
+            Hindi rin kailangang balewalain ang karapatang pantao upang maging epektibo laban sa kriminalidad.
+          </p>
+
+          <p>
+            Ang kailangan ay mahusay na law enforcement na may malinaw na pamantayan, maayos na pagsasanay, wastong paghusga, at tunay na accountability.
+          </p>
+
+          <h2>
+            ANG MAS MALAKING ARAL
+          </h2>
+
+          <p>
+            May dahilan kung bakit binibigyan ng kapangyarihan ang kapulisan na magpatigil, magsiyasat, mang-aresto, at gumamit ng kinakailangang puwersa sa mga sitwasyong pinahihintulutan ng batas.
+          </p>
+
+          <p>
+            Kailangan ito upang maprotektahan ang publiko.
+          </p>
+
+          <p>
+            Ngunit dahil malaki ang kapangyarihang ito, mas mabigat din ang responsibilidad ng taong may hawak nito.
+          </p>
+
+          <p>
+            Ang ordinaryong mamamayan ay maaaring managot sa batas kapag may ginawa siyang paglabag.
+          </p>
+
+          <p>
+            Ang pulis, bilang tagapagpatupad ng batas, ay inaasahang may sapat na pagsasanay at disiplina upang malaman kung kailan, paano, at hanggang saan lamang maaaring gamitin ang kanyang kapangyarihan.
+          </p>
+
+          <p>
+            Hindi sapat na sabihing nagpapatupad lamang siya ng batas kung ang paraan ng kanyang pagpapatupad ay lumalabag din sa batas.
+          </p>
+
+          <p>
+            Hindi rin sapat na sabihing para sa seguridad ang isang operasyon kung hindi isinasaalang-alang ang kaligtasan ng mga inosenteng dumaraan.
+          </p>
+
+          <p>
+            Ang paggalang sa awtoridad ay hindi nangangahulugang walang karapatang magtanong ang publiko.
+          </p>
+
+          <p>
+            At ang pagpuna sa paglabag ng isang pulis ay hindi awtomatikong pagkontra sa buong institusyon ng kapulisan.
+          </p>
+
+          <p>
+            Sa katunayan, mahalaga ang pananagutan upang maprotektahan din ang integridad ng mga pulis na maayos na gumaganap sa kanilang tungkulin.
+          </p>
+
+          <p>
+            Dahil kapag hindi napapanagot ang umaabuso, pati ang tiwala sa mga matitinong pulis ay maaaring masira.
+          </p>
+
+          <p>
+            Hindi dapat katakutan ang checkpoint dahil naroon ang pulis.
+          </p>
+
+          <p>
+            Hindi rin dapat katakutan ng pulis ang isang mamamayang marunong sa kanyang karapatan.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang dapat katakutan ay ang kriminalidad, at ang kapangyarihang ginagamit nang walang sapat na pananagutan.
+            </p>
+          </blockquote>
+
+          <p>
+            Dahil ang tunay na peace and order ay hindi lamang ang kawalan ng krimen sa kalsada.
+          </p>
+
+          <p>
+            Ito rin ang katiyakang ang mga nagpapatupad ng batas ay hindi nagiging dahilan ng panganib na dapat sana nilang pinipigilan.
+          </p>
+
+          <blockquote>
+            <p>
+              ANG CHECKPOINT AY DAPAT HARANG SA KRIMINALIDAD, HINDI LUGAR KUNG SAAN NAHIHINTO ANG KARAPATAN NG MAMAMAYAN.
+            </p>
+          </blockquote>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            MGA SANGGUNIAN
+          </h2>
+
+          <ul class="sources-list">
+
+            <li class="source-group-title">
+              <strong>BATAS AT OPISYAL NA PATAKARAN</strong>
+            </li>
+
+            <li>
+              1987 Philippine Constitution, Article II at Article III.
+              <a
+                href="https://officialgazette.gov.ph/constitutions/1987-constitution/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://officialgazette.gov.ph/constitutions/1987-constitution/
+              </a>
+            </li>
+
+            <li>
+              Republic Act No. 6975 (1990). Department of the Interior and Local Government Act, Sections 24, 41 at 43.
+            </li>
+
+            <li>
+              Republic Act No. 8551 (1998). Philippine National Police Reform and Reorganization Act, kabilang ang mga probisyon sa police accountability at Internal Affairs Service.
+            </li>
+
+            <li>
+              Philippine National Police (2021). Revised PNP Operational Procedures, Chapter 2 at Chapter 3, Rule 2.2.
+              <a
+                href="https://akg.pnp.gov.ph/wp-content/uploads/2024/01/POP-Manual-2021.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://akg.pnp.gov.ph/wp-content/uploads/2024/01/POP-Manual-2021.pdf
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>MGA DESISYON NG KORTE SUPREMA</strong>
+            </li>
+
+            <li>
+              Valmonte v. De Villa (1989). Konstitusyonalidad at limitasyon ng police checkpoints.
+            </li>
+
+            <li>
+              Caballes v. Court of Appeals (2002). Mga limitasyon sa warrantless vehicle searches.
+            </li>
+
+            <li>
+              People v. Sapla (2020). Probable cause at proteksiyon laban sa unreasonable searches.
+              <a
+                href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/66263"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/1/66263
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>PEACE AND ORDER RESEARCH AT STUDIES</strong>
+            </li>
+
+            <li>
+              Turchan, B. &amp; Braga, A. (2024). <em>The Effects of Hot Spots Policing on Violence: A Systematic Review and Meta-Analysis.</em>
+              <a
+                href="https://www.sciencedirect.com/science/article/pii/S1359178924001010"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.sciencedirect.com/science/article/pii/S1359178924001010
+              </a>
+            </li>
+
+            <li>
+              College of Policing (2021). <em>The Effectiveness of Visible Police Patrol.</em>
+              <a
+                href="https://www.college.police.uk/research/what-works-policing-reduce-crime/visible-police-patrol"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.college.police.uk/research/what-works-policing-reduce-crime/visible-police-patrol
+              </a>
+            </li>
+
+            <li>
+              Koper et al. (2022). <em>Police Activities and Community Views of Police in Crime Hot Spots.</em> Justice Quarterly.
+              <a
+                href="https://www.ojp.gov/library/publications/police-activities-and-community-views-police-crime-hot-spots"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.ojp.gov/library/publications/police-activities-and-community-views-police-crime-hot-spots
+              </a>
+            </li>
+
+            <li>
+              US National Highway Traffic Safety Administration (NHTSA). <em>Publicized Sobriety Checkpoints — Countermeasures That Work.</em>
+              <a
+                href="https://www.nhtsa.gov/book/countermeasures-that-work/alcohol-impaired-driving/countermeasures/enforcement/publicized"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.nhtsa.gov/book/countermeasures-that-work/alcohol-impaired-driving/countermeasures/enforcement/publicized
+              </a>
+            </li>
+
+            <li>
+              CDC Community Guide. Systematic Reviews on Alcohol-Impaired Driving and Sobriety Checkpoints.
+            </li>
+
+            <li class="source-group-title">
+              <strong>POLICE ACCOUNTABILITY AT COMPLAINT MECHANISMS</strong>
+            </li>
+
+            <li>
+              National Police Commission (NAPOLCOM). Police disciplinary procedures at administrative complaints.
+              <a
+                href="https://napolcom.gov.ph/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://napolcom.gov.ph/
+              </a>
+            </li>
+
+            <li>
+              Commission on Human Rights (CHR). Human rights complaints, investigation at public assistance.
+              <a
+                href="https://chr.gov.ph/contact-us/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://chr.gov.ph/contact-us/
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
