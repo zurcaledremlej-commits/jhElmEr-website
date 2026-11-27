@@ -1,1 +1,2026 @@
+<!--
+======================================================
+jhElmEr WEBSITE
+MOTHER CIVIC EXPLAINER TEMPLATE — VERSION 2
+======================================================
 
+FILE:
+_templates/civic-article.html
+
+PURPOSE:
+Ito ang permanenteng mother template para sa lahat ng
+Civic Explainer articles ng jhElmEr website.
+
+Huwag direktang gamitin o baguhin ang mother file para
+sa isang published article.
+
+------------------------------------------------------
+PUBLISHING WORKFLOW
+------------------------------------------------------
+
+1. Duplicate ang civic-article.html mula sa
+   /_templates/ folder at ilagay ang duplicate sa
+   /articles/ folder.
+
+2. Palitan ang filename ng duplicate.
+
+   Halimbawa:
+   civic-red-tagging.html
+   civic-human-rights-due-process.html
+   civic-school-safety-act.html
+
+3. Palitan lamang ang sumusunod:
+
+   • Browser page title
+   • Meta description
+   • Canonical article URL
+   • Open Graph article URL
+   • Article title
+   • Main image filename
+   • Main image alt text
+   • Full article body
+   • Sources / References
+
+4. Idagdag ang bagong article sa pinakataas ng:
+
+   ../all-civic-explainers.html
+
+5. Gawin itong Latest Civic Explainer sa:
+
+   ../civic-explainers.html
+
+6. Gawin itong Latest Civic Explainer sa:
+
+   ../index.html
+
+7. Siguraduhing pareho ang article link sa:
+
+   • Homepage Latest Civic Explainer
+   • Civic Explainers Category Page
+   • Complete Civic Explainers Archive
+
+8. Test bago mag-commit:
+
+   • Header navigation
+   • Back navigation
+   • Main image
+   • Article text
+   • Source links
+   • Mobile portrait
+   • Mobile landscape
+   • Desktop
+
+------------------------------------------------------
+DO NOT MODIFY
+------------------------------------------------------
+
+• Header structure
+• Main navigation structure
+• Back navigation structure
+• Article layout structure
+• CSS class names
+• Typography system
+• Responsive behavior
+• Existing ../ navigation paths
+
+------------------------------------------------------
+IMPORTANT PATH RULE
+------------------------------------------------------
+
+Ang mother template ay naka-store sa /_templates/
+folder.
+
+Ang lahat ng published Civic Explainer articles ay
+inilalagay sa /articles/ folder.
+
+Ang mga relative path sa template ay nakasulat para
+sa FINAL PUBLISHED ARTICLE na nasa /articles/ folder.
+
+Kaya ang links papunta sa root files ay gumagamit ng:
+
+../
+
+Ang article images ay inilalagay sa:
+
+articles/images/
+
+Kaya ang image path sa article ay:
+
+images/filename.png
+images/filename.jpg
+
+Panatilihin ang original image extension.
+
+Ang canonical at Open Graph URL ng bawat published article
+ay dapat gumamit ng FINAL article filename.
+
+Halimbawa:
+
+https://jhelmersimplengtao.com/articles/civic-red-tagging.html
+
+======================================================
+END OF DEVELOPER NOTES
+======================================================
+-->
+
+<!DOCTYPE html>
+<html lang="tl">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+<link
+  rel="icon"
+  type="image/png"
+  sizes="192x192"
+  href="/favicon.png"
+>
+
+<link
+  rel="shortcut icon"
+  href="/favicon.ico"
+>
+   
+      <meta
+    name="description"
+    content="SA EMERGENCY, HINDI DAPAT SUWERTE ANG MAGTAKDA KUNG MAY MARUNONG MAGLIGTAS NG BUHAY—SAMBOY LIM LAW. Isang fact-based na Civic Explainer tungkol sa RA 10871, Basic Life Support, CPR, AED, bystander response, school-based training, emergency preparedness, at pagpapatupad ng Samboy Lim Law."
+  >
+
+  <link
+    rel="canonical"
+    href="https://jhelmersimplengtao.com/articles/civic-samboy-lim-law.html"
+  >
+
+  <meta
+    property="og:url"
+    content="https://jhelmersimplengtao.com/articles/civic-samboy-lim-law.html"
+  >
+
+  <title>SA EMERGENCY, HINDI DAPAT SUWERTE ANG MAGTAKDA KUNG MAY MARUNONG MAGLIGTAS NG BUHAY—SAMBOY LIM LAW | jhElmEr</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="../main.css?v=3">
+
+  <style>
+    /* =========================================================
+       CIVIC EXPLAINER ARTICLE PAGE — VERSION 2
+
+       BLACK BRAND AREA
+       CREAM CONTENT AREA
+
+       TITLE → IMAGE → BODY → SOURCES
+    ========================================================= */
+
+    .civic-article-page {
+      min-height: 100vh;
+      margin: 0;
+
+      color: #242321;
+      background: #f4f0e8;
+    }
+
+    .civic-article-page,
+    .civic-article-page *,
+    .civic-article-page *::before,
+    .civic-article-page *::after {
+      box-sizing: border-box;
+    }
+
+    /* =========================================================
+       ARTICLE BACK NAVIGATION
+    ========================================================= */
+
+    .article-back-navigation {
+      position: relative;
+      z-index: 25;
+
+      border-top: 1px solid rgba(213, 173, 54, 0.12);
+      border-bottom: 1px solid rgba(213, 173, 54, 0.18);
+
+      background: #090a0c;
+    }
+
+    .article-back-inner {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 7%;
+
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+    }
+
+    .article-back-link {
+      min-height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      color: rgba(245, 241, 232, 0.68);
+
+      font-size: 0.67rem;
+      font-weight: 800;
+      line-height: 1.4;
+      letter-spacing: 0.11em;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      transition:
+        color 0.22s ease,
+        transform 0.22s ease;
+    }
+
+    .article-back-link:hover,
+    .article-back-link:focus-visible {
+      color: #d5ad36;
+      outline: none;
+      transform: translateX(-3px);
+    }
+
+    .article-back-arrow {
+      color: #d5ad36;
+
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .article-back-divider {
+      color: rgba(245, 241, 232, 0.22);
+
+      font-size: 0.75rem;
+      line-height: 1;
+    }
+
+    /* =========================================================
+       ARTICLE MAIN AREA
+    ========================================================= */
+
+    .civic-article-main {
+      position: relative;
+
+      width: 100%;
+      min-height: 100vh;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 88% 17%,
+          rgba(213, 173, 54, 0.08),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 12% 72%,
+          rgba(123, 30, 30, 0.045),
+          transparent 24%
+        ),
+        #f4f0e8;
+    }
+
+    .civic-article-main::before {
+      content: "";
+
+      position: absolute;
+      top: 72px;
+      right: -315px;
+
+      width: 650px;
+      height: 650px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .civic-article-main::after {
+      content: "";
+
+      position: absolute;
+      top: 245px;
+      right: -190px;
+
+      width: 390px;
+      height: 390px;
+
+      border: 1px solid rgba(213, 173, 54, 0.1);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-container {
+      position: relative;
+      z-index: 2;
+
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 7% 112px;
+    }
+
+    /* =========================================================
+       ARTICLE HEADER
+    ========================================================= */
+
+    .article-header {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 0 40px;
+    }
+
+    .article-title {
+      margin: 0;
+
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(3.6rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.91;
+      letter-spacing: -0.027em;
+      text-wrap: balance;
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       MAIN ARTICLE IMAGE
+    ========================================================= */
+
+    .article-image-figure {
+      width: 100%;
+      margin: 0 0 62px;
+    }
+
+    .article-image-frame {
+      position: relative;
+
+      width: 100%;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(23, 23, 23, 0.1);
+      border-radius: 18px;
+
+      background: #111214;
+
+      box-shadow:
+        0 22px 55px rgba(22, 20, 16, 0.16);
+    }
+
+    .article-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+
+      display: block;
+
+      object-fit: contain;
+    }
+
+    /* =========================================================
+       ARTICLE READING AREA
+    ========================================================= */
+
+    .article-reading-area {
+      width: 100%;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .article-body {
+      color: #47443f;
+
+      font-size: 1.04rem;
+      font-weight: 400;
+      line-height: 1.94;
+    }
+
+    .article-body p {
+      margin: 0 0 1.65em;
+    }
+
+    .article-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body strong {
+      color: #1d1c1a;
+      font-weight: 700;
+    }
+
+    .article-body em {
+      color: #35322e;
+    }
+
+    .article-body h2,
+    .article-body h3 {
+      color: #171717;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.015em;
+      text-transform: uppercase;
+    }
+
+    .article-body h2 {
+      margin: 2.25em 0 0.72em;
+
+      font-size: clamp(2rem, 4vw, 2.85rem);
+    }
+
+    .article-body h3 {
+      margin: 2em 0 0.7em;
+
+      font-size: clamp(1.55rem, 3vw, 2.05rem);
+    }
+
+    .article-body ul,
+    .article-body ol {
+      margin: 0 0 1.75em;
+      padding-left: 1.35em;
+    }
+
+    .article-body li {
+      margin-bottom: 0.62em;
+      padding-left: 0.25em;
+    }
+
+    .article-body blockquote {
+      position: relative;
+
+      margin: 2.35em 0;
+      padding: 27px 30px 27px 34px;
+
+      overflow: hidden;
+
+      border: 1px solid rgba(213, 173, 54, 0.28);
+      border-left: 4px solid #d5ad36;
+      border-radius: 0 14px 14px 0;
+
+      color: #25231f;
+      background: rgba(255, 252, 245, 0.72);
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.45rem, 3vw, 1.95rem);
+      font-weight: 600;
+      line-height: 1.32;
+
+      box-shadow:
+        0 12px 32px rgba(33, 29, 21, 0.06);
+    }
+
+    .article-body blockquote::after {
+      content: "";
+
+      position: absolute;
+      top: -70px;
+      right: -70px;
+
+      width: 150px;
+      height: 150px;
+
+      border: 1px solid rgba(213, 173, 54, 0.14);
+      border-radius: 50%;
+
+      pointer-events: none;
+    }
+
+    .article-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    .article-body a {
+      color: #8b6810;
+
+      text-decoration-color: rgba(139, 104, 16, 0.5);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .article-body a:hover,
+    .article-body a:focus-visible {
+      color: #6f5010;
+      text-decoration-color: #6f5010;
+      outline: none;
+    }
+
+    /* =========================================================
+       SOURCES / REFERENCES
+    ========================================================= */
+
+    .article-sources {
+      margin-top: 70px;
+      padding: 34px 0 0;
+
+      border-top: 1px solid rgba(139, 104, 16, 0.3);
+    }
+
+    .sources-title {
+      margin: 0 0 24px;
+
+      color: #7b1e1e;
+
+      font-family: "Barlow Condensed", Arial, sans-serif;
+      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: 0.055em;
+      text-transform: uppercase;
+    }
+
+    .sources-list {
+      margin: 0;
+      padding: 0;
+
+      display: grid;
+      gap: 16px;
+
+      list-style: none;
+    }
+
+    .sources-list li {
+      position: relative;
+
+      padding-left: 23px;
+
+      color: #66615a;
+
+      font-size: 0.84rem;
+      line-height: 1.72;
+    }
+
+    .sources-list li::before {
+      content: "";
+
+      position: absolute;
+      top: 0.69em;
+      left: 0;
+
+      width: 7px;
+      height: 7px;
+
+      border-radius: 50%;
+      background: #d5ad36;
+    }
+
+    .sources-list li.source-group-title {
+  padding-left: 0;
+
+  color: #66615a;
+
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.sources-list li.source-group-title::before {
+  content: none;
+  display: none;
+}
+
+    .sources-list a {
+      color: #5b4930;
+
+      overflow-wrap: anywhere;
+
+      text-decoration-color: rgba(139, 104, 16, 0.44);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+
+      transition:
+        color 0.22s ease,
+        text-decoration-color 0.22s ease;
+    }
+
+    .sources-list a:hover,
+    .sources-list a:focus-visible {
+      color: #7b1e1e;
+      text-decoration-color: #7b1e1e;
+      outline: none;
+    }
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 1000px) {
+      .article-container {
+        max-width: 940px;
+      }
+
+      .article-header {
+        max-width: 860px;
+      }
+    }
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 850px) {
+      .article-back-inner {
+        padding: 17px 30px;
+      }
+
+      .article-container {
+        padding: 55px 30px 84px;
+      }
+
+      .article-header {
+        margin-bottom: 31px;
+      }
+
+      .article-title {
+        font-size: clamp(3rem, 14vw, 5.15rem);
+        line-height: 0.92;
+      }
+
+      .article-image-figure {
+        margin-bottom: 43px;
+      }
+
+      .article-image-frame {
+        border-radius: 14px;
+
+        box-shadow:
+          0 17px 42px rgba(22, 20, 16, 0.14);
+      }
+
+      .article-body {
+        font-size: 0.98rem;
+        line-height: 1.88;
+      }
+
+      .article-body p {
+        margin-bottom: 1.52em;
+      }
+
+      .article-body blockquote {
+        padding: 24px 24px 24px 27px;
+
+        border-radius: 0 12px 12px 0;
+      }
+
+      .article-sources {
+        margin-top: 56px;
+        padding-top: 29px;
+      }
+    }
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
+
+    @media (max-width: 430px) {
+      .article-back-inner {
+        padding: 14px 27px;
+
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 1px;
+      }
+
+      .article-back-divider {
+        display: none;
+      }
+
+      .article-back-link {
+        min-height: 34px;
+
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .article-container {
+        padding: 48px 27px 72px;
+      }
+
+      .article-title {
+    font-size: clamp(2rem, 10vw, 3rem);
+    line-height: 0.92;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+}
+
+      .article-image-figure {
+        margin-bottom: 36px;
+      }
+
+      .article-image-frame {
+        border-radius: 12px;
+      }
+
+      .article-body {
+        font-size: 0.95rem;
+        line-height: 1.84;
+      }
+
+      .article-body blockquote {
+        padding: 21px 19px 21px 21px;
+      }
+
+      .sources-list li {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* =========================================================
+       LANDSCAPE MOBILE
+    ========================================================= */
+
+    @media (
+      max-width: 950px
+    ) and (
+      orientation: landscape
+    ) {
+      .article-back-inner {
+        padding-top: 13px;
+        padding-bottom: 13px;
+      }
+
+      .article-container {
+        max-width: 850px;
+        padding-top: 50px;
+      }
+
+      .article-header {
+        max-width: 780px;
+      }
+
+      .article-title {
+        font-size: clamp(3.45rem, 8vw, 5.3rem);
+      }
+
+      .article-image-frame {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .article-image {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .article-reading-area {
+        max-width: 720px;
+      }
+    }
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="civic-article-page">
+
+  <!-- ===================================
+       HEADER
+  =================================== -->
+
+  <header class="site-header">
+
+    <a
+      class="brand"
+      href="../index.html"
+      aria-label="jhElmEr homepage"
+    >
+      <img
+        src="../header-logo.png"
+        alt="jhElmEr Simpleng Tao"
+      >
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="main-navigation"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav
+      class="main-nav"
+      id="main-navigation"
+      aria-label="Main navigation"
+    >
+      <a href="../index.html">
+        Home
+      </a>
+
+      <a
+        class="active"
+        href="../civic-explainers.html"
+        aria-current="page"
+      >
+        Civic Explainers
+      </a>
+
+      <a href="../text-slogan.html">
+        Text Slogans
+      </a>
+
+      <a href="../music.html">
+        Music
+      </a>
+
+      <a href="../about.html">
+        About
+      </a>
+
+      <a href="../contact.html">
+        Contact
+      </a>
+
+      <a href="../privacy-policy.html">
+        Privacy Policy
+      </a>
+
+    </nav>
+
+  </header>
+
+  <!-- ===================================
+       ARTICLE BACK NAVIGATION
+  =================================== -->
+
+  <div
+    class="article-back-navigation"
+    role="navigation"
+    aria-label="Article return navigation"
+  >
+
+    <div class="article-back-inner">
+
+      <a
+        class="article-back-link"
+        href="../civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Civic Explainers
+        </span>
+      </a>
+
+      <span
+        class="article-back-divider"
+        aria-hidden="true"
+      >
+        /
+      </span>
+
+      <a
+        class="article-back-link"
+        href="../all-civic-explainers.html"
+      >
+        <span
+          class="article-back-arrow"
+          aria-hidden="true"
+        >
+          ←
+        </span>
+
+        <span>
+          Lahat ng Civic Explainers
+        </span>
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       CIVIC EXPLAINER ARTICLE
+  =================================== -->
+
+  <main class="civic-article-main">
+
+    <article class="article-container">
+
+      <!-- ===================================
+           ARTICLE TITLE
+
+           PALITAN SA BAWAT BAGONG ARTICLE
+      =================================== -->
+
+            <header class="article-header">
+
+        <h1 class="article-title">
+          SA EMERGENCY, HINDI DAPAT SUWERTE ANG MAGTAKDA KUNG MAY MARUNONG MAGLIGTAS NG BUHAY—SAMBOY LIM LAW
+        </h1>
+
+      </header>
+
+      <!-- ===================================
+           MAIN IMAGE
+
+           ILAGAY ANG IMAGE SA:
+           articles/images/
+
+           PALITAN ANG:
+           • filename
+           • alt text
+      =================================== -->
+
+            <figure class="article-image-figure">
+
+        <div class="article-image-frame">
+
+          <img
+            class="article-image"
+            src="images/civic-samboy-lim-law.png"
+            alt="Simbolikong visual ng Samboy Lim Law na nagpapakita ng taong nagsasagawa ng CPR sa gitna ng emergency scene, malaking orasan, AED, ambulansiya, mga ordinaryong mamamayan at mga simbolo ng agarang pagtugon, bilang representasyon ng Basic Life Support, CPR training, emergency preparedness, at kahalagahan ng unang ilang minuto sa pagliligtas ng buhay."
+          >
+
+        </div>
+
+      </figure>
+
+      <div class="article-reading-area">
+
+        <!-- ===================================
+             FULL ARTICLE BODY
+
+             PALITAN ANG MGA PARAGRAPH
+        =================================== -->
+
+                <div class="article-body">
+
+          <p>
+            Kapag may biglang bumagsak sa loob ng tahanan, palengke, opisina o pampublikong sasakyan, maaaring maraming taong nakapaligid. Pero sa dami ng mga taong naroroon, ilan ang talagang nakaaalam kung ano ang dapat gawin?
+          </p>
+
+          <p>
+            Hindi sapat na may taong gustong tumulong. Mahalaga ring may taong marunong tumulong nang tama.
+          </p>
+
+          <p>
+            Madaling sabihing tumawag ng ambulansiya o dalhin agad sa ospital. Pero sa ilang medical emergency, ang mga minutong lumilipas habang hinihintay ang propesyonal na tulong ay mismong mga minutong kritikal sa kaligtasan ng pasyente.
+          </p>
+
+          <p>
+            Paano kung sa mga minutong iyon, ang tanging mga taong nasa paligid ay mga kapamilya, kapitbahay, katrabaho o mga ordinaryong mamamayang walang sapat na pagsasanay?
+          </p>
+
+          <p>
+            Hindi natin kontrolado kung kailan at saan mangyayari ang isang emergency. Ngunit ang kahandaan ng mga mamamayang tutugon dito ay isang bagay na kayang paghandaan sa pamamagitan ng edukasyon, pagsasanay at maayos na sistema.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi kailangang maging medical professional ang bawat mamamayan. Ngunit hindi rin dapat nakasalalay sa pagkakataong may medical professional na naroroon bago makapagsimula ang pagliligtas ng buhay.
+            </p>
+          </blockquote>
+
+          <p>
+            Ito ang mas malawak na kahalagahan ng Samboy Lim Law—isang batas na naglalayong gawing bahagi ng edukasyon ang mga kasanayang maaaring maging kritikal sa kaligtasan ng sinuman, saanman mangyari ang emergency.
+          </p>
+
+          <h2>
+            ANO ANG SAMBOY LIM LAW?
+          </h2>
+
+          <p>
+            Noong Hulyo 17, 2016, naging ganap na batas ang Republic Act No. 10871, o Basic Life Support Training in Schools Act, na mas kilala bilang Samboy Lim Law.
+          </p>
+
+          <p>
+            Naging inspirasyon nito ang sinapit ng dating PBA player na si Samboy Lim, na nakaranas ng cardiac arrest sa isang exhibition basketball game noong 2014.
+          </p>
+
+          <p>
+            Bagama't nagmula sa isang insidente sa mundo ng basketball, hindi lamang mga atleta ang layuning maprotektahan ng batas.
+          </p>
+
+          <p>
+            Nakaugat ito sa Article II, Section 15 ng 1987 Constitution, na kumikilala sa tungkulin ng Estado na protektahan at itaguyod ang karapatan sa kalusugan ng mamamayan.
+          </p>
+
+          <p>
+            Sa ilalim ng RA 10871:
+          </p>
+
+          <ul>
+            <li>
+              Obligado ang lahat ng pampubliko at pribadong basic education schools sa bansa na magbigay ng Basic Life Support (BLS) training na naaayon sa edad ng mga mag-aaral.
+            </li>
+
+            <li>
+              Hindi lamang teorya ang dapat ituro. Kinakailangan ang hands-on training upang aktuwal na matutuhan at maisagawa ang mga kasanayan.
+            </li>
+
+            <li>
+              Ang pagsasanay ay dapat nakabatay sa kinikilalang siyentipikong guidelines at mga programang binuo ng mga institusyong gaya ng Philippine Heart Association at Philippine Red Cross.
+            </li>
+
+            <li>
+              Kailangang makipag-ugnayan ang mga tagapangasiwa ng paaralan sa Department of Health para sa mga kwalipikadong instructor. Tungkulin din ng DOH na mag-accredit ng mga nongovernment organization na may kakayahang magbigay ng BLS training.
+            </li>
+
+            <li>
+              Itinatadhana rin ng batas ang sertipikasyon para sa mga matagumpay na nakatapos ng kinakailangang training, alinsunod sa implementing rules nito.
+            </li>
+
+            <li>
+              Sa ilalim ng Section 6, exempted sa BLS training program ang mga mag-aaral na may pisikal o mental na kapansanang humahadlang sa kanilang kakayahang magsagawa ng BLS procedures. Gayunman, pinahihintulutan silang dumalo sa lecture portion ng programa alinsunod sa implementing rules.
+            </li>
+
+            <li>
+              Sa ilalim ng Section 7, kailangang isama sa taunang pambansang badyet ang pondong kinakailangan para sa patuloy na pagpapatupad ng batas.
+            </li>
+          </ul>
+
+          <p>
+            Saklaw rin ng implementing rules ang Alternative Learning System o ALS learning centers.
+          </p>
+
+          <p>
+            Hindi lamang CPR ang saklaw ng Basic Life Support.
+          </p>
+
+          <p>
+            Sa ilalim ng Section 4.6 ng implementing rules, kabilang sa BLS ang:
+          </p>
+
+          <ul>
+            <li>
+              Pagkilala sa cardiac arrest at respiratory arrest, o paghinto o hindi sapat na paghinga.
+            </li>
+
+            <li>
+              Cardiopulmonary Resuscitation (CPR).
+            </li>
+
+            <li>
+              Paggamit ng Automated External Defibrillator (AED) kung kinakailangan.
+            </li>
+
+            <li>
+              Foreign Body Airway Obstruction Management, o pagtugon sa pagkabara ng daanan ng hangin, gaya ng pagkabulunan.
+            </li>
+
+            <li>
+              Rescue breathing, o pagbibigay ng tulong sa paghinga sa mga sitwasyong nangangailangan nito.
+            </li>
+          </ul>
+
+          <p>
+            Ibig sabihin, hindi lamang mga taong nakaranas ng cardiac arrest ang maaaring makinabang sa batas. Saklaw din nito ang iba pang partikular na emergency kung saan kritikal ang agarang pagpapanatili ng buhay.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi ito simpleng panawagan na magkaroon ng seminar tungkol sa CPR. Isa itong legal na mandato upang maisama sa edukasyon ang mga kasanayang makapagliligtas ng buhay.
+            </p>
+          </blockquote>
+
+          <h2>
+            BAKIT KRITIKAL ANG UNANG ILANG MINUTO?
+          </h2>
+
+          <p>
+            Magkaiba ang heart attack at cardiac arrest, bagama't maaaring humantong sa cardiac arrest ang isang heart attack.
+          </p>
+
+          <p>
+            Sa heart attack, nababawasan o nababara ang daloy ng dugo patungo sa bahagi ng puso.
+          </p>
+
+          <p>
+            Sa cardiac arrest, biglang nawawala ang kakayahan ng puso na epektibong magbomba ng dugo. Dahil dito, hindi nakatatanggap ng sapat na oxygen ang utak at iba pang mahahalagang bahagi ng katawan.
+          </p>
+
+          <p>
+            Habang tumatagal ang kawalan ng maayos na sirkulasyon ng dugo, tumataas ang panganib ng permanenteng pinsala sa utak at pagkamatay.
+          </p>
+
+          <p>
+            Dito nagiging mahalaga ang Cardiopulmonary Resuscitation o CPR.
+          </p>
+
+          <p>
+            Sa pamamagitan ng wastong pagdiin sa dibdib, napapanatili ang limitadong daloy ng dugo patungo sa utak at iba pang mahahalagang bahagi ng katawan habang hinihintay ang karagdagang medical intervention.
+          </p>
+
+          <p>
+            Hindi garantiya ang CPR na mabubuhay ang pasyente. Hindi rin ito kapalit ng ambulansiya, doktor o ospital.
+          </p>
+
+          <p>
+            Ngunit ang maagap at wastong pagsasagawa nito ay nakapagpapataas ng posibilidad na mabuhay ang pasyente at makaligtas nang walang malubhang pinsala sa utak.
+          </p>
+
+          <p>
+            Hindi rin nangangahulugang kailangang may formal training o sertipikasyon muna bago tumulong.
+          </p>
+
+          <p>
+            Ayon sa American Heart Association, kapag ang isang adulto ay hindi tumutugon at hindi humihinga nang normal, kabilang ang hingal na hindi maituturing na normal na paghinga o gasping, dapat itong ituring na posibleng cardiac arrest.
+          </p>
+
+          <p>
+            Tiyaking ligtas ang paligid, tumawag agad ng emergency assistance, simulan ang chest compressions at ipakuha ang AED kung mayroon sa malapit. Sundin ang mga tagubilin ng emergency dispatcher at ng AED.
+          </p>
+
+          <p>
+            Kahit ang taong walang formal CPR training ay maaaring magsagawa ng chest compressions sa ganitong sitwasyon.
+          </p>
+
+          <p>
+            Ang layunin ng regular na pagsasanay ay gawing mas mabilis, tama at epektibo ang pagtugon, hindi limitahan kung sino lamang ang maaaring tumulong.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang CPR ay hindi kapalit ng propesyonal na pagsagip. Ito ang mahalagang tulay upang magkaroon pa ng pagkakataong maisagawa ang propesyonal na pagsagip.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI ITO HAKA-HAKA. MAY AKTWAL NA DATOS AT SIYENTIPIKONG EBIDENSIYA.
+          </h2>
+
+          <p>
+            Sa isang pag-aaral na inilathala noong 2025, sinuri ng mga mananaliksik ang 194,807 kaso ng cardiac arrest sa mga adult patient na nasaksihan sa labas ng ospital sa Estados Unidos, gamit ang datos mula 2013 hanggang 2023 ng Cardiac Arrest Registry to Enhance Survival o CARES.
+          </p>
+
+          <p>
+            Lumabas sa pag-aaral na:
+          </p>
+
+          <ul>
+            <li>
+              12% ang nakaligtas hanggang sa makalabas ng ospital sa mga hindi nakatanggap ng CPR mula sa mga taong nasa paligid.
+            </li>
+
+            <li>
+              18.9% naman sa mga nakatanggap ng bystander CPR, o CPR na isinagawa ng mga taong naroroon bago dumating ang emergency responders.
+            </li>
+
+            <li>
+              Umabot sa 22.3% ang survival rate sa mga nasimulang bigyan ng CPR sa unang minuto batay sa pagtataya ng pag-aaral.
+            </li>
+          </ul>
+
+          <p>
+            Matapos isaalang-alang ang iba pang salik, ang agarang CPR sa unang minuto ay nauugnay sa 78% na mas mataas na odds ng survival at halos dobleng odds ng pagkaligtas nang walang malubhang pinsalang neurological, kumpara sa walang bystander CPR.
+          </p>
+
+          <p>
+            Ang 78% na mas mataas na odds ay hindi nangangahulugang 78% ang survival rate. Isa itong estadistikal na paghahambing ng dalawang grupo.
+          </p>
+
+          <p>
+            Ginamit ng mga mananaliksik ang oras ng pagtawag sa emergency dispatch center bilang pagtataya sa oras ng cardiac arrest.
+          </p>
+
+          <p>
+            Isa itong observational study na nagpapakita ng kaugnayan ng agarang CPR at mas magandang survival outcomes. Hindi rin isinama rito ang mga bata at ilang partikular na kaso ng cardiac arrest na dulot ng pagkalunod, pagkakuryente at matinding pagkawala ng dugo.
+          </p>
+
+          <p>
+            Hindi ito eksaktong pagtataya ng magiging resulta sa bawat pasyente o sa Pilipinas.
+          </p>
+
+          <p>
+            Ngunit malinaw ang ipinakikita ng ebidensiya: mahalaga ang agarang pagtugon ng mga taong naroroon.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang bawat minutong lumilipas ay may epekto.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANO NAMAN ANG IPINAKIKITA NG AKTWAL NA DATOS SA PILIPINAS?
+          </h2>
+
+          <p>
+            Ayon sa Philippine Statistics Authority, noong 2024, ang ischaemic heart diseases ang pangunahing sanhi ng pagkamatay sa bansa.
+          </p>
+
+          <p>
+            Umabot sa 134,074 ang naitalang pagkamatay mula rito, katumbas ng 19.1% ng lahat ng rehistradong pagkamatay sa nasabing taon.
+          </p>
+
+          <p>
+            Halos isa sa bawat limang naitalang pagkamatay.
+          </p>
+
+          <p>
+            Hindi nangangahulugang cardiac arrest ang lahat ng kasong ito o maililigtas sana silang lahat sa pamamagitan ng CPR. Magkaiba ang mga estadistikang iyon.
+          </p>
+
+          <p>
+            Gayunman, ipinakikita nito ang bigat ng mga sakit sa puso bilang suliraning pangkalusugan sa bansa.
+          </p>
+
+          <p>
+            Mas direktang larawan naman ang makikita sa isang prospective cohort study na isinagawa sa Amang Rodriguez Memorial Medical Center sa Marikina mula Agosto hanggang Nobyembre 2021 at inilathala sa Philippine Journal of Internal Medicine noong 2025.
+          </p>
+
+          <p>
+            Sa 63 adult patients na kasama sa pag-aaral:
+          </p>
+
+          <ul>
+            <li>
+              90.48% ng cardiac arrest ang nangyari sa tahanan.
+            </li>
+
+            <li>
+              41.27% lamang ang nakatanggap ng CPR bago makarating sa emergency room.
+            </li>
+
+            <li>
+              58.73% ang hindi nakatanggap ng anumang prehospital intervention.
+            </li>
+
+            <li>
+              Anim lamang sa 63 pasyente ang nakatanggap ng intervention mula sa mga bystander. Sa iba pang nakatanggap ng prehospital intervention, 11 ang tinulungan ng emergency medical services personnel at siyam ng iba pang medical professional.
+            </li>
+
+            <li>
+              Mahigit 60% ang dinala sa ospital gamit ang sariling paraan ng transportasyon sa halip na ambulansiya.
+            </li>
+
+            <li>
+              Sa karaniwan, umabot sa 20 minuto ang biyahe mula sa dispatch hanggang sa pagdating sa emergency room.
+            </li>
+
+            <li>
+              Sa mga ambulansiyang naghatid ng mga pasyente sa pag-aaral, walang naitalang availability ng mga kagamitang gaya ng AED at ECG machine na mahalaga sa wastong resuscitation at pagsusuri sa ritmo ng puso.
+            </li>
+
+            <li>
+              Wala sa mga pasyenteng pinag-aralan ang nagkaroon ng pagbabalik ng kusang sirkulasyon ng dugo o return of spontaneous circulation.
+            </li>
+          </ul>
+
+          <p>
+            Limitado ang pag-aaral sa isang ospital at maliit na bilang ng mga pasyenteng dumating sa emergency room na nasa cardiac arrest at naitalang dead on arrival. Isinagawa rin ito noong panahon ng COVID-19 pandemic.
+          </p>
+
+          <p>
+            Hindi ito kumakatawan sa buong Pilipinas, at hindi rin sapat upang sabihing kakulangan ng bystander CPR lamang ang dahilan ng kinalabasan ng mga pasyente.
+          </p>
+
+          <p>
+            Pero aktuwal itong dokumentasyon ng isang suliraning kailangang tugunan: kakulangan ng agarang tulong bago makarating sa ospital, kasabay ng mga limitasyon sa emergency medical services.
+          </p>
+
+          <p>
+            At may isang detalyeng hindi dapat palampasin.
+          </p>
+
+          <blockquote>
+            <p>
+              Mahigit siyam sa bawat sampung cardiac arrest sa lokal na pag-aaral na iyon ang nangyari sa loob ng tahanan.
+            </p>
+          </blockquote>
+
+          <p>
+            Hindi sa basketball court. Hindi sa gymnasium. Hindi sa isang malaking sporting event.
+          </p>
+
+          <p>
+            Sa mismong lugar kung saan karaniwang pamilya ang unang naroroon, hindi medical professional.
+          </p>
+
+                            <h2>
+            BAKIT SA MGA PAARALAN DAPAT MAGSIMULA?
+          </h2>
+
+          <p>
+            Hindi layunin ng Samboy Lim Law na gawing doktor, nurse o paramedic ang bawat mag-aaral.
+          </p>
+
+          <p>
+            Layunin nitong gawing bahagi ng karaniwang edukasyon ang kakayahang kumilala ng emergency, humingi ng tulong at magsagawa ng angkop na agarang pagtugon.
+          </p>
+
+          <p>
+            May matibay na siyentipikong batayan ang ganitong pamamaraan.
+          </p>
+
+          <p>
+            Sa KIDS SAVE LIVES scientific statement na inilathala noong 2023 ng International Liaison Committee on Resuscitation (ILCOR), ipinakita ng pagsusuri sa mga umiiral na pag-aaral na:
+          </p>
+
+          <ul>
+            <li>
+              Mula sa edad na apat na taon, maaari nang matutuhan ng mga bata ang ilang pangunahing hakbang sa pagkilala at pagtugon sa emergency.
+            </li>
+
+            <li>
+              Sa edad na sampu hanggang labindalawang taon, may mga batang kaya nang magsagawa ng epektibong chest compressions sa training manikins.
+            </li>
+
+            <li>
+              Ang regular na pagsasanay ay nakatutulong upang mapanatili ang natutuhang kasanayan.
+            </li>
+
+            <li>
+              Ang mga gurong may angkop na pagsasanay ay maaari ring maging epektibong BLS instructors.
+            </li>
+
+            <li>
+              Naipapasa ng mga mag-aaral sa kanilang pamilya at ibang tao ang kanilang natutuhan, kaya lumalawak ang pakinabang ng pagsasanay.
+            </li>
+          </ul>
+
+          <p>
+            Hindi kailangang hintaying maging adulto ang isang bata bago turuang kumilala ng panganib at humingi ng tamang tulong.
+          </p>
+
+          <p>
+            Ang batang hindi pa sapat ang lakas upang magsagawa ng epektibong CPR ay maaari nang matutong tumawag ng emergency responder, humingi ng tulong sa nakatatanda at magbigay ng malinaw na impormasyon tungkol sa nangyayari.
+          </p>
+
+          <p>
+            Habang lumalaki siya, nadaragdagan ang mga kasanayang kaya niyang isagawa.
+          </p>
+
+          <p>
+            Sa ganitong sistema, bawat bagong henerasyon ng mga mag-aaral ay nagdadala ng kaalaman mula sa paaralan patungo sa tahanan, komunidad at kalaunan ay sa lugar ng kanilang trabaho.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang pagsasanay sa isang mag-aaral ay hindi lamang paghahanda sa kanya. Isa rin itong paraan ng paghahanda sa pamilyang kanyang kinabibilangan at sa komunidad na kanyang gagalawan.
+            </p>
+          </blockquote>
+
+          <h2>
+            MAY EBIDENSIYA BA NA GUMAGANA ANG GANITONG PAMAMARAAN SA IBANG BANSA?
+          </h2>
+
+          <p>
+            Sa Denmark, isang pag-aaral na inilathala sa Journal of the American Medical Association (JAMA) noong 2013 ang nagsuri sa mga resulta ng cardiac arrest kasabay ng pagpapatupad ng iba't ibang pambansang hakbang mula 2001 hanggang 2010.
+          </p>
+
+          <p>
+            Kabilang sa mga hakbang ang pagpapalawak ng CPR education at pagpapahusay ng emergency medical response.
+          </p>
+
+          <p>
+            Sa loob ng nasabing panahon:
+          </p>
+
+          <ul>
+            <li>
+              Tumaas mula 21.1% tungong 44.9% ang pagsasagawa ng CPR ng mga ordinaryong taong nasa lugar ng insidente.
+            </li>
+
+            <li>
+              Tumaas mula 3.5% tungong 10.8% ang 30-day survival rate ng mga pasyente.
+            </li>
+          </ul>
+
+          <p>
+            Mahigit doble ang bystander CPR rate at mahigit triple ang survival rate.
+          </p>
+
+          <p>
+            Hindi dapat iugnay ang buong pagbuti ng resulta sa CPR education lamang, sapagkat kasabay nito ang iba pang pagbabago sa kanilang healthcare at emergency response system.
+          </p>
+
+          <p>
+            Gayunman, ipinakikita ng karanasan ng Denmark ang potensiyal ng isang organisadong pambansang programa kung saan magkatuwang ang mamamayan at mga medical professional.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi sapat na mahusay lamang ang mga doktor sa loob ng ospital. Kailangan ding handa ang komunidad sa labas nito.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI LAMANG SA CARDIAC ARREST MAHALAGA ANG EMERGENCY PREPAREDNESS
+          </h2>
+
+          <p>
+            Isipin ang mga ordinaryong sitwasyong maaaring mangyari kahit saan.
+          </p>
+
+          <p>
+            May nakatatandang biglang bumagsak habang namamalengke.
+          </p>
+
+          <p>
+            May batang nabulunan habang kumakain.
+          </p>
+
+          <p>
+            May pasaherong nawalan ng malay sa pampublikong sasakyan.
+          </p>
+
+          <p>
+            May taong nalunod sa swimming pool o ilog.
+          </p>
+
+          <p>
+            May manggagawang nakuryente sa lugar ng trabaho.
+          </p>
+
+          <p>
+            May kapitbahay na hindi na tumutugon at hindi normal ang paghinga.
+          </p>
+
+          <p>
+            Sa bawat sitwasyon, mahalaga ang pagkakaroon ng taong marunong kumilala sa panganib, tumawag ng tamang tulong at magsagawa ng nararapat na first aid o Basic Life Support ayon sa kanyang pagsasanay.
+          </p>
+
+          <p>
+            Hindi pare-pareho ang tamang pagtugon sa bawat emergency. Hindi rin lahat ng nawalan ng malay ay nangangailangan ng CPR.
+          </p>
+
+          <p>
+            Sa mga batang nakaranas ng cardiac arrest at sa mga kaso ng cardiac arrest matapos ang pagkalunod, partikular na mahalaga ang CPR na may kasamang rescue breaths. Kung hindi kayang magbigay ng rescue breaths, mas mainam pa rin ang pagsasagawa ng chest compressions kaysa walang CPR.
+          </p>
+
+          <p>
+            Mahalaga rin ang kaligtasan ng taong tutulong.
+          </p>
+
+          <p>
+            Sa kaso ng pagkakuryente, kailangang matiyak na wala nang panganib mula sa kuryente bago hawakan ang biktima. Sa pagkalunod, hindi dapat basta lumusong sa mapanganib na tubig ang taong walang angkop na kasanayan sa pagsagip.
+          </p>
+
+          <blockquote>
+            <p>
+              Hindi dapat madagdagan ang bilang ng mga biktima dahil sa hindi ligtas na paraan ng pagtulong.
+            </p>
+          </blockquote>
+
+          <p>
+            Dito makikita kung bakit hindi sapat ang pagkakabisado lamang sa isang pamamaraan. Kailangang nauunawaan din kung kailan ito gagamitin, paano ito isasagawa at ano ang mga limitasyon nito.
+          </p>
+
+          <p>
+            Bagama't nakatuon ang RA 10871 sa Basic Life Support training sa mga paaralan, nagbubukas ito ng mas malawak na oportunidad upang palaganapin ang first aid education at emergency preparedness sa lipunan.
+          </p>
+
+          <p>
+            Hindi saklaw ng BLS ang lahat ng uri ng first aid o medical emergency. Ngunit mahalagang pundasyon ito ng mas malawak na edukasyon sa ligtas at wastong pagtugon sa mga emergency.
+          </p>
+
+          <h2>
+            HINDI RIN SAPAT ANG CPR KUNG MAHINA ANG KABUUANG EMERGENCY RESPONSE SYSTEM
+          </h2>
+
+          <p>
+            Mahalagang bahagi ng pagtugon sa cardiac arrest ang Automated External Defibrillator o AED.
+          </p>
+
+          <p>
+            Isa itong aparatong sumusuri sa electrical rhythm ng puso at nagbibigay ng electric shock kung kinakailangan para sa ilang uri ng cardiac arrest.
+          </p>
+
+          <p>
+            Sa isang randomized clinical trial na inilathala sa New England Journal of Medicine noong 2004, pinagkumpara ang mga komunidad na may mga volunteer na sinanay lamang sa CPR at ang mga komunidad na may mga volunteer na sinanay sa CPR at paggamit ng AED.
+          </p>
+
+          <p>
+            Sa grupong may CPR training lamang, 15 sa 107 cardiac arrest patients ang nakaligtas hanggang sa makalabas ng ospital.
+          </p>
+
+          <p>
+            Sa grupong may CPR at AED training, 30 sa 128 ang nakaligtas.
+          </p>
+
+          <p>
+            Ipinakita ng pag-aaral ang karagdagang pakinabang ng pagkakaroon ng AED na madaling magamit, kasabay ng mga taong sinanay sa wastong pagtugon, partikular sa mga pampublikong lugar na saklaw ng programa.
+          </p>
+
+          <p>
+            Gayunman, hindi tahasang inoobliga ng Samboy Lim Law ang lahat ng mall, palengke, terminal, opisina, gymnasium at iba pang pampublikong lugar na magkaroon ng AED.
+          </p>
+
+          <p>
+            Ito ang isa sa mga puwang na maaaring tugunan ng karagdagang mga programa, lokal na polisiya o batas.
+          </p>
+
+          <p>
+            Kailangan ding palakasin ang emergency hotline, ambulance services, pagsasanay ng mga responder at kakayahan ng mga ospital na tumanggap at magpatuloy ng paggamot.
+          </p>
+
+          <p>
+            Ang pagkakaroon ng mamamayang marunong magsagawa ng CPR ay hindi dahilan upang ilipat sa mamamayan ang tungkuling dapat gampanan ng pamahalaan.
+          </p>
+
+          <p>
+            Magkatuwang ang dalawang responsibilidad.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang handang mamamayan ay hindi kapalit ng maayos na emergency response system. Bahagi siya ng sistemang iyon.
+            </p>
+          </blockquote>
+
+          <h2>
+            ANG BATAS AY UMIIRAL NA. NASAAN ANG SUKAT NG PAGPAPATUPAD?
+          </h2>
+
+          <p>
+            Naging ganap na batas ang RA 10871 noong Hulyo 2016.
+          </p>
+
+          <p>
+            Sa ilalim ng Section 8 nito, itinakda ang 90 araw para sa pagbuo ng implementing rules and regulations.
+          </p>
+
+          <p>
+            Gayunman, ang certified true copy ng IRR ay may petsang Marso 26, 2021, at noong Disyembre 9 ng parehong taon ay inilabas ang DepEd Order No. 54, s. 2021.
+          </p>
+
+          <p>
+            Ang malaking pagitan ng pagpasa ng batas at ng mga dokumentadong hakbang na ito ay nagbibigay ng makatuwirang dahilan upang suriin ang naging proseso at bilis ng pagpapatupad nito.
+          </p>
+
+          <p>
+            Magkaiba ang petsa ng pagbuo, certification, publication at legal effectivity ng IRR. Kaya mahalaga ring malinaw na matukoy ang buong chronology nito sa pagsusuri ng pananagutan.
+          </p>
+
+          <p>
+            Noong Hulyo 17, 2025, muling nanawagan ang Philippine Heart Association para sa pagpapatupad ng batas.
+          </p>
+
+          <p>
+            May mga paaralan at komunidad nang nagsasagawa ng CPR training. Nagtakda na rin ang DepEd ng mga tuntunin para sa pagsasama ng BLS training sa kurikulum ng basic education.
+          </p>
+
+          <p>
+            Hindi makatarungang sabihing walang anumang nagawa.
+          </p>
+
+          <blockquote>
+            <p>
+              Ngunit magkaiba ang pagkakaroon ng programa at ang ganap, tuloy-tuloy at nasusukat na pagpapatupad nito.
+            </p>
+          </blockquote>
+
+          <p>
+            Ang mahahalagang tanong ay:
+          </p>
+
+          <ul>
+            <li>
+              Magkano ang taunang pondong inilaan at aktuwal na nagastos para sa batas?
+            </li>
+
+            <li>
+              Ilang porsiyento ng mga pampubliko at pribadong paaralan ang nagbibigay ng regular na hands-on BLS training?
+            </li>
+
+            <li>
+              Ilang guro ang kwalipikadong magsagawa ng pagsasanay?
+            </li>
+
+            <li>
+              Ilang paaralan ang may sapat na training manikins at iba pang kinakailangang kagamitan?
+            </li>
+
+            <li>
+              Ilang mag-aaral ang hindi lamang dumalo kundi aktuwal na nasuri ang kakayahang magsagawa ng wastong Basic Life Support?
+            </li>
+
+            <li>
+              Ilang mag-aaral ang nakatanggap ng sertipikasyon alinsunod sa batas at implementing rules nito?
+            </li>
+
+            <li>
+              May regular bang refresher training upang hindi mawala ang mga natutuhang kasanayan?
+            </li>
+
+            <li>
+              May pambansang sistema ba ng pangangalap ng datos upang masukat kung tumataas ang bystander CPR rate at survival rate?
+            </li>
+          </ul>
+
+          <p>
+            Hindi sapat na bilangin lamang ang mga seminar, dumalo, sertipiko at larawang kuha sa bawat aktibidad.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang tunay na sukatan ng tagumpay ng pagsasanay ay kung gaano karaming mamamayan ang may kakayahang magsagawa ng tama at ligtas na pagtugon kapag may aktuwal nang emergency.
+            </p>
+          </blockquote>
+
+          <p>
+            Mahalagang masukat ang epekto ng mas malawak na emergency response system sa kaligtasan at survival ng mga pasyente.
+          </p>
+
+          <p>
+            Hindi rin sapat na iatang lamang ang responsibilidad sa mga guro at paaralan kung kulang ang pondong nakalaan, mga kagamitan, kwalipikadong instructor at oras para sa pagsasanay.
+          </p>
+
+          <p>
+            May kani-kaniyang tungkulin ang Kongreso, DepEd, DOH, mga tagapangasiwa ng paaralan at iba pang institusyong sangkot sa pagpapatupad.
+          </p>
+
+          <h2>
+            HINDI KAILANGANG MAGHINTAY ANG LAHAT SA PAARALAN
+          </h2>
+
+          <p>
+            Ang direktang mandato ng Samboy Lim Law ay para sa basic education. Ngunit ang pangangailangan sa mga kasanayang ito ay hindi natatapos sa pagtatapos ng pag-aaral.
+          </p>
+
+          <p>
+            May papel din ang mga barangay, lokal na pamahalaan, employer, transport operators, negosyo at mga ordinaryong pamilya sa pagpapalawak ng emergency preparedness.
+          </p>
+
+          <p>
+            Ang mga magulang na hindi na saklaw ng basic education ay maaaring sumailalim sa BLS at first aid training.
+          </p>
+
+          <p>
+            Ang mga barangay ay maaaring magsagawa ng regular na pagsasanay para sa mga residente.
+          </p>
+
+          <p>
+            Ang mga lugar ng trabaho ay maaaring maghanda ng mga kwalipikadong responder at malinaw na emergency response procedures.
+          </p>
+
+          <p>
+            Ang mga pampublikong lugar na maraming tao ay maaaring magkaroon ng mga AED na madaling makita at magamit, kasabay ng wastong pagsasanay at regular na maintenance ng mga kagamitan.
+          </p>
+
+          <p>
+            Hindi dapat nakasalalay ang pagkatuto ng mga kasanayang ito sa pagkakataong magkaroon ng libreng seminar o sa paglitaw ng isang insidenteng muling magpapaalala sa kahalagahan nito.
+          </p>
+
+          <blockquote>
+            <p>
+              Ang emergency preparedness ay kailangang maging bahagi ng pang-araw-araw na kultura ng lipunan.
+            </p>
+          </blockquote>
+
+          <h2>
+            HINDI KAILANGANG MAGING DOKTOR PARA MAGKAROON NG KAKAYAHANG MAGLIGTAS NG BUHAY
+          </h2>
+
+          <p>
+            Maraming emergency ang hindi natin kayang pigilan. Ngunit may mga pagkakataong kaya nating baguhin ang magiging resulta sa pamamagitan ng tamang kaalaman at agarang pagkilos.
+          </p>
+
+          <p>
+            Hindi natin alam kung sino ang susunod na mangangailangan ng tulong.
+          </p>
+
+          <p>
+            Hindi natin alam kung sa tahanan, lansangan, paaralan, lugar ng trabaho o pampublikong sasakyan ito mangyayari.
+          </p>
+
+          <p>
+            At hindi rin natin alam kung ang unang taong naroroon ay isang medical professional o isang ordinaryong mamamayang tulad natin.
+          </p>
+
+          <p>
+            Ang kahalagahan ng Samboy Lim Law ay hindi lamang nasusukat sa dami ng mga atletang mapoprotektahan nito.
+          </p>
+
+          <p>
+            Nasusukat ito sa posibilidad na ang isang anak ay may sapat na kaalaman upang matulungan ang kanyang magulang. Na ang isang manggagawa ay marunong tumugon sa emergency ng kanyang katrabaho. Na ang isang estranghero ay may kakayahang tulungan ang kapwa estranghero habang hinihintay ang ambulansiya.
+          </p>
+
+          <p>
+            Hindi lahat ng buhay ay maililigtas kahit tama ang naging pagtugon. Ngunit hindi iyon dahilan upang pabayaan ang pagkakataong makapagsagip.
+          </p>
+
+          <blockquote>
+            <p>
+              SA EMERGENCY, HINDI DAPAT SUWERTE ANG MAGTAKDA KUNG MAY MARUNONG MAGLIGTAS NG BUHAY.
+            </p>
+          </blockquote>
+
+          <blockquote>
+            <p>
+              ANG KAKAYAHANG MAGBIGAY NG AGARANG TULONG NA MAKAPAGLILIGTAS NG BUHAY AY HINDI DAPAT LIMITADO SA MGA NASA MEDICAL PROFESSION LAMANG. DAPAT ITONG MAGING BAHAGI NG EDUKASYON AT KAKAYAHAN NG ORDINARYONG MAMAMAYAN.
+            </p>
+          </blockquote>
+
+          <p>
+            Iyan ang mas malawak na diwa ng Samboy Lim Law.
+          </p>
+
+          <p>
+            Hindi lamang batas para sa mga mag-aaral.
+          </p>
+
+          <p>
+            Isang pundasyon para sa mas handang lipunan.
+          </p>
+
+                </div>
+
+        <!-- ===================================
+             SOURCES / REFERENCES
+
+             PALITAN SA BAWAT BAGONG ARTICLE
+        =================================== -->
+
+                <section
+          class="article-sources"
+          aria-labelledby="sources-heading"
+        >
+
+          <h2
+            class="sources-title"
+            id="sources-heading"
+          >
+            MGA SANGGUNIAN
+          </h2>
+
+          <ul class="sources-list">
+
+            <li class="source-group-title">
+              <strong>BATAS AT PAMBANSANG POLISIYA</strong>
+            </li>
+
+            <li>
+              Republic Act No. 10871 (2016). <em>Basic Life Support Training in Schools Act.</em>
+              <a
+                href="https://lawphil.net/statutes/repacts/ra2016/ra_10871_2016.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://lawphil.net/statutes/repacts/ra2016/ra_10871_2016.html
+              </a>
+            </li>
+
+            <li>
+              Department of Education (2021). DepEd Order No. 54, s. 2021. <em>Implementing Rules and Regulations of Republic Act No. 10871.</em>
+              <a
+                href="https://www.deped.gov.ph/wp-content/uploads/2021/12/DO_s2021_054.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.deped.gov.ph/wp-content/uploads/2021/12/DO_s2021_054.pdf
+              </a>
+            </li>
+
+            <li>
+              <em>Implementing Rules and Regulations of RA 10871.</em> Certified True Copy, March 26, 2021. University of the Philippines Law Center.
+              <a
+                href="https://law.upd.edu.ph/wp-content/uploads/2021/06/DepEd-IIR-RA-10871.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://law.upd.edu.ph/wp-content/uploads/2021/06/DepEd-IIR-RA-10871.pdf
+              </a>
+            </li>
+
+            <li>
+              Department of Education (2022). <em>DepEd to provide basic life support training for schools nationwide.</em>
+              <a
+                href="https://www.deped.gov.ph/2022/01/04/deped-to-provide-basic-life-support-training-for-schools-nationwide/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.deped.gov.ph/2022/01/04/deped-to-provide-basic-life-support-training-for-schools-nationwide/
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>LOKAL NA DATOS AT MEDICAL RESEARCH</strong>
+            </li>
+
+            <li>
+              Philippine Statistics Authority. <em>Registered Deaths in the Philippines, 2024.</em>
+              <a
+                href="https://psa.gov.ph/content/registered-deaths-philippines-2024"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://psa.gov.ph/content/registered-deaths-philippines-2024
+              </a>
+            </li>
+
+            <li>
+              De Jesus, D. E. E. &amp; Manongas, K. P. (2025). <em>A Profile of Out-of-Hospital Cardiac Arrest in Amang Rodriguez Memorial Medical Center: A Prospective Cohort Study.</em> Philippine Journal of Internal Medicine, 63(1), 45–50.
+              <a
+                href="https://pjim.pcp.org.ph/elib/journal/identifier/2023-272/pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pjim.pcp.org.ph/elib/journal/identifier/2023-272/pdf
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>INTERNATIONAL RESEARCH AT SCIENTIFIC EVIDENCE</strong>
+            </li>
+
+            <li>
+              <em>Time to Bystander CPR and Survival for Witnessed Out-of-Hospital Cardiac Arrest</em> (2025).
+              <a
+                href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11993320/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pmc.ncbi.nlm.nih.gov/articles/PMC11993320/
+              </a>
+            </li>
+
+            <li>
+              Schroeder, D. C., et al. (2023). <em>KIDS SAVE LIVES: Basic Life Support Education for Schoolchildren.</em> ILCOR Scientific Statement. Resuscitation, 188, 109772.
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/37190748/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pubmed.ncbi.nlm.nih.gov/37190748/
+              </a>
+            </li>
+
+            <li>
+              Wissenberg, M., et al. (2013). <em>Association of National Initiatives to Improve Cardiac Arrest Management With Rates of Bystander Intervention and Patient Survival After Out-of-Hospital Cardiac Arrest.</em> JAMA, 310(13), 1377–1384.
+              <a
+                href="https://pubmed.ncbi.nlm.nih.gov/24084923/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://pubmed.ncbi.nlm.nih.gov/24084923/
+              </a>
+            </li>
+
+            <li>
+              Hallstrom, A. P., et al. (2004). <em>Public-Access Defibrillation and Survival after Out-of-Hospital Cardiac Arrest.</em> New England Journal of Medicine, 351, 637–646.
+              <a
+                href="https://www.nejm.org/doi/full/10.1056/NEJMoa040566"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.nejm.org/doi/full/10.1056/NEJMoa040566
+              </a>
+            </li>
+
+            <li class="source-group-title">
+              <strong>MEDICAL GUIDELINES AT IMPLEMENTATION</strong>
+            </li>
+
+            <li>
+              American Heart Association (2025). <em>Guidelines for Adult Basic Life Support.</em>
+              <a
+                href="https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-basic-life-support/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-basic-life-support/
+              </a>
+            </li>
+
+            <li>
+              American Heart Association and American Academy of Pediatrics (2025). <em>Guidelines for Pediatric Basic Life Support.</em>
+              <a
+                href="https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/pediatric-basic-life-support/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/pediatric-basic-life-support/
+              </a>
+            </li>
+
+            <li>
+              American Heart Association (2025). <em>Guidelines for Adult and Pediatric Special Circumstances of Resuscitation.</em>
+              <a
+                href="https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-and-pediatric-special-circumstances-of-resuscitation/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://cpr.heart.org/en/resuscitation-science/cpr-and-ecc-guidelines/adult-and-pediatric-special-circumstances-of-resuscitation/
+              </a>
+            </li>
+
+            <li>
+              Philippine Heart Association (2025). <em>PHA calls on National Government to implement CPR Act.</em>
+              <a
+                href="https://www.philheart.org/pha2025/pha-latest-news/pha-calls-on-natl-govt-to-implement-cpr-act"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                https://www.philheart.org/pha2025/pha-latest-news/pha-calls-on-natl-govt-to-implement-cpr-act
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </div>
+
+    </article>
+
+  </main>
+
+  <!-- ===================================
+       MOBILE NAVIGATION SCRIPT
+  =================================== -->
+
+  <script>
+    const menuToggle =
+      document.querySelector(".menu-toggle");
+
+    const mainNav =
+      document.querySelector(".main-nav");
+
+    if (menuToggle && mainNav) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen =
+          mainNav.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+          "is-open",
+          isOpen
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          String(isOpen)
+        );
+
+        menuToggle.setAttribute(
+          "aria-label",
+          isOpen
+            ? "Close navigation menu"
+            : "Open navigation menu"
+        );
+      });
+
+      mainNav
+        .querySelectorAll("a")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            mainNav.classList.remove("is-open");
+
+            menuToggle.classList.remove(
+              "is-open"
+            );
+
+            menuToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+            menuToggle.setAttribute(
+              "aria-label",
+              "Open navigation menu"
+            );
+          });
+        });
+    }
+  </script>
+
+</body>
+
+</html>
